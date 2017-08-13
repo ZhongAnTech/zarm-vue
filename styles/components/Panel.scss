@@ -1,0 +1,38 @@
+$prefixCls: za-panel;
+
+.#{$prefixCls} {
+  &-header {
+    position: relative;
+    padding: r(25) r(15) r(7) r(15);
+  }
+
+  &-footer {
+    position: relative;
+    padding: r(5) r(15);
+    margin-bottom: r(10);
+    color: #999;
+    font-size: r(12);
+  }
+
+  &-body {
+    position: relative;
+    background: #fff;
+    @include onepx(top bottom);
+  }
+
+  &-title {
+    line-height: 1.5;
+    font-size: r(14);
+    color: #999;
+
+    .za-icon {
+      margin-right: r(5);
+    }
+  }
+
+  &-more {
+    position: absolute;
+    top: 0;
+    right: r(15);
+  }
+}

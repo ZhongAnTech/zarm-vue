@@ -1,0 +1,36 @@
+$prefixCls: za-swipe;
+
+.#{$prefixCls} {
+  position: relative;
+  overflow: hidden;
+
+  &-item {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &-pagination {
+    position: absolute;
+    right: r(10);
+    bottom: r(10);
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        width: r(8);
+        height: r(8);
+        border-radius: r(4);
+        background: #ccc;
+        cursor: pointer;
+
+        &.active {
+          background: $theme-primary;
+        }
+      }
+    }
+  }
+}

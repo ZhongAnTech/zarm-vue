@@ -1,0 +1,76 @@
+$prefixCls: za-radio;
+
+.#{$prefixCls} {
+  position: relative;
+  margin-left: r(10);
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+
+  &-group {
+    &.block {
+      display: flex;
+
+      /* 通栏模式字体增大 */
+      .#{$prefixCls} {
+        font-size: r(15);
+      }
+    }
+
+    &.shape-radius {
+      .#{$prefixCls} {
+        border-radius: $radius-md;
+      }
+    }
+
+    &.shape-round {
+      .#{$prefixCls} {
+        border-radius: r(15);
+      }
+    }
+
+    &.is-gather {
+      .#{$prefixCls} {
+        margin-left: -1px;
+      }
+
+      &.shape-radius {
+        .#{$prefixCls} {
+          border-radius: 0;
+
+          &:first-child {
+            border-radius: $radius-md 0 0 $radius-md;
+          }
+
+          &:last-child {
+            border-radius: 0 $radius-md $radius-md 0;
+          }
+        }
+      }
+
+      &.shape-round {
+        .#{$prefixCls} {
+          border-radius: 0;
+
+          &:first-child {
+            border-radius: r(15) 0 0 r(15);
+          }
+
+          &:last-child {
+            border-radius: 0 r(15) r(15) 0;
+          }
+        }
+      }
+    }
+  }
+}
