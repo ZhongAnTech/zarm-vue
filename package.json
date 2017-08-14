@@ -22,6 +22,7 @@
     "vue": "^2.3.3"
   },
   "dependencies": {
+    "autosize": "^4.0.0",
     "vue": "^2.3.3"
   },
   "devDependencies": {

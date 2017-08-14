@@ -1,5 +1,5 @@
 <template lang="html">
-  <za-input></za-input>
+  <router-view></router-view>
 </template>
 
 <script>
