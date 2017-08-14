@@ -7,14 +7,14 @@ module.exports = function () {
   try {
     Glob.sync(partten, {}).forEach((file) => {
       if (file.indexOf('src/index.js') >= 0) {
-        entries.index = file;
+        entries['zarm-vue.common'] = file;
       } else {
         const pathArray = file.split('/');
         const key = pathArray[pathArray.length - 2];
         entries[key] = file;
       }
-      console.log(entries);
     });
+    // console.log(entries);
     return entries;
   } catch (err) {
     throw new Error(err.message);

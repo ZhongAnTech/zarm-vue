@@ -37,7 +37,7 @@ import Autosize from 'autosize';
 import Events from '@/utils/events';
 
 export default {
-  name: 'za-input',
+  name: 'zaInput',
   props: {
     prefixCls: {
       type: String,

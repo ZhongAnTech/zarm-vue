@@ -4,6 +4,6 @@
 
 <script>
 export default {
-  name: 'za-alert',
+  name: 'zaAlert',
 };
 </script>

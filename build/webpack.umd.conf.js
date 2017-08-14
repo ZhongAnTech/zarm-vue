@@ -3,6 +3,10 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
+
 const plugins = [
   new CleanWebpackPlugin(path.join(__dirname, '../lib'), {
     root: path.join(__dirname, '../'),
@@ -26,6 +30,9 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.js', '.vue', '.json'],
+    alias: {
+      '@': resolve('src')
+    },
   },
   output: {
     path: path.resolve(__dirname, '../lib'),

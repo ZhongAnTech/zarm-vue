@@ -6,7 +6,7 @@ fs.readFile(path.join(__dirname, '../package.json'), (err, data) => {
   if (!err) {
     try {
       const jsonData = JSON.parse(data);
-      jsonData.main = './index.js';
+      jsonData.main = './dist/zarm-vue.common.js';
       const releaseData = JSON.stringify(jsonData, null, 2);
       fs.writeFile(path.join(__dirname, '../lib/package.json'), releaseData);
     } catch (error) {

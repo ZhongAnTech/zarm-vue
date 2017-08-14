@@ -17,21 +17,24 @@ var env = process.env.NODE_ENV === 'testing'
 var webpackConfig = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
+    alias: {
+      '@': resolve('src')
+    },
   },
   externals: [
-    'vue',
+    'vue'
   ],
   module: {
     rules: [
-      {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: [resolve('src'), resolve('test')],
-        options: {
-          formatter: require('eslint-friendly-formatter')
-        }
-      },
+      // {
+      //   test: /\.(js|vue)$/,
+      //   loader: 'eslint-loader',
+      //   enforce: 'pre',
+      //   include: [resolve('src'), resolve('test')],
+      //   options: {
+      //     formatter: require('eslint-friendly-formatter')
+      //   }
+      // },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -69,9 +72,10 @@ var webpackConfig = {
   },
   entry: entries,
   output: {
-    path: path.resolve(__dirname, '../lib'),
+    path: path.resolve(__dirname, '../lib/dist'),
     filename: '[name].js',
-    chunkFilename: '[id].[chunkhash].js'
+    chunkFilename: '[id].[chunkhash].js',
+    libraryTarget: 'commonjs2',
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
@@ -100,9 +104,9 @@ var webpackConfig = {
   ]
 }
 
-if (config.build.bundleAnalyzerReport) {
-  var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-  webpackConfig.plugins.push(new BundleAnalyzerPlugin())
-}
+// if (config.build.bundleAnalyzerReport) {
+//   var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+//   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
+// }
 
 module.exports = webpackConfig

@@ -3,11 +3,12 @@
 
 import Vue from 'vue';
 import zarmVue from '../src/index';
+// import zarmVue from '../lib/dist/zarm-vue.common';
 import App from './app';
 import router from './router';
 import '../styles/index.scss'; // eslint-disable-line import/no-unresolved
 import './styles/core/index.scss';
-  // page styles
+ // page styles
 Vue.config.productionTip = false;
 Vue.use(zarmVue);
 /* eslint-disable no-new */
