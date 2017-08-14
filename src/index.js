@@ -1,9 +1,21 @@
-import Input from '../src/Input';
-import Alert from '../src/Alert';
+import Input from '../src/input';
+import Alert from '../src/alert';
+import Panel from '../src/panel';
+import PanelHeader from '../src/panel-header';
+import PanelTitle from '../src/panel-title';
+import PanelBody from '../src/panel-body';
+import PanelFooter from '../src/panel-footer';
+import PanelMore from '../src/panel-more';
 
 const components = [
   Input,
   Alert,
+  Panel,
+  PanelHeader,
+  PanelTitle,
+  PanelBody,
+  PanelFooter,
+  PanelMore,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -21,4 +33,10 @@ export default {
   install,
   Input,
   Alert,
+  Panel,
+  PanelHeader,
+  PanelTitle,
+  PanelBody,
+  PanelFooter,
+  PanelMore,
 };

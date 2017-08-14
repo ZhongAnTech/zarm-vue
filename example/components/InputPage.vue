@@ -3,7 +3,14 @@
     <PageHeader title="文本框 Input" />
     <main>
       <div>
-        <za-input ref='inputFirst' v-model='v1' type="text" placeholder="type is text" @change='handleChange'></za-input>
+        <za-panel>
+          <za-panel-header>
+            <za-panel-title>普通</za-panel-title>
+          </za-panel-header>
+          <za-panel-body>
+            <za-input ref='inputFirst' v-model='v1' type="text" placeholder="type is text" @change='handleChange'></za-input>
+          </za-panel-body>
+        </za-panel>
         <a @click='focus'>click to focus the first input</a></Cell>
       </div>
       <div>
