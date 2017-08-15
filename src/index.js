@@ -6,6 +6,7 @@ import PanelTitle from '../src/panel-title';
 import PanelBody from '../src/panel-body';
 import PanelFooter from '../src/panel-footer';
 import PanelMore from '../src/panel-more';
+import Cell from '../src/cell';
 
 const components = [
   Input,
@@ -16,6 +17,7 @@ const components = [
   PanelBody,
   PanelFooter,
   PanelMore,
+  Cell,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -39,4 +41,5 @@ export default {
   PanelBody,
   PanelFooter,
   PanelMore,
+  Cell,
 };
