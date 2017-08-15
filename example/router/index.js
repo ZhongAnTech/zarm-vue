@@ -29,5 +29,9 @@ export default new Router({
       path: '/spinner',
       component: () => import('../components/spinnerPage.vue'),
     },
+    {
+      path: '/cell',
+      component: () => import('../components/cellPage.vue'),
+    },
   ],
 });

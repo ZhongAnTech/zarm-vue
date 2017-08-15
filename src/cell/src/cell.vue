@@ -4,15 +4,16 @@
     disabled,
     [`theme-${theme}`]: !!theme,
     'is-link': !disabled && !!isLink,
-    'has-icon': !!icon,
+    'has-icon': !!hasIcon,
     'has-arrow': hasArrow,
     }">
     <div :class="`${prefixCls}-inner`">
       <div :class='`${prefixCls}-header`'>
-        <div :class='`${prefixCls}-icon`' v-if='!!icon'>{{icon}}</div>
+        <slot name='icon'></slot>
       </div>
       <div :class='`${prefixCls}-body`'>
         <div :class='`${prefixCls}-title`' v-if='!!title'>{{title}}</div>
+        <slot name='title'></slot>
         <div :class='`${prefixCls}-content`'>
           <slot></slot>
         </div>
@@ -25,6 +26,7 @@
     <div :class='`${prefixCls}-help`' v-if='!!help'>
       {{help}}
     </div>
+    <slot name='help'></slot>
 </div>
 </template>
 
@@ -51,15 +53,16 @@ export default {
     },
     theme: String,
     title: String,
-    icon: String,
   },
   data() {
     return {
 
     };
   },
-  methods: {
-
+  computed: {
+    hasIcon() {
+      return this.$slots && this.$slots.icon && this.$slots.icon.length > 0;
+    },
   },
 };
 </script>
