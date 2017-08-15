@@ -9,6 +9,8 @@ import PanelMore from '../src/panel-more';
 import Cell from '../src/cell';
 import Checkbox from '../src/checkbox';
 import Icon from '../src/icon';
+import Button from '../src/button';
+import Spinner from '../src/spinner';
 
 const components = [
   Input,
@@ -22,6 +24,8 @@ const components = [
   Cell,
   Checkbox,
   Icon,
+  Button,
+  Spinner,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -48,4 +52,6 @@ export default {
   Cell,
   Checkbox,
   Icon,
+  Button,
+  Spinner,
 };

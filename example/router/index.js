@@ -17,5 +17,13 @@ export default new Router({
       path: '/icon',
       component: () => import('../components/iconPage.vue'),
     },
+    {
+      path: '/button',
+      component: () => import('../components/buttonPage.vue'),
+    },
+    {
+      path: '/spinner',
+      component: () => import('../components/spinnerPage.vue'),
+    },
   ],
 });
