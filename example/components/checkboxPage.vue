@@ -8,53 +8,107 @@
             <za-panel-title>普通</za-panel-title>
           </za-panel-header>
           <za-panel-body>
-            <za-cell title='单行文本'>
-              <za-input ref='inputFirst' v-model='v1' type="text" placeholder="type is text" @change='handleChange'></za-input>
-            </za-cell>
-            <za-cell title='多行文本'>
-              <za-input v-model='v2' type="textarea" placeholder="type is textarea" @change='handleChange2'></za-input>
+            <za-cell>
+              <za-checkbox v-model='v1' @change='handleChange'>单独使用</za-checkbox>
             </za-cell>
             <za-cell>
-              <a @click='focus'>click to focus the first input</a>
+              <za-checkbox-group v-model='checkboxGroup' slot='description' value='cities' @change='handleGroupChange'>
+                <za-checkbox v-for='(city, index) in cities' :label="city" :key="city"  :disabled='index === 2'>{{city}}</za-checkbox>
+              </za-checkbox-group>
+              组合使用
             </za-cell>
           </za-panel-body>
         </za-panel>
 
         <za-panel>
           <za-panel-header>
-            <za-panel-title>高度自适应</za-panel-title>
+            <za-panel-title>按钮样式</za-panel-title>
           </za-panel-header>
           <za-panel-body>
-            <za-cell title='多行文本'>
-              <za-input autosize v-model='v3' type="textarea" placeholder="this is a autosize textarea"></za-input>
+            <za-cell>
+              <za-checkbox-group
+                v-model='checkboxGroup2'
+                slot='description'
+                type="button"
+                @change='handleGroupChange'>
+                <za-checkbox v-for='(city, index) in cities' :label="city" :key="city">{{city}}</za-checkbox>
+              </za-checkbox-group>
+              普通
+            </za-cell>
+            <za-cell>
+              <za-checkbox-group
+                v-model='checkboxGroup3'
+                slot='description'
+                type="button"
+                @change='handleGroupChange'>
+                <za-checkbox v-for='city in cities' :label="city" :key="city">{{city}}</za-checkbox>
+              </za-checkbox-group>
+              指定默认值
+            </za-cell>
+            <za-cell>
+              <za-checkbox-group
+                v-model='checkboxGroup4'
+                slot='description'
+                type="button"
+                @change='handleGroupChange'>
+                <za-checkbox v-for='(city, index) in cities' :label="city" :key="city" :disabled='index === 2'>{{city}}</za-checkbox>
+              </za-checkbox-group>
+              禁用指定项
+            </za-cell>
+            <za-cell>
+              <za-checkbox-group
+                v-model='checkboxGroup5'
+                slot='description'
+                type="button"
+                shape="radius"
+                @change='handleGroupChange'>
+                <za-checkbox v-for='(city, index) in cities' :label="city" :key="city">{{city}}</za-checkbox>
+              </za-checkbox-group>
+              圆角
+            </za-cell>
+            <za-cell>
+              <za-checkbox-group
+                v-model='checkboxGroup6'
+                slot='description'
+                type="button"
+                shape="round"
+                @change='handleGroupChange'>
+                <za-checkbox v-for='(city, index) in cities' :label="city" :key="city">{{city}}</za-checkbox>
+              </za-checkbox-group>
+              椭圆角
             </za-cell>
           </za-panel-body>
         </za-panel>
 
         <za-panel>
           <za-panel-header>
-            <za-panel-title>无标签栏</za-panel-title>
+            <za-panel-title>列表样式</za-panel-title>
           </za-panel-header>
           <za-panel-body>
-            <za-cell>
-              <za-input type="text" placeholder="标题" @change='handleChange3'/>
-            </za-cell>
-            <za-cell>
-              <za-input autosize v-model='v4' type="textarea" rows='4' placeholder="摘要"></za-input>
-            </za-cell>
+            <za-checkbox-group
+              v-model='checkboxGroup7'
+              type="cell"
+              @change='handleGroupChange'>
+              <za-checkbox v-for='(city, index) in cities' :label="city" :key="city" :disabled='index === 2'>{{city}}</za-checkbox>
+            </za-checkbox-group>
           </za-panel-body>
         </za-panel>
 
         <za-panel>
           <za-panel-header>
-            <za-panel-title>显示输入字数</za-panel-title>
+            <za-panel-title>列表样式禁用状态</za-panel-title>
           </za-panel-header>
           <za-panel-body>
-            <za-cell>
-              <za-input autosize showLength type="textarea" rows="4" maxLength="200" placeholder="摘要"></za-input>
-            </za-cell>
+            <za-checkbox-group
+              v-model='checkboxGroup8'
+              type="cell"
+              disabled
+              @change='handleGroupChange'>
+              <za-checkbox v-for='(city, index) in cities' :label="city" :key="city">{{city}}</za-checkbox>
+            </za-checkbox-group>
           </za-panel-body>
         </za-panel>
+
       </div>
     </main>
     <PageFooter />
@@ -74,25 +128,25 @@ export default {
   },
   data() {
     return {
-      v1:'',
-      v2:'这是一个textarea',
-      v3:'',
-      v4:'',
+      v1: false,
+      cities: ['上海', '北京', '广州', '深圳'],
+      checkboxGroup: ['上海'],
+      checkboxGroup2: [],
+      checkboxGroup3: ['上海', '北京'],
+      checkboxGroup4: [],
+      checkboxGroup5: [],
+      checkboxGroup6: [],
+      checkboxGroup7: [],
+      checkboxGroup8: [],
     }
   },
   methods: {
-    handleChange(v) {
-      console.log(this.v1, v);
+    handleChange(ev) {
+      console.log(this.v1, ev);
     },
-    handleChange2(v) {
-      console.log(this.v2, v);
-    },
-    handleChange3(v) {
+    handleGroupChange(v){
       console.log(v);
     },
-    focus() {
-      this.$refs.inputFirst.focus()
-    }
   },
 };
 </script>

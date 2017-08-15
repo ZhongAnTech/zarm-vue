@@ -33,6 +33,11 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', {
       'optionalDependencies': ['test/unit/index.js']
     }],
+    // allow underscoreDangle after this
+    'no-underscore-dangle': ['error', { "allowAfterThis": true }],
+    'no-nested-ternary': 'off',
+    'consistent-return': 'off',
+    'arrow-parens': 'off',
     'func-names': ["error", "never"],
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0

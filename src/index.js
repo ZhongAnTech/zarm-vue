@@ -8,6 +8,7 @@ import PanelFooter from '../src/panel-footer';
 import PanelMore from '../src/panel-more';
 import Cell from '../src/cell';
 import Checkbox from '../src/checkbox';
+import CheckboxGroup from '../src/checkbox-group';
 import Icon from '../src/icon';
 import Button from '../src/button';
 import Spinner from '../src/spinner';
@@ -23,6 +24,7 @@ const components = [
   PanelMore,
   Cell,
   Checkbox,
+  CheckboxGroup,
   Icon,
   Button,
   Spinner,
@@ -51,6 +53,7 @@ export default {
   PanelMore,
   Cell,
   Checkbox,
+  CheckboxGroup,
   Icon,
   Button,
   Spinner,
