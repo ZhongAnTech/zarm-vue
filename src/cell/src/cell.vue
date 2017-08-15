@@ -18,7 +18,7 @@
         </div>
       </div>
       <div :class='`${prefixCls}-footer`'>
-        {{description}}
+        <slot name='description'></slot>
       </div>
       <div :class='`${prefixCls}-arrow`' v-if='hasArrow'/>
     </div>
@@ -44,7 +44,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    description: String,
     help: String,
     isLink: {
       type: Boolean,
