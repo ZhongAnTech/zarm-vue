@@ -6,6 +6,10 @@ Vue.use(Router);
 export default new Router({
   routes: [
     {
+      path: '/',
+      component: () => import('../components/index.vue'),
+    },
+    {
       path: '/input',
       component: () => import('../components/inputPage.vue'),
     },

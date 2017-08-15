@@ -88,7 +88,7 @@ export default {
     if (this.type === 'textarea') {
       this.destroyAutosize();
     }
-    Events.off(this.input, 'input', this.setLength);
+    Events.off(this.$refs.input, 'input', this.setLength);
   },
   methods: {
     handleInput(event) {

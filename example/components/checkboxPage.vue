@@ -77,6 +77,18 @@
               </za-checkbox-group>
               椭圆角
             </za-cell>
+            <za-cell>
+              <za-checkbox-group
+                v-model='checkboxGroupCompact'
+                slot='description'
+                type="button"
+                compact
+                shape="round"
+                @change='handleGroupChange'>
+                <za-checkbox v-for='(city, index) in cities' :label="city" :key="city">{{city}}</za-checkbox>
+              </za-checkbox-group>
+              椭圆角compact
+            </za-cell>
           </za-panel-body>
         </za-panel>
 
@@ -138,6 +150,7 @@ export default {
       checkboxGroup6: [],
       checkboxGroup7: [],
       checkboxGroup8: [],
+      checkboxGroupCompact: [],
     }
   },
   methods: {
