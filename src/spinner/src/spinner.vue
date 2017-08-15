@@ -25,7 +25,7 @@ export default {
     size: {
       type: String,
       validator: function (v) { // eslint-disable-line object-shorthand
-        return ['lg'].indexOf(v) >= 0;
+        return ['xl', 'lg', 'sm', 'xs'].indexOf(v) >= 0;
       },
       default: null,
     },
