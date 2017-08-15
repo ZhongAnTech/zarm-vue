@@ -7,6 +7,8 @@ import PanelBody from '../src/panel-body';
 import PanelFooter from '../src/panel-footer';
 import PanelMore from '../src/panel-more';
 import Cell from '../src/cell';
+import Checkbox from '../src/checkbox';
+import Icon from '../src/icon';
 
 const components = [
   Input,
@@ -18,6 +20,8 @@ const components = [
   PanelFooter,
   PanelMore,
   Cell,
+  Checkbox,
+  Icon,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -42,4 +46,6 @@ export default {
   PanelFooter,
   PanelMore,
   Cell,
+  Checkbox,
+  Icon,
 };

@@ -7,7 +7,15 @@ export default new Router({
   routes: [
     {
       path: '/input',
-      component: () => import('../components/InputPage.vue'),
+      component: () => import('../components/inputPage.vue'),
+    },
+    {
+      path: '/checkbox',
+      component: () => import('../components/checkboxPage.vue'),
+    },
+    {
+      path: '/icon',
+      component: () => import('../components/iconPage.vue'),
     },
   ],
 });
