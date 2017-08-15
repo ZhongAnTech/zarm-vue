@@ -1,5 +1,5 @@
 <template lang="html">
-  <Container class="icon-page">
+  <Container>
     <PageHeader title="图标 Icon" />
     <main>
       <div>
@@ -108,6 +108,12 @@
           </za-panel-header>
           <za-panel-body>
             <za-cell title='标题'>
+              <za-cell-help slot='help'>
+                <za-message theme='error'>
+                  <za-icon type="info-round" />
+                  <span style='marginLeft: 5px'>标题不能为空</span>
+                </za-message>
+              </za-cell-help>
               <za-input type="text" placeholder="请输入标题" />
             </za-cell>
           </za-panel-body>

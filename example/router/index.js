@@ -33,5 +33,9 @@ export default new Router({
       path: '/cell',
       component: () => import('../components/cellPage.vue'),
     },
+    {
+      path: '/message',
+      component: () => import('../components/messagePage.vue'),
+    },
   ],
 });

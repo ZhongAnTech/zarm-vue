@@ -15,6 +15,7 @@ import CheckboxGroup from '../src/checkbox-group';
 import Icon from '../src/icon';
 import Button from '../src/button';
 import Spinner from '../src/spinner';
+import Message from '../src/message';
 
 const components = [
   Input,
@@ -34,6 +35,7 @@ const components = [
   Icon,
   Button,
   Spinner,
+  Message,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -66,4 +68,5 @@ export default {
   Icon,
   Button,
   Spinner,
+  Message,
 };

@@ -44,6 +44,9 @@
           <za-cell hasArrow @click.native="$router.push('/icon')">
             图标 Icon
           </za-cell>
+          <za-cell hasArrow @click.native="$router.push('/message')">
+            消息 Message
+          </za-cell>
           <za-cell hasArrow @click.native="$router.push('/spinner')">
             指示器 Spinner
           </za-cell>
