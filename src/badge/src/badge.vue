@@ -42,14 +42,10 @@ export default {
       default: false,
     },
     text: [String, Number],
-    onBadgeClick: {
-      type: Function,
-      default: () => {},
-    },
   },
   methods: {
     supClick(event) {
-      this.onBadgeClick(event);
+      this.$emit('badge-click', event);
     },
   },
 };

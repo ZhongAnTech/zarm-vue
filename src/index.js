@@ -19,6 +19,8 @@ import Message from '../src/message';
 import Radio from '../src/radio';
 import RadioGroup from '../src/radio-group';
 import Badge from '../src/badge';
+import Tabs from '../src/tabs';
+import TabPane from '../src/tab-pane';
 
 const components = [
   Input,
@@ -42,6 +44,8 @@ const components = [
   Radio,
   RadioGroup,
   Badge,
+  Tabs,
+  TabPane,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -78,4 +82,6 @@ export default {
   Radio,
   RadioGroup,
   Badge,
+  Tabs,
+  TabPane,
 };

@@ -56,6 +56,9 @@
           <za-cell hasArrow @click.native="$router.push('/spinner')">
             指示器 Spinner
           </za-cell>
+          <za-cell hasArrow @click.native="$router.push('/tabs')">
+            标签页 Tabs
+          </za-cell>
         </za-panel-body>
       </za-panel>
 

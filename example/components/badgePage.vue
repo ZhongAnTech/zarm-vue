@@ -9,7 +9,7 @@
           </za-panel-header>
           <za-panel-body>
             <za-cell hasArrow title="点状">
-              <za-badge slot='description' shape='dot' :onBadgeClick='handleClick'></za-badge>
+              <za-badge slot='description' shape='dot' @badge-click='handleClick'></za-badge>
             </za-cell>
             <za-cell hasArrow title="直角">
               <za-badge slot='description' text='免费'></za-badge>
@@ -32,16 +32,16 @@
           </za-panel-header>
           <za-panel-body class="custom-panel">
             <div class="box">
-              <za-badge sup shape='dot' :onBadgeClick='handleClick'><div class="box-item" /></za-badge>
+              <za-badge sup shape='dot' @badge-click='handleClick'><div class="box-item" /></za-badge>
             </div>
             <div class="box">
-              <za-badge sup shape='radius' text='new' :onBadgeClick='handleClick'><div class="box-item" /></za-badge>
+              <za-badge sup shape='radius' text='new' @badge-click='handleClick'><div class="box-item" /></za-badge>
             </div>
             <div class="box">
-              <za-badge sup shape='round' text='3' :onBadgeClick='handleClick'><div class="box-item" /></za-badge>
+              <za-badge sup shape='round' text='3' @badge-click='handleClick'><div class="box-item" /></za-badge>
             </div>
             <div class="box">
-              <za-badge sup shape='round' text='999+' :onBadgeClick='handleClick'><div class="box-item" /></za-badge>
+              <za-badge sup shape='round' text='999+' @badge-click='handleClick'><div class="box-item" /></za-badge>
             </div>
 
           </za-panel-body>

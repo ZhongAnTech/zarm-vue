@@ -45,5 +45,9 @@ export default new Router({
       path: '/badge',
       component: () => import('../components/badgePage.vue'),
     },
+    {
+      path: '/tabs',
+      component: () => import('../components/tabsPage.vue'),
+    },
   ],
 });
