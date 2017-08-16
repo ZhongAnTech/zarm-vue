@@ -55,29 +55,21 @@ export default {
       });
       return cur;
     },
+    paneNum() {
+      return this.panes.length;
+    },
     lineStyle() {
       return {
-        width: `${100 / this.tabNum}%`,
-        left: `${(this.currentIndex / this.tabNum) * 100}%`,
+        width: `${100 / this.paneNum}%`,
+        left: `${(this.currentIndex / this.paneNum) * 100}%`,
         backgroundColor: this.lineWidth ? 'transparent' : '',
       };
     },
   },
   data() {
     return {
-      tabNum: 0,
       panes: [],
     };
-  },
-  mounted() {
-    const children = this.$children;
-    let num = 0;
-    children.forEach((child) => {
-      if (child.$options.name === 'zaTabPane') {
-        num += 1;
-      }
-    });
-    this.tabNum = num;
   },
   methods: {
     changeCb(item, event) {

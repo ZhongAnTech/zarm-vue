@@ -28,15 +28,18 @@ export default {
   },
   computed: {
     currentName() {
+      return this.container && this.container.value;
+    },
+    container() {
       let parent = this.$parent;
       while (parent) {
         if (parent.$options.name !== 'zaTabs') {
           parent = parent.$parent;
         } else {
-          this._tabs = parent;
-          return parent.value;
+          return parent;
         }
       }
+      return false;
     },
   },
   watch: {
@@ -50,7 +53,7 @@ export default {
       this.notifyParent();
     },
   },
-  mounted() {
+  created() {
     this._panelIndex = paneIndex;
     paneIndex += 1;
     this.notifyParent();
@@ -60,8 +63,8 @@ export default {
   },
   methods: {
     notifyParent(flag = true) {
-      if (this._tabs) {
-        this._tabs.notify(this, flag);
+      if (this.container) {
+        this.container.notify(this, flag);
       }
     },
   },
