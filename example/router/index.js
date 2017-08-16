@@ -37,5 +37,9 @@ export default new Router({
       path: '/message',
       component: () => import('../components/messagePage.vue'),
     },
+    {
+      path: '/radio',
+      component: () => import('../components/radioPage.vue'),
+    },
   ],
 });

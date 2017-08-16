@@ -16,6 +16,8 @@ import Icon from '../src/icon';
 import Button from '../src/button';
 import Spinner from '../src/spinner';
 import Message from '../src/message';
+import Radio from '../src/radio';
+import RadioGroup from '../src/radio-group';
 
 const components = [
   Input,
@@ -36,6 +38,8 @@ const components = [
   Button,
   Spinner,
   Message,
+  Radio,
+  RadioGroup,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -69,4 +73,6 @@ export default {
   Button,
   Spinner,
   Message,
+  Radio,
+  RadioGroup,
 };

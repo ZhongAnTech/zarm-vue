@@ -7,6 +7,7 @@
   <za-button :class='{
     [`${prefixCls}`]: true,
     checked: isChecked,
+    block: isBlock,
     disabled: checkboxDisabled,
     }' v-else-if='checkboxType === "button"' :theme='theme' size='xs' :block='block' :disabled='checkboxDisabled' :bordered='!isChecked'>
     <input type="checkbox" :class='`${prefixCls}-input`' :disabled='checkboxDisabled' :value='label' v-model='model' @change='onValueChange' />
@@ -122,6 +123,9 @@ export default {
     },
     checkboxDisabled() {
       return this.isGroup ? (this._checkboxGroup.disabled || this.disabled) : this.disabled;
+    },
+    isBlock() {
+      return this.isGroup ? this._checkboxGroup.block : this.block;
     },
   },
   methods: {

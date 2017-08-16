@@ -12,7 +12,7 @@
               <za-checkbox v-model='v1' @change='handleChange'>单独使用</za-checkbox>
             </za-cell>
             <za-cell>
-              <za-checkbox-group v-model='checkboxGroup' slot='description' value='cities' @change='handleGroupChange'>
+              <za-checkbox-group v-model='checkboxGroup' slot='description' @change='handleGroupChange'>
                 <za-checkbox v-for='(city, index) in cities' :label="city" :key="city"  :disabled='index === 2'>{{city}}</za-checkbox>
               </za-checkbox-group>
               组合使用
@@ -94,6 +94,23 @@
 
         <za-panel>
           <za-panel-header>
+            <za-panel-title>块级样式</za-panel-title>
+          </za-panel-header>
+          <za-panel-body style='padding:10px'>
+            <za-checkbox-group
+              v-model='checkboxGroupCompact2'
+              type="button"
+              compact
+              block
+              shape="round"
+              @change='handleGroupChange'>
+              <za-checkbox v-for='(city, index) in cities' :label="city" :key="city" :disabled='index === 2'>{{city}}</za-checkbox>
+            </za-checkbox-group>
+          </za-panel-body>
+        </za-panel>
+
+        <za-panel>
+          <za-panel-header>
             <za-panel-title>列表样式</za-panel-title>
           </za-panel-header>
           <za-panel-body>
@@ -151,6 +168,7 @@ export default {
       checkboxGroup7: [],
       checkboxGroup8: [],
       checkboxGroupCompact: [],
+      checkboxGroupCompact2: [],
     }
   },
   methods: {

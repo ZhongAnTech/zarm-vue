@@ -19,6 +19,9 @@
             <!-- 另一种写法，但暂时没有css类支持 -->
             <router-link to="input" tag='div' style='width:100%'>文本框 Input</router-link>
           </za-cell>
+          <za-cell hasArrow @click.native="$router.push('/radio')">
+            单选框 Radio
+          </za-cell>
         </za-panel-body>
       </za-panel>
 
