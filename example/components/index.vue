@@ -41,6 +41,9 @@
           <za-panel-title>数据展示</za-panel-title>
         </za-panel-header>
         <za-panel-body>
+          <za-cell hasArrow @click.native="$router.push('/badge')">
+            徽标 Badge
+          </za-cell>
           <za-cell hasArrow @click.native="$router.push('/cell')">
             列表项 Cell
           </za-cell>

@@ -41,5 +41,9 @@ export default new Router({
       path: '/radio',
       component: () => import('../components/radioPage.vue'),
     },
+    {
+      path: '/badge',
+      component: () => import('../components/badgePage.vue'),
+    },
   ],
 });

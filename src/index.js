@@ -18,6 +18,7 @@ import Spinner from '../src/spinner';
 import Message from '../src/message';
 import Radio from '../src/radio';
 import RadioGroup from '../src/radio-group';
+import Badge from '../src/badge';
 
 const components = [
   Input,
@@ -40,6 +41,7 @@ const components = [
   Message,
   Radio,
   RadioGroup,
+  Badge,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -75,4 +77,5 @@ export default {
   Message,
   Radio,
   RadioGroup,
+  Badge,
 };
