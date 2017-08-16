@@ -49,5 +49,9 @@ export default new Router({
       path: '/tabs',
       component: () => import('../components/tabsPage.vue'),
     },
+    {
+      path: '/stepper',
+      component: () => import('../components/stepperPage.vue'),
+    },
   ],
 });

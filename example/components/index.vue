@@ -2,7 +2,7 @@
   <Container class="index-page">
     <header>
       <section class="brand">
-        <div class="brand-title">Zarm UI</div>
+        <div class="brand-title">Zarm-vue UI</div>
         <div class="brand-description">众安科技移动端组件库</div>
       </section>
     </header>
@@ -21,6 +21,9 @@
           </za-cell>
           <za-cell hasArrow @click.native="$router.push('/radio')">
             单选框 Radio
+          </za-cell>
+          <za-cell hasArrow @click.native="$router.push('/stepper')">
+            步进器 Stepper
           </za-cell>
         </za-panel-body>
       </za-panel>

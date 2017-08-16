@@ -21,6 +21,7 @@ import RadioGroup from '../src/radio-group';
 import Badge from '../src/badge';
 import Tabs from '../src/tabs';
 import TabPane from '../src/tab-pane';
+import Stepper from '../src/stepper';
 
 const components = [
   Input,
@@ -46,6 +47,7 @@ const components = [
   Badge,
   Tabs,
   TabPane,
+  Stepper,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -84,4 +86,5 @@ export default {
   Badge,
   Tabs,
   TabPane,
+  Stepper,
 };
