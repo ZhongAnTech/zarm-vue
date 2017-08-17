@@ -92,8 +92,8 @@ export default {
   },
   watch: {
     'value'(val, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
-      this.currentValue = val;
-      this.lastValue = val;
+      if (val === this.currentValue) return;
+      this.handleValue(val);
     },
   },
   data() {
@@ -118,6 +118,9 @@ export default {
     },
     handleInput(event) {
       const value = Number(event.target.value);
+      this.handleValue(value);
+    },
+    handleValue(value) {
       if (isNaN(value)) {
         if (event.target.value === '-') {
           this.currentValue = '-';
@@ -127,19 +130,28 @@ export default {
         this.$nextTick(() => {
           this.currentValue = this.lastValue;
         });
-        return; // no emit here
       } else if (this.min !== null && value < this.min) {
-        this.currentValue = this.min;
-        this.lastValue = this.currentValue;
+        this.currentValue = value;
+        this.$nextTick(() => {
+          this.currentValue = this.min;
+          this.lastValue = this.currentValue;
+          this.$emit('input', Number(this.currentValue));
+          this.$emit('step-change', event);
+        });
       } else if (this.max !== null && value > this.max) {
-        this.currentValue = this.max;
-        this.lastValue = this.currentValue;
+        this.currentValue = value;
+        this.$nextTick(() => {
+          this.currentValue = this.max;
+          this.lastValue = this.currentValue;
+          this.$emit('input', Number(this.currentValue));
+          this.$emit('step-change', event);
+        });
       } else {
         this.currentValue = value;
         this.lastValue = this.currentValue;
+        this.$emit('input', Number(this.currentValue));
+        this.$emit('step-change', event);
       }
-      this.$emit('input', Number(this.currentValue));
-      this.$emit('step-change', event);
     },
   },
 };
