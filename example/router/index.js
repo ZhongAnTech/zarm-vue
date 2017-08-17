@@ -57,5 +57,9 @@ export default new Router({
       path: '/switch',
       component: () => import('../components/switchPage.vue'),
     },
+    {
+      path: '/toast',
+      component: () => import('../components/toastPage.vue'),
+    },
   ],
 });

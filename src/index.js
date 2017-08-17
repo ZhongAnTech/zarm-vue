@@ -23,6 +23,9 @@ import Tabs from '../src/tabs';
 import TabPane from '../src/tab-pane';
 import Stepper from '../src/stepper';
 import Switch from '../src/switch';
+import Mask from '../src/mask';
+import Toast from '../src/toast';
+import Loading from '../src/loading';
 
 const components = [
   Input,
@@ -50,6 +53,9 @@ const components = [
   TabPane,
   Stepper,
   Switch,
+  Mask,
+  Toast,
+  Loading,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -90,4 +96,7 @@ export default {
   TabPane,
   Stepper,
   Switch,
+  Mask,
+  Toast,
+  Loading,
 };
