@@ -90,6 +90,7 @@
       </za-modal>
 
       <za-alert :visible.sync='visible6' radius title="警告" message="这里是警告信息" @alert-close='handleClose'></za-alert>
+      <za-confirm :visible.sync='visible7' title="确认信息" message="你确定要这样做吗？" :on-ok='handleOk' :on-cancel='handleCancel'></za-confirm>
     </main>
     <PageFooter />
   </Container>
@@ -121,6 +122,12 @@ export default {
   methods: {
     handleClose(reason, event){
       console.log(reason);
+    },
+    handleOk(){
+      alert('ok')
+    },
+    handleCancel(){
+      this.visible7 = false
     }
   },
 };

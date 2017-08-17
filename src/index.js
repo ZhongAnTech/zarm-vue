@@ -33,6 +33,7 @@ import Modal from '../src/modal';
 import ModalBody from '../src/modal-body';
 import ModalHeader from '../src/modal-header';
 import ModalFooter from '../src/modal-footer';
+import Confirm from '../src/confirm';
 
 const components = [
   Input,
@@ -70,6 +71,7 @@ const components = [
   ModalBody,
   ModalHeader,
   ModalFooter,
+  Confirm,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -120,4 +122,5 @@ export default {
   ModalBody,
   ModalHeader,
   ModalFooter,
+  Confirm,
 };
