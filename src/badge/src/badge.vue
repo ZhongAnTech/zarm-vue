@@ -11,6 +11,7 @@
       }'
       @click='supClick'>
       {{text}}
+      <slot name='text'></slot>
     </sup>
   </span>
 </template>
@@ -46,6 +47,7 @@ export default {
   methods: {
     supClick(event) {
       this.$emit('badge-click', event);
+      this.$emit('click', event);
     },
   },
 };
