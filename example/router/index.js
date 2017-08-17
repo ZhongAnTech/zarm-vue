@@ -69,5 +69,9 @@ export default new Router({
       path: '/uploader',
       component: () => import('../components/uploaderPage.vue'),
     },
+    {
+      path: '/actionsheet',
+      component: () => import('../components/actionsheetPage.vue'),
+    },
   ],
 });

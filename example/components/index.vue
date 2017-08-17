@@ -39,6 +39,9 @@
           <za-panel-title>操作反馈</za-panel-title>
         </za-panel-header>
         <za-panel-body>
+          <za-cell hasArrow @click="$router.push('/actionsheet')">
+            动作面板 ActionSheet
+          </za-cell>
           <za-cell hasArrow @click="$router.push('/button')">
             按钮 Button
           </za-cell>
