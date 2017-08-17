@@ -60,6 +60,9 @@ export default {
   watch: {
     visible(value, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
       if (value === this.currentVisible) return;
+      if (this.timer) {
+        clearTimeout(this.timer);
+      }
       if (value) {
         this.enter();
       } else {
