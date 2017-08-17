@@ -39,6 +39,9 @@
           <za-cell hasArrow @click.native="$router.push('/button')">
             按钮 Button
           </za-cell>
+          <za-cell hasArrow @click.native="$router.push('/popup')">
+            弹出框 Popup
+          </za-cell>
           <za-cell hasArrow @click.native="$router.push('/toast')">
             轻提示 Toast
           </za-cell>

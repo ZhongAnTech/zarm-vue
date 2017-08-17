@@ -61,5 +61,9 @@ export default new Router({
       path: '/toast',
       component: () => import('../components/toastPage.vue'),
     },
+    {
+      path: '/popup',
+      component: () => import('../components/popupPage.vue'),
+    },
   ],
 });
