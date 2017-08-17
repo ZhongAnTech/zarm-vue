@@ -9,7 +9,7 @@
     active,
     focus,
     disabled,
-  }'>
+  }' @click='handleClick'>
     <span :class='`${prefixCls}-content`'>
       <za-spinner class="rotate360" v-if='loading'/>
       <slot name='icon' v-else></slot>
@@ -86,7 +86,9 @@ export default {
     };
   },
   methods: {
-
+    handleClick(event) {
+      this.$emit('click', event);
+    },
   },
 };
 </script>
