@@ -73,5 +73,9 @@ export default new Router({
       path: '/actionsheet',
       component: () => import('../components/actionsheetPage.vue'),
     },
+    {
+      path: '/modal',
+      component: () => import('../components/modalPage.vue'),
+    },
   ],
 });

@@ -29,6 +29,10 @@ import Loading from '../src/loading';
 import Popup from '../src/popup';
 import Uploader from '../src/uploader';
 import ActionSheet from '../src/actionsheet';
+import Modal from '../src/modal';
+import ModalBody from '../src/modal-body';
+import ModalHeader from '../src/modal-header';
+import ModalFooter from '../src/modal-footer';
 
 const components = [
   Input,
@@ -62,6 +66,10 @@ const components = [
   Popup,
   Uploader,
   ActionSheet,
+  Modal,
+  ModalBody,
+  ModalHeader,
+  ModalFooter,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -108,4 +116,8 @@ export default {
   Popup,
   Uploader,
   ActionSheet,
+  Modal,
+  ModalBody,
+  ModalHeader,
+  ModalFooter,
 };

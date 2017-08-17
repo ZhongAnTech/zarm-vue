@@ -45,6 +45,9 @@
           <za-cell hasArrow @click="$router.push('/button')">
             按钮 Button
           </za-cell>
+          <za-cell hasArrow @click="$router.push('/modal')">
+            模态框 Modal
+          </za-cell>
           <za-cell hasArrow @click="$router.push('/popup')">
             弹出框 Popup
           </za-cell>
