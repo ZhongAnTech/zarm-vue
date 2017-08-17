@@ -6,7 +6,7 @@
     'is-link': !disabled && !!isLink,
     'has-icon': !!hasIcon,
     'has-arrow': hasArrow,
-    }">
+    }" @click='handleClick'>
     <div :class="`${prefixCls}-inner`">
       <div :class='`${prefixCls}-header`'>
         <slot name='icon'></slot>
@@ -54,14 +54,14 @@ export default {
     theme: String,
     title: String,
   },
-  data() {
-    return {
-
-    };
-  },
   computed: {
     hasIcon() {
       return this.$slots && this.$slots.icon && this.$slots.icon.length > 0;
+    },
+  },
+  methods: {
+    handleClick(event) {
+      this.$emit('click', event);
     },
   },
 };
