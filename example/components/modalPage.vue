@@ -35,6 +35,24 @@
 
           </za-panel-body>
         </za-panel>
+
+        <za-panel>
+          <za-panel-header>
+            <za-panel-title>特定场景</za-panel-title>
+          </za-panel-header>
+          <za-panel-body>
+            <za-cell>
+              <za-button slot='description' size='xs' @click='visible6 = true' theme="warning">开启</za-button>
+              警告框 Alert
+            </za-cell>
+
+            <za-cell>
+              <za-button slot='description' size='xs' @click='visible7 = true' theme="warning">开启</za-button>
+              确认框 Confirm
+            </za-cell>
+          </za-panel-body>
+        </za-panel>
+
       </div>
 
       <za-modal :visible.sync='visible1' @modal-close='handleClose'>
@@ -71,6 +89,7 @@
         </za-modal-body>
       </za-modal>
 
+      <za-alert :visible.sync='visible6' radius title="警告" message="这里是警告信息" @alert-close='handleClose'></za-alert>
     </main>
     <PageFooter />
   </Container>
@@ -96,6 +115,7 @@ export default {
       visible4: false,
       visible5: false,
       visible6: false,
+      visible7: false,
     };
   },
   methods: {

@@ -31,7 +31,7 @@ export default {
     handleClose(event) {
       const parent = this.findParent();
       if (parent) {
-        parent.leave('close', event);
+        parent.leave('header-close', event);
       }
     },
     findParent() {

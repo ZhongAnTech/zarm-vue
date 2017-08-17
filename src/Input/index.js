@@ -1,4 +1,4 @@
-import Input from './src/main';
+import Input from './src/input';
 
 /* istanbul ignore next */
 Input.install = function (Vue) {
