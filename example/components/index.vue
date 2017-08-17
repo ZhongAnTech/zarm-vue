@@ -12,21 +12,24 @@
           <za-panel-title>表单组件</za-panel-title>
         </za-panel-header>
         <za-panel-body>
-          <za-cell hasArrow @click.native="$router.push('/checkbox')">
+          <za-cell hasArrow @click="$router.push('/checkbox')">
             复选框 Checkbox
           </za-cell>
           <za-cell hasArrow>
             <!-- 另一种写法，但暂时没有css类支持 -->
             <router-link to="input" tag='div' style='width:100%'>文本框 Input</router-link>
           </za-cell>
-          <za-cell hasArrow @click.native="$router.push('/radio')">
+          <za-cell hasArrow @click="$router.push('/radio')">
             单选框 Radio
           </za-cell>
-          <za-cell hasArrow @click.native="$router.push('/switch')">
+          <za-cell hasArrow @click="$router.push('/stepper')">
+            步进器 Stepper
+          </za-cell>
+          <za-cell hasArrow @click="$router.push('/switch')">
             开关 Switch
           </za-cell>
-          <za-cell hasArrow @click.native="$router.push('/stepper')">
-            步进器 Stepper
+          <za-cell hasArrow @click="$router.push('/uploader')">
+            上传组件 Uploader
           </za-cell>
         </za-panel-body>
       </za-panel>
@@ -36,13 +39,13 @@
           <za-panel-title>操作反馈</za-panel-title>
         </za-panel-header>
         <za-panel-body>
-          <za-cell hasArrow @click.native="$router.push('/button')">
+          <za-cell hasArrow @click="$router.push('/button')">
             按钮 Button
           </za-cell>
-          <za-cell hasArrow @click.native="$router.push('/popup')">
+          <za-cell hasArrow @click="$router.push('/popup')">
             弹出框 Popup
           </za-cell>
-          <za-cell hasArrow @click.native="$router.push('/toast')">
+          <za-cell hasArrow @click="$router.push('/toast')">
             轻提示 Toast
           </za-cell>
         </za-panel-body>
@@ -53,22 +56,22 @@
           <za-panel-title>数据展示</za-panel-title>
         </za-panel-header>
         <za-panel-body>
-          <za-cell hasArrow @click.native="$router.push('/badge')">
+          <za-cell hasArrow @click="$router.push('/badge')">
             徽标 Badge
           </za-cell>
-          <za-cell hasArrow @click.native="$router.push('/cell')">
+          <za-cell hasArrow @click="$router.push('/cell')">
             列表项 Cell
           </za-cell>
-          <za-cell hasArrow @click.native="$router.push('/icon')">
+          <za-cell hasArrow @click="$router.push('/icon')">
             图标 Icon
           </za-cell>
-          <za-cell hasArrow @click.native="$router.push('/message')">
+          <za-cell hasArrow @click="$router.push('/message')">
             消息 Message
           </za-cell>
-          <za-cell hasArrow @click.native="$router.push('/spinner')">
+          <za-cell hasArrow @click="$router.push('/spinner')">
             指示器 Spinner
           </za-cell>
-          <za-cell hasArrow @click.native="$router.push('/tabs')">
+          <za-cell hasArrow @click="$router.push('/tabs')">
             标签页 Tabs
           </za-cell>
         </za-panel-body>

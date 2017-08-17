@@ -65,5 +65,9 @@ export default new Router({
       path: '/popup',
       component: () => import('../components/popupPage.vue'),
     },
+    {
+      path: '/uploader',
+      component: () => import('../components/uploaderPage.vue'),
+    },
   ],
 });

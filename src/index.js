@@ -27,6 +27,7 @@ import Mask from '../src/mask';
 import Toast from '../src/toast';
 import Loading from '../src/loading';
 import Popup from '../src/popup';
+import Uploader from '../src/uploader';
 
 const components = [
   Input,
@@ -58,6 +59,7 @@ const components = [
   Toast,
   Loading,
   Popup,
+  Uploader,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -102,4 +104,5 @@ export default {
   Toast,
   Loading,
   Popup,
+  Uploader,
 };
