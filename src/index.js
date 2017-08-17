@@ -22,6 +22,7 @@ import Badge from '../src/badge';
 import Tabs from '../src/tabs';
 import TabPane from '../src/tab-pane';
 import Stepper from '../src/stepper';
+import Switch from '../src/switch';
 
 const components = [
   Input,
@@ -48,6 +49,7 @@ const components = [
   Tabs,
   TabPane,
   Stepper,
+  Switch,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -87,4 +89,5 @@ export default {
   Tabs,
   TabPane,
   Stepper,
+  Switch,
 };

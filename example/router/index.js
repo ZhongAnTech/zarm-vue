@@ -53,5 +53,9 @@ export default new Router({
       path: '/stepper',
       component: () => import('../components/stepperPage.vue'),
     },
+    {
+      path: '/switch',
+      component: () => import('../components/switchPage.vue'),
+    },
   ],
 });

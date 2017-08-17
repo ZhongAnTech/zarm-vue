@@ -22,6 +22,9 @@
           <za-cell hasArrow @click.native="$router.push('/radio')">
             单选框 Radio
           </za-cell>
+          <za-cell hasArrow @click.native="$router.push('/switch')">
+            开关 Switch
+          </za-cell>
           <za-cell hasArrow @click.native="$router.push('/stepper')">
             步进器 Stepper
           </za-cell>
