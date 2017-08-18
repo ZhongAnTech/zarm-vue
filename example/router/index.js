@@ -81,5 +81,9 @@ export default new Router({
       path: '/swipeaction',
       component: () => import('../components/swipeactionPage.vue'),
     },
+    {
+      path: '/swipe',
+      component: () => import('../components/swipePage.vue'),
+    },
   ],
 });
