@@ -5,9 +5,10 @@
         "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
       }
     }],
-    "stage-0"
+    "stage-0",
+    "es2015"
   ],
-  "plugins": ["transform-runtime"],
+  "plugins": ["transform-runtime", "transform-vue-jsx"],
   "env": {
     "test": {
       "presets": ["env", "stage-0"],
