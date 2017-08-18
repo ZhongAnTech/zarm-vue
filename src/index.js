@@ -34,6 +34,7 @@ import ModalBody from '../src/modal-body';
 import ModalHeader from '../src/modal-header';
 import ModalFooter from '../src/modal-footer';
 import Confirm from '../src/confirm';
+import SwipeAction from '../src/swipe-action';
 
 const components = [
   Input,
@@ -72,6 +73,7 @@ const components = [
   ModalHeader,
   ModalFooter,
   Confirm,
+  SwipeAction,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -123,4 +125,5 @@ export default {
   ModalHeader,
   ModalFooter,
   Confirm,
+  SwipeAction,
 };

@@ -77,5 +77,9 @@ export default new Router({
       path: '/modal',
       component: () => import('../components/modalPage.vue'),
     },
+    {
+      path: '/swipeaction',
+      component: () => import('../components/swipeactionPage.vue'),
+    },
   ],
 });

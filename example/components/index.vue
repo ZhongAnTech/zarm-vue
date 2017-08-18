@@ -51,6 +51,9 @@
           <za-cell hasArrow @click="$router.push('/popup')">
             弹出框 Popup
           </za-cell>
+          <za-cell hasArrow @click="$router.push('/swipeaction')">
+            滑动操作 SwipeAction
+          </za-cell>
           <za-cell hasArrow @click="$router.push('/toast')">
             轻提示 Toast
           </za-cell>

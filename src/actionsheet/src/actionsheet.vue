@@ -42,7 +42,9 @@ export default {
     },
     actions: {
       type: Array,
-      default: [],
+      default: function () { // eslint-disable-line object-shorthand
+        return [];
+      },
     },
     cancelText: {
       type: String,
