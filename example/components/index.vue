@@ -3,7 +3,7 @@
     <header>
       <section class="brand">
         <div class="brand-title">Zarm-vue UI</div>
-        <div class="brand-description">众安科技移动端组件库</div>
+        <div class="brand-description">众安科技移动端组件库 (zarm in Vue.js)</div>
       </section>
     </header>
     <main>
@@ -79,6 +79,9 @@
           </za-cell>
           <za-cell hasArrow @click="$router.push('/message')">
             消息 Message
+          </za-cell>
+          <za-cell hasArrow @click="$router.push('/progress')">
+            进度条 Progress
           </za-cell>
           <za-cell hasArrow @click="$router.push('/spinner')">
             指示器 Spinner

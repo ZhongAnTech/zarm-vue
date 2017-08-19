@@ -89,5 +89,9 @@ export default new Router({
       path: '/picker',
       component: () => import('../components/pickerPage.vue'),
     },
+    {
+      path: '/progress',
+      component: () => import('../components/progressPage.vue'),
+    },
   ],
 });

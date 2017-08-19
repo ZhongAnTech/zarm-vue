@@ -41,6 +41,7 @@ import Picker from '../src/picker';
 import Colume from '../src/column';
 import ColumeGroup from '../src/column-group';
 import Cascader from '../src/cascader';
+import Progress from '../src/progress';
 
 const components = [
   Input,
@@ -86,6 +87,7 @@ const components = [
   Colume,
   ColumeGroup,
   Cascader,
+  Progress,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -144,4 +146,5 @@ export default {
   Colume,
   ColumeGroup,
   Cascader,
+  Progress,
 };
