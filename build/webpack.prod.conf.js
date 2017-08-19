@@ -23,7 +23,9 @@ var webpackConfig = {
   },
   externals: [
     'vue',
-    'autosize'
+    'autosize',
+    'zscroller',
+    'moment',
   ],
   module: {
     rules: [

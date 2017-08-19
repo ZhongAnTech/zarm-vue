@@ -37,6 +37,10 @@ import Confirm from '../src/confirm';
 import SwipeAction from '../src/swipe-action';
 import Swipe from '../src/swipe';
 import SwipeItem from '../src/swipe-item';
+import Picker from '../src/picker';
+import Colume from '../src/column';
+import ColumeGroup from '../src/column-group';
+import Cascader from '../src/cascader';
 
 const components = [
   Input,
@@ -78,6 +82,10 @@ const components = [
   SwipeAction,
   Swipe,
   SwipeItem,
+  Picker,
+  Colume,
+  ColumeGroup,
+  Cascader,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -132,4 +140,8 @@ export default {
   SwipeAction,
   Swipe,
   SwipeItem,
+  Picker,
+  Colume,
+  ColumeGroup,
+  Cascader,
 };

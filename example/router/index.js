@@ -85,5 +85,9 @@ export default new Router({
       path: '/swipe',
       component: () => import('../components/swipePage.vue'),
     },
+    {
+      path: '/picker',
+      component: () => import('../components/pickerPage.vue'),
+    },
   ],
 });
