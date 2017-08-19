@@ -85,8 +85,72 @@
                 :visible.sync='visible8'
                 :dataSource='District'
                 @ok='handleOk'
-                @cancel='handleCancel'/>
+                @cancel='handleCancel'
+                :wheelDefaultValue='2009'/>
             </za-cell>
+          </za-panel-body>
+        </za-panel>
+
+        <za-panel>
+          <za-panel-header>
+            <za-panel-title>日期选择器</za-panel-title>
+          </za-panel-header>
+          <za-panel-body>
+            <za-cell title="年份选择">
+              <za-date-picker
+              title="选择年份"
+              placeholder="请选择年份"
+              mode='year'
+              @ok='handleOk'
+              @cancel='handleCancel'/>
+            </za-cell>
+
+            <za-cell title="日期选择">
+              <za-date-picker
+              title="选择日期"
+              placeholder="请选择日期"
+              mode='date'
+              @ok='handleOk'
+              @cancel='handleCancel'/>
+            </za-cell>
+
+            <za-cell title="月份选择">
+              <za-date-picker
+              title="选择月份"
+              placeholder="请选择月份"
+              mode='month'
+              @ok='handleOk'
+              @cancel='handleCancel'/>
+            </za-cell>
+
+            <za-cell title="时间选择">
+              <za-date-picker
+              title="选择时间"
+              placeholder="请选择时间"
+              mode='time'
+              @ok='handleOk'
+              @cancel='handleCancel'/>
+            </za-cell>
+
+            <za-cell title="时间&日期">
+              <za-date-picker
+              title="选择"
+              placeholder="请选择时间和日期"
+              mode='datetime'
+              @ok='handleOk'
+              @cancel='handleCancel'/>
+            </za-cell>
+
+            <za-cell title="自定义格式">
+              <za-date-picker
+              title="选择日期"
+              placeholder="请选择日期"
+              mode='date'
+              @ok='handleOk'
+              @cancel='handleCancel'
+              format="YYYY年MM月DD日"/>
+            </za-cell>
+
           </za-panel-body>
         </za-panel>
 

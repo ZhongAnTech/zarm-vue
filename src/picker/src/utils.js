@@ -1,5 +1,5 @@
 
-function getFormatter(type) {
+export function getFormatter(type) {
   let formatter;
   if (type === 'year') {
     formatter = ('YYYY[年]');

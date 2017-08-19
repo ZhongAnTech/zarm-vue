@@ -42,6 +42,8 @@ import Colume from '../src/column';
 import ColumeGroup from '../src/column-group';
 import Cascader from '../src/cascader';
 import Progress from '../src/progress';
+import DatePicker from '../src/date-picker';
+import StackPicker from '../src/stack-picker';
 
 const components = [
   Input,
@@ -88,6 +90,8 @@ const components = [
   ColumeGroup,
   Cascader,
   Progress,
+  DatePicker,
+  StackPicker,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -147,4 +151,6 @@ export default {
   ColumeGroup,
   Cascader,
   Progress,
+  DatePicker,
+  StackPicker,
 };
