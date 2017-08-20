@@ -108,7 +108,8 @@ export default {
       },
       default: DATE,
     },
-    defaultValue: [String, Array, Number],
+    defaultValue: {},
+    value: {},
     disabled: {
       type: Boolean,
       default: false,
@@ -141,16 +142,24 @@ export default {
       if (this.currentVisible === val) return;
       this.currentVisible = val;
     },
+    value(val, oldVal) { // eslint-disable-line no-unused-vars
+      if (this.date === val) return;
+      this.date = this.isExtendMoment(val);
+    },
   },
   data() {
     return {
       currentVisible: this.visible,
-      date: this.defaultValue && this.isExtendMoment(this.defaultValue),
-      oldDate: this.defaultValue && this.isExtendMoment(this.defaultValue),
+      date: this.getInitDate(),
+      oldDate: this.getInitDate(),
       display: this.wheelDefaultValue && this.isExtendMoment(this.wheelDefaultValue),
     };
   },
   methods: {
+    getInitDate() {
+      const date = this.value || this.defaultValue;
+      return this.isExtendMoment(date);
+    },
     isExtendMoment(date) {
       const { mode } = this;
       if (date instanceof moment) {
@@ -210,6 +219,7 @@ export default {
 
       this.toggle();
       this.$emit('ok', this.formatFn(this.date));
+      this.$emit('input', this.formatFn(this.date));
     },
     getDate() {
       return this.date || this.display || this.getMinDate() || moment(new Date());
@@ -321,6 +331,7 @@ export default {
 
       this.date = newValue;
       this.$emit('change', this.formatFn(newValue), index);
+      this.$emit('input', this.formatFn(newValue), index);
     },
 
     clipDate(date) {

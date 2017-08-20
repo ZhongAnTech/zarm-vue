@@ -11,8 +11,10 @@
             <za-cell title="单列">
               <za-picker
                 :visible.sync='visible'
+                v-model='v1'
                 :dataSource='data1'
                 @ok='handleOk'
+                @change='handleChange'
                 @cancel='handleCancel'/>
             </za-cell>
 
@@ -20,7 +22,9 @@
               <za-picker
                 :visible.sync='visible2'
                 :dataSource='data2'
+                v-model='v2'
                 @ok='handleOk'
+                @change='handleChange'
                 @cancel='handleCancel'/>
             </za-cell>
 
@@ -28,7 +32,9 @@
               <za-picker
                 :visible.sync='visible3'
                 :dataSource='data3'
+                v-model='v3'
                 @ok='handleOk'
+                @change='handleChange'
                 @cancel='handleCancel'/>
             </za-cell>
 
@@ -37,6 +43,7 @@
                 :visible.sync='visible4'
                 :dataSource='data3'
                 @ok='handleOk'
+                @change='handleChange'
                 @cancel='handleCancel'
                 :defaultValue="['1', '12']"
                 displayAddon="-"/>
@@ -47,6 +54,7 @@
                 :visible.sync='visible5'
                 :dataSource='data4'
                 @ok='handleOk'
+                @change='handleChange'
                 @cancel='handleCancel'
                 :defaultValue="'2'"
                 disabled />
@@ -57,6 +65,7 @@
                 :visible.sync='visible6'
                 :dataSource='data5'
                 @ok='handleOk'
+                @change='handleChange'
                 @cancel='handleCancel'
                 placeholder='自定义placeholder'
                 valueMember="code"
@@ -77,6 +86,7 @@
                 :visible.sync='visible7'
                 :dataSource='District'
                 @ok='handleOk'
+                @change='handleChange'
                 @cancel='handleCancel'
                 :cols='2'/>
             </za-cell>
@@ -84,7 +94,9 @@
               <za-picker
                 :visible.sync='visible8'
                 :dataSource='District'
+                v-model='v0'
                 @ok='handleOk'
+                @change='handleChange'
                 @cancel='handleCancel'
                 :wheelDefaultValue='2009'/>
             </za-cell>
@@ -99,9 +111,11 @@
             <za-cell title="年份选择">
               <za-date-picker
               title="选择年份"
+              v-model='v4'
               placeholder="请选择年份"
               mode='year'
               @ok='handleOk'
+              @change='handleChange'
               @cancel='handleCancel'/>
             </za-cell>
 
@@ -110,7 +124,9 @@
               title="选择日期"
               placeholder="请选择日期"
               mode='date'
+              v-model='v5'
               @ok='handleOk'
+              @change='handleChange'
               @cancel='handleCancel'/>
             </za-cell>
 
@@ -119,7 +135,9 @@
               title="选择月份"
               placeholder="请选择月份"
               mode='month'
+              v-model='v6'
               @ok='handleOk'
+              @change='handleChange'
               @cancel='handleCancel'/>
             </za-cell>
 
@@ -128,7 +146,9 @@
               title="选择时间"
               placeholder="请选择时间"
               mode='time'
+              v-model='v7'
               @ok='handleOk'
+              @change='handleChange'
               @cancel='handleCancel'/>
             </za-cell>
 
@@ -137,7 +157,9 @@
               title="选择"
               placeholder="请选择时间和日期"
               mode='datetime'
+              v-model='v8'
               @ok='handleOk'
+              @change='handleChange'
               @cancel='handleCancel'/>
             </za-cell>
 
@@ -147,6 +169,8 @@
               placeholder="请选择日期"
               mode='date'
               @ok='handleOk'
+              v-model='v9'
+              @change='handleChange'
               @cancel='handleCancel'
               format="YYYY年MM月DD日"/>
             </za-cell>
@@ -158,12 +182,13 @@
               <za-panel-body>
                 <za-cell title="级联选择">
                   <za-stack-picker
-                  v-model='v1'
+                  v-model='v10'
                   title="级联选择"
                   placeholder="请选择"
                   :dataSource='District'
                   :displayRender="selected => selected.map(item => item.label).join('-')"
                   @ok='handleOk'
+                  @change='handleChange'
                   @cancel='handleCancel'/>
                 </za-cell>
               </za-panel-body>
@@ -201,7 +226,17 @@ export default {
       visible7: false,
       visible8: false,
       visible9: false,
-      v1:[],
+      v1:'',
+      v2:'',
+      v3:'',
+      v4:'',
+      v5:'',
+      v6:'',
+      v7:'',
+      v8:'',
+      v9:'',
+      v10:[],
+      v0:'',
       District,
       data1:[
         { value: '1', label: '选项一' },
@@ -261,6 +296,10 @@ export default {
   },
   methods: {
     handleOk(v){
+      console.log('it may still scrolling when ok is clicked. so ues v-model or @change instead')
+      console.log(v);
+    },
+    handleChange(v){
       console.log(v);
     },
     handleCancel(event){

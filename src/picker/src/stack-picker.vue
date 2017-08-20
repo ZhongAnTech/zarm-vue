@@ -130,6 +130,17 @@ export default {
       if (this.currentVisible === val) return;
       this.currentVisible = val;
     },
+    value(val, oldVal) { // eslint-disable-line no-unused-vars
+      const param = {
+        value: val,
+        defaultValue: '',
+        dataSource: this.dataSource,
+        validate: this.validate,
+      };
+      const newCurrentValue = this.resolveProps(param).currentValue;
+      if (this.currentValue === newCurrentValue) return;
+      this.currentValue = newCurrentValue;
+    },
   },
   computed: {
     displayLabel() {
@@ -261,7 +272,8 @@ export default {
         this.currentValue = value;
         this.errorMsg = errorMsg;
         this.$emit('ok', value);
-        this.$emit('input', value);
+        this.$emit('input', value.map(v => v[this.valueMember]));
+        this.$emit('change', value.map(v => v[this.valueMember]));
         this.toggle();
       } else {
         this.currentValue = value;

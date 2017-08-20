@@ -72,7 +72,6 @@ export default {
       minVelocityToKeepDecelerating: 0.5,
       scrollingComplete: this.scrollingComplete.bind(this),
     });
-
     this.zscroller.setDisabled(this.disabled);
     this.zscroller.scroller.setSnapSize(0, this.itemHeight);
     this.select(this.currentSelectedValue);

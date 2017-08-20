@@ -2,10 +2,10 @@
   <div :class='`${prefixCls}`' @click='handleClick'>
     <div :class='{
       [`${prefixCls}-input`]: true,
-      [`${prefixCls}-placeholder`]: !value.join(displayAddon),
+      [`${prefixCls}-placeholder`]: !currentValue.join(displayAddon),
       [`${prefixCls}-disabled`]: !!disabled,
     }'>
-      <input type="hidden" :value='value' />
+      <input type="hidden" :value='currentValue' />
       {{display() || placeholder}}
     </div>
     <div :class='{
@@ -26,7 +26,7 @@
                 :prefixCls='prefixCls'
                 :data='data'
                 :cols='cols'
-                :selectedValue='value'
+                :selectedValue='currentValue'
                 :displayMember='displayMember'
                 :valueMember='valueMember'
                 @change='handleChange'/>
@@ -35,7 +35,7 @@
                 :prefixCls='prefixCls'
                 :displayMember='displayMember'
                 :valueMember='valueMember'
-                :selectedValue='value'
+                :selectedValue='currentValue'
                 :itemStyle='itemStyle'
                 :data='data'
                 @change='handleChange'/>
@@ -74,7 +74,7 @@ export default {
       default: false,
     },
     defaultValue: [String, Array, Number],
-    // value: [String, Object],
+    value: [String, Array, Number],
     title: {
       type: String,
       default: '请选择',
@@ -119,6 +119,10 @@ export default {
       if (this.currentVisible === val) return;
       this.currentVisible = val;
     },
+    value(val, oldVal) { // eslint-disable-line no-unused-vars
+      if (this.currentValue === val) return;
+      this.currentValue = val;
+    },
   },
   computed: {
     cascade() {
@@ -139,19 +143,19 @@ export default {
     },
   },
   created() {
-    this.value = this.getInitValue();
+    this.currentValue = this.getInitValue();
     this.oldValue = this.getInitValue();
   },
   data() {
     return {
       currentVisible: this.visible,
-      value: '',
+      currentValue: '',
       oldValue: '',
     };
   },
   methods: {
     getInitValue() {
-      const initValue = this.defaultValue || [];
+      const initValue = this.value || this.defaultValue || [];
       // 针对单列数据源{}，转换为[{}]
       if (this.isSingleColumn) {
         return isArray(initValue) ? initValue : [initValue];
@@ -171,19 +175,19 @@ export default {
       this.$emit('update:visible', this.currentVisible);
     },
     display() {
-      const { value, data } = this;
+      const { currentValue, data } = this;
       if (this.cascade) {
-        if (value.length) {
+        if (currentValue.length) {
           const treeChildren = arrayTreeFilter(data, (item, level) => {
-            return item[this.valueMember] === value[level];
+            return item[this.valueMember] === currentValue[level];
           });
           return this.displayRender(treeChildren);
         }
       }
       // FIXED
       const treeChildren2 = data.map((d, index) => {
-        if (value[index]) {
-          return d.filter(obj => value[index] === obj[this.valueMember])[0];
+        if (currentValue[index]) {
+          return d.filter(obj => currentValue[index] === obj[this.valueMember])[0];
         }
         return undefined;
       }).filter(t => !!t);
@@ -208,32 +212,34 @@ export default {
     },
     handleCancel(event) {
       this.toggle();
-      this.value = this.oldValue;
+      this.currentValue = this.oldValue;
       this.$emit('cancel', event);
     },
     handleOk() {
       const { valueMember, cols, data, cascade } = this;
-      this.value = this.getValue();
-      this.oldValue = this.value;
+      this.currentValue = this.getValue();
+      this.oldValue = this.currentValue;
 
       this.toggle();
-      const _value = formatBackToObject(data, this.value, cascade, valueMember, cols);
+      const _value = formatBackToObject(data, this.currentValue, cascade, valueMember, cols);
       this.$emit('ok', _value);
+      this.$emit('input', this.currentValue);
     },
     getValue() {
-      const { valueMember, data, value, cols } = this;
-      if (!value || !value.length) {
+      const { valueMember, data, currentValue, cols } = this;
+      if (!currentValue || !currentValue.length) {
         if (this.cascade) {
           return formatToInit(data[0], valueMember, cols);
         }
         return data.map(d => (d[0][valueMember]));
       }
 
-      return value;
+      return currentValue;
     },
     handleChange(value, index) {
-      this.value = value;
+      this.currentValue = value;
       this.$emit('change', value, index);
+      this.$emit('input', value);
     },
   },
 };
