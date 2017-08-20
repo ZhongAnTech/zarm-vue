@@ -21,7 +21,7 @@ npm install zarm-vue --save
 import Vue from 'vue';
 import zarmVue from 'zarm-vue';
 // 引入全局样式
-import '../lib/zarm-vue.default.css';
+import 'zarm-vue/zarm-vue.default.css';
 
 Vue.use(zarmVue);
 ```
