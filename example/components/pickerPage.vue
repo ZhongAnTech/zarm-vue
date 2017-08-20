@@ -151,6 +151,24 @@
               format="YYYY年MM月DD日"/>
             </za-cell>
 
+            <za-panel>
+              <za-panel-header>
+                <za-panel-title>层叠式选择器</za-panel-title>
+              </za-panel-header>
+              <za-panel-body>
+                <za-cell title="级联选择">
+                  <za-stack-picker
+                  v-model='v1'
+                  title="级联选择"
+                  placeholder="请选择"
+                  :dataSource='District'
+                  :displayRender="selected => selected.map(item => item.label).join('-')"
+                  @ok='handleOk'
+                  @cancel='handleCancel'/>
+                </za-cell>
+              </za-panel-body>
+            </za-panel>
+
           </za-panel-body>
         </za-panel>
 
@@ -183,6 +201,7 @@ export default {
       visible7: false,
       visible8: false,
       visible9: false,
+      v1:[],
       District,
       data1:[
         { value: '1', label: '选项一' },
