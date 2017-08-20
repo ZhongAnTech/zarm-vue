@@ -29,7 +29,7 @@ Vue.use(zarmVue);
 - 单组件使用
 ```javascript
 import zaButton from 'zarm-vue/dist/button';
-import '../lib/zarm-vue.default.css';
+import 'zarm-vue/zarm-vue.default.css';
 ```
 
 
