@@ -1,5 +1,5 @@
 <template lang="html">
-  <za-toast :prefixCls='prefixCls' :visible.sync='currentVisible'>
+  <za-toast :prefixCls='prefixCls' :visible.sync='currentVisible' :duration='0'>
     <za-spinner size='lg' class='rotate360' />
   </za-toast>
 </template>
