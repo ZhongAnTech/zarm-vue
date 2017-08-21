@@ -1,19 +1,12 @@
-<template lang="html">
-  <div :class='`${prefixCls}-container`'>
-    <div :class='{
-      [`${prefixCls}-container-item`]: true,
-      active: name === currentName,
-    }'>
-      <slot></slot>
-    </div>
-  </div>
-</template>
-
 <script>
-let paneIndex = 0;
+import zaSwipeItem from '../../swipe-item';
 
+let paneIndex = 0;
 export default {
   name: 'zaTabPane',
+  components: {
+    zaSwipeItem,
+  },
   props: {
     prefixCls: {
       type: String,
@@ -29,6 +22,9 @@ export default {
   computed: {
     currentName() {
       return this.container && this.container.value;
+    },
+    canSwipe() {
+      return this.container && this.container.canSwipe;
     },
     container() {
       let parent = this.$parent;
@@ -56,6 +52,7 @@ export default {
   created() {
     this._panelIndex = paneIndex;
     paneIndex += 1;
+    // for vue2.1.0+ can be scoped slot here
     this.notifyParent();
   },
   beforeDestroy() {
@@ -67,6 +64,30 @@ export default {
         this.container.notify(this, flag);
       }
     },
+  },
+  render(h) { // eslint-disable-line no-unused-vars
+    const {
+      prefixCls,
+      currentName,
+      name,
+      canSwipe,
+    } = this;
+
+    const cls = {
+      [`${prefixCls}-panel-item`]: true,
+      active: name === currentName,
+    };
+    const panel = canSwipe ? <za-swipe-item>{this.$slots.default}</za-swipe-item>
+     :
+     (
+       <div class={`${prefixCls}-panel`}>
+         <div class={cls}>
+           {this.$slots.default}
+         </div>
+       </div>
+     );
+
+    return panel;
   },
 };
 </script>

@@ -1,30 +1,13 @@
-<template lang="html">
-  <div :class='{
-    [`${prefixCls}`]: true,
-    [`theme-${theme}`]: !!theme,
-  }'>
-    <div :class='`${prefixCls}-header`'>
-      <ul role="tablist">
-        <tab-nav v-for='(pane, index) in panes' :label='pane.label' :name='pane.name' :key='index' :disabled='pane.disabled'></tab-nav>
-      </ul>
-      <div :class='`${prefixCls}-line`' :style='lineStyle'>
-        <span v-if='lineWidth' :class='`${prefixCls}-line-inner`' :style='{ width: lineWidth + "px" }' />
-      </div>
-    </div>
-    <div :class='`${prefixCls}-container`'>
-      <slot></slot>
-    </div>
-  </div>
-</template>
-
 <script>
 // change the name of this component to Tabs (zarm call it Tab)
 import TabNav from './tab-nav';
+import zaSwipe from '../../swipe';
 
 export default {
   name: 'zaTabs',
   components: {
     TabNav,
+    zaSwipe,
   },
   props: {
     prefixCls: {
@@ -40,14 +23,18 @@ export default {
     },
     lineWidth: [String, Number],
     value: {},
+    canSwipe: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     currentIndex() {
-      const value = this.value; // trigger computing
+      const currentValue = this.currentValue; // trigger computing
       const panes = this.panes;
       let cur = 0;
       panes.some((child, index) => {
-        if (child.$options.name === 'zaTabPane' && child.name === value) {
+        if (child.$options.name === 'zaTabPane' && child.name === currentValue) {
           cur = index;
           return true;
         }
@@ -66,14 +53,26 @@ export default {
       };
     },
   },
+  watch: {
+    value(val, oldVal) { // eslint-disable-line no-unused-vars
+      if (val === this.currentValue) return;
+      this.currentValue = val;
+    },
+  },
   data() {
     return {
       panes: [],
+      currentValue: this.value,
     };
   },
   methods: {
-    changeCb(item, event) {
-      this.$emit('tab-click', item, event);
+    handleNavClick(item, event) {
+      // order matters
+      this.$emit('input', item.name);
+      this.$emit('change', item, event);
+      if (this.canSwipe) {
+        this.$refs.swipe.onSlideTo(this.currentIndex);
+      }
     },
     notify(pane, flag) {
       const index = this.getNotifyPaneIndex(pane);
@@ -96,9 +95,75 @@ export default {
       });
       return index;
     },
+    handleSwipeChange(index) {
+      const newName = this.findValueByIndex(index);
+      this.currentValue = newName;
+      this.$emit('input', newName);
+      this.$emit('change', this.panes[index]);
+    },
+    findValueByIndex(index) {
+      return this.panes[index].name;
+    },
+  },
+  render(h) { // eslint-disable-line no-unused-vars
+    const {
+      panes,
+      handleNavClick,
+      currentValue,
+      lineStyle,
+      lineWidth,
+      currentIndex,
+      canSwipe,
+      prefixCls,
+      theme,
+      handleSwipeChange,
+    } = this;
+
+    const cls = {
+      [`${prefixCls}`]: true,
+      [`theme-${theme}`]: !!theme,
+    };
+
+    return (
+      <div class={cls}>
+        <div class={`${prefixCls}-header`}>
+          <ul role="tablist">
+            {
+              panes.map((pane, index) => {
+                return (
+                  <tab-nav
+                  label={pane.label}
+                  name={pane.name}
+                  key={index}
+                  disabled={pane.disabled}
+                  currentName={currentValue}
+                  on-nav-click={handleNavClick}
+                  ></tab-nav>
+                );
+              })
+            }
+          </ul>
+          <div class={`${prefixCls}-line`} style={lineStyle}>
+          {
+            lineWidth &&
+            <span class={`${prefixCls}-line-inner`} style={{ width: `${lineWidth}px` }} />
+          }
+          </div>
+        </div>
+        <div class={`${prefixCls}-container`}>
+          {
+            !canSwipe ? this.$slots.default :
+            <za-swipe
+             showPagination={false}
+             activeIndex={currentIndex}
+             ref='swipe'
+             on-change={handleSwipeChange}>
+               {this.$slots.default}
+            </za-swipe>
+          }
+        </div>
+      </div>
+    );
   },
 };
 </script>
-
-<style lang="css">
-</style>

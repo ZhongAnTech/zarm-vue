@@ -1,11 +1,3 @@
-<template lang="html">
-  <div :class='{
-    [`${prefixCls}-header-item`]: true,
-    disabled: disabled,
-    active: this.name === currentName,
-  }' @click='handleClick'>{{label}}</div>
-</template>
-
 <script>
 import Emitter from '@/mixins/emitter';
 
@@ -23,29 +15,34 @@ export default {
     },
     label: String,
     name: [String, Number],
-  },
-  computed: {
-    currentName() {
-      let parent = this.$parent;
-      while (parent) {
-        if (parent.$options.name !== 'zaTabs') {
-          parent = parent.$parent;
-        } else {
-          this._tabs = parent;
-          return parent.value;
-        }
-      }
-    },
+    currentName: {},
   },
   methods: {
     handleClick(event) {
       if (this.disabled) return;
-      this.dispatch('zaTabs', 'input', [this.name]);
-      this._tabs.changeCb(this, event);
+      // this.dispatch('zaTabs', 'nav-click', [this.name, event]);
+      // this._tabs.changeCb(this, event);
+      this.$emit('nav-click', this, event);
     },
+  },
+  render(h) { // eslint-disable-line no-unused-vars
+    const {
+      disabled,
+      currentName,
+      label,
+      prefixCls,
+      handleClick,
+    } = this;
+
+    const cls = {
+      [`${prefixCls}-header-item`]: true,
+      disabled,
+      active: this.name === currentName,
+    };
+
+    return (
+      <div class={cls} on-click={handleClick}>{label}</div>
+    );
   },
 };
 </script>
-
-<style lang="css">
-</style>

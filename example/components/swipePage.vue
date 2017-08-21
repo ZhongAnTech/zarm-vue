@@ -15,7 +15,6 @@
               @changeEnd='handleChangeEnd'>
               <za-swipe-item
                 v-for='(i, index) in ITEMS'
-                class='za-swipe-item'
                 key='index'>
                 <div class='swipe-item-pic'>
                   <a :href="i.url">
@@ -39,7 +38,6 @@
               @changeEnd='handleChangeEnd'>
               <za-swipe-item
                 v-for='(i, index) in ITEMS'
-                class='za-swipe-item'
                 key='index'>
                 <div class='swipe-item-pic'>
                   <a :href="i.url">
@@ -65,7 +63,6 @@
               @changeEnd='handleChangeEnd'>
               <za-swipe-item
                 v-for='(i, index) in ITEMS'
-                class='za-swipe-item'
                 key='index'>
                 <div class='swipe-item-pic'>
                   <a :href="i.url">
@@ -101,7 +98,6 @@
               @changeEnd='handleChangeEnd'>
               <za-swipe-item
                 v-for='(i, index) in ITEMS'
-                class='za-swipe-item'
                 key='index'>
                 <div class='swipe-item-pic'>
                   <a :href="i.url">

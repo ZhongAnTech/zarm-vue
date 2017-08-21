@@ -45,6 +45,10 @@ export default {
       type: Number,
       default: 300,
     },
+    showPagination: {
+      type: Boolean,
+      default: true,
+    },
   },
   computed: {
     itemsStyle() {
@@ -109,7 +113,7 @@ export default {
 
       // 如果正好在transition动画中，跳转到头尾
       const activeIndex = this.currentActiveIndex;
-      const maxLength = this.$slots.default.length;
+      const maxLength = this.validSlotLength();
 
       if (activeIndex <= 0) {
         this.onJumpTo(0);
@@ -193,7 +197,10 @@ export default {
           ? (this.currentActiveIndex - 1)
           : (this.currentActiveIndex + 1);
       }
+
       this.onSlideTo(activeIndex);
+      // change from here
+      this.$emit('change', activeIndex);
       // 恢复自动轮播
       this.startAutoPlay();
       this.dragState = {};
@@ -203,7 +210,7 @@ export default {
     startAutoPlay() {
       this.moveInterval = (this.autoPlay && setInterval(() => {
         let activeIndex = this.currentActiveIndex;
-        const maxLength = this.$slots.default.length;
+        const maxLength = this.validSlotLength();
         const isLeftTop = ['left', 'top'].indexOf(this.direction) > -1;
         activeIndex = isLeftTop
           ? (activeIndex + 1)
@@ -244,7 +251,7 @@ export default {
       this.translateY = -dom.offsetHeight * (index + this.loop);
       this.doTransition({ x: this.translateX, y: this.translateY }, speed);
 
-      const maxLength = this.$slots.default.length;
+      const maxLength = this.validSlotLength();
       if (index > maxLength - 1) {
         index = 0;
       } else if (index < 0) {
@@ -276,15 +283,20 @@ export default {
       this.translateY = -dom.offsetHeight * (activeIndex + this.loop);
       this.doTransition({ x: this.translateX, y: this.translateY }, 0);
       this.$emit('changeEnd', this.currentActiveIndex);
+      // this.$emit('change', this.currentActiveIndex);
     },
     resize() {
       this.onJumpTo(this.currentActiveIndex);
     },
     isLastIndex() {
-      return this.currentActiveIndex >= this.$slots.default.length - 1;
+      return this.currentActiveIndex >= this.validSlotLength() - 1;
     },
     isFirstIndex() {
       return this.currentActiveIndex <= 0;
+    },
+    // remove text vnode
+    validSlotLength() {
+      return this.$slots.default.filter(d => d.elm && d.elm.nodeType !== 3).length;
     },
   },
   render(h) {
@@ -297,9 +309,12 @@ export default {
       currentActiveIndex,
       paginationStyle,
       loop,
+      showPagination,
+      validSlotLength,
     } = this;
 
     function deepCloneVNode(vnode) {
+      if (!vnode) return;
       const clonedChildren = vnode.children && vnode.children.map(vd => deepCloneVNode(vd));
       const cloned = h(vnode.tag, vnode.data, clonedChildren);
       cloned.text = vnode.text;
@@ -327,7 +342,7 @@ export default {
 
     const firstItem = loop ? deepCloneVNode(this.$slots.default[0]) : null;
     const lastItem = loop ?
-      deepCloneVNode(this.$slots.default[this.$slots.default.length - 1]) : null;
+      deepCloneVNode(this.$slots.default[validSlotLength() - 1]) : null;
     return (
       <div class={prefixCls}>
         <div
@@ -341,11 +356,14 @@ export default {
           {this.$slots.default}
           {firstItem}
         </div>
-        <div class={`${prefixCls}-pagination`}>
+        {
+          showPagination &&
+          <div class={`${prefixCls}-pagination`}>
           <ul>
-            {pagination}
+          {pagination}
           </ul>
-        </div>
+          </div>
+        }
       </div>
     );
   },

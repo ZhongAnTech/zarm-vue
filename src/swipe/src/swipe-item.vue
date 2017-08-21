@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div :class='`${prefixCls}-item`'>
     <slot></slot>
   </div>
 </template>
@@ -9,5 +9,11 @@
 
 export default {
   name: 'zaSwipeItem',
+  props: {
+    prefixCls: {
+      type: String,
+      default: 'za-swipe', // naming different from zarm
+    },
+  },
 };
 </script>
