@@ -32,6 +32,9 @@
                 <div class='content'>试试左滑</div>
               </za-tab-pane>
               <za-tab-pane label='选项卡2' name='second'>
+                <div class='content'>试试左右滑</div>
+              </za-tab-pane>
+              <za-tab-pane label='选项卡3' name='third'>
                 <div class='content'>试试右滑</div>
               </za-tab-pane>
             </za-tabs>
