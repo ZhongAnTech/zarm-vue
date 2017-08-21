@@ -69,9 +69,11 @@ export default {
     handleNavClick(item, event) {
       // order matters
       this.$emit('input', item.name);
-      this.$emit('change', item, event);
+      if (!this.canSwipe) {
+        this.$emit('change', item, event);
+      }
       if (this.canSwipe) {
-        this.$refs.swipe.onSlideTo(this.currentIndex);
+        // this.$refs.swipe.onSlideTo(this.currentIndex);
       }
     },
     notify(pane, flag) {

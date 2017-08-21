@@ -114,7 +114,6 @@ export default {
       // 如果正好在transition动画中，跳转到头尾
       const activeIndex = this.currentActiveIndex;
       const maxLength = this.validSlotLength();
-
       if (activeIndex <= 0) {
         this.onJumpTo(0);
       } else if (activeIndex >= (maxLength - 1)) {
@@ -197,7 +196,6 @@ export default {
           ? (this.currentActiveIndex - 1)
           : (this.currentActiveIndex + 1);
       }
-
       this.onSlideTo(activeIndex);
       // change from here
       this.$emit('change', activeIndex);
@@ -296,7 +294,8 @@ export default {
     },
     // remove text vnode
     validSlotLength() {
-      return this.$slots.default.filter(d => d.elm && d.elm.nodeType !== 3).length;
+      // swipe tabs use tab-pane to return swipe-item, so it has no elm
+      return this.$slots.default.filter(d => !d.elm || d.elm.nodeType !== 3).length;
     },
   },
   render(h) {
