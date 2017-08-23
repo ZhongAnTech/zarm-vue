@@ -1,0 +1,235 @@
+@function rem($px, $base-font-size: 32px) {
+  @if (unitless($px)) {
+    @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels for you";
+    @return rem($px + 0px); // That may fail.
+  } @else if (unit($px)==em) {
+    @return $px;
+  }
+  @return ($px / $base-font-size) * 1rem;
+}
+$prefixCls: za-calendar;
+$lineHeight: rem(90px);
+$monthCol: #000;
+$dateCol: #666;
+$borderRadius: rem(90px);
+$selectedDateCol: #00c082;
+$selectedRangeCol: #ccf2e6;
+$bg-gray: #f3f2f7;
+$border-month: #e9e9e9;
+
+%clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.#{$prefixCls} {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3000;
+  width: 100%;
+  min-height: 100%;
+  padding-bottom: 20px;
+  padding-top: rem(100px);
+  background: #fff;
+
+  li,
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .#{$prefixCls}-item {
+    text-align: center;
+  }
+
+  .#{$prefixCls}-action {
+    @extend %clearfix;
+    background-color: $bg-gray;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    cursor: pointer;
+
+    .ok-btn {
+      padding: rem(30px);
+      float: left;
+      color: $selectedDateCol;
+    }
+
+    .cancel-btn {
+      padding: rem(30px);
+      float: right;
+    }
+  }
+
+  .#{$prefixCls}-month {
+    padding: 15px 0;
+    color: $monthCol;
+    font-size: 15px;
+    font-weight: bold;
+    border-bottom: 1px solid $border-month;
+  }
+
+  .#{$prefixCls}-day {
+    &:after {
+      content: "";
+      display: block;
+      height: 0;
+      overflow: hidden;
+      clear: both;
+    }
+  }
+
+  .#{$prefixCls}-day li {
+    float: left;
+    width: 14.285714285714286%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 45px;
+  }
+
+  .#{$prefixCls}-date {
+    width: 100%;
+    font-size: 15px;
+
+    &:after {
+      content: "";
+      display: block;
+      height: 0;
+      overflow: hidden;
+      clear: both;
+    }
+  }
+
+  .#{$prefixCls}-selected-suffix {
+    display: block;
+  }
+
+  .#{$prefixCls}-date li {
+    position: relative;
+    float: left;
+    width: 14.285714285714286%;
+    height: $lineHeight;
+    line-height: $lineHeight;
+    text-align: center;
+    overflow: hidden;
+    word-break: break-all;
+    cursor: pointer;
+    color: $dateCol;
+    vertical-align: middle;
+
+    .date-item {
+      display: block;
+      width: $borderRadius;
+      height: $borderRadius;
+      line-height: $lineHeight;
+      margin: 0 auto;
+      border-radius: $borderRadius;
+    }
+  }
+
+  .#{$prefixCls}-date li.#{$prefixCls}-festival {
+    // color: #007aff;
+    font-weight: bold;
+  }
+
+  .#{$prefixCls}-date li.#{$prefixCls}-selected {
+    .date-item {
+      position: relative;
+      z-index: 10;
+      background: $selectedDateCol;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    &.#{$prefixCls}-range-selected.#{$prefixCls}-start-selected {
+      border-top-left-radius: $borderRadius;
+      border-bottom-left-radius: $borderRadius;
+    }
+
+    &.#{$prefixCls}-range-selected.#{$prefixCls}-end-selected {
+      border-top-right-radius: $borderRadius;
+      border-bottom-right-radius: $borderRadius;
+    }
+
+    &.#{$prefixCls}-start-selected:after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      height: 100%;
+      left: 4px;
+      background-color: $selectedRangeCol;
+      border-top-left-radius: $borderRadius;
+      border-bottom-left-radius: $borderRadius;
+    }
+
+    &.#{$prefixCls}-end-selected:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      right: 4px;
+      background-color: $selectedRangeCol;
+      border-top-right-radius: $borderRadius;
+      border-bottom-right-radius: $borderRadius;
+    }
+  }
+
+  .#{$prefixCls}-date li.#{$prefixCls}-range-selected {
+    background: $selectedRangeCol;
+    font-weight: bold;
+  }
+
+  .#{$prefixCls}-date li.#{$prefixCls}-invalid {
+    color: #c9c9c9;
+    cursor: auto;
+  }
+
+  .#{$prefixCls}-date li:hover {
+    // background: #fafafa;
+  }
+
+  .#{$prefixCls}-date li.#{$prefixCls}-invalid:hover {
+    background: none;
+  }
+
+  .#{$prefixCls}-date li.#{$prefixCls}-selected:hover {
+    // background: $selectedRangeCol;
+  }
+
+  .#{$prefixCls}-more {
+    text-align: center;
+    padding: 15px 0;
+  }
+
+  .#{$prefixCls}-mask {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 2999;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+  }
+
+  .#{$prefixCls}-year {
+    display: block;
+    padding: 15px;
+    text-align: left;
+    color: #666;
+    font-weight: 800;
+    border-bottom: 1px solid $selectedRangeCol;
+    background-color: $selectedRangeCol;
+  }
+}
