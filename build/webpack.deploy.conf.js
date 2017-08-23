@@ -15,12 +15,13 @@ delete baseWebpackConfig.entry
 module.exports = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
-      sourceMap: config.dev.cssSourceMap,
+      sourceMap: config.build.productionSourceMap,
       extract: true,
     })
   },
+  devtool: config.build.productionSourceMap ? '#source-map' : false,
   entry: {
-
+    app: path.join(__dirname, '../example/deploy'),
   },
   // cheap-module-eval-source-map is faster for development
   output: {
@@ -30,7 +31,7 @@ module.exports = merge(baseWebpackConfig, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': config.dev.env
+      'process.env': config.build.env
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -51,7 +52,7 @@ module.exports = merge(baseWebpackConfig, {
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: config.build.index,
-      template: './example/index.html',
+      template:  path.join(__dirname, '../example/index.html'),
       inject: true,
       minify: {
         removeComments: true,
@@ -83,13 +84,5 @@ module.exports = merge(baseWebpackConfig, {
       name: 'manifest',
       chunks: ['vendor']
     }),
-    // copy custom static assets
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../static'),
-        to: config.build.assetsSubDirectory,
-        ignore: ['.*']
-      }
-    ]),
   ]
 })

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Bundle from './bundle';
+import Index from '../components/index';
 
 Vue.use(Router);
 
@@ -8,7 +9,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: () => import('../components/index.vue'),
+      component: Index,
     },
     {
       path: '/input',
