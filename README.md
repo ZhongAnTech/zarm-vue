@@ -1,5 +1,5 @@
 # zarm-vue UI
-[![Build Status](https://www.travis-ci.org/chrisHchen/zarm-vue.svg?branch=master)](https://www.travis-ci.org/chrisHchen/zarm-vue)
+[![Build Status](https://www.travis-ci.org/ZhonganTechENG/zarm-vue.svg?branch=master)](https://www.travis-ci.org/ZhonganTechENG/zarm-vue)
 [![npm package](https://img.shields.io/npm/v/zarm-vue.svg)](https://www.npmjs.org/package/zarm-vue)
 [![NPM downloads](http://img.shields.io/npm/dm/zarm-vue.svg)](https://npmjs.org/package/zarm-vue)
 
