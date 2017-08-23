@@ -2,6 +2,7 @@ var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -35,6 +36,81 @@ module.exports = {
         options: {
           formatter: require('eslint-friendly-formatter')
         }
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          use: [
+            {
+              loader: 'css-loader?importLoaders=1',
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true,
+                plugins: [
+                  require('autoprefixer')({
+                    browsers: [
+                      'last 3 versions',
+                      'ie >= 10',
+                      'ie_mob >= 10',
+                      'ff >= 30',
+                      'chrome >= 34',
+                      'safari >= 6',
+                      'opera >= 12.1',
+                      'ios >= 6',
+                      'android >= 4.4',
+                      'bb >= 10',
+                      'and_uc 9.9',
+                    ],
+                  }),
+                ],
+              },
+            },
+          ],
+          fallback: 'vue-style-loader',
+        }),
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          use: [
+            {
+              loader: 'css-loader?importLoaders=1',
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true,
+                plugins: [
+                  require('autoprefixer')({
+                    browsers: [
+                      'last 3 versions',
+                      'ie >= 10',
+                      'ie_mob >= 10',
+                      'ff >= 30',
+                      'chrome >= 34',
+                      'safari >= 6',
+                      'opera >= 12.1',
+                      'ios >= 6',
+                      'android >= 4.4',
+                      'bb >= 10',
+                      'and_uc 9.9',
+                    ],
+                  }),
+                ],
+              },
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+                outputStyle: 'compact',
+              },
+            },
+          ],
+          fallback: 'vue-style-loader',
+        }),
       },
       {
         test: /\.vue$/,
