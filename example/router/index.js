@@ -11,91 +11,157 @@ export default new Router({
     },
     {
       path: '/input',
-      component: () => import('../components/inputPage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/inputPage.vue')
+      },
     },
     {
       path: '/checkbox',
-      component: () => import('../components/checkboxPage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/checkboxPage.vue')
+      },
     },
     {
       path: '/icon',
-      component: () => import('../components/iconPage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/iconPage.vue')
+      },
     },
     {
       path: '/button',
-      component: () => import('../components/buttonPage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/buttonPage.vue')
+      },
     },
     {
       path: '/spinner',
-      component: () => import('../components/spinnerPage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/spinnerPage.vue')
+      },
     },
     {
       path: '/cell',
-      component: () => import('../components/cellPage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/cellPage.vue')
+      },
     },
     {
       path: '/message',
-      component: () => import('../components/messagePage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/messagePage.vue')
+      },
     },
     {
       path: '/radio',
-      component: () => import('../components/radioPage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/radioPage.vue')
+      },
     },
     {
       path: '/badge',
-      component: () => import('../components/badgePage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/badgePage.vue')
+      },
     },
     {
       path: '/tabs',
-      component: () => import('../components/tabsPage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/tabsPage.vue')
+      },
     },
     {
       path: '/stepper',
-      component: () => import('../components/stepperPage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/stepperPage.vue')
+      },
     },
     {
       path: '/switch',
-      component: () => import('../components/switchPage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/switchPage.vue')
+      },
     },
     {
       path: '/toast',
-      component: () => import('../components/toastPage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/toastPage.vue')
+      },
     },
     {
       path: '/popup',
-      component: () => import('../components/popupPage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/popupPage.vue')
+      },
     },
     {
       path: '/uploader',
-      component: () => import('../components/uploaderPage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/uploaderPage.vue')
+      },
     },
     {
       path: '/actionsheet',
-      component: () => import('../components/actionsheetPage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/actionsheetPage.vue')
+      },
     },
     {
       path: '/modal',
-      component: () => import('../components/modalPage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/modalPage.vue')
+      },
     },
     {
       path: '/swipeaction',
-      component: () => import('../components/swipeactionPage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/swipeactionPage.vue')
+      },
     },
     {
       path: '/swipe',
-      component: () => import('../components/swipePage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/swipePage.vue')
+      },
     },
     {
       path: '/picker',
-      component: () => import('../components/pickerPage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/pickerPage.vue')
+      },
     },
     {
       path: '/progress',
-      component: () => import('../components/progressPage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/progressPage.vue')
+      },
     },
     {
       path: '/noticebar',
-      component: () => import('../components/noticeBarPage.vue'),
+      component: () => import('./bundle.vue'),
+      meta: {
+        mRender: () => import('../components/noticeBarPage.vue')
+      },
     },
   ],
 });
