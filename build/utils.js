@@ -13,16 +13,23 @@ exports.cssLoaders = function (options) {
   options = options || {}
 
   var cssLoader = {
-    loader: 'css-loader',
+    loader: 'css-loader?importLoaders=1',
     options: {
       minimize: process.env.NODE_ENV === 'production',
       sourceMap: options.sourceMap
     }
   }
+  var postCssLoader = {
+    loader: 'postcss-loader',
+    options: {
+      sourceMap: true,
+    },
+  }
 
   // generate loader string to be used with extract text plugin
   function generateLoaders (loader, loaderOptions) {
-    var loaders = [cssLoader]
+    var loaders = [cssLoader, postCssLoader]
+
     if (loader) {
       loaders.push({
         loader: loader + '-loader',
@@ -47,12 +54,12 @@ exports.cssLoaders = function (options) {
   // https://vue-loader.vuejs.org/en/configurations/extract-css.html
   return {
     css: generateLoaders(),
-    postcss: generateLoaders(),
-    less: generateLoaders('less'),
-    sass: generateLoaders('sass', { indentedSyntax: true }),
+    // postcss: generateLoaders(),
+    // less: generateLoaders('less'),
+    // sass: generateLoaders('sass', { indentedSyntax: true }),
     scss: generateLoaders('sass'),
-    stylus: generateLoaders('stylus'),
-    styl: generateLoaders('stylus')
+    // stylus: generateLoaders('stylus'),
+    // styl: generateLoaders('stylus')
   }
 }
 
@@ -67,5 +74,7 @@ exports.styleLoaders = function (options) {
       use: loader
     })
   }
+  console.log(JSON.stringify(output, null ,2))
+  // process.exit()
   return output
 }

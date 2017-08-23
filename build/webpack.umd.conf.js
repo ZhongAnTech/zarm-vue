@@ -1,13 +1,10 @@
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const webpack = require('webpack');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
+var path = require('path');
+var webpack = require('webpack');
+var baseWebpackConfig = require('./webpack.base.conf')
+var merge = require('webpack-merge')
 
-function resolve (dir) {
-  return path.join(__dirname, '..', dir)
-}
-
-const plugins = [
+var plugins = [
   new CleanWebpackPlugin(path.join(__dirname, '../lib'), {
     root: path.join(__dirname, '../'),
   }),
@@ -16,24 +13,18 @@ const plugins = [
       warnings: false,
     },
   }),
-  // new ExtractTextPlugin('zui-theme-default.css'),
 ];
 
-const entries = {
-  ['zarm-vue.umd.js']: path.join(__dirname, '../src/index.js'),
-  // ['zui-theme-default.css']: path.join(__dirname, '../src/style.js'),
-};
-module.exports = {
-  entry: entries,
+delete baseWebpackConfig.entry;
+delete baseWebpackConfig.output;
+
+module.exports = merge(baseWebpackConfig, {
+  entry: {
+    ['zarm-vue.umd.js']: path.join(__dirname, '../src/index.js'),
+  },
   externals: [
     'vue',
   ],
-  resolve: {
-    extensions: ['.js', '.vue', '.json'],
-    alias: {
-      '@': resolve('src')
-    },
-  },
   output: {
     path: path.resolve(__dirname, '../lib'),
     filename: '[name]',
@@ -45,16 +36,4 @@ module.exports = {
     color: true,
     reason: true,
   },
-  module: {
-    rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader'
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader'
-      },
-    ],
-  },
-};
+});

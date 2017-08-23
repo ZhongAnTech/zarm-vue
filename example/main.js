@@ -11,8 +11,7 @@ import router from './router';
 // import 'zarm-vue/zarm-vue.default.css';
 import '../lib/zarm-vue.default.css';
 
-
- // page styles
+// page styles
 import './styles/core/index.scss';
 Vue.config.productionTip = false;
 Vue.use(zarmVue);

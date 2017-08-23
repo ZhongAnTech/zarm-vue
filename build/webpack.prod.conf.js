@@ -1,79 +1,26 @@
 var path = require('path')
-var utils = require('./utils')
 var webpack = require('webpack')
 var config = require('../config')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
+var merge = require('webpack-merge')
+
 var entries = require('../script/find-entry')();
+var env = process.env.NODE_ENV
 
-function resolve (dir) {
-  return path.join(__dirname, '..', dir)
-}
+delete baseWebpackConfig.entry;
 
-var env = process.env.NODE_ENV === 'testing'
-  ? require('../config/test.env')
-  : config.build.env
+/**
+ * IMPORTNT: make sure .vue file do not have style section
+ */
 
-var webpackConfig = {
-  resolve: {
-    extensions: ['.js', '.vue', '.json'],
-    alias: {
-      '@': resolve('src')
-    },
-  },
+var webpackConfig = merge(baseWebpackConfig, {
   externals: [
     'vue',
     'autosize',
     'zscroller',
     'moment',
   ],
-  module: {
-    rules: [
-      {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: [resolve('src'), resolve('test')],
-        options: {
-          formatter: require('eslint-friendly-formatter')
-        }
-      },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')],
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
-        }
-      },
-      {
-        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('media/[name].[hash:7].[ext]')
-        }
-      },
-      {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
-        }
-      }
-    ]
-  },
   entry: entries,
   output: {
     path: path.resolve(__dirname, '../lib/dist'),
@@ -87,11 +34,11 @@ var webpackConfig = {
       'process.env': env
     }),
   ]
-}
+})
 
-// if (config.build.bundleAnalyzerReport) {
-//   var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-//   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
-// }
+if (config.build.bundleAnalyzerReport) {
+  var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+  webpackConfig.plugins.push(new BundleAnalyzerPlugin())
+}
 
 module.exports = webpackConfig
