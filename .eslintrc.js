@@ -41,6 +41,7 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'arrow-body-style': 'off',
     'no-param-reassign': 'off',
+    'no-unused-expressions': 'off',
     'func-names': ["error", "never"],
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
