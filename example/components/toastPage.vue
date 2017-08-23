@@ -38,9 +38,9 @@
 
       <za-toast :visible.sync='visible1' @toast-close='toastClose'>默认3秒自动关闭</za-toast>
       <za-toast :visible.sync='visible2' @toast-close='toastClose' :close-on-click-modal='true'>
-        <div>
-          <za-icon type="right-round-fill" style='fontSize: 3rem' />
-          <div style='marginBottom: 5px'>预约成功</div>
+        <div class='box'>
+          <za-icon type="right-round-fill" class='box-icon' />
+          <div class='box-text'>预约成功</div>
         </div>
       </za-toast>
       <za-toast :visible.sync='visible3' @toast-close='toastClose' :duration='10000'>指定10秒自动关闭</za-toast>
@@ -54,7 +54,7 @@
 import Container from '../common/Container.vue';
 import PageHeader from '../common/PageHeader.vue';
 import PageFooter from '../common/PageFooter.vue';
-import '../styles/pages/BadgePage.scss';
+import '../styles/pages/ToastPage.scss';
 
 export default {
   components: {

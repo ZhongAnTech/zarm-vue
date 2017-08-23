@@ -93,5 +93,9 @@ export default new Router({
       path: '/progress',
       component: () => import('../components/progressPage.vue'),
     },
+    {
+      path: '/noticebar',
+      component: () => import('../components/noticeBarPage.vue'),
+    },
   ],
 });

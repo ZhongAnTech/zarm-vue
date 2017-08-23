@@ -1,5 +1,5 @@
 <template lang="html">
-  <Container>
+  <Container class='cell-page'>
     <PageHeader title="图标 Icon" />
     <main>
       <div>
@@ -90,9 +90,9 @@
             <za-cell isLink hasArrow @click='() => {}'>
               <div slot='description'>描述文字</div>
               <za-cell-title slot='title'>
-                <div>
-                  <div>标题文字</div>
-                  <div style='fontSize: 12px; color: gray'>描述文字</div>
+                <div class='box'>
+                  <div class='box-title'>标题文字</div>
+                  <div class='box-description'>描述文字</div>
                 </div>
               </za-cell-title>
               <za-cell-icon slot='icon'>
@@ -129,6 +129,7 @@
 import Container from '../common/Container.vue';
 import PageHeader from '../common/PageHeader.vue';
 import PageFooter from '../common/PageFooter.vue';
+import '../styles/pages/CellPage.scss';
 
 export default {
   components: {

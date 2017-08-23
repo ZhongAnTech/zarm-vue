@@ -3,7 +3,7 @@
     [`${prefixCls}`]: true,
     [`${prefixCls}-${type}`]: !!type,
     [`theme-${theme}`]: !!theme,
-  }'></i>
+  }' @click='handleClick'></i>
 </template>
 
 <script>
@@ -21,6 +21,11 @@ export default {
         return ['default', 'primary', 'info', 'success', 'warning', 'error'].indexOf(v) >= 0;
       },
       default: null,
+    },
+  },
+  methods: {
+    handleClick() {
+      this.$emit('click');
     },
   },
 };

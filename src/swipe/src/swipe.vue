@@ -59,9 +59,7 @@ export default {
     },
     paginationStyle() {
       return {
-        marginTop: !this.isX && '3px',
         display: this.isX && 'inline-block',
-        marginRight: this.isX && '3px',
       };
     },
     isX() {

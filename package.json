@@ -3,7 +3,32 @@
   "version": "0.0.8",
   "description": "zarm in vue",
   "author": "chrisHchen <chenchris1986@163.com>",
+  "tags": [
+    "zarm",
+    "zarm-ui",
+    "vue",
+    "zhongan"
+  ],
+  "keywords": [
+    "vue",
+    "vue-ui",
+    "vue-component",
+    "zarm",
+    "zarm-ui",
+    "zarm-mobile",
+    "component",
+    "components",
+    "ui",
+    "framework",
+    "frontend",
+    "mobile"
+  ],
+  "license": "MIT",
   "main": "./lib/index.js",
+  "repository": "https://github.com/ZhonganTechENG/zarm-vue.git",
+  "bugs": {
+    "url": "https://github.com/ZhonganTechENG/zarm-vue/issues"
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.dev.conf.js --progress",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.dev.conf.js --progress",
@@ -16,6 +41,7 @@
     "build:theme": "cross-env NODE_ENV=production webpack --config ./build/webpack.theme.conf.js",
     "build:copy": "babel-node ./script/copy.js",
     "build": "npm run build:umd && npm run build:lib && npm run build:theme && npm run build:copy && cp -r src lib",
+    "book": "cd docs && gitbook serve",
     "pub": "npm run build && npm publish ./lib"
   },
   "peerDependencies": {

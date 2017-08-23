@@ -11,27 +11,39 @@
             <za-message>primary</za-message>
 
             <za-message theme='info'>
-              <za-icon type='info-round' class='icon'></za-icon>
+              <za-icon type='info-round' class='icon' slot='icon'></za-icon>
               <span>info</span>
             </za-message>
 
             <za-message theme='success'>
-              <za-icon type='right-round' class='icon'></za-icon>
+              <za-icon type='right-round' class='icon' slot='icon'></za-icon>
               <span>success</span>
             </za-message>
 
             <za-message theme='warning'>
-              <za-icon type='info-round' class='icon'></za-icon>
+              <za-icon type='info-round' class='icon' slot='icon'></za-icon>
               <span>warning</span>
             </za-message>
 
             <za-message theme='error'>
-              <za-icon type='wrong-round' class='icon'></za-icon>
+              <za-icon type='wrong-round' class='icon' slot='icon'></za-icon>
               <span>error</span>
             </za-message>
 
           </za-panel-body>
         </za-panel>
+
+        <za-panel>
+          <za-panel-header>
+            <za-panel-title>可操作</za-panel-title>
+          </za-panel-header>
+          <za-panel-body>
+            <za-message theme='warning' hasArrow @click='handleClick'>链接样式的</za-message>
+            <!-- 也可以不绑定visible -->
+            <za-message theme='error' closable :visible.sync='visible'>链接样式的</za-message>
+          </za-panel-body>
+        </za-panel>
+
       </div>
     </main>
     <PageFooter />
@@ -52,11 +64,13 @@ export default {
   },
   data() {
     return {
-
+      visible: true
     }
   },
   methods: {
-
+    handleClick() {
+      alert('click this message!');
+    }
   },
 };
 </script>

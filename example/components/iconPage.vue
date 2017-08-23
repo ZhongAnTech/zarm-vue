@@ -10,7 +10,7 @@
           <za-panel-body>
             <div class="grid">
               <div v-for='(i, index) in ICONS' class="grid-column" key={index}>
-                <za-icon theme="primary" :type='i' />
+                <za-icon theme="primary" :type='i' class='icon'/>
                 <span class="icon-name">{{i}}</span>
               </div>
             </div>
@@ -37,8 +37,7 @@ const ICONS = [
   'arrow-left', 'arrow-right', 'arrow-top', 'arrow-bottom',
   'add', 'add-round', 'add-round-fill',
   'minus', 'minus-round', 'minus-round-fill',
-  'date',
-  'loading',
+  'broadcast',
 ].sort();
 
 export default {

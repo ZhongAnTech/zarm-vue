@@ -9,7 +9,7 @@
 
 ### Example 案例
 
-[Online example](https://chrishchen.github.io/zarm-vue)
+[Online example](https://zhongantecheng.github.io/zarm-vue/)
 ### Install 安装
 
 ```bash
@@ -38,10 +38,10 @@ import 'zarm-vue/zarm-vue.default.css';
 
 - 也可以通过cdn引入umd模块
 ```html
-<link rel="stylesheet" href="https://unpkg.com/zarm-vue@0.0.5/zarm-vue.default.css">
+<link rel="stylesheet" href="https://unpkg.com/zarm-vue@latest/zarm-vue.default.css">
 
 <script src="https://unpkg.com/vue@2.4.2/dist/vue.min.js"></script>>
-<script src="https://unpkg.com/zarm-vue@0.0.5/zarm-vue.umd.js"></script>
+<script src="https://unpkg.com/zarm-vue@latest/zarm-vue.umd.js"></script>
 ```
 
 ### Usage 使用：

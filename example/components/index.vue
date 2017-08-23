@@ -80,6 +80,9 @@
           <za-cell hasArrow @click="$router.push('/message')">
             消息 Message
           </za-cell>
+          <za-cell hasArrow @click="$router.push('/noticebar')">
+            通知栏 NoticeBar
+          </za-cell>
           <za-cell hasArrow @click="$router.push('/progress')">
             进度条 Progress
           </za-cell>
