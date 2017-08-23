@@ -74,7 +74,5 @@ exports.styleLoaders = function (options) {
       use: loader
     })
   }
-  console.log(JSON.stringify(output, null ,2))
-  // process.exit()
   return output
 }

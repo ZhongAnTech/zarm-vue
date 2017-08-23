@@ -36,13 +36,15 @@
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src",
+    "clean": "rimraf lib",
+    "deploy": "cross-env NODE_ENV=production webpack --config ./build/webpack.deploy.conf.js",
     "build:umd": "cross-env NODE_ENV=production webpack --config ./build/webpack.umd.conf.js",
     "build:lib": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.conf.js",
     "build:theme": "cross-env NODE_ENV=production webpack --config ./build/webpack.theme.conf.js",
     "build:copy": "babel-node ./script/copy.js",
     "build": "npm run build:umd && npm run build:lib && npm run build:theme && npm run build:copy && cp -r src lib",
     "book": "cd docs && gitbook serve",
-    "pub": "npm run build && npm publish ./lib"
+    "pub": "npm run clean && npm run build && npm publish ./lib"
   },
   "peerDependencies": {
     "vue": "^2.3.3"
@@ -70,7 +72,6 @@
     "babel-register": "^6.22.0",
     "chai": "^3.5.0",
     "chromedriver": "^2.27.2",
-    "clean-webpack-plugin": "^0.1.16",
     "connect-history-api-fallback": "^1.3.0",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.1",
@@ -111,7 +112,7 @@
     "optimize-css-assets-webpack-plugin": "^2.0.0",
     "phantomjs-prebuilt": "^2.1.14",
     "postcss-loader": "^2.0.6",
-    "rimraf": "^2.6.0",
+    "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
     "selenium-server": "^3.0.1",
     "semver": "^5.3.0",

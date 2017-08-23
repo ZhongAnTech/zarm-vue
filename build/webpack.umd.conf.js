@@ -1,13 +1,9 @@
-var CleanWebpackPlugin = require('clean-webpack-plugin');
 var path = require('path');
 var webpack = require('webpack');
 var baseWebpackConfig = require('./webpack.base.conf')
 var merge = require('webpack-merge')
 
 var plugins = [
-  new CleanWebpackPlugin(path.join(__dirname, '../lib'), {
-    root: path.join(__dirname, '../'),
-  }),
   new webpack.optimize.UglifyJsPlugin({
     compress: {
       warnings: false,
