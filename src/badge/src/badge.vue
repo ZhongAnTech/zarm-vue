@@ -46,7 +46,6 @@ export default {
   },
   methods: {
     supClick(event) {
-      this.$emit('badge-click', event);
       this.$emit('click', event);
     },
   },

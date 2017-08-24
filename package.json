@@ -25,7 +25,10 @@
   ],
   "license": "MIT",
   "main": "./lib/index.js",
-  "repository": "https://github.com/ZhonganTechENG/zarm-vue.git",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/ZhonganTechENG/zarm-vue.git"
+  },
   "bugs": {
     "url": "https://github.com/ZhonganTechENG/zarm-vue/issues"
   },
