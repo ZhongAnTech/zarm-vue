@@ -6,4 +6,4 @@ script:
   - npm run lint
   - npm run unit
 after_success:
-- cat ./test/unit/coverage/lcov.info | ./node_modules/.bin/coveralls
+  - cat ./test/unit/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
