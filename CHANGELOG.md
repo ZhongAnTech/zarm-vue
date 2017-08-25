@@ -8,3 +8,7 @@
 
 - 新增NoticeBar
 - default css auto-prefixed
+
+## v0.1.0
+
+- 修复`SwipeAction`组件上下滑动时影响了页面scroll滚动的bug。（[#69](https://github.com/ZhonganTechENG/zarm/pull/67)）
