@@ -34,7 +34,6 @@
 
 <script>
 import Autosize from 'autosize';
-import Events from '@/utils/events';
 
 export default {
   name: 'zaInput',
@@ -69,9 +68,13 @@ export default {
   },
   data() {
     return {
-      currentValue: this.value,
-      length: 0,
+      currentValue: this.value || '',
     };
+  },
+  computed: {
+    length() {
+      return this.currentValue.length;
+    },
   },
   watch: {
     'value'(val, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
@@ -82,20 +85,19 @@ export default {
     if (this.type === 'textarea') {
       this.initAutosize();
     }
-    Events.on(this.$refs.input, 'input', this.setLength);
   },
   beforeDestroy() {
     if (this.type === 'textarea') {
       this.destroyAutosize();
     }
-    Events.off(this.$refs.input, 'input', this.setLength);
   },
   methods: {
     handleInput(event) {
       const value = event.target.value;
       this.$emit('input', value);
-      this.setCurrentValue(value);
+      // this.setCurrentValue(value);
       this.$emit('change', value);
+      this.currentValue = value;
     },
     setCurrentValue(value) {
       if (value === this.currentValue) return;
@@ -127,9 +129,9 @@ export default {
         Autosize.update(this.input);
       }
     },
-    setLength() {
-      this.length = this.$refs.input.value.length;
-    },
+    // setLength() {
+    //   this.length = this.$refs.input.value.length;
+    // },
     focus() {
       this.$refs.input.focus();
     },

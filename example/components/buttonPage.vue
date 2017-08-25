@@ -58,7 +58,7 @@
 
         <za-panel>
           <za-panel-header>
-            <za-panel-title>圆角、椭圆角、圆形按钮</za-panel-title>
+            <za-panel-title>多形状</za-panel-title>
           </za-panel-header>
           <za-panel-body>
             <za-button bordered shape="radius">圆角按钮</za-button>

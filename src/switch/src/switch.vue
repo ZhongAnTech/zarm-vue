@@ -3,7 +3,6 @@
       [`${prefixCls}`]: true,
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
-      [`shape-${shape}`]: !!shape,
       checked: !!currentCheck,
       disabled,
     }'
@@ -33,13 +32,6 @@ export default {
         return ['default', 'primary', 'info', 'success', 'warning', 'error'].indexOf(v) >= 0;
       },
       default: 'primary',
-    },
-    shape: {
-      type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['radius', 'round', 'circle'].indexOf(v) >= 0;
-      },
-      default: null,
     },
     size: {
       type: String,

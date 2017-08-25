@@ -51,7 +51,7 @@
           </za-panel-header>
           <za-panel-body>
             <za-cell>
-              <za-input autosize showLength type="textarea" rows="4" maxLength="200" placeholder="摘要"></za-input>
+              <za-input autosize showLength type="textarea" rows="4" maxLength="200" placeholder="摘要" v-model='v5'></za-input>
             </za-cell>
           </za-panel-body>
         </za-panel>
@@ -78,6 +78,7 @@ export default {
       v2:'这是一个textarea',
       v3:'',
       v4:'',
+      v5:'',
     }
   },
   methods: {

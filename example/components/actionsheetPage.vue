@@ -9,12 +9,12 @@
           </za-panel-header>
           <za-panel-body>
             <za-cell>
-              <za-button size="xs" slot='description' @click='visible1 = true'>开启</za-button>
+              <za-button size="xs" slot='description' @click='visible2 = true'>开启</za-button>
               普通
             </za-cell>
             <za-cell>
-              <za-button size="xs" slot='description' @click='visible2 = true'>开启</za-button>
-              无取消操作
+              <za-button size="xs" slot='description' @click='visible1 = true'>开启</za-button>
+              带取消操作
             </za-cell>
           </za-panel-body>
         </za-panel>

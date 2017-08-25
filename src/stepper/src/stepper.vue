@@ -57,7 +57,7 @@ export default {
     shape: {
       type: String,
       validator: function (v) { // eslint-disable-line object-shorthand
-        return ['radius', 'round', 'circle'].indexOf(v) >= 0;
+        return ['radius', 'circle'].indexOf(v) >= 0;
       },
       default: null,
     },

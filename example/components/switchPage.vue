@@ -10,7 +10,7 @@
           <za-panel-body>
             <za-cell>
               <za-switch slot='description' v-model='switch1' @switch-change='handleChange'></za-switch>
-              默认关
+              普通
             </za-cell>
             <za-cell>
               <za-switch slot='description' v-model='switch2'></za-switch>
