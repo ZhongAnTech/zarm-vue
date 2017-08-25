@@ -7,9 +7,6 @@ import PanelBody from '../src/panel-body';
 import PanelFooter from '../src/panel-footer';
 import PanelMore from '../src/panel-more';
 import Cell from '../src/cell';
-import CellIcon from '../src/cell-icon';
-import CellTitle from '../src/cell-title';
-import CellHelp from '../src/cell-help';
 import Checkbox from '../src/checkbox';
 import CheckboxGroup from '../src/checkbox-group';
 import Icon from '../src/icon';
@@ -56,9 +53,6 @@ const components = [
   PanelFooter,
   PanelMore,
   Cell,
-  CellIcon,
-  CellTitle,
-  CellHelp,
   Checkbox,
   CheckboxGroup,
   Icon,
@@ -118,9 +112,6 @@ export default {
   PanelFooter,
   PanelMore,
   Cell,
-  CellIcon,
-  CellTitle,
-  CellHelp,
   Checkbox,
   CheckboxGroup,
   Icon,

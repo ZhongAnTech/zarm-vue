@@ -9,11 +9,15 @@
     }" @click='handleClick'>
     <div :class="`${prefixCls}-inner`">
       <div :class='`${prefixCls}-header`'>
-        <slot name='icon'></slot>
+        <div :class='`${prefixCls}-icon`' v-if='$slots.icon'>
+          <slot name='icon'></slot>
+        </div>
       </div>
       <div :class='`${prefixCls}-body`'>
-        <div :class='`${prefixCls}-title`' v-if='!!title'>{{title}}</div>
-        <slot name='title'></slot>
+        <div :class='`${prefixCls}-title`' v-if='$slots.title || title'>
+          <slot name='title'></slot>
+          <template v-if="!$slots.title">{{title}}</template>
+        </div>
         <div :class='`${prefixCls}-content`'>
           <slot></slot>
         </div>
@@ -23,10 +27,10 @@
       </div>
       <div :class='`${prefixCls}-arrow`' v-if='hasArrow'/>
     </div>
-    <div :class='`${prefixCls}-help`' v-if='!!help'>
-      {{help}}
+    <div :class='`${prefixCls}-help`' v-if='$slots.help || help'>
+      <slot name='help'></slot>
+      <template v-if="!$slots.help">{{help}}</template>
     </div>
-    <slot name='help'></slot>
 </div>
 </template>
 
@@ -46,13 +50,13 @@ export default {
       type: Boolean,
       default: false,
     },
-    help: String,
     isLink: {
       type: Boolean,
       default: false,
     },
     theme: String,
     title: String,
+    help: String,
   },
   computed: {
     hasIcon() {

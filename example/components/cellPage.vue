@@ -8,7 +8,7 @@
             <za-panel-title>普通列表项</za-panel-title>
           </za-panel-header>
           <za-panel-body>
-            <za-cell>标题文字</za-cell>
+            <za-cell title='标题文字'></za-cell>
           </za-panel-body>
         </za-panel>
 
@@ -32,15 +32,11 @@
           </za-panel-header>
           <za-panel-body>
             <za-cell title='标题文字'>
-              <za-cell-icon slot='icon'>
-                <za-icon type='right'/>
-              </za-cell-icon>
+              <za-icon type='right' slot='icon'/>
               <div slot='description'>描述文字</div>
             </za-cell>
             <za-cell title='标题文字'>
-              <za-cell-icon slot='icon'>
-                <img src="https://avatars2.githubusercontent.com/u/499550?v=4&s=72" alt="">
-              </za-cell-icon>
+              <img src="https://avatars2.githubusercontent.com/u/499550?v=4&s=72" alt="" slot='icon'>
               <div slot='description'>描述文字</div>
             </za-cell>
           </za-panel-body>
@@ -77,27 +73,19 @@
           <za-panel-body>
             <za-cell isLink title='标题文字' hasArrow @click='() => {}'>
               <div slot='description'>描述文字</div>
-              <za-cell-icon slot='icon'>
-                <za-icon type='right'/>
-              </za-cell-icon>
+              <za-icon type='right' slot='icon'/>
             </za-cell>
             <za-cell isLink title='标题文字' hasArrow @click='() => {}'>
               <div slot='description'>描述文字</div>
-              <za-cell-icon slot='icon'>
-                <img src="https://avatars2.githubusercontent.com/u/499550?v=4&s=72" alt="">
-              </za-cell-icon>
+              <img src="https://avatars2.githubusercontent.com/u/499550?v=4&s=72" alt="" slot='icon'>
             </za-cell>
             <za-cell isLink hasArrow @click='() => {}'>
               <div slot='description'>描述文字</div>
-              <za-cell-title slot='title'>
-                <div class='box'>
-                  <div class='box-title'>标题文字</div>
-                  <div class='box-description'>描述文字</div>
-                </div>
-              </za-cell-title>
-              <za-cell-icon slot='icon'>
-                <img src="https://avatars2.githubusercontent.com/u/499550?v=4&s=72" alt="">
-              </za-cell-icon>
+              <div class='box' slot='title'>
+                <div class='box-title'>标题文字</div>
+                <div class='box-description'>描述文字</div>
+              </div>
+              <img src="https://avatars2.githubusercontent.com/u/499550?v=4&s=72" alt="" slot='icon'>
             </za-cell>
           </za-panel-body>
         </za-panel>
@@ -108,12 +96,10 @@
           </za-panel-header>
           <za-panel-body>
             <za-cell title='标题'>
-              <za-cell-help slot='help'>
-                <za-message theme='error'>
-                  <za-icon type="info-round" />
-                  <span style='marginLeft: 5px'>标题不能为空</span>
-                </za-message>
-              </za-cell-help>
+              <za-message theme='error' slot='help'>
+                <za-icon type="info-round" />
+                <span style='marginLeft: 5px'>标题不能为空</span>
+              </za-message>
               <za-input type="text" placeholder="请输入标题" />
             </za-cell>
           </za-panel-body>
