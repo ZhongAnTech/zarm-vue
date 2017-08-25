@@ -121,7 +121,7 @@ export default {
     },
     value(val, oldVal) { // eslint-disable-line no-unused-vars
       if (this.currentValue === val) return;
-      this.currentValue = val;
+      this.currentValue = isArray(val) ? val : [val];
     },
   },
   computed: {

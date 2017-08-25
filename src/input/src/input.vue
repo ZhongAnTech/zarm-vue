@@ -6,6 +6,7 @@
     <div :class='`${prefixCls}-placeholder`' v-if='type === "date"'>{{placeholder}}</div>
     <textarea
       ref='input'
+      :readonly='readonly'
       v-if='type === "textarea"'
       :placeholder='placeholder'
       :disabled='disabled'
@@ -17,6 +18,7 @@
       :rows='rows'
     />
     <input
+      :readonly='readonly'
       ref='input'
       v-else
       :type='type'
@@ -65,6 +67,7 @@ export default {
       type: Boolean,
       default: false,
     },
+    readonly: Boolean,
   },
   data() {
     return {
@@ -80,16 +83,6 @@ export default {
     'value'(val, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
       this.setCurrentValue(val);
     },
-  },
-  mounted() {
-    if (this.type === 'textarea') {
-      this.initAutosize();
-    }
-  },
-  beforeDestroy() {
-    if (this.type === 'textarea') {
-      this.destroyAutosize();
-    }
   },
   methods: {
     handleInput(event) {
@@ -129,12 +122,19 @@ export default {
         Autosize.update(this.input);
       }
     },
-    // setLength() {
-    //   this.length = this.$refs.input.value.length;
-    // },
     focus() {
       this.$refs.input.focus();
     },
+  },
+  mounted() {
+    if (this.type === 'textarea') {
+      this.initAutosize();
+    }
+  },
+  beforeDestroy() {
+    if (this.type === 'textarea') {
+      this.destroyAutosize();
+    }
   },
 };
 </script>

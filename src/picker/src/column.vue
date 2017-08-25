@@ -43,7 +43,7 @@ export default {
     selectedValue(val, oldVal) { // eslint-disable-line no-unused-vars
       this.zscroller.reflow();
       this.select(val);
-      if (val !== this.currentSelectedValue) return;
+      if (val === this.currentSelectedValue) return;
       this.currentSelectedValue = val;
     },
     disabled(val) {

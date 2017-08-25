@@ -44,7 +44,6 @@ export default {
     },
     getValue() {
       const { data, selectedValue } = this;
-
       if (selectedValue && selectedValue.length) {
         return selectedValue;
       }
