@@ -27,9 +27,6 @@ import Popup from '../src/popup';
 import Uploader from '../src/uploader';
 import ActionSheet from '../src/actionsheet';
 import Modal from '../src/modal';
-import ModalBody from '../src/modal-body';
-import ModalHeader from '../src/modal-header';
-import ModalFooter from '../src/modal-footer';
 import Confirm from '../src/confirm';
 import SwipeAction from '../src/swipe-action';
 import Swipe from '../src/swipe';
@@ -73,9 +70,6 @@ const components = [
   Uploader,
   ActionSheet,
   Modal,
-  ModalBody,
-  ModalHeader,
-  ModalFooter,
   Confirm,
   SwipeAction,
   Swipe,
@@ -132,9 +126,6 @@ export default {
   Uploader,
   ActionSheet,
   Modal,
-  ModalBody,
-  ModalHeader,
-  ModalFooter,
   Confirm,
   SwipeAction,
   Swipe,

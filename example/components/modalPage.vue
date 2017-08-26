@@ -55,38 +55,33 @@
 
       </div>
 
-      <za-modal :visible.sync='visible1' @modal-close='handleClose'>
-        <za-modal-header title="标题" :showClose='true' />
-        <za-modal-body>模态框内容</za-modal-body>
+      <za-modal :visible.sync='visible1' @close='handleClose' title="标题" :showClose='true'>
+        模态框内容
       </za-modal>
 
-      <za-modal :visible.sync='visible2' @modal-close='handleClose' radius>
-        <za-modal-header title="标题" :showClose='true' />
-        <za-modal-body>圆角</za-modal-body>
+      <za-modal :visible.sync='visible2' @close='handleClose' radius :showClose='true'>
+        <div slot='header' style='textAlign:left'>标题</div>
+        模态框内容
       </za-modal>
 
-      <za-modal :visible.sync='visible3' @modal-close='handleClose' :closeOnClickModal='true'>
-        <za-modal-header title="标题" :showClose='true' />
-        <za-modal-body>遮罩层可关闭</za-modal-body>
+      <za-modal :visible.sync='visible3' @close='handleClose' :close-on-click-modal='true' title="标题" :showClose='true' >
+        遮罩层可关闭
       </za-modal>
 
-      <za-modal :visible.sync='visible4' @modal-close='handleClose' :closeOnClickModal='true'>
-        <za-modal-body>无头部</za-modal-body>
+      <za-modal :visible.sync='visible4' @close='handleClose' :closeOnClickModal='true'>
+        无头部
       </za-modal>
 
-      <za-modal :visible.sync='visible5' @modal-close='handleClose' animationType="rotate" :closeOnClickModal='true'>
-        <za-modal-header title="标题" :showClose='true' />
-        <za-modal-body>
-          当前使用的是rotate旋转效果。<br /><br />
-          支持多种动画效果：<br />
-          zoom：缩放效果（默认）<br />
-          rotate：旋转效果<br />
-          fade：淡出淡入效果<br />
-          door：开关门效果<br />
-          flip：翻转效果<br />
-          moveUp、moveDown、moveLeft、moveRight：移出移入效果<br />
-          slideUp、slideDown、slideLeft、slideRight：滑出滑入效果<br />
-        </za-modal-body>
+      <za-modal :visible.sync='visible5' @close='handleClose' animationType="rotate" :closeOnClickModal='true' title="标题" :showClose='true'>
+        当前使用的是rotate旋转效果。<br /><br />
+        支持多种动画效果：<br />
+        zoom：缩放效果（默认）<br />
+        rotate：旋转效果<br />
+        fade：淡出淡入效果<br />
+        door：开关门效果<br />
+        flip：翻转效果<br />
+        moveUp、moveDown、moveLeft、moveRight：移出移入效果<br />
+        slideUp、slideDown、slideLeft、slideRight：滑出滑入效果<br />
       </za-modal>
 
       <za-alert :visible.sync='visible6' radius title="警告" message="这里是警告信息" @alert-close='handleClose'></za-alert>

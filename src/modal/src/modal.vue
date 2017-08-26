@@ -10,7 +10,19 @@
         [`${animationType}-${animationState}`]: true,
         [`fade-${animationState}`]: true,
         }' :style='dialogStyle' @click='(e) => e.stopPropagation()'>
-        <slot></slot>
+        <div :class='`${prefixCls}-header`' v-if='$slots.header || title'>
+          <div :class='`${prefixCls}-header-title`'>
+            <slot name='header'></slot>
+            <template v-if="!$slots.header">{{title}}</template>
+          </div>
+          <div v-if='showClose' :class='`${prefixCls}-header-close`' @click='handleClose'><za-icon type='wrong'/></div>
+        </div>
+        <div :class='`${prefixCls}-body`'>
+          <slot></slot>
+        </div>
+        <div :class='`${prefixCls}-footer`' v-if='$slots.footer'>
+          <slot name='footer'></slot>
+        </div>
       </div>
     </div>
     <za-mask :visible='maskVisible' @mask-close='onMaskClose' :type='maskType'/>
@@ -24,11 +36,13 @@
  * use popup may have potential problem
  */
 import zaMask from '../../mask';
+import zaIcon from '../../icon';
 
 export default {
   name: 'zaModal',
   components: {
     zaMask,
+    zaIcon,
   },
   props: {
     prefixCls: {
@@ -74,6 +88,11 @@ export default {
       default: 270,
     },
     closeOnClickModal: {
+      type: Boolean,
+      default: false,
+    },
+    title: String,
+    showClose: {
       type: Boolean,
       default: false,
     },
@@ -129,7 +148,7 @@ export default {
       // mask start leaving
       this.animationState = 'leave';
       this.$emit('update:visible', false);
-      this.$emit('modal-close', reason, event);
+      this.$emit('close', reason, event);
 
       if (this.timer) {
         clearTimeout(this.timer);
@@ -147,6 +166,9 @@ export default {
         clearTimeout(this.timer);
       }
       this.leave('clickaway', event);
+    },
+    handleClose(event) {
+      this.leave('close', event);
     },
   },
   mounted() {
