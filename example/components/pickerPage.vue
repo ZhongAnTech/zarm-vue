@@ -110,69 +110,69 @@
           <za-panel-body>
             <za-cell title="年份选择">
               <za-date-picker
-              title="选择年份"
-              v-model='v4'
-              placeholder="请选择年份"
-              mode='year'
-              @ok='handleOk'
-              @change='handleChange'
-              @cancel='handleCancel'/>
+                title="选择年份"
+                v-model='v4'
+                placeholder="请选择年份"
+                mode='year'
+                @ok='handleOk'
+                @change='handleChange'
+                @cancel='handleCancel'/>
             </za-cell>
 
             <za-cell title="日期选择">
               <za-date-picker
-              title="选择日期"
-              placeholder="请选择日期"
-              mode='date'
-              v-model='v5'
-              @ok='handleOk'
-              @change='handleChange'
-              @cancel='handleCancel'/>
+                title="选择日期"
+                placeholder="请选择日期"
+                mode='date'
+                v-model='v5'
+                @ok='handleOk'
+                @change='handleChange'
+                @cancel='handleCancel'/>
             </za-cell>
 
             <za-cell title="月份选择">
               <za-date-picker
-              title="选择月份"
-              placeholder="请选择月份"
-              mode='month'
-              v-model='v6'
-              @ok='handleOk'
-              @change='handleChange'
-              @cancel='handleCancel'/>
+                title="选择月份"
+                placeholder="请选择月份"
+                mode='month'
+                v-model='v6'
+                @ok='handleOk'
+                @change='handleChange'
+                @cancel='handleCancel'/>
             </za-cell>
 
             <za-cell title="时间选择">
               <za-date-picker
-              title="选择时间"
-              placeholder="请选择时间"
-              mode='time'
-              v-model='v7'
-              @ok='handleOk'
-              @change='handleChange'
-              @cancel='handleCancel'/>
+                title="选择时间"
+                placeholder="请选择时间"
+                mode='time'
+                v-model='v7'
+                @ok='handleOk'
+                @change='handleChange'
+                @cancel='handleCancel'/>
             </za-cell>
 
             <za-cell title="时间&日期">
               <za-date-picker
-              title="选择"
-              placeholder="请选择时间和日期"
-              mode='datetime'
-              v-model='v8'
-              @ok='handleOk'
-              @change='handleChange'
-              @cancel='handleCancel'/>
+                title="选择"
+                placeholder="请选择时间和日期"
+                mode='datetime'
+                v-model='v8'
+                @ok='handleOk'
+                @change='handleChange'
+                @cancel='handleCancel'/>
             </za-cell>
 
             <za-cell title="自定义格式">
               <za-date-picker
-              title="选择日期"
-              placeholder="请选择日期"
-              mode='date'
-              @ok='handleOk'
-              v-model='v9'
-              @change='handleChange'
-              @cancel='handleCancel'
-              format="YYYY年MM月DD日"/>
+                title="选择日期"
+                placeholder="请选择日期"
+                mode='date'
+                @ok='handleOk'
+                v-model='v9'
+                @change='handleChange'
+                @cancel='handleCancel'
+                format="YYYY年MM月DD日"/>
             </za-cell>
 
             <za-panel>
@@ -182,14 +182,14 @@
               <za-panel-body>
                 <za-cell title="级联选择">
                   <za-stack-picker
-                  v-model='v10'
-                  title="级联选择"
-                  placeholder="请选择"
-                  :dataSource='District'
-                  :displayRender="selected => selected.map(item => item.label).join('-')"
-                  @ok='handleOk'
-                  @change='handleChange'
-                  @cancel='handleCancel'/>
+                    v-model='v10'
+                    title="级联选择"
+                    placeholder="请选择"
+                    :dataSource='District'
+                    :displayRender="selected => selected.map(item => item.label).join('-')"
+                    @ok='handleOk'
+                    @change='handleChange'
+                    @cancel='handleCancel'/>
                 </za-cell>
               </za-panel-body>
             </za-panel>

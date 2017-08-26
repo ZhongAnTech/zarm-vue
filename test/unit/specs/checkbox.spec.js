@@ -58,7 +58,7 @@ describe('Checkbox', () => {
 
         },
       },
-    });
+    }, true);
     const el = vm.$el;
     expect(el.classList.contains('za-checkbox-group'));
   });
@@ -76,36 +76,13 @@ describe('Checkbox', () => {
           checkboxGroup: [],
         };
       },
-    });
+    }, true);
     const el = vm.$el;
     expect(el.classList.contains('shape-radius')).to.be.true;
     expect(el.classList.contains('block')).to.be.true;
     expect(el.querySelector('.za-button').classList.contains('theme-primary')).to.be.true;
     expect(el.querySelector('.za-button')).to.exist;
   });
-
-  // it('group click', done => {
-  //   vm = createVue({
-  //     template: `
-  //       <za-checkbox-group v-model='checkboxGroup'>
-  //         <za-checkbox label="a" key="a" ref='a'>a</za-checkbox>
-  //         <za-checkbox label="b" key="b" ref='b'>b</za-checkbox>
-  //         <za-checkbox label="c" key="c" ref='c'>c</za-checkbox>
-  //       </za-checkbox-group>
-  //     `,
-  //     data() {
-  //       return {
-  //         checkboxGroup: [],
-  //       };
-  //     },
-  //   });
-  //   vm.$refs.a.$el.click();
-  //   setTimeout(() => {
-  //     console.log(vm.checkboxGroup); // eslint-disable-line no-console
-  //     expect(vm.checkboxGroup.indexOf('a') !== -1).to.be.true;
-  //     done();
-  //   }, 50);
-  // });
 
   it('group default check', () => {
     vm = createVue({
@@ -122,7 +99,7 @@ describe('Checkbox', () => {
           checkboxGroup: ['上海'],
         };
       },
-    });
+    }, true);
     const el = vm.$el;
     const firstCheckbox = el.querySelectorAll('.za-checkbox-input')[0];
     expect(firstCheckbox.checked).to.be.true;
@@ -149,12 +126,34 @@ describe('Checkbox', () => {
     const input = vm.$el.querySelector('.za-checkbox-input');
     input.click();
 
-    setTimeout(_ => { // eslint-disable-line no-unused-vars
+    vm.$nextTick(_ => { // eslint-disable-line no-unused-vars
       expect(el.classList.contains('checked')).to.be.true;
       expect(input.checked).to.be.true;
       expect(vm.v1).to.be.true;
       expect(result).to.exist;
       done();
-    }, 50);
+    });
+  });
+
+  it('group to be true', done => {
+    vm = createVue({
+      template: `
+        <za-checkbox-group v-model='checkboxGroup'>
+          <za-checkbox label="a" ref="a">a</za-checkbox>
+          <za-checkbox label="b" ref="b">b</za-checkbox>
+        </za-checkbox-group>
+      `,
+      data() {
+        return {
+          checkboxGroup: [],
+        };
+      },
+    }, true);
+    expect(vm.$refs.a.isGroup).to.be.true;
+    vm.$refs.a.$el.querySelector('.za-checkbox-input').click();
+    vm.$nextTick(() => {
+      expect(vm.checkboxGroup.indexOf('a') !== -1).to.be.true;
+      done();
+    });
   });
 });

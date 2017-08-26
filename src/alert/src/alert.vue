@@ -47,7 +47,7 @@ export default {
     handleClose(event) {
       this.$refs.modal.leave('modal-close', event);
       this.$emit('update:visible', false);
-      this.$emit('alert-close', 'alert-close', event);
+      this.$emit('close', event);
     },
   },
   watch: {

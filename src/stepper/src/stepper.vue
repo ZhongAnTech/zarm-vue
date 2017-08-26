@@ -84,10 +84,10 @@ export default {
   },
   computed: {
     subDisabled() {
-      return !!(typeof this.min === 'number' && this.value <= this.min) || this.disabled;
+      return !!(typeof this.min === 'number' && this.currentValue <= this.min) || this.disabled;
     },
     plusDisabled() {
-      return !!(typeof this.max === 'number' && this.value >= this.max) || this.disabled;
+      return !!(typeof this.max === 'number' && this.currentValue >= this.max) || this.disabled;
     },
   },
   watch: {
@@ -105,16 +105,27 @@ export default {
   methods: {
     handleSubClick(event) {
       if (this.subDisabled) return;
-      this.currentValue -= this.step;
+      const value = this.currentValue - this.step;
+      if (this.min !== null && value < this.min) {
+        this.currentValue = this.min;
+      } else {
+        this.currentValue = value;
+      }
+      this.lastValue = this.currentValue;
       this.$emit('input', Number(this.currentValue));
-      this.$emit('step-change', event);
+      this.$emit('change', event);
     },
     handlePlusClick(event) {
       if (this.plusDisabled) return;
-      this.currentValue += this.step;
+      const value = this.currentValue + this.step;
+      if (this.max !== null && value > this.max) {
+        this.currentValue = this.max;
+      } else {
+        this.currentValue = value;
+      }
       this.lastValue = this.currentValue;
       this.$emit('input', Number(this.currentValue));
-      this.$emit('step-change', event);
+      this.$emit('change', event);
     },
     handleInput(event) {
       const value = Number(event.target.value);
@@ -136,7 +147,7 @@ export default {
           this.currentValue = this.min;
           this.lastValue = this.currentValue;
           this.$emit('input', Number(this.currentValue));
-          this.$emit('step-change', event);
+          this.$emit('change', event);
         });
       } else if (this.max !== null && value > this.max) {
         this.currentValue = value;
@@ -144,13 +155,13 @@ export default {
           this.currentValue = this.max;
           this.lastValue = this.currentValue;
           this.$emit('input', Number(this.currentValue));
-          this.$emit('step-change', event);
+          this.$emit('change', event);
         });
       } else {
         this.currentValue = value;
         this.lastValue = this.currentValue;
         this.$emit('input', Number(this.currentValue));
-        this.$emit('step-change', event);
+        this.$emit('change', event);
       }
     },
   },

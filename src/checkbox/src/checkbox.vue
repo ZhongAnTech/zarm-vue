@@ -129,7 +129,7 @@ export default {
     },
   },
   methods: {
-    onValueChange(event) {
+    onValueChange() {
       this.$emit('change', event);
       if (this.isGroup) {
         this.$nextTick(_ => { // eslint-disable-line no-unused-vars
