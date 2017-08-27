@@ -114,12 +114,12 @@ export default {
     },
     destroyAutosize() {
       if (this.autosize) {
-        Autosize.destroy(this.input);
+        Autosize.destroy(this.$refs.input);
       }
     },
     updateAutosize() {
       if (this.autosize) {
-        Autosize.update(this.input);
+        Autosize.update(this.$refs.input);
       }
     },
     focus() {
