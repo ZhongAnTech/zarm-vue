@@ -36,14 +36,14 @@
         </za-panel>
       </div>
 
-      <za-toast :visible.sync='visible1' @toast-close='toastClose'>默认3秒自动关闭</za-toast>
-      <za-toast :visible.sync='visible2' @toast-close='toastClose' :close-on-click-modal='true'>
+      <za-toast :visible.sync='visible1' @close='toastClose'>默认3秒自动关闭</za-toast>
+      <za-toast :visible.sync='visible2' @close='toastClose' :close-on-click-modal='true'>
         <div class='box'>
           <za-icon type="right-round-fill" class='box-icon' />
           <div class='box-text'>预约成功</div>
         </div>
       </za-toast>
-      <za-toast :visible.sync='visible3' @toast-close='toastClose' :duration='10000'>指定10秒自动关闭</za-toast>
+      <za-toast :visible.sync='visible3' @close='toastClose' :duration='10000'>指定10秒自动关闭</za-toast>
       <za-loading :visible.sync='visible4'></za-loading>
     </main>
     <PageFooter />

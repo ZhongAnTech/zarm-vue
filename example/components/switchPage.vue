@@ -9,7 +9,7 @@
           </za-panel-header>
           <za-panel-body>
             <za-cell>
-              <za-switch slot='description' v-model='switch1' @switch-change='handleChange'></za-switch>
+              <za-switch slot='description' v-model='switch1' @change='handleChange'></za-switch>
               普通
             </za-cell>
             <za-cell>
@@ -33,7 +33,7 @@
           </za-panel-header>
           <za-panel-body>
             <za-cell>
-              <za-switch slot='description' v-model='switch5' @switch-change='handleChange2'></za-switch>
+              <za-switch slot='description' v-model='switch5' @change='handleChange2'></za-switch>
               主开关
             </za-cell>
             <za-cell>

@@ -62,7 +62,7 @@ export default {
       if (this.disabled) return;
       const checked = event.target.checked;
       this.$emit('input', checked);
-      this.$emit('switch-change', event);
+      this.$emit('change', event);
     },
   },
 };

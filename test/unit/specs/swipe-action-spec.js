@@ -34,5 +34,6 @@ describe('SwipeAction', () => {
       },
     }, true);
     expect(vm.$el.classList.contains('za-swipeAction-wrap')).to.true;
+    expect(vm.$el.classList.contains('theme-primary')).to.true;
   });
 });

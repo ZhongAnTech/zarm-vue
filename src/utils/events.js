@@ -2,7 +2,7 @@ export default {
   on(el, type, callback) {
     if (el.addEventListener) {
       el.addEventListener(type, callback, { passive: false });
-    } else {
+    } /* istanbul ignore next  */ else {
       el.attachEvent(`on ${type}`, () => {
         callback.call(el);
       });
@@ -12,7 +12,7 @@ export default {
   off(el, type, callback) {
     if (el.removeEventListener) {
       el.removeEventListener(type, callback, { passive: false });
-    } else {
+    } /* istanbul ignore next  */ else {
       el.detachEvent(`off ${type}`, callback);
     }
   },

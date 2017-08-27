@@ -68,7 +68,8 @@ export default {
     }
   },
   methods: {
-    handleClick() {
+    handleClick(event) {
+      console.log(event);
       alert('click this message!');
     }
   },

@@ -58,11 +58,11 @@ export default {
   data() {
     return {
       offset: 0,
-      // currentVisible: this.visible,
     };
   },
   methods: {
     handleClick(event) {
+      this.currentVisible = false;
       this.$emit('click', event);
     },
     handleUpdate(val) {

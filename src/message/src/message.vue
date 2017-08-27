@@ -32,10 +32,6 @@ export default {
       type: String,
       default: 'za-message',
     },
-    block: {
-      type: Boolean,
-      default: false,
-    },
     theme: {
       type: String,
       validator: function (v) { // eslint-disable-line object-shorthand
@@ -73,13 +69,12 @@ export default {
     },
   },
   methods: {
-    handleClick() {
-      this.$emit('click');
+    handleClick(event) {
+      this.$emit('click', event);
     },
     wrongIconClick() {
       this.currentVisible = false;
       this.$emit('update:visible', false);
-      this.$emit('updatevisible', false);
     },
   },
 };

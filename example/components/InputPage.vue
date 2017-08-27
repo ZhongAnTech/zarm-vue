@@ -12,7 +12,7 @@
               <za-input ref='inputFirst' v-model='v1' type="text" placeholder="type is text" @change='handleChange'></za-input>
             </za-cell>
             <za-cell title='多行文本'>
-              <za-input readonly v-model='v2' type="textarea" placeholder="type is textarea" @change='handleChange2'></za-input>
+              <za-input v-model='v2' type="textarea" placeholder="type is textarea" @change='handleChange2'></za-input>
             </za-cell>
             <za-cell>
               <a @click='focus'>click to focus the first input</a>
@@ -28,6 +28,7 @@
             <za-cell title='多行文本'>
               <za-input autosize v-model='v3' type="textarea" placeholder="this is a autosize textarea"></za-input>
             </za-cell>
+            <za-button @click='handleClick'>test</za-button>
           </za-panel-body>
         </za-panel>
 
@@ -93,6 +94,9 @@ export default {
     },
     focus() {
       this.$refs.inputFirst.focus()
+    },
+    handleClick(){
+      this.v3 = 'sda\ndasd\nddasdsda\ndasd';
     }
   },
 };

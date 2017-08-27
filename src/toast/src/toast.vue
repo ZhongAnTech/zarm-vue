@@ -54,7 +54,7 @@ export default {
     leave(reason, event) {
       this.currentVisible = false;
       this.$emit('update:visible', false);
-      this.$emit('toast-close', reason, event);
+      this.$emit('close', reason, event);
     },
   },
   watch: {

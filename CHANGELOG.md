@@ -18,4 +18,4 @@
 - 修复 `Picker` bug。
 - 修复了 `Icon` click事件event丢失bug
 - 简化了 `Cell` 和 `modal` 的组件结构
-- `Input` 新增redonly
+- `Input` 新增readonly
