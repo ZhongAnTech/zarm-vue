@@ -76,7 +76,7 @@ data () {
 </za-checkbox-group>
 ```
 
-##### 块级样式
+#### 块级样式
 ```vue
 <za-checkbox-group v-model='checkboxGroup' block>
   <za-checkbox label="a">a</za-checkbox>
@@ -85,7 +85,7 @@ data () {
 </za-checkbox-group>
 ```
 
-##### compact样式
+#### compact样式
 ```vue
 <za-checkbox-group v-model='checkboxGroup' block compact>
   <za-checkbox label="a">a</za-checkbox>
@@ -117,7 +117,7 @@ data () {
 
 ### API
 
-#### Checkbox
+#### Checkbox Attributes
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -127,12 +127,16 @@ data () {
 | v-model | bool | false | | 绑定变量 |
 | disabled | bool | false | | 是否禁用 |
 
+
+
 #### Checkbox Events
 | 事件名称 | 说明 | 回调参数 |
 | :--- | :--- | :--- |
 | change | 当绑定值变化时触发的事件 | event 事件对象 |
 
-#### Checkbox.Group
+
+
+#### Checkbox-Group Attributes
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
