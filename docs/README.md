@@ -8,7 +8,7 @@
 
   [众安科技zarm移动端组件库](https://github.com/ZhonganTechENG/zarm) **的 Vue.Js版本**
 
-  和zarm组件库的样式风格完全一致。
+  和zarm组件库的样式风格一致。但考虑到react与vue框架层面的差异，某些组件参数做了调整。
 
 ### Example 案例
 

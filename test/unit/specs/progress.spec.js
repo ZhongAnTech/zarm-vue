@@ -6,16 +6,17 @@ describe('Progress', () => {
     destroyVM(vm);
   });
 
-  it('circle', () => {
+  it('create', () => {
     vm = createVue({
       template: `
-        <za-progress :percent='percent' :theme='theme' type='line' strokeWidth='10'>
+        <za-progress :percent='percent' :theme='theme' type='line' :strokeWidth='10'>
           {{percent + '%'}}
         </za-progress>
       `,
       data() {
         return {
           percent: 0,
+          theme: 'primary',
         };
       },
     }, true);
@@ -26,7 +27,7 @@ describe('Progress', () => {
     expect(el.querySelector('.za-progress-inner').style.height).to.equal('10px');
   });
 
-  it('create', () => {
+  it('circle', () => {
     vm = createVue({
       template: `
         <za-progress type='circle' :percent='percent' :theme='theme'>
@@ -36,6 +37,7 @@ describe('Progress', () => {
       data() {
         return {
           percent: 10,
+          theme: 'primary',
         };
       },
     }, true);
