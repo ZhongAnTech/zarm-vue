@@ -60,4 +60,42 @@ describe('Toast', () => {
       done();
     }, 60);
   });
+
+  it('$zaToast', done => {
+    vm = createVue({
+      template: `
+        <div @click='handleClick'>test</div>
+      `,
+      methods: {
+        handleClick() {
+          this.$zaToast('test');
+        },
+      },
+    }, true);
+    vm.$el.click();
+    vm.$nextTick(() => {
+      expect(document.querySelector('.za-toast')).to.exist;
+      done();
+    });
+  });
+
+  it('$zaToast with options', done => {
+    vm = createVue({
+      template: `
+        <div @click='handleClick'>test</div>
+      `,
+      methods: {
+        handleClick() {
+          this.$zaToast({
+            message: 'test',
+          });
+        },
+      },
+    }, true);
+    vm.$el.click();
+    vm.$nextTick(() => {
+      expect(document.querySelector('.za-toast .za-toast-container').innerText).to.equal('test');
+      done();
+    });
+  });
 });

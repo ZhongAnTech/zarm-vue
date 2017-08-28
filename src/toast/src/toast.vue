@@ -4,7 +4,7 @@
     [`${prefixCls}-open`]: currentVisible,
     }'>
     <div :class='`${prefixCls}-container`'>
-      <slot></slot>
+      <slot>{{message}}</slot>
     </div>
     <za-mask type="transparent" :visible='currentVisible' @mask-close='onMaskClose'></za-mask>
   </div>
@@ -39,22 +39,24 @@ export default {
   methods: {
     onMaskClose(event) {
       if (!this.closeOnClickModal) return;
-      this.leave('clickaway', event);
+      this.currentVisible = false;
+      this.event = event;
+      this.reason = 'clickaway';
     },
     enter() {
-      this.currentVisible = true;
       if (this.duration === 0) return;
       if (this.timer) {
         clearTimeout(this.timer);
       }
       this.timer = setTimeout(() => {
-        this.leave('timeout');
+        this.currentVisible = false;
+        this.event = undefined;
+        this.reason = 'timeout';
       }, this.duration);
     },
-    leave(reason, event) {
-      this.currentVisible = false;
+    leave() {
       this.$emit('update:visible', false);
-      this.$emit('close', reason, event);
+      this.$emit('close', this.reason, this.event);
     },
   },
   watch: {
@@ -63,16 +65,20 @@ export default {
       if (this.timer) {
         clearTimeout(this.timer);
       }
+      this.currentVisible = value;
+    },
+    currentVisible(value) {
       if (value) {
         this.enter();
       } else {
-        this.currentVisible = value;
+        this.leave();
       }
     },
   },
   data() {
     return {
       currentVisible: this.visible,
+      message: '',
     };
   },
   mounted() {

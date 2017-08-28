@@ -89,6 +89,8 @@ const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-var
   if (install.installed) return;
 
   components.map(component => Vue.component(component.name, component));
+
+  Vue.prototype.$zaToast = Toast.root;
 };
 
 if (typeof window !== 'undefined' && window.Vue) {
