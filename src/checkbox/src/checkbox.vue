@@ -133,7 +133,7 @@ export default {
       this.$emit('change', event);
       if (this.isGroup) {
         this.$nextTick(_ => { // eslint-disable-line no-unused-vars
-          this.dispatch('zaCheckboxGroup', 'change', [this._checkboxGroup.value]);
+          this.dispatch('zaCheckboxGroup', 'change', [event]);
         });
       }
     },
