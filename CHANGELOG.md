@@ -19,3 +19,9 @@
 - 修复了 `Icon` click事件event丢失bug
 - 简化了 `Cell` 和 `modal` 的组件结构
 - `Input` 新增readonly
+
+## v0.1.2
+
+- fix input refs bug
+- 新增 $zaToast $zaLoading
+- 新增 v-za-loading 指令
