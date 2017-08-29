@@ -22,8 +22,9 @@
           <slot></slot>
         </div>
       </div>
-      <div :class='`${prefixCls}-footer`'>
+      <div :class='`${prefixCls}-footer`' v-if='$slots.description || description'>
         <slot name='description'></slot>
+        <template v-if="!$slots.description">{{description}}</template>
       </div>
       <div :class='`${prefixCls}-arrow`' v-if='hasArrow'/>
     </div>
@@ -57,6 +58,7 @@ export default {
     theme: String,
     title: String,
     help: String,
+    description: String,
   },
   computed: {
     hasIcon() {

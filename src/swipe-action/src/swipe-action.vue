@@ -202,7 +202,7 @@ export default {
     },
     close(reason, duration = this.moveTimeDuration) {
       this.isClosing = true;
-      if (this.openedLeft || this.openedRight) {
+      if (!this.openedLeft && !this.openedRight) {
         this.$emit('close', reason);
       }
       this.openedLeft = false;

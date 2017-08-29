@@ -110,7 +110,15 @@ export default {
     } = this;
 
     return (
-      <za-message size='lg' visible={currentVisible} on-updatevisible={handleUpdate} closable={closable} theme={theme} hasArrow={hasArrow} on-click={handleClick} icon={icon}>
+      <za-message
+        size='lg'
+        visible={currentVisible}
+        on-updatevisible={handleUpdate}
+        closable={closable}
+        theme={theme}
+        hasArrow={hasArrow}
+        on-click={handleClick}
+        icon={icon}>
         <div class={prefixCls} ref='wrapper'>
           <div class={`${prefixCls}-body`} ref='content' style={contentStyle}>
             {this.$slots.default}

@@ -133,7 +133,7 @@ export default {
       // mask start leaving
       this.animationState = 'leave';
       this.$emit('update:visible', false);
-      this.$emit('popup-close', reason, event);
+      this.$emit('close', reason, event);
 
       if (this.timerLeave) {
         clearTimeout(this.timerLeave);

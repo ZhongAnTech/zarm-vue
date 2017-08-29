@@ -5,8 +5,9 @@
     [`size-${size}`]: !!size,
   }' @click='handleClick' v-if='currentVisible'>
     <div :class='`${prefixCls}-header`'>
-      <div :class='`${prefixCls}-icon`' v-if='icon'>
-        <za-icon :type='icon'></za-icon>
+      <div :class='`${prefixCls}-icon`' v-if='$slots.icon || icon'>
+        <slot name='icon'></slot>
+        <za-icon :type='icon' v-if='!$slots.icon'></za-icon>
       </div>
     </div>
     <div :class='`${prefixCls}-body`'>

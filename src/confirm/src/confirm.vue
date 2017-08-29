@@ -4,8 +4,8 @@
       {{message}}
     </div>
     <template slot='footer'>
-      <za-button block bordered @click='onCancel'>{{cancelText}}</za-button>
-      <za-button block bordered theme="primary" @click='onOk'>{{okText}}</za-button>
+      <za-button block bordered @click='cancel'>{{cancelText}}</za-button>
+      <za-button block bordered theme="primary" @click='ok'>{{okText}}</za-button>
     </template>
   </za-modal>
 </template>
@@ -47,11 +47,11 @@ export default {
       type: Number,
       default: 200,
     },
-    onOk: {
+    ok: {
       type: Function,
       default: () => {},
     },
-    onCancel: {
+    cancel: {
       type: Function,
       default: () => {},
     },

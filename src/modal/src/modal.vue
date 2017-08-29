@@ -10,9 +10,9 @@
         [`${animationType}-${animationState}`]: true,
         [`fade-${animationState}`]: true,
         }' :style='dialogStyle' @click='(e) => e.stopPropagation()'>
-        <div :class='`${prefixCls}-header`' v-if='$slots.header || title'>
+        <div :class='`${prefixCls}-header`' v-if='$slots.title || title'>
           <div :class='`${prefixCls}-header-title`'>
-            <slot name='header'></slot>
+            <slot name='title'></slot>
             <template v-if="!$slots.header">{{title}}</template>
           </div>
           <div v-if='showClose' :class='`${prefixCls}-header-close`' @click='handleClose'><za-icon type='wrong'/></div>

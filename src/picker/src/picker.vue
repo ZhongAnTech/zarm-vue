@@ -12,7 +12,7 @@
         [`${prefixCls}-container`]: true,
         [customCls]: !!customCls,
       }' @click.stop='() => {}'>
-      <za-popup class='za-popup-inner' :visible='currentVisible' @popup-close='onPopupClose'>
+      <za-popup class='za-popup-inner' :visible='currentVisible' @close='onPopupClose'>
         <div :class='`${prefixCls}-wrapper`'>
           <div :class='`${prefixCls}-header`'>
             <div :class='`${prefixCls}-cancel`' @click='handleCancel'>{{cancelText}}</div>

@@ -16,7 +16,7 @@
       }' @click.stop='() => {}'>
       <za-popup
         :visible='currentVisible'
-        @popup-close='onPopupClose'>
+        @close='onPopupClose'>
         <div :class='`${prefixCls}-wrapper`'>
           <div :class='`${prefixCls}-header`'>
             <div :class='`${prefixCls}-cancel`' @click='handleCancel'>{{cancelText}}</div>
