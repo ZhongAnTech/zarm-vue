@@ -42,10 +42,10 @@
               <za-picker
                 :visible.sync='visible4'
                 :dataSource='data3'
+                v-model='v11'
                 @ok='handleOk'
                 @change='handleChange'
                 @cancel='handleCancel'
-                :defaultValue="['1', '12']"
                 displayAddon="-"/>
             </za-cell>
 
@@ -97,8 +97,7 @@
                 v-model='v0'
                 @ok='handleOk'
                 @change='handleChange'
-                @cancel='handleCancel'
-                :wheelDefaultValue='2009'/>
+                @cancel='handleCancel'/>
             </za-cell>
           </za-panel-body>
         </za-panel>
@@ -116,7 +115,8 @@
                 mode='year'
                 @ok='handleOk'
                 @change='handleChange'
-                @cancel='handleCancel'/>
+                @cancel='handleCancel'
+                :wheelDefaultValue='2009'/>
             </za-cell>
 
             <za-cell title="日期选择">
@@ -147,6 +147,7 @@
                 placeholder="请选择时间"
                 mode='time'
                 v-model='v7'
+                :minuteStep='15'
                 @ok='handleOk'
                 @change='handleChange'
                 @cancel='handleCancel'/>
@@ -237,6 +238,7 @@ export default {
       v9:'',
       v10:[],
       v0:'',
+      v11:['1', '12'],
       District,
       data1:[
         { value: '1', label: '选项一' },

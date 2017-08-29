@@ -15,7 +15,7 @@
               <za-stepper slot='description' v-model='stepper2' @change='handleChange'></za-stepper>
             </za-cell>
             <za-cell title="设置上下限">
-              <za-stepper slot='description' v-model='stepper3' @change='handleChange' :min='-3' :max='3' :step='10'></za-stepper>
+              <za-stepper slot='description' v-model='stepper3' @change='handleChange' :min='-3' :max='3'></za-stepper>
             </za-cell>
             <za-cell title="设置步长">
               <za-stepper slot='description' v-model='stepper4' @change='handleChange' :step='0.5'></za-stepper>

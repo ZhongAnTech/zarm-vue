@@ -8,11 +8,13 @@
 
   [众安科技zarm移动端组件库](https://github.com/ZhonganTechENG/zarm) **的 Vue.Js版本**
 
-  和zarm组件库的样式风格完全一致。
-
 ### Example 案例
 
 [Online example](https://zhongantecheng.github.io/zarm-vue/)
+
+### Document 文档
+[Document](https://github.com/ZhonganTechENG/zarm-vue/blob/master/docs/SUMMARY.md)
+
 ### Install 安装
 
 ```bash
@@ -58,11 +60,8 @@ import 'zarm-vue/zarm-vue.default.css';
   });
   ```
 
-### 自定义主题
+### Theme 自定义主题
 和zarm一致，通过自己的variables文件重写sass变量。运行下面命令生成新样式
 ```bash
 npm run build:theme
 ```
-### 文档
-
-Comming soon...

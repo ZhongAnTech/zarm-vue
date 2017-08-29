@@ -20,7 +20,7 @@
         </za-panel>
       </div>
 
-      <za-actionsheet :visible.sync='visible1' :actions='actions1'/>
+      <za-actionsheet :visible.sync='visible1' :actions='actions1' @cancel='cancelCb'/>
       <za-actionsheet :visible.sync='visible2' :actions='actions2' :showCancel='false' @cancel='cancelCb'/>
 
     </main>
@@ -64,8 +64,8 @@ export default {
     }
   },
   methods: {
-    cancelCb(event){
-      console.log('cancelled')
+    cancelCb(reason, event){
+      console.log(reason, event)
     }
   },
 };

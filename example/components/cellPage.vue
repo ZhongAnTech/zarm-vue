@@ -17,9 +17,7 @@
             <za-panel-title>带描述的列表项</za-panel-title>
           </za-panel-header>
           <za-panel-body>
-            <za-cell title='标题文字'>
-              <div slot='description'>描述文字</div>
-            </za-cell>
+            <za-cell title='标题文字' description='描述文字' />
             <za-cell title='标题文字'>
               <za-icon slot='description' type='right'/>
             </za-cell>

@@ -34,7 +34,7 @@
         :duration='3000'
         maskType="transparent"
         autoClose
-        @popup-close='popupClose'
+        @close='popupClose'
       >
         <div class="popup-box-top">更新成功</div>
       </za-popup>
@@ -42,7 +42,7 @@
       <za-popup
         :visible.sync='visible2'
         direction="bottom"
-        @popup-close='popupClose'
+        @close='popupClose'
       >
       <div class="popup-box">
         <za-button size="sm" @click='visible2 = false'>关闭弹层</za-button>
@@ -52,7 +52,7 @@
       <za-popup
         :visible.sync='visible3'
         direction="left"
-        @popup-close='popupClose'
+        @close='popupClose'
       >
       <div class="popup-box-left">
         <za-button size="sm" @click='visible3 = false'>关闭弹层</za-button>
@@ -62,7 +62,7 @@
       <za-popup
         :visible.sync='visible4'
         direction="right"
-        @popup-close='popupClose'
+        @close='popupClose'
       >
       <div class="popup-box">
         <za-button size="sm" @click='visible4 = false'>关闭弹层</za-button>

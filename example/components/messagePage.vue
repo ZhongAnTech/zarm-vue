@@ -15,8 +15,7 @@
               <span>info</span>
             </za-message>
 
-            <za-message theme='success'>
-              <za-icon type='right-round' class='icon' slot='icon'></za-icon>
+            <za-message theme='success' icon='right-round'>
               <span>success</span>
             </za-message>
 

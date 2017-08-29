@@ -13,6 +13,10 @@
               普通
             </za-cell>
             <za-cell>
+              <za-spinner slot='description' class="rotate360" theme='error'/>
+              主题
+            </za-cell>
+            <za-cell>
               <za-spinner slot='description' class="rotate360" size="lg"/>
               大号
             </za-cell>

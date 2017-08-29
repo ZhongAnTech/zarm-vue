@@ -10,7 +10,6 @@
           <za-panel-body>
             <za-swipe
               direction='left'
-              @change='handleChange'
               @changeStart='handleChangeStart'
               @changeEnd='handleChangeEnd'>
               <za-swipe-item
@@ -33,7 +32,6 @@
           <za-panel-body>
             <za-swipe
               direction='bottom'
-              @change='handleChange'
               @changeStart='handleChangeStart'
               @changeEnd='handleChangeEnd'>
               <za-swipe-item
@@ -58,7 +56,6 @@
               ref='swipe'
               direction='left'
               loop
-              @change='handleChange'
               @changeStart='handleChangeStart'
               @changeEnd='handleChangeEnd'>
               <za-swipe-item
@@ -93,7 +90,6 @@
               direction='left'
               loop
               autoPlay
-              @change='handleChange'
               @changeStart='handleChangeStart'
               @changeEnd='handleChangeEnd'>
               <za-swipe-item
@@ -148,9 +144,6 @@ export default {
     }
   },
   methods: {
-    handleChange(index){
-      console.log(index);
-    },
     handleChangeStart(index){
       console.log(index);
     },

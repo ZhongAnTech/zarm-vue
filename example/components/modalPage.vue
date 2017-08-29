@@ -60,7 +60,7 @@
       </za-modal>
 
       <za-modal :visible.sync='visible2' @close='handleClose' radius :showClose='true'>
-        <div slot='header' style='textAlign:left'>标题</div>
+        <div slot='title' style='textAlign:left'>标题</div>
         模态框内容
       </za-modal>
 
@@ -85,7 +85,7 @@
       </za-modal>
 
       <za-alert :visible.sync='visible6' radius title="警告" message="这里是警告信息" @close='handleClose'></za-alert>
-      <za-confirm :visible.sync='visible7' title="确认信息" message="你确定要这样做吗？" :on-ok='handleOk' :on-cancel='handleCancel'></za-confirm>
+      <za-confirm :visible.sync='visible7' title="确认信息" message="你确定要这样做吗？" :ok='handleOk' :cancel='handleCancel'></za-confirm>
     </main>
     <PageFooter />
   </Container>
@@ -116,7 +116,7 @@ export default {
   },
   methods: {
     handleClose(reason, event){
-      console.log(reason);
+      console.log(reason, event);
     },
     handleOk(){
       alert('ok')

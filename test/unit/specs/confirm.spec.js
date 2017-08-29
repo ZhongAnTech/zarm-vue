@@ -10,7 +10,7 @@ describe('Confirm', () => {
     let result;
     vm = createVue({
       template: `
-        <za-confirm :visible.sync='visible' title="确认信息" message="你确定要这样做吗？" :on-ok='handleOk' :on-cancel='handleCancel'></za-confirm>
+        <za-confirm :visible.sync='visible' title="确认信息" message="你确定要这样做吗？" :ok='handleOk' :cancel='handleCancel'></za-confirm>
       `,
       methods: {
         handleOk(evt) {
