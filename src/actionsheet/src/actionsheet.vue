@@ -1,5 +1,5 @@
 <template lang="html">
-  <za-popup :visible='currentVisible' @popup-close='handlePopupClose'>
+  <za-popup :visible='currentVisible' @close='handlePopupClose'>
     <div :class='{
       [`${prefixCls}`]: true,
       [`shape-${shape}`]: !!shape,
@@ -73,13 +73,13 @@ export default {
   methods: {
     onCancel(event) {
       this.currentVisible = false;
-      this.$emit('cancel', event);
+      this.$emit('cancel', 'action', event);
       this.$emit('update:visible', false);
     },
     handlePopupClose(reason, event) {
       // if clickaway on mask then sync visible
       if (reason === 'clickaway') {
-        this.$emit('cancel', event);
+        this.$emit('cancel', reason, event);
         this.$emit('update:visible', false);
       }
     },
