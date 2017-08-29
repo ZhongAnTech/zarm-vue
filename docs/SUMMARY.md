@@ -20,6 +20,7 @@
     * [弹出框 Popup](components/Popup.md)
     * [滑动操作 SwipeAction](components/SwipeAction.md)
     * [轻提示 Toast](components/Toast.md)
+    * [加载 Loading](components/Loading.md)
 * 数据展示
     * [徽标 Badge](components/Badge.md)
     * [列表项 Cell](components/Cell.md)

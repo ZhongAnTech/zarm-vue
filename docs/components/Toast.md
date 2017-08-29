@@ -36,20 +36,9 @@ methods: {
    <div>指定10秒自动关闭</div>
 </za-toast>
 ```
-###### 加载Loading
-```js
-methods: {
-  request() {
-    const loading = this.$zaLoading()
-    fetch().then(res => {
-      loading.close();
-    })
-  }
-}
-```
 
 
-`zarm-vue 为 Vue.prototype 上添加了全局方法：$zaToast, $zaLoading 因此在 vue instance 内可以采用
+`zarm-vue 为 Vue.prototype 上添加了全局方法：$zaToast 因此在 vue instance 内可以采用
 this.$zaToast(messgae, options) 或 this.$zaToast(options) 的方式调用`。
 
 ### API
