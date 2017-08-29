@@ -32,6 +32,33 @@ describe('Picker', () => {
     });
   });
 
+  it('defaultValue', done => {
+    vm = createVue({
+      template: `
+      <za-picker
+        :visible.sync='visible'
+        v-model='value'
+        :defaultValue='["1"]'
+        :dataSource='data1'/>
+      `,
+      data() {
+        return {
+          value: '',
+          visible: false,
+          data1: [
+            { value: '1', label: '选项一' },
+            { value: '2', label: '选项二' },
+          ],
+        };
+      },
+    }, true);
+    vm.$el.click();
+    vm.$nextTick(() => {
+      vm.value = ['1'];
+      done();
+    });
+  });
+
   it('toggle cancel', done => {
     vm = createVue({
       template: `

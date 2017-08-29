@@ -47,4 +47,34 @@ describe('CascadePicker', () => {
       done();
     });
   });
+
+  it('on ok', done => {
+    let value;
+    vm = createVue({
+      template: `
+      <za-picker
+        :visible.sync='visible'
+        v-model='value'
+        :dataSource='data'
+        @ok='handleOk'/>
+      `,
+      data() {
+        return {
+          value: '',
+          visible: false,
+          data,
+        };
+      },
+      methods: {
+        handleOk(v) {
+          value = v;
+        },
+      },
+    }, true);
+    vm.$el.querySelector('.za-picker-submit').click();
+    vm.$nextTick(() => {
+      expect(value[0].label).to.equal('北京市');
+      done();
+    });
+  });
 });

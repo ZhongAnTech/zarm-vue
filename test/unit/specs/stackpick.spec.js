@@ -49,4 +49,38 @@ describe('StackPicker', () => {
       done();
     });
   });
+  it('on ok', done => {
+    let value;
+    vm = createVue({
+      template: `
+      <za-stack-picker
+        :visible.sync='visible'
+        v-model='value'
+        title="级联选择"
+        placeholder="请选择"
+        :dataSource='data'
+        @ok='handleOk'/>
+      `,
+      data() {
+        return {
+          value: [],
+          visible: false,
+          data,
+        };
+      },
+      methods: {
+        handleOk(v) {
+          value = v;
+        },
+      },
+    }, true);
+    vm.$el.querySelectorAll('.za-picker-stack-column')[0].querySelector('.za-picker-stack-item').click();
+    vm.$nextTick(() => {
+      vm.$el.querySelectorAll('.za-picker-stack-column')[1].querySelector('.za-picker-stack-item').click();
+      vm.$nextTick(() => {
+        expect(value[0].label).to.equal('北京市');
+        done();
+      });
+    });
+  });
 });

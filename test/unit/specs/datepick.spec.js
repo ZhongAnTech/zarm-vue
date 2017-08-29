@@ -125,4 +125,33 @@ describe('DatePicker', () => {
       done();
     });
   });
+
+  it('on ok', done => {
+    let value;
+    vm = createVue({
+      template: `
+      <za-date-picker
+        :visible.sync='visible'
+        v-model='value'
+        mode='datetime'
+        @ok='handleOk'/>
+      `,
+      data() {
+        return {
+          value: '',
+          visible: false,
+        };
+      },
+      methods: {
+        handleOk(v) {
+          value = v;
+        },
+      },
+    }, true);
+    vm.$el.querySelector('.za-picker-submit').click();
+    vm.$nextTick(() => {
+      expect(value).to.equal('2000-01-01 00:00');
+      done();
+    });
+  });
 });
