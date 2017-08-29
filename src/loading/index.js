@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Loading from './src/loading';
+import Directive from './src/directive';
 
 /* istanbul ignore next */
 Loading.install = function (Vue) { // eslint-disable-line
@@ -32,5 +33,7 @@ Loading.root = function () {
   });
   return instance;
 };
+
+Loading.directive = Directive;
 
 export default Loading;

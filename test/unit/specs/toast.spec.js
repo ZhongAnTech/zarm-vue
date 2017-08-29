@@ -122,4 +122,33 @@ describe('Toast', () => {
       }, 100);
     }, 20);
   });
+
+  it('v-za-loading', done => {
+    vm = createVue({
+      template: `
+        <div v-za-loading='isLoading' @click='handleClick'>test</div>
+      `,
+      data() {
+        return {
+          isLoading: false,
+        };
+      },
+      methods: {
+        handleClick() {
+          this.isLoading = true;
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 50);
+        },
+      },
+    }, true);
+    vm.$el.click();
+    setTimeout(() => {
+      expect(document.querySelector('.za-loading-open')).to.exist;
+      setTimeout(() => {
+        expect(document.querySelector('.za-loading-open')).to.not.exist;
+        done();
+      }, 100);
+    }, 20);
+  });
 });

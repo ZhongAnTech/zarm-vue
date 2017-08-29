@@ -45,9 +45,8 @@
       </za-toast>
       <za-toast :visible.sync='visible3' @close='toastClose' :duration='10000'>指定10秒自动关闭</za-toast>
       <za-loading :visible.sync='visible4'></za-loading>
-      <za-button @click='t'>loading</za-button>
     </main>
-    <PageFooter />
+    <PageFooter/>
   </Container>
 </template>
 
@@ -69,17 +68,12 @@ export default {
       visible2: false,
       visible3: false,
       visible4: false,
+      isLoading: false
     }
   },
   methods: {
     toastClose(reason, event){
       console.log(reason, event);
-    },
-    t(){
-      const loading = this.$zaLoading();
-      setTimeout(() => {
-        loading.close()
-      }, 2000)
     }
   },
 };
