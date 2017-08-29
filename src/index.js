@@ -91,6 +91,7 @@ const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-var
   components.map(component => Vue.component(component.name, component));
 
   Vue.prototype.$zaToast = Toast.root;
+  Vue.prototype.$zaLoading = Loading.root;
 };
 
 if (typeof window !== 'undefined' && window.Vue) {

@@ -98,4 +98,28 @@ describe('Toast', () => {
       done();
     });
   });
+
+  it('$zaLoading', done => {
+    vm = createVue({
+      template: `
+        <div @click='handleClick'>test</div>
+      `,
+      methods: {
+        handleClick() {
+          const loading = this.$zaLoading();
+          setTimeout(() => {
+            loading.close();
+          }, 50);
+        },
+      },
+    }, true);
+    vm.$el.click();
+    setTimeout(() => {
+      expect(document.querySelector('.za-loading-open')).to.exist;
+      setTimeout(() => {
+        expect(document.querySelector('.za-loading-open')).to.not.exist;
+        done();
+      }, 100);
+    }, 20);
+  });
 });

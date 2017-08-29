@@ -63,6 +63,3 @@ import 'zarm-vue/zarm-vue.default.css';
 ```bash
 npm run build:theme
 ```
-### 文档
-
-Comming soon...
