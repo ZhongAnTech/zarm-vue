@@ -35,7 +35,7 @@ exports.install = Vue => {
     },
     unbind(el, binding) { // eslint-disable-line
       if (el.domInserted) {
-        document.body.removeChild(el.mask);
+        document.body.removeChild(el.instance.$el);
       }
     },
   });
