@@ -1,7 +1,8 @@
 <template lang="html">
   <za-modal ref='modal' :closeOnClickModal='false' :visible='currentVisible' :radius='radius' :animationDuration='animationDuration' :title='title'>
     <div :class='prefixCls'>
-      {{message}}
+      <template v-if='!$slots.default'>{{message}}</template>
+      <slot></slot>
     </div>
     <template slot='footer'>
       <za-button block bordered @click='handleClose'>{{cancelText}}</za-button>
@@ -48,6 +49,8 @@ export default {
       this.$refs.modal.leave('modal-close', event);
       this.$emit('update:visible', false);
       this.$emit('close', event);
+      // for prototype alert
+      this.currentVisible = false;
     },
   },
   watch: {

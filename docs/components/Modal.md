@@ -53,8 +53,47 @@ methods() {
 
 #### 特定场景
 
-###### 警告框
+###### 警告框 使用全局方法 $zaAlert
+```js
+<div @click='handleClick'></div>
+
+// ...
+handleClick(){
+  this.$zaAlert('警告', {
+    callback: (event) => {
+      console.log(event)
+    }
+  })
+}
+```
+
+或者
+
+```js
+<div @click='handleClick'></div>
+
+// ...
+handleClick(){
+  const h = this.$createElement;
+  // 这里的message可以是VNode
+  const message = h('p', null, [
+    h('span', null, '内容可以是 '),
+    h('i', { style: 'color: teal' }, 'VNode')
+  ]);
+  this.$zaAlert(message, {
+    callback: (event) => {
+      console.log(event)
+    }
+  })
+}
+```
+或者使用 za-alert Component
+
 ```vue
+<za-alert :visible.sync='visible' radius title="警告" message="这里是警告信息" @close='handleClose' />
+
+// 或者
+
 <za-alert :visible.sync='visible' radius title="警告" message="这里是警告信息" @close='handleClose' />
 ```
 
