@@ -37,4 +37,112 @@ describe('Confirm', () => {
       });
     });
   });
+
+  it('$zaConfirm cancel', done => {
+    let result;
+    vm = createVue({
+      template: `
+        <div @click='handleClick'>alert</div>
+      `,
+      methods: {
+        handleClick() {
+          this.$zaConfirm({
+            message: 'test',
+            ok(e) {
+              result = e;
+              this.visible = false;
+            },
+            cancel(e) {
+              result = e;
+              this.visible = false;
+            },
+          });
+        },
+      },
+    }, true);
+    vm.$el.click();
+    setTimeout(() => {
+      expect(document.querySelector('.za-confirm')).to.exsit;
+      document.querySelectorAll('.za-modal .za-button')[0].click();
+      setTimeout(() => {
+        expect(document.querySelector('.za-modal')).to.not.exsit;
+        expect(result).to.exist;
+        document.body.removeChild(document.querySelector('.za-modal'));
+        done();
+      }, 100);
+    }, 20);
+  });
+
+  it('$zaConfirm ok', done => {
+    let result;
+    vm = createVue({
+      template: `
+        <div @click='handleClick'>alert</div>
+      `,
+      methods: {
+        handleClick() {
+          this.$zaConfirm({
+            message: 'test',
+            ok(e) {
+              result = e;
+              this.visible = false;
+            },
+            cancel(e) {
+              result = e;
+              this.visible = false;
+            },
+          });
+        },
+      },
+    }, true);
+    vm.$el.click();
+    setTimeout(() => {
+      expect(document.querySelector('.za-confirm')).to.exsit;
+      document.querySelectorAll('.za-modal .za-button')[1].click();
+      setTimeout(() => {
+        expect(document.querySelector('.za-modal')).to.not.exsit;
+        expect(result).to.exist;
+        document.body.removeChild(document.querySelector('.za-modal'));
+        done();
+      }, 100);
+    }, 20);
+  });
+  it('$zaConfirm with VNode', done => {
+    let result;
+    vm = createVue({
+      template: `
+        <div @click='handleClick'>alert</div>
+      `,
+      methods: {
+        handleClick() {
+          const h = this.$createElement;
+          const message = h('p', null, [
+            h('span', null, '内容可以是 '),
+            h('i', { style: 'color: teal' }, 'VNode'),
+          ]);
+          this.$zaConfirm(message, {
+            ok(e) {
+              result = e;
+              this.visible = false;
+            },
+            cancel(e) {
+              result = e;
+              this.visible = false;
+            },
+          });
+        },
+      },
+    }, true);
+    vm.$el.click();
+    setTimeout(() => {
+      expect(document.querySelector('.za-confirm')).to.exsit;
+      document.querySelectorAll('.za-modal .za-button')[1].click();
+      setTimeout(() => {
+        expect(document.querySelector('.za-modal')).to.not.exsit;
+        expect(result).to.exist;
+        document.body.removeChild(document.querySelector('.za-modal'));
+        done();
+      }, 100);
+    }, 20);
+  });
 });

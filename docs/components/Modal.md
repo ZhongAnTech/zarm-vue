@@ -91,15 +91,41 @@ handleClick(){
 
 ```vue
 <za-alert :visible.sync='visible' radius title="警告" message="这里是警告信息" @close='handleClose' />
-
-// 或者
-
-<za-alert :visible.sync='visible' radius title="警告" message="这里是警告信息" @close='handleClose' />
 ```
 
-###### 确认框
+###### 确认框 使用全局方法 $zaConfirm
+```js
+<div @click='handleClick'></div>
+
+// ...
+handleClick() {
+  const h = this.$createElement;
+  // message 可以是VNode 或者 String
+  const message = h('p', null, [
+    h('span', null, '内容可以是 '),
+    h('i', { style: 'color: teal' }, 'VNode'),
+  ]);
+  // $zaConfirm 参数为 <?message: String, options: Object>
+  this.$zaConfirm({
+    message,
+    ok: function(e) {
+      this.visible = false;
+      this.$zaToast('ok');
+    },
+    cancel: function(e) {
+      this.visible = false;
+      this.$zaToast('closed');
+    },
+  });
+}
+```
+
+注意：这里的 `ok` 和 `cancel` 里的 `this` 指向的是 zaConfirm 单例, 通过设置 this.visible 来开关confirm
+
+或者
+
 ```vue
-<za-confirm :visible.sync='visible' title="确认信息" message="你确定吗？" :ok='handleOk' :cancel='handleCancel' />
+<za-confirm :visible='visible' title="确认信息" message="你确定吗？" :ok='handleOk' :cancel='handleCancel' />
 ```
 
 

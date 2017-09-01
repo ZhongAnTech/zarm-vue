@@ -95,6 +95,7 @@ const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-var
   Vue.prototype.$zaToast = Toast.root;
   Vue.prototype.$zaLoading = Loading.root;
   Vue.prototype.$zaAlert = Alert.root;
+  Vue.prototype.$zaConfirm = Confirm.root;
 };
 
 if (typeof window !== 'undefined' && window.Vue) {

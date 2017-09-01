@@ -1,7 +1,8 @@
 <template lang="html">
   <za-modal ref='modal' :closeOnClickModal='false' :visible='currentVisible' :radius='radius' :animationDuration='animationDuration' :title='title'>
     <div :class='prefixCls'>
-      {{message}}
+      <template v-if='!$slots.default'>{{message}}</template>
+      <slot></slot>
     </div>
     <template slot='footer'>
       <za-button block bordered @click='cancel'>{{cancelText}}</za-button>
@@ -57,7 +58,7 @@ export default {
     },
   },
   watch: {
-    visible(value, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
+    visible(value, oldValue) { // eslint-disable-line
       if (value === this.currentVisible) return;
       this.currentVisible = value;
     },
