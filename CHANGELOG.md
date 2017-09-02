@@ -25,3 +25,8 @@
 - fix input refs bug
 - 新增 $zaToast $zaLoading
 - 新增 v-za-loading 指令
+
+## v0.1.3
+
+- fix $zaLoading unbind bug
+- 新增 $zaAlert $zaConfirm

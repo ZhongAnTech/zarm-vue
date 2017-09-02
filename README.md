@@ -6,7 +6,7 @@
 ![JS gzip size](http://img.badgesize.io/https://unpkg.com/zarm-vue/zarm-vue.umd.js?compression=gzip&label=gzip%20size:%20JS)
 ![CSS gzip size](http://img.badgesize.io/https://unpkg.com/zarm-vue/zarm-vue.default.css?compression=gzip&label=gzip%20size:%20CSS)
 
-  [众安科技zarm移动端组件库](https://github.com/ZhonganTechENG/zarm) **的 Vue.Js版本**
+  [众安科技zarm移动端组件库](https://github.com/ZhonganTechENG/zarm) **的 Vue.js版本**
 
 ### Example 案例
 

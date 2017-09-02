@@ -50,7 +50,6 @@
               <za-button slot='description' size='xs' @click='visible7 = true' theme="warning">开启</za-button>
               确认框 Confirm
             </za-cell>
-            <za-button @click='t'>test</za-button>
           </za-panel-body>
         </za-panel>
 
@@ -124,24 +123,6 @@ export default {
     },
     handleCancel(){
       this.visible7 = false
-    },
-    t() {
-      const h = this.$createElement;
-      const message = h('p', null, [
-        h('span', null, '内容可以是 '),
-        h('i', { style: 'color: teal' }, 'VNode'),
-      ]);
-      this.$zaConfirm({
-        message,
-        ok: function(e) {
-          this.visible = false;
-          this.$zaToast('ok');
-        },
-        cancel: function(e) {
-          this.visible = false;
-          this.$zaToast('closed');
-        },
-      });
     }
   },
 };
