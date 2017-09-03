@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { defaultThemeValidator } from '@/utils/validator';
 import zaIcon from '../../icon';
 
 export default {
@@ -35,9 +36,7 @@ export default {
     },
     theme: {
       type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['default', 'primary', 'info', 'success', 'warning', 'error'].indexOf(v) >= 0;
-      },
+      validator: defaultThemeValidator,
       default: 'primary',
     },
     size: {},

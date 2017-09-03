@@ -1,5 +1,6 @@
 <script>
 // change the name of this component to Tabs (zarm call it Tab)
+import { defaultThemeValidator } from '@/utils/validator';
 import TabNav from './tab-nav';
 import zaSwipe from '../../swipe';
 
@@ -16,9 +17,7 @@ export default {
     },
     theme: {
       type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['default', 'primary', 'info', 'success', 'warning', 'error'].indexOf(v) >= 0;
-      },
+      validator: defaultThemeValidator,
       default: 'primary',
     },
     lineWidth: [String, Number],

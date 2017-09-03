@@ -23,6 +23,7 @@
 <script>
 // necessary when used alone
 import zaSpinner from '@/spinner';
+import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
 
 export default {
   name: 'zaButton',
@@ -36,23 +37,17 @@ export default {
     },
     theme: {
       type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['default', 'primary', 'info', 'success', 'warning', 'error'].indexOf(v) >= 0;
-      },
+      validator: defaultThemeValidator,
       default: 'default',
     },
     size: {
       type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['xl', 'lg', 'sm', 'xs'].indexOf(v) >= 0;
-      },
+      validator: enumGenerator(['xl', 'lg', 'sm', 'xs']),
       default: null,
     },
     shape: {
       type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['radius', 'round', 'circle'].indexOf(v) >= 0;
-      },
+      validator: enumGenerator(['radius', 'round', 'circle']),
       default: null,
     },
     block: {

@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
+
 export default {
   name: 'zaSwitch',
   props: {
@@ -28,16 +30,12 @@ export default {
     },
     theme: {
       type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['default', 'primary', 'info', 'success', 'warning', 'error'].indexOf(v) >= 0;
-      },
+      validator: defaultThemeValidator,
       default: 'primary',
     },
     size: {
       type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['xl', 'lg', 'sm', 'xs'].indexOf(v) >= 0;
-      },
+      validator: enumGenerator(['xl', 'lg', 'sm', 'xs']),
       default: null,
     },
     disabled: {

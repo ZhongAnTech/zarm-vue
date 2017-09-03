@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
 
 const diameter = 100;
 
@@ -24,16 +25,12 @@ export default {
     },
     size: {
       type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['xl', 'lg', 'sm', 'xs'].indexOf(v) >= 0;
-      },
+      validator: enumGenerator(['xl', 'lg', 'sm', 'xs']),
       default: null,
     },
     theme: {
       type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['default', 'primary', 'info', 'success', 'warning', 'error'].indexOf(v) >= 0;
-      },
+      validator: defaultThemeValidator,
       default: 'primary',
     },
     strokeWidth: {

@@ -23,6 +23,7 @@ import zaButton from '@/button';
 import zaIcon from '@/icon';
 import zaCell from '@/cell';
 import Emitter from '@/mixins/emitter';
+import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
 
 export default {
   name: 'zaRadio',
@@ -39,16 +40,12 @@ export default {
     },
     theme: {
       type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['default', 'primary', 'info', 'success', 'warning', 'error'].indexOf(v) >= 0;
-      },
+      validator: defaultThemeValidator,
       default: 'primary',
     },
     type: {
       type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['button', 'cell'].indexOf(v) >= 0;
-      },
+      validator: enumGenerator(['button', 'cell']),
       default: null,
     },
     disabled: {

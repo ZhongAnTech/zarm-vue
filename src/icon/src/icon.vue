@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import { defaultThemeValidator } from '@/utils/validator';
+
 export default {
   name: 'zaIcon',
   props: {
@@ -17,9 +19,7 @@ export default {
     type: String,
     theme: {
       type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['default', 'primary', 'info', 'success', 'warning', 'error'].indexOf(v) >= 0;
-      },
+      validator: defaultThemeValidator,
       default: null,
     },
   },

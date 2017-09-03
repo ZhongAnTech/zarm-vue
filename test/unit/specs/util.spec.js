@@ -1,4 +1,5 @@
 import events from '@/utils/events';
+import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
 
 const div = document.createElement('div');
 let a = 0;
@@ -6,7 +7,7 @@ const callback = () => {
   a += 1;
 };
 
-describe('on', () => {
+describe('utils', () => {
   it('on', done => {
     events.on(div, 'click', callback);
     div.click();
@@ -30,5 +31,13 @@ describe('on', () => {
       expect(a).to.equal(2);
       done();
     });
+  });
+  it('defaultThemeValidator', () => {
+    const theme = defaultThemeValidator('primary');
+    expect(theme).to.equal(true);
+  });
+  it('enumGenerator', () => {
+    const g = enumGenerator(['a', 'b'])('a');
+    expect(g).to.equal(true);
   });
 });

@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
+
 export default {
   name: 'zaRadioGroup',
   props: {
@@ -20,23 +22,17 @@ export default {
     },
     theme: {
       type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['default', 'primary', 'info', 'success', 'warning', 'error'].indexOf(v) >= 0;
-      },
+      validator: defaultThemeValidator,
       default: 'primary',
     },
     type: {
       type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['button', 'cell'].indexOf(v) >= 0;
-      },
+      validator: enumGenerator(['button', 'cell']),
       default: null,
     },
     shape: {
       type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['radius', 'round'].indexOf(v) >= 0;
-      },
+      validator: enumGenerator(['radius', 'round']),
       default: null,
     },
     disabled: {

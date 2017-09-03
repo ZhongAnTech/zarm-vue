@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
 import zaIcon from '../../icon';
 
 export default {
@@ -42,23 +43,17 @@ export default {
     },
     theme: {
       type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['default', 'primary', 'info', 'success', 'warning', 'error'].indexOf(v) >= 0;
-      },
+      validator: defaultThemeValidator,
       default: 'primary',
     },
     size: {
       type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['xl', 'lg', 'sm', 'xs'].indexOf(v) >= 0;
-      },
+      validator: enumGenerator(['xl', 'lg', 'sm', 'xs']),
       default: null,
     },
     shape: {
       type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['radius', 'circle'].indexOf(v) >= 0;
-      },
+      validator: enumGenerator(['radius', 'circle']),
       default: null,
     },
     disabled: {
