@@ -39,6 +39,7 @@ import Progress from '../src/progress';
 import DatePicker from '../src/date-picker';
 import StackPicker from '../src/stack-picker';
 import NoticeBar from '../src/notice-bar';
+import Drag from '../src/drag';
 
 const components = [
   Input,
@@ -82,6 +83,7 @@ const components = [
   DatePicker,
   StackPicker,
   NoticeBar,
+  Drag,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -145,4 +147,5 @@ export default {
   DatePicker,
   StackPicker,
   NoticeBar,
+  Drag,
 };

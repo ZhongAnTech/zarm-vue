@@ -1,9 +1,7 @@
 $prefixCls: za-swipeAction;
 
 .#{$prefixCls} {
-  &-wrap {
-    position: relative;
-  }
+  position: relative;
 
   &-content {
     position: relative;

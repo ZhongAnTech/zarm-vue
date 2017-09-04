@@ -30,6 +30,9 @@
               :right="action1">
               <za-cell>左右都能滑动</za-cell>
             </za-swipe-action>
+            <za-drag>
+              <div @click='() => {}' touchstart='() => {}'>test</div>
+            </za-drag>
           </za-panel-body>
         </za-panel>
       </div>
