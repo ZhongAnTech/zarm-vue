@@ -16,14 +16,16 @@
         <div :class='`${prefixCls}-text`'>{{button.text || ('right' + index)}}</div>
       </div>
     </div>
-    <div
-      :class='`${prefixCls}-content`'
-      ref='content'
-      @touchstart='handleTouchStart'
-      @touchmove='handleTouchMove'
-      @touchend='handleTouchEnd'>
-      <slot></slot>
-    </div>
+    <za-drag
+      :onDragStart='onDragStart'
+      :onDragMove='onDragMove'
+      :onDragEnd='onDragEnd'>
+      <div
+        :class='`${prefixCls}-content`'
+        ref='content'>
+        <slot></slot>
+      </div>
+    </za-drag>
   </div>
   <div v-else :class='`${prefixCls}-wrap`'>
     <div :class='`${prefixCls}-content`'>
@@ -34,9 +36,13 @@
 
 <script>
 import { defaultThemeValidator } from '@/utils/validator';
+import zaDrag from '@/drag';
 
 export default {
   name: 'zaSwipeAction',
+  components: {
+    zaDrag,
+  },
   props: {
     prefixCls: {
       type: String,
@@ -59,7 +65,7 @@ export default {
         return [];
       },
     },
-    moveTimeDuration: {
+    moveTimeSpan: {
       type: Number,
       default: 300,
     },
@@ -70,6 +76,10 @@ export default {
     offset: {
       type: Number,
       default: 10,
+    },
+    duration: {
+      type: Number,
+      default: 300,
     },
     autoClose: {
       type: Boolean,
@@ -84,102 +94,74 @@ export default {
     getCurrentPosition(e) {
       return e.touches[0].pageX;
     },
-    handleTouchStart(e) {
-      // 记录开始touch位置，方便后面计算是否滚动
-      const dragState = this.dragState;
-      const touch = e.touches[0];
+    onDragStart() {
+      if (this.disabled || this.isClosing) {
+        return;
+      }
+      if (this.isOpen) {
+        this.close('close');
+      }
+    },
+    onDragMove(e, { offsetX, offsetY }) {
+      if (this.disabled || this.isClosing) return;
 
-      dragState.startLeft = touch.pageX;
-      dragState.startTop = touch.pageY;
-      dragState.startTopAbsolute = touch.clientY;
+      // 拖动距离达到上限
+      const { offset, offsetLeft } = this;
+      const btnsLeftWidth = this.$refs.left && this.$refs.left.offsetWidth;
+      const btnsRightWidth = this.$refs.right && this.$refs.right.offsetWidth;
+      if (offsetX > 0 && (!btnsLeftWidth || offsetLeft >= btnsLeftWidth + offset)) return false;
+      if (offsetX < 0 && (!btnsRightWidth || offsetLeft <= -btnsRightWidth - offset)) return false;
 
+      // 判断滚屏情况
+      const distanceX = Math.abs(offsetX);
+      const distanceY = Math.abs(offsetY);
+      if (distanceX < 5 || (distanceX >= 5 && distanceY >= 0.3 * distanceX)) return false;
+
+      this.doTransition({ offsetLeft: offsetX, duration: 0 });
+      return true;
+    },
+    onDragEnd(e, { offsetX, startTime }) {
+      e.preventDefault();
       if (this.disabled) {
         return;
       }
-      this.pointStart = this.getCurrentPosition(e);
-      this.pointEnd = this.getCurrentPosition(e);
-      if (this.openedLeft || this.openedRight) {
+      const { duration, moveDistanceRatio, moveTimeSpan } = this;
+      const timeSpan = new Date().getTime() - startTime.getTime();
+      const btnsLeftWidth = this.$refs.left && this.$refs.left.offsetWidth;
+      const btnsRightWidth = this.$refs.right && this.$refs.right.offsetWidth;
+
+      let distanceX = 0;
+      let isOpen = false;
+
+      if ((offsetX / btnsLeftWidth > moveDistanceRatio) ||
+          (offsetX > 0 && timeSpan <= moveTimeSpan)) {
+        distanceX = btnsLeftWidth;
+        isOpen = true;
+      } else if ((offsetX / btnsRightWidth < -moveDistanceRatio) ||
+        (offsetX < 0 && timeSpan <= moveTimeSpan)) {
+        distanceX = -btnsRightWidth;
+        isOpen = true;
+      }
+
+      if (isOpen && !this.isOpen) {
+        // 打开
+        this.open(distanceX);
+      } else if (!isOpen && this.isOpen) {
+        // 关闭
         this.close();
-      }
-    },
-    handleTouchMove(e) {
-      // 验证是否应该滚动页面还是侧滑对应模块
-      const dragState = this.dragState;
-      const touch = e.touches[0];
-      const offsetLeft = touch.pageX - dragState.startLeft;
-      const offsetTop = touch.clientY - dragState.startTopAbsolute;
-
-      const distanceX = Math.abs(offsetLeft);
-      const distanceY = Math.abs(offsetTop);
-
-      if (distanceX < 5 || (distanceX >= 5 && distanceY >= 0.3 * distanceX)) {
-        return;
-      }
-
-      e.preventDefault();
-
-      if (this.disabled) {
-        return;
-      }
-
-      if (this.isClosing) {
-        return;
-      }
-      const { left = [], right = [], offset } = this;
-
-      const pointX = this.getCurrentPosition(e);
-      const posX = pointX - this.pointStart;
-      const btnsLeftWidth = this.$refs.left && this.$refs.left.offsetWidth;
-      const btnsRightWidth = this.$refs.right && this.$refs.right.offsetWidth;
-
-      if (posX < 0 && right.length) {
-        if (posX < -btnsRightWidth - offset) {
-          return;
-        }
-        this.doTransition(Math.min(posX, 0), 0);
-      } else if (posX > 0 && left.length) {
-        if (posX > btnsLeftWidth + offset) {
-          return;
-        }
-        this.doTransition(Math.max(posX, 0), 0);
-      }
-
-      this.pointEnd = pointX;
-    },
-    handleTouchEnd(e) {
-      e.preventDefault();
-      if (this.disabled) {
-        return;
-      }
-      const { left = [], right = [] } = this;
-
-      const posX = (this.pointEnd !== 0) ? this.pointEnd - this.pointStart : 0;
-
-      const btnsLeftWidth = this.$refs.left && this.$refs.left.offsetWidth;
-      const btnsRightWidth = this.$refs.right && this.$refs.right.offsetWidth;
-
-      const leftOpenX = btnsLeftWidth * this.moveDistanceRatio;
-      const rightOpenX = btnsRightWidth * this.moveDistanceRatio;
-
-      const openLeft = posX > leftOpenX;
-      const openRight = posX < -rightOpenX;
-
-      if (openRight && posX < 0 && right.length) {
-        this.open(-btnsRightWidth, 300, false, true);
-      } else if (openLeft && posX > 0 && left.length) {
-        this.open(btnsLeftWidth, 300, true, false);
       } else {
-        this.close('retract');
+        // 还原
+        this.doTransition({ offsetLeft: distanceX, duration });
       }
     },
-    doTransition(offset, duration) {
+    doTransition({ offsetLeft, duration }) {
       const dom = this.$refs.content;
       if (!dom) return;
-
+      // here operate on dom, zarm-react does re-render
       dom.style.webkitTransitionDuration = `${duration}ms`;
       dom.style.transitionDuration = `${duration}ms`;
-      dom.style.webkitTransform = `translate3d(${offset}px, 0, 0)`;
-      dom.style.transform = `translate3d(${offset}px, 0, 0)`;
+      dom.style.webkitTransform = `translate3d(${offsetLeft}px, 0, 0)`;
+      dom.style.transform = `translate3d(${offsetLeft}px, 0, 0)`;
     },
     handleBtnClick(button, event) {
       event.preventDefault();
@@ -190,30 +172,27 @@ export default {
         this.close('autoClose');
       }
     },
-    open(value, duration, openedLeft, openedRight) {
-      if ((!this.openedLeft && openedLeft) ||
-      (!this.openedRight && openedRight)) {
-        this.$emit('open', openedLeft ? 'left' : 'right');
-      }
-
-      this.openedLeft = openedLeft;
-      this.openedRight = openedRight;
-      this.doTransition(value, duration);
+    open(offsetLeft) {
+      const duration = this.duration;
+      this.$emit('open', offsetLeft > 0 ? 'left' : 'right');
+      this.isOpen = true;
+      this.doTransition({ offsetLeft, duration });
     },
-    close(reason, duration = this.moveTimeDuration) {
+    // close(reason, duration = this.moveTimeDuration) {
+    close(reason) {
       this.isClosing = true;
-      if (!this.openedLeft && !this.openedRight) {
-        this.$emit('close', reason);
-      }
-      this.openedLeft = false;
-      this.openedRight = false;
+      const { duration } = this;
+      this.isOpen = false;
+      this.$emit('close', reason);
+
       this.timer = setTimeout(() => {
         this.isClosing = false;
       }, duration);
-      this.doTransition(0, duration);
+
+      this.doTransition({ offsetLeft: 0, duration });
     },
     onTouchAway(e) {
-      if (this.openedLeft || this.openedRight) {
+      if (this.isOpen) {
         const pNode = ((node) => {
           while (node.parentNode && node.parentNode !== document.body) {
             if (node === this.$refs.wrap) {
@@ -231,10 +210,9 @@ export default {
     },
   },
   created() {
-    this.openedLeft = false;
-    this.openedRight = false;
+    this.isOpen = false;
     this.isClosing = false;
-    this.dragState = {};
+    this.offsetLeft = 0;
   },
   mounted() {
     document.body.addEventListener('touchstart', this.onTouchAway);
