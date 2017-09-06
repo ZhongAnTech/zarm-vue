@@ -140,6 +140,7 @@ export default {
       const newCurrentValue = this.resolveProps(param).currentValue;
       if (this.currentValue === newCurrentValue) return;
       this.currentValue = newCurrentValue;
+      this.oldValue = this.currentValue;
     },
   },
   computed: {

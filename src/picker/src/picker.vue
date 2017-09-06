@@ -122,6 +122,7 @@ export default {
     value(val, oldVal) { // eslint-disable-line no-unused-vars
       if (this.currentValue === val) return;
       this.currentValue = isArray(val) ? val : [val];
+      this.oldValue = this.currentValue;
     },
   },
   computed: {
@@ -239,7 +240,8 @@ export default {
     handleChange(value, index) {
       this.currentValue = value;
       this.$emit('change', value, index);
-      this.$emit('input', value);
+      // do not emit input here, just change
+      // this.$emit('input', value);
     },
   },
 };

@@ -145,6 +145,7 @@ export default {
     value(val, oldVal) { // eslint-disable-line no-unused-vars
       if (this.date === val) return;
       this.date = this.isExtendMoment(val);
+      this.oldDate = this.date;
     },
   },
   data() {
@@ -331,7 +332,7 @@ export default {
 
       this.date = newValue;
       this.$emit('change', this.formatFn(newValue), index);
-      this.$emit('input', this.formatFn(newValue), index);
+      // this.$emit('input', this.formatFn(newValue), index);
     },
 
     clipDate(date) {
