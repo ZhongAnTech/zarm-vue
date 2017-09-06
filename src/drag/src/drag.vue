@@ -2,15 +2,15 @@
 export default {
   name: 'zaDrag',
   props: {
-    onDragStart: {
+    dragStart: {
       type: Function,
       default: () => {},
     },
-    onDragMove: {
+    dragMove: {
       type: Function,
       default: () => {},
     },
-    onDragEnd: {
+    dragEnd: {
       type: Function,
       default: () => {},
     },
@@ -27,8 +27,7 @@ export default {
       dragState.startX = touch.pageX;
       dragState.startY = touch.pageY;
       dragState.startTime = new Date();
-
-      this.onDragStart(event, dragState);
+      this.dragStart(event, dragState);
     },
 
     touchmove(event) {
@@ -49,7 +48,7 @@ export default {
         currentY,
       };
 
-      if (!this.onDragMove(event, state)) return; // only if it returns true
+      if (!this.dragMove(event, state)) return; // only if it returns true
 
       this.dragState = state;
     },
@@ -58,7 +57,7 @@ export default {
       const dragState = this.dragState;
       if (!dragState.currentX && !dragState.currentY) return;
 
-      this.onDragEnd(event, dragState);
+      this.dragEnd(event, dragState);
 
       this.dragState = {};
     },
@@ -70,13 +69,12 @@ export default {
     },
   },
   render() {
-    const defaultSlots = this.$slots.default;
+    const defaultSlots = this.$slots.default || [];
     // find the first none-text vnode
     const firstDefaultSlots = defaultSlots.find(s => {
       return s && s.tag;
     });
     if (!firstDefaultSlots) return null;
-    // console.log(firstDefaultSlots); // eslint-disable-line
     if (firstDefaultSlots.componentOptions) {
       firstDefaultSlots.componentOptions.listeners =
         firstDefaultSlots.componentOptions.listeners || {};

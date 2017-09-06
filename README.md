@@ -65,3 +65,8 @@ import 'zarm-vue/zarm-vue.default.css';
 ```bash
 npm run build:theme
 ```
+### Changelog 更新日志
+[CHANGELOG.md](https://github.com/ZhonganTechENG/zarm-vue/blob/master/CHANGELOG.md)
+
+### License
+MIT

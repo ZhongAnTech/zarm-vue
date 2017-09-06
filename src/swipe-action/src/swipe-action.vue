@@ -17,9 +17,9 @@
       </div>
     </div>
     <za-drag
-      :onDragStart='onDragStart'
-      :onDragMove='onDragMove'
-      :onDragEnd='onDragEnd'>
+      :dragStart='onDragStart'
+      :dragMove='onDragMove'
+      :dragEnd='onDragEnd'>
       <div
         :class='`${prefixCls}-content`'
         ref='content'>

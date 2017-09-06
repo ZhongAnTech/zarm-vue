@@ -116,6 +116,8 @@
     "node-sass": "^4.5.3",
     "opn": "^5.1.0",
     "optimize-css-assets-webpack-plugin": "^2.0.0",
+    "phantomjs-polyfill": "^0.0.2",
+    "phantomjs-polyfill-find": "ptim/phantomjs-polyfill-find",
     "phantomjs-prebuilt": "^2.1.14",
     "postcss-loader": "^2.0.6",
     "rimraf": "^2.6.1",

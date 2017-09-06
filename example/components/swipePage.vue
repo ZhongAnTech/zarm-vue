@@ -16,9 +16,7 @@
                 v-for='(i, index) in ITEMS'
                 key='index'>
                 <div class='swipe-item-pic'>
-                  <a :href="i.url">
-                    <img :src="i.img" alt="">
-                  </a>
+                  <img :src="i.img" alt="">
                 </div>
               </za-swipe-item>
             </za-swipe>
@@ -38,9 +36,7 @@
                 v-for='(i, index) in ITEMS'
                 key='index'>
                 <div class='swipe-item-pic'>
-                  <a :href="i.url">
-                    <img :src="i.img" alt="">
-                  </a>
+                  <img :src="i.img" alt="">
                 </div>
               </za-swipe-item>
             </za-swipe>
@@ -62,9 +58,7 @@
                 v-for='(i, index) in ITEMS'
                 key='index'>
                 <div class='swipe-item-pic'>
-                  <a :href="i.url">
-                    <img :src="i.img" alt="">
-                  </a>
+                  <img :src="i.img" alt="">
                 </div>
               </za-swipe-item>
             </za-swipe>
@@ -89,16 +83,12 @@
             <za-swipe
               direction='left'
               loop
-              autoPlay
-              @changeStart='handleChangeStart'
-              @changeEnd='handleChangeEnd'>
+              autoPlay>
               <za-swipe-item
                 v-for='(i, index) in ITEMS'
                 key='index'>
                 <div class='swipe-item-pic'>
-                  <a :href="i.url">
-                    <img :src="i.img" alt="">
-                  </a>
+                  <img :src="i.img" alt="">
                 </div>
               </za-swipe-item>
             </za-swipe>

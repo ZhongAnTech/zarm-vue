@@ -1,17 +1,15 @@
 ## 版本更新日志
 
-## v0.0.5
+## v0.1.3
 
-- 新增Tabs canSwipe属性
+- fix $zaLoading unbind bug
+- 新增 $zaAlert $zaConfirm
 
-## v0.0.9
+## v0.1.2
 
-- 新增NoticeBar
-- default css auto-prefixed
-
-## v0.1.0
-
-- 修复`SwipeAction`组件上下滑动时影响了页面scroll滚动的bug。（[#69](https://github.com/ZhonganTechENG/zarm/pull/67)）
+- fix input refs bug
+- 新增 $zaToast $zaLoading
+- 新增 v-za-loading 指令
 
 ## v0.1.1
 
@@ -20,13 +18,16 @@
 - 简化了 `Cell` 和 `modal` 的组件结构
 - `Input` 新增readonly
 
-## v0.1.2
+## v0.1.0
 
-- fix input refs bug
-- 新增 $zaToast $zaLoading
-- 新增 v-za-loading 指令
+- 修复`SwipeAction`组件上下滑动时影响了页面scroll滚动的bug。（[#69](https://github.com/ZhonganTechENG/zarm/pull/67)）
 
-## v0.1.3
 
-- fix $zaLoading unbind bug
-- 新增 $zaAlert $zaConfirm
+## v0.0.9
+
+- 新增NoticeBar
+- default css auto-prefixed
+
+## v0.0.5
+
+- 新增Tabs canSwipe属性

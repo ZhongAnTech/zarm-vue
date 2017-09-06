@@ -1,6 +1,11 @@
 <script>
+import zaDrag from '@/drag';
+
 export default {
   name: 'zaSwipe',
+  components: {
+    zaDrag,
+  },
   props: {
     prefixCls: {
       type: String,
@@ -87,8 +92,8 @@ export default {
     this.onJumpTo(this.currentActiveIndex);
   },
   created() {
-    this.dragState = {};
-    this.scrolling = false;
+    // this.dragState = {};
+    this.scrolling = false; // is user scrolling page instead of dragging
     this.translateX = 0;
     this.translateY = 0;
     this.moveInterval = null;
@@ -99,16 +104,8 @@ export default {
     this.$refs.swipeItems.removeEventListener('transitionend', this.transitionEnd);
   },
   methods: {
-    handleTouchStart(event) {
-      const dragState = this.dragState;
-      const touch = event.touches[0];
-
+    onDragStart() {
       this.scrolling = false;
-      dragState.startLeft = touch.pageX;
-      dragState.startTop = touch.pageY;
-      dragState.startTopAbsolute = touch.clientY;
-      dragState.startTime = new Date();
-
       // 如果正好在transition动画中，跳转到头尾
       const activeIndex = this.currentActiveIndex;
       const maxLength = this.validSlotLength();
@@ -121,16 +118,9 @@ export default {
       // 暂停自动轮播
       this.pauseAutoPlay();
     },
-    handleTouchMove(event) {
-      const dragState = this.dragState;
-      const touch = event.touches[0];
-
-      const offsetLeft = touch.pageX - dragState.startLeft;
-      const offsetTop = touch.clientY - dragState.startTopAbsolute;
-
-      const distanceX = Math.abs(offsetLeft);
-      const distanceY = Math.abs(offsetTop);
-      // console.log('x: %d, y: %d', distanceX, distanceY);
+    onDragMove(event, { offsetX, offsetY }) {
+      const distanceX = Math.abs(offsetX);
+      const distanceY = Math.abs(offsetY);
 
       if (this.isX &&
         (distanceX < 5 || (distanceX >= 5 && distanceY >= 1.73 * distanceX))) {
@@ -151,46 +141,43 @@ export default {
       if (!this.loop) {
         // 在尾页时禁止拖动
         if (this.isLastIndex()) {
-          if (this.isX && offsetLeft < 0) return;
-          if (!this.isX && offsetTop < 0) return;
+          if (this.isX && offsetX < 0) return;
+          if (!this.isX && offsetY < 0) return;
         }
 
         // 在首页时禁止拖动
         if (this.isFirstIndex()) {
-          if (this.isX && offsetLeft > 0) return;
-          if (!this.isX && offsetTop > 0) return;
+          if (this.isX && offsetX > 0) return;
+          if (!this.isX && offsetY > 0) return;
         }
       }
 
-      dragState.currentLeft = touch.pageX;
-      dragState.currentTop = touch.pageY;
-      dragState.currentTopAbsolute = touch.clientY;
-      this.doTransition({ x: this.translateX + offsetLeft, y: this.translateY + offsetTop }, 0);
+      this.doTransition({ x: this.translateX + offsetX, y: this.translateY + offsetY }, 0);
+      return true;
     },
 
-    handleTouchEnd(event) { // eslint-disable-line no-unused-vars
-      const dragState = this.dragState;
-      if (!dragState.currentLeft && !dragState.currentTop) return;
-      if (this.scrolling) {
+    onDragEnd(event, { offsetX, offsetY, startTime }) { // eslint-disable-line no-unused-vars
+      if (this.scrolling ||
+          (!offsetX && !offsetY)
+        ) {
         this.scrolling = false;
         return;
       }
-      const offsetLeft = dragState.currentLeft - dragState.startLeft;
-      const offsetTop = dragState.currentTop - dragState.startTop;
+
       const dom = this.$refs.swipeItems;
 
       const moveDistanceRatio = this.isX
-        ? Math.abs(offsetLeft / dom.offsetWidth)
-        : Math.abs(offsetTop / dom.offsetHeight);
+        ? Math.abs(offsetX / dom.offsetWidth)
+        : Math.abs(offsetY / dom.offsetHeight);
 
-      const timeSpan = new Date().getTime() - dragState.startTime.getTime();
+      const timeSpan = new Date().getTime() - startTime.getTime();
       let activeIndex = this.currentActiveIndex;
 
       // 判断滑动临界点
       // 1.滑动距离超过0，且滑动距离和父容器长度之比超过moveDistanceRatio
       // 2.滑动释放时间差低于moveTimeSpan =>快速滑动
       if (moveDistanceRatio >= this.moveDistanceRatio || timeSpan <= this.moveTimeSpan) {
-        activeIndex = ((this.isX && offsetLeft > 0) || (!this.isX && offsetTop > 0))
+        activeIndex = ((this.isX && offsetX > 0) || (!this.isX && offsetY > 0))
           ? (this.currentActiveIndex - 1)
           : (this.currentActiveIndex + 1);
       }
@@ -199,7 +186,6 @@ export default {
       this.$emit('change', activeIndex);
       // 恢复自动轮播
       this.startAutoPlay();
-      this.dragState = {};
     },
 
     // 自动轮播开始
@@ -292,22 +278,22 @@ export default {
     },
     // remove text vnode
     validSlotLength() {
-      // swipe tabs use tab-pane to return swipe-item, so it has no elm
-      return this.$slots.default.filter(d => !d.elm || d.elm.nodeType !== 3).length;
+      // swipe use swipe-item as direct children, so it must have componentOptions
+      return this.$slots.default
+        .filter(d => d.componentOptions && d.componentOptions.tag === 'za-swipe-item').length;
     },
   },
   render(h) {
     const {
       prefixCls,
       itemsStyle,
-      handleTouchStart,
-      handleTouchMove,
-      handleTouchEnd,
+      onDragStart,
+      onDragMove,
+      onDragEnd,
       currentActiveIndex,
       paginationStyle,
       loop,
       showPagination,
-      validSlotLength,
     } = this;
 
     function deepCloneVNode(vnode) {
@@ -336,23 +322,26 @@ export default {
           style={paginationStyle} ></li>
       );
     });
+    const validChildren = this.$slots.default.filter(i => !!i.componentOptions);
 
     const firstItem = loop ? deepCloneVNode(this.$slots.default[0]) : null;
     const lastItem = loop ?
-      deepCloneVNode(this.$slots.default[validSlotLength() - 1]) : null;
+      deepCloneVNode(validChildren[validChildren.length - 1]) : null;
     return (
       <div class={prefixCls}>
-        <div
-          ref='swipeItems'
-          class={`${prefixCls}-items`}
-          style={itemsStyle}
-          on-touchstart={handleTouchStart}
-          on-touchmove={handleTouchMove}
-          on-touchend={handleTouchEnd}>
-          {lastItem}
-          {this.$slots.default}
-          {firstItem}
-        </div>
+        <za-drag
+          dragStart={onDragStart}
+          dragMove={onDragMove}
+          dragEnd={onDragEnd}>
+          <div
+            ref='swipeItems'
+            class={`${prefixCls}-items`}
+            style={itemsStyle}>
+            {lastItem}
+            {this.$slots.default}
+            {firstItem}
+          </div>
+        </za-drag>
         {
           showPagination &&
           <div class={`${prefixCls}-pagination`}>
