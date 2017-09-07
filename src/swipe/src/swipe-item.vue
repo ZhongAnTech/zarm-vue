@@ -1,5 +1,5 @@
 <template lang="html">
-  <div :class='`${prefixCls}-item`' class='za-swipe_item'>
+  <div :class='`${prefixCls}-item`'>
     <slot></slot>
   </div>
 </template>

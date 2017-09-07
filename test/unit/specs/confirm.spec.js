@@ -48,13 +48,12 @@ describe('Confirm', () => {
         handleClick() {
           this.$zaConfirm({
             message: 'test',
-            ok(e) {
+            ok: (e) => {
               result = e;
-              this.visible = false;
+              return true;
             },
-            cancel(e) {
+            cancel: (e) => {
               result = e;
-              this.visible = false;
             },
           });
         },
@@ -83,13 +82,12 @@ describe('Confirm', () => {
         handleClick() {
           this.$zaConfirm({
             message: 'test',
-            ok(e) {
+            ok: (e) => {
               result = e;
-              this.visible = false;
+              return true;
             },
-            cancel(e) {
+            cancel: (e) => {
               result = e;
-              this.visible = false;
             },
           });
         },
@@ -107,6 +105,41 @@ describe('Confirm', () => {
       }, 100);
     }, 20);
   });
+
+  it('$zaConfirm click ok not close', done => {
+    let result;
+    vm = createVue({
+      template: `
+        <div @click='handleClick'>alert</div>
+      `,
+      methods: {
+        handleClick() {
+          this.$zaConfirm({
+            message: 'test',
+            ok: (e) => {
+              result = e;
+              return false;
+            },
+            cancel: (e) => {
+              result = e;
+            },
+          });
+        },
+      },
+    }, true);
+    vm.$el.click();
+    setTimeout(() => {
+      expect(document.querySelector('.za-confirm')).to.exsit;
+      document.querySelectorAll('.za-modal .za-button')[1].click();
+      setTimeout(() => {
+        expect(document.querySelector('.za-modal')).to.exsit;
+        expect(result).to.exist;
+        document.body.removeChild(document.querySelector('.za-modal'));
+        done();
+      }, 100);
+    }, 20);
+  });
+
   it('$zaConfirm with VNode', done => {
     let result;
     vm = createVue({
@@ -121,13 +154,12 @@ describe('Confirm', () => {
             h('i', { style: 'color: teal' }, 'VNode'),
           ]);
           this.$zaConfirm(message, {
-            ok(e) {
+            ok: (e) => {
               result = e;
-              this.visible = false;
+              return true;
             },
-            cancel(e) {
+            cancel: (e) => {
               result = e;
-              this.visible = false;
             },
           });
         },

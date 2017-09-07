@@ -9,6 +9,7 @@ Confirm.install = function (Vue) { // eslint-disable-line
 
 let instance;
 const ConfirmConstructor = Vue.extend(Confirm);
+const noop = () => true;
 
 const initInstance = () => {
   instance = new ConfirmConstructor({
@@ -39,12 +40,23 @@ Confirm.root = function (message, options) {
     delete instance.$slots.default;
   }
   document.body.appendChild(instance.$el);
-  if (typeof instance.ok === 'function') {
-    instance.ok = instance.ok.bind(instance);
-  }
-  if (typeof instance.cancel === 'function') {
-    instance.cancel = instance.cancel.bind(instance);
-  }
+
+  const ok = instance.ok || noop;
+  const cancel = instance.cancel || noop;
+
+  instance.ok = (evt) => {
+    const shouldClose = ok(evt);
+    if (shouldClose) {
+      instance.visible = false;
+      instance.ok = noop;
+    }
+  };
+  instance.cancel = (evt) => {
+    instance.visible = false;
+    cancel(evt);
+    instance.cancel = noop;
+  };
+
   Vue.nextTick(() => {
     instance.visible = true;
   });

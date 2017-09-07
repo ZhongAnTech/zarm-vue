@@ -108,21 +108,20 @@ handleClick() {
   // $zaConfirm 参数为 <?message: String, options: Object>
   this.$zaConfirm({
     message,
-    ok: function(e) {
-      this.visible = false;
+    ok: (e) => {
       this.$zaToast('ok');
+      return true; // 此处返回true, 会关闭confirm
     },
-    cancel: function(e) {
-      this.visible = false;
+    cancel: (e) => {
       this.$zaToast('closed');
     },
   });
 }
 ```
 
-注意：这里的 `ok` 和 `cancel` 里的 `this` 指向的是 zaConfirm 单例, 通过设置 this.visible 来开关confirm
+注意：这里的 `ok` 和 `cancel` 需要使用Arrow Function, 这样内部的this才会指向当前的vue实例, 另外，ok 函数只有在返回 true 的时候会关闭 Confirm, 而 cancel 会自动关闭 Confirm
 
-或者
+或者使用模板
 
 ```vue
 <za-confirm :visible='visible' title="确认信息" message="你确定吗？" :ok='handleOk' :cancel='handleCancel' />
