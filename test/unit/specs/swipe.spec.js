@@ -9,15 +9,14 @@ describe('Swipe', () => {
   it('create', done => {
     vm = createVue({
       template: `
-      <za-swipe
-        direction='left'>
-        <za-swipe-item
+      <za-swipe direction='left'>
+        <za-swipe-item>
           <div>swipe1</div>
         </za-swipe-item>
-        <za-swipe-item
+        <za-swipe-item>
           <div>swipe2</div>
         </za-swipe-item>
-        <za-swipe-item
+        <za-swipe-item>
           <div>swipe3</div>
         </za-swipe-item>
       </za-swipe>
@@ -30,32 +29,31 @@ describe('Swipe', () => {
       done();
     });
   });
-  // phantomJs do not recognize componentOptions
-  // it('loop', done => {
-  //   vm = createVue({
-  //     template: `
-  //     <za-swipe
-  //       loop
-  //       direction='left'>
-  //       <za-swipe-item
-  //         <div>swipe1</div>
-  //       </za-swipe-item>
-  //       <za-swipe-item
-  //         <div>swipe2</div>
-  //       </za-swipe-item>
-  //       <za-swipe-item
-  //         <div>swipe3</div>
-  //       </za-swipe-item>
-  //     </za-swipe>
-  //     `,
-  //   }, true);
-  //
-  //   vm.$nextTick(() => {
-  //     expect(
-  //       vm.$el.querySelector('.za-swipe-items').children.length).to.equal(5);
-  //     done();
-  //   });
-  // });
+
+  it('loop', done => {
+    vm = createVue({
+      template: `
+      <za-swipe
+        loop
+        direction='left'>
+        <za-swipe-item>
+          <div>swipe1</div>
+        </za-swipe-item>
+        <za-swipe-item>
+          <div>swipe2</div>
+        </za-swipe-item>
+        <za-swipe-item>
+          <div>swipe3</div>
+        </za-swipe-item>
+      </za-swipe>
+      `,
+    }, true);
+    vm.$nextTick(() => {
+      expect(
+        vm.$el.querySelector('.za-swipe-items').children.length).to.equal(5);
+      done();
+    });
+  });
 
   it('autoPlay', done => {
     vm = createVue({
@@ -64,13 +62,13 @@ describe('Swipe', () => {
           :autoPlayIntervalTime='50'
           autoPlay
           direction='left'>
-          <za-swipe-item
+          <za-swipe-item>
             <div>swipe1</div>
           </za-swipe-item>
-          <za-swipe-item
+          <za-swipe-item>
             <div>swipe2</div>
           </za-swipe-item>
-          <za-swipe-item
+          <za-swipe-item>
             <div>swipe3</div>
           </za-swipe-item>
         </za-swipe>
@@ -97,13 +95,13 @@ describe('Swipe', () => {
         @change='handleChange'
         @changeStart='handleChangeStart'
         @changeEnd='handleChangeEnd'>
-        <za-swipe-item
+        <za-swipe-item>
           <div>swipe1</div>
         </za-swipe-item>
-        <za-swipe-item
+        <za-swipe-item>
           <div>swipe2</div>
         </za-swipe-item>
-        <za-swipe-item
+        <za-swipe-item>
           <div>swipe3</div>
         </za-swipe-item>
       </za-swipe>
@@ -124,8 +122,13 @@ describe('Swipe', () => {
     swipe.onJumpTo(1);
     setTimeout(() => {
       expect(result).to.equal(1);
+      expect(swipe.currentActiveIndex).to.equal(1);
       swipe.onSlideTo(2);
-      done();
+      setTimeout(() => {
+        expect(result).to.equal(2);
+        expect(swipe.currentActiveIndex).to.equal(2);
+        done();
+      }, 350);
     }, 60);
   });
 });

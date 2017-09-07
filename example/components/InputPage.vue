@@ -28,7 +28,6 @@
             <za-cell title='多行文本'>
               <za-input autosize v-model='v3' type="textarea" placeholder="this is a autosize textarea"></za-input>
             </za-cell>
-            <za-button @click='handleClick'>test</za-button>
           </za-panel-body>
         </za-panel>
 
@@ -95,9 +94,6 @@ export default {
     focus() {
       this.$refs.inputFirst.focus()
     },
-    handleClick(){
-      this.v3 = 'sda\ndasd\nddasdsda\ndasd';
-    }
   },
 };
 </script>

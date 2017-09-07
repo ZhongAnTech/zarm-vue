@@ -278,9 +278,12 @@ export default {
     },
     // remove text vnode
     validSlotLength() {
-      // swipe use swipe-item as direct children, so it must have componentOptions
+      // swipe use swipe-item as direct children
+      return this.validSlots().length;
+    },
+    validSlots() {
       return this.$slots.default
-        .filter(d => d.componentOptions && d.componentOptions.tag === 'za-swipe-item').length;
+        .filter(d => d.componentOptions && d.componentOptions.tag === 'za-swipe-item');
     },
   },
   render(h) {
@@ -294,6 +297,7 @@ export default {
       paginationStyle,
       loop,
       showPagination,
+      validSlots,
     } = this;
 
     function deepCloneVNode(vnode) {
@@ -322,7 +326,7 @@ export default {
           style={paginationStyle} ></li>
       );
     });
-    const validChildren = this.$slots.default.filter(i => !!i.componentOptions);
+    const validChildren = validSlots();
 
     const firstItem = loop ? deepCloneVNode(this.$slots.default[0]) : null;
     const lastItem = loop ?
