@@ -165,5 +165,12 @@ export default new Router({
         mRender: () => import('../components/noticeBarPage.vue')
       },
     },
+    {
+      path: '/panel',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/panelPage.vue')
+      },
+    },
   ],
 });

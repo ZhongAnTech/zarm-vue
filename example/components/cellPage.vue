@@ -4,18 +4,14 @@
     <main>
       <div>
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>普通列表项</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="普通列表项"/>
           <za-panel-body>
             <za-cell title='标题文字'></za-cell>
           </za-panel-body>
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>带描述的列表项</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="带描述的列表项"/>
           <za-panel-body>
             <za-cell title='标题文字' description='描述文字' />
             <za-cell title='标题文字'>
@@ -25,9 +21,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>带图标、描述的列表项</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="带图标、描述的列表项"/>
           <za-panel-body>
             <za-cell title='标题文字'>
               <za-icon type='right' slot='icon'/>
@@ -41,9 +35,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>带跳转的列表项</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="带跳转的列表项"/>
           <za-panel-body>
             <za-cell isLink @click='() => {}'>标题文字</za-cell>
             <za-cell isLink @click='() => {}'>标题文字</za-cell>
@@ -51,9 +43,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>带描述、箭头、跳转的列表项</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="带描述、箭头、跳转的列表项" />
           <za-panel-body>
             <za-cell isLink title='标题文字' hasArrow @click='() => {}'>
               <div slot='description'>描述文字</div>
@@ -65,9 +55,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>带图标、描述、箭头、跳转的列表项</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="带图标、描述、箭头、跳转的列表项"/>
           <za-panel-body>
             <za-cell isLink title='标题文字' hasArrow @click='() => {}'>
               <div slot='description'>描述文字</div>
@@ -89,9 +77,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>提示信息</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title='提示信息'/>
           <za-panel-body>
             <za-cell title='标题'>
               <za-message theme='error' slot='help'>

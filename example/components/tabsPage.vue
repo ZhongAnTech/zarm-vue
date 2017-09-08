@@ -4,9 +4,7 @@
     <main>
       <div>
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>基本</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="基本"/>
           <za-panel-body>
             <za-tabs v-model="activeName" @change="handleClick">
               <za-tab-pane label='用户管理' name='first'>
@@ -23,9 +21,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>可滑动</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="可滑动"/>
           <za-panel-body>
             <za-tabs v-model="activeNameSwipe" @change="handleClick" canSwipe>
               <za-tab-pane label='选项卡1' name='first'>
@@ -42,9 +38,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>多主题</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="多主题"/>
           <za-panel-body>
             <za-tabs theme='info' v-model="activeName2" @change="handleClick">
               <za-tab-pane label='用户管理' name='first' />
@@ -70,9 +64,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>联动</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="联动"/>
           <za-panel-body>
             <za-tabs v-model="activeName6" @change="handleClick2">
               <za-tab-pane label='用户管理' name='first'>
@@ -100,9 +92,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>指定默认选项</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="指定默认选项"/>
           <za-panel-body>
             <za-tabs v-model="activeName8" @change="handleClick">
               <za-tab-pane label='用户管理' name='first'>
@@ -119,9 +109,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>指定线条宽度</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="指定线条宽度"/>
           <za-panel-body>
             <za-tabs v-model="activeName9" @change="handleClick" :lineWidth='60'>
               <za-tab-pane label='用户管理' name='first'>
@@ -138,9 +126,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>禁用指定选项</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="禁用指定选项"/>
           <za-panel-body>
             <za-tabs v-model="activeName0" @change="handleClick">
               <za-tab-pane label='用户管理' name='first'>

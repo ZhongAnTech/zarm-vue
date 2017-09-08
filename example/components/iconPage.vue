@@ -4,9 +4,7 @@
     <main>
       <div>
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>基本</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="基本"/>
           <za-panel-body>
             <div class="grid">
               <div v-for='(i, index) in ICONS' class="grid-column" key={index}>

@@ -2,10 +2,8 @@ import Input from '../src/input';
 import Alert from '../src/alert';
 import Panel from '../src/panel';
 import PanelHeader from '../src/panel-header';
-import PanelTitle from '../src/panel-title';
 import PanelBody from '../src/panel-body';
 import PanelFooter from '../src/panel-footer';
-import PanelMore from '../src/panel-more';
 import Cell from '../src/cell';
 import Checkbox from '../src/checkbox';
 import CheckboxGroup from '../src/checkbox-group';
@@ -46,10 +44,8 @@ const components = [
   Alert,
   Panel,
   PanelHeader,
-  PanelTitle,
   PanelBody,
   PanelFooter,
-  PanelMore,
   Cell,
   Checkbox,
   CheckboxGroup,
@@ -110,10 +106,8 @@ export default {
   Alert,
   Panel,
   PanelHeader,
-  PanelTitle,
   PanelBody,
   PanelFooter,
-  PanelMore,
   Cell,
   Checkbox,
   CheckboxGroup,

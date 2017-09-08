@@ -4,9 +4,7 @@
     <main>
       <div>
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>普通</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="普通"/>
           <za-panel-body>
             <za-cell>
               <za-checkbox v-model='v1' @change='handleChange'>单独使用</za-checkbox>
@@ -21,9 +19,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>按钮样式</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="按钮样式"/>
           <za-panel-body>
             <za-cell>
               <za-checkbox-group
@@ -93,9 +89,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>块级样式</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="块级样式"/>
           <za-panel-body style='padding:10px'>
             <za-checkbox-group
               v-model='checkboxGroupCompact2'
@@ -110,9 +104,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>列表样式</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="列表样式"/>
           <za-panel-body>
             <za-checkbox-group
               v-model='checkboxGroup7'
@@ -124,9 +116,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>列表样式禁用状态</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="列表样式禁用状态"/>
           <za-panel-body>
             <za-checkbox-group
               v-model='checkboxGroup8'

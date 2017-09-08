@@ -4,9 +4,7 @@
     <main>
       <div>
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>基本</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="基本"/>
           <za-panel-body>
             <za-cell title="单列">
               <za-picker
@@ -77,9 +75,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>城市选择器</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="城市选择器"/>
           <za-panel-body>
             <za-cell title="省市选择">
               <za-picker
@@ -103,9 +99,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>日期选择器</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="日期选择器"/>
           <za-panel-body>
             <za-cell title="年份选择">
               <za-date-picker
@@ -177,9 +171,7 @@
             </za-cell>
 
             <za-panel>
-              <za-panel-header>
-                <za-panel-title>层叠式选择器</za-panel-title>
-              </za-panel-header>
+              <za-panel-header title="层叠式选择器"/>
               <za-panel-body>
                 <za-cell title="级联选择">
                   <za-stack-picker

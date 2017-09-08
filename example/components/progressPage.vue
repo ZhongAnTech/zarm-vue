@@ -17,9 +17,7 @@
       </div>
 
       <za-panel>
-        <za-panel-header>
-          <za-panel-title>基本</za-panel-title>
-        </za-panel-header>
+        <za-panel-header title="基本"/>
         <za-panel-body>
             <za-cell title='进度'>
               <za-stepper

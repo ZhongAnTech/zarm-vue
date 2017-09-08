@@ -4,9 +4,7 @@
     <main>
       <div>
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>点击一次选择单张</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="点击一次选择单张"/>
           <za-panel-body>
             <div class="uploader-wrapper">
               <za-badge sup v-for= '(i, index) in files' class="uploader-item" shape='circle' :key='index' @click='remove(index)'>
@@ -28,9 +26,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>点击一次选择多张</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="点击一次选择多张"/>
           <za-panel-body>
             <div class="uploader-wrapper">
               <za-badge sup v-for= '(i, index) in fileList' class="uploader-item" shape='circle' :key='index' @click='remove2(index)'>

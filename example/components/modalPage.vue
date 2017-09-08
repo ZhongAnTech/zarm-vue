@@ -4,9 +4,7 @@
     <main>
       <div>
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>基本</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="基本"/>
           <za-panel-body>
             <za-cell>
               <za-button slot='description' size='xs' @click='visible1 = true'>开启</za-button>
@@ -37,9 +35,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>特定场景</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="特定场景"/>
           <za-panel-body>
             <za-cell>
               <za-button slot='description' size='xs' @click='visible6 = true' theme="warning">开启</za-button>

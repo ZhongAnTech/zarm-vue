@@ -26,6 +26,7 @@
     * [列表项 Cell](components/Cell.md)
     * [图标 Icon](components/Icon.md)
     * [消息 Message](components/Message.md)
+    * [面板 Panel](components/Panel.md)
     * [通告栏 NoticeBar](components/NoticeBar.md)
     * [进度条 Progress](components/Progress.md)
     * [指示器 Spinner](components/Spinner.md)

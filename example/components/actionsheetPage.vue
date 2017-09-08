@@ -4,8 +4,7 @@
     <main>
       <div>
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>基本</za-panel-title>
+          <za-panel-header title="基本">
           </za-panel-header>
           <za-panel-body>
             <za-cell>

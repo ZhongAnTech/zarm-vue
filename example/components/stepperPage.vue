@@ -4,9 +4,7 @@
     <main>
       <div>
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>基本</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="基本"/>
           <za-panel-body>
             <za-cell title="普通">
               <za-stepper slot='description' v-model='stepper1' @change='handleChange'></za-stepper>
@@ -27,9 +25,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>多形状</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="多形状"/>
           <za-panel-body>
             <za-cell title="圆角">
               <za-stepper slot='description' v-model='stepper6' @change='handleChange' shape="radius"></za-stepper>

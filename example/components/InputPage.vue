@@ -4,9 +4,7 @@
     <main>
       <div>
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>普通</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="普通"/>
           <za-panel-body>
             <za-cell title='单行文本'>
               <za-input ref='inputFirst' v-model='v1' type="text" placeholder="type is text" @change='handleChange'></za-input>
@@ -21,9 +19,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>高度自适应</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="高度自适应"/>
           <za-panel-body>
             <za-cell title='多行文本'>
               <za-input autosize v-model='v3' type="textarea" placeholder="this is a autosize textarea"></za-input>
@@ -32,9 +28,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>无标签栏</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="无标签栏"/>
           <za-panel-body>
             <za-cell>
               <za-input type="text" placeholder="标题" @change='handleChange3'/>
@@ -46,9 +40,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>显示输入字数</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="显示输入字数"/>
           <za-panel-body>
             <za-cell>
               <za-input autosize showLength type="textarea" rows="4" maxLength="200" placeholder="摘要" v-model='v5'></za-input>

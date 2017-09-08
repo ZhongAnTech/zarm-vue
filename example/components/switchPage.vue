@@ -4,9 +4,7 @@
     <main>
       <div>
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>基本</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="基本"/>
           <za-panel-body>
             <za-cell>
               <za-switch slot='description' v-model='switch1' @change='handleChange'></za-switch>
@@ -28,9 +26,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>受控开关</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="受控开关"/>
           <za-panel-body>
             <za-cell>
               <za-switch slot='description' v-model='switch5' @change='handleChange2'></za-switch>

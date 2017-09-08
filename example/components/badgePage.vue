@@ -4,8 +4,7 @@
     <main>
       <div>
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>基本</za-panel-title>
+          <za-panel-header title="基本">
           </za-panel-header>
           <za-panel-body>
             <za-cell hasArrow title="点状">
@@ -27,8 +26,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>上标位置</za-panel-title>
+          <za-panel-header title='上标位置'>
           </za-panel-header>
           <za-panel-body class="custom-panel">
             <div class="box">

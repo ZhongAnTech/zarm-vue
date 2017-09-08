@@ -4,9 +4,7 @@
     <main>
       <div>
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>基本</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="基本"/>
           <za-panel-body>
             <za-swipe
               direction='left'
@@ -24,9 +22,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>纵向</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="纵向"/>
           <za-panel-body>
             <za-swipe
               direction='bottom'
@@ -44,9 +40,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>循环轮播</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="循环轮播"/>
           <za-panel-body>
             <za-swipe
               ref='swipe'
@@ -76,9 +70,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>自动循环轮播</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="自动循环轮播"/>
           <za-panel-body>
             <za-swipe
               direction='left'

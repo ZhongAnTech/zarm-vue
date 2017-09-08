@@ -8,9 +8,7 @@
     </header>
     <main>
       <za-panel>
-        <za-panel-header>
-          <za-panel-title>表单组件</za-panel-title>
-        </za-panel-header>
+        <za-panel-header title="表单组件"/>
         <za-panel-body>
           <za-cell hasArrow @click="$router.push('/checkbox')">
             复选框 Checkbox
@@ -38,9 +36,7 @@
       </za-panel>
 
       <za-panel>
-        <za-panel-header>
-          <za-panel-title>操作反馈</za-panel-title>
-        </za-panel-header>
+        <za-panel-header title="操作反馈"/>
         <za-panel-body>
           <za-cell hasArrow @click="$router.push('/actionsheet')">
             动作面板 ActionSheet
@@ -64,9 +60,7 @@
       </za-panel>
 
       <za-panel>
-        <za-panel-header>
-          <za-panel-title>数据展示</za-panel-title>
-        </za-panel-header>
+        <za-panel-header title="数据展示"/>
         <za-panel-body>
           <za-cell hasArrow @click="$router.push('/badge')">
             徽标 Badge
@@ -82,6 +76,9 @@
           </za-cell>
           <za-cell hasArrow @click="$router.push('/noticebar')">
             通知栏 NoticeBar
+          </za-cell>
+          <za-cell hasArrow @click="$router.push('/panel')">
+            面板 Panel
           </za-cell>
           <za-cell hasArrow @click="$router.push('/progress')">
             进度条 Progress

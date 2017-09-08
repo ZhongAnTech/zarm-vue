@@ -4,9 +4,7 @@
     <main>
       <div>
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>提示信息</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="提示信息"/>
           <za-panel-body>
             <za-cell>
               <za-button size='xs' theme='error' slot='description' @click='visible1 = true'>开启</za-button>
@@ -24,9 +22,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>加载中</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="加载中"/>
           <za-panel-body>
             <za-cell>
               <za-button size='xs' slot='description' @click='visible4 = true'>开启</za-button>

@@ -4,9 +4,7 @@
     <main>
       <div>
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>基本</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="基本"/>
           <za-panel-body>
             <za-notice-bar hasArrow @click='handleClick'>带图标，带右侧箭头的链接样式</za-notice-bar>
             <!-- 也可以不绑定visible -->

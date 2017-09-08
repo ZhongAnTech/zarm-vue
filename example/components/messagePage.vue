@@ -4,9 +4,7 @@
     <main>
       <div>
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>基本</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="基本"/>
           <za-panel-body>
             <za-message>primary</za-message>
 
@@ -33,9 +31,7 @@
         </za-panel>
 
         <za-panel>
-          <za-panel-header>
-            <za-panel-title>可操作</za-panel-title>
-          </za-panel-header>
+          <za-panel-header title="可操作"/>
           <za-panel-body>
             <za-message theme='warning' hasArrow @click='handleClick'>链接样式的</za-message>
             <!-- 也可以不绑定visible -->
