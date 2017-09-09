@@ -85,15 +85,6 @@ data () {
 </za-checkbox-group>
 ```
 
-#### compact样式
-```vue
-<za-checkbox-group v-model='checkboxGroup' block compact>
-  <za-checkbox label="a">a</za-checkbox>
-  <za-checkbox label="b">b</za-checkbox>
-  <za-checkbox label="c">c</za-checkbox>
-</za-checkbox-group>
-```
-
 #### 列表样式
 
 ###### 普通
@@ -132,7 +123,7 @@ data () {
 #### Checkbox Events
 | 事件名称 | 说明 | 回调参数 |
 | :--- | :--- | :--- |
-| change | 当绑定值变化时触发的事件 | event 事件对象 |
+| change | 当绑定值变化时触发的事件 | 1.选中的值列表，2.event 事件对象 |
 
 
 

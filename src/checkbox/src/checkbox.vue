@@ -1,29 +1,33 @@
 <template lang="html">
-  <za-cell v-if='checkboxType === "cell"' :disabled='checkboxDisabled'>
-    <za-icon slot='description' v-if='isChecked' type="right" :theme='checkboxDisabled ? null : theme'></za-icon>
-    <input type="checkbox" :class='`${prefixCls}-input`' :disabled='checkboxDisabled' :value='label' v-model='model' @change='onValueChange' />
-    <slot></slot>
+  <za-cell v-if='checkboxType === "cell"' :disabled='checkboxDisabled' @click='handleClick' isLink>
+    <div :class='cls'>
+      <div :class='`${prefixCls}-wrapper`'>
+        <span :class='`${prefixCls}-inner`'></span>
+        <span :class='`${prefixCls}-text`'>
+          <slot></slot>
+        </span>
+        <input type="checkbox" :class='`${prefixCls}-input`' :disabled='checkboxDisabled' :value='label' v-model='model'/>
+      </div>
+    </div>
   </za-cell>
-  <za-button :class='{
-    [`${prefixCls}`]: true,
-    checked: isChecked,
-    block: isBlock,
-    disabled: checkboxDisabled,
-    }' v-else-if='checkboxType === "button"' :theme='theme' size='xs' :block='block' :disabled='checkboxDisabled' :bordered='!isChecked'>
+  <za-button
+    :class='cls'
+    v-else-if='checkboxType === "button"'
+    :theme='theme'
+    size='xs'
+    :block='block || isBlock'
+    :disabled='checkboxDisabled'
+    :bordered='!isChecked'>
     <input type="checkbox" :class='`${prefixCls}-input`' :disabled='checkboxDisabled' :value='label' v-model='model' @change='onValueChange' />
     <slot></slot>
   </za-button>
-  <div v-else :class='{
-    [`${prefixCls}`]: true,
-    checked: isChecked,
-    disabled : checkboxDisabled,
-    }' >
+  <div :class='cls' v-else>
     <div :class='`${prefixCls}-wrapper`'>
-      <span :class='`${prefixCls}-inner`' />
+      <span :class='`${prefixCls}-inner`'></span>
       <span :class='`${prefixCls}-text`'>
         <slot></slot>
       </span>
-      <input type="checkbox" :class='`${prefixCls}-input`' :disabled='checkboxDisabled' :value='label' v-model='model' @change='onValueChange' />
+      <input type="checkbox" :class='`${prefixCls}-input`' :disabled='checkboxDisabled' :value='label' v-model='model' @change='onValueChange'/>
     </div>
   </div>
 </template>
@@ -31,7 +35,6 @@
 <script>
 // necessary when used alone
 import zaButton from '@/button';
-import zaIcon from '@/icon';
 import zaCell from '@/cell';
 import Emitter from '@/mixins/emitter';
 import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
@@ -41,7 +44,6 @@ export default {
   mixins: [Emitter],
   components: {
     zaButton,
-    zaIcon,
     zaCell,
   },
   props: {
@@ -124,14 +126,42 @@ export default {
     isBlock() {
       return this.isGroup ? this._checkboxGroup.block : this.block;
     },
+    cls() {
+      const { prefixCls, theme, shape, size, checkboxDisabled, isChecked } = this;
+      return {
+        [`${prefixCls}`]: true,
+        [`theme-${theme}`]: !!theme,
+        [`shape-${shape}`]: !!shape,
+        [`size-${size}`]: !!size,
+        checked: !!isChecked,
+        disabled: !!checkboxDisabled,
+      };
+    },
   },
   methods: {
-    onValueChange() {
-      this.$emit('change', event);
+    onValueChange(event) {
+      // first emit('input') to make the model up to date
+      this.$nextTick(_ => { // eslint-disable-line no-unused-vars
+        if (this.isGroup) {
+          this.dispatch('zaCheckboxGroup', 'change', [[...this.model], event]);
+        } else {
+          this.$emit('change', this.model, event);
+        }
+      });
+    },
+    handleClick(event) {
+      if (this.checkboxDisabled) return;
       if (this.isGroup) {
-        this.$nextTick(_ => { // eslint-disable-line no-unused-vars
-          this.dispatch('zaCheckboxGroup', 'change', [event]);
-        });
+        const index = this.model.indexOf(this.label);
+        if (index >= 0) {
+          this.model.splice(index, 1);
+        } else {
+          this.model.push(this.label);
+        }
+        this.onValueChange(event);
+      } else {
+        this.model = !this.model;
+        this.onValueChange(event);
       }
     },
   },

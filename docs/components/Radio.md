@@ -24,7 +24,8 @@ data() {
 
 ###### 指定默认值
 ```vue
-<za-radio-group v-model='radio'>
+// 指定 button 外形：type='button'
+<za-radio-group v-model='radio' type='button'>
   <za-radio v-for='(city, index) in cities' :label='city' :key="city">{{city}}</za-radio>
 </za-radio-group>
 
@@ -39,7 +40,7 @@ data() {
 
 ###### 禁用指定项
 ```vue
-<za-radio-group v-model='radio'>
+<za-radio-group v-model='radio' type='button'>
   <za-radio v-for='(city, index) in cities' :label='city' :key="city" :disabled='index === 1'>{{city}}</za-radio>
 </za-radio-group>
 
@@ -54,7 +55,7 @@ data() {
 
 ###### 圆角
 ```vue
-<za-radio-group v-model='radio' shape="radius">
+<za-radio-group v-model='radio' shape="radius" type='button'>
   <za-radio v-for='(city, index) in cities' :label='city' :key="city">{{city}}</za-radio>
 </za-radio-group>
 
@@ -69,7 +70,7 @@ data() {
 
 ###### 椭圆角
 ```vue
-<za-radio-group v-model='radio' shape="round">
+<za-radio-group v-model='radio' shape="round" type='button'>
   <za-radio v-for='(city, index) in cities' :label='city' :key="city">{{city}}</za-radio>
 </za-radio-group>
 
@@ -84,7 +85,7 @@ data() {
 
 #### 块级样式
 ```vue
-<za-radio-group v-model='radio' block compact shape="radius">
+<za-radio-group v-model='radio' block compact shape="radius" type='button'>
   <za-radio v-for='(city, index) in cities' :label='city' :key="city">{{city}}</za-radio>
 </za-radio-group>
 
@@ -101,6 +102,7 @@ data() {
 
 ###### 普通
 ```vue
+// 列表需指定 type="cell"
 <za-radio-group v-model='radio' type="cell">
   <za-radio v-for='(city, index) in cities' :label='city' :key="city">{{city}}</za-radio>
 </za-radio-group>
@@ -137,9 +139,6 @@ data() {
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-radio | | 类名前缀 |
-| theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
-| type | string | | 'button', 'cell' | 显示类型 |
-| value | string, number | | | 值 |
 | disabled | bool | false | | 是否禁用 |
 
 #### Radio Group Attributes

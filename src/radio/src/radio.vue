@@ -1,20 +1,35 @@
 <template lang="html">
-  <za-cell v-if='radioType === "cell"' :disabled='radioDisabled'>
-    <za-icon slot='description' v-if='isChecked' type="right" :theme='radioDisabled ? null : theme'></za-icon>
-    <input type="radio" :class='`${prefixCls}-input`' :disabled='radioDisabled' :value='label' v-model='model' @change='onValueChange' />
+  <za-cell v-if='radioType === "cell"' :disabled='radioDisabled' isLink>
+    <za-icon slot='description' v-if='isChecked' type="right" :theme='radioDisabled ? null : groupTheme'></za-icon>
+    <input type="radio" :class='`${prefixCls}-input`' :checked='isChecked' :disabled='radioDisabled' :value='label' v-model='model' @change='onValueChange' />
     <slot></slot>
   </za-cell>
   <za-button
-    v-else
+    v-else-if='radioType === "button"'
     :class='{
       [`${prefixCls}`]: true,
       checked: isChecked,
       disabled: radioDisabled,
       block: isBlock,
-    }' :theme='theme' size='xs' :block='block' :disabled='radioDisabled' :bordered='!isChecked'>
-    <input type="radio" :class='`${prefixCls}-input`' :disabled='radioDisabled' :value='label' v-model='model' @change='onValueChange' />
+    }' :theme='groupTheme' size='xs' :block='isBlock' :disabled='radioDisabled' :bordered='!isChecked' :shape='groupShape'>
+    <input type="radio" :class='`${prefixCls}-input`' :checked='isChecked' :disabled='radioDisabled' :value='label' v-model='model' @change='onValueChange' />
     <slot></slot>
   </za-button>
+  <div v-else :class='{
+      [`${prefixCls}`]: true,
+      [`theme-${groupTheme}`]: !!groupTheme,
+      [`shape-${groupShape}`]: !!groupShape,
+      checked: isChecked,
+      disabled: radioDisabled,
+    }'>
+    <div :class='`${prefixCls}-wrapper`'>
+      <span :class='`${prefixCls}-inner`'></span>
+      <span :class='`${prefixCls}-text`' v-if='$slots.default'>
+        <slot></slot>
+      </span>
+      <input type="radio" :class='`${prefixCls}-input`' :checked='isChecked' :disabled='radioDisabled' :value='label' v-model='model' @change='onValueChange' />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -23,7 +38,6 @@ import zaButton from '@/button';
 import zaIcon from '@/icon';
 import zaCell from '@/cell';
 import Emitter from '@/mixins/emitter';
-import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
 
 export default {
   name: 'zaRadio',
@@ -38,86 +52,60 @@ export default {
       type: String,
       default: 'za-radio',
     },
-    theme: {
-      type: String,
-      validator: defaultThemeValidator,
-      default: 'primary',
-    },
-    type: {
-      type: String,
-      validator: enumGenerator(['button', 'cell']),
-      default: null,
-    },
     disabled: {
       type: Boolean,
       default: false,
     },
-    value: {},
     label: {},
-    block: {
-      type: Boolean,
-      default: false,
-    },
   },
-  data() {
-    return {
-      currentChecked: false,
-    };
+  beforeCreate() {
+    let parent = this.$parent;
+    while (parent) {
+      if (parent.$options.name !== 'zaRadioGroup') {
+        parent = parent.$parent;
+      } else {
+        this._radioGroup = parent;
+        return true;
+      }
+    }
   },
-
   computed: {
     model: {
       get() {
-        return this.isGroup
-          ? this.store : this.value !== undefined
-          ? this.value : this.currentChecked;
+        return this.store;
       },
-
       set(val) {
-        if (this.isGroup) {
-          this.dispatch('zaRadioGroup', 'input', [val]);
-        } else {
-          this.$emit('input', val);
-          this.currentChecked = val;
-        }
+        this.dispatch('zaRadioGroup', 'input', [val]);
       },
-    },
-    isGroup() {
-      let parent = this.$parent;
-      while (parent) {
-        if (parent.$options.name !== 'zaRadioGroup') {
-          parent = parent.$parent;
-        } else {
-          this._radioGroup = parent;
-          return true;
-        }
-      }
-      return false;
     },
     isChecked() {
       return this.model === this.label;
     },
     store() {
-      return this._radioGroup ? this._radioGroup.value : this.value;
+      return this._radioGroup.value;
     },
     radioType() {
-      return this.isGroup ? this._radioGroup.type : this.type;
+      return this._radioGroup.type;
     },
     radioDisabled() {
-      return this.isGroup ? (this._radioGroup.disabled || this.disabled) : this.disabled;
+      return this._radioGroup ? (this._radioGroup.disabled || this.disabled) : this.disabled;
     },
     isBlock() {
-      return this.isGroup ? this._radioGroup.block : this.block;
+      return this._radioGroup.block;
+    },
+    groupShape() {
+      return this._radioGroup.shape;
+    },
+    groupTheme() {
+      return this._radioGroup.theme;
     },
   },
   methods: {
     onValueChange(event) {
       this.$emit('change', event);
-      if (this.isGroup) {
-        this.$nextTick(_ => { // eslint-disable-line no-unused-vars
-          this.dispatch('zaRadioGroup', 'change', [this._radioGroup.value]);
-        });
-      }
+      this.$nextTick(_ => { // eslint-disable-line no-unused-vars
+        this.dispatch('zaRadioGroup', 'change', [this._radioGroup.value]);
+      });
     },
   },
 };
