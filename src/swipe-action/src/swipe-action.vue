@@ -117,11 +117,11 @@ export default {
       const distanceY = Math.abs(offsetY);
       if (distanceX < 5 || (distanceX >= 5 && distanceY >= 0.3 * distanceX)) return false;
 
+      e.preventDefault(); // Fix Android touchcancel bug
       this.doTransition({ offsetLeft: offsetX, duration: 0 });
       return true;
     },
     onDragEnd(e, { offsetX, startTime }) {
-      e.preventDefault();
       if (this.disabled) {
         return;
       }
