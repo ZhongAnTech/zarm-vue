@@ -22,7 +22,6 @@ describe('Radio', () => {
       },
     }, true);
     const el = vm.$el;
-    expect(vm.$refs.a.isGroup).to.be.true;
     expect(el.classList.contains('shape-radius')).to.be.true;
     expect(vm.$refs.a.$el.classList.contains('theme-primary')).to.be.true;
     expect(vm.$refs.a.$el.classList.contains('za-radio')).to.be.true;

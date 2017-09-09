@@ -7,7 +7,7 @@ describe('Checkbox', () => {
     destroyVM(vm);
   });
 
-  it('create', () => {
+  it('create single', () => {
     vm = createTest(Checkbox, {
       prefixCls: 'za-checkbox',
     }, true);
@@ -15,7 +15,7 @@ describe('Checkbox', () => {
     expect(el.classList.contains('za-checkbox')).to.be.true;
   });
 
-  it('theme', () => {
+  it('theme single', () => {
     vm = createTest(Checkbox, {
       theme: 'primary',
       type: 'button',
@@ -24,12 +24,25 @@ describe('Checkbox', () => {
     expect(el.classList.contains('theme-primary'));
   });
 
-  it('type', () => {
+  it('type single', () => {
     vm = createTest(Checkbox, {
       type: 'cell',
     });
     const el = vm.$el;
     expect(el.classList.contains('za-cell'));
+  });
+
+  it('type cell single with click', done => {
+    vm = createTest(Checkbox, {
+      type: 'cell',
+    });
+    const el = vm.$el;
+    expect(el.classList.contains('za-cell'));
+    el.click();
+    vm.$nextTick(() => {
+      expect(vm.model).to.equal(true);
+      done();
+    });
   });
 
   it('disabled', () => {
@@ -82,6 +95,32 @@ describe('Checkbox', () => {
     expect(el.classList.contains('block')).to.be.true;
     expect(el.querySelector('.za-button').classList.contains('theme-primary')).to.be.true;
     expect(el.querySelector('.za-button')).to.exist;
+  });
+
+  it('group type=cell with click and unclick', done => {
+    vm = createVue({
+      template: `
+        <za-checkbox-group v-model='checkboxGroup' shape='radius' type='cell'>
+          <za-checkbox v-for='(city, index) in cities' :label="city" :key="city"  :disabled='index === 2'>{{city}}</za-checkbox>
+        </za-checkbox-group>
+      `,
+      data() {
+        return {
+          cities: ['上海', '北京', '广州', '深圳'],
+          checkboxGroup: [],
+        };
+      },
+    }, true);
+    const el = vm.$el;
+    el.querySelectorAll('.za-cell-inner')[0].click();
+    vm.$nextTick(() => {
+      expect(vm.checkboxGroup.indexOf('上海')).to.equal(0);
+      el.querySelectorAll('.za-cell-inner')[0].click();
+      vm.$nextTick(() => {
+        expect(vm.checkboxGroup.indexOf('上海')).to.equal(-1);
+        done();
+      });
+    });
   });
 
   it('group default check', () => {
