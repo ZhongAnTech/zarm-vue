@@ -61,10 +61,12 @@ import 'zarm-vue/zarm-vue.default.css';
   ```
 
 ### Theme 自定义主题
-和zarm一致，通过自己的variables文件重写sass变量。运行下面命令生成新样式
+clone本仓库后先安装依赖，然后通过修改 `styles/variables.scss` 文件重写sass变量。运行下面命令生成新样式
 ```bash
 npm run build:theme
 ```
+新生成的样式文件： `lib/zarm-vue.default.css`
+
 ### Changelog 更新日志
 [CHANGELOG.md](https://github.com/ZhonganTechENG/zarm-vue/blob/master/CHANGELOG.md)
 
