@@ -1,5 +1,14 @@
 ## 版本更新日志
 
+## v0.1.5
+
+- 重构样式结构
+- checkbox 和 radio 新增样式
+- 重构 pannel 组件
+- 修改 $zaConfirm api
+- 修复了包括picker，swipe等组件的多个bug
+- 使用drag
+
 ## v0.1.3
 
 - fix $zaLoading unbind bug
