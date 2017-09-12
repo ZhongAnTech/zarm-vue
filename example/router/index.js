@@ -172,5 +172,12 @@ export default new Router({
         mRender: () => import('../components/panelPage.vue')
       },
     },
+    {
+      path: '/pull',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/pullPage.vue')
+      },
+    },
   ],
 });
