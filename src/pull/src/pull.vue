@@ -6,7 +6,7 @@ import zaSpinner from '@/spinner';
 const ACTION_STATE = {
   normal: 0,  // 普通
   pull: 1,    // 下拉状态（未满足刷新条件）
-  drop: 2,    // 可释放状态（满足刷新条件）
+  drop: 2,    // 释放立即刷新（满足刷新条件）
   loading: 3, // 加载中
   success: 4, // 加载成功
   failure: 5, // 加载失败
@@ -30,7 +30,7 @@ export default {
     },
     refreshDistance: {
       type: Number,
-      default: 60,
+      default: 50,
     },
     refreshInitDistance: {
       type: Number,
@@ -84,7 +84,7 @@ export default {
       event.preventDefault();
       // move half the distance of drag
       const offset = offsetY / 2;
-      const action = offset < this.refreshDistance
+      const action = (offset - this.refreshInitDistance) < this.refreshDistance
         ? ACTION_STATE.pull
         : ACTION_STATE.drop;
 
@@ -173,7 +173,7 @@ export default {
           return drop || (
             <div class={`${prefixCls}-control`}>
               <za-spinner percent={100} />
-              <span>释放加载</span>
+              <span>释放立即刷新</span>
             </div>
           );
 
