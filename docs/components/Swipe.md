@@ -9,36 +9,60 @@
 ###### 普通
 ```vue
 <za-swipe>
-  <div>1</div>
-  <div>2</div>
-  <div>3</div>
+  <za-swipe-item>
+    <div>1</div>
+  </za-swipe-item>
+  <za-swipe-item>
+    <div>2</div>
+  </za-swipe-item>
+  <za-swipe-item>
+    <div>3</div>
+  </za-swipe-item>
 </za-swipe>
 ```
 
 ###### 纵向
 ```vue
 <za-swipe direction="top" :height='300'>
-  <div>1</div>
-  <div>2</div>
-  <div>3</div>
+  <za-swipe-item>
+    <div>1</div>
+  </za-swipe-item>
+  <za-swipe-item>
+    <div>2</div>
+  </za-swipe-item>
+  <za-swipe-item>
+    <div>3</div>
+  </za-swipe-item>
 </za-swipe>
 ```
 
 ###### 循环
 ```vue
 <za-swipe loop>
-  <div>1</div>
-  <div>2</div>
-  <div>3</div>
+  <za-swipe-item>
+    <div>1</div>
+  </za-swipe-item>
+  <za-swipe-item>
+    <div>2</div>
+  </za-swipe-item>
+  <za-swipe-item>
+    <div>3</div>
+  </za-swipe-item>
 </za-swipe>
 ```
 
 ###### 自动循环轮播
 ```vue
 <za-swipe loop autoPlay>
-  <div>1</div>
-  <div>2</div>
-  <div>3</div>
+  <za-swipe-item>
+    <div>1</div>
+  </za-swipe-item>
+  <za-swipe-item>
+    <div>2</div>
+  </za-swipe-item>
+  <za-swipe-item>
+    <div>3</div>
+  </za-swipe-item>
 </za-swipe>
 ```
 

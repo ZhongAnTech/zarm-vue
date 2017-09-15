@@ -50,6 +50,9 @@
           <za-cell hasArrow @click="$router.push('/popup')">
             弹出框 Popup
           </za-cell>
+          <za-cell hasArrow @click="$router.push('/pull')">
+            下拉刷新 Pull
+          </za-cell>
           <za-cell hasArrow @click="$router.push('/swipeaction')">
             滑动操作 SwipeAction
           </za-cell>

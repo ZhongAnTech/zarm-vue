@@ -79,7 +79,7 @@ export default {
       firstDefaultSlots.componentOptions.listeners =
         firstDefaultSlots.componentOptions.listeners || {};
       this.attachListener(firstDefaultSlots.componentOptions.listeners);
-    } else {
+    } else if (firstDefaultSlots.data) {
       firstDefaultSlots.data.on = firstDefaultSlots.data.on || {};
       this.attachListener(firstDefaultSlots.data.on);
     }
