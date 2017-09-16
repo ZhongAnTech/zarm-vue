@@ -93,15 +93,16 @@ export default {
   },
   computed: {
     refreshStyle() {
+      const height = isNaN(this.offsetY) ? this.offsetY : `${this.offsetY}px`;
       return {
         WebkitTransitionDuration: `${this.currentDuration}ms`,
         transitionDuration: `${this.currentDuration}ms`,
-        height: `${this.offsetY}px`,
+        height,
       };
     },
     loadStyle() {
       return {
-        height: `${this.loadState >= LOAD_STATE.loading ? 50 : 0}px`,
+        height: `${this.loadState >= LOAD_STATE.loading ? 'auto' : 0}`,
       };
     },
   },
@@ -146,8 +147,8 @@ export default {
       }
     },
     onSrcoll() {
-      if (this.loadState === LOAD_STATE.complete ||
-        this.loadState === LOAD_STATE.loading) {
+      if (this.refreshState !== REFRESH_STATE.normal ||
+        this.loadState !== LOAD_STATE.normal) {
         return;
       }
 
@@ -161,7 +162,7 @@ export default {
 
       if (scrollHeight <= clientHeight) return;
 
-      if (this.loadState === LOAD_STATE.normal && bottom <= clientHeight) {
+      if (bottom <= clientHeight) {
         this.doLoadAction(LOAD_STATE.loading);
         if (typeof onLoad === 'function') {
           const P = onLoad();
@@ -206,11 +207,12 @@ export default {
           break;
 
         case REFRESH_STATE.loading:
-          this.doTransition({ offsetY: 50, duration });
+          this.doTransition({ offsetY: 'auto', duration });
           break;
 
         case REFRESH_STATE.success:
-          this.doTransition({ offsetY: 50, duration: 0 });
+        case REFRESH_STATE.failure:
+          this.doTransition({ offsetY: 'auto', duration: 0 });
           setTimeout(() => {
             this.doRefreshAction('normal');
           }, stayTime);
@@ -315,16 +317,6 @@ export default {
       let loadComplete, loadLoading, loadFailure; // eslint-disable-line
 
       switch (loadState) {
-        case LOAD_STATE.complete:
-          loadComplete = this.$scopedSlots.loadComplete && this.$scopedSlots.loadComplete({
-            percent,
-          });
-          return loadComplete || (
-            <div class={`${prefixCls}-control`}>
-              <span>我是有底线的</span>
-            </div>
-          );
-
         case LOAD_STATE.loading:
           loadLoading = this.$scopedSlots.loadLoading && this.$scopedSlots.loadLoading({
             percent,
@@ -333,6 +325,16 @@ export default {
             <div class={`${prefixCls}-control`}>
               <za-spinner class='rotate360'/>
               <span>加载中</span>
+            </div>
+          );
+
+        case LOAD_STATE.complete:
+          loadComplete = this.$scopedSlots.loadComplete && this.$scopedSlots.loadComplete({
+            percent,
+          });
+          return loadComplete || (
+            <div class={`${prefixCls}-control`}>
+              <span>我是有底线的</span>
             </div>
           );
 

@@ -9,7 +9,7 @@
 pull 组件内部有`上拉刷新`和`下拉加载`两个功能
 
 ###### 普通上拉刷新
-```vue
+```javascript
 <za-pull :on-refresh='fetch' :refreshing='refreshing'>
   <za-cell v-for='i in myData' :key='i'>第 {{i}} 行</za-cell>
 </za-pull>
@@ -23,28 +23,33 @@ data() {
   }
 },
 methods: {
-  fetch(){
+  refresh(){
     this.refreshing = true;
-    setTimeout(() => {
-      this.myData.push(0);
-      this.refreshing = false;
-    }, 1000)
+    return new Promise((resolve, reject) => {
+      fetch().then(res => {
+        this.refreshing = false;
+        resolve(true);
+      }).catch(e => {
+        this.refreshing = false;
+        reject(false)
+      })
+    })
   }
 }
 
 ```
 
-###### 上拉加载下拉刷新(自定义提示内容)
+###### 上拉刷新下拉加载(自定义提示内容)
 
 使用 scopedSlots 来覆盖默认的样式
 
 上拉刷新的几个状态分别为 `refreshPull`, `refreshDrop`, `refreshLoading`, `refreshSuccess`, `refreshFailure` 分别对应各自的 scopedSlots。
 
-下来加载的几个状态分别为 `loadComplete`, `loadLoading`, `loadFailure` 分别对应各自的 scopedSlots。
+下拉加载的几个状态分别为 `loadComplete`, `loadLoading`, `loadFailure` 分别对应各自的 scopedSlots。
 
 scopedSlots 用来覆盖默认样式，定义的会覆盖，不定义的默认使用内定样式
 
-```vue
+```javascript
 <za-panel-body>
   <za-pull :on-refresh='refresh' :refreshing='refreshing' :loading='loading' :on-load='loadData'>
     <za-cell v-for='i in myData' :key='i'>第 {{i}} 行</za-cell>
