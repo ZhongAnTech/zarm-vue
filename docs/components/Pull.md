@@ -1,4 +1,4 @@
-# 下拉刷新 Pull
+# 上拉加载下拉刷新 Pull
 
 [demo页面](https://zhongantecheng.github.io/zarm-vue/#/pull)
 
@@ -6,9 +6,9 @@
 
 #### 基本用法
 
-pull 组件内部有`上拉刷新`和`下拉加载`两个功能
+pull 组件内部有`上拉加载`和`下拉刷新`两个功能
 
-###### 普通上拉刷新
+###### 普通下拉刷新
 ```javascript
 <za-pull :on-refresh='fetch' :refreshing='refreshing'>
   <za-cell v-for='i in myData' :key='i'>第 {{i}} 行</za-cell>
@@ -39,7 +39,7 @@ methods: {
 
 ```
 
-###### 上拉刷新下拉加载(自定义提示内容)
+###### 上拉加载下拉刷新(自定义提示内容)
 
 使用 scopedSlots 来覆盖默认的样式
 
@@ -128,7 +128,7 @@ methods: {
 ```
 on-refresh, on-load 这两个回调函数要求返回一个 Promise 对象。对于on-refresh来说，resolve时表示刷新成功，reject则表示刷新失败。而对于on-load来说，resolve(true) 表示加载成功，并且还有更多数据，resolve(false) 表示加载成功，但后续没有数据了。reject则表示加载失败。
 
-**注意: zarm-vue 本身并不带有 Promise 库，请您根据自己的运行环境决定是否需要用引入 Promise pollyfill.**
+**注意: zarm-vue 本身并不带有 Promise 库，请您根据自己的运行环境决定是否需要用引入 Promise Pollyfill.**
 
 
 
