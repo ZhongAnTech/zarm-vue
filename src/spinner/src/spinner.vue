@@ -14,7 +14,7 @@
 <script>
 import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
 
-const diameter = 100;
+const diameter = 62;
 
 export default {
   name: 'zaSpinner',
@@ -35,7 +35,7 @@ export default {
     },
     strokeWidth: {
       type: Number,
-      default: 4,
+      default: 5,
     },
     percent: {
       type: Number,

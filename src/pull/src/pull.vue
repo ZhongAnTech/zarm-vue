@@ -72,7 +72,7 @@ export default {
   },
   created() {
     this.refreshState = this.refreshing ? REFRESH_STATE.loading : REFRESH_STATE.normal;
-    this.loadState = this.loading ? REFRESH_STATE.loading : REFRESH_STATE.normal;
+    this.loadState = this.loading ? LOAD_STATE.loading : LOAD_STATE.normal;
   },
   mounted() {
     Event.on(window, 'scroll', this.onSrcoll);
@@ -151,7 +151,6 @@ export default {
         this.loadState !== LOAD_STATE.normal) {
         return;
       }
-
       const { onLoad } = this;
 
       if (!onLoad) return;
@@ -214,7 +213,7 @@ export default {
         case REFRESH_STATE.failure:
           this.doTransition({ offsetY: 'auto', duration: 0 });
           setTimeout(() => {
-            this.doRefreshAction('normal');
+            this.doRefreshAction(REFRESH_STATE.normal);
           }, stayTime);
           break;
 
