@@ -71,9 +71,6 @@ export default {
       if (!this.canSwipe) {
         this.$emit('change', item, event);
       }
-      if (this.canSwipe) {
-        // this.$refs.swipe.onSlideTo(this.currentIndex);
-      }
     },
     notify(pane, flag) {
       const index = this.getNotifyPaneIndex(pane);

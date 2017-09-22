@@ -80,7 +80,7 @@ export default {
     activeIndex(val, oldval) { // eslint-disable-line no-unused-vars
       if (val === this.currentActiveIndex) return;
       this.currentActiveIndex = val;
-      this.onJumpTo(this.currentActiveIndex);
+      this.onSlideTo(this.currentActiveIndex);
     },
   },
   mounted() {
@@ -282,8 +282,11 @@ export default {
       return this.validSlots().length;
     },
     validSlots() {
+      // fix tabs use canSwipe bug
       return this.$slots.default
-        .filter(d => d.componentOptions && d.componentOptions.tag === 'za-swipe-item');
+        .filter(d => d.componentOptions &&
+        (d.componentOptions.tag === 'za-swipe-item' ||
+        d.componentOptions.tag === 'za-tab-pane'));
     },
   },
   render(h) {
