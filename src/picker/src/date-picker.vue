@@ -329,7 +329,6 @@ export default {
       }
 
       newValue = this.clipDate(newValue);
-
       this.date = newValue;
       this.$emit('change', this.formatFn(newValue), index);
       // this.$emit('input', this.formatFn(newValue), index);
@@ -339,6 +338,7 @@ export default {
       const { mode } = this;
       const minDate = this.getMinDate();
       const maxDate = this.getMaxDate();
+
       if (mode === DATETIME) {
         if (date.isBefore(minDate)) {
           return minDate.clone();
@@ -400,7 +400,6 @@ export default {
         cols = cols.concat(this.getTimeData());
         value = value.concat([`${date.hour()}`, `${date.minute()}`]);
       }
-
       return {
         value,
         cols,

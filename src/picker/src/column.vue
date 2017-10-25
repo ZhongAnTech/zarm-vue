@@ -2,12 +2,13 @@
   <div
     :class='`${prefixCls}-cascader`'>
     <div :class='`${prefixCls}-cascader-indicator`' ref='indicator' style={indicatorStyle} />
-    <div :class='`${prefixCls}-cascader-content`' ref='content' :style='indicatorStyle'>
+    <div :class='`${prefixCls}-cascader-content`' ref='content'
+     :style='indicatorStyle'>
       <div
         v-for='(item, index) in data'
         :style='itemStyle'
         :class='getCls(item)'
-        :key='item[valueMember]' >
+        :key='item[valueMember]'>
         {{item[displayMember]}}
       </div>
     </div>
@@ -19,7 +20,6 @@
  * this is internal in most case
  */
 import ZScroller from 'zscroller';
-// import { isChildrenEqual } from './utils';
 
 export default {
   name: 'zaColumn',
@@ -41,15 +41,26 @@ export default {
   },
   watch: {
     selectedValue(val, oldVal) { // eslint-disable-line no-unused-vars
+      if (val === this.currentSelectedValue) return;
       this.zscroller.reflow();
       this.select(val);
-      if (val === this.currentSelectedValue) return;
       this.currentSelectedValue = val;
     },
     disabled(val) {
       this.$nextTick(() => {
         this.zscroller.setDisabled(val);
         this.zscroller.reflow();
+      });
+    },
+    /**
+     * In extream case where a date picker has specified its min prop
+     * and column not scroll to the right position when its up level column
+     * scroll from min value to some other values
+     */
+    data(val, oldVal) { // eslint-disable-line no-unused-vars
+      this.$nextTick(() => {
+        this.zscroller.reflow();
+        this.select(this.currentSelectedValue);
       });
     },
   },

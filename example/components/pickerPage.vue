@@ -119,6 +119,8 @@
                 placeholder="请选择日期"
                 mode='date'
                 v-model='v5'
+                max='2017-10-25'
+                min='1917-10-25'
                 @ok='handleOk'
                 @change='handleChange'
                 @cancel='handleCancel'/>
