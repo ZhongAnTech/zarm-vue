@@ -8,6 +8,7 @@
           <za-panel-body>
             <za-cell title="单列">
               <za-picker
+                :close-on-click-modal='false'
                 :visible.sync='visible'
                 v-model='v1'
                 :dataSource='data1'

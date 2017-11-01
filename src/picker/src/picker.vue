@@ -12,7 +12,11 @@
         [`${prefixCls}-container`]: true,
         [customCls]: !!customCls,
       }' @click.stop='() => {}'>
-      <za-popup class='za-popup-inner' :visible='currentVisible' @close='onPopupClose'>
+      <za-popup
+        class='za-popup-inner'
+        :visible='currentVisible'
+        @close='onPopupClose'
+        :closeOnClickModal='closeOnClickModal'>
         <div :class='`${prefixCls}-wrapper`'>
           <div :class='`${prefixCls}-header`'>
             <div :class='`${prefixCls}-cancel`' @click='handleCancel'>{{cancelText}}</div>
@@ -106,6 +110,10 @@ export default {
     valueMember: {
       type: String,
       default: 'value',
+    },
+    closeOnClickModal: {
+      type: Boolean,
+      default: true,
     },
     // custom value generator: receive value
     displayGenerator: Function,
@@ -207,8 +215,10 @@ export default {
     },
     onPopupClose(reason) {
       if (reason === 'clickaway') {
-        this.currentVisible = !this.currentVisible;
-        this.$emit('update:visible', this.currentVisible);
+        this.toggle();
+        this.currentValue = this.oldValue;
+        // this.currentVisible = !this.currentVisible;
+        // this.$emit('update:visible', this.currentVisible);
       }
     },
     handleCancel(event) {

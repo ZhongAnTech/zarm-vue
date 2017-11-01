@@ -1,4 +1,9 @@
 ## 版本更新日志
+## v0.1.7
+
+- 修复 date-picker 最值bug
+- 修复 picker modal click bug
+- 新增 picker close-on-click-modal 属性
 
 ## v0.1.6
 
