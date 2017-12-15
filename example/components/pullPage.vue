@@ -19,24 +19,24 @@
             <za-pull :on-refresh='refresh(2)' :refreshing='refreshing2' :loading='loading' :on-load='loadData'>
               <za-cell v-for='(i, index) in myData2' :key='index'>ID号 {{i}} </za-cell>
               <!-- 此处的几个slot用来覆盖默认样式，定义的会覆盖，不定义的依然使用默认样式 -->
-              <template scope='props' slot='refreshPull'>
+              <template slot-scope='props' slot='refreshPull'>
                 <div class='custom-control' :style='{
                   transform: `scale(${props.percent / 100})`
                   }'>
                   <img src='https://avatars2.githubusercontent.com/u/499550?v=4&s=72' alt="" />
                 </div>
               </template>
-              <template scope='props' slot='refreshDrop'>
+              <template slot-scope='props' slot='refreshDrop'>
                 <div class='custom-control'>
                   释放加载
                 </div>
               </template>
-              <template scope='props' slot='refreshLoading'>
+              <template slot-scope='props' slot='refreshLoading'>
                 <div class='custom-control'>
                   <za-spinner class="rotate360" />
                 </div>
               </template>
-              <template scope='props' slot='refreshSuccess'>
+              <template slot-scope='props' slot='refreshSuccess'>
                 <div class='custom-control'>
                   加载成功
                 </div>
