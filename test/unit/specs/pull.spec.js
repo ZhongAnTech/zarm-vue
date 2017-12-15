@@ -86,22 +86,22 @@ describe('Pull', () => {
           <div>1</div>
           <div>2</div>
           <div>3</div>
-          <template scope='props' slot='refreshPull'>
+          <template slot-scope='props' slot='refreshPull'>
             <div class='custom-control1'>
               <span>下拉中</span>
             </div>
           </template>
-          <template scope='props' slot='refreshDrop'>
+          <template slot-scope='props' slot='refreshDrop'>
             <div class='custom-control2'>
               <span>释放加载</span>
             </div>
           </template>
-          <template scope='props' slot='refreshLoading'>
+          <template slot-scope='props' slot='refreshLoading'>
             <div class='custom-control3'>
               <span>加载中</span>
             </div>
           </template>
-          <template scope='props' slot='refreshSuccess'>
+          <template slot-scope='props' slot='refreshSuccess'>
             <div class='custom-control4'>
               <span>加载成功</span>
             </div>
@@ -136,12 +136,12 @@ describe('Pull', () => {
           <div>1</div>
           <div>2</div>
           <div>3</div>
-          <template scope='props' slot='loadComplete'>
+          <template slot-scope='props' slot='loadComplete'>
             <div class='custom-control1'>
               <span>没有更多了</span>
             </div>
           </template>
-          <template scope='props' slot='loadLoading'>
+          <template slot-scope='props' slot='loadLoading'>
             <div class='custom-control3'>
               <span>加载成功</span>
             </div>
@@ -168,12 +168,12 @@ describe('Pull', () => {
           <div>1</div>
           <div>2</div>
           <div>3</div>
-          <template scope='props' slot='loadFailure'>
+          <template slot-scope='props' slot='loadFailure'>
             <div class='custom-control2'>
               <span>加载失败</span>
             </div>
           </template>
-          <template scope='props' slot='loadLoading'>
+          <template slot-scope='props' slot='loadLoading'>
             <div class='custom-control3'>
               <span>加载成功</span>
             </div>
