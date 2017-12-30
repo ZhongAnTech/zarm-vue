@@ -12,7 +12,7 @@
 
 [Online example](https://zhongantecheng.github.io/zarm-vue/)
 
-### Document 文档
+### 全新API使用说明文档`new`
 [zarm-vue-doc](https://chuanshuoye.github.io/zarm-vue-doc/#/zh-CN)
 
 ### Install 安装
