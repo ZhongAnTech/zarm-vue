@@ -13,7 +13,7 @@
 [Online example](https://zhongantecheng.github.io/zarm-vue/)
 
 ### Document 文档
-[Document](https://github.com/ZhonganTechENG/zarm-vue/blob/master/docs/SUMMARY.md)
+[zarm-vue-doc](https://chuanshuoye.github.io/zarm-vue-doc/#/zh-CN)
 
 ### Install 安装
 
