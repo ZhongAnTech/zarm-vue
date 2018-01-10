@@ -55,8 +55,8 @@
       }
     },
     methods: {
-      handleChange(v){
-        console.log(v)
+      handleChange(ev,value){
+        console.log(value)
       }
     },
   };

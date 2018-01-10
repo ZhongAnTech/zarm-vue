@@ -115,11 +115,9 @@ export default {
     onDragEnd(event, { offsetX }) {
       this.tooltip.close();
       if (isNaN(offsetX)) return;
-
       this.offsetStart += offsetX;
-
       // const { onChange } = this;
-      typeof onChange === 'function' && this.$emit('change', event, this.value);
+      this.$emit('change', event, this.value);
     },
     /**
      * 通过偏移量确定值
