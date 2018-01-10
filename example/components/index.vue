@@ -32,6 +32,9 @@
           <za-cell hasArrow @click="$router.push('/uploader')">
             上传组件 Uploader
           </za-cell>
+          <za-cell hasArrow @click="$router.push('/slider')">
+            滑块组件 Slider
+          </za-cell>
         </za-panel-body>
       </za-panel>
 
