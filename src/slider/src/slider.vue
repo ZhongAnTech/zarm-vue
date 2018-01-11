@@ -1,7 +1,7 @@
 <template lang="html">
   <div :class='{[`${prefixCls}`]: true,disabled}'>
     <div :class='`${prefixCls}-line`' ref='line'>
-      <div :class='`${prefixCls}-line-bg`' :style='getLineOffsetWidth()'></div>
+      <div :class='`${prefixCls}-line-bg`' :style='{width:`${offset}px`}'></div>
     </div>
     <za-drag
       :dragStart='onDragStart'
@@ -12,7 +12,7 @@
         :aria-valuemin='min'
         :aria-valuemax='max'
         :aria-valuenow='value'
-        :style='getDragOffsetWidth()'>
+        :style='{left:`${offset}px`}'>
        <div :class='`${prefixCls}-handle-shadow`' ref="shadow"></div>
       </div>
      </za-drag>
@@ -42,6 +42,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    defaultValue: {
+      type: Number,
+      default: 0,
+    },
     step: {
       type: Number,
       default: 1,
@@ -65,13 +69,11 @@ export default {
   },
   mounted() {
     this.init();
-    const value = this.value;
-    this.offset = this.getOffsetByValue(value);
   },
   methods: {
     getInitValue(defaultValue) {
-      if (this.value) {
-        return this.value;
+      if (this.defaultValue) {
+        return this.defaultValue;
       }
       return defaultValue;
     },

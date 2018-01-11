@@ -9,17 +9,17 @@
           <za-panel-body>
             <za-cell title="普通">
               <za-slider
-                :value='0'
+                :defaultValue='0'
                 @change='handleChange'
                 ></za-slider>
             </za-cell>
 
             <za-cell title="设置默认值">
-              <za-slider :value='20'></za-slider>
+              <za-slider :defaultValue='20'></za-slider>
             </za-cell>
 
             <za-cell title="设置上下限">
-              <za-slider :min='-100' :max='100' :value='0' ></za-slider>
+              <za-slider :min='-100' :max='100' :defaultValue='0' ></za-slider>
             </za-cell>
 
             <za-cell title="设置步长">
@@ -27,7 +27,7 @@
             </za-cell>
 
             <za-cell title="禁用状态">
-              <za-slider :value='20' disabled ></za-slider>
+              <za-slider :defaultValue='20' disabled ></za-slider>
             </za-cell>
           </za-panel-body>
         </za-panel>
