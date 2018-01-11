@@ -45,7 +45,7 @@ import 'zarm-vue/zarm-vue.default.css';
 ```html
 <link rel="stylesheet" href="https://unpkg.com/zarm-vue@latest/zarm-vue.default.css">
 
-<script src="https://unpkg.com/vue@2.4.2/dist/vue.min.js"></script>>
+<script src="https://unpkg.com/vue@2.5.11/dist/vue.min.js"></script>>
 <script src="https://unpkg.com/zarm-vue@latest/zarm-vue.umd.js"></script>
 ```
 
