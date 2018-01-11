@@ -20,12 +20,14 @@ import Stepper from '../src/stepper';
 import Switch from '../src/switch';
 import Mask from '../src/mask';
 import Toast from '../src/toast';
+import Tooltip from '../src/tooltip';
 import Loading from '../src/loading';
 import Popup from '../src/popup';
 import Uploader from '../src/uploader';
 import ActionSheet from '../src/actionsheet';
 import Modal from '../src/modal';
 import Confirm from '../src/confirm';
+import Slider from '../src/slider';
 import SwipeAction from '../src/swipe-action';
 import Swipe from '../src/swipe';
 import SwipeItem from '../src/swipe-item';
@@ -63,12 +65,14 @@ const components = [
   Switch,
   Mask,
   Toast,
+  Tooltip,
   Loading,
   Popup,
   Uploader,
   ActionSheet,
   Modal,
   Confirm,
+  Slider,
   SwipeAction,
   Swipe,
   SwipeItem,
@@ -93,6 +97,7 @@ const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-var
   Vue.use(Loading.directive);
 
   Vue.prototype.$zaToast = Toast.root;
+  Vue.prototype.$zaTooltip = Tooltip.root;
   Vue.prototype.$zaLoading = Loading.root;
   Vue.prototype.$zaAlert = Alert.root;
   Vue.prototype.$zaConfirm = Confirm.root;

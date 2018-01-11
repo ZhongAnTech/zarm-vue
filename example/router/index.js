@@ -117,6 +117,13 @@ export default new Router({
       },
     },
     {
+      path: '/slider',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/sliderPage.vue')
+      },
+    },
+    {
       path: '/actionsheet',
       component: Bundle,
       meta: {
