@@ -48,7 +48,7 @@
     "build:copy": "babel-node ./script/copy.js",
     "build": "npm run build:umd && npm run build:lib && npm run build:theme && npm run build:copy && cp -r src lib",
     "book": "cd docs && gitbook serve",
-    "pub": "npm run clean && npm run build && && cp -r README.md lib && npm publish ./lib"
+    "pub": "npm run clean && npm run build && cp -r README.md lib && npm publish ./lib"
   },
   "peerDependencies": {
     "vue": "^2.5.2"
