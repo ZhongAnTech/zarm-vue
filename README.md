@@ -6,7 +6,6 @@
 ![JS gzip size](http://img.badgesize.io/https://unpkg.com/zarm-vue@latest/zarm-vue.umd.js?compression=gzip&label=gzip%20size:%20JS)
 ![CSS gzip size](http://img.badgesize.io/https://unpkg.com/zarm-vue/zarm-vue.default.css?compression=gzip&label=gzip%20size:%20CSS)
 
-  [众安科技zarm移动端组件库](https://github.com/ZhonganTechENG/zarm) **的 Vue.js版本**
 
 ### Example 案例
 
@@ -66,9 +65,6 @@ clone本仓库后先安装依赖，然后通过修改 `styles/variables.scss` �
 npm run build:theme
 ```
 新生成的样式文件： `lib/zarm-vue.default.css`
-
-### Changelog 更新日志
-[CHANGELOG.md](https://github.com/ZhonganTechENG/zarm-vue/blob/master/CHANGELOG.md)
 
 ### License
 MIT

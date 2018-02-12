@@ -198,7 +198,10 @@
         }
         // FIXED
         const treeChildren2 = data.map((d, index) => {
-          if (currentValue[index]) {
+          if (!isArray(currentValue)) {
+            return d.filter(obj => currentValue === obj[this.valueMember])[0];
+          }
+          if (isArray(currentValue) && currentValue[index]) {
             return d.filter(obj => currentValue[index] === obj[this.valueMember])[0];
           }
           return undefined;
