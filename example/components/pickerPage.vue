@@ -236,8 +236,8 @@ export default {
       v11:['1', '12'],
       District,
       data1:[
-        { value: '1', label: '选项一' },
-        { value: '2', label: '选项二' },
+        { value: 'I', label: '选项一' },
+        { value: 'TB', label: '选项二' },
       ],
       data2:[
         [
