@@ -32,6 +32,7 @@ import SwipeAction from '../src/swipe-action';
 import Swipe from '../src/swipe';
 import SwipeItem from '../src/swipe-item';
 import Picker from '../src/picker';
+import Calendar from '../src/calendar';
 import Colume from '../src/column';
 import ColumeGroup from '../src/column-group';
 import Cascader from '../src/cascader';
@@ -82,6 +83,7 @@ const components = [
   Cascader,
   Progress,
   DatePicker,
+  Calendar,
   StackPicker,
   NoticeBar,
   Drag,
@@ -141,6 +143,7 @@ export default {
   Swipe,
   SwipeItem,
   Picker,
+  Calendar,
   Colume,
   ColumeGroup,
   Cascader,
