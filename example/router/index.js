@@ -159,6 +159,13 @@ export default new Router({
       },
     },
     {
+      path: '/calendar',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/calendarPage.vue')
+      },
+    },
+    {
       path: '/progress',
       component: Bundle,
       meta: {
