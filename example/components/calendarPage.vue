@@ -1,5 +1,5 @@
 <template lang="html">
- <Container class="button-page">
+ <Container>
    <PageHeader title="日历 Calendar" />
    <main>
      <div>
