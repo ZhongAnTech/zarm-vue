@@ -19,8 +19,8 @@ import moment from 'moment';
 import dateItem from './dateItem';
 import dateUtil from './date';
 
-const minDate = moment().toDate();
-const maxDate = moment().add(12, 'M').toDate();
+const defaultMinDate = moment().toDate();
+const defaultMaxDate = moment().add(12, 'M').toDate();
 
 export default {
   name: 'zaCalendar',
@@ -48,6 +48,18 @@ export default {
       type: String,
       default: 'YYYY年MM月',
     },
+    min: {
+      type: Date,
+      default: () => defaultMinDate,
+    },
+    max: {
+      type: Date,
+      default: () => defaultMaxDate,
+    },
+    months: {
+      type: Number,
+      default: 12,
+    },
     okBtnText: {
       type: String,
       default: '确定',
@@ -61,9 +73,8 @@ export default {
   },
   data() {
     return {
-      minDate,
-      maxDate,
-      months: 12,
+      minDate: this.getMinDate(),
+      maxDate: this.getMaxDate(),
       selected: this.getInitValue(),
       monthItems: [],
     };
@@ -74,12 +85,6 @@ export default {
     });
   },
   watch: {
-    minDate() {
-      this.createMonthItems();
-    },
-    maxDate() {
-      this.createMonthItems();
-    },
     visible(val) {
       if (val === true) {
         // console.log(val) // eslint-disable-line
@@ -92,6 +97,14 @@ export default {
     getInitValue() {
       const value = this.selectedValue || [];
       // console.log(value) // eslint-disable-line
+      return value;
+    },
+    getMinDate() {
+      const value = this.min || defaultMinDate;
+      return value;
+    },
+    getMaxDate() {
+      const value = this.max || defaultMaxDate;
       return value;
     },
     setChanged(item) {
