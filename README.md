@@ -7,11 +7,7 @@
 ![CSS gzip size](http://img.badgesize.io/https://unpkg.com/zarm-vue/zarm-vue.default.css?compression=gzip&label=gzip%20size:%20CSS)
 
 
-### Example 案例
-
-[Online example](https://zhongantecheng.github.io/zarm-vue/)
-
-### 全新API使用说明文档`new`
+### 使用说明文档
 [zarm-vue-doc](https://chuanshuoye.github.io/zarm-vue-doc/#/zh-CN)
 
 ### Install 安装
@@ -34,10 +30,7 @@ Vue.use(zarmVue);
 ```
 
 - 单组件使用
-```javascript
-import zaButton from 'zarm-vue/dist/button';
-import 'zarm-vue/zarm-vue.default.css';
-```
+[参考示例](https://github.com/ZhonganTechENG/zarm-vue/blob/dev/docs/README.md)
 
 
 - 也可以通过cdn引入umd模块
