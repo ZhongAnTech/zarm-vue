@@ -1,13 +1,13 @@
 const Glob = require('glob');
 const path = require('path');
 
-const getComponentsEntry = function () {
-  return path.join(__dirname, '../src/components.js');
-};
+// const getComponentsEntry = function () {
+//   return path.join(__dirname, '../src/components.js');
+// };
 
 module.exports = function () {
   const entries = {};
-  entries['index'] = getComponentsEntry()
+  // entries['index'] = getComponentsEntry()
   const partten = path.join(__dirname, '../src/**/index.js');
   try {
     Glob.sync(partten, {}).forEach((file) => {
@@ -19,8 +19,7 @@ module.exports = function () {
         entries[key] = file;
       }
     });
-    console.log(`components list:`);
-    console.log(entries);
+    console.log(`build components start`);
     return entries;
   } catch (err) {
     throw new Error(err.message);

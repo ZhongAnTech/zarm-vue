@@ -109,7 +109,7 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 }
 
-export default {
+module.exports = {
   install,
   Input,
   Alert,
@@ -154,3 +154,5 @@ export default {
   Drag,
   Pull,
 };
+
+module.exports.default = module.exports;

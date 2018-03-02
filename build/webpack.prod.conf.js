@@ -23,7 +23,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   ],
   entry: entries,
   output: {
-    path: path.resolve(__dirname, '../lib/dist'),
+    path: path.resolve(__dirname, '../release/lib'),
     filename: '[name].js',
     chunkFilename: '[id].[chunkhash].js',
     libraryTarget: 'commonjs2',
@@ -32,15 +32,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        drop_debugger: true,
-        drop_console: true,
-      },
-      sourceMap: true,
-    }),
+    })
   ]
 })
 

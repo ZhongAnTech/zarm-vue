@@ -25,19 +25,47 @@ import Vue from 'vue';
 import zarmVue from 'zarm-vue';
 // 引入全局样式
 import 'zarm-vue/zarm-vue.default.css';
-
 Vue.use(zarmVue);
 ```
 
-- 单组件使用
-[参考示例](https://github.com/ZhonganTechENG/zarm-vue/blob/dev/docs/README.md)
+- 按需引入
+
+借助`ElementUI`提供的[babel-plugin-component](https://github.com/ElementUI/babel-plugin-component)，我们可以只引入需要的组件，以达到减小项目体积的目的。
+
+首先，安装 babel-plugin-component：
+
+```bash
+npm install babel-plugin-component -D
+```
+
+然后，将 .babelrc 添加：
+
+```javascript
+{  
+  // ...
+  "plugins": [["component", {
+      "libraryName": "zarm-vue",
+      "styleLibraryName": "theme"
+    }
+  ]]
+}
+```
+
+
+接下来，如果你只希望引入部分组件，比如 Button 和 Select，那么需要在 main.js 中写入以下内容：
+
+```javascript
+import { Button, Alert } from 'zarm-vue'
+Vue.use(Button)
+Vue.use(Alert)
+```
 
 
 - 也可以通过cdn引入umd模块
 ```html
 <link rel="stylesheet" href="https://unpkg.com/zarm-vue@latest/zarm-vue.default.css">
 
-<script src="https://unpkg.com/vue@2.5.11/dist/vue.min.js"></script>>
+<script src="https://unpkg.com/vue@latest/dist/vue.min.js"></script>>
 <script src="https://unpkg.com/zarm-vue@latest/zarm-vue.umd.js"></script>
 ```
 

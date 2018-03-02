@@ -24,7 +24,7 @@ module.exports = merge(baseWebpackConfig, {
     'vue',
   ],
   output: {
-    path: path.resolve(__dirname, '../lib'),
+    path: path.resolve(__dirname, '../release'),
     filename: '[name]',
     library: 'zarm-vue',
     libraryTarget: 'umd',
