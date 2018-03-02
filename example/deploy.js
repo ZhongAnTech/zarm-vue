@@ -1,9 +1,9 @@
 import Vue from 'vue';
-import zarmVue from '../lib/dist/zarm-vue.common';
+import zarmVue from '../release/lib/zarm-vue.common';
 import App from './app';
 import router from './router';
-import '../lib/zarm-vue.default.css';
-import './styles/core/index.scss';
+import '../release/zarm-vue.default.css';
+// import './styles/core/index.scss';
 
 Vue.config.productionTip = false;
 Vue.use(zarmVue);

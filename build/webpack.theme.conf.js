@@ -20,7 +20,7 @@ module.exports = merge(baseWebpackConfig, {
     ['zarm-vue.default']: path.join(__dirname, '../styles/index.js')
   },
   output: {
-    path: path.resolve(__dirname, '../lib'),
+    path: path.resolve(__dirname, '../release'),
     filename: 'zarm-vue.default.css'
   },
   plugins: plugins,
