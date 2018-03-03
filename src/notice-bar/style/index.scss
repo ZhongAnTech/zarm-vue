@@ -1,5 +1,20 @@
 @import '../../../styles/core/mixins/index';
 @import '../../../styles/core/functions/index';
 @import '../../../styles/variables';
-@import '../../message/style/component';
-@import './component';
+@import '../../message/style/index';
+$prefixCls: za-noticebar;
+
+.#{$prefixCls} {
+  width: 100%;
+  height: r(24);
+  position: relative;
+  overflow: hidden;
+
+  &-body {
+    position: absolute;
+    left: 0;
+    top: r(2);
+    white-space: nowrap;
+  }
+}
+

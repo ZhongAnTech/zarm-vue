@@ -1,5 +1,45 @@
 @import '../../../styles/core/mixins/index';
 @import '../../../styles/core/functions/index';
 @import '../../../styles/variables';
-@import '../../icon/style/component';
-@import './component';
+@import '../../icon/style/index';
+$prefixCls: za-pull;
+
+.#{$prefixCls} {
+  &-refresh,
+  &-load {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+  }
+
+  &-refresh {
+    align-items: flex-end;
+    transition: all .3s;
+  }
+
+  &-load {
+    position: relative;
+    @include onepx(top);
+  }
+
+  &-control {
+    display: flex;
+    align-items: center;
+    padding: r(10) 0;
+    height: r(50);
+    color: #999;
+    font-size: r(13);
+
+    i {
+      font-size: r(22);
+    }
+
+    span {
+      margin-left: r(8);
+    }
+  }
+}
+
