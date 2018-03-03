@@ -1,6 +1,11 @@
+@import '../../../styles/variables';
 @import '../../../styles/core/mixins/index';
 @import '../../../styles/core/functions/index';
-@import '../../../styles/variables';
-@import '../../button/style/component';
-@import '../../modal/style/component';
-@import './component';
+@import '../../button/style/index';
+@import '../../modal/style/index';
+
+$prefixCls: za-alert;
+
+.#{$prefixCls} {
+  text-align: center;
+}

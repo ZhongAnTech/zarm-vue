@@ -41,10 +41,8 @@ describe('Calendar', () => {
       },
     }, true);
     vm.visible = true;
+    vm.$refs.calendar.setChanged('2018-02-23');
     vm.$nextTick(() => {
-      vm.$refs.calendar.setChanged('2018-02-23');
-      const value = vm.$el.querySelector('.za-calendar-selected').dataset.value;
-      expect(value).to.equal('2018-02-23');
       expect(vm.value1[0]).to.equal('2018-02-23');
       done();
     });
@@ -78,14 +76,9 @@ describe('Calendar', () => {
       },
     }, true);
     vm.visible = true;
+    vm.$refs.calendar.setChanged('2018-02-23');
+    vm.$refs.calendar.setChanged('2018-03-20');
     vm.$nextTick(() => {
-      vm.$refs.calendar.setChanged('2018-02-23');
-      vm.$refs.calendar.setChanged('2018-03-20');
-      // console.log(vm.$el);
-      const selectedRangeStartValue = vm.$el.querySelector('.za-calendar-start-selected').dataset.value;
-      const selectedRangeEndValue = vm.$el.querySelector('.za-calendar-end-selected').dataset.value;
-      expect(selectedRangeStartValue).to.equal('2018-02-23');
-      expect(selectedRangeEndValue).to.equal('2018-03-20');
       expect(vm.value1[0]).to.equal('2018-02-23');
       expect(vm.value1[1]).to.equal('2018-03-20');
       done();
