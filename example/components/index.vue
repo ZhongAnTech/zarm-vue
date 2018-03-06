@@ -20,6 +20,9 @@
           <za-cell hasArrow @click="$router.push('/picker')">
             选择器 Picker
           </za-cell>
+          <za-cell hasArrow @click="$router.push('/pickerview')">
+            选择器 PickerView
+          </za-cell>
           <za-cell hasArrow @click="$router.push('/calendar')">
             日历 Calendar
           </za-cell>

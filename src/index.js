@@ -32,6 +32,7 @@ import SwipeAction from '../src/swipe-action';
 import Swipe from '../src/swipe';
 import SwipeItem from '../src/swipe-item';
 import Picker from '../src/picker';
+import PickerView from '../src/picker-view';
 import Calendar from '../src/calendar';
 import Colume from '../src/column';
 import ColumeGroup from '../src/column-group';
@@ -78,6 +79,7 @@ const components = [
   Swipe,
   SwipeItem,
   Picker,
+  PickerView,
   Colume,
   ColumeGroup,
   Cascader,
@@ -143,6 +145,7 @@ module.exports = {
   Swipe,
   SwipeItem,
   Picker,
+  PickerView,
   Calendar,
   Colume,
   ColumeGroup,

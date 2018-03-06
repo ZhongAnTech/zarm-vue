@@ -4,7 +4,10 @@ export function enumGenerator(enumArr = []) {
   };
 }
 
+export function isArray(val) {
+  return Object.prototype.toString.call(val) === '[object Array]';
+}
+
 export function defaultThemeValidator(v) {
   return ['default', 'primary', 'info', 'success', 'warning', 'error'].indexOf(v) >= 0;
-  // return /(^default$)|(^primary$)|(^info$)|(^success$)|(^warning$)|(^error$)/.test(v);
 }

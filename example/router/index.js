@@ -159,6 +159,13 @@ export default new Router({
       },
     },
     {
+      path: '/pickerview',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/pickerviewPage.vue')
+      },
+    },
+    {
       path: '/calendar',
       component: Bundle,
       meta: {
