@@ -147,7 +147,8 @@
         return dataSource;
       },
       selectedValue() {
-        return this.isSingleColumn ? [this.currentValue] : this.currentValue;
+        // eslint-disable-next-line
+        return this.isSingleColumn && !isArray(this.currentValue) ? [this.currentValue] : this.currentValue;
       },
       isSingleColumn() {
         const { dataSource } = this;
@@ -223,8 +224,6 @@
         if (reason === 'clickaway') {
           this.toggle();
           this.currentValue = this.oldValue;
-          // this.currentVisible = !this.currentVisible;
-          // this.$emit('update:visible', this.currentVisible);
         }
       },
       handleCancel(event) {
@@ -238,7 +237,11 @@
         this.oldValue = this.currentValue;
   
         this.toggle();
-        const _value = formatBackToObject(data, this.currentValue, cascade, valueMember, cols);
+        let selectedValue = this.currentValue;
+        if (!isArray(selectedValue)) {
+          selectedValue = [selectedValue];
+        }
+        const _value = formatBackToObject(data, selectedValue, cascade, valueMember, cols);
         this.$emit('ok', _value);
         this.$emit('input', this.currentValue);
       },
