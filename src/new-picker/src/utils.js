@@ -1,17 +1,3 @@
-export function enumGenerator(enumArr = []) {
-  return function (v) {
-    return enumArr.indexOf(v) >= 0;
-  };
-}
-
-export function isArray(val) {
-  return Object.prototype.toString.call(val) === '[object Array]';
-}
-
-export function defaultThemeValidator(v) {
-  return ['default', 'primary', 'info', 'success', 'warning', 'error'].indexOf(v) >= 0;
-}
-
 
 export function getFormatter(type) {
   let formatter;
@@ -158,6 +144,10 @@ export function formatBackToObject(data, value, cascade, member, cols) {
     level += 1;
   }
   return result;
+}
+
+export function isArray(data) {
+  return Object.prototype.toString.call(data) === '[object Array]';
 }
 
 export function hasChildrenObject(data) {

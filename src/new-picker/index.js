@@ -1,8 +1,8 @@
-import NewPicker from './src/new-picker';
+import Picker from './src/new-picker';
 
 /* istanbul ignore next */
-NewPicker.install = function (Vue) {
-  Vue.component(NewPicker.name, NewPicker);
+Picker.install = function (Vue) {
+  Vue.component(Picker.name, Picker);
 };
 
-export default NewPicker;
+export default Picker;

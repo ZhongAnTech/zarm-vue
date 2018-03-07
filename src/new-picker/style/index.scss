@@ -2,6 +2,8 @@
 @import '../../../styles/core/functions/index';
 @import '../../../styles/variables';
 @import '../../popup/style/index';
+@import '../../picker-view/style/index';
+
 $prefixCls: za-picker;
 $picker-item-height: r(30);
 $picker-stackitem-height: r(35);

@@ -31,7 +31,7 @@ import Slider from '../src/slider';
 import SwipeAction from '../src/swipe-action';
 import Swipe from '../src/swipe';
 import SwipeItem from '../src/swipe-item';
-import Picker from '../src/picker';
+import Picker from '../src/new-picker';
 import PickerView from '../src/picker-view';
 import Calendar from '../src/calendar';
 import Colume from '../src/column';

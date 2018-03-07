@@ -1,61 +1,180 @@
 <template lang="html">
- <Container class="picker-page">
-   <PageHeader title="选择器 picker-view" />
-   <main>
-     <div>
-       <za-panel>
-         <za-panel-header title="基本"/>
-         <za-panel-body>
-             <za-picker-view
-               :value="v1"
-               :dataSource='data1'
-               @change='handleChange'/>
-         </za-panel-body>
-       </za-panel>
+  <Container class="picker-page">
+    <PageHeader title="选择器 Picker" />
+    <main>
+      <div>
+        <za-panel>
+          <za-panel-header title="基本" />
+          <za-panel-body>
+            <za-cell title="单列">
+              <za-picker :close-on-click-modal='true' :visible.sync='visible1' v-model='v1' :dataSource='data1' @ok='handleOk' @change='handleChange'
+                @cancel='handleCancel' />
+            </za-cell>
+            <za-cell title="多列">
+              <za-picker :visible.sync='visible2' :dataSource='data2' v-model='v2' @ok='handleOk' @change='handleChange' @cancel='handleCancel'
+              />
+            </za-cell>
+            <za-cell title="多列联动">
+              <za-picker :visible.sync='visible3' :dataSource='data3' v-model='v3' @ok='handleOk' @change='handleChange' @cancel='handleCancel'
+              />
+            </za-cell>
+            <za-cell title="自定义格式">
+              <za-picker :visible.sync='visible4' :dataSource='data4' v-model='v4' @ok='handleOk' @change='handleChange' @cancel='handleCancel' placeholder='自定义placeholder'
+                valueMember="code" :itemRender='(item) => item.name'  :displayGenerator='displayGenerator' />
+            </za-cell>
+          </za-panel-body>
+        </za-panel>
 
-     </div>
-   </main>
-   <PageFooter />
- </Container>
+        <za-panel>
+            <za-panel-header title="城市选择器"/>
+            <za-panel-body>
+              <za-cell title="省市选择">
+                <za-picker
+                  :visible.sync='visible6'
+                  v-model='v6'
+                  :dataSource='District'
+                  @ok='handleOk'
+                  @change='handleChange'
+                  @cancel='handleCancel'
+                  :cols='2'/>
+              </za-cell>
+              <za-cell title="省市区选择">
+                <za-picker
+                  :visible.sync='visible7'
+                  :dataSource='District'
+                  v-model='v7'
+                  @ok='handleOk'
+                  @change='handleChange'
+                  @cancel='handleCancel'/>
+              </za-cell>
+            </za-panel-body>
+          </za-panel>
+
+          
+        <za-panel>
+          <za-panel-header title="平铺选择器 PickerView" />
+          <za-panel-body>
+            <za-picker-view :value="v5" :dataSource='data5' @change='handleChange' />
+          </za-panel-body>
+        </za-panel>
+
+      </div>
+    </main>
+    <PageFooter />
+  </Container>
 </template>
 
 <script>
-import Container from '../common/Container.vue';
-import PageHeader from '../common/PageHeader.vue';
-import PageFooter from '../common/PageFooter.vue';
-export default {
- components: {
-   Container,
-   PageHeader,
-   PageFooter,
- },
- data() {
-   return {
-     v1:'',
-     data1:[
-      {
-        value: '1',
-        label: '北京市',
-        children: [
-          { value: '11', label: '海淀区' },
-          { value: '12', label: '西城区' },
+  import Container from '../common/Container.vue';
+  import PageHeader from '../common/PageHeader.vue';
+  import PageFooter from '../common/PageFooter.vue';
+  import District from './district';
+  export default {
+    components: {
+      Container,
+      PageHeader,
+      PageFooter,
+    },
+    data() {
+      return {
+        visible1: false,
+        visible2: false,
+        visible3: false,
+        visible4: false,
+        visible6: false,
+        visible7: false,
+        v1: '1',
+        v2: [],
+        v3: [],
+        v4: [],
+        v5: [],
+        v6: [],
+        v7: [],
+        District,
+        data1: [
+          { value: '1', label: '选项一' },
+          { value: '2', label: '选项二' },
         ],
-      },
-      {
-        value: '2',
-        label: '上海市',
-        children: [
-          { value: '21', label: '杨浦区' },
-          { value: '22', label: '静安区' },
+        data2: [
+          [
+            { value: '1', label: '选项一' },
+            { value: '2', label: '选项二' },
+          ],
+          [
+            { value: '3', label: '选项A' },
+            { value: '4', label: '选项B' },
+          ],
         ],
+        data3: [
+          {
+            value: '1',
+            label: '北京市',
+            children: [
+              { value: '11', label: '海淀区' },
+              { value: '12', label: '西城区' },
+            ],
+          },
+          {
+            value: '2',
+            label: '上海市',
+            children: [
+              { value: '21', label: '杨浦区' },
+              { value: '22', label: '静安区' },
+            ],
+          },
+        ],
+        data4: [
+          {
+            code: '1',
+            name: '北京市',
+            children: [
+              { code: '11', name: '海淀区' },
+              { code: '12', name: '西城区' },
+            ],
+          },
+          {
+            code: '2',
+            name: '上海市',
+            children: [
+              { code: '21', name: '黄埔区' },
+              { code: '22', name: '虹口区' },
+            ],
+          },
+        ],
+        data5: [
+          {
+            value: '1',
+            label: '北京市',
+            children: [
+              { value: '11', label: '海淀区' },
+              { value: '12', label: '西城区' },
+            ],
+          },
+          {
+            value: '2',
+            label: '上海市',
+            children: [
+              { value: '21', label: '杨浦区' },
+              { value: '22', label: '静安区' },
+            ],
+          },
+        ]
+      }
+    },
+    methods: {
+      handleOk(v) {
+        // console.log('it may still scrolling when ok is clicked. so ues v-model or @change instead')
+        // console.log(v);
       },
-    ]
-   }
- },
- methods: {
-   handleChange(v){
-     console.log(v);
-   }
- },
-};
+      handleChange(v) {
+        console.log(v);
+      },
+      handleCancel(event) {
+        console.log('cancelled');
+      },
+      displayGenerator(selected) {
+        return selected.map(item => item.name).join('/')
+      }
+    },
+  };
 </script>

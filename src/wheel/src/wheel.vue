@@ -48,6 +48,7 @@ export default {
       type: Function,
       default: item => item.label,
     },
+    selectedValue: String,
     defaultValue: {
       type: [String, Number],
       default: '',
@@ -88,29 +89,23 @@ export default {
     this.BScroll.wheelTo(initIndex);
 
     this.BScroll.on('scroll', () => {
-      this.$emit('onTransition', true);
+      this.$emit('transition', true);
     });
 
     this.BScroll.on('scrollEnd', () => {
-      const { dataSource, valueMember } = this;
-      const index = this.BScroll.getSelectedIndex();
-      const child = dataSource[index];
-      if (child) {
-        this.fireValueChange(child[valueMember]);
-        this.$emit('onTransition', this.BScroll.isInTransition);
-      } else if (console.warn) { // eslint-disable-line
-        console.warn('child not found', dataSource, index); // eslint-disable-line
-      }
+      this.scollEnd();
     });
   },
   watch: {
-    value(val) {
-      console.log(val) // eslint-disable-line
+    selectedValue(val) {
+      if (val === this.value) return;
       if (this.disabled) {
         this.BScroll.disable();
       }
       const newIndex = this.getSelectedIndex(val, this.dataSource);
       this.BScroll.wheelTo(newIndex);
+      this.value = val;
+      this.$emit('reset', val, this.index);
     },
     dataSource(val) {
       const newIndex = this.getSelectedIndex(this.value, val);
@@ -118,7 +113,6 @@ export default {
     },
   },
   updated() {
-    console.log('updated') // eslint-disable-line
     this.BScroll.refresh();
   },
   destroy() {
@@ -133,11 +127,22 @@ export default {
       if (('value' in this)) {
         this.value = value;
       }
-      this.$emit('onChange', value, this.index);
+      this.$emit('change', value, this.index);
     },
     getSelectedIndex(value, dataSource) {
       const { valueMember } = this;
       return dataSource.findIndex((item) => item[valueMember] === value);
+    },
+    scollEnd() {
+      const { dataSource, valueMember } = this;
+      const index = this.BScroll.getSelectedIndex();
+      const child = dataSource[index];
+      if (child) {
+        this.fireValueChange(child[valueMember]);
+        this.$emit('transition', this.BScroll.isInTransition);
+      } else if (console.warn) { // eslint-disable-line
+        console.warn('child not found', dataSource, index); // eslint-disable-line
+      }
     },
   },
 };

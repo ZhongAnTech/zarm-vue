@@ -7,22 +7,23 @@
           :key='index+1'
           :index='index'
           :dataSource='item'
-          :value='value[index]'
+          :selectedValue='getValue()[index]'
           :valueMember='valueMember'
           :itemRender='itemRender'
           :disabled='disabled'
-          @onChange='onValueChange'
-          @onTransition='onTransition'
+          @reset='resetCols'
+          @transition='onTransition'
+          @change='onValueChange'
         />
     </div>
     <div :class='`${prefixCls}-mask-bottom`' />
   </div>
 </template>
 <script>
-import Wheel from '@/wheel/src/wheel';
 import { isArray } from '@/utils/validator';
+import Wheel from '@/wheel/src/wheel';
 
-const getValue = (props, defaultValue) => {
+const getInitValue = (props, defaultValue) => {
   if ('value' in props && props.value.length > 0) {
     return [].concat(props.value);
   }
@@ -33,6 +34,7 @@ const getValue = (props, defaultValue) => {
 
   return defaultValue;
 };
+
 
 export default {
   name: 'za-picker-view',
@@ -60,10 +62,6 @@ export default {
       type: Function,
       default: item => item.label,
     },
-    defaultValue: {
-      type: [String, Number],
-      default: '',
-    },
     disabled: {
       type: Boolean,
       default: false,
@@ -72,55 +70,77 @@ export default {
       type: Array,
       default: () => [],
     },
-  },
-  computed: {
-    // data() {
-    //   const { dataSource } = this;
-    //   return dataSource;
-    // },
+    selectedValue: Array,
   },
   data() {
-    const state = this.getState();
-    if (typeof this.onInit === 'function') {
-      this.onInit(state.objValue);
-    }
-    return Object.assign(state, {
+    return {
+      value: [],
+      objValue: [],
+      data: [],
       isManual: false,
-    });
+    };
   },
   created() {
-    // 如果从上层组件传进来的值与当前值一样，或者人工滑动了改变值，则不执行onInit。
-    if (JSON.stringify(this.objValue) === JSON.stringify(this.firstObjValue) || this.isManual) {
-      return;
-    }
-    if (typeof this.onInit === 'function') {
-      this.onInit(this.objValue);
-    }
+    const newObj = this.getState();
+    this.value = newObj.value;
+    this.objValue = newObj.objValue;
+    this.data = newObj.data;
+    this.$emit('init', newObj.objValue);
   },
   methods: {
     isCascader() {
       return this.dataSource && this.dataSource[0] && !isArray(this.dataSource[0]);
     },
-    getState(prop) {
-      const state = this.isCascader(prop)
-        ? this.cascaderState(prop)
-        : this.normalState(prop);
+    // fixed two or more wheels default data bug
+    resetCols(value, level) {
+      console.log(value, level) // eslint-disable-line
+      const { valueMember, data, selectedValue } = this;
+      const hasObj = data[level].some(item => {
+        return item[valueMember] === value;
+      });
+      if (!selectedValue.length) {
+        this.value = selectedValue;
+        const newObj = this.cascaderState();
+        this.data = newObj.data;
+      }
+      if (!hasObj && this.isCascader()) {
+        const newObj = this.cascaderState(selectedValue);
+        this.$set(data, level, newObj.data[level]);
+      }
+    },
+    getState() {
+      const state = this.isCascader()
+        ? this.cascaderState()
+        : this.normalState();
       return state;
     },
-    normalState(props) {
+    getValue() {
+      const { data, selectedValue } = this;
+      if (selectedValue && selectedValue.length) {
+        return selectedValue;
+      }
+      if (!data) {
+        return [];
+      }
+      return data.map((c) => {
+        return c && c[0] && c[0][this.valueMember];
+      });
+    },
+    normalState() {
       const { valueMember, dataSource } = this;
-      const value = getValue(props, dataSource.map(item => item[0] && item[0][valueMember]));
+      const value = getInitValue(this, dataSource.map(item => item[0] && item[0][valueMember]));
 
       return {
         value,
         // eslint-disable-next-line
-        objValue: props.dataSource.map((item, index) => item.filter(d => d[valueMember] === value[index])[0]),
+        objValue: this.dataSource.map((item, index) => item.filter(d => d[valueMember] === value[index])[0]),
         data: dataSource,
       };
     },
-    cascaderState() {
+    cascaderState(selected) {
       const { valueMember, cols } = this;
-      let newValues = getValue(this, []);
+      // eslint-disable-next-line
+      let newValues = selected ? selected : getInitValue(this, []);
       const newObjValues = [];
       const newDateSource = [];
 
@@ -154,25 +174,28 @@ export default {
       };
     },
     onValueChange(selected, level) {
-      const { dataSource, value } = this;
-
+      const { value } = this;
       value[level] = selected;
-      if (this.isCascader({ dataSource })) {
+      if (this.isCascader()) {
         value.length = level + 1;
       }
-
-      const newObj = this.getState({ dataSource, value });
+      console.log(value) // eslint-disable-line
+      const newObj = this.getState();
       this.value = newObj.value;
       this.objValue = newObj.objValue;
       this.data = newObj.data;
       this.isManual = true;
-      this.$emit('onChange', newObj.objValue, level);
+      this.$emit('change', newObj.objValue, level);
     },
+    // resetLevelData(value, level) {
+    //   const { valueMember, cols, data, dataSource } = this;
+    //   const newDateSource = [];
+    //   if (value.length !== data.length) {
+    //     this.data = newDateSource;
+    //   }
+    // },
     onTransition(isScrolling) {
-      if (typeof this.onTransition === 'function') {
-        console.log(isScrolling) // eslint-disable-line
-        // this.onTransition(isScrolling);
-      }
+      this.$emit('transition', isScrolling);
     },
   },
 };
