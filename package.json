@@ -1,6 +1,6 @@
 {
   "name": "zarm-vue",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "zarm in vue",
   "author": "zhanwangye <232465450@qq.com>",
   "tags": [
@@ -40,7 +40,7 @@
     "lint": "eslint --ext .js,.vue src",
     "clean": "rimraf release",
     "deploy": "rimraf dist && cross-env NODE_ENV=production webpack --config ./build/webpack.deploy.conf.js",
-    "deploy:page": "npm run build && npm run deploy",
+    "deploy:page": "npm run deploy",
     "page": "gh-pages -d dist --remote origin",
     "build:umd": "cross-env NODE_ENV=production webpack --config ./build/webpack.umd.conf.js",
     "build:lib": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.conf.js",
