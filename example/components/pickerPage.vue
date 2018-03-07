@@ -222,7 +222,7 @@ export default {
       visible7: false,
       visible8: false,
       visible9: false,
-      v1:'',
+      v1:'TB',
       v2:'',
       v3:'',
       v4:'',
