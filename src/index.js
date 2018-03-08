@@ -31,14 +31,12 @@ import Slider from '../src/slider';
 import SwipeAction from '../src/swipe-action';
 import Swipe from '../src/swipe';
 import SwipeItem from '../src/swipe-item';
-import Picker from '../src/new-picker';
+import Picker from '../src/picker';
+import Select from '../src/select';
 import PickerView from '../src/picker-view';
 import Calendar from '../src/calendar';
-import Colume from '../src/column';
-import ColumeGroup from '../src/column-group';
-import Cascader from '../src/cascader';
 import Progress from '../src/progress';
-import DatePicker from '../src/date-picker';
+import DatePickerView from '../src/date-picker-view';
 import StackPicker from '../src/stack-picker';
 import NoticeBar from '../src/notice-bar';
 import Drag from '../src/drag';
@@ -79,12 +77,10 @@ const components = [
   Swipe,
   SwipeItem,
   Picker,
+  Select,
   PickerView,
-  Colume,
-  ColumeGroup,
-  Cascader,
   Progress,
-  DatePicker,
+  DatePickerView,
   Calendar,
   StackPicker,
   NoticeBar,
@@ -145,13 +141,11 @@ module.exports = {
   Swipe,
   SwipeItem,
   Picker,
+  Select,
   PickerView,
   Calendar,
-  Colume,
-  ColumeGroup,
-  Cascader,
   Progress,
-  DatePicker,
+  DatePickerView,
   StackPicker,
   NoticeBar,
   Drag,

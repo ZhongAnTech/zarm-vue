@@ -13,24 +13,10 @@
 </template>
 <script>
 import BScroll from 'better-scroll';
-import { isArray } from '@/utils/validator';
 import './findIndex';
 
-const getValue = (props, defaultValue) => {
-  if ('value' in props) {
-    return props.value;
-  }
-  if ('defaultValue' in props) {
-    return props.defaultValue;
-  }
-  if (isArray(props.dataSource) && props.dataSource[0]) {
-    return props.dataSource[0][props.valueMember];
-  }
-  return defaultValue;
-};
-
 export default {
-  name: 'za-wheel',
+  name: 'zaWheel',
   props: {
     prefixCls: {
       type: String,
@@ -48,7 +34,10 @@ export default {
       type: Function,
       default: item => item.label,
     },
-    selectedValue: String,
+    selectedValue: {
+      type: [String, Number],
+      default: '',
+    },
     defaultValue: {
       type: [String, Number],
       default: '',
@@ -66,7 +55,7 @@ export default {
     return {
       BScroll,
       wrapper: null,
-      value: getValue(this),
+      value: this.getValue(),
     };
   },
   mounted() {
@@ -84,10 +73,9 @@ export default {
     if (this.disabled) {
       this.BScroll.disable();
     }
-
-    const initIndex = this.BScroll.getSelectedIndex(this.value);
+    const initIndex = this.getSelectedIndex(this.value, this.dataSource);
+    console.log('scroll default...',initIndex, this.value) // eslint-disable-line
     this.BScroll.wheelTo(initIndex);
-
     this.BScroll.on('scroll', () => {
       this.$emit('transition', true);
     });
@@ -113,12 +101,17 @@ export default {
     },
   },
   updated() {
+    console.log('scroll refresh...') // eslint-disable-line
     this.BScroll.refresh();
   },
   destroy() {
     this.BScroll.destroy();
   },
   methods: {
+    getValue() {
+      // eslint-disable-next-line
+      return this.defaultValue || this.selectedValue || (this.data && this.data.length && this.data[0][this.valueMember]);
+    },
     fireValueChange(value) {
       if (value === this.value) {
         return;

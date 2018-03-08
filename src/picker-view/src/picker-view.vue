@@ -8,6 +8,7 @@
           :index='index'
           :dataSource='item'
           :selectedValue='getValue()[index]'
+          :defaultValue='defaultValue[index]'
           :valueMember='valueMember'
           :itemRender='itemRender'
           :disabled='disabled'
@@ -23,21 +24,8 @@
 import { isArray } from '@/utils/validator';
 import Wheel from '@/wheel/src/wheel';
 
-const getInitValue = (props, defaultValue) => {
-  if ('value' in props && props.value.length > 0) {
-    return [].concat(props.value);
-  }
-
-  if ('defaultValue' in props && props.defaultValue.length > 0) {
-    return [].concat(props.defaultValue);
-  }
-
-  return defaultValue;
-};
-
-
 export default {
-  name: 'za-picker-view',
+  name: 'zaPickerView',
   components: {
     Wheel,
   },
@@ -49,6 +37,10 @@ export default {
     dataSource: {
       type: Array,
       required: true,
+    },
+    defaultValue: {
+      type: Array,
+      default: () => [],
     },
     cols: {
       type: Number,
@@ -66,39 +58,38 @@ export default {
       type: Boolean,
       default: false,
     },
-    firstObjValue: {
-      type: Array,
-      default: () => [],
-    },
     selectedValue: Array,
   },
   data() {
-    return {
-      value: [],
-      objValue: [],
-      data: [],
-      isManual: false,
-    };
-  },
-  created() {
+    this.value = this.getValue();
     const newObj = this.getState();
-    this.value = newObj.value;
-    this.objValue = newObj.objValue;
-    this.data = newObj.data;
-    this.$emit('init', newObj.objValue);
+    return Object.assign({
+      isManual: false,
+    }, newObj);
   },
   methods: {
+    getInitValue(defaultValue) {
+      if ('value' in this && this.value.length > 0) {
+        return [].concat(this.value);
+      }
+
+      if ('defaultValue' in this && this.defaultValue.length > 0) {
+        return [].concat(this.defaultValue);
+      }
+
+      return defaultValue;
+    },
     isCascader() {
       return this.dataSource && this.dataSource[0] && !isArray(this.dataSource[0]);
     },
     // fixed two or more wheels default data bug
     resetCols(value, level) {
-      console.log(value, level) // eslint-disable-line
       const { valueMember, data, selectedValue } = this;
       const hasObj = data[level].some(item => {
         return item[valueMember] === value;
       });
-      if (!selectedValue.length) {
+      // console.log(value, hasObj) // eslint-disable-line
+      if (selectedValue && !selectedValue.length && this.isCascader()) {
         this.value = selectedValue;
         const newObj = this.cascaderState();
         this.data = newObj.data;
@@ -128,8 +119,8 @@ export default {
     },
     normalState() {
       const { valueMember, dataSource } = this;
-      const value = getInitValue(this, dataSource.map(item => item[0] && item[0][valueMember]));
-
+      const value = this.getInitValue(dataSource.map(item => item[0] && item[0][valueMember]));
+      console.log(value,this.selectedValue) // eslint-disable-line
       return {
         value,
         // eslint-disable-next-line
@@ -140,7 +131,7 @@ export default {
     cascaderState(selected) {
       const { valueMember, cols } = this;
       // eslint-disable-next-line
-      let newValues = selected ? selected : getInitValue(this, []);
+      let newValues = selected ? selected : this.getInitValue([]);
       const newObjValues = [];
       const newDateSource = [];
 
@@ -179,7 +170,7 @@ export default {
       if (this.isCascader()) {
         value.length = level + 1;
       }
-      console.log(value) // eslint-disable-line
+      // console.log(value) // eslint-disable-line
       const newObj = this.getState();
       this.value = newObj.value;
       this.objValue = newObj.objValue;
@@ -187,13 +178,6 @@ export default {
       this.isManual = true;
       this.$emit('change', newObj.objValue, level);
     },
-    // resetLevelData(value, level) {
-    //   const { valueMember, cols, data, dataSource } = this;
-    //   const newDateSource = [];
-    //   if (value.length !== data.length) {
-    //     this.data = newDateSource;
-    //   }
-    // },
     onTransition(isScrolling) {
       this.$emit('transition', isScrolling);
     },

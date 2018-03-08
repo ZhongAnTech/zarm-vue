@@ -7,19 +7,16 @@
           <za-panel-header title="基本" />
           <za-panel-body>
             <za-cell title="单列">
-              <za-picker :close-on-click-modal='true' :visible.sync='visible1' v-model='v1' :dataSource='data1' @ok='handleOk' @change='handleChange'
-                @cancel='handleCancel' />
+              <za-picker :close-on-click-modal='true' :visible.sync='visible1' :value='v1' :dataSource='data1' @ok='handleOk'  />
             </za-cell>
             <za-cell title="多列">
-              <za-picker :visible.sync='visible2' :dataSource='data2' v-model='v2' @ok='handleOk' @change='handleChange' @cancel='handleCancel'
-              />
+              <za-picker :visible.sync='visible2' :dataSource='data2' :value='v2' @ok='handleOk' />
             </za-cell>
             <za-cell title="多列联动">
-              <za-picker :visible.sync='visible3' :dataSource='data3' v-model='v3' @ok='handleOk' @change='handleChange' @cancel='handleCancel'
-              />
+              <za-picker :visible.sync='visible3' :dataSource='data3' :value='v3' @ok='handleOk' />
             </za-cell>
             <za-cell title="自定义格式">
-              <za-picker :visible.sync='visible4' :dataSource='data4' v-model='v4' @ok='handleOk' @change='handleChange' @cancel='handleCancel' placeholder='自定义placeholder'
+              <za-picker :visible.sync='visible4' :dataSource='data4' :value='v4' @ok='handleOk' placeholder='自定义placeholder'
                 valueMember="code" :itemRender='(item) => item.name'  :displayGenerator='displayGenerator' />
             </za-cell>
           </za-panel-body>
@@ -29,7 +26,7 @@
             <za-panel-header title="城市选择器"/>
             <za-panel-body>
               <za-cell title="省市选择">
-                <za-picker
+                <za-select
                   :visible.sync='visible6'
                   v-model='v6'
                   :dataSource='District'
@@ -39,7 +36,7 @@
                   :cols='2'/>
               </za-cell>
               <za-cell title="省市区选择">
-                <za-picker
+                <za-select
                   :visible.sync='visible7'
                   :dataSource='District'
                   v-model='v7'
@@ -54,7 +51,7 @@
         <za-panel>
           <za-panel-header title="平铺选择器 PickerView" />
           <za-panel-body>
-            <za-picker-view :value="v5" :dataSource='data5' @change='handleChange' />
+            <za-picker-view :defaultValue="v5" :dataSource='data5' @change='handleChange' />
           </za-panel-body>
         </za-panel>
 
@@ -83,13 +80,13 @@
         visible4: false,
         visible6: false,
         visible7: false,
-        v1: '1',
-        v2: [],
-        v3: [],
-        v4: [],
-        v5: [],
-        v6: [],
-        v7: [],
+        v1: '2',
+        v2: ['2','3'],
+        v3: ['2','21'],
+        v4: '',
+        v5: ['2','22'],
+        v6: '',
+        v7: '',
         District,
         data1: [
           { value: '1', label: '选项一' },

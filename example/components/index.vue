@@ -17,11 +17,11 @@
             <!-- router-link写法，但暂时没有css类支持 -->
             <router-link to="input" tag='div' style='width:100%'>文本框 Input</router-link>
           </za-cell>
-          <!-- <za-cell hasArrow @click="$router.push('/picker')">
-            选择器 Picker
-          </za-cell> -->
           <za-cell hasArrow @click="$router.push('/pickerview')">
-            选择器 Picker
+            选择器 Picker & Select
+          </za-cell>
+          <za-cell hasArrow @click="$router.push('/datepickerview')">
+            日期选择器 DatePicker & DateSelect
           </za-cell>
           <za-cell hasArrow @click="$router.push('/calendar')">
             日历 Calendar
