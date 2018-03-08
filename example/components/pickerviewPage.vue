@@ -47,6 +47,22 @@
             </za-panel-body>
           </za-panel>
 
+          <za-panel>
+              <za-panel-header title="层叠式选择器"/>
+              <za-panel-body>
+                <za-cell title="级联选择">
+                  <za-stack-picker
+                    v-model='v10'
+                    title="级联选择"
+                    placeholder="请选择"
+                    :dataSource='District'
+                    :displayRender="selected => selected.map(item => item.label).join('-')"
+                    @ok='handleOk'
+                    @change='handleChange'
+                    @cancel='handleCancel'/>
+                </za-cell>
+              </za-panel-body>
+            </za-panel>
           
         <za-panel>
           <za-panel-header title="平铺选择器 PickerView" />
@@ -87,6 +103,7 @@
         v5: ['2','22'],
         v6: '',
         v7: '',
+        v10: [],
         District,
         data1: [
           { value: '1', label: '选项一' },
