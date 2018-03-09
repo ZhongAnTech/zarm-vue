@@ -120,7 +120,7 @@ export default {
     normalState() {
       const { valueMember, dataSource } = this;
       const value = this.getInitValue(dataSource.map(item => item[0] && item[0][valueMember]));
-      console.log(value,this.selectedValue) // eslint-disable-line
+      // console.log(value,this.selectedValue) // eslint-disable-line
       return {
         value,
         // eslint-disable-next-line

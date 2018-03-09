@@ -105,8 +105,8 @@ export default {
       type: String,
       default: 'value',
     },
-    defaultValue: [String, Array, Number],
-    value: [String, Array, Number],
+    defaultValue: '',
+    value: '',
     displayAddon: {
       type: String,
       default: '',
@@ -132,30 +132,22 @@ export default {
     wheelDefaultValue: {},
     min: {},
     max: {},
-    selectedValue: Array,
   },
   watch: {
     value(val, oldVal) { // eslint-disable-line no-unused-vars
       if (this.date === val) return;
       this.date = isExtendDate(val);
-      this.oldDate = this.date;
     },
   },
   data() {
     return {
-      currentVisible: this.visible,
       date: '',
-      oldDate: '',
-      display: '',
     };
   },
   created() {
     const date = this.value && isExtendDate(this.value);
     const defaultDate = this.defaultValue && isExtendDate(this.defaultValue);
-    const display = this.wheelDefaultValue && isExtendDate(this.wheelDefaultValue);
     this.date = defaultDate || date;
-    this.oldDate = this.date;
-    this.display = display;
     this.$emit('init', this.getDate());
   },
   methods: {
@@ -404,7 +396,7 @@ export default {
       return [hourCol, minuteCol];
     },
     getDate() {
-      return this.date || this.display || this.getDefaultDate();
+      return this.date || this.getDefaultDate();
     },
     getDefaultDate() {
       const { min, mode, minuteStep } = this;

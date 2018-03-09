@@ -151,22 +151,15 @@ export default new Router({
         mRender: () => import('../components/swipePage.vue')
       },
     },
-    // {
-    //   path: '/picker',
-    //   component: Bundle,
-    //   meta: {
-    //     mRender: () => import('../components/pickerPage.vue')
-    //   },
-    // },
     {
-      path: '/pickerview',
+      path: '/picker',
       component: Bundle,
       meta: {
-        mRender: () => import('../components/pickerviewPage.vue')
+        mRender: () => import('../components/pickerPage.vue')
       },
     },
     {
-      path: '/datepickerview',
+      path: '/datepicker',
       component: Bundle,
       meta: {
         mRender: () => import('../components/datePickerPage.vue')

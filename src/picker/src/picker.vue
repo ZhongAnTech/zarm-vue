@@ -1,6 +1,6 @@
 <template lang="html">
   <div :class='`${prefixCls}`' @click='handleClick'>
-      <div :class='{
+      <div  v-if='isSelect' :class='{
         [`${prefixCls}-input`]: true,
         [`${prefixCls}-placeholder`]: !selectedValue.join(displayAddon),
         [`${prefixCls}-disabled`]: !!disabled,
@@ -113,6 +113,7 @@ export default {
   data() {
     const defaultValue = this.getInitValue();
     return {
+      isSelect: this.$options.name === 'zaSelect',
       currentValue: defaultValue,
       currentVisible: this.visible,
       oldValue: defaultValue,

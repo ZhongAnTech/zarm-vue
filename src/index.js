@@ -36,6 +36,8 @@ import Select from '../src/select';
 import PickerView from '../src/picker-view';
 import Calendar from '../src/calendar';
 import Progress from '../src/progress';
+import DatePicker from '../src/date-picker';
+import DateSelect from '../src/date-select';
 import DatePickerView from '../src/date-picker-view';
 import StackPicker from '../src/stack-picker';
 import NoticeBar from '../src/notice-bar';
@@ -81,11 +83,13 @@ const components = [
   PickerView,
   Progress,
   DatePickerView,
-  Calendar,
+  DatePicker,
+  DateSelect,
   StackPicker,
   NoticeBar,
   Drag,
   Pull,
+  Calendar,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -140,16 +144,18 @@ module.exports = {
   SwipeAction,
   Swipe,
   SwipeItem,
+  PickerView,
   Picker,
   Select,
-  PickerView,
-  Calendar,
   Progress,
   DatePickerView,
+  DatePicker,
+  DateSelect,
   StackPicker,
   NoticeBar,
   Drag,
   Pull,
+  Calendar,
 };
 
 module.exports.default = module.exports;

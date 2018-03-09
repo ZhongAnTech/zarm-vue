@@ -74,7 +74,7 @@ export default {
       this.BScroll.disable();
     }
     const initIndex = this.getSelectedIndex(this.value, this.dataSource);
-    console.log('scroll default...',initIndex, this.value) // eslint-disable-line
+    // console.log('scroll default...',initIndex, this.value) // eslint-disable-line
     this.BScroll.wheelTo(initIndex);
     this.BScroll.on('scroll', () => {
       this.$emit('transition', true);
