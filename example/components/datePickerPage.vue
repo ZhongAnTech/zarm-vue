@@ -74,7 +74,7 @@
                 mode='datetime'
                 min="2018-01-13"
                 max="2090-11-27"
-                defaultValue="2021-10-20 10:30"
+                :defaultValue="v6"
                 @change='handleChange'/>
           </za-panel-body>
          </za-panel>
@@ -106,10 +106,7 @@ export default {
       v3:'',
       v4:'',
       v5:'2008-01-10',
-      v6:'',
-      v7:'',
-      v8:'',
-      v9:'',
+      v6:'2018-12-24 11:23',
       minuteStep: 15,
     }
   },
