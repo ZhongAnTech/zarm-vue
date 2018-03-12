@@ -48,7 +48,7 @@
     "build:style": "cross-env NODE_ENV=production webpack --config ./build/webpack.style.conf.js",
     "build:copy": "babel-node ./script/copy.js",
     "build:release": "cp -r README.md release && cp -r src release && cp -r styles release",
-    "build:all": "npm run build:umd && npm run build:lib && npm run build:style && npm run build:theme && npm run build:copy && npm run build:release",
+    "build:all": "npm run clean && npm run build:umd && npm run build:lib && npm run build:style && npm run build:theme && npm run build:copy && npm run build:release",
     "book": "cd docs && gitbook serve",
     "pub": "npm run clean && npm run build:all && npm publish ./release"
   },
