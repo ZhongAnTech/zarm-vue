@@ -53,7 +53,6 @@
             <za-panel-body>
               <za-cell title="日期选择">
                   <za-date-select
-                  :visible.sync='visible5'
                   v-model='v5'
                   title="选择日期"
                   placeholder="请选择日期"

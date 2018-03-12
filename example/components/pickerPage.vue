@@ -32,7 +32,6 @@
               <za-panel-body>
                 <za-cell title="省市选择">
                   <za-select
-                    :visible.sync='visible6'
                     v-model='v6'
                     :dataSource='District'
                     @ok='handleOk'
@@ -42,7 +41,6 @@
                 </za-cell>
                 <za-cell title="省市区选择">
                   <za-select
-                    :visible.sync='visible7'
                     :dataSource='District'
                     v-model='v7'
                     :displayRender="selected => selected.map(item => item.label).join('／')"
