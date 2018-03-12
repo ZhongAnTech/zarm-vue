@@ -49,7 +49,7 @@ export default {
      visible3: false,
      minDate: new Date('2018-01-11'),
      maxDate: new Date('2019-10-10'),
-     value2: ['2018-02-24','2018-03-10'],
+     value2: ['2018-04-24','2018-08-10'],
      isMultiSelected: true,
    }
  },
