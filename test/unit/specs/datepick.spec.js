@@ -138,7 +138,7 @@ describe('DatePicker', () => {
       `,
       data() {
         return {
-          value: '',
+          value: '2000-01-01',
           visible: false,
         };
       },
@@ -150,7 +150,7 @@ describe('DatePicker', () => {
     }, true);
     vm.$el.querySelector('.za-picker-submit').click();
     vm.$nextTick(() => {
-      expect(value).to.equal('2000-01-01 00:00');
+      expect(value.getFullYear()).to.equal(2000);
       done();
     });
   });

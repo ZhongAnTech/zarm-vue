@@ -73,8 +73,8 @@ export default {
     if (this.disabled) {
       this.BScroll.disable();
     }
-    const initIndex = this.getSelectedIndex(this.value, this.dataSource);
-    // console.log('scroll default...',initIndex, this.value) // eslint-disable-line
+
+    const initIndex = this.getWheelSelectedIndex(this.value, this.dataSource);
     this.BScroll.wheelTo(initIndex);
     this.BScroll.on('scroll', () => {
       this.$emit('transition', true);
@@ -90,13 +90,13 @@ export default {
       if (this.disabled) {
         this.BScroll.disable();
       }
-      const newIndex = this.getSelectedIndex(val, this.dataSource);
+      const newIndex = this.getWheelSelectedIndex(val, this.dataSource);
       this.BScroll.wheelTo(newIndex);
       this.value = val;
       this.$emit('reset', val, this.index);
     },
     dataSource(val) {
-      const newIndex = this.getSelectedIndex(this.value, val);
+      const newIndex = this.getWheelSelectedIndex(this.value, val);
       this.BScroll.wheelTo(newIndex);
     },
   },
@@ -122,9 +122,18 @@ export default {
       }
       this.$emit('change', value, this.index);
     },
-    getSelectedIndex(value, dataSource) {
+    getWheelSelectedIndex(value, dataSource) {
       const { valueMember } = this;
-      return dataSource.findIndex((item) => item[valueMember] === value);
+      let _index = 0;
+      // if (!dataSource) return _index;
+      dataSource.filter((item, index) => {
+        if (item[valueMember] === value) {
+          _index = index;
+          return true;
+        }
+        return false;
+      });
+      return _index;
     },
     scollEnd() {
       const { dataSource, valueMember } = this;

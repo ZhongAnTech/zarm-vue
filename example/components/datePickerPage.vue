@@ -21,12 +21,13 @@
            </za-panel-body>
         </za-panel>
         <za-date-picker
+          :close-on-click-modal='false'
           :visible.sync='visible1'
           title="选择日期"
           placeholder="请选择日期"
           mode='date'
           max='2030-10-25'
-          min='1917-10-25'
+          min='1917-02-12'
           @ok='handleOk'/>
         <za-date-picker
           :visible.sync='visible2'
@@ -39,6 +40,7 @@
           title="选择时间"
           placeholder="请选择时间"
           mode='time'
+          :minute-step='minuteStep'
           @ok='handleOk'/>
         <za-date-picker
           :visible.sync='visible4'
@@ -47,15 +49,16 @@
           mode='datetime'
           @ok='handleOk'/>
         <za-panel>
-            <za-panel-header title="城市选择器 Select"/>
+            <za-panel-header title="日期选择器 Select"/>
             <za-panel-body>
-              <za-cell title="省市选择">
+              <za-cell title="日期选择">
                   <za-date-select
-                  :visible.sync='visible1'
+                  :visible.sync='visible5'
                   v-model='v5'
                   title="选择日期"
                   placeholder="请选择日期"
                   mode='date'
+                  format='yyyy年MM月dd日'
                   max='2030-10-25'
                   min='1917-10-25'
                   @ok='handleOk'/>
@@ -71,10 +74,10 @@
                 mode='datetime'
                 min="2018-01-13"
                 max="2090-11-27"
+                defaultValue="2021-10-20 10:30"
                 @change='handleChange'/>
           </za-panel-body>
          </za-panel>
-         
       </div>
     </main>
    </Container>
@@ -97,6 +100,7 @@ export default {
       visible2: false,
       visible3: false,
       visible4: false,
+      visible5: false,
       v1:'',
       v2:'',
       v3:'',
@@ -106,12 +110,14 @@ export default {
       v7:'',
       v8:'',
       v9:'',
+      minuteStep: 15,
     }
   },
   methods: {
     handleOk(v){
       console.log('it may still scrolling when ok is clicked. so ues v-model or @change instead')
       console.log(v);
+      this.$zaToast(v.toString())
     },
     handleChange(v){
       console.log(v);

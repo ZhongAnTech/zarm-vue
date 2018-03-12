@@ -1,5 +1,5 @@
 <template lang="html">
-  <div :class='`${prefixCls}`' @click='handleClick'>
+  <div :class='{[`${prefixCls}`]: true,[`${prefixCls}-block`]: isSelect}' @click='handleClick'>
       <div  v-if='isSelect' :class='{
         [`${prefixCls}-input`]: true,
         [`${prefixCls}-placeholder`]: !selectedValue.join(displayAddon),
@@ -102,7 +102,7 @@ export default {
       type: String,
       default: '',
     },
-    displayGenerator: Function,
+    displayRender: Function,
     customCls: String,
     cols: Number,
     itemRender: {
@@ -147,7 +147,7 @@ export default {
       this.currentVisible = val;
     },
     value(val, oldVal) { // eslint-disable-line no-unused-vars
-      console.log(val, oldVal) // eslint-disable-line
+      // console.log(val, oldVal) // eslint-disable-line
       if (this.currentValue === val) return;
       this.currentValue = isArray(val) ? val : [val];
       this.oldValue = this.currentValue;
@@ -206,7 +206,7 @@ export default {
           const treeChildren = arrayTreeFilter(data, (item, level) => {
             return item[this.valueMember] === currentValue[level];
           });
-          return this.displayRender(treeChildren);
+          return this.displayGenerator(treeChildren);
         }
       }
       // FIXED
@@ -220,13 +220,13 @@ export default {
         return undefined;
       }).filter(t => !!t);
 
-      return this.displayRender(treeChildren2);
+      return this.displayGenerator(treeChildren2);
     },
-    displayRender(value) {
-      const { displayGenerator, displayMember, displayAddon } = this;
+    displayGenerator(value) {
+      const { displayRender, displayMember, displayAddon } = this;
       // if (oldValue.length === 0) return;
-      if (typeof displayGenerator === 'function') {
-        return displayGenerator(value);
+      if (typeof displayRender === 'function') {
+        return displayRender(value);
       }
       return value.map((v) => {
         return v && v[displayMember];

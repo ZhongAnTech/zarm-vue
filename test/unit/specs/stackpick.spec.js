@@ -74,9 +74,9 @@ describe('StackPicker', () => {
         },
       },
     }, true);
-    vm.$el.querySelectorAll('.za-picker-stack-column')[0].querySelector('.za-picker-stack-item').click();
+    vm.$el.querySelectorAll('.za-stack-picker-stack-column')[0].querySelector('.za-stack-picker-stack-item').click();
     vm.$nextTick(() => {
-      vm.$el.querySelectorAll('.za-picker-stack-column')[1].querySelector('.za-picker-stack-item').click();
+      vm.$el.querySelectorAll('.za-stack-picker-stack-column')[1].querySelector('.za-stack-picker-stack-item').click();
       vm.$nextTick(() => {
         expect(value[0].label).to.equal('北京市');
         done();

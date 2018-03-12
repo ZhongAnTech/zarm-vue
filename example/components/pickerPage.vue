@@ -21,10 +21,10 @@
             </za-panel-body>
           </za-panel>
   
-          <za-picker :close-on-click-modal='true' :visible.sync='visible1'  :dataSource='data1' @ok='handleOk'  />
+          <za-picker :close-on-click-modal='false' :visible.sync='visible1'  :dataSource='data1' @ok='handleOk1'  />
           <za-picker :visible.sync='visible2' :dataSource='data2'  @ok='handleOk' />
           <za-picker :visible.sync='visible3' :dataSource='data3'  @ok='handleOk' />
-          <za-picker :visible.sync='visible4' :dataSource='data4'  @ok='handleOk' placeholder='自定义placeholder'
+          <za-picker :visible.sync='visible4' :dataSource='data4'  @ok='handleOk2' placeholder='自定义placeholder'
                   valueMember="code" :itemRender='(item) => item.name'  />
                   
           <za-panel>
@@ -45,6 +45,7 @@
                     :visible.sync='visible7'
                     :dataSource='District'
                     v-model='v7'
+                    :displayRender="selected => selected.map(item => item.label).join('／')"
                     @ok='handleOk'
                     @change='handleChange'
                     @cancel='handleCancel'/>
@@ -181,9 +182,20 @@
         }
       },
       methods: {
+        handleOk1(v) {
+          console.log('it may still scrolling when ok is clicked. so ues v-model or @change instead')
+          console.log(v);
+          this.$zaToast(v.value);
+        },
         handleOk(v) {
           console.log('it may still scrolling when ok is clicked. so ues v-model or @change instead')
           console.log(v);
+          this.$zaToast(JSON.stringify(v.map(item => item.value)));
+        },
+        handleOk2(v) {
+          console.log('it may still scrolling when ok is clicked. so ues v-model or @change instead')
+          console.log(v);
+          this.$zaToast(JSON.stringify(v.map(item => item.code)));
         },
         handleChange(v) {
           console.log(v);

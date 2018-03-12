@@ -1,5 +1,5 @@
 <template lang='html'>
-  <div :class='`${prefixCls}`' @click='handleClick'>
+  <div :class='{[`${prefixCls}`]: true,[`${prefixCls}-block`]: isSelect}'  @click='handleClick'>
     <div v-if='isSelect' :class='{
       [`${prefixCls}-input`]: true,
       [`${prefixCls}-placeholder`]: !date,
@@ -30,6 +30,7 @@
            :min="min"
            :max="max"
            :value="date"
+           :minuteStep="minuteStep"
            @init='onInit'
            @cancel='onCancel'
            @change='onValueChange'
@@ -106,10 +107,14 @@ export default {
       type: String,
       default: 'value',
     },
+    minuteStep: {
+      type: Number,
+      default: 1,
+    },
     defaultValue: '',
     value: '',
     mode: String,
-    minuteStep: 1,
+    format: [String, Function],
     min: {},
     max: {},
     customCls: String,
