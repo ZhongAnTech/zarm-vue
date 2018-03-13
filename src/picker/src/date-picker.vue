@@ -205,8 +205,7 @@ export default {
     },
     onPopupClose(reason) {
       if (reason === 'clickaway') {
-        this.currentVisible = !this.currentVisible;
-        this.$emit('update:visible', this.currentVisible);
+        this.handleCancel();
       }
     },
     handleCancel(event) {

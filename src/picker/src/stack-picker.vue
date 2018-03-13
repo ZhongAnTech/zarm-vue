@@ -124,6 +124,10 @@ export default {
       type: String,
       default: '取消',
     },
+    okText: {
+      type: String,
+      default: '确定',
+    },
   },
   watch: {
     visible(val, oldVal) { // eslint-disable-line no-unused-vars
@@ -266,19 +270,19 @@ export default {
       if (item) {
         value[index] = item;
       }
-
       errorMsg = validate(value);
-
       if (isLast && !errorMsg) {
         this.currentValue = value;
         this.errorMsg = errorMsg;
-        this.$emit('ok', value);
         this.$emit('input', value.map(v => v[this.valueMember]));
         this.$emit('change', value.map(v => v[this.valueMember]));
+        this.$emit('ok', value);
         this.toggle();
       } else {
         this.currentValue = value;
         this.errorMsg = errorMsg;
+        this.$emit('input', value.map(v => v[this.valueMember]));
+        this.$emit('change', value.map(v => v[this.valueMember]));
       }
     },
   },
