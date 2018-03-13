@@ -60,7 +60,7 @@ export default {
   props: {
     prefixCls: {
       type: String,
-      default: 'za-picker',
+      default: 'za-stack-picker',
     },
     dataSource: {
       type: Array,

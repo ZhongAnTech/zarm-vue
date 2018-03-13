@@ -1,4 +1,4 @@
-import StackPicker from '../picker/src/stack-picker';
+import StackPicker from './src/stack-picker';
 
 /* istanbul ignore next */
 StackPicker.install = function (Vue) {

@@ -8,7 +8,7 @@
     </ul>
 </template>
 <script>
-import moment from 'moment';
+import dateUtil from './date';
 
 export default {
   props: ['prefixCls', 'minDate', 'maxDate', 'selectedSuffix', 'selectedValue', 'month', 'multiSelected'],
@@ -69,7 +69,7 @@ export default {
           }
           self.$set(self.items, i, {
             enabled: _enabled,
-            date: moment(_date).format('YYYY-MM-DD'),
+            date: dateUtil.formatDate(_date, 'yyyy-MM-dd'),
             text: _date.getDate(),
           });
         }

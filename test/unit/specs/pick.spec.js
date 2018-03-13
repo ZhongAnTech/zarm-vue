@@ -102,7 +102,7 @@ describe('Picker', () => {
       data() {
         return {
           value: '',
-          visible: true,
+          visible: false,
           data1: [
             { value: '1', label: '选项一' },
             { value: '2', label: '选项二' },

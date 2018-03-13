@@ -18,7 +18,10 @@
             <router-link to="input" tag='div' style='width:100%'>文本框 Input</router-link>
           </za-cell>
           <za-cell hasArrow @click="$router.push('/picker')">
-            选择器 Picker
+            选择器 Picker & Select
+          </za-cell>
+          <za-cell hasArrow @click="$router.push('/datepicker')">
+            日期选择器 DatePicker & DateSelect
           </za-cell>
           <za-cell hasArrow @click="$router.push('/calendar')">
             日历 Calendar

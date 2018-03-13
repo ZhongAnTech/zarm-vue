@@ -1,6 +1,6 @@
 {
   "name": "zarm-vue",
-  "version": "1.0.8",
+  "version": "1.1.0-beta",
   "description": "zarm in vue",
   "author": "zhanwangye <232465450@qq.com>",
   "tags": [
@@ -48,9 +48,9 @@
     "build:style": "cross-env NODE_ENV=production webpack --config ./build/webpack.style.conf.js",
     "build:copy": "babel-node ./script/copy.js",
     "build:release": "cp -r README.md release && cp -r src release && cp -r styles release",
-    "build": "npm run build:umd && npm run build:lib && npm run build:style && npm run build:theme && npm run build:copy && npm run build:release",
+    "build:all": "npm run clean && npm run build:umd && npm run build:lib && npm run build:style && npm run build:theme && npm run build:copy && npm run build:release",
     "book": "cd docs && gitbook serve",
-    "pub": "npm run clean && npm run build && npm publish ./release"
+    "pub": "npm run clean && npm run build:all && npm publish ./release"
   },
   "peerDependencies": {
     "vue": "^2.5.2"
@@ -59,6 +59,7 @@
     "autosize": "^4.0.0",
     "babel-helper-vue-jsx-merge-props": "^2.0.2",
     "babel-runtime": "^6.26.0",
+    "better-scroll": "^1.8.3",
     "moment": "^2.18.1",
     "vue": "^2.5.2",
     "zscroller": "^0.3.1"
