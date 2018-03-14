@@ -24,7 +24,7 @@ import Tooltip from '../src/tooltip';
 import Loading from '../src/loading';
 import Popup from '../src/popup';
 import Uploader from '../src/uploader';
-import ActionSheet from '../src/actionsheet';
+import Actionsheet from '../src/actionsheet';
 import Modal from '../src/modal';
 import Confirm from '../src/confirm';
 import Slider from '../src/slider';
@@ -71,7 +71,7 @@ const components = [
   Loading,
   Popup,
   Uploader,
-  ActionSheet,
+  Actionsheet,
   Modal,
   Confirm,
   Slider,
@@ -138,7 +138,7 @@ module.exports = {
   Loading,
   Popup,
   Uploader,
-  ActionSheet,
+  Actionsheet,
   Modal,
   Confirm,
   SwipeAction,
