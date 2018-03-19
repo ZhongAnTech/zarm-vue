@@ -24,7 +24,7 @@
      </div>
      <za-calendar :visible.sync='visible1' @changed='changeDate' @ok='handleOk1' :selectedValue='value1' />
      <za-calendar :visible.sync='visible2' @ok='handleOk2' :multiSelected='isMultiSelected' :selectedValue='value2'/>
-     <za-calendar :visible.sync='visible3' :min='minDate' :max='maxDate' :months="24" :selectedValue='value3'/>
+     <za-calendar :visible.sync='visible3' @ok='handleOk3' :min='minDate' :max='maxDate' :months="24" :selectedValue='value3'/>
    </main>
    <PageFooter />
  </Container>
@@ -73,6 +73,10 @@ export default {
    },
    handleOk2(date) {
      this.value2 = date;
+     console.log(date); // eslint-disable-line
+   },
+   handleOk3(date) {
+     this.value3 = date;
      console.log(date); // eslint-disable-line
    }
  },

@@ -30,8 +30,8 @@ module.exports = merge(baseWebpackConfig, {
     libraryTarget: 'umd',
   },
   plugins: plugins,
-  stats: {
-    color: true,
-    reason: true,
-  },
+  // stats: {
+  //   color: true,
+  //   reason: true,
+  // },
 });

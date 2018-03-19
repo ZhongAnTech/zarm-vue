@@ -1,6 +1,6 @@
 <template lang="html">
     <Container class="picker-page">
-      <PageHeader title="选择器 Picker" />
+      <PageHeader title="选择器 Picker & Select" />
       <main>
         <div>
           <za-panel>
