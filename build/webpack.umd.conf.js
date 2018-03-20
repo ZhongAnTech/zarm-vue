@@ -29,9 +29,5 @@ module.exports = merge(baseWebpackConfig, {
     library: 'zarm-vue',
     libraryTarget: 'umd',
   },
-  plugins: plugins,
-  // stats: {
-  //   color: true,
-  //   reason: true,
-  // },
+  plugins: plugins
 });
