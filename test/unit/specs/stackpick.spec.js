@@ -59,7 +59,7 @@ describe('StackPicker', () => {
         title="级联选择"
         placeholder="请选择"
         :dataSource='data'
-        @ok='handleOk'/>
+        @change='handleChange'/>
       `,
       data() {
         return {
@@ -69,7 +69,7 @@ describe('StackPicker', () => {
         };
       },
       methods: {
-        handleOk(v) {
+        handleChange(v) {
           value = v;
         },
       },
