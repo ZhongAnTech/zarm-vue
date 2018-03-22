@@ -26,6 +26,29 @@
           <za-picker :visible.sync='visible3' :dataSource='data3'  @ok='handleOk' />
           <za-picker :visible.sync='visible4' :dataSource='data4'  @ok='handleOk2' placeholder='自定义placeholder'
                   valueMember="code" :itemRender='(item) => item.name'  />
+
+        <za-panel>
+            <za-panel-header title="选择器 Select"/>
+            <za-panel-body>
+              <za-cell title="单列选择">
+                <za-select
+                  v-model='v1'
+                  :dataSource='data1'
+                  @ok='handleOk'
+                  @change='handleChange'
+                  @cancel='handleCancel'/>
+              </za-cell>
+              <za-cell title="多列选择">
+                <za-select
+                  :dataSource='data2'
+                  v-model='v2'
+                  :displayRender="selected => selected.map(item => item.label).join('／')"
+                  @ok='handleOk'
+                  @change='handleChange'
+                  @cancel='handleCancel'/>
+              </za-cell>
+            </za-panel-body>
+          </za-panel>
                   
           <za-panel>
               <za-panel-header title="城市选择器 Select"/>
@@ -100,7 +123,7 @@
           visible4: false,
           visible6: false,
           visible7: false,
-          v1: '2',
+          v1: '22',
           v2: ['2','3'],
           v3: ['2','21'],
           v4: '',
@@ -110,8 +133,8 @@
           v10: [],
           District,
           data1: [
-            { value: '1', label: '选项一' },
-            { value: '2', label: '选项二' },
+            { value: '11', label: '选项一' },
+            { value: '22', label: '选项二' },
           ],
           data2: [
             [
