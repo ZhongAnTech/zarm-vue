@@ -242,6 +242,7 @@
           selectedValue = [selectedValue];
         }
         const _value = formatBackToObject(data, selectedValue, cascade, valueMember, cols);
+        this.currentValue = this.isSingleColumn ? selectedValue[0] : selectedValue;
         this.$emit('ok', _value);
         this.$emit('input', this.currentValue);
       },
