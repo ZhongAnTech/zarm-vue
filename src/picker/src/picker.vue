@@ -253,7 +253,7 @@
           }
           return data.map(d => (d[0][valueMember]));
         }
-        return this.isSingleColumn ? currentValue[0] : currentValue;
+        return currentValue;
       },
       handleChange(value, index) {
         this.currentValue = this.isSingleColumn ? value[0] : value;
