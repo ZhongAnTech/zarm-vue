@@ -34,7 +34,6 @@
                 <za-select
                   v-model='v1'
                   :dataSource='data1'
-                  @ok='handleOk'
                   @change='handleChange'
                   @cancel='handleCancel'/>
               </za-cell>
@@ -43,7 +42,6 @@
                   :dataSource='data2'
                   v-model='v2'
                   :displayRender="selected => selected.map(item => item.label).join('／')"
-                  @ok='handleOk'
                   @change='handleChange'
                   @cancel='handleCancel'/>
               </za-cell>
