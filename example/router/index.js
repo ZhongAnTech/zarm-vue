@@ -159,6 +159,13 @@ export default new Router({
       },
     },
     {
+      path: '/datepicker',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/datePickerPage.vue')
+      },
+    },
+    {
       path: '/calendar',
       component: Bundle,
       meta: {

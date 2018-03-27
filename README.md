@@ -6,11 +6,6 @@
 ![JS gzip size](http://img.badgesize.io/https://unpkg.com/zarm-vue@latest/zarm-vue.umd.js?compression=gzip&label=gzip%20size:%20JS)
 ![CSS gzip size](http://img.badgesize.io/https://unpkg.com/zarm-vue@latest/zarm-vue.default.css?compression=gzip&label=gzip%20size:%20CSS)
 
-### 更新说明
-
-目前计划升级`1.1.x`BETA版本测试中，部分组件核心逻辑实现会做较大改动，整体API使用会基本和`1.0.x`版本保持一致，敬请关注～～
-
-
 ### 使用文档
 
 [传送门](https://chuanshuoye.github.io/zarm-vue-doc/#/zh-CN)

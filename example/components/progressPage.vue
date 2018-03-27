@@ -31,8 +31,8 @@
 
             </za-cell>
             <za-cell title='主题'>
-              <za-picker
-                :defaultValue='theme'
+              <za-select
+                v-model='theme'
                 :dataSource='dataSource'
                 @ok='handleOk'
               />
@@ -59,6 +59,7 @@ export default {
   data() {
     return {
       percent: 10,
+      visible: false,
       theme: 'primary',
       dataSource:[
         { value: 'default', label: 'default' },

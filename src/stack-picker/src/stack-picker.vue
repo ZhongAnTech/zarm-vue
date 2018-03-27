@@ -16,7 +16,7 @@
             <div :class='`${prefixCls}-header`'>
               <div :class='`${prefixCls}-cancel`' @click='handleCancel'>{{cancelText}}</div>
               <div :class='`${prefixCls}-title`'>{{title}}</div>
-              <div :class='`${prefixCls}-submit`'></div>
+              <div :class='`${prefixCls}-submit`' @click='handleOk'>{{okText}}</div>
             </div>
             <div :class='`${prefixCls}-crumbs`'>
               <p>选择：{{currentValue.map(item => itemRender(item)).join(labelAddon)}}</p>
@@ -60,7 +60,7 @@ export default {
   props: {
     prefixCls: {
       type: String,
-      default: 'za-picker',
+      default: 'za-stack-picker',
     },
     dataSource: {
       type: Array,
@@ -142,9 +142,8 @@ export default {
         validate: this.validate,
       };
       const newCurrentValue = this.resolveProps(param).currentValue;
-      if (this.currentValue === newCurrentValue) return;
+      if (this.currentValue === val) return;
       this.currentValue = newCurrentValue;
-      this.oldValue = this.currentValue;
     },
   },
   computed: {
@@ -229,6 +228,7 @@ export default {
     },
     onPopupClose(reason) {
       if (reason === 'clickaway') {
+        this.currentValue = this.oldValue;
         this.currentVisible = !this.currentVisible;
         this.$emit('update:visible', this.currentVisible);
       }
@@ -274,12 +274,28 @@ export default {
       if (isLast && !errorMsg) {
         this.currentValue = value;
         this.errorMsg = errorMsg;
+        // this.$emit('input', value.map(v => v[this.valueMember]));
+        this.$emit('change', value.map(v => v[this.valueMember]));
+      } else {
+        this.currentValue = value;
+        this.errorMsg = errorMsg;
+        // this.$emit('input', value.map(v => v[this.valueMember]));
+        this.$emit('change', value.map(v => v[this.valueMember]));
+      }
+    },
+    handleOk() {
+      const { validate } = this;
+      const value = this.currentValue;
+      let errorMsg = null;
+      errorMsg = validate(value);
+      if (!errorMsg) {
+        this.errorMsg = errorMsg;
+        this.oldValue = this.currentValue;
         this.$emit('input', value.map(v => v[this.valueMember]));
         this.$emit('change', value.map(v => v[this.valueMember]));
         this.$emit('ok', value);
         this.toggle();
       } else {
-        this.currentValue = value;
         this.errorMsg = errorMsg;
         this.$emit('input', value.map(v => v[this.valueMember]));
         this.$emit('change', value.map(v => v[this.valueMember]));
