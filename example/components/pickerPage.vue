@@ -32,7 +32,7 @@
             <za-panel-body>
               <za-cell title="单列选择">
                 <za-select
-                  v-model='v1'
+                  :defaultValue='v1'
                   :dataSource='data1'
                   @change='handleChange'
                   @cancel='handleCancel'/>

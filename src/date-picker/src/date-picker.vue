@@ -131,6 +131,7 @@ export default {
     const date = this.value && isExtendDate(this.value);
     const defaultDate = this.defaultValue && isExtendDate(this.defaultValue);
     this.date = defaultDate || date;
+    this.oldDate = this.date;
   },
   watch: {
     visible(val, oldVal) { // eslint-disable-line no-unused-vars
@@ -158,7 +159,7 @@ export default {
     // 点击取消
     onCancel() {
       this.toggle();
-      this.date = this.value;
+      this.date = this.value || this.oldDate;
       this.$emit('cancel', this.date);
     },
     // 点击确定

@@ -9,6 +9,9 @@
               <za-cell title="日期选择">
                   <za-button slot='description' size='xs' @click='visible1 = true'>开启</za-button>
               </za-cell>
+              <za-cell title="年份选择">
+                  <za-button slot='description' size='xs' @click='visible5 = true'>开启</za-button>
+              </za-cell>
               <za-cell title="月份选择">
                   <za-button slot='description' size='xs' @click='visible2 = true'>开启</za-button>
               </za-cell>
@@ -30,14 +33,23 @@
           min='1917-02-12'
           @ok='handleOk'/>
         <za-date-picker
+          :visible.sync='visible5'
+          title="选择年份"
+          defaultValue='2015'
+          placeholder="请选择年份"
+          mode='year'
+          @ok='handleOk'/>
+        <za-date-picker
           :visible.sync='visible2'
           title="选择月份"
+          defaultValue='2018-09'
           placeholder="请选择月份"
           mode='month'
           @ok='handleOk'/>
         <za-date-picker
           :visible.sync='visible3'
           title="选择时间"
+          defaultValue='2018-09-10 09:45'
           placeholder="请选择时间"
           mode='time'
           :minute-step='minuteStep'

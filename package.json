@@ -1,11 +1,12 @@
 {
   "name": "zarm-vue",
-  "version": "1.1.0-beta",
+  "version": "1.1.0",
   "description": "zarm in vue",
   "author": "zhanwangye <232465450@qq.com>",
   "tags": [
     "zarm",
-    "zarm-ui",
+    "zarm-vue",
+    "webUI",
     "vue",
     "zhongan"
   ],
@@ -14,7 +15,7 @@
     "vue-ui",
     "vue-component",
     "zarm",
-    "zarm-ui",
+    "zarm-vue",
     "zarm-mobile",
     "component",
     "components",

@@ -129,7 +129,7 @@ export default {
       type: Number,
       default: 1,
     },
-    wheelDefaultValue: {},
+    // wheelDefaultValue: {},
     min: {},
     max: {},
   },
