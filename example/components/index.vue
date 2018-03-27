@@ -71,6 +71,9 @@
       <za-panel>
         <za-panel-header title="数据展示"/>
         <za-panel-body>
+          <za-cell hasArrow @click="$router.push('/accordion')">
+            手风琴 Accordion
+          </za-cell>
           <za-cell hasArrow @click="$router.push('/badge')">
             徽标 Badge
           </za-cell>

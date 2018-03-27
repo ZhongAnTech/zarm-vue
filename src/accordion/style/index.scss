@@ -3,79 +3,68 @@
 @import '../../../styles/core/functions/index';
 @import '../../popup/style/index';
 
-$prefixCls: za-actionsheet;
-
-@mixin actionsheet-theme($color) {
-  &,
-  &:hover,
-  &:focus,
-  &:visited {
-    text-decoration: none;
-    color: $color;
-  }
-}
+$prefixCls: za-accordion;
 
 .#{$prefixCls} {
-  margin: 0 r(10) r(10) r(10);
+  &-item {
+    &-title {
+      position: relative;
+      height: $accordion-height;
+      line-height: $accordion-height;
+      padding: 0 $accordion-padding;
+      @include onepx(bottom);
+    }
 
-  &.shape-radius {
-    .#{$prefixCls} {
-      &-actions,
-      &-cancel {
-        overflow: hidden;
-        border-radius: $radius-md;
+    &-content {
+      position: relative;
+      height: 0;
+      overflow: hidden;
+      @include onepx(bottom);
+
+      &-inner {
+        padding: $padding-v-lg $accordion-padding;
       }
     }
-  }
 
-  &-actions,
-  &-cancel {
-    background: #fff;
-  }
-
-  &-cancel {
-    margin-top: r(7);
-  }
-
-  &-btn {
-    display: block;
-    height: r(50);
-    line-height: r(50);
-    text-align: center;
-    font-size: r(17);
-    @include actionsheet-theme($theme-default);
-
-    &:active {
-      background: #f1f1f1;
+    &-content-anim {
+      transition: all 0.15s ease-out;
     }
 
-    &:not(:first-of-type) {
-      position: relative;
-      @include onepx(top);
+    &-arrow {
+      position: absolute;
+      width: r(10);
+      height: r(10);
+      top: r(17);
+      right: $accordion-padding;
+      border-right: r(2) solid $accordion-arrow-color;
+      border-bottom: r(2) solid $accordion-arrow-color;
+      transform: rotate(45deg);
+      transition: transform 0.15s ease-out;
+
+      &-hidden {
+        visibility: hidden;
+      }
     }
 
-    &.theme-default {
-      @include actionsheet-theme($theme-default);
+    &.active {
+      .#{$prefixCls}-item-content {
+        height: auto;
+      }
+
+      .#{$prefixCls}-item-arrow {
+        transform: rotate(-135deg);
+      }
     }
 
-    &.theme-primary {
-      @include actionsheet-theme($theme-primary);
-    }
-
-    &.theme-info {
-      @include actionsheet-theme($theme-info);
-    }
-
-    &.theme-success {
-      @include actionsheet-theme($theme-success);
-    }
-
-    &.theme-warning {
-      @include actionsheet-theme($theme-warning);
-    }
-
-    &.theme-error {
-      @include actionsheet-theme($theme-error);
+    @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
+      &-title,
+      &-content {
+        &:after {
+          width: 200%;
+          height: 200%;
+          transform: scale(0.5);
+        }
+      }
     }
   }
 }

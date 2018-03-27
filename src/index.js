@@ -43,6 +43,7 @@ import NoticeBar from '../src/notice-bar';
 import Drag from '../src/drag';
 import Pull from '../src/pull';
 import Accordion from '../src/accordion';
+import AccordionItem from '../src/accordionItem';
 
 const components = [
   Input,
@@ -89,7 +90,8 @@ const components = [
   NoticeBar,
   Drag,
   Pull,
-  Accordion
+  Accordion,
+  AccordionItem,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -155,7 +157,8 @@ module.exports = {
   NoticeBar,
   Drag,
   Pull,
-  Accordion
+  Accordion,
+  AccordionItem,
 };
 
 module.exports.default = module.exports;

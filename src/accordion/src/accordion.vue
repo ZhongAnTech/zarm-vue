@@ -1,87 +1,55 @@
 <template lang="html">
-  <za-popup :visible='currentVisible' @close='handlePopupClose'>
-    <div :class='{
-      [`${prefixCls}`]: true,
-      [`shape-${shape}`]: !!shape,
-    }'>
-      <div :class='`${prefixCls}-actions`'>
-        <a v-for='(action, index) in actions' :class='{
-          [`${prefixCls}-btn`]: true,
-          [`theme-${action.theme}`]: !!action.theme,
-        }'
-        :key='index'
-        @click='action.onClick'
-        >{{action.text}}</a>
-      </div>
-      <div :class='`${prefixCls}-cancel`' v-if='showCancel'>
-        <a :class='`${prefixCls}-btn`' @click='onCancel'>{{cancelText}}</a>
-      </div>
-    </div>
-  </za-popup>
+  <div :class="prefixCls">
+    <slot></slot>
+  </div>
 </template>
 
 <script>
-import zaPopup from '../../popup';
-
 export default {
-  name: 'zaActionsheet',
+  name: 'zaAccordion',
   components: {
-    zaPopup,
+    // zaPopup
   },
   props: {
     prefixCls: {
       type: String,
-      default: 'za-actionsheet',
+      default: 'za-accordion',
     },
-    shape: {
-      type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['radius'].indexOf(v) >= 0;
-      },
-      default: 'radius',
-    },
-    actions: {
+    activeTag: {
       type: Array,
-      default: function () { // eslint-disable-line object-shorthand
-        return [];
-      },
+      default: () => [],
     },
-    cancelText: {
-      type: String,
-      default: '取消',
+    defaultActiveTag: {
+      type: Array,
+      default: () => [],
     },
-    visible: {
+    multiple: {
       type: Boolean,
       default: false,
     },
-    showCancel: {
+    animated: {
       type: Boolean,
-      default: true,
+      default: false,
+    },
+    open: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
     return {
-      currentVisible: this.visible,
     };
   },
+  created() {
+  },
   watch: {
-    visible(value, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
-      if (value === this.currentVisible) return;
-      this.currentVisible = value;
-    },
+  },
+  computed: {
   },
   methods: {
-    onCancel(event) {
-      this.currentVisible = false;
-      this.$emit('cancel', 'action', event);
-      this.$emit('update:visible', false);
-    },
-    handlePopupClose(reason, event) {
-      // if clickaway on mask then sync visible
-      if (reason === 'clickaway') {
-        this.$emit('cancel', reason, event);
-        this.$emit('update:visible', false);
-      }
+    onchange(index) {
+      // console.log(index);
+      this.$emit('change', index);
     },
   },
 };

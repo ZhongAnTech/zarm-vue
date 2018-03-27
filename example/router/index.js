@@ -193,5 +193,12 @@ export default new Router({
         mRender: () => import('../components/pullPage.vue')
       },
     },
+    {
+      path: '/accordion',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/accordion.vue')
+      },
+    },
   ],
 });
