@@ -6,9 +6,9 @@
 ![JS gzip size](http://img.badgesize.io/https://unpkg.com/zarm-vue@latest/zarm-vue.umd.js?compression=gzip&label=gzip%20size:%20JS)
 ![CSS gzip size](http://img.badgesize.io/https://unpkg.com/zarm-vue@latest/zarm-vue.default.css?compression=gzip&label=gzip%20size:%20CSS)
 
+### 使用文档
 
-### 使用说明文档
-[zarm-vue-doc](https://chuanshuoye.github.io/zarm-vue-doc/#/zh-CN)
+[传送门](https://chuanshuoye.github.io/zarm-vue-doc/#/zh-CN)
 
 ### Install 安装
 

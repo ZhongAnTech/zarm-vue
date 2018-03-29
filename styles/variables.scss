@@ -62,6 +62,15 @@ $disabled-color: #999;
 $placeholder-color: #a9a9a9;
 $icon-url: '//at.alicdn.com/t/font_126288_uipjvv8ogdivbo6r';
 
+// 文字色
+$color-text: #333;                       // 基本
+$color-text-inverse: #fff;               // 反色
+$color-text-placeholder: #a9a9a9;        // 文本框提示
+$color-text-disabled: #bbb;              // 失效
+$color-text-caption: #999;               // 辅助描述
+$color-link: $theme-primary;               // 链接
+$color-shadow: rgba(56, 56, 56, .15);    // 阴影色
+
 /* button */
 $button-default-color: $theme-default;
 $button-default-bg: #ddd;
@@ -104,3 +113,14 @@ $calendar-month-title: #000;
 $calendar-date-color: #666;
 $calendar-date-selected-color: #12c287;
 $calendar-selected-range-color: #ccf2e6;
+
+// Accordion
+$accordion-height: r(45);
+$accordion-padding: r(15);
+$accordion-arrow-color: #c7c7cc;
+
+// 垂直间距
+$padding-v-sm: r(2);
+$padding-v-md: r(6);
+$padding-v-lg: r(9);
+$padding-v-xl: r(12);

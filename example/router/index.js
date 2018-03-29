@@ -159,6 +159,13 @@ export default new Router({
       },
     },
     {
+      path: '/datepicker',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/datePickerPage.vue')
+      },
+    },
+    {
       path: '/calendar',
       component: Bundle,
       meta: {
@@ -191,6 +198,13 @@ export default new Router({
       component: Bundle,
       meta: {
         mRender: () => import('../components/pullPage.vue')
+      },
+    },
+    {
+      path: '/accordion',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/accordion.vue')
       },
     },
   ],

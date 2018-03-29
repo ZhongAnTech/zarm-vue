@@ -1,6 +1,3 @@
-/**
- * This util is copied from Element-UI source code.
- */
 import Vue from 'vue';
 import ZarmVue from '@';
 

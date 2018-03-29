@@ -15,12 +15,11 @@
  </div>
 </template>
 <script>
-import moment from 'moment';
 import dateItem from './dateItem';
 import dateUtil from './date';
 
-const defaultMinDate = moment().toDate();
-const defaultMaxDate = moment().add(12, 'M').toDate();
+const defaultMinDate = new Date();
+const defaultMaxDate = dateUtil.addYears(new Date(), 1);
 
 export default {
   name: 'zaCalendar',
@@ -46,7 +45,7 @@ export default {
     },
     dateItemFormat: {
       type: String,
-      default: 'YYYY年MM月',
+      default: 'yyyy年MM月',
     },
     min: {
       type: Date,
@@ -58,7 +57,7 @@ export default {
     },
     months: {
       type: Number,
-      default: 12,
+      default: 13,
     },
     okBtnText: {
       type: String,
@@ -186,7 +185,7 @@ export default {
       while (i < self.months) {
         _start = self.setLastDate(_minDate, i);
         self.$set(self.monthItems, i, {
-          monthText: moment(_start).format(self.dateItemFormat),
+          monthText: dateUtil.formatDate(_start, self.dateItemFormat),
           date: self.resetDate(_start),
         });
         i++;// eslint-disable-line
@@ -195,17 +194,17 @@ export default {
     setLastDate(date, months) {
       const _date = new Date(date);
       _date.setDate(1);
-      return moment(_date).add(months, 'M');
+      return dateUtil.addMonths(_date, months);
     },
     getDateYear(d) {
-      return d.toDate().getFullYear();
+      return d.getFullYear();
     },
     getDateMonth(d) {
-      const _m = d.toDate().getMonth() + 1;
+      const _m = d.getMonth() + 1;
       return _m > 12 ? 12 : _m;
     },
     resetDate(d) {
-      const _date = d.toDate().setDate(1);
+      const _date = d.setDate(1);
       return _date;
     },
     handlecancel() {
