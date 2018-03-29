@@ -24,7 +24,7 @@ import Tooltip from '../src/tooltip';
 import Loading from '../src/loading';
 import Popup from '../src/popup';
 import Uploader from '../src/uploader';
-import ActionSheet from '../src/actionsheet';
+import Actionsheet from '../src/actionsheet';
 import Modal from '../src/modal';
 import Confirm from '../src/confirm';
 import Slider from '../src/slider';
@@ -32,12 +32,13 @@ import SwipeAction from '../src/swipe-action';
 import Swipe from '../src/swipe';
 import SwipeItem from '../src/swipe-item';
 import Picker from '../src/picker';
+import Select from '../src/select';
+import PickerView from '../src/picker-view';
 import Calendar from '../src/calendar';
-import Colume from '../src/column';
-import ColumeGroup from '../src/column-group';
-import Cascader from '../src/cascader';
 import Progress from '../src/progress';
 import DatePicker from '../src/date-picker';
+import DateSelect from '../src/date-select';
+import DatePickerView from '../src/date-picker-view';
 import StackPicker from '../src/stack-picker';
 import NoticeBar from '../src/notice-bar';
 import Drag from '../src/drag';
@@ -72,7 +73,7 @@ const components = [
   Loading,
   Popup,
   Uploader,
-  ActionSheet,
+  Actionsheet,
   Modal,
   Confirm,
   Slider,
@@ -80,18 +81,19 @@ const components = [
   Swipe,
   SwipeItem,
   Picker,
-  Colume,
-  ColumeGroup,
-  Cascader,
+  Select,
+  PickerView,
   Progress,
+  DatePickerView,
   DatePicker,
-  Calendar,
+  DateSelect,
   StackPicker,
   NoticeBar,
   Drag,
   Pull,
   Accordion,
   AccordionItem,
+  Calendar,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -140,25 +142,26 @@ module.exports = {
   Loading,
   Popup,
   Uploader,
-  ActionSheet,
+  Actionsheet,
   Modal,
   Confirm,
   SwipeAction,
   Swipe,
   SwipeItem,
+  PickerView,
   Picker,
-  Calendar,
-  Colume,
-  ColumeGroup,
-  Cascader,
+  Select,
   Progress,
+  DatePickerView,
   DatePicker,
+  DateSelect,
   StackPicker,
   NoticeBar,
   Drag,
   Pull,
   Accordion,
   AccordionItem,
+  Calendar,
 };
 
 module.exports.default = module.exports;

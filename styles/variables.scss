@@ -62,6 +62,15 @@ $disabled-color: #999;
 $placeholder-color: #a9a9a9;
 $icon-url: '//at.alicdn.com/t/font_126288_uipjvv8ogdivbo6r';
 
+// 文字色
+$color-text: #333;                       // 基本
+$color-text-inverse: #fff;               // 反色
+$color-text-placeholder: #a9a9a9;        // 文本框提示
+$color-text-disabled: #bbb;              // 失效
+$color-text-caption: #999;               // 辅助描述
+$color-link: $theme-primary;               // 链接
+$color-shadow: rgba(56, 56, 56, .15);    // 阴影色
+
 /* button */
 $button-default-color: $theme-default;
 $button-default-bg: #ddd;

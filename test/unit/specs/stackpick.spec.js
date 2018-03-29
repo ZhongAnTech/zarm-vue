@@ -59,7 +59,7 @@ describe('StackPicker', () => {
         title="级联选择"
         placeholder="请选择"
         :dataSource='data'
-        @ok='handleOk'/>
+        @change='handleChange'/>
       `,
       data() {
         return {
@@ -69,18 +69,15 @@ describe('StackPicker', () => {
         };
       },
       methods: {
-        handleOk(v) {
+        handleChange(v) {
           value = v;
         },
       },
     }, true);
-    vm.$el.querySelectorAll('.za-picker-stack-column')[0].querySelector('.za-picker-stack-item').click();
+    vm.$el.querySelectorAll('.za-stack-picker-stack-column')[0].querySelector('.za-stack-picker-stack-item').click();
     vm.$nextTick(() => {
-      vm.$el.querySelectorAll('.za-picker-stack-column')[1].querySelector('.za-picker-stack-item').click();
-      vm.$nextTick(() => {
-        expect(value[0].label).to.equal('北京市');
-        done();
-      });
+      expect(value[0]).to.equal('1');
+      done();
     });
   });
 });
