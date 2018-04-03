@@ -43,7 +43,7 @@ function formatDate(date, fmt) {
   return fmt;
 }
 
-export default function formatFn(instance, value) {
+export function formatFn(instance, value) {
   const { format } = instance;
   const type = typeof format;
 
@@ -56,5 +56,17 @@ export default function formatFn(instance, value) {
   }
 
   return formatDate(value, getFormatter(instance.mode)) || '';
-  // return value.format(getFormatter(instance.props.mode));
+}
+
+export function formatValue(instance, value) {
+  const { valueFormat } = instance;
+  const type = typeof valueFormat;
+
+  if (valueFormat && type === 'string') {
+    return formatDate(value, valueFormat) || '';
+  }
+  if (type === 'function') {
+    return valueFormat(value) || '';
+  }
+  return formatDate(value, getFormatter(instance.mode)) || '';
 }

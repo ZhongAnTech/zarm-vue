@@ -12,7 +12,9 @@ describe('Accordion', () => {
       prefixCls: 'za-accordion',
     }, true);
     const el = vm.$el;
-    expect(el.classList.contains('za-accordion')).to.be.true;
+    vm.$nextTick(_ => { // eslint-disable-line no-unused-vars
+      expect(el.querySelector('.za-accordion')).to.exsit;
+    });
   });
 
   it('accordion default', () => {

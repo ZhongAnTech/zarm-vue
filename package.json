@@ -1,6 +1,6 @@
 {
   "name": "zarm-vue",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "zarm in vue",
   "author": "zhanwangye <232465450@qq.com>",
   "tags": [
@@ -59,10 +59,7 @@
   "dependencies": {
     "autosize": "^4.0.0",
     "better-scroll": "^1.8.3",
-    "moment": "^2.18.1",
-    "puppeteer": "^1.2.0",
-    "vue": "^2.5.2",
-    "zscroller": "^0.3.1"
+    "vue": "^2.5.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -119,6 +116,7 @@
     "opn": "^5.1.0",
     "optimize-css-assets-webpack-plugin": "^2.0.0",
     "postcss-loader": "^2.0.6",
+    "puppeteer": "^1.2.0",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
     "selenium-server": "^3.0.1",

@@ -44,7 +44,7 @@ import NoticeBar from '../src/notice-bar';
 import Drag from '../src/drag';
 import Pull from '../src/pull';
 import Accordion from '../src/accordion';
-import AccordionItem from '../src/accordionItem';
+import AccordionItem from '../src/accordion-item';
 
 const components = [
   Input,

@@ -36,19 +36,8 @@ export default {
       default: false,
     },
   },
-  data() {
-    return {
-    };
-  },
-  created() {
-  },
-  watch: {
-  },
-  computed: {
-  },
   methods: {
     onchange(index) {
-      // console.log(index);
       this.$emit('change', index);
     },
   },

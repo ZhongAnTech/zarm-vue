@@ -71,14 +71,12 @@ export default {
       if (!this.animated) {
         let parent = this.$parent;
         let itemAnimated;
-        // while (parent) {
         if (parent.$options.name !== 'zaAccordion') {
           parent = parent.$parent;
         } else {
           itemAnimated = parent.animated;
           return itemAnimated;
         }
-        // }
       } else {
         return this.animated;
       }
@@ -87,14 +85,12 @@ export default {
       if (!this.open) {
         let parent = this.$parent;
         let itemOpen;
-        // while (parent) {
         if (parent.$options.name !== 'zaAccordion') {
           parent = parent.$parent;
         } else {
           itemOpen = parent.open;
           return itemOpen;
         }
-        // }
       } else {
         return this.open;
       }
@@ -211,7 +207,6 @@ export default {
     itemChange() {
       const parent = this.$parent;
       if (parent.$options.name !== 'zaAccordion') {
-        // parent = parent.$parent;
         this.$emit('change', this.aiTag);
       } else {
         const onchange = parent.onchange;
