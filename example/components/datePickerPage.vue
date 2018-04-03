@@ -74,6 +74,17 @@
                   min='1917-10-25'
                   @ok='handleOk'/>
               </za-cell>
+              <za-cell title="日期格式化">
+                <za-date-select
+                v-model='v7'
+                title="选择日期"
+                placeholder="请选择日期"
+                mode='datetime'
+                value-format='yyyy-MM-dd HH:mm'
+                max='2030-10-25'
+                min='1917-10-25'
+                @ok='handleOk'/>
+            </za-cell>
             </za-panel-body>
           </za-panel>
         <za-panel>
@@ -118,6 +129,7 @@ export default {
       v4:'',
       v5:'2008-01-10',
       v6:'2018-12-24 11:23',
+      v7:'2008-01-10',
       minuteStep: 15,
     }
   },

@@ -46,7 +46,7 @@
 <script>
 import zaPopup from '../../popup';
 import zaDatePickerView from '../../date-picker-view';
-import formatFn from '../../date-picker-view/src/util';
+import { formatValue, formatFn } from '../../date-picker-view/src/util';
 
 const isExtendDate = (date) => {
   if (date instanceof Date) {
@@ -115,6 +115,7 @@ export default {
     value: '',
     mode: String,
     format: [String, Function],
+    valueFormat: String,
     min: {},
     max: {},
     customCls: String,
@@ -168,10 +169,11 @@ export default {
         return false;
       }
       const value = this.date || this.initDate;
+      const formatDate = formatValue(this, value);
       this.date = value;
       this.oldDate = this.date;
-      this.$emit('ok', value);
-      this.$emit('input', value);
+      this.$emit('ok', this.valueFormat ? formatDate : value);
+      this.$emit('input', this.valueFormat ? formatDate : value);
       this.toggle();
     },
     // 切换显示状态
@@ -198,7 +200,8 @@ export default {
     },
     onValueChange(newValue) {
       this.date = newValue;
-      this.$emit('change', newValue);
+      const formatDate = formatValue(this, newValue);
+      this.$emit('change', this.valueFormat ? formatDate : newValue);
     },
   },
 };
