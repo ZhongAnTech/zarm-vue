@@ -57,7 +57,7 @@ npm install babel-plugin-component -D
 ```
 
 
-接下来，如果你只希望引入部分组件，比如 Button 和 Select，那么需要在 main.js 中写入以下内容：
+接下来，如果你只希望引入部分组件，比如 Button 和 Alert，那么需要在 main.js 中写入以下内容：
 
 ```javascript
 import { Button, Alert } from 'zarm-vue'
@@ -68,22 +68,27 @@ Vue.use(Alert)
 
 - 也可以通过cdn引入umd模块
 ```html
-<link rel="stylesheet" href="https://unpkg.com/zarm-vue@latest/zarm-vue.default.css">
-
-<script src="https://unpkg.com/vue@latest/dist/vue.min.js"></script>>
-<script src="https://unpkg.com/zarm-vue@latest/zarm-vue.umd.js"></script>
-```
-
-### Usage 使用：
-
-  ```javascript
-
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/zarm-vue@1.1.2/zarm-vue.default.css">
+  <script src="https://unpkg.com/vue@2.5.11/dist/vue.min.js"></script>
+  <script src="https://unpkg.com/zarm-vue@1.1.2/zarm-vue.umd.js"></script>
+</head>
+<body>
+  <div id="app">
+      <za-button theme="primary">普通按钮</za-button>
+  </div>
+</body>
+<script>
   new Vue({
-    el: '#app',
-    template: '<za-button theme="primary">普通按钮</za-button>',
-    components: { zaButton },
-  });
-  ```
+    el: '#app'
+  })
+</script>
+</html>
+```
 
 ### Theme 自定义主题
 clone本仓库后先安装依赖，然后通过修改 `styles/variables.scss` 文件重写sass变量。运行下面命令生成新样式
