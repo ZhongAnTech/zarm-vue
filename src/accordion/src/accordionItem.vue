@@ -154,27 +154,48 @@ export default {
     setActive() {
       const self = this;
       let activeStatus = false;
-      const activeTag = this.activeTag;
-      activeTag.some((child) => {
-        if (child.toString() === self.itemActiveTag.toString()) {
+      const { itemActiveTag, activeTag, itemAnimated } = this;
+      const multiple = this.$parent.multiple;
+
+      if (multiple) {
+        if (activeTag.indexOf(itemActiveTag) > -1) {
           activeStatus = true;
-          return true;
+        } else {
+          activeStatus = false;
         }
-        return false;
-      });
+        if (itemAnimated) {
+          this.setStyle(!activeStatus);
+        }
+      } else {
+        activeTag.some((child) => {
+          if (child.toString() === self.itemActiveTag.toString()) {
+            activeStatus = true;
+            return true;
+          }
+          return false;
+        });
+      }
       self.active = activeStatus;
     },
     onClickItem() {
-      const itemAnimated = this.itemAnimated;
-      const open = this.open;
-      const active = this.active;
-
+      const { itemAnimated, open, active, activeTag, itemActiveTag } = this;
+      let activeStatus = false;
+      const multiple = this.$parent.multiple;
       if (open) {
         return;
       }
-      this.active = !active;
-      if (itemAnimated) {
-        this.setStyle(active);
+      if (multiple) {
+        if (activeTag.indexOf(itemActiveTag) > -1) {
+          activeStatus = true;
+        } else {
+          activeStatus = false;
+        }
+        this.active = activeStatus;
+      } else {
+        this.active = !active;
+        if (itemAnimated) {
+          this.setStyle(active);
+        }
       }
       this.itemChange();
     },

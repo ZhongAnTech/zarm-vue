@@ -32,7 +32,7 @@
           <za-panel>
             <za-panel-header title="手风琴模式" />
             <za-panel-body>
-              <zaAccordion :multiple='false' animated>
+              <zaAccordion animated :multiple='true' >
                 <zaAccordionItem title="50元套餐" aiTag='0'>
                   <div>我是50元套餐内容</div>
                   <div>我是50元套餐内容</div>
@@ -111,7 +111,7 @@
             <za-panel-header title="强制展开模式" />
             <za-panel-body>
               <zaAccordion open>
-                <zaAccordionItem title="50元套餐" open>
+                <zaAccordionItem title="50元套餐">
                   <div>我是50元套餐内容</div>
                   <div>我是50元套餐内容</div>
                   <div>我是50元套餐内容</div>
