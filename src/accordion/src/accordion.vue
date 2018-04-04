@@ -7,17 +7,10 @@
 <script>
 export default {
   name: 'zaAccordion',
-  components: {
-    // zaPopup
-  },
   props: {
     prefixCls: {
       type: String,
       default: 'za-accordion',
-    },
-    activeTag: {
-      type: Array,
-      default: () => [],
     },
     defaultActiveTag: {
       type: Array,
@@ -36,9 +29,25 @@ export default {
       default: false,
     },
   },
+  data() {
+    return {
+      activeTag: [],
+    };
+  },
   methods: {
     onchange(index) {
+      const { multiple } = this;
       this.$emit('change', index);
+      if (multiple) {
+        const accordionItemRefs = this.$children;
+        const aiTags = [];
+        accordionItemRefs.forEach(item => {
+          if (item.$options.name === 'zaAccordionItem') {
+            aiTags.push(item.aiTag);
+          }
+        });
+        this.activeTag = aiTags.filter(i => i === index);
+      }
     },
   },
 };
