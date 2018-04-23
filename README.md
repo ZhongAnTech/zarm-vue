@@ -10,9 +10,6 @@
 
 [传送门](https://chuanshuoye.github.io/zarm-vue-doc/#/zh-CN)
 
-### 更新注意
-
-1.1.0之后部分组件使用上和1.0.x版本有些许差异，如果已经在用1.0.x版本的请使用 `npm install zarm-vue@1.0 --save` 可以固定在1.0.x版本，关于1.0.x版本后续不再维护。
 
 ### Install 安装
 
@@ -88,6 +85,7 @@ Vue.use(Alert)
   })
 </script>
 </html>
+
 ```
 
 ### Theme 自定义主题
