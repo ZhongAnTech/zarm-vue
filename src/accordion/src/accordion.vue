@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { isArray } from '@/utils/validator';
+
 export default {
   name: 'zaAccordion',
   props: {
@@ -31,23 +33,51 @@ export default {
   },
   data() {
     return {
-      activeTag: [],
+      activeTag: this.getActiveIndex(),
     };
   },
   methods: {
-    onchange(index) {
-      const { multiple } = this;
-      this.$emit('change', index);
-      if (multiple) {
-        const accordionItemRefs = this.$children;
-        const aiTags = [];
-        accordionItemRefs.forEach(item => {
-          if (item.$options.name === 'zaAccordionItem') {
-            aiTags.push(item.aiTag);
-          }
-        });
-        this.activeTag = aiTags.filter(i => i === index);
+    onItemChange(key) {
+      const { multiple, activeTag } = this;
+      const hasKey = activeTag.indexOf(key) > -1;
+
+      let newActiveIndex = [];
+      if (!multiple) {
+        if (hasKey) {
+          newActiveIndex = activeTag.filter(i => i !== key);
+        } else {
+          newActiveIndex = activeTag.slice(0);
+          newActiveIndex.push(key);
+        }
+      } else {
+        newActiveIndex = hasKey ? [] : [key];
       }
+      // console.log(key, newActiveIndex);
+      this.activeTag = newActiveIndex;
+      this.$emit('change', Number(key));
+    },
+    getActiveIndex() {
+      const { activeTag, defaultActiveTag, multiple } = this;
+
+      const defaultIndex = (activeTag || activeTag === 0) ? activeTag : defaultActiveTag;
+
+      if (defaultIndex || defaultIndex === 0) {
+        if (isArray(defaultIndex)) {
+          return !multiple ?
+          [String(defaultIndex[0])] : defaultIndex;
+        } else { // eslint-disable-line
+          return [String(defaultIndex)];
+        }
+      }
+
+      return [];
+    },
+    isPropEqual(cur, next) {
+      if (isArray(next) && isArray(cur)) {
+        return next.length === cur.length && next.every((key, i) => key === cur[i]);
+      }
+
+      return cur === next;
     },
   },
 };

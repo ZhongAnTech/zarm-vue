@@ -1,43 +1,10 @@
-<template lang="html">
-  <div :class="{
-    [`${prefixCls}-item`]: true,
-    'active': active || itemOpen,
-  }" ref='accordionItem'>
-      <div :class="`${prefixCls}-item-title`" @click="onClickItem">
-        <div>{{title}}</div>
-        <div :class="{
-            [`${this.prefixCls}-item-arrow`]: true,
-            [`${this.prefixCls}-item-arrow-hidden`]: itemOpen
-        }"></div>
-      </div>
-      <div :class="{
-        [`${prefixCls}-item-content`]: true,
-        [`${prefixCls}-item-content-anim`]: itemAnimated,
-      }" ref='animateRoom' :style="animatedHeight">
-        <div :class="`${prefixCls}-item-content-inner`">
-          <slot></slot>
-        </div>
-      </div>
-  </div>
-</template>
-
 <script>
 export default {
   name: 'zaAccordionItem',
-  components: {
-  },
   props: {
     prefixCls: {
       type: String,
       default: 'za-accordion',
-    },
-    animated: {
-      type: Boolean,
-      default: false,
-    },
-    open: {
-      type: Boolean,
-      default: false,
     },
     aiTag: {
       type: String,
@@ -51,6 +18,8 @@ export default {
   data() {
     return {
       active: false,
+      itemAnimated: false,
+      itemOpen: false,
       animatedHeight: '',
     };
   },
@@ -66,34 +35,6 @@ export default {
         itemActiveTag = this.aiTag;
       }
       return itemActiveTag;
-    },
-    itemAnimated() {
-      if (!this.animated) {
-        let parent = this.$parent;
-        let itemAnimated;
-        if (parent.$options.name !== 'zaAccordion') {
-          parent = parent.$parent;
-        } else {
-          itemAnimated = parent.animated;
-          return itemAnimated;
-        }
-      } else {
-        return this.animated;
-      }
-    },
-    itemOpen() {
-      if (!this.open) {
-        let parent = this.$parent;
-        let itemOpen;
-        if (parent.$options.name !== 'zaAccordion') {
-          parent = parent.$parent;
-        } else {
-          itemOpen = parent.open;
-          return itemOpen;
-        }
-      } else {
-        return this.open;
-      }
     },
     activeTag() {
       let parent = this.$parent;
@@ -145,6 +86,9 @@ export default {
           } else {
             defaultActive = false;
           }
+          self.itemAnimated = parent.animated;
+          self.itemOpen = parent.open;
+          self.multiple = parent.multiple;
         }
         self.active = defaultActive;
       } else {
@@ -154,9 +98,7 @@ export default {
     setActive() {
       const self = this;
       let activeStatus = false;
-      const { itemActiveTag, activeTag, itemAnimated } = this;
-      const multiple = this.$parent.multiple;
-
+      const { itemActiveTag, activeTag, multiple, itemAnimated } = this;
       if (multiple) {
         if (activeTag.indexOf(itemActiveTag) > -1) {
           activeStatus = true;
@@ -178,9 +120,8 @@ export default {
       self.active = activeStatus;
     },
     onClickItem() {
-      const { itemAnimated, open, active, activeTag, itemActiveTag } = this;
+      const { itemAnimated, open, active, multiple, activeTag, itemActiveTag } = this;
       let activeStatus = false;
-      const multiple = this.$parent.multiple;
       if (open) {
         return;
       }
@@ -230,7 +171,7 @@ export default {
       if (parent.$options.name !== 'zaAccordion') {
         this.$emit('change', this.aiTag);
       } else {
-        const onchange = parent.onchange;
+        const onchange = parent.onItemChange;
         if (onchange) {
           this.$nextTick(_ => { // eslint-disable-line no-unused-vars
             onchange(this.aiTag);
@@ -238,6 +179,22 @@ export default {
         }
       }
     },
+  },
+  render() {
+    const { prefixCls, active, itemOpen, title, itemAnimated, animatedHeight } = this;
+    return (
+      <div class={{ [`${prefixCls}-item`]: true, active: active || itemOpen }} ref='accordionItem'>
+        <div class={`${prefixCls}-item-title`} on-click={this.onClickItem}>
+          <div>{title}</div>
+          <div class={{ [`${prefixCls}-item-arrow`]: true, [`${prefixCls}-item-arrow-hidden`]: itemOpen }}></div>
+        </div>
+        <div class={{ [`${prefixCls}-item-content`]: true, [`${prefixCls}-item-content-anim`]: itemAnimated }} ref='animateRoom' style={animatedHeight}>
+          <div class={`${prefixCls}-item-content-inner`}>
+            {this.$slots.default}
+          </div>
+        </div>
+      </div>
+    );
   },
 };
 </script>
