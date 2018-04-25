@@ -1,43 +1,14 @@
-<template lang="html">
-  <div :class="{
-    [`${prefixCls}-item`]: true,
-    'active': active || itemOpen,
-  }" ref='accordionItem'>
-      <div :class="`${prefixCls}-item-title`" @click="onClickItem">
-        <div>{{title}}</div>
-        <div :class="{
-            [`${this.prefixCls}-item-arrow`]: true,
-            [`${this.prefixCls}-item-arrow-hidden`]: itemOpen
-        }"></div>
-      </div>
-      <div :class="{
-        [`${prefixCls}-item-content`]: true,
-        [`${prefixCls}-item-content-anim`]: itemAnimated,
-      }" ref='animateRoom' :style="animatedHeight">
-        <div :class="`${prefixCls}-item-content-inner`">
-          <slot></slot>
-        </div>
-      </div>
-  </div>
-</template>
-
 <script>
+import Emitter from '@/mixins/emitter';
+import findParent from '@/mixins/find-parent';
+
 export default {
   name: 'zaAccordionItem',
-  components: {
-  },
+  mixins: [Emitter, findParent],
   props: {
     prefixCls: {
       type: String,
       default: 'za-accordion',
-    },
-    animated: {
-      type: Boolean,
-      default: false,
-    },
-    open: {
-      type: Boolean,
-      default: false,
     },
     aiTag: {
       type: String,
@@ -51,10 +22,13 @@ export default {
   data() {
     return {
       active: false,
+      itemAnimated: false,
+      itemOpen: false,
       animatedHeight: '',
     };
   },
   created() {
+    this.findParent('zaAccordion');
     this.setDefaultActive();
   },
   computed: {
@@ -67,151 +41,67 @@ export default {
       }
       return itemActiveTag;
     },
-    itemAnimated() {
-      if (!this.animated) {
-        let parent = this.$parent;
-        let itemAnimated;
-        if (parent.$options.name !== 'zaAccordion') {
-          parent = parent.$parent;
-        } else {
-          itemAnimated = parent.animated;
-          return itemAnimated;
-        }
-      } else {
-        return this.animated;
-      }
-    },
-    itemOpen() {
-      if (!this.open) {
-        let parent = this.$parent;
-        let itemOpen;
-        if (parent.$options.name !== 'zaAccordion') {
-          parent = parent.$parent;
-        } else {
-          itemOpen = parent.open;
-          return itemOpen;
-        }
-      } else {
-        return this.open;
-      }
-    },
-    activeTag() {
-      let parent = this.$parent;
-      let activeTag;
-      if (parent.$options.name !== 'zaAccordion') {
-        parent = parent.$parent;
-      } else {
-        activeTag = parent.activeTag;
-      }
-      return activeTag;
-    },
-  },
-  watch: {
-    activeTag() {
-      this.setActive();
-    },
   },
   methods: {
     isActive(tag, activeTag) {
-      const itemTag = tag || this.itemAiTag;
-      const itemActiveTag = activeTag || this.itemActiveTag;
-      const result = itemActiveTag.indexOf(itemTag) > -1;
-      this.active = result;
+      const itemTag = tag || this.aiTag;
+      this.itemActiveTags = (activeTag !== undefined) ? activeTag : [];
+      const result = this.itemActiveTags.indexOf(itemTag) > -1;
+      return result;
     },
     setDefaultActive() {
-      const self = this;
-      if (!self.active) {
-        const parent = self.$parent;
-        let defaultActive = false;
-        if (parent.$options.name === 'zaAccordion') {
-          const defaultActiveTag = parent.defaultActiveTag;
-          const activeTag = parent.activeTag;
-          if (activeTag && activeTag instanceof Array && activeTag.length > 0) {
-            activeTag.some((child) => {
-              if (child.toString() === self.itemActiveTag.toString()) {
-                defaultActive = true;
-                return true;
-              }
-              return false;
-            });
-          } else if (defaultActiveTag instanceof Array && defaultActiveTag.length > 0) {
-            defaultActiveTag.some((child) => {
-              if (child.toString() === self.itemActiveTag.toString()) {
-                defaultActive = true;
-                return true;
-              }
-              return false;
-            });
-          } else {
-            defaultActive = false;
-          }
+      const { parent, itemActiveTag } = this;
+      this.itemAnimated = parent.animated;
+      this.itemOpen = parent.open;
+      this.multiple = parent.multiple;
+      this.active = this.isActive(itemActiveTag, parent.activeTag);
+      this.$nextTick(() => {
+        if (this.itemAnimated) {
+          this.setAnimateStyle(this.active);
         }
-        self.active = defaultActive;
-      } else {
-        self.active = self.active;
-      }
+      });
     },
     setActive() {
-      const self = this;
-      let activeStatus = false;
-      const { itemActiveTag, activeTag, itemAnimated } = this;
-      const multiple = this.$parent.multiple;
-
+      const { parent, active, multiple, itemAnimated } = this;
+      let activeStatus;
       if (multiple) {
-        if (activeTag.indexOf(itemActiveTag) > -1) {
-          activeStatus = true;
-        } else {
-          activeStatus = false;
-        }
-        if (itemAnimated) {
-          this.setStyle(!activeStatus);
-        }
-      } else {
-        activeTag.some((child) => {
-          if (child.toString() === self.itemActiveTag.toString()) {
-            activeStatus = true;
-            return true;
+        const accordionItemRefs = parent.$children;
+        accordionItemRefs.forEach((item) => {
+          if (item.active) {
+            item.active = false;
+            setTimeout(() => {
+              item.animatedHeight = { height: '0px' };
+            }, 0);
           }
-          return false;
         });
+        activeStatus = active ? 1 : 0;
+      } else {
+        activeStatus = active ? 1 : 0;
       }
-      self.active = activeStatus;
+      this.active = !activeStatus;
+      if (itemAnimated) {
+        this.setAnimateStyle(!activeStatus);
+      }
     },
     onClickItem() {
-      const { itemAnimated, open, active, activeTag, itemActiveTag } = this;
-      let activeStatus = false;
-      const multiple = this.$parent.multiple;
+      const { parent, open } = this;
       if (open) {
         return;
       }
-      if (multiple) {
-        if (activeTag.indexOf(itemActiveTag) > -1) {
-          activeStatus = true;
-        } else {
-          activeStatus = false;
-        }
-        this.active = activeStatus;
-      } else {
-        this.active = !active;
-        if (itemAnimated) {
-          this.setStyle(active);
-        }
-      }
-      this.itemChange();
+      this.setActive();
+      parent.onItemChange(this.itemActiveTag);
     },
-    setStyle(active) {
-      const self = this;
+    setAnimateStyle(active) {
       const newActive = active;
-
       if (newActive) {
-        self.animatedHeight = { height: `${this.getContentHeight()}px` };
+        this.animatedHeight = { height: '0px' };
         setTimeout(() => {
-          self.animatedHeight = { height: '0px' };
+          this.animatedHeight = { height: `${this.getContentHeight()}px` };
         }, 0);
       } else {
-        self.animatedHeight = { height: '0px' };
+        this.animatedHeight = { height: `${this.getContentHeight()}px` };
         setTimeout(() => {
-          self.animatedHeight = { height: `${this.getContentHeight()}px` };
+          this.animatedHeight = { height: '0px' };
         }, 0);
       }
     },
@@ -225,19 +115,22 @@ export default {
       });
       return height;
     },
-    itemChange() {
-      const parent = this.$parent;
-      if (parent.$options.name !== 'zaAccordion') {
-        this.$emit('change', this.aiTag);
-      } else {
-        const onchange = parent.onchange;
-        if (onchange) {
-          this.$nextTick(_ => { // eslint-disable-line no-unused-vars
-            onchange(this.aiTag);
-          });
-        }
-      }
-    },
+  },
+  render() {
+    const { prefixCls, active, itemOpen, title, itemAnimated, animatedHeight } = this;
+    return (
+      <div class={{ [`${prefixCls}-item`]: true, active: active || itemOpen }} ref='accordionItem'>
+        <div class={`${prefixCls}-item-title`} on-click={this.onClickItem}>
+          <div>{title}</div>
+          <div class={{ [`${prefixCls}-item-arrow`]: true, [`${prefixCls}-item-arrow-hidden`]: itemOpen }}></div>
+        </div>
+        <div class={{ [`${prefixCls}-item-content`]: true, [`${prefixCls}-item-content-anim`]: itemAnimated }} ref='animateRoom' style={animatedHeight}>
+          <div class={`${prefixCls}-item-content-inner`}>
+            {this.$slots.default}
+          </div>
+        </div>
+      </div>
+    );
   },
 };
 </script>
