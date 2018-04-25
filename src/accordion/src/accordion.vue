@@ -33,8 +33,11 @@ export default {
   },
   data() {
     return {
-      activeTag: this.getActiveIndex(),
+      activeTag: [],
     };
+  },
+  created() {
+    this.activeTag = this.getActiveIndex();
   },
   methods: {
     onItemChange(key) {
@@ -52,25 +55,13 @@ export default {
       } else {
         newActiveIndex = hasKey ? [] : [key];
       }
-      // console.log(key, newActiveIndex);
       this.activeTag = newActiveIndex;
       this.$emit('change', Number(key));
     },
     getActiveIndex() {
-      const { activeTag, defaultActiveTag, multiple } = this;
-
-      const defaultIndex = (activeTag || activeTag === 0) ? activeTag : defaultActiveTag;
-
-      if (defaultIndex || defaultIndex === 0) {
-        if (isArray(defaultIndex)) {
-          return !multiple ?
-          [String(defaultIndex[0])] : defaultIndex;
-        } else { // eslint-disable-line
-          return [String(defaultIndex)];
-        }
-      }
-
-      return [];
+      const { defaultActiveTag, multiple } = this;
+      const defaultIndex = (defaultActiveTag !== undefined) ? defaultActiveTag : [];
+      return multiple ? [defaultIndex[0]] : defaultIndex;
     },
     isPropEqual(cur, next) {
       if (isArray(next) && isArray(cur)) {
