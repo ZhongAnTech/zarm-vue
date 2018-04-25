@@ -1,12 +1,6 @@
 sudo: false
 language: node_js
-node_js: 
-  - 8
-addons:
-  chrome: stable
-os: linux
-before_install:
-  - export CHROME_BIN=chromium-browser
+node_js: stable
 script:
   - npm run lint
   - npm run unit
