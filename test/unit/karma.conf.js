@@ -2,9 +2,7 @@
 //   http://karma-runner.github.io/0.13/config/configuration-file.html
 // we are also using it with karma-webpack
 //   https://github.com/webpack/karma-webpack
-
 const webpackConfig = require('../../build/webpack.test.conf');
-process.env.CHROME_BIN = require('puppeteer').executablePath();
 
 module.exports = function(config) {
   var configuration = {
@@ -17,7 +15,7 @@ module.exports = function(config) {
     reporters: ['spec', 'coverage'],
     files: ['./index.js'],
     preprocessors: {
-      './index.js': ['webpack', 'sourcemap']
+      './index.js': ['webpack', 'sourcemap', 'coverage']
     },
     webpack: webpackConfig,
     webpackMiddleware: {
@@ -29,11 +27,6 @@ module.exports = function(config) {
         { type: 'lcov', subdir: '.' },
         { type: 'text-summary' }
       ]
-    },
-    client: {
-      mocha: {
-        timeout: 4000
-      }
     }
   };
   config.set(configuration);

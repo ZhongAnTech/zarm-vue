@@ -244,8 +244,7 @@ export default {
     let percent = 0;
     if (offsetY >= refreshInitDistance) {
       percent = (((offsetY - refreshInitDistance) < refreshDistance ?
-      (offsetY - refreshInitDistance) :
-      refreshDistance) * 100) / (refreshDistance - refreshInitDistance);
+        (offsetY - refreshInitDistance) : refreshDistance) * 100) / (refreshDistance - refreshInitDistance);
     }
 
     const renderRefresh = () => {
