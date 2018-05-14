@@ -28,4 +28,8 @@ export default {
       this.on(el, typeArray[i], recursiveFunction);
     }
   },
+
+  stopPropagation(e) {
+    e.stopPropagation();
+  },
 };

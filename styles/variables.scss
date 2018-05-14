@@ -71,6 +71,12 @@ $color-text-caption: #999;               // 辅助描述
 $color-link: $theme-primary;               // 链接
 $color-shadow: rgba(56, 56, 56, .15);    // 阴影色
 
+// 透明度
+$opacity-disabled: .5;
+$opacity-mask: .4;
+$opacity-toast: .7;
+$opacity-tooltip: .7;
+
 /* button */
 $button-default-color: $theme-default;
 $button-default-bg: #ddd;
@@ -124,3 +130,8 @@ $padding-v-sm: r(2);
 $padding-v-md: r(6);
 $padding-v-lg: r(9);
 $padding-v-xl: r(12);
+
+// Keyboard
+$keyboard-item-height: r(50);
+$keyboard-item-font-size: r(28);
+$keyboard-icon-font-size: r(21);

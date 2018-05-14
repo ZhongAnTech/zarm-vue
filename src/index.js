@@ -1,4 +1,5 @@
 import Input from '../src/input';
+import InputNumber from '../src/input-number';
 import Alert from '../src/alert';
 import Panel from '../src/panel';
 import PanelHeader from '../src/panel-header';
@@ -48,6 +49,7 @@ import AccordionItem from '../src/accordion-item';
 
 const components = [
   Input,
+  InputNumber,
   Alert,
   Panel,
   PanelHeader,
@@ -118,6 +120,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 module.exports = {
   install,
   Input,
+  InputNumber,
   Alert,
   Panel,
   PanelHeader,

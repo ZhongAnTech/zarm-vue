@@ -19,6 +19,13 @@ export default new Router({
       },
     },
     {
+      path: '/inputnumber',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/inputNumberPage.vue')
+      },
+    },
+    {
       path: '/checkbox',
       component: Bundle,
       meta: {
