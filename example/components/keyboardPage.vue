@@ -7,13 +7,13 @@
           <za-panel-header title="类型"/>
           <za-panel-body>
             <za-cell title='数字' @click="showPicker('visible1')">
-              <za-input readonly v-model='v1' type="text" ></za-input>
+              {{v1}}
             </za-cell>
             <za-cell title='金额' @click="showPicker('visible2')">
-              <za-input readonly v-model='v2' type="text"></za-input>
+              {{v2}}
             </za-cell>
              <za-cell title='证件' @click="showPicker('visible3')">
-              <za-input readonly v-model='v3' type="text" ></za-input>
+              {{v3}}
             </za-cell>
           </za-panel-body>
         </za-panel>
