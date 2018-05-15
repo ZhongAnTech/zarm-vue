@@ -71,6 +71,10 @@ $color-text-caption: #999;               // 辅助描述
 $color-link: $theme-primary;               // 链接
 $color-shadow: rgba(56, 56, 56, .15);    // 阴影色
 
+// 背景色
+$background-active: #ddd;
+$background-disabled: #e1e1e1;
+
 // 透明度
 $opacity-disabled: .5;
 $opacity-mask: .4;
@@ -119,6 +123,11 @@ $calendar-month-title: #000;
 $calendar-date-color: #666;
 $calendar-date-selected-color: #12c287;
 $calendar-selected-range-color: #ccf2e6;
+
+// ActionSheet
+$actionsheet-margin: 0;
+$actionsheet-item-height: r(50);
+$actionsheet-item-font-size: r(16);
 
 // Accordion
 $accordion-height: r(45);

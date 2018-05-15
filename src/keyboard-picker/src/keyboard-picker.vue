@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     stopPropagation(e) {
-      console.log(e);
+      // console.log(e);
       Event.stopPropagation(e);
     },
     // 点击遮罩层
@@ -70,7 +70,7 @@ export default {
     },
     // 切换显示状态
     onCancel() {
-      console.log('currentVisible', !this.currentVisible);
+      // console.log('currentVisible', !this.currentVisible);
       // eslint-disable-next-line
       this.currentVisible = !this.currentVisible;
       this.$emit('update:visible', this.currentVisible);

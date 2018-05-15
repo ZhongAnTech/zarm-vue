@@ -1,6 +1,6 @@
 <template lang="html">
   <Container>
-    <PageHeader title="文本框 Input" />
+    <PageHeader title="数字键盘 InputNumber" />
     <main>
       <div>
         <za-panel>
@@ -39,8 +39,6 @@ export default {
       v1:'',
       v2:'',
       v3:'',
-      v4:'',
-      v5:'',
     }
   },
   methods: {
@@ -52,9 +50,6 @@ export default {
     },
     handleChange3(v) {
       console.log(v);
-    },
-    focus() {
-      this.$refs.inputFirst.focus()
     },
   },
 };

@@ -5,24 +5,17 @@
 
 $prefixCls: za-actionsheet;
 
-@mixin actionsheet-theme($color) {
-  &,
-  &:hover,
-  &:focus,
-  &:visited {
-    text-decoration: none;
-    color: $color;
-  }
-}
-
 .#{$prefixCls} {
-  margin: 0 r(10) r(10) r(10);
+  margin: $actionsheet-margin;
+
+  &-spacing {
+    margin: 0 r(10) r(10);
+  }
 
   &.shape-radius {
     .#{$prefixCls} {
       &-actions,
       &-cancel {
-        overflow: hidden;
         border-radius: $radius-md;
       }
     }
@@ -30,52 +23,43 @@ $prefixCls: za-actionsheet;
 
   &-actions,
   &-cancel {
-    background: #fff;
+    overflow: hidden;
+    background-color: $color-text-inverse;
   }
 
   &-cancel {
     margin-top: r(7);
   }
 
-  &-btn {
+  &-item {
     display: block;
-    height: r(50);
-    line-height: r(50);
-    text-align: center;
-    font-size: r(17);
-    @include actionsheet-theme($theme-default);
+    height: $actionsheet-item-height;
+    line-height: $actionsheet-item-height;
+    font-size: $actionsheet-item-font-size;
+    @include button-base();
 
     &:active {
-      background: #f1f1f1;
+      background-color: $background-active;
     }
 
     &:not(:first-of-type) {
-      position: relative;
       @include onepx(top);
     }
 
-    &.theme-default {
-      @include actionsheet-theme($theme-default);
-    }
-
     &.theme-primary {
-      @include actionsheet-theme($theme-primary);
-    }
-
-    &.theme-info {
-      @include actionsheet-theme($theme-info);
+      color: $theme-primary;
     }
 
     &.theme-success {
-      @include actionsheet-theme($theme-success);
+      color: $theme-success;
     }
 
     &.theme-warning {
-      @include actionsheet-theme($theme-warning);
+      color: $theme-warning;
     }
 
     &.theme-error {
-      @include actionsheet-theme($theme-error);
+      color: $theme-error;
     }
   }
 }

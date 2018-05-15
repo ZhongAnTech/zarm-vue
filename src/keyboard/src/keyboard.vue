@@ -22,7 +22,7 @@
       <div
         :class="`${prefixCls}-item`"
         @touchstart="onLongPressIn('delete')"
-        @touchend="onLongPressOut()"
+        @touchend="onLongPressOut"
       >
         <za-icon type="deletekey" />
       </div>
@@ -60,6 +60,9 @@ export default {
   data() {
     return {
       longPressTimer: null,
+      pressBegin: 0,
+      pressEnd: 800,
+      longPressClick: null,
     };
   },
   components: {
@@ -67,10 +70,11 @@ export default {
   },
   methods: {
     onLongPressIn(key) {
-      this.onKeyClick(key);
-      this.longPressTimer = setTimeout(() => {
-        this.longPressTimer = setInterval(() => {
-          this.onKeyClick(key);
+      const self = this;
+      self.$emit('keyClick', key);
+      self.longPressTimer = setTimeout(() => {
+        self.longPressTimer = setInterval(() => {
+          self.$emit('keyClick', key);
         }, 100);
       }, 800);
     },

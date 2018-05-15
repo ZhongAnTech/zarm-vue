@@ -7,7 +7,7 @@
           <za-panel-header title="基本"/>
           <za-panel-body>
             <div class="grid">
-              <div v-for='(i, index) in ICONS' class="grid-column" key={index}>
+              <div v-for='(i, index) in ICONS' class="grid-column" :key="index">
                 <za-icon theme="primary" :type='i' class='icon'/>
                 <span class="icon-name">{{i}}</span>
               </div>
