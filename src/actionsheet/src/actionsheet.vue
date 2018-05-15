@@ -3,10 +3,11 @@
     <div :class='{
       [`${prefixCls}`]: true,
       [`shape-${shape}`]: !!shape,
+      [`${prefixCls}-spacing`]: spacing,
     }'>
       <div :class='`${prefixCls}-actions`'>
         <a v-for='(action, index) in actions' :class='{
-          [`${prefixCls}-btn`]: true,
+          [`${prefixCls}-item`]: true,
           [`theme-${action.theme}`]: !!action.theme,
         }'
         :key='index'
@@ -14,7 +15,7 @@
         >{{action.text}}</a>
       </div>
       <div :class='`${prefixCls}-cancel`' v-if='showCancel'>
-        <a :class='`${prefixCls}-btn`' @click='onCancel'>{{cancelText}}</a>
+        <a :class='`${prefixCls}-item`' @click='onCancel'>{{cancelText}}</a>
       </div>
     </div>
   </za-popup>
@@ -35,10 +36,11 @@ export default {
     },
     shape: {
       type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['radius'].indexOf(v) >= 0;
-      },
-      default: 'radius',
+      default: '',
+    },
+    spacing: {
+      type: Boolean,
+      default: false,
     },
     actions: {
       type: Array,

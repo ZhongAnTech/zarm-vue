@@ -13,9 +13,11 @@
           <za-cell hasArrow @click="$router.push('/checkbox')">
             复选框 Checkbox
           </za-cell>
-          <za-cell hasArrow>
-            <!-- router-link写法，但暂时没有css类支持 -->
-            <router-link to="input" tag='div' style='width:100%'>文本框 Input</router-link>
+          <za-cell hasArrow @click="$router.push('/input')">
+            文本框 Input
+          </za-cell>
+          <za-cell hasArrow @click="$router.push('/keyboard')">
+            数字键盘 Keyboard & KeyboardPicker
           </za-cell>
           <za-cell hasArrow @click="$router.push('/picker')">
             选择器 Picker & Select

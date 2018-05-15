@@ -37,31 +37,7 @@
           </za-panel-body>
         </za-panel>
 
-        <za-panel>
-          <za-panel-header title="多主题"/>
-          <za-panel-body>
-            <za-tabs theme='info' v-model="activeName2" @change="handleClick">
-              <za-tab-pane label='用户管理' name='first' />
-              <za-tab-pane label='配置管理' name='second' />
-              <za-tab-pane label='角色管理' name='third' />
-            </za-tabs>
-            <za-tabs theme='success' v-model="activeName3" @change="handleClick">
-              <za-tab-pane label='用户管理' name='first' />
-              <za-tab-pane label='配置管理' name='second' />
-              <za-tab-pane label='角色管理' name='third' />
-            </za-tabs>
-            <za-tabs theme='warning' v-model="activeName4" @change="handleClick">
-              <za-tab-pane label='用户管理' name='first' />
-              <za-tab-pane label='配置管理' name='second' />
-              <za-tab-pane label='角色管理' name='third' />
-            </za-tabs>
-            <za-tabs theme='error' v-model="activeName5" @change="handleClick">
-              <za-tab-pane label='用户管理' name='first' />
-              <za-tab-pane label='配置管理' name='second' />
-              <za-tab-pane label='角色管理' name='third' />
-            </za-tabs>
-          </za-panel-body>
-        </za-panel>
+       
 
         <za-panel>
           <za-panel-header title="联动"/>
@@ -138,6 +114,32 @@
               <za-tab-pane label='角色管理' name='third'>
                 <div class='content'>角色管理</div>
               </za-tab-pane>
+            </za-tabs>
+          </za-panel-body>
+        </za-panel>
+
+         <za-panel>
+          <za-panel-header title="多主题"/>
+          <za-panel-body>
+            <za-tabs theme='info' v-model="activeName2" @change="handleClick">
+              <za-tab-pane label='用户管理' name='first' />
+              <za-tab-pane label='配置管理' name='second' />
+              <za-tab-pane label='角色管理' name='third' />
+            </za-tabs>
+            <za-tabs theme='success' v-model="activeName3" @change="handleClick">
+              <za-tab-pane label='用户管理' name='first' />
+              <za-tab-pane label='配置管理' name='second' />
+              <za-tab-pane label='角色管理' name='third' />
+            </za-tabs>
+            <za-tabs theme='warning' v-model="activeName4" @change="handleClick">
+              <za-tab-pane label='用户管理' name='first' />
+              <za-tab-pane label='配置管理' name='second' />
+              <za-tab-pane label='角色管理' name='third' />
+            </za-tabs>
+            <za-tabs theme='error' v-model="activeName5" @change="handleClick">
+              <za-tab-pane label='用户管理' name='first' />
+              <za-tab-pane label='配置管理' name='second' />
+              <za-tab-pane label='角色管理' name='third' />
             </za-tabs>
           </za-panel-body>
         </za-panel>

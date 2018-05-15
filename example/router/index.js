@@ -19,6 +19,13 @@ export default new Router({
       },
     },
     {
+      path: '/keyboard',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/keyboardPage.vue')
+      },
+    },
+    {
       path: '/checkbox',
       component: Bundle,
       meta: {

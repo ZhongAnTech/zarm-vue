@@ -10,10 +10,25 @@
               <za-input ref='inputFirst' v-model='v1' type="text" placeholder="type is text" @change='handleChange'></za-input>
             </za-cell>
             <za-cell title='多行文本'>
-              <za-input v-model='v2' type="textarea" placeholder="type is textarea" @change='handleChange2'></za-input>
+              <za-input v-model='v2' type="textarea" placeholder="type is textarea" @change='handleChange'></za-input>
             </za-cell>
             <za-cell>
               <a @click='focus'>click to focus the first input</a>
+            </za-cell>
+          </za-panel-body>
+        </za-panel>
+
+         <za-panel>
+          <za-panel-header title="输入类型"/>
+          <za-panel-body>
+            <za-cell title='数字'>
+              <za-input-number v-model='v5' type="number"  @change='handleChange'></za-input-number>
+            </za-cell>
+            <za-cell title='金额'>
+              <za-input-number v-model='v6' type="price"  @change='handleChange'></za-input-number>
+            </za-cell>
+             <za-cell title='证件'>
+              <za-input-number v-model='v7' type="idcard"  @change='handleChange'></za-input-number>
             </za-cell>
           </za-panel-body>
         </za-panel>
@@ -71,6 +86,8 @@ export default {
       v3:'',
       v4:'',
       v5:'',
+      v6:'',
+      v7:'327198092039342',
     }
   },
   methods: {

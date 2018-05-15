@@ -9,16 +9,12 @@ describe('ActionSheet', () => {
 
   it('create', () => {
     vm = createTest(ActionSheet, {
-      prefixCls: 'za-icon',
-      shape: 'radius',
-      cancelText: 'cancel',
-      visible: true,
+      prefixCls: 'za-actionsheet',
     }, true);
     const el = vm.$el;
-    expect(el.querySelector('.za-actionsheet')).to.exsit;
-    expect(el.querySelector('.shape-radius')).to.exsit;
-    // expect(el.querySelector
-    // ('.za-actionsheet-cancel .za-actionsheet-btn').textContent === 'cancel').to.be.true;
+    vm.$nextTick(() => {
+      expect(el.querySelector('.za-actionsheet')).to.exsit;
+    });
   }, true);
 
   it('click to hide', done => {
@@ -51,7 +47,7 @@ describe('ActionSheet', () => {
     }, true);
     vm.$el.querySelector('.za-mask').click();
     vm.$nextTick(() => {
-      expect(vm.visible).to.be.not.true;
+      expect(vm.visible).to.be.false;
       expect(result).to.exist;
       done();
     });
