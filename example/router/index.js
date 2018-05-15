@@ -19,10 +19,10 @@ export default new Router({
       },
     },
     {
-      path: '/inputnumber',
+      path: '/keyboard',
       component: Bundle,
       meta: {
-        mRender: () => import('../components/inputNumberPage.vue')
+        mRender: () => import('../components/keyboardPage.vue')
       },
     },
     {

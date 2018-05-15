@@ -15,13 +15,17 @@
               <za-button size="xs" slot='description' @click='visible1 = true'>开启</za-button>
               带取消操作
             </za-cell>
+             <za-cell>
+              <za-button size="xs" slot='description' @click='visible3 = true'>开启</za-button>
+              圆角，留边
+            </za-cell>
           </za-panel-body>
         </za-panel>
       </div>
 
       <za-actionsheet :visible.sync='visible1' :actions='actions1' @cancel='cancelCb'/>
       <za-actionsheet :visible.sync='visible2' :actions='actions2' :showCancel='false' @cancel='cancelCb'/>
-
+      <za-actionsheet :visible.sync='visible3' :spacing="true" shape="radius" :actions='actions2' @cancel='cancelCb'/>
     </main>
     <PageFooter />
   </Container>
@@ -42,6 +46,7 @@ export default {
     return {
       visible1: false,
       visible2: false,
+      visible3: false,
       actions1: [{
         text: '操作一',
         onClick: () => console.log('action 1'),

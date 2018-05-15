@@ -1,4 +1,4 @@
-<template>
+<template lang="html">
   <div :class="prefixCls" @click.stop='() => {}'>
     <div :class="`${prefixCls}-keys`">
       <div
@@ -20,7 +20,10 @@
     </div>
     <div :class="`${prefixCls}-handle`">
       <div
-        :class="`${prefixCls}-item`"
+        :class="{
+          [`${prefixCls}-item`]: true,
+          [`${prefixCls}-item-delete`]: true,
+        }"
         @touchstart="onLongPressIn('delete')"
         @touchend="onLongPressOut"
       >

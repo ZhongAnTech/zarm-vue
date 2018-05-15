@@ -1,4 +1,4 @@
-<template>
+<template lang="html">
   <div
        :class="{
          [`${prefixCls}`]: true,
@@ -50,7 +50,7 @@ export default {
   },
   data() {
     return {
-      currentValue: '',
+      currentValue: this.value || '',
       visible: false,
     };
   },

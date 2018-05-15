@@ -1,8 +1,9 @@
-<template>
+<template lang="html">
   <div @click.stop='stopPropagation'>
     <za-popup
           class='za-popup-inner'
           :visible='currentVisible'
+          maskType="transparent"
           @close='onMaskClick'
           :closeOnClickModal='closeOnClickModal'>
           <za-keyboard 
@@ -53,7 +54,6 @@ export default {
   },
   methods: {
     stopPropagation(e) {
-      // console.log(e);
       Event.stopPropagation(e);
     },
     // 点击遮罩层
@@ -70,7 +70,6 @@ export default {
     },
     // 切换显示状态
     onCancel() {
-      // console.log('currentVisible', !this.currentVisible);
       // eslint-disable-next-line
       this.currentVisible = !this.currentVisible;
       this.$emit('update:visible', this.currentVisible);

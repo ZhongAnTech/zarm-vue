@@ -16,8 +16,8 @@
           <za-cell hasArrow @click="$router.push('/input')">
             文本框 Input
           </za-cell>
-           <za-cell hasArrow @click="$router.push('/inputnumber')">
-            数字键盘 InputNumber
+          <za-cell hasArrow @click="$router.push('/keyboard')">
+            数字键盘 Keyboard & KeyboardPicker
           </za-cell>
           <za-cell hasArrow @click="$router.push('/picker')">
             选择器 Picker & Select

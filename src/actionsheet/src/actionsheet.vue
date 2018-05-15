@@ -36,9 +36,6 @@ export default {
     },
     shape: {
       type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['radius'].indexOf(v) >= 0;
-      },
       default: '',
     },
     spacing: {
