@@ -73,12 +73,14 @@
     "chai": "^3.5.0",
     "commitizen": "^2.9.6",
     "connect-history-api-fallback": "^1.3.0",
+    "conventional-changelog": "^1.1.24",
     "copy-webpack-plugin": "^4.0.1",
     "coveralls": "^2.13.1",
     "cross-env": "^5.0.1",
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.28.0",
     "cssnano": "^3.10.0",
+    "cz-conventional-changelog": "^2.0.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.1.3",
     "eslint-friendly-formatter": "^3.0.0",
@@ -130,7 +132,8 @@
     "webpack-dev-middleware": "^1.10.0",
     "webpack-dev-server": "^2.7.1",
     "webpack-hot-middleware": "^2.18.0",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "yorkie": "^1.0.3"
   },
   "engines": {
     "node": ">= 4.0.0",
@@ -141,9 +144,10 @@
     "last 2 versions",
     "not ie <= 8"
   ],
-  "pre-commit": [
-    "lint"
-  ],
+  "pre-commit": "lint",
+  "gitHooks": {
+    "commit-msg": "node script/verify-commit-msg.js"
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
