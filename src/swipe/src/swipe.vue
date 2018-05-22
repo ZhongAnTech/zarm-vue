@@ -159,7 +159,7 @@ export default {
     onDragEnd(event, { offsetX, offsetY, startTime }) { // eslint-disable-line no-unused-vars
       if (this.scrolling ||
           (!offsetX && !offsetY)
-        ) {
+      ) {
         this.scrolling = false;
         return;
       }
@@ -352,9 +352,9 @@ export default {
         {
           showPagination &&
           <div class={`${prefixCls}-pagination`}>
-          <ul>
-          {pagination}
-          </ul>
+            <ul>
+              {pagination}
+            </ul>
           </div>
         }
       </div>
