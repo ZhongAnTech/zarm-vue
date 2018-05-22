@@ -40,6 +40,7 @@ module.exports = {
     'no-nested-ternary': 'off',
     'arrow-parens': 'off',
     'arrow-body-style': 'off',
+    'no-unused-expressions': 'off',
     'func-names': ["error", "never"],
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0

@@ -49,8 +49,8 @@ describe('Swipe', () => {
       `,
     }, true);
     vm.$nextTick(() => {
-      expect(
-        vm.$el.querySelector('.za-swipe-items').children.length).to.equal(5);
+      expect(vm.$el.querySelector('.za-swipe-items').children.length)
+        .to.equal(5);
       done();
     });
   });
