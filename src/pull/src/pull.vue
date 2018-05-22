@@ -93,7 +93,7 @@ export default {
   },
   computed: {
     refreshStyle() {
-      const height = isNaN(this.offsetY) ? this.offsetY : `${this.offsetY}px`;
+      const height = Number.isNaN(this.offsetY) ? this.offsetY : `${this.offsetY}px`;
       return {
         WebkitTransitionDuration: `${this.currentDuration}ms`,
         transitionDuration: `${this.currentDuration}ms`,
@@ -244,8 +244,7 @@ export default {
     let percent = 0;
     if (offsetY >= refreshInitDistance) {
       percent = (((offsetY - refreshInitDistance) < refreshDistance ?
-      (offsetY - refreshInitDistance) :
-      refreshDistance) * 100) / (refreshDistance - refreshInitDistance);
+        (offsetY - refreshInitDistance) : refreshDistance) * 100) / (refreshDistance - refreshInitDistance);
     }
 
     const renderRefresh = () => {

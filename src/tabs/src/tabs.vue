@@ -130,34 +130,34 @@ export default {
               panes.map((pane, index) => {
                 return (
                   <tab-nav
-                  label={pane.label}
-                  name={pane.name}
-                  key={index}
-                  disabled={pane.disabled}
-                  currentName={currentValue}
-                  on-nav-click={handleNavClick}
+                    label={pane.label}
+                    name={pane.name}
+                    key={index}
+                    disabled={pane.disabled}
+                    currentName={currentValue}
+                    on-nav-click={handleNavClick}
                   ></tab-nav>
                 );
               })
             }
           </ul>
           <div class={`${prefixCls}-line`} style={lineStyle}>
-          {
-            lineWidth &&
-            <span class={`${prefixCls}-line-inner`} style={{ width: `${lineWidth}px` }} />
-          }
+            {
+              lineWidth &&
+              <span class={`${prefixCls}-line-inner`} style={{ width: `${lineWidth}px` }} />
+            }
           </div>
         </div>
         <div class={`${prefixCls}-container`}>
           {
             !canSwipe ? this.$slots.default :
-            <za-swipe
-             showPagination={false}
-             activeIndex={currentIndex}
-             ref='swipe'
-             on-change={handleSwipeChange}>
-               {this.$slots.default}
-            </za-swipe>
+              <za-swipe
+                showPagination={false}
+                activeIndex={currentIndex}
+                ref='swipe'
+                on-change={handleSwipeChange}>
+                {this.$slots.default}
+              </za-swipe>
           }
         </div>
       </div>
