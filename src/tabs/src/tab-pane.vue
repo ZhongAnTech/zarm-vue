@@ -77,15 +77,16 @@ export default {
       [`${prefixCls}-panel-item`]: true,
       active: name === currentName,
     };
+
     const panel = canSwipe ? <za-swipe-item>{this.$slots.default}</za-swipe-item>
-     :
-     (
-       <div class={`${prefixCls}-panel`}>
-         <div class={cls}>
-           {this.$slots.default}
-         </div>
-       </div>
-     );
+      :
+      (
+        <div class={`${prefixCls}-panel`}>
+          <div class={cls}>
+            {this.$slots.default}
+          </div>
+        </div>
+      );
 
     return panel;
   },

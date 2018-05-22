@@ -13,7 +13,6 @@
 </template>
 <script>
 import BScroll from 'better-scroll';
-import './findIndex';
 
 export default {
   name: 'zaWheel',

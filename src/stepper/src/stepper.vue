@@ -124,11 +124,11 @@ export default {
     },
     handleInput(event) {
       const value = Number(event.target.value);
-      this.handleValue(value);
+      this.handleValue(value, event);
     },
-    handleValue(value) {
-      if (isNaN(value)) {
-        if (event.target.value === '-') {
+    handleValue(value, event) {
+      if (Number.isNaN(value)) {
+        if (value === '-') {
           this.currentValue = '-';
           return;
         }

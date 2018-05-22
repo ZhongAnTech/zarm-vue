@@ -116,7 +116,7 @@ export default {
     },
     onDragEnd(event, { offsetX }) {
       this.tooltip.close();
-      if (isNaN(offsetX)) return;
+      if (Number.isNaN(offsetX)) return;
       this.offsetStart += offsetX;
       // const { onChange } = this;
       this.$emit('change', event, this.value);
