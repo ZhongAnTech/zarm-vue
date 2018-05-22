@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <za-cell v-if='checkboxType === "cell"' :disabled='checkboxDisabled' @click='handleClick' isLink>
     <div :class='cls'>
       <div :class='`${prefixCls}-wrapper`'>
@@ -83,7 +83,7 @@ export default {
       get() {
         return this.isGroup
           ? this.store : this.value !== undefined
-          ? this.value : this.currentChecked;
+            ? this.value : this.currentChecked;
       },
 
       set(val) {

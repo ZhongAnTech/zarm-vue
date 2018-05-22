@@ -159,7 +159,7 @@ export default {
         this.maskVisible = false;
       }, this.animationDuration);
     },
-    onMaskClose() {
+    onMaskClose(event) {
       if (!this.closeOnClickModal) return;
       // clear autoClose timer
       if (this.timer) {
