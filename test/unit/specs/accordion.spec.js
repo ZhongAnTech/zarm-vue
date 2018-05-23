@@ -12,7 +12,7 @@ describe('Accordion', () => {
       prefixCls: 'za-accordion',
     }, true);
     const el = vm.$el;
-    vm.$nextTick(_ => { // eslint-disable-line no-unused-vars
+    vm.$nextTick(() => { // eslint-disable-line no-unused-vars
       expect(el.querySelector('.za-accordion')).to.exsit;
     });
   });
@@ -21,70 +21,64 @@ describe('Accordion', () => {
     let index;
     vm = createVue({
       template: `
-        <zaAccordion @change='onChange'>
-          <zaAccordionItem title="50元套餐" aiTag='0'>
+        <za-accordion @change='handleClick'>
+          <za-accordion-item title="50元套餐" aiTag='0'>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
-          </zaAccordionItem>
-          <zaAccordionItem title="100元套餐" aiTag='1'>
+          </za-accordion-item>
+          <za-accordion-item title="100元套餐" aiTag='1'>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
-          </zaAccordionItem>
-          <zaAccordionItem title="200元套餐" aiTag='2'>
+          </za-accordion-item>
+          <za-accordion-item title="200元套餐" aiTag='2'>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
-          </zaAccordionItem>
-        </zaAccordion>
+          </za-accordion-item>
+        </za-accordion>
       `,
-      data() {
-        return {
-        };
-      },
       methods: {
-        onChange(n) {
+        handleClick(n) {
           index = n;
         },
       },
     }, true);
     const el = vm.$el;
-    const input = vm.$el.querySelector('.za-accordion-item');
-    input.click();
-
-    vm.$nextTick(_ => { // eslint-disable-line no-unused-vars
-      expect(el.classList.contains('active')).to.be.true;
-      expect(index).to.exist;
+    const titleEl = vm.$el.querySelector('.za-accordion-item-title');
+    titleEl.click();
+    vm.$nextTick(() => { // eslint-disable-line no-unused-vars
+      expect(index).to.equal(0);
     });
   });
 
   it('accordion animated', () => {
     vm = createVue({
       template: `
-        <zaAccordion :multiple='false' animated>
-          <zaAccordionItem title="50元套餐" aiTag='0'>
+        <za-accordion :multiple='false' animated>
+          <za-accordion-item title="50元套餐" aiTag='0'>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
-          </zaAccordionItem>
-          <zaAccordionItem title="100元套餐" aiTag='1'>
+          </za-accordion-item>
+          <za-accordion-item title="100元套餐" aiTag='1'>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
-          </zaAccordionItem>
-          <zaAccordionItem title="200元套餐" aiTag='2'>
+          </za-accordion-item>
+          <za-accordion-item title="200元套餐" aiTag='2'>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
-          </zaAccordionItem>
-        </zaAccordion>
+          </za-accordion-item>
+        </za-accordion>
       `,
     }, true);
     const el = vm.$el;
@@ -99,26 +93,26 @@ describe('Accordion', () => {
   it('accordion defaultActive', () => {
     vm = createVue({
       template: `
-        <zaAccordion animated :defaultActiveTag='defaultActive'>
-          <zaAccordionItem title="50元套餐" aiTag='1'>
+        <za-accordion animated :defaultActiveTag='defaultActive'>
+          <za-accordion-item title="50元套餐" aiTag='1'>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
-          </zaAccordionItem>
-          <zaAccordionItem title="100元套餐" aiTag='2'>
+          </za-accordion-item>
+          <za-accordion-item title="100元套餐" aiTag='2'>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
-          </zaAccordionItem>
-          <zaAccordionItem title="200元套餐" aiTag='3'>
+          </za-accordion-item>
+          <za-accordion-item title="200元套餐" aiTag='3'>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
-          </zaAccordionItem>
-        </zaAccordion>
+          </za-accordion-item>
+        </za-accordion>
       `,
       data() {
         return {
@@ -138,26 +132,26 @@ describe('Accordion', () => {
   it('accordion setActive', () => {
     vm = createVue({
       template: `
-        <zaAccordion animated :defaultActiveTag='defaultActive' :activeTag='active'>
-          <zaAccordionItem title="50元套餐" aiTag='0'>
+        <za-accordion animated :defaultActiveTag='defaultActive' :activeTag='active'>
+          <za-accordion-item title="50元套餐" aiTag='0'>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
-          </zaAccordionItem>
-          <zaAccordionItem title="100元套餐" aiTag='1'>
+          </za-accordion-item>
+          <za-accordion-item title="100元套餐" aiTag='1'>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
-          </zaAccordionItem>
-          <zaAccordionItem title="200元套餐" aiTag='2'>
+          </za-accordion-item>
+          <za-accordion-item title="200元套餐" aiTag='2'>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
-          </zaAccordionItem>
-        </zaAccordion>
+          </za-accordion-item>
+        </za-accordion>
       `,
       data() {
         return {
@@ -182,26 +176,27 @@ describe('Accordion', () => {
   it('accordion open', () => {
     vm = createVue({
       template: `
-        <zaAccordion open>
-          <zaAccordionItem title="50元套餐">
+        <za-accordion open>
+          <za-accordion-item title="50元套餐">
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
-          </zaAccordionItem>
-          <zaAccordionItem title="100元套餐">
+          </za-accordion-item>
+          <za-accordion-item title="100元套餐">
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
-          </zaAccordionItem>
-          <zaAccordionItem title="200元套餐">
+          </za-accordion-item>
+          <za-accordion-item title="200元套餐">
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
-          </zaAccordionItem>
-        </zaAccordion>
+          </za-accordion-item>
+        </za-accordion-item>
+      </za-accordion>
       `,
       data() {
         return {
