@@ -48,7 +48,6 @@ describe('Accordion', () => {
         },
       },
     }, true);
-    const el = vm.$el;
     const titleEl = vm.$el.querySelector('.za-accordion-item-title');
     titleEl.click();
     vm.$nextTick(() => { // eslint-disable-line no-unused-vars
