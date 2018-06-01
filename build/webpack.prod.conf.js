@@ -12,7 +12,6 @@ delete baseWebpackConfig.entry;
 /**
  * IMPORTNT: make sure .vue file do not have style section
  */
-
 const webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
   externals: [
@@ -27,6 +26,9 @@ const webpackConfig = merge(baseWebpackConfig, {
     filename: '[name].js',
     chunkFilename: '[id].[chunkhash].js',
     libraryTarget: 'commonjs2',
+  },
+  optimization: {
+    minimize: false
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
