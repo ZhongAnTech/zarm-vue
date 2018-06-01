@@ -1,11 +1,12 @@
 // This is the webpack config used for unit tests.
+const utils = require('./utils')
+const webpack = require('webpack')
+const merge = require('webpack-merge')
+const baseConfig = require('./webpack.base.conf')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
-var utils = require('./utils')
-var webpack = require('webpack')
-var merge = require('webpack-merge')
-var baseConfig = require('./webpack.base.conf')
-
-var webpackConfig = merge(baseConfig, {
+const webpackConfig = merge(baseConfig, {
+  mode: 'development',
   // use inline sourcemap for karma-sourcemap-loader
   module: {
     rules: utils.styleLoaders()
@@ -21,7 +22,8 @@ var webpackConfig = merge(baseConfig, {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': require('../config/test.env')
-    })
+    }),
+    new VueLoaderPlugin()
   ]
 })
 

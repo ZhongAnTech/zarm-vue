@@ -3,6 +3,7 @@ import zarmVue from '../src/index';
 import App from './app';
 import router from './router';
 import '../styles/index.scss';
+import './styles/pages/IndexPage.scss';
 
 Vue.config.productionTip = false;
 Vue.use(zarmVue);

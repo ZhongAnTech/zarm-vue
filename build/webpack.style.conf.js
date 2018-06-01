@@ -1,17 +1,27 @@
-var webpack = require('webpack')
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var path = require('path')
-var baseWebpackConfig = require('./webpack.base.conf')
-var merge = require('webpack-merge')
-var utils = require('./utils')
-var config = require('../config')
+const webpack = require('webpack')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const path = require('path')
+const baseWebpackConfig = require('./webpack.base.conf')
+const merge = require('webpack-merge')
+const utils = require('./utils')
+const config = require('../config')
 
-var entries = require('../script/css-entry')();
+const entries = require('../script/css-entry')();
 
-var plugins = [
-  new ExtractTextPlugin('[name].css'),
-  new webpack.optimize.OccurrenceOrderPlugin(),
-  new webpack.NoEmitOnErrorsPlugin()
+const plugins = [
+  new MiniCssExtractPlugin({
+    // Options similar to the same options in webpackOptions.output
+    // both options are optional
+    filename: '[name].css',
+  }),
+  // Compress extracted CSS. We are using this plugin so that possible
+  // duplicated CSS from different components can be deduped.
+  new OptimizeCSSPlugin({
+    cssProcessorOptions: config.build.productionSourceMap
+      ? { safe: true, map: { inline: false } }
+      : { safe: true }
+  }),
 ]
 
 delete baseWebpackConfig.output
@@ -21,10 +31,11 @@ delete baseWebpackConfig.entry
 entries['base'] = path.resolve(__dirname, '../styles/base')
 
 module.exports = merge(baseWebpackConfig, {
+  mode: "production",
   entry:entries,
   output: {
     path: path.resolve(__dirname, '../release/lib/theme'),
-    filename: '[name].css'
+    filename: '[name].js',
   },
   plugins: plugins,
   module: {

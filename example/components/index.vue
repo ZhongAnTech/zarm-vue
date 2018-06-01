@@ -121,7 +121,7 @@
 import Container from '../common/Container.vue';
 import PageHeader from '../common/PageHeader.vue';
 import PageFooter from '../common/PageFooter.vue';
-import '../styles/pages/IndexPage.scss';
+
 
 export default {
   components: {

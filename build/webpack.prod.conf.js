@@ -1,12 +1,11 @@
-var path = require('path')
-var webpack = require('webpack')
-var config = require('../config')
-var merge = require('webpack-merge')
-var baseWebpackConfig = require('./webpack.base.conf')
-var merge = require('webpack-merge')
-
-var entries = require('../script/find-entry')();
-var env = process.env.NODE_ENV
+const path = require('path')
+const webpack = require('webpack')
+const config = require('../config')
+const merge = require('webpack-merge')
+const baseWebpackConfig = require('./webpack.base.conf')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const entries = require('../script/find-entry')();
+const env = process.env.NODE_ENV
 
 delete baseWebpackConfig.entry;
 
@@ -14,7 +13,8 @@ delete baseWebpackConfig.entry;
  * IMPORTNT: make sure .vue file do not have style section
  */
 
-var webpackConfig = merge(baseWebpackConfig, {
+const webpackConfig = merge(baseWebpackConfig, {
+  mode: 'production',
   externals: [
     'vue',
     'autosize',
@@ -32,12 +32,13 @@ var webpackConfig = merge(baseWebpackConfig, {
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env
-    })
+    }),
+    new VueLoaderPlugin()
   ]
 })
 
 if (config.build.bundleAnalyzerReport) {
-  var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
 
