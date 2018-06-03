@@ -5,5 +5,15 @@
   "globals": {
     "expect": true,
     "sinon": true
+  },
+  "rules": {
+    // allow optionalDependencies
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "optionalDependencies": ["test/unit/index.js"]
+      }
+    ],
+    "no-unused-expressions": "off"
   }
 }

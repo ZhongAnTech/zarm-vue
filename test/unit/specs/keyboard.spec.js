@@ -14,7 +14,7 @@ describe('Keyboard', () => {
     }, true);
     const el = vm.$el;
     vm.$nextTick(() => {
-      expect(el.querySelector('.za-keyboard-items').children[0].innerHTML).to.equal('1');
+      expect(el.querySelector('.za-keyboard-item').innerText.trim()).to.equal('1');
     });
   });
 
@@ -24,7 +24,7 @@ describe('Keyboard', () => {
     }, true);
     const el = vm.$el;
     vm.$nextTick(() => {
-      expect(el.querySelector('.za-keyboard-items').children[0].innerHTML).to.equal('1');
+      expect(el.querySelector('.za-keyboard-item').innerText.trim()).to.equal('1');
     });
   });
 
@@ -34,7 +34,7 @@ describe('Keyboard', () => {
     }, true);
     const el = vm.$el;
     vm.$nextTick(() => {
-      expect(el.querySelector('.za-keyboard-items').children[0].innerHTML).to.equal('1');
+      expect(el.querySelector('.za-keyboard-item').innerText.trim()).to.equal('1');
     });
   });
 
@@ -45,8 +45,7 @@ describe('Keyboard', () => {
     }, true);
     const el = vm.$el;
     vm.$nextTick(() => {
-      expect(el.querySelector('.za-keyboard-items').children[0].innerHTML).to.equal('1');
-      expect(vm.visible).to.be.true;
+      expect(el.querySelector('.za-keyboard-item').innerText.trim()).to.equal('1');
     });
   });
 
@@ -64,7 +63,6 @@ describe('Keyboard', () => {
     }, true);
     vm.$el.querySelector('.za-keyboard-item').click();
     vm.$nextTick(() => {
-      // console.log(result);
       expect(result).to.equal('1');
       done();
     });

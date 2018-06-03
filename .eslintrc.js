@@ -31,16 +31,11 @@ module.exports = {
       'js': 'never',
       'vue': 'never'
     }],
-    // allow optionalDependencies
-    'import/no-extraneous-dependencies': ['error', {
-      'optionalDependencies': ['test/unit/index.js']
-    }],
     // allow underscoreDangle after this
     'prefer-destructuring': 'off',
     'no-nested-ternary': 'off',
     'arrow-parens': 'off',
     'arrow-body-style': 'off',
-    'no-unused-expressions': 'off',
     'func-names': ["error", "never"],
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0

@@ -1,22 +1,14 @@
-var path = require('path');
-var webpack = require('webpack');
-var baseWebpackConfig = require('./webpack.base.conf')
-var merge = require('webpack-merge')
-
-var plugins = [
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: false,
-      drop_debugger: true,
-      drop_console: true,
-    },
-  }),
-];
+const path = require('path');
+const webpack = require('webpack');
+const baseWebpackConfig = require('./webpack.base.conf')
+const merge = require('webpack-merge')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 delete baseWebpackConfig.entry;
 delete baseWebpackConfig.output;
 
 module.exports = merge(baseWebpackConfig, {
+  mode: 'production',
   entry: {
     ['zarm-vue.umd.js']: path.join(__dirname, '../src/index.js'),
   },
@@ -40,5 +32,7 @@ module.exports = merge(baseWebpackConfig, {
     library: 'zarm-vue',
     libraryTarget: 'umd',
   },
-  plugins: plugins
+  plugins: [
+    new VueLoaderPlugin()
+  ]
 });
