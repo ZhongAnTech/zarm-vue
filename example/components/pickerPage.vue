@@ -20,6 +20,18 @@
               </za-cell>
             </za-panel-body>
           </za-panel>
+
+          <za-panel>
+            <za-panel-header title="高级" />
+            <za-panel-body>
+              <za-cell title="单列更新">
+                  <za-button slot='description' size='xs' @click='updateSource1'>设置</za-button>
+              </za-cell>
+              <za-cell title="多列更新">
+                  <za-button slot='description' size='xs' @click='updateSource2'>设置</za-button>
+              </za-cell>
+            </za-panel-body>
+          </za-panel>
   
           <za-picker :close-on-click-modal='false' :visible.sync='visible1'  :dataSource='data1' @ok='handleOk1'  />
           <za-picker :visible.sync='visible2' :dataSource='data2'  @ok='handleOk' />
@@ -92,7 +104,7 @@
           <za-panel>
             <za-panel-header title="平铺选择器 PickerView" />
             <za-panel-body>
-              <za-picker-view :defaultValue="v5" :dataSource='data5' @change='handleChange' />
+              <za-picker-view :defaultValue="v5" :dataSource='data1' @change='handleChange' />
             </za-panel-body>
           </za-panel>
   
@@ -107,6 +119,26 @@
     import PageHeader from '../common/PageHeader.vue';
     import PageFooter from '../common/PageFooter.vue';
     import District from './district';
+
+    const updateData1 = [
+      { value: '11', label: '选项1' },
+      { value: '22', label: '选项2' },
+      { value: '33', label: '选项3' },
+    ];
+
+    const updateData2 = [
+      [
+        { value: '1', label: '选项1' },
+        { value: '2', label: '选项2' },
+      ],
+      [
+        { value: '3', label: '选项A' },
+        { value: '4', label: '选项B' },
+        { value: '5', label: '选项C' },
+        { value: '6', label: '选项D' },
+      ],
+    ]
+
     export default {
       components: {
         Container,
@@ -221,6 +253,12 @@
         },
         handleCancel(event) {
           console.log('cancelled');
+        },
+        updateSource1() {
+          this.data1 = updateData1
+        },
+        updateSource2() {
+          this.data2 = updateData2
         },
         displayGenerator(selected) {
           return selected.map(item => item.name).join('/')

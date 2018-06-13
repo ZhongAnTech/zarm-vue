@@ -176,6 +176,39 @@ describe('Picker', () => {
     });
   });
 
+  it('update dataSource', done => {
+    const data2 = [
+      { value: '1', label: '选项一' },
+      { value: '2', label: '选项二' },
+      { value: '3', label: '选项三' },
+    ];
+    vm = createVue({
+      template: `
+      <za-picker
+        v-model='value'
+        :dataSource='data1'/>
+      `,
+      data() {
+        return {
+          value: '',
+          visible: true,
+          data1: [
+            { value: '1', label: '选项一' },
+            { value: '2', label: '选项二' },
+          ],
+        };
+      },
+    }, true);
+    vm.$nextTick(() => {
+      vm.data1 = data2;
+      vm.$nextTick(() => {
+        const items = vm.$el.querySelectorAll('.za-wheel-item').length;
+        expect(items).to.equal(3);
+        done();
+      });
+    });
+  });
+
   it('toggle cancel', done => {
     vm = createVue({
       template: `
