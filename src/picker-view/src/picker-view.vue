@@ -67,6 +67,14 @@ export default {
       isManual: false,
     }, newObj);
   },
+  watch: {
+    dataSource() {
+      const newObj = this.getState();
+      this.data = newObj.data;
+      this.value = newObj.value;
+      this.oldValue = newObj.oldValue;
+    },
+  },
   methods: {
     getInitValue(defaultValue) {
       if ('value' in this && this.value.length > 0) {
