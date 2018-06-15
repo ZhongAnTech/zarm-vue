@@ -31,6 +31,7 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
+    "component": "node build/create-component.js",
     "unit": "karma start test/unit/karma.conf.js --single-run",
     "test:watch": "karma start test/unit/karma.conf.js",
     "lint": "eslint --ext .js,.vue src",
@@ -53,9 +54,7 @@
   },
   "dependencies": {
     "autosize": "^4.0.0",
-    "better-scroll": "^1.8.3",
-    "vue": "^2.5.2",
-    "vue-router": "^2.6.0"
+    "better-scroll": "^1.8.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^6.2.0",
@@ -96,6 +95,7 @@
     "fs-extra": "^4.0.1",
     "gh-pages": "^1.0.0",
     "glob": "^7.1.2",
+    "handlebars": "^4.0.11",
     "html-webpack-plugin": "^3.2.0",
     "http-proxy-middleware": "^0.17.3",
     "husky": "^0.14.3",
@@ -125,7 +125,9 @@
     "sinon-chai": "^2.8.0",
     "url-loader": "^1.0.1",
     "validate-commit-msg": "^2.14.0",
+    "vue": "^2.5.2",
     "vue-loader": "^15.0.7",
+    "vue-router": "^2.6.0",
     "vue-style-loader": "^4.1.0",
     "vue-template-compiler": "^2.5.16",
     "webpack": "^4.10.1",
