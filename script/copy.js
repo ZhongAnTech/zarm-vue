@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import path from 'path';
-import fs from 'fs-extra';
+const path = require('path');
+const fs = require('fs-extra');
 
 fs.readFile(path.join(__dirname, '../package.json'), (err, data) => {
   if (!err) {
