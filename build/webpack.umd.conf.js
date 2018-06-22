@@ -1,8 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
-const baseWebpackConfig = require('./webpack.base.conf')
-const merge = require('webpack-merge')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const baseWebpackConfig = require('./webpack.base.conf');
+const merge = require('webpack-merge');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const version = require('../package.json').version;
 
 delete baseWebpackConfig.entry;
 delete baseWebpackConfig.output;
@@ -10,21 +11,21 @@ delete baseWebpackConfig.output;
 module.exports = merge(baseWebpackConfig, {
   mode: 'production',
   entry: {
-    ['zarm-vue.umd.js']: path.join(__dirname, '../src/index.js'),
+    'zarm-vue.umd.js': path.join(__dirname, '../src/index.js'),
   },
   externals: {
-    'vue': {
+    vue: {
       root: 'Vue',
       commonjs: 'vue',
       commonjs2: 'vue',
-      amd: 'vue'
+      amd: 'vue',
     },
-    'lodash': {
+    lodash: {
       commonjs: 'lodash',
       commonjs2: 'lodash',
       amd: 'lodash',
-      root: '_'
-    }
+      root: '_',
+    },
   },
   output: {
     path: path.resolve(__dirname, '../release'),
@@ -32,7 +33,5 @@ module.exports = merge(baseWebpackConfig, {
     library: 'zarm-vue',
     libraryTarget: 'umd',
   },
-  plugins: [
-    new VueLoaderPlugin()
-  ]
+  plugins: [new VueLoaderPlugin(), new webpack.BannerPlugin(`zarm-vue v${version}\n(c) 2018-${new Date().getFullYear()} ZhonganTech Engineering\nReleased under the MIT License.`)],
 });
