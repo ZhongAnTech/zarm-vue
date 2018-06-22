@@ -4,8 +4,8 @@
 //   https://github.com/webpack/karma-webpack
 const webpackConfig = require('../../build/webpack.test.conf');
 
-module.exports = function(config) {
-  var configuration = {
+module.exports = function (config) {
+  const configuration = {
     // to run in additional browsers:
     // 1. install corresponding karma launcher
     //    http://karma-runner.github.io/0.13/config/browsers.html
@@ -15,19 +15,16 @@ module.exports = function(config) {
     reporters: ['spec', 'coverage'],
     files: ['./index.js'],
     preprocessors: {
-      './index.js': ['webpack', 'sourcemap', 'coverage']
+      './index.js': ['webpack', 'sourcemap', 'coverage'],
     },
     webpack: webpackConfig,
     webpackMiddleware: {
-      noInfo: true
+      noInfo: true,
     },
     coverageReporter: {
       dir: './coverage',
-      reporters: [
-        { type: 'lcov', subdir: '.' },
-        { type: 'text-summary' }
-      ]
-    }
+      reporters: [{ type: 'lcov', subdir: '.' }, { type: 'text-summary' }],
+    },
   };
   config.set(configuration);
 };
