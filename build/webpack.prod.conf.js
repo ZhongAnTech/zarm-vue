@@ -1,11 +1,13 @@
-const path = require('path')
-const webpack = require('webpack')
-const config = require('../config')
-const merge = require('webpack-merge')
-const baseWebpackConfig = require('./webpack.base.conf')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const path = require('path');
+const webpack = require('webpack');
+const config = require('../config');
+const merge = require('webpack-merge');
+const baseWebpackConfig = require('./webpack.base.conf');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const entries = require('../script/find-entry')();
-const env = process.env.NODE_ENV
+const version = require('../package.json').version;
+
+const env = process.env.NODE_ENV;
 
 delete baseWebpackConfig.entry;
 
@@ -14,12 +16,7 @@ delete baseWebpackConfig.entry;
  */
 const webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
-  externals: [
-    'vue',
-    'autosize',
-    'zscroller',
-    'moment',
-  ],
+  externals: ['vue', 'autosize', 'zscroller', 'moment'],
   entry: entries,
   output: {
     path: path.resolve(__dirname, '../release/lib'),
@@ -28,20 +25,21 @@ const webpackConfig = merge(baseWebpackConfig, {
     libraryTarget: 'commonjs2',
   },
   optimization: {
-    minimize: false
+    minimize: false,
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
-      'process.env': env
+      'process.env': env,
     }),
-    new VueLoaderPlugin()
-  ]
-})
+    new VueLoaderPlugin(),
+    new webpack.BannerPlugin(`zarm-vue v${version}\n(c) 2018-${new Date().getFullYear()} ZhonganTech Engineering\nReleased under the MIT License.`),
+  ],
+});
 
 if (config.build.bundleAnalyzerReport) {
-  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-  webpackConfig.plugins.push(new BundleAnalyzerPlugin())
+  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+  webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 }
 
-module.exports = webpackConfig
+module.exports = webpackConfig;

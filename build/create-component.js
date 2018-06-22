@@ -1,9 +1,7 @@
 #!/usr/bin/env node
-
 const fs = require('fs');
 const path = require('path');
 const Handlebars = require('handlebars');
-const { exec } = require('child_process');
 
 /** 组件Vue初始化模版 */
 const componentVueTpl = `<template lang="html">
@@ -96,7 +94,7 @@ function insertCss(name) {
 
   fs.writeFileSync(`${componentDir}/style/index.scss`, `${compomentStyleTpl}`);
 
-  fs.writeFileSync(`${componentDir}/style/component.js`, 'import \'./index.scss\';');
+  fs.writeFileSync(`${componentDir}/style/component.js`, "import './index.scss';");
 }
 
 // js/css 加到index文件导出

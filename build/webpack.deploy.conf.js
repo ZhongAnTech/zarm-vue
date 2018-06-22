@@ -19,7 +19,7 @@ module.exports = merge(baseWebpackConfig, {
     rules: utils.styleLoaders({
       sourceMap: config.build.productionSourceMap,
       extract: true,
-    })
+    }),
   },
   entry: {
     app: path.join(__dirname, '../example/deploy.js'),
