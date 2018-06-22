@@ -49,6 +49,7 @@ import Toast from '../src/toast';
 import Tooltip from '../src/tooltip';
 import Uploader from '../src/uploader';
 
+const version = '1.2.1';
 const components = [
   Accordion,
   AccordionItem,
@@ -121,7 +122,7 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 }
 
-module.exports = {
+export {
   install,
   Accordion,
   AccordionItem,
@@ -175,4 +176,7 @@ module.exports = {
   Uploader,
 };
 
-module.exports.default = module.exports;
+export default {
+  install,
+  version,
+};

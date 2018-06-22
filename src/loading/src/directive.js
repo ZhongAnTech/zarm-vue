@@ -1,6 +1,6 @@
 import Loading from './loading';
 
-exports.install = Vue => {
+const install = Vue => {
   const LoadingConstructor = Vue.extend(Loading);
 
   const toggleLoading = function (el, binding) {
@@ -40,3 +40,5 @@ exports.install = Vue => {
     },
   });
 };
+
+export default install;
