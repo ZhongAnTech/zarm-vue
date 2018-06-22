@@ -1,0 +1,20 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "chrome": 49,
+        "safari": 10,
+        "ios": 9,
+        "android": 7
+      }
+    }],
+    "stage-0"
+  ],
+  "plugins": ["transform-runtime", "transform-vue-jsx"],
+  "env": {
+    "test": {
+      "presets": ["env", "stage-0"],
+      "plugins": ["istanbul"]
+    }
+  }
+}

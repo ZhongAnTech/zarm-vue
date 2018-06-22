@@ -11,12 +11,17 @@
 </head>
 <body>
   <div id="app">
-      <za-button theme="primary">普通按钮</za-button>
+      <za-button v-za-loading="loading" theme="primary">普通按钮</za-button>
   </div>
 </body>
 <script>
   new Vue({
-    el: '#app'
+    el: '#app',
+    data() {
+      return {
+        loading: true,
+      }
+    }
   })
 </script>
 </html>
