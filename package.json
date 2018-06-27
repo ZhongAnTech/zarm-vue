@@ -31,7 +31,7 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
-    "component": "node build/create-component.js",
+    "create": "node script/create-component.js",
     "unit": "karma start test/unit/karma.conf.js --single-run",
     "test:watch": "karma start test/unit/karma.conf.js",
     "lint": "eslint --ext .js,.vue src",
