@@ -7,7 +7,6 @@
     "sinon": true
   },
   "rules": {
-    // allow optionalDependencies
     "import/no-extraneous-dependencies": [
       "error",
       {

@@ -1,3 +1,4 @@
+const path = require('path');
 const utils = require('./utils');
 const webpack = require('webpack');
 const config = require('../config');
@@ -6,13 +7,16 @@ const baseWebpackConfig = require('./webpack.base.conf');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-// add hot-reload related code to entry chunks
-Object.keys(baseWebpackConfig.entry).forEach((name) => {
-  baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name]);
-});
+
+function resolve(dir) {
+  return path.join(__dirname, '..', dir);
+}
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'development',
+  entry: {
+    app: resolve('./example/main.js'),
+  },
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap }),
   },
