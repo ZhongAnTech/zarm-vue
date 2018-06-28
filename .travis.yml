@@ -6,8 +6,12 @@ node_js:
   - 8
 cache:
   yarn: true
+branches:
+  only:
+  - master
+  - dev
 script:
   - npm run lint
   - npm run unit
 after_success:
-  - cat ./test/unit/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - cat ./test/unit/coverage/lcov.info | coveralls
