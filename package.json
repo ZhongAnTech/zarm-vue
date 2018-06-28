@@ -31,8 +31,8 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
-    "component": "node build/create-component.js",
-    "unit": "karma start test/unit/karma.conf.js --single-run",
+    "create": "node script/create-component.js",
+    "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test:watch": "karma start test/unit/karma.conf.js",
     "lint": "eslint --ext .js,.vue src",
     "clean": "rimraf release",
@@ -52,6 +52,9 @@
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "pub": "npm run clean && npm run build:all && npm publish ./release"
   },
+  "peerDependencies": {
+    "vue": "> 2.3.0"
+  },
   "dependencies": {
     "autosize": "^4.0.0",
     "better-scroll": "^1.8.3"
@@ -60,7 +63,6 @@
     "@commitlint/cli": "^6.2.0",
     "@commitlint/config-conventional": "^6.1.3",
     "autoprefixer": "^7.1.2",
-    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.1.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.2",
@@ -77,11 +79,9 @@
     "connect-history-api-fallback": "^1.3.0",
     "conventional-changelog-cli": "^1.3.22",
     "copy-webpack-plugin": "^4.0.1",
-    "coveralls": "^2.13.1",
     "cross-env": "^5.0.1",
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.28.0",
-    "cssnano": "^3.10.0",
     "eslint": "^4.19.1",
     "eslint-config-za": "^1.0.0",
     "eslint-friendly-formatter": "^3.0.0",
@@ -89,10 +89,8 @@
     "eslint-loader": "^2.0.0",
     "eslint-plugin-html": "^3.2.2",
     "eslint-plugin-import": "^2.2.0",
-    "eventsource-polyfill": "^0.9.6",
     "file-loader": "^1.1.11",
     "friendly-errors-webpack-plugin": "^1.1.3",
-    "fs-extra": "^4.0.1",
     "gh-pages": "^1.0.0",
     "glob": "^7.1.2",
     "handlebars": "^4.0.11",
@@ -108,9 +106,9 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "^0.0.31",
     "karma-webpack": "^2.0.2",
-    "lolex": "^1.5.2",
+    "lodash-es": "^4.17.8",
     "mini-css-extract-plugin": "^0.4.0",
-    "mocha": "^3.2.0",
+    "mocha": "^5.0.4",
     "nightwatch": "^0.9.12",
     "node-sass": "^4.5.3",
     "opn": "^5.1.0",
@@ -119,12 +117,10 @@
     "puppeteer": "^1.2.0",
     "rimraf": "^2.6.1",
     "sass-loader": "^7.0.1",
-    "selenium-server": "^3.0.1",
     "shelljs": "^0.7.6",
     "sinon": "^2.1.0",
     "sinon-chai": "^2.8.0",
     "url-loader": "^1.0.1",
-    "validate-commit-msg": "^2.14.0",
     "vue": "^2.5.2",
     "vue-loader": "^15.0.7",
     "vue-router": "^2.6.0",
@@ -139,12 +135,7 @@
     "webpack-merge": "^4.1.0"
   },
   "engines": {
-    "node": ">= 4.0.0",
+    "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+  }
 }

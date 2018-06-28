@@ -7,14 +7,14 @@ function resolve(dir) {
   return path.join(__dirname, '..', dir);
 }
 
+const allSource = [resolve('src'), resolve('example'), resolve('test')]
+
 module.exports = {
-  entry: {
-    app: resolve('./example/main.js'),
-  },
   output: {
     path: config.build.assetsRoot,
-    filename: '[name].js',
     publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
+    filename: '[name].js',
+    chunkFilename: '[name].js'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -29,7 +29,7 @@ module.exports = {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
-        include: [resolve('src'), resolve('test')],
+        include: allSource,
         options: {
           formatter: require('eslint-friendly-formatter'),
         },
@@ -42,7 +42,7 @@ module.exports = {
       {
         test: /\.js$/,
         use: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('example')], // for gh-pages
+        include: allSource.concat(resolve('node_modules/lodash-es')),
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

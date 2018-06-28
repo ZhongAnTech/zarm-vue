@@ -4,42 +4,11 @@ const path = require('path');
 const Handlebars = require('handlebars');
 
 /** 组件Vue初始化模版 */
-const componentVueTpl = `<template lang="html">
-<div class="page"></div>
-</template>
-
-<script>
-export default {
-  name: '',
-  data() {
-    return {
-
-    }
-  },
-  components: {
-
-  }
-}
-</script>
-
-<style scoped lang="scss">
-</style>
-`;
-
+const componentVueTpl = require('../template/component.tpl.js');
 /** 组件封装模版 */
-const componentIndexTpl = `import {{upperComponentName}} from './src/{{name}}';
-/* istanbul ignore next */
-{{upperComponentName}}.install = function (Vue) {
-  Vue.component({{upperComponentName}}.name, {{upperComponentName}});
-};
-export default {{upperComponentName}};
-`;
-
+const componentIndexTpl = require('../template/component.index.js');
 /** 组件style样式模版 */
-const compomentStyleTpl = `@import '../../../styles/core/mixins/index';
-@import '../../../styles/core/functions/index';
-@import '../../../styles/variables';
-`;
+const compomentStyleTpl = require('../template/component.style.js');
 
 const packagesDir = path.resolve(__dirname, '../src');
 
