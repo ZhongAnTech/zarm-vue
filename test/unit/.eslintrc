@@ -10,7 +10,7 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "optionalDependencies": ["test/unit/index.js"]
+        "optionalDependencies": ["test/unit/index.js", "test/unit/util.js"]
       }
     ],
     "no-unused-expressions": "off"

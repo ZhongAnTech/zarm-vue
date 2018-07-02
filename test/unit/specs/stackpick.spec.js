@@ -49,7 +49,7 @@ describe('StackPicker', () => {
       done();
     });
   });
-  it('on ok', done => {
+  it('stackpicker change', done => {
     let value;
     vm = createVue({
       template: `
@@ -77,6 +77,39 @@ describe('StackPicker', () => {
     vm.$el.querySelectorAll('.za-stack-picker-stack-column')[0].querySelector('.za-stack-picker-stack-item').click();
     vm.$nextTick(() => {
       expect(value[0]).to.equal('1');
+      done();
+    });
+  });
+
+  it('stackpicker ok', done => {
+    let value;
+    vm = createVue({
+      template: `
+      <za-stack-picker
+        :visible.sync='visible'
+        v-model='value'
+        title="级联选择"
+        placeholder="请选择"
+        :dataSource='data'
+        @ok='handleOk'/>
+      `,
+      data() {
+        return {
+          value: ['1', '12'],
+          visible: false,
+          data,
+        };
+      },
+      methods: {
+        handleOk(v) {
+          value = v;
+        },
+      },
+    }, true);
+    vm.$el.click();
+    vm.$nextTick(() => {
+      vm.$el.querySelector('.za-stack-picker-submit').click();
+      expect(value[0].value).to.equal('1');
       done();
     });
   });

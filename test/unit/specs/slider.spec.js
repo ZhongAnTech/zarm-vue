@@ -1,4 +1,5 @@
-import { createVue, destroyVM } from '../util';
+import Slider from '@/slider';
+import { createVue, createTest, destroyVM } from '../util';
 
 describe('Slider', () => {
   let vm;
@@ -17,7 +18,16 @@ describe('Slider', () => {
     expect(vm.$el.classList.contains('za-slider')).to.be.true;
   });
 
-  it('change value 10', done => {
+  it('slider shadow position', () => {
+    vm = createTest(Slider, {
+      prefixCls: 'za-slider',
+    }, true);
+    vm.$nextTick(() => { // eslint-disable-line no-unused-vars
+      vm.$el.click();
+    });
+  });
+
+  it('slider change value', done => {
     vm = createVue({
       template: `
        <za-slider

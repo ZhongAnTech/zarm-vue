@@ -17,7 +17,7 @@ describe('ActionSheet', () => {
     });
   }, true);
 
-  it('click to hide', done => {
+  it('actions', done => {
     let result;
     vm = createVue({
       template: `
@@ -53,7 +53,7 @@ describe('ActionSheet', () => {
     });
   });
 
-  it('change sync', done => {
+  it('visible', done => {
     vm = createVue({
       template: `
         <za-actionsheet :visible.sync='visible' :actions='actions'/>
@@ -79,6 +79,28 @@ describe('ActionSheet', () => {
     vm.$nextTick(() => {
       expect(vm.visible).to.be.false;
       done();
+    });
+  });
+
+  it('cancelText', () => {
+    vm = createTest(ActionSheet, {
+      prefixCls: 'za-actionsheet',
+      cancelText: '关闭',
+    }, true);
+    const el = vm.$el;
+    vm.$nextTick(() => {
+      expect(el.querySelector('.za-actionsheet-cancel').innerText).to.equal('关闭');
+    });
+  });
+
+  it('showCancel', () => {
+    vm = createTest(ActionSheet, {
+      prefixCls: 'za-actionsheet',
+      showCancel: false,
+    }, true);
+    const el = vm.$el;
+    vm.$nextTick(() => {
+      expect(!el.querySelector('.za-actionsheet-cancel')).to.exsit;
     });
   });
 });

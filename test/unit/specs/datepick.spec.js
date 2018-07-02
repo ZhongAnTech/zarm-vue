@@ -6,7 +6,7 @@ describe('DatePicker', () => {
     destroyVM(vm);
   });
 
-  it('create datepicker', done => {
+  it('create', done => {
     vm = createVue({
       template: `
       <za-date-picker
@@ -29,7 +29,7 @@ describe('DatePicker', () => {
     });
   });
 
-  it('datepicker ok year', done => {
+  it('ok year', done => {
     let value = '';
     vm = createVue({
       template: `
@@ -62,7 +62,7 @@ describe('DatePicker', () => {
     });
   });
 
-  it('datepicker ok date', done => {
+  it('ok date', done => {
     let value = '';
     vm = createVue({
       template: `
@@ -96,7 +96,7 @@ describe('DatePicker', () => {
     });
   });
 
-  it('datepicker ok month', done => {
+  it('ok month', done => {
     let value = '';
     vm = createVue({
       template: `
@@ -129,7 +129,7 @@ describe('DatePicker', () => {
     });
   });
 
-  it('datepicker ok time', done => {
+  it('ok time', done => {
     let value = '';
     vm = createVue({
       template: `
@@ -163,7 +163,7 @@ describe('DatePicker', () => {
     });
   });
 
-  it('datepicker ok datetime', done => {
+  it('ok datetime', done => {
     let value = '';
     vm = createVue({
       template: `
