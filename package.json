@@ -33,7 +33,7 @@
     "start": "node build/dev-server.js",
     "create": "node script/create-component.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
-    "test:watch": "karma start test/unit/karma.conf.js",
+    "test:watch": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js",
     "lint": "eslint --ext .js,.vue src",
     "clean": "rimraf release",
     "deploy": "rimraf dist && cross-env NODE_ENV=production webpack --config ./build/webpack.deploy.conf.js",

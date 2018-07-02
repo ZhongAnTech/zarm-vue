@@ -39,7 +39,7 @@ export default {
     placeholder: String,
     type: {
       type: String,
-      default: 'text',
+      default: 'number',
     },
     value: [String, Number],
     disabled: {

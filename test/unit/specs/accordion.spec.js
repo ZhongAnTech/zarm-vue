@@ -7,7 +7,7 @@ describe('Accordion', () => {
     destroyVM(vm);
   });
 
-  it('create single', () => {
+  it('create', () => {
     vm = createTest(Accordion, {
       prefixCls: 'za-accordion',
     }, true);
@@ -17,7 +17,7 @@ describe('Accordion', () => {
     });
   });
 
-  it('accordion default', () => {
+  it('change', () => {
     let index;
     vm = createVue({
       template: `
@@ -51,14 +51,26 @@ describe('Accordion', () => {
     const titleEl = vm.$el.querySelector('.za-accordion-item-title');
     titleEl.click();
     vm.$nextTick(() => { // eslint-disable-line no-unused-vars
-      expect(index).to.equal(0);
+      expect(index).to.equal('0');
     });
   });
 
-  it('accordion animated', () => {
+  it('activeTag', done => {
+    vm = createTest(Accordion, {
+      prefixCls: 'za-accordion',
+      defaultActiveTag: ['0'],
+    }, true);
+    vm.$nextTick(() => { // eslint-disable-line no-unused-vars
+      expect(vm.activeTag[0]).to.exsit;
+      expect(vm.activeTag[0] === '0').to.be.true;
+      done();
+    });
+  });
+
+  it('animated', () => {
     vm = createVue({
       template: `
-        <za-accordion :multiple='false' animated>
+        <za-accordion animated>
           <za-accordion-item title="50元套餐" aiTag='0'>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
@@ -89,7 +101,7 @@ describe('Accordion', () => {
     expect(itemContent.classList.contains('za-accordion-item-content-anim')).to.be.true;
   });
 
-  it('accordion defaultActive', () => {
+  it('defaultActiveTag', () => {
     vm = createVue({
       template: `
         <za-accordion animated :defaultActiveTag='defaultActive'>
@@ -123,56 +135,50 @@ describe('Accordion', () => {
     const item = el.querySelectorAll('.za-accordion-item');
     const activeArr = vm.defaultActive;
     activeArr.forEach((arr, index) => {
-      // expect(item[index].getAttribute('data-aiTag')).equal(arr);
       expect(item[index].classList.contains('active')).to.be.true;
     });
   });
 
-  it('accordion setActive', () => {
+  it('multiple', done => {
     vm = createVue({
       template: `
-        <za-accordion animated :defaultActiveTag='defaultActive' :activeTag='active'>
-          <za-accordion-item title="50元套餐" aiTag='0'>
+        <zaAccordion animated  :multiple='true' :defaultActiveTag='defaultActive'>
+          <zaAccordionItem title="50元套餐" aiTag='0'>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
-          </za-accordion-item>
-          <za-accordion-item title="100元套餐" aiTag='1'>
+          </zaAccordionItem>
+          <zaAccordionItem title="100元套餐" aiTag='1'>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
-          </za-accordion-item>
-          <za-accordion-item title="200元套餐" aiTag='2'>
+          </zaAccordionItem>
+          <zaAccordionItem title="200元套餐" aiTag='2'>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
-          </za-accordion-item>
-        </za-accordion>
+          </zaAccordionItem>
+        </zaAccordion>
       `,
       data() {
         return {
-          defaultActive: ['0', '1'],
-          active: [0],
+          defaultActive: ['0'],
         };
       },
-      methods: {
-        changeActive() {
-          const self = this;
-          self.active = [1];
-        },
-      },
     }, true);
-    const el = vm.$el;
-    const item = el.querySelectorAll('.za-accordion-item');
-    vm.changeActive();
-    expect(vm.active[0]).equal(1);
-    expect(item[0].classList.contains('active')).to.be.true;
+    const item = vm.$el.querySelectorAll('.za-accordion-item-title');
+    item[1].click();
+    vm.$nextTick(() => { // eslint-disable-line no-unused-vars
+      const curActiveItem = vm.$el.querySelectorAll('.za-accordion-item')[1];
+      expect(curActiveItem.classList.contains('active')).to.be.true;
+      done();
+    });
   });
 
-  it('accordion open', () => {
+  it('open', () => {
     vm = createVue({
       template: `
         <za-accordion open>
@@ -207,8 +213,6 @@ describe('Accordion', () => {
     // 验证初始状态全部打开, 验证无箭头
     expect(item[0].classList.contains('active')).to.be.true;
     expect(item[0].querySelector('.za-accordion-item-arrow').classList.contains('za-accordion-item-arrow-hidden')).to.be.true;
-    // expect(item[1].classList.contains('active')).to.be.true;
-    // expect(item[2].classList.contains('active')).to.be.true;
     // 验证点击后不收缩
     item[0].click();
     expect(item[0].classList.contains('active')).to.be.true;

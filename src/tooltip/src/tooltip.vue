@@ -47,7 +47,6 @@
         this.$nextTick(() => {
           if (this.$refs.tooltip && !this.styleCls) {
             const rect = this.$refs.tooltip.getBoundingClientRect();
-            console.log(rect)  // eslint-disable-line
             const scrollTop = document.documentElement.scrollTop + document.body.scrollTop;
             const top = rect.top + scrollTop;
             this.styleCls = {

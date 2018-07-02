@@ -100,7 +100,6 @@ export default {
     },
   },
   updated() {
-    console.log('scroll refresh...') // eslint-disable-line
     this.BScroll.refresh();
   },
   destroy() {

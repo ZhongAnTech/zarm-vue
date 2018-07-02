@@ -21,7 +21,7 @@ const createElm = function () {
  * @param  {Boolean=false} mounted 是否添加到 DOM 上
  * @return {Object} vm
  */
-exports.createVue = function (Compo, mounted = false) {
+const createVue = function (Compo, mounted = false) {
   if (Object.prototype.toString.call(Compo) === '[object String]') {
     Compo = { template: Compo };
   }
@@ -36,7 +36,7 @@ exports.createVue = function (Compo, mounted = false) {
  * @param  {Boolean=false} mounted  - 是否添加到 DOM 上
  * @return {Object} vm
  */
-exports.createTest = function (Compo, propsData = {}, mounted = false) {
+const createTest = function (Compo, propsData = {}, mounted = false) {
   if (propsData === true || propsData === false) {
     mounted = propsData;
     propsData = {};
@@ -50,7 +50,7 @@ exports.createTest = function (Compo, propsData = {}, mounted = false) {
  * 回收 vm
  * @param  {Object} vm
  */
-exports.destroyVM = function (vm) {
+const destroyVM = function (vm) {
   if (vm.$el && vm.$el.parentNode) {
     vm.$el.parentNode.removeChild(vm.$el);
   }
@@ -63,7 +63,7 @@ exports.destroyVM = function (vm) {
  * @param  {String} name
  * @param  {*} opts
  */
-exports.triggerEvent = function (elm, name, ...opts) {
+const triggerEvent = function (elm, name, ...opts) {
   let eventName;
 
   if (/^mouse|click/.test(name)) {
@@ -88,9 +88,16 @@ exports.triggerEvent = function (elm, name, ...opts) {
  * @param {Element} elm
  * @param {*} opts
  */
-exports.triggerClick = function (elm, ...opts) {
-  exports.triggerEvent(elm, 'mousedown', ...opts);
-  exports.triggerEvent(elm, 'mouseup', ...opts);
+const triggerClick = function (elm, ...opts) {
+  triggerEvent(elm, 'mousedown', ...opts);
+  triggerEvent(elm, 'mouseup', ...opts);
 
   return elm;
+};
+
+module.exports = {
+  createVue,
+  createTest,
+  destroyVM,
+  triggerClick,
 };

@@ -111,81 +111,79 @@ describe('Input', () => {
     }, 100);
   });
 
-  describe('Input Events', () => {
-    it('trigger focus', done => {
-      let resultFocus;
-      vm = createVue({
-        template: `
-          <za-input
-            ref="input"
-            placeholder="请输入内容"
-            value="input"
-            @focus='handleFocus'>
-          </za-input>
-        `,
-        methods: {
-          handleFocus(evt) {
-            resultFocus = evt;
-          },
+  it('trigger focus', done => {
+    let resultFocus;
+    vm = createVue({
+      template: `
+        <za-input
+          ref="input"
+          placeholder="请输入内容"
+          value="input"
+          @focus='handleFocus'>
+        </za-input>
+      `,
+      methods: {
+        handleFocus(evt) {
+          resultFocus = evt;
         },
-      }, true);
-      vm.$refs.input.focus();
+      },
+    }, true);
+    vm.$refs.input.focus();
 
-      vm.$nextTick(() => {
-        expect(resultFocus).to.exist;
-        done();
-      });
+    vm.$nextTick(() => {
+      expect(resultFocus).to.exist;
+      done();
     });
+  });
 
-    it('event:focus & blur', done => {
-      vm = createVue({
-        template: `
-          <za-input
-            ref="input"
-            placeholder="请输入内容"
-            value="input">
-          </za-input>
-        `,
-      }, true);
+  it('event:focus & blur', done => {
+    vm = createVue({
+      template: `
+        <za-input
+          ref="input"
+          placeholder="请输入内容"
+          value="input">
+        </za-input>
+      `,
+    }, true);
 
-      const spyFocus = sinon.spy();
-      const spyBlur = sinon.spy();
+    const spyFocus = sinon.spy();
+    const spyBlur = sinon.spy();
 
-      vm.$refs.input.$on('focus', spyFocus);
-      vm.$refs.input.$on('blur', spyBlur);
-      vm.$el.querySelector('input').focus();
-      vm.$el.querySelector('input').blur();
+    vm.$refs.input.$on('focus', spyFocus);
+    vm.$refs.input.$on('blur', spyBlur);
+    vm.$el.querySelector('input').focus();
+    vm.$el.querySelector('input').blur();
 
-      vm.$nextTick(() => {
-        expect(spyFocus.calledOnce).to.be.true;
-        expect(spyBlur.calledOnce).to.be.true;
-        done();
-      });
+    vm.$nextTick(() => {
+      expect(spyFocus.calledOnce).to.be.true;
+      expect(spyBlur.calledOnce).to.be.true;
+      done();
     });
-    it('event:change', done => {
-      vm = createVue({
-        template: `
-          <za-input
-            ref="input"
-            placeholder="请输入内容"
-            :value="input">
-          </za-input>
-        `,
-        data() {
-          return {
-            input: 'a',
-          };
-        },
-      }, true);
+  });
+  it('event:change', done => {
+    vm = createVue({
+      template: `
+        <za-input
+          ref="input"
+          placeholder="请输入内容"
+          :value="input">
+        </za-input>
+      `,
+      data() {
+        return {
+          input: 'a',
+        };
+      },
+    }, true);
 
-      const spy = sinon.spy();
-      vm.$refs.input.$on('change', spy);
-      vm.input = 'b';
+    const spy = sinon.spy();
+    vm.$refs.input.$on('change', spy);
+    vm.input = 'b';
 
-      vm.$nextTick(() => {
-        expect(spy.withArgs('b').calledOnce).to.be.false;
-        done();
-      });
+    vm.$nextTick(() => {
+      expect(spy.withArgs('b').calledOnce).to.be.false;
+      done();
     });
   });
 });

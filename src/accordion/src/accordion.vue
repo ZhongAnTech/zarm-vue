@@ -5,8 +5,6 @@
 </template>
 
 <script>
-import { isArray } from '@/utils/validator';
-
 export default {
   name: 'zaAccordion',
   props: {
@@ -56,19 +54,12 @@ export default {
         newActiveIndex = hasKey ? [] : [key];
       }
       this.activeTag = newActiveIndex;
-      this.$emit('change', Number(key));
+      this.$emit('change', key);
     },
     getActiveIndex() {
       const { defaultActiveTag, multiple } = this;
       const defaultIndex = (defaultActiveTag !== undefined) ? defaultActiveTag : [];
       return multiple ? [defaultIndex[0]] : defaultIndex;
-    },
-    isPropEqual(cur, next) {
-      if (isArray(next) && isArray(cur)) {
-        return next.length === cur.length && next.every((key, i) => key === cur[i]);
-      }
-
-      return cur === next;
     },
   },
 };
