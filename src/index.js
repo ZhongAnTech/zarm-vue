@@ -32,6 +32,7 @@ import PickerView from '../src/picker-view';
 import Popup from '../src/popup';
 import Progress from '../src/progress';
 import Pull from '../src/pull';
+import SearchBar from '../src/search-bar';
 import Select from '../src/select';
 import Slider from '../src/slider';
 import Spinner from '../src/spinner';
@@ -87,6 +88,7 @@ const components = [
   Pull,
   Radio,
   RadioGroup,
+  SearchBar,
   Select,
   Slider,
   Spinner,
@@ -160,6 +162,7 @@ export {
   Pull,
   Radio,
   RadioGroup,
+  SearchBar,
   Select,
   Slider,
   Spinner,

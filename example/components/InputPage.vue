@@ -9,11 +9,11 @@
             <za-cell title='单行文本'>
               <za-input ref='inputFirst' v-model='v1' type="text" placeholder="type is text" @change='handleChange'></za-input>
             </za-cell>
+            <za-cell title='可清除文本'>
+              <za-input ref='inputFirst' :clearable="true" v-model='v11' type="text" placeholder="type is text" @change='handleChange'></za-input>
+            </za-cell>
             <za-cell title='多行文本'>
               <za-input v-model='v2' type="textarea" placeholder="type is textarea" @change='handleChange'></za-input>
-            </za-cell>
-            <za-cell>
-              <a @click='focus'>click to focus the first input</a>
             </za-cell>
           </za-panel-body>
         </za-panel>
@@ -82,6 +82,7 @@ export default {
   data() {
     return {
       v1:'',
+      v11:'',
       v2:'这是一个textarea',
       v3:'',
       v4:'',

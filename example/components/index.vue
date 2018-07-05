@@ -43,6 +43,9 @@
           <za-cell hasArrow @click="$router.push('/slider')">
             滑块组件 Slider
           </za-cell>
+           <za-cell hasArrow @click="$router.push('/searchbar')">
+            搜索栏组件 SearchBar
+          </za-cell>
         </za-panel-body>
       </za-panel>
 

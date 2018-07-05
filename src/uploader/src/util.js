@@ -24,12 +24,10 @@ function getFileDetail(file) {
 
 function createThumbnail({ file, quality, fileType, maxWidth, maxHeight }, callback) {
   const img = document.createElement('img');
-  // window.URL = window.URL || window.webkitURL;
-  // img.src = window.URL.createObjectURL(file);
+  window.URL = window.URL || window.webkitURL;
   try {
-    img.src = URL.createObjectURL(file);
+    img.src = window.URL.createObjectURL(file);
   } catch (err) {
-    console.error(err); // eslint-disable-line
     return;
   }
   img.onload = () => {
