@@ -4,25 +4,13 @@ const path = require('path');
 const Handlebars = require('handlebars');
 
 /** 组件Vue初始化模版 */
-const componentVueTpl = require('../template/component.tpl.js');
+const componentVueTpl = require('../template/component.tpl');
 /** 组件封装模版 */
-const componentIndexTpl = require('../template/component.index.js');
+const componentIndexTpl = require('../template/component.index');
 /** 组件style样式模版 */
-const compomentStyleTpl = require('../template/component.style.js');
+const compomentStyleTpl = require('../template/component.style');
 
 const packagesDir = path.resolve(__dirname, '../src');
-
-function main() {
-  const args = process.argv;
-  const componentName = args[2];
-
-  if (componentName === undefined) {
-    console.error('Component name is required');
-    process.exit(1);
-  }
-
-  addFiles(componentName);
-}
 
 function firstAlphabetUpper(str) {
   return str.substring(0, 1).toUpperCase() + str.substring(1);
@@ -78,7 +66,7 @@ function addFiles(name) {
   const componentSrcDir = `${packagesDir}/${name}/src`;
   const componentStyleDir = `${packagesDir}/${name}/style`;
   const upperComponentName = getComponentName(name);
-
+  /* eslint-disable-next-line */
   console.log(`Adding new component：${upperComponentName}`);
 
   if (!fs.existsSync(componentDir)) {
@@ -86,10 +74,24 @@ function addFiles(name) {
     fs.mkdirSync(componentSrcDir);
     fs.mkdirSync(componentStyleDir);
   } else {
+    /* eslint-disable-next-line */
     console.log(`${upperComponentName} already exists, please choose another name.`);
     process.exit(2);
   }
   addFilesToIndex(name);
+}
+
+function main() {
+  const args = process.argv;
+  const componentName = args[2];
+
+  if (componentName === undefined) {
+    /* eslint-disable-next-line */
+    console.error('Component name is required');
+    process.exit(1);
+  }
+
+  addFiles(componentName);
 }
 
 main();

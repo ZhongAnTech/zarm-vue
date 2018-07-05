@@ -55,4 +55,28 @@ describe('Tooltip', () => {
       done();
     });
   });
+
+  it('$zaTooltip', done => {
+    let evl;
+    vm = createVue({
+      template: `
+        <div @click="showTooltip">showToolTip</div>
+      `,
+      data() {
+        return {
+          message: 'test',
+        };
+      },
+      methods: {
+        showTooltip() {
+          evl = this.$zaTooltip({ message: this.message });
+        },
+      },
+    }, true);
+    vm.$el.click();
+    vm.$nextTick(() => {
+      expect(evl.message).to.equal('test');
+      done();
+    });
+  });
 });

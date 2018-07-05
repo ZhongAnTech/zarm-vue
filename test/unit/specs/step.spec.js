@@ -21,6 +21,62 @@ describe('Stepper', () => {
     expect(el.classList.contains('shape-radius')).to.be.true;
   });
 
+  it('input value', done => {
+    vm = createVue({
+      template: `
+        <za-stepper v-model='stepper'></za-stepper>
+      `,
+      data() {
+        return {
+          stepper: 0,
+        };
+      },
+    }, true);
+    vm.$nextTick(() => {
+      vm.stepper = 12;
+      vm.$nextTick(() => {
+        expect(vm.$el.querySelector('input').value).to.equal('12');
+        done();
+      });
+    });
+  });
+
+  it('input limit min', done => {
+    vm = createVue({
+      template: `
+        <za-stepper v-model='stepper' :min="-3"></za-stepper>
+      `,
+      data() {
+        return {
+          stepper: 0,
+        };
+      },
+    }, true);
+    vm.$nextTick(() => {
+      vm.stepper = -4;
+      expect(vm.$el.querySelector('input').value).to.equal('0');
+      done();
+    });
+  });
+
+  it('input limit max', done => {
+    vm = createVue({
+      template: `
+        <za-stepper v-model='stepper' :max="3"></za-stepper>
+      `,
+      data() {
+        return {
+          stepper: 0,
+        };
+      },
+    }, true);
+    vm.$nextTick(() => {
+      vm.stepper = 4;
+      expect(vm.$el.querySelector('input').value).to.equal('0');
+      done();
+    });
+  });
+
   it('add and minus', done => {
     let result;
     vm = createVue({

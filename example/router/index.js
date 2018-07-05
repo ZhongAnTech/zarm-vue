@@ -211,7 +211,14 @@ export default new Router({
       path: '/accordion',
       component: Bundle,
       meta: {
-        mRender: () => import('../components/accordion.vue')
+        mRender: () => import('../components/accordionPage.vue')
+      },
+    },
+    {
+      path: '/searchbar',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/searchBarPage.vue')
       },
     },
   ],

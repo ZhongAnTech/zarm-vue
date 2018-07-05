@@ -12,9 +12,9 @@
       :disabled='disabled'
       :maxLength='maxLength'
       :value="currentValue"
-      @input="handleInput"
-      @focus="handleFocus"
-      @blur="handleBlur"
+      @input="onInput"
+      @focus="onFocus"
+      @blur="onBlur"
       :rows='rows'
     />
     <input
@@ -26,19 +26,30 @@
       :disabled='disabled'
       :maxLength='maxLength'
       :value="currentValue"
-      @input="handleInput"
-      @focus="handleFocus"
-      @blur="handleBlur"
+      @input="onInput"
+      @focus="onFocus"
+      @blur="onBlur"
+      @compositionStart="handleComposition"
+      @compositionUpdate="handleComposition"
+      @compositionEnd="handleComposition"
     />
+    <za-icon v-if="clearable" type="wrong-round-fill" :class="{
+      [`${prefixCls}-clear`]: true,
+      [`${prefixCls}-clear-show`]: !!(focused && currentValue && currentValue.length > 0)
+    }" @click="onClear" />
     <div :class='`${prefixCls}-length`' v-if='showLength && maxLength'>{{`${length}/${maxLength}`}}</div>
   </div>
 </template>
 
 <script>
 import Autosize from 'autosize';
+import zaIcon from '../../icon/src/icon';
 
 export default {
   name: 'zaInput',
+  components: {
+    zaIcon,
+  },
   props: {
     prefixCls: {
       type: String,
@@ -68,9 +79,11 @@ export default {
       default: false,
     },
     readonly: Boolean,
+    clearable: Boolean,
   },
   data() {
     return {
+      focused: this.focused || false,
       currentValue: this.value || '',
     };
   },
@@ -85,12 +98,14 @@ export default {
     },
   },
   methods: {
-    handleInput(event) {
+    onInput(event) {
       const value = event.target.value;
-      this.$emit('input', value);
-      // this.setCurrentValue(value);
-      this.$emit('change', value);
+      if (this.clearable && this.currentValue) {
+        this.focused = true;
+      }
       this.currentValue = value;
+      this.$emit('input', value);
+      this.$emit('change', value);
     },
     setCurrentValue(value) {
       if (value === this.currentValue) return;
@@ -101,11 +116,35 @@ export default {
       }
       this.currentValue = value;
     },
-    handleFocus(event) {
+    onFocus(event) {
+      if (this.clearable && this.currentValue) {
+        this.focused = true;
+      }
       this.$emit('focus', event);
     },
-    handleBlur(event) {
+    onBlur(event) {
+      if (this.clearable) {
+        this.focused = false;
+      }
       this.$emit('blur', event);
+    },
+    handleComposition(e) {
+      if (e.type === 'compositionstart') {
+        this.isOnComposition = true;
+        this.$emit('compositionStart', e);
+      }
+
+      if (e.type === 'compositionupdate') {
+        this.$emit('compositionUpdate', e);
+      }
+
+      if (e.type === 'compositionend') {
+        // composition is end
+        this.isOnComposition = false;
+        const value = e.target.value;
+        this.$emit('compositionEnd', e);
+        this.$emit('change', value);
+      }
     },
     initAutosize() {
       if (this.autosize) {
@@ -121,6 +160,19 @@ export default {
       if (this.autosize) {
         Autosize.update(this.$refs.input);
       }
+    },
+
+    onClear() {
+      this.blurFromClear = true;
+      this.currentValue = '';
+      if (!this.isOnComposition) {
+        this.focus();
+      }
+      this.$emit('clear', this.currentValue);
+    },
+
+    blur() {
+      this.$refs.input.blur();
     },
     focus() {
       this.$refs.input.focus();
