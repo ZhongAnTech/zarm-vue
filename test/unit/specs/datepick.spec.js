@@ -225,4 +225,36 @@ describe('DatePicker', () => {
       done();
     });
   });
+
+  it('v-model on change', done => {
+    let value;
+    vm = createVue({
+      template: `
+      <za-date-select
+        :visible.sync='visible'
+        v-model='value'
+        mode='date'
+        @ok='handleOk'/>
+      `,
+      data() {
+        return {
+          value: '2000-01-01',
+          visible: false,
+        };
+      },
+      methods: {
+        handleOk(v) {
+          value = v;
+        },
+      },
+    }, true);
+    vm.$nextTick(() => {
+      vm.value = '2018-07-06';
+      vm.$nextTick(() => {
+        vm.$el.querySelector('.za-picker-submit').click();
+        expect(value.getFullYear()).to.equal(2018);
+        done();
+      });
+    });
+  });
 });
