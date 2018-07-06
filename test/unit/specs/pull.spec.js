@@ -1,4 +1,5 @@
 import { createVue, destroyVM } from '../util';
+import { dispatchTouchStart, dispatchTouchMove, dispatchTouchEnd } from '../touchs';
 
 const REFRESH_STATE = {
   normal: 0, // 普通
@@ -36,6 +37,7 @@ describe('Pull', () => {
     }, true);
     const el = vm.$el;
     expect(el.classList.contains('za-pull')).to.be.true;
+    vm.$destroy();
   });
 
   it('refreshing and success', () => {
@@ -55,6 +57,44 @@ describe('Pull', () => {
     }, true);
     const el = vm.$el;
     expect(el.getElementsByTagName('svg')[0].classList.contains('rotate360')).to.be.true;
+  });
+
+  it('drag refreshing', () => {
+    vm = createVue({
+      template: `
+        <za-pull :refreshing='refreshing' :onRefresh='refresh(1)'>
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+        </za-pull>
+      `,
+      data() {
+        return {
+          refreshing: false,
+        };
+      },
+      methods: {
+        refresh() {
+          return () => new Promise((resolve) => {
+            this.refreshing = true;
+            resolve(true);
+          });
+        },
+      },
+    }, true);
+    const wrapper = vm.$el;
+    dispatchTouchStart(wrapper, {
+      pageX: 50,
+      pageY: 0,
+    });
+    dispatchTouchMove(wrapper, {
+      pageX: 50,
+      pageY: 50,
+    });
+    dispatchTouchEnd(wrapper, {
+      pageX: 50,
+      pageY: 50,
+    });
   });
 
   it('pull and drop', done => {

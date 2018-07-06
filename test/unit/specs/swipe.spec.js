@@ -1,4 +1,5 @@
 import { createVue, destroyVM } from '../util';
+import { dispatchTouchStart, dispatchTouchMove, dispatchTouchEnd } from '../touchs';
 
 describe('Swipe', () => {
   let vm;
@@ -26,6 +27,7 @@ describe('Swipe', () => {
     vm.$nextTick(() => {
       expect(vm.$el.classList.contains('za-swipe')).to.true;
       expect(vm.$el.querySelector('.za-swipe-items').children.length).to.equal(3);
+      vm.$destroy();
       done();
     });
   });
@@ -130,5 +132,39 @@ describe('Swipe', () => {
         done();
       }, 350);
     }, 60);
+  });
+
+  it('drag change', done => {
+    vm = createVue({
+      template: `
+      <za-swipe direction='left'>
+        <za-swipe-item>
+          <div>swipe1</div>
+        </za-swipe-item>
+        <za-swipe-item>
+          <div>swipe2</div>
+        </za-swipe-item>
+        <za-swipe-item>
+          <div>swipe3</div>
+        </za-swipe-item>
+      </za-swipe>
+      `,
+    }, true);
+    const wrapper = vm.$el.querySelector('.za-swipe-items');
+    dispatchTouchStart(wrapper, {
+      pageX: 50,
+      pageY: 50,
+    });
+    dispatchTouchMove(wrapper, {
+      pageX: -450,
+      pageY: 50,
+    });
+    dispatchTouchEnd(wrapper, {
+      pageX: -450,
+      pageY: 50,
+    });
+    vm.$nextTick(() => {
+      done();
+    });
   });
 });

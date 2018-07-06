@@ -98,7 +98,7 @@ describe('NoticeBar', () => {
   it('autoscroll', done => {
     vm = createVue({
       template: `
-        <za-notice-bar autoscroll>autoscroll</za-notice-bar>
+        <za-notice-bar autoscroll>自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。</za-notice-bar>
       `,
     }, true);
     const body = vm.$el.querySelector('.za-noticebar-body');

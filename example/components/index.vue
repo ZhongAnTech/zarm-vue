@@ -107,7 +107,7 @@
             指示器 Spinner
           </za-cell>
           <za-cell hasArrow @click="$router.push('/swipe')">
-            图片轮播 swipe
+            图片轮播 Swipe
           </za-cell>
           <za-cell hasArrow @click="$router.push('/tabs')">
             标签页 Tabs

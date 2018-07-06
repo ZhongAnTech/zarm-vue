@@ -1,4 +1,5 @@
 import { createVue, destroyVM } from '../util';
+import { dispatchTouchStart, dispatchTouchMove, dispatchTouchEnd } from '../touchs';
 
 describe('Picker', () => {
   let vm;
@@ -270,6 +271,44 @@ describe('Picker', () => {
       expect(value.value).to.equal('1');
       expect(value.label).to.equal('选项一');
       expect(vm.value[0]).to.equal('1');
+      done();
+    });
+  });
+
+  it('drag on change', done => {
+    vm = createVue({
+      template: `
+      <za-picker
+        ref="picker"
+        :visible.sync='visible'
+        :defaultValue='value'
+        :dataSource='data1'/>
+      `,
+      data() {
+        return {
+          value: '1',
+          visible: false,
+          data1: [
+            { value: '1', label: '选项一' },
+            { value: '2', label: '选项二' },
+          ],
+        };
+      },
+    }, true);
+    vm.$nextTick(() => {
+      const wrapper = vm.$el.querySelector('.za-wheel');
+      dispatchTouchStart(wrapper, {
+        pageX: 50,
+        pageY: 50,
+      });
+      dispatchTouchMove(wrapper, {
+        pageX: 50,
+        pageY: 150,
+      });
+      dispatchTouchEnd(wrapper, {
+        pageX: 50,
+        pageY: 150,
+      });
       done();
     });
   });
