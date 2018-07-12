@@ -1,38 +1,7 @@
 <template lang="html">
   <Container class="slider-page">
     <PageHeader title="滑块 Slider" />
-    <main>
-      <div>
-        <za-panel>
-          <za-panel-header title="基本">
-          </za-panel-header>
-          <za-panel-body>
-            <za-cell title="普通">
-              <za-slider
-                :defaultValue='0'
-                @change='handleChange'
-                ></za-slider>
-            </za-cell>
-
-            <za-cell title="设置默认值">
-              <za-slider :defaultValue='20'></za-slider>
-            </za-cell>
-
-            <za-cell title="设置上下限">
-              <za-slider :min='-100' :max='100' :defaultValue='0' ></za-slider>
-            </za-cell>
-
-            <za-cell title="设置步长">
-              <za-slider :step='10' ></za-slider>
-            </za-cell>
-
-            <za-cell title="禁用状态">
-              <za-slider :defaultValue='20' disabled ></za-slider>
-            </za-cell>
-          </za-panel-body>
-        </za-panel>
-       </div>
-      </main>
+       <Demo></Demo>
       <PageFooter />
     </Container>
   </template>
@@ -41,6 +10,8 @@
   import Container from '../common/Container.vue';
   import PageHeader from '../common/PageHeader.vue';
   import PageFooter from '../common/PageFooter.vue';
+  import Demo from '../docs/slider.md';
+
   import '../styles/pages/SliderPage.scss';
   
   export default {
@@ -48,16 +19,7 @@
       Container,
       PageHeader,
       PageFooter,
-    },
-    data() {
-      return {
-  
-      }
-    },
-    methods: {
-      handleChange(ev,value){
-        console.log(value)
-      }
-    },
+      Demo
+    }
   };
   </script>

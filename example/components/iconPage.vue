@@ -1,21 +1,7 @@
 <template lang="html">
   <Container class="icon-page">
     <PageHeader title="图标 Icon" />
-    <main>
-      <div>
-        <za-panel>
-          <za-panel-header title="基本"/>
-          <za-panel-body>
-            <div class="grid">
-              <div v-for='(i, index) in ICONS' class="grid-column" :key="index">
-                <za-icon theme="primary" :type='i' class='icon'/>
-                <span class="icon-name">{{i}}</span>
-              </div>
-            </div>
-          </za-panel-body>
-        </za-panel>
-      </div>
-    </main>
+    <Demo></Demo>
     <PageFooter />
   </Container>
 </template>
@@ -24,6 +10,7 @@
 import Container from '../common/Container.vue';
 import PageHeader from '../common/PageHeader.vue';
 import PageFooter from '../common/PageFooter.vue';
+import Demo from '../docs/icon.md';
 import '../styles/pages/IconPage.scss';
 
 const ICONS = [
@@ -43,17 +30,7 @@ export default {
     Container,
     PageHeader,
     PageFooter,
-  },
-  data() {
-    return {
-      ICONS
-    }
-  },
-  methods: {
-
-  },
+    Demo
+  }
 };
 </script>
-
-<style lang="css">
-</style>

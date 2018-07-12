@@ -17,7 +17,7 @@ module.exports = {
     chunkFilename: '[name].js'
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.md', '.json'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
       '@': resolve('src'),
@@ -43,6 +43,10 @@ module.exports = {
         test: /\.js$/,
         use: 'babel-loader',
         include: allSource.concat(resolve('node_modules/lodash-es')),
+      },
+      {
+        test: /\.md$/,
+        use: ['vue-loader','zarm-vue-loader?vueModel=true']
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
