@@ -60,13 +60,13 @@ export default {
         <za-panel>
           <za-panel-header title="键盘"></za-panel-header>
           <za-panel-body>
-            <za-keyboard type="number" />
+            <za-keyboard type="number" ></za-keyboard>
           </za-panel-body>
         </za-panel>
 
-        <za-keyboard-picker :visible.sync="visible1" type="number" @keyClick="handleChange1" />
-        <za-keyboard-picker :visible.sync="visible2" type="price" @keyClick="handleChange2" />
-        <za-keyboard-picker :visible.sync="visible3" type="idcard" @keyClick="handleChange3" />
+        <za-keyboard-picker :visible.sync="visible1" type="number" @keyClick="handleChange1" ></za-keyboard-picker>
+        <za-keyboard-picker :visible.sync="visible2" type="price" @keyClick="handleChange2" ></za-keyboard-picker>
+        <za-keyboard-picker :visible.sync="visible3" type="idcard" @keyClick="handleChange3" ></za-keyboard-picker>
 
 ```
 :::
