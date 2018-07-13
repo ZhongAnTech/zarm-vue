@@ -37,34 +37,17 @@ export default {
 };
 </script>
 
-:::demo 
+:::demo 简单日历
 ```html
-    <za-panel>
-      <za-panel-header title="简单日历"></za-panel-header>
-      <za-panel-body>
-        <za-cell title='选择时间' @click='showCal1'>{{value1.join(',')}}</za-cell>
-      </za-panel-body>
-    </za-panel>
-    <za-panel>
-      <za-panel-header title="时间范围选择"></za-panel-header>
-      <za-panel-body>
-        <za-cell title='选择时间范围' @click='showCal2'>{{value2.join(',')}}</za-cell>
-      </za-panel-body>
-    </za-panel>
-    <za-panel>
-      <za-panel-header title="时间最小最大限制"></za-panel-header>
-      <za-panel-body>
-        <za-cell title='选择时间范围' @click='showCal3'></za-cell>
-      </za-panel-body>
-    </za-panel>
-  </div>
+  <za-cell title='选择时间' @click='showCal1'>{{value1.join(',')}}</za-cell>
+  <za-cell title='选择时间范围' @click='showCal2'>{{value2.join(',')}}</za-cell>
+  <za-cell title='选择时间范围' @click='showCal3'></za-cell>
   <za-calendar :visible.sync='visible1' @changed='changeDate' @ok='handleOk1' :selected-value='value1' ></za-calendar>
   <za-calendar :visible.sync='visible2' @ok='handleOk2' :multi-selected='isMultiSelected' :selected-value='value2'></za-calendar>
-  <za-calendar :visible.sync='visible3' :min='minDate' :max='maxDate' />
+  <za-calendar :visible.sync='visible3' :min='minDate' :max='maxDate' ></za-calendar>
 ```
 :::
 
-::: api
 ### API
 
 #### Calendar Attributes
@@ -88,5 +71,3 @@ export default {
 | :--- | :--- | :--- |
 | changed | 当选择日期点击时触发的事件。| Date日期数组，['2017-01-01'] |
 | ok | 当点击确定按钮时触发的事件。| Date日期数组，['2017-01-01'] |
-
-:::

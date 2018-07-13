@@ -17,30 +17,24 @@ export default {
 </script>
 
 
-:::demo
+:::demo 基本
 ```html
-    <za-panel>
-      <za-panel-header title="基本"></za-panel-header>
-      <za-panel-body>
-        <za-cell>
-          <za-button size='xs' slot='description' @click='visible1 = true'>开启</za-button>
-          从上方弹出
-        </za-cell>
-        <za-cell>
-          <za-button size='xs' slot='description' @click='visible2 = true'>开启</za-button>
-          从下方弹出
-        </za-cell>
-        <za-cell>
-          <za-button size='xs' slot='description' @click='visible3 = true'>开启</za-button>
-          从左侧弹出
-        </za-cell>
-        <za-cell>
-          <za-button size='xs' slot='description' @click='visible4 = true'>开启</za-button>
-          从右侧弹出
-        </za-cell>
-      </za-panel-body>
-    </za-panel>
-  </div>
+  <za-cell>
+    <za-button size='xs' slot='description' @click='visible1 = true'>开启</za-button>
+    从上方弹出
+  </za-cell>
+  <za-cell>
+    <za-button size='xs' slot='description' @click='visible2 = true'>开启</za-button>
+    从下方弹出
+  </za-cell>
+  <za-cell>
+    <za-button size='xs' slot='description' @click='visible3 = true'>开启</za-button>
+    从左侧弹出
+  </za-cell>
+  <za-cell>
+    <za-button size='xs' slot='description' @click='visible4 = true'>开启</za-button>
+    从右侧弹出
+  </za-cell>
 
   <za-popup
     style="zIndex:2000"
@@ -86,7 +80,6 @@ export default {
 ```
 :::
 
-::: api
 ### API
 
 #### Popup Attributes
@@ -105,4 +98,3 @@ export default {
 | 事件名称 | 说明 | 回调参数 |
 | :--- | :--- | :--- |
 | close | 关闭后触发的事件 | reason, event 事件对象 |
-:::

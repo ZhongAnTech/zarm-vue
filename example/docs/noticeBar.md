@@ -14,23 +14,17 @@ export default {
 </script>
 
 
-:::demo
+:::demo 基本
 ```html
-    <za-panel>
-      <za-panel-header title="基本"></za-panel-header>
-      <za-panel-body>
-        <za-notice-bar hasArrow @click='handleClick'>带图标，带右侧箭头的链接样式</za-notice-bar>
-        <!-- 也可以不绑定visible -->
-        <za-notice-bar closable theme='error' :visible.sync='visible' icon='wrong-round'>
-          自定义icon，自定义主题，显示关闭按钮。
-        </za-notice-bar>
-        <za-notice-bar autoscroll>各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。</za-notice-bar>
-      </za-panel-body>
-    </za-panel>
+  <za-notice-bar hasArrow @click='handleClick'>带图标，带右侧箭头的链接样式</za-notice-bar>
+  <!-- 也可以不绑定visible -->
+  <za-notice-bar closable theme='error' :visible.sync='visible' icon='wrong-round'>
+    自定义icon，自定义主题，显示关闭按钮。
+  </za-notice-bar>
+  <za-notice-bar autoscroll>各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。</za-notice-bar>
 ```
 :::
 
-::: api
 ### API
 
 #### NoticeBar Attributes
@@ -49,5 +43,3 @@ export default {
 | 事件名称 | 说明 | 回调参数 |
 | :--- | :--- | :--- |
 | click | click时触发的事件 | event 事件对象 |
-
-:::

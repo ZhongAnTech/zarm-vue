@@ -46,7 +46,7 @@ module.exports = {
       },
       {
         test: /\.md$/,
-        use: ['vue-loader','zarm-vue-loader?vueModel=true']
+        use: ['vue-loader','zarm-vue-loader']
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

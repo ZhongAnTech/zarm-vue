@@ -1,11 +1,9 @@
-::: api
 ## 加载 Loading
 
 ### 基本用法
 
 `zarm-vue 为 Vue.prototype 上添加了全局方法：$zaLoading 因此在 vue instance 内可以采用
 this.$zaLoading()的方式调用, 方法返回Loading的实例, 调用实例的close方法来关闭loading`。
-
 
 
 ```html
@@ -26,7 +24,7 @@ export default {
 
 ### 使用 v-za-loading 指令
 
-`使用 v-za-loading 指令也可以调用loading，控制指令的value就可以控制loading`。
+使用 `v-za-loading` 指令也可以调用loading，控制指令的value就可以控制loading。
 
 ```html
 <div v-za-loading='loading2'>
@@ -85,4 +83,3 @@ export default {
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-loading | | 类名前缀 |
 | visible | bool | false | | 是否显示, 支持.sync修饰符 (v2.3.0+) |
-:::

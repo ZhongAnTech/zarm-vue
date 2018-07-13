@@ -36,118 +36,112 @@ export default {
 };
 </script>
 
-:::demo
+:::demo 日期选择器
 ```html
-       <za-panel>
-          <za-panel-header title="日期选择器"></za-panel-header>
-          <za-panel-body>
-              <za-cell title="日期选择">
-                  <za-button slot='description' size='xs' @click='visible1 = true'>开启</za-button>
-              </za-cell>
-              <za-cell title="年份选择">
-                  <za-button slot='description' size='xs' @click='visible5 = true'>开启</za-button>
-              </za-cell>
-              <za-cell title="月份选择">
-                  <za-button slot='description' size='xs' @click='visible2 = true'>开启</za-button>
-              </za-cell>
-              <za-cell title="时间选择">
-                  <za-button slot='description' size='xs' @click='visible3 = true'>开启</za-button>
-              </za-cell>
-              <za-cell title="时间&日期">
-                  <za-button slot='description' size='xs' @click='visible4 = true'>开启</za-button>
-              </za-cell>
-           </za-panel-body>
-        </za-panel>
-        <za-date-picker
-          :close-on-click-modal='false'
-          :visible.sync='visible1'
-          title="选择日期"
-          placeholder="请选择日期"
-          mode='date'
-          max='2030-10-25'
-          min='1917-02-12'
-          @ok='handleOk'>
-        </za-date-picker>
-        <za-date-picker
-          :visible.sync='visible5'
-          title="选择年份"
-          defaultValue='2015'
-          placeholder="请选择年份"
-          mode='year'
-          @ok='handleOk'>
-        </za-date-picker>
-        <za-date-picker
-          :visible.sync='visible2'
-          title="选择月份"
-          defaultValue='2018-09'
-          placeholder="请选择月份"
-          mode='month'
-          @ok='handleOk'>
-        </za-date-picker>
-        <za-date-picker
-          :visible.sync='visible3'
-          title="选择时间"
-          defaultValue='2018-09-10 09:45'
-          placeholder="请选择时间"
-          mode='time'
-          :minute-step='minuteStep'
-          @ok='handleOk'>
-        </za-date-picker>
-        <za-date-picker
-          :visible.sync='visible4'
-          title="选择"
-          placeholder="请选择时间和日期"
-          mode='datetime'
-          @ok='handleOk'>
-        </za-date-picker>
-        <za-panel>
-            <za-panel-header title="日期选择器 Select"></za-panel-header>
-            <za-panel-body>
-              <za-cell title="日期选择">
-                  <za-date-select
-                  v-model='v5'
-                  title="选择日期"
-                  placeholder="请选择日期"
-                  mode='date'
-                  format='yyyy年MM月dd日'
-                  max='2030-10-25'
-                  min='1917-10-25'
-                  @ok='handleOk'>
-                  </za-date-select>
-              </za-cell>
-              <za-cell title="日期格式化">
-                <za-date-select
-                v-model='v7'
-                title="选择日期"
-                placeholder="请选择日期"
-                mode='datetime'
-                value-format='yyyy-MM-dd HH:mm'
-                max='2030-10-25'
-                min='1917-10-25'
-                @ok='handleOk'>
-                </za-date-select>
-            </za-cell>
-            </za-panel-body>
-          </za-panel>
-        <za-panel>
-          <za-panel-header title="平铺日期选择器 DatePickerView"></za-panel-header>
-          <za-panel-body>
-              <za-date-picker-view
-                title="选择年份"
-                placeholder="请选择年份"
-                mode='datetime'
-                min="2018-01-13"
-                max="2090-11-27"
-                :defaultValue="v6"
-                @change='handleChange'>
-              </za-date-picker-view>
-          </za-panel-body>
-         </za-panel>
+    <za-cell title="日期选择">
+        <za-button slot='description' size='xs' @click='visible1 = true'>开启</za-button>
+    </za-cell>
+    <za-cell title="年份选择">
+        <za-button slot='description' size='xs' @click='visible5 = true'>开启</za-button>
+    </za-cell>
+    <za-cell title="月份选择">
+        <za-button slot='description' size='xs' @click='visible2 = true'>开启</za-button>
+    </za-cell>
+    <za-cell title="时间选择">
+        <za-button slot='description' size='xs' @click='visible3 = true'>开启</za-button>
+    </za-cell>
+    <za-cell title="时间&日期">
+        <za-button slot='description' size='xs' @click='visible4 = true'>开启</za-button>
+    </za-cell>
+    <za-date-picker
+      :close-on-click-modal='false'
+      :visible.sync='visible1'
+      title="选择日期"
+      placeholder="请选择日期"
+      mode='date'
+      max='2030-10-25'
+      min='1917-02-12'
+      @ok='handleOk'>
+    </za-date-picker>
+    <za-date-picker
+      :visible.sync='visible5'
+      title="选择年份"
+      defaultValue='2015'
+      placeholder="请选择年份"
+      mode='year'
+      @ok='handleOk'>
+    </za-date-picker>
+    <za-date-picker
+      :visible.sync='visible2'
+      title="选择月份"
+      defaultValue='2018-09'
+      placeholder="请选择月份"
+      mode='month'
+      @ok='handleOk'>
+    </za-date-picker>
+    <za-date-picker
+      :visible.sync='visible3'
+      title="选择时间"
+      defaultValue='2018-09-10 09:45'
+      placeholder="请选择时间"
+      mode='time'
+      :minute-step='minuteStep'
+      @ok='handleOk'>
+    </za-date-picker>
+    <za-date-picker
+      :visible.sync='visible4'
+      title="选择"
+      placeholder="请选择时间和日期"
+      mode='datetime'
+      @ok='handleOk'>
+    </za-date-picker>
+```
+:::
+
+:::demo 日期选择器Select
+```html
+    <za-cell title="日期选择">
+        <za-date-select
+        v-model='v5'
+        title="选择日期"
+        placeholder="请选择日期"
+        mode='date'
+        format='yyyy年MM月dd日'
+        max='2030-10-25'
+        min='1917-10-25'
+        @ok='handleOk'>
+        </za-date-select>
+    </za-cell>
+    <za-cell title="日期格式化">
+      <za-date-select
+      v-model='v7'
+      title="选择日期"
+      placeholder="请选择日期"
+      mode='datetime'
+      value-format='yyyy-MM-dd HH:mm'
+      max='2030-10-25'
+      min='1917-10-25'
+      @ok='handleOk'>
+      </za-date-select>
+  </za-cell>
+```
+:::
+
+:::demo 平铺日期选择器DatePickerView
+```html
+    <za-date-picker-view
+      title="选择年份"
+      placeholder="请选择年份"
+      mode='datetime'
+      min="2018-01-13"
+      max="2090-11-27"
+      :defaultValue="v6"
+      @change='handleChange'>
+    </za-date-picker-view>
 ```
 :::
 
 
-::: api
 ### API
 
 #### Date Picker & Date Select Attributes
@@ -177,5 +171,4 @@ export default {
 | cancel | 点击取消时触发的回调函数 | event对象 |
 | change | 滚动时值变化时触发的回调函数 | 选中值的对象列表 |
 
-:::
 

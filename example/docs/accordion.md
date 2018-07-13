@@ -18,129 +18,117 @@ export default {
 };
 </script>
 
-::: demo
+### 手风琴 Accordion
+
+::: demo 基本
 ```html
-  <div>
-    <za-panel>
-        <za-panel-header title="基本" ></za-panel-header>
-        <za-panel-body>
-          <za-accordion @change='onChange'>
-            <za-accordion-item title="50元套餐" aiTag='0'>
-              <div>我是50元套餐内容</div>
-              <div>我是50元套餐内容</div>
-              <div>我是50元套餐内容</div>
-              <div>我是50元套餐内容</div>
-            </za-accordion-item>
-            <za-accordion-item title="100元套餐" aiTag='1'>
-              <div>我是100元套餐内容</div>
-              <div>我是100元套餐内容</div>
-              <div>我是100元套餐内容</div>
-              <div>我是100元套餐内容</div>
-            </za-accordion-item>
-            <za-accordion-item title="200元套餐" aiTag='2'>
-              <div>我是200元套餐内容</div>
-              <div>我是200元套餐内容</div>
-              <div>我是200元套餐内容</div>
-              <div>我是200元套餐内容</div>
-            </za-accordion-item>
-          </za-accordion>
-        </za-panel-body>
-      </za-panel>
+    <za-accordion @change='onChange'>
+      <za-accordion-item title="50元套餐" aiTag='0'>
+        <div>我是50元套餐内容</div>
+        <div>我是50元套餐内容</div>
+        <div>我是50元套餐内容</div>
+        <div>我是50元套餐内容</div>
+      </za-accordion-item>
+      <za-accordion-item title="100元套餐" aiTag='1'>
+        <div>我是100元套餐内容</div>
+        <div>我是100元套餐内容</div>
+        <div>我是100元套餐内容</div>
+        <div>我是100元套餐内容</div>
+      </za-accordion-item>
+      <za-accordion-item title="200元套餐" aiTag='2'>
+        <div>我是200元套餐内容</div>
+        <div>我是200元套餐内容</div>
+        <div>我是200元套餐内容</div>
+        <div>我是200元套餐内容</div>
+      </za-accordion-item>
+    </za-accordion>
+    <script>
+    export default {
+      methods: {
+        onChange(n){
+          console.log(n);
+        },
+      },
+    };
+    </script>
 ```
 :::
 
-::: demo
+::: demo 手风琴模式
 ```html
-  <za-panel>
-        <za-panel-header title="手风琴模式" ></za-panel-header>
-        <za-panel-body>
-          <za-accordion animated  :multiple='true' >
-            <za-accordion-item title="50元套餐" aiTag='0'>
-              <div>我是50元套餐内容</div>
-              <div>我是50元套餐内容</div>
-              <div>我是50元套餐内容</div>
-              <div>我是50元套餐内容</div>
-            </za-accordion-item>
-            <za-accordion-item title="100元套餐" aiTag='1'>
-              <div>我是100元套餐内容</div>
-              <div>我是100元套餐内容</div>
-              <div>我是100元套餐内容</div>
-              <div>我是100元套餐内容</div>
-            </za-accordion-item>
-            <za-accordion-item title="200元套餐" aiTag='2'>
-              <div>我是200元套餐内容</div>
-              <div>我是200元套餐内容</div>
-              <div>我是200元套餐内容</div>
-              <div>我是200元套餐内容</div>
-            </za-accordion-item>
-          </za-accordion>
-        </za-panel-body>
-      </za-panel>  
-```  
-:::
-
-::: demo
-```html
-      <za-panel>
-        <za-panel-header title="默认展开项"></za-panel-header>
-        <za-panel-body>
-          <za-accordion animated :defaultActiveTag="['a']">
-            <za-accordion-item title="50元套餐" aiTag='a'>
-              <div>我是50元套餐内容</div>
-              <div>我是50元套餐内容</div>
-              <div>我是50元套餐内容</div>
-              <div>我是50元套餐内容</div>
-            </za-accordion-item>
-            <za-accordion-item title="100元套餐" aiTag='b'>
-              <div>我是100元套餐内容</div>
-              <div>我是100元套餐内容</div>
-              <div>我是100元套餐内容</div>
-              <div>我是100元套餐内容</div>
-            </za-accordion-item>
-            <za-accordion-item title="200元套餐" aiTag='d'>
-              <div>我是200元套餐内容</div>
-              <div>我是200元套餐内容</div>
-              <div>我是200元套餐内容</div>
-              <div>我是200元套餐内容</div>
-            </za-accordion-item>
-          </za-accordion>
-        </za-panel-body>
-      </za-panel>
+    <za-accordion animated  :multiple='true' >
+      <za-accordion-item title="50元套餐" aiTag='0'>
+        <div>我是50元套餐内容</div>
+        <div>我是50元套餐内容</div>
+        <div>我是50元套餐内容</div>
+        <div>我是50元套餐内容</div>
+      </za-accordion-item>
+      <za-accordion-item title="100元套餐" aiTag='1'>
+        <div>我是100元套餐内容</div>
+        <div>我是100元套餐内容</div>
+        <div>我是100元套餐内容</div>
+        <div>我是100元套餐内容</div>
+      </za-accordion-item>
+      <za-accordion-item title="200元套餐" aiTag='2'>
+        <div>我是200元套餐内容</div>
+        <div>我是200元套餐内容</div>
+        <div>我是200元套餐内容</div>
+        <div>我是200元套餐内容</div>
+      </za-accordion-item>
+    </za-accordion>
 ```
 :::
 
-::: demo
+::: demo 默认展开项
 ```html
-      <za-panel>
-        <za-panel-header title="强制展开模式"></za-panel-header>
-        <za-panel-body>
-          <za-accordion open>
-            <za-accordion-item title="50元套餐">
-              <div>我是50元套餐内容</div>
-              <div>我是50元套餐内容</div>
-              <div>我是50元套餐内容</div>
-              <div>我是50元套餐内容</div>
-            </za-accordion-item>
-            <za-accordion-item title="100元套餐">
-              <div>我是100元套餐内容</div>
-              <div>我是100元套餐内容</div>
-              <div>我是100元套餐内容</div>
-              <div>我是100元套餐内容</div>
-            </za-accordion-item>
-            <za-accordion-item title="200元套餐">
-              <div>我是200元套餐内容</div>
-              <div>我是200元套餐内容</div>
-              <div>我是200元套餐内容</div>
-              <div>我是200元套餐内容</div>
-            </za-accordion-item>
-          </za-accordion>
-        </za-panel-body>
-      </za-panel>
-  </div>
+    <za-accordion animated :defaultActiveTag="['a']">
+      <za-accordion-item title="50元套餐" aiTag='a'>
+        <div>我是50元套餐内容</div>
+        <div>我是50元套餐内容</div>
+        <div>我是50元套餐内容</div>
+        <div>我是50元套餐内容</div>
+      </za-accordion-item>
+      <za-accordion-item title="100元套餐" aiTag='b'>
+        <div>我是100元套餐内容</div>
+        <div>我是100元套餐内容</div>
+        <div>我是100元套餐内容</div>
+        <div>我是100元套餐内容</div>
+      </za-accordion-item>
+      <za-accordion-item title="200元套餐" aiTag='d'>
+        <div>我是200元套餐内容</div>
+        <div>我是200元套餐内容</div>
+        <div>我是200元套餐内容</div>
+        <div>我是200元套餐内容</div>
+      </za-accordion-item>
+    </za-accordion>
 ```
 :::
 
-::: api
+::: demo 强制展开模式
+```html
+    <za-accordion open>
+      <za-accordion-item title="50元套餐">
+        <div>我是50元套餐内容</div>
+        <div>我是50元套餐内容</div>
+        <div>我是50元套餐内容</div>
+        <div>我是50元套餐内容</div>
+      </za-accordion-item>
+      <za-accordion-item title="100元套餐">
+        <div>我是100元套餐内容</div>
+        <div>我是100元套餐内容</div>
+        <div>我是100元套餐内容</div>
+        <div>我是100元套餐内容</div>
+      </za-accordion-item>
+      <za-accordion-item title="200元套餐">
+        <div>我是200元套餐内容</div>
+        <div>我是200元套餐内容</div>
+        <div>我是200元套餐内容</div>
+        <div>我是200元套餐内容</div>
+      </za-accordion-item>
+    </za-accordion>
+```
+:::
+
 
 #### Accordion Attributes
 
@@ -163,4 +151,3 @@ export default {
 | 事件名称 | 说明 | 回调参数 |
 | :--- | :--- | :--- |
 | change | 当accordion切换时触发的事件 | 返回切换的aiTag |
-:::

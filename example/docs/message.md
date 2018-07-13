@@ -15,47 +15,39 @@ export default {
 </script>
 
 
-:::demo
+:::demo 基本
 ```html
-  <za-panel>
-    <za-panel-header title="基本"></za-panel-header>
-    <za-panel-body>
-      <za-message>primary</za-message>
+  <za-message>primary</za-message>
 
-      <za-message theme='info'>
-        <za-icon type='info-round' class='icon' slot='icon'></za-icon>
-        <span>info</span>
-      </za-message>
+  <za-message theme='info'>
+    <za-icon type='info-round' class='icon' slot='icon'></za-icon>
+    <span>info</span>
+  </za-message>
 
-      <za-message theme='success' icon='right-round'>
-        <span>success</span>
-      </za-message>
+  <za-message theme='success' icon='right-round'>
+    <span>success</span>
+  </za-message>
 
-      <za-message theme='warning'>
-        <za-icon type='info-round' class='icon' slot='icon'></za-icon>
-        <span>warning</span>
-      </za-message>
+  <za-message theme='warning'>
+    <za-icon type='info-round' class='icon' slot='icon'></za-icon>
+    <span>warning</span>
+  </za-message>
 
-      <za-message theme='error'>
-        <za-icon type='wrong-round' class='icon' slot='icon'></za-icon>
-        <span>error</span>
-      </za-message>
-
-    </za-panel-body>
-  </za-panel>
-
-  <za-panel>
-    <za-panel-header title="可操作"></za-panel-header>
-    <za-panel-body>
-      <za-message theme='warning' hasArrow @click='handleClick'>链接样式的</za-message>
-      <!-- 也可以不绑定visible -->
-      <za-message theme='error' closable :visible.sync='visible'>链接样式的</za-message>
-    </za-panel-body>
-  </za-panel>
+  <za-message theme='error'>
+    <za-icon type='wrong-round' class='icon' slot='icon'></za-icon>
+    <span>error</span>
+  </za-message>
 ```
 :::
 
-::: api
+:::demo 可操作
+```html
+  <za-message theme='warning' hasArrow @click='handleClick'>链接样式的</za-message>
+  <!-- 也可以不绑定visible -->
+  <za-message theme='error' closable :visible.sync='visible'>链接样式的</za-message>
+```
+:::
+
 ### API
 
 #### Message Attributes
@@ -72,4 +64,3 @@ export default {
 | 事件名称 | 说明 | 回调参数 |
 | :--- | :--- | :--- |
 | click | click时触发的事件 | event 事件对象 |
-:::

@@ -1,6 +1,6 @@
 <template lang="html">
   <Container class="tab-page">
-    <PageHeader title="标签页 Tab" />
+    <PageHeader title="标签页 Tabs" />
     <Demo></Demo>
     <PageFooter />
   </Container>

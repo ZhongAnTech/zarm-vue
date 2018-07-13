@@ -11,6 +11,7 @@ export default {
   },
   data() {
     return {
+      i: null,
       myData1: [1,2,3,4],
       myData2: [],
       refreshing1: false,
@@ -63,52 +64,45 @@ export default {
 </script>
 
 
-:::demo
+:::demo 基本
 ```html
-    <za-panel>
-      <za-panel-header title="基本"></za-panel-header>
-      <za-panel-body>
-        <za-pull :on-refresh='refresh(1)' :refreshing='refreshing1'>
-          <za-cell v-for='(i, index) in myData1' :key='index'>ID号 {{i}} </za-cell>
-        </za-pull>
-      </za-panel-body>
-    </za-panel>
-
-    <za-panel>
-      <za-panel-header title="上拉加载下拉刷新 Pull"></za-panel-header>
-      <za-panel-body>
-        <za-pull :on-refresh='refresh(2)' :refreshing='refreshing2' :loading='loading' :on-load='loadData'>
-          <za-cell v-for='(i, index) in myData2' :key='index'>ID号 {{i}} </za-cell>
-          <!-- 此处的几个slot用来覆盖默认样式，定义的会覆盖，不定义的依然使用默认样式 -->
-          <template slot-scope='props' slot='refreshPull'>
-            <div class='custom-control' :style='{
-              transform: `scale(${props.percent / 100})`
-              }'>
-              <img src='https://avatars2.githubusercontent.com/u/499550?v=4&s=72' alt="" />
-            </div>
-          </template>
-          <template slot-scope='props' slot='refreshDrop'>
-            <div class='custom-control'>
-              释放加载
-            </div>
-          </template>
-          <template slot-scope='props' slot='refreshLoading'>
-            <div class='custom-control'>
-              <za-spinner class="rotate360" />
-            </div>
-          </template>
-          <template slot-scope='props' slot='refreshSuccess'>
-            <div class='custom-control'>
-              加载成功
-            </div>
-          </template>
-        </za-pull>
-      </za-panel-body>
-    </za-panel>
+    <za-pull :on-refresh='refresh(1)' :refreshing='refreshing1'>
+      <za-cell v-for='(i, index) in myData1' :key='index'>ID号 {{i}} </za-cell>
+    </za-pull>
 ```
 :::
 
-::: api
+:::demo 上拉加载下拉刷新
+```html
+    <za-pull :on-refresh='refresh(2)' :refreshing='refreshing2' :loading='loading' :on-load='loadData'>
+      <za-cell v-for='(i, index) in myData2' :key='index'>ID号 {{i}} </za-cell>
+      <!-- 此处的几个slot用来覆盖默认样式，定义的会覆盖，不定义的依然使用默认样式 -->
+      <template slot-scope='props' slot='refreshPull'>
+        <div class='custom-control' :style='{
+          transform: `scale(${props.percent / 100})`
+          }'>
+          <img src='https://avatars2.githubusercontent.com/u/499550?v=4&s=72' alt="" />
+        </div>
+      </template>
+      <template slot-scope='props' slot='refreshDrop'>
+        <div class='custom-control'>
+          释放加载
+        </div>
+      </template>
+      <template slot-scope='props' slot='refreshLoading'>
+        <div class='custom-control'>
+          <za-spinner class="rotate360" />
+        </div>
+      </template>
+      <template slot-scope='props' slot='refreshSuccess'>
+        <div class='custom-control'>
+          加载成功
+        </div>
+      </template>
+    </za-pull>
+```
+:::
+
 #### 上拉加载下拉刷新(自定义提示内容)
 
 使用 scopedSlots 来覆盖默认的样式
@@ -218,5 +212,3 @@ on-refresh, on-load 这两个回调函数要求返回一个 Promise 对象。对
 | on-load | func | | | 下拉加载的回调函数 |
 | duration | number | 300 | | 动画执行时间，单位：ms |
 | stayTime | number | 1500 | | 加载成功停留时间 |
-
-:::

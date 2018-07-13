@@ -13,41 +13,33 @@ export default {
 </script>
 
 
-:::demo 
+:::demo 基本
 ```html
-  <za-panel>
-    <za-panel-header title="基本">
-    </za-panel-header>
-    <za-panel-body>
-      <za-cell title="普通">
-        <za-slider
-          :default-value='0'
-          @change='handleChange'
-          ></za-slider>
-      </za-cell>
+  <za-cell title="普通">
+    <za-slider
+      :default-value='0'
+      @change='handleChange'
+      ></za-slider>
+  </za-cell>
 
-      <za-cell title="设置默认值">
-        <za-slider :default-value='20'></za-slider>
-      </za-cell>
+  <za-cell title="设置默认值">
+    <za-slider :default-value='20'></za-slider>
+  </za-cell>
 
-      <za-cell title="设置上下限">
-        <za-slider :min='-100' :max='100' :default-value='0' ></za-slider>
-      </za-cell>
+  <za-cell title="设置上下限">
+    <za-slider :min='-100' :max='100' :default-value='0' ></za-slider>
+  </za-cell>
 
-      <za-cell title="设置步长">
-        <za-slider :step='10' ></za-slider>
-      </za-cell>
+  <za-cell title="设置步长">
+    <za-slider :step='10' ></za-slider>
+  </za-cell>
 
-      <za-cell title="禁用状态">
-        <za-slider :default-value='20' disabled ></za-slider>
-      </za-cell>
-    </za-panel-body>
-  </za-panel>
-
+  <za-cell title="禁用状态">
+    <za-slider :default-value='20' disabled ></za-slider>
+  </za-cell>
 ```
 :::
 
-::: api
 ### API
 
 #### Slider Attributes
@@ -66,4 +58,3 @@ export default {
 | 事件名称 | 说明 | 回调参数 |
 | :--- | :--- | :--- |
 | change | func | noop | \(event:$even, value: number\) | 值变化时触发的回调函数 |
-:::

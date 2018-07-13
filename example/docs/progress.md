@@ -25,9 +25,9 @@ export default {
 </script>
 
 
-:::demo
+:::demo 基本
 ```html
-  <div class="progress" style="margin-bottom:50px;">
+  <div class="progress" style="padding:20px 0;">
     <za-progress :percent='percent' :theme='theme'>
       {{percent + '%'}}
     </za-progress>
@@ -41,33 +41,26 @@ export default {
     </za-progress>
   </div>
 
-  <za-panel>
-    <za-panel-header title="基本"></za-panel-header>
-    <za-panel-body>
-        <za-cell title='进度'>
-          <za-stepper
-            shape="radius"
-            :step='10'
-            :min='0'
-            :max='100'
-            v-model='percent'
-            @step-change='handleStepChange'
-          />
+  <za-cell title='进度'>
+    <za-stepper
+      shape="radius"
+      :step='10'
+      :min='0'
+      :max='100'
+      v-model='percent'
+      @step-change='handleStepChange'
+    />
 
-        </za-cell>
-        <za-cell title='主题'>
-          <za-select
-            v-model='theme'
-            :data-source='dataSource'
-            @ok='handleOk'
-          />
-        </za-cell>
-    </za-panel-body>
-  </za-panel>
+  </za-cell>
+  <za-cell title='主题'>
+    <za-select
+      v-model='theme'
+      :data-source='dataSource'
+      @ok='handleOk'
+    />
+  </za-cell>
 ```
 :::
-
-::: api
 
 ### API
 
@@ -77,4 +70,3 @@ export default {
 | theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
 | percent | number | 0 | | 进度百分比（范围：0～100） |
 | shape | string | 'line' | 'line', 'circle' | 类型 |
-:::

@@ -25,53 +25,46 @@ export default {
 };
 </script>
 
-::: demo
+::: demo 基本
 ```html
-    <za-panel>
-      <za-panel-header title="基本"></za-panel-header>
-      <za-panel-body>
-        <za-cell>
-          <za-button slot='description' size='xs' @click='visible1 = true'>开启</za-button>
-          span普通
-        </za-cell>
+  <za-cell>
+    <za-button slot='description' size='xs' @click='visible1 = true'>开启</za-button>
+    span普通
+  </za-cell>
 
-        <za-cell>
-          <za-button slot='description' size='xs' @click='visible2 = true'>开启</za-button>
-          圆角
-        </za-cell>
+  <za-cell>
+    <za-button slot='description' size='xs' @click='visible2 = true'>开启</za-button>
+    圆角
+  </za-cell>
 
-        <za-cell>
-          <za-button slot='description' size='xs' @click='visible3 = true'>开启</za-button>
-          遮罩层可关闭
-        </za-cell>
+  <za-cell>
+    <za-button slot='description' size='xs' @click='visible3 = true'>开启</za-button>
+    遮罩层可关闭
+  </za-cell>
 
-        <za-cell>
-          <za-button slot='description' size='xs' @click='visible4 = true'>开启</za-button>
-          无头部
-        </za-cell>
+  <za-cell>
+    <za-button slot='description' size='xs' @click='visible4 = true'>开启</za-button>
+    无头部
+  </za-cell>
 
-        <za-cell>
-          <za-button slot='description' size='xs' @click='visible5 = true'>开启</za-button>
-          动画效果
-        </za-cell>
+  <za-cell>
+    <za-button slot='description' size='xs' @click='visible5 = true'>开启</za-button>
+    动画效果
+  </za-cell>
+```
+:::
 
-      </za-panel-body>
-    </za-panel>
+::: demo 特定场景
+```html
+  <za-cell>
+    <za-button slot='description' size='xs' @click='visible6 = true' theme="warning">开启</za-button>
+    警告框 Alert
+  </za-cell>
 
-    <za-panel>
-      <za-panel-header title="特定场景"></za-panel-header>
-      <za-panel-body>
-        <za-cell>
-          <za-button slot='description' size='xs' @click='visible6 = true' theme="warning">开启</za-button>
-          警告框 Alert
-        </za-cell>
-
-        <za-cell>
-          <za-button slot='description' size='xs' @click='visible7 = true' theme="warning">开启</za-button>
-          确认框 Confirm
-        </za-cell>
-      </za-panel-body>
-    </za-panel>
+  <za-cell>
+    <za-button slot='description' size='xs' @click='visible7 = true' theme="warning">开启</za-button>
+    确认框 Confirm
+  </za-cell>
 
   <za-modal :visible.sync='visible1' @close='handleClose' title="标题" :showClose='true'>
     模态框内容
@@ -107,7 +100,6 @@ export default {
 ```
 :::
 
-::: api
 #### 警告框 使用全局方法 $zaAlert
 
 ```html
@@ -230,5 +222,3 @@ export default{
 | :--- | :--- | :--- |
 | ok | confirm 确定时触发的事件 | event 事件对象 |
 | cancel | confirm 取消时触发的事件 | event 事件对象 |
-
-:::

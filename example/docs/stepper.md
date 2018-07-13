@@ -20,11 +20,8 @@ export default {
 </script>
 
 
-:::demo
+:::demo 基本
 ```html
-  <za-panel>
-    <za-panel-header title="基本"></za-panel-header>
-    <za-panel-body>
       <za-cell title="普通">
         <za-stepper slot='description' v-model='stepper1' @change='handleChange'></za-stepper>
       </za-cell>
@@ -40,26 +37,21 @@ export default {
       <za-cell title="禁用状态">
         <za-stepper slot='description' v-model='stepper5' @change='handleChange' disabled></za-stepper>
       </za-cell>
-    </za-panel-body>
-  </za-panel>
+```
+:::
 
-  <za-panel>
-    <za-panel-header title="多形状"></za-panel-header>
-    <za-panel-body>
+:::demo 多形状
+```html
       <za-cell title="圆角">
         <za-stepper slot='description' v-model='stepper6' @change='handleChange' shape="radius"></za-stepper>
       </za-cell>
       <za-cell title="圆型">
         <za-stepper slot='description' v-model='stepper7' @change='handleChange' shape="circle"></za-stepper>
       </za-cell>
-    </za-panel-body>
-  </za-panel>
-
 ```
 :::
 
 
-::: api
 ### API
 
 #### Stepper Attributes
@@ -79,4 +71,3 @@ export default {
 | 事件名称 | 说明 | 回调参数 |
 | :--- | :--- | :--- |
 | change | 点击加减后触发的事件 | event 事件对象 |
-:::

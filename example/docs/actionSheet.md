@@ -33,35 +33,29 @@ export default {
 };
 </script>
 
+### 动作面板 ActionSheet
 
-:::demo 
+:::demo 基本
 ```html
-  <za-panel>
-    <za-panel-header title="基本">
-    </za-panel-header>
-    <za-panel-body>
+    <za-cell>
+      <za-button size="xs" slot='description' @click='visible2 = true'>开启</za-button>
+      普通
+    </za-cell>
+    <za-cell>
+      <za-button size="xs" slot='description' @click='visible1 = true'>开启</za-button>
+      带取消操作
+    </za-cell>
       <za-cell>
-        <za-button size="xs" slot='description' @click='visible2 = true'>开启</za-button>
-        普通
-      </za-cell>
-      <za-cell>
-        <za-button size="xs" slot='description' @click='visible1 = true'>开启</za-button>
-        带取消操作
-      </za-cell>
-        <za-cell>
-        <za-button size="xs" slot='description' @click='visible3 = true'>开启</za-button>
-        圆角，留边
-      </za-cell>
-    </za-panel-body>
-  </za-panel>
-  <za-actionsheet :visible.sync='visible1' :actions='actions1' @cancel='cancelCb'></za-actionsheet>
-  <za-actionsheet :visible.sync='visible2' :actions='actions2' :showCancel='false' @cancel='cancelCb'></za-actionsheet>
-  <za-actionsheet :visible.sync='visible3' :spacing="true" shape="radius" :actions='actions2' @cancel='cancelCb'></za-actionsheet>
+      <za-button size="xs" slot='description' @click='visible3 = true'>开启</za-button>
+      圆角，留边
+    </za-cell>
+    <za-actionsheet :visible.sync='visible1' :actions='actions1' @cancel='cancelCb'></za-actionsheet>
+    <za-actionsheet :visible.sync='visible2' :actions='actions2' :showCancel='false' @cancel='cancelCb'></za-actionsheet>
+    <za-actionsheet :visible.sync='visible3' :spacing="true" shape="radius" :actions='actions2' @cancel='cancelCb'></za-actionsheet>
 ```
 :::
 
 
-::: api
 ### API
 
 #### ActionSheet Attributes
@@ -79,4 +73,3 @@ export default {
 | 事件名称 | 说明 | 回调参数 |
 | :--- | :--- | :--- |
 | cancel | 当actionsheet关闭时触发的事件。当点击actionButton关闭时第一个参数为'action',当点击popup关闭时第一个参数为'clickaway' | 1. reason, 2. event 事件对象 |
-:::

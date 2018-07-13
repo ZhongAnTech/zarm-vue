@@ -40,38 +40,29 @@ export default {
 </script>
 
 
-:::demo
+:::demo 类型
 ```html
-         <za-panel>
-          <za-panel-header title="类型"></za-panel-header>
-          <za-panel-body>
-            <za-cell title='数字' @click="showPicker('visible1')">
-              {{v1}}
-            </za-cell>
-            <za-cell title='金额' @click="showPicker('visible2')">
-              {{v2}}
-            </za-cell>
-             <za-cell title='证件' @click="showPicker('visible3')">
-              {{v3}}
-            </za-cell>
-          </za-panel-body>
-        </za-panel>
-
-        <za-panel>
-          <za-panel-header title="键盘"></za-panel-header>
-          <za-panel-body>
-            <za-keyboard type="number" ></za-keyboard>
-          </za-panel-body>
-        </za-panel>
-
-        <za-keyboard-picker :visible.sync="visible1" type="number" @keyClick="handleChange1" ></za-keyboard-picker>
-        <za-keyboard-picker :visible.sync="visible2" type="price" @keyClick="handleChange2" ></za-keyboard-picker>
-        <za-keyboard-picker :visible.sync="visible3" type="idcard" @keyClick="handleChange3" ></za-keyboard-picker>
-
+    <za-cell title='数字' @click="showPicker('visible1')">
+      {{v1}}
+    </za-cell>
+    <za-cell title='金额' @click="showPicker('visible2')">
+      {{v2}}
+    </za-cell>
+      <za-cell title='证件' @click="showPicker('visible3')">
+      {{v3}}
+    </za-cell>
+    <za-keyboard-picker :visible.sync="visible1" type="number" @keyClick="handleChange1" ></za-keyboard-picker>
+    <za-keyboard-picker :visible.sync="visible2" type="price" @keyClick="handleChange2" ></za-keyboard-picker>
+    <za-keyboard-picker :visible.sync="visible3" type="idcard" @keyClick="handleChange3" ></za-keyboard-picker>
 ```
 :::
 
-::: api
+:::demo 键盘
+```html
+    <za-keyboard type="number" ></za-keyboard>
+```
+:::
+
 ### API
 
 #### keyboard Attributes
@@ -92,4 +83,3 @@ export default {
 | 事件名称 | 说明 | 回调参数 |
 | :--- | :--- | :--- |
 | keyClick | 当点击键盘时触发的事件 | 最新点击的值 |
-:::

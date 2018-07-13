@@ -29,71 +29,61 @@ export default {
 </script>
 
 
-:::demo
+:::demo 普通
 ```html
-        <za-panel>
-          <za-panel-header title="普通"></za-panel-header>
-          <za-panel-body>
-            <za-cell title='单行文本'>
-              <za-input ref='inputFirst' v-model='v1' type="text" placeholder="type is text" @change='handleChange'></za-input>
-            </za-cell>
-            <za-cell title='多行文本'>
-              <za-input v-model='v2' type="textarea" placeholder="type is textarea" @change='handleChange2'></za-input>
-            </za-cell>
-            <za-cell>
-              <a @click='focus'>click to focus the first input</a>
-            </za-cell>
-          </za-panel-body>
-        </za-panel>
-
-        <za-panel>
-          <za-panel-header title="输入类型"/>
-          <za-panel-body>
-            <za-cell title='数字'>
-              <za-input-number v-model='v5' type="number"  @change='handleChange'></za-input-number>
-            </za-cell>
-            <za-cell title='金额'>
-              <za-input-number v-model='v6' type="price"  @change='handleChange'></za-input-number>
-            </za-cell>
-             <za-cell title='证件'>
-              <za-input-number v-model='v7' type="idcard"  @change='handleChange'></za-input-number>
-            </za-cell>
-          </za-panel-body>
-        </za-panel>
-
-        <za-panel>
-          <za-panel-header title="高度自适应"></za-panel-header>
-          <za-panel-body>
-            <za-cell title='多行文本'>
-              <za-input autosize v-model='v3' type="textarea" placeholder="this is a autosize textarea"></za-input>
-            </za-cell>
-          </za-panel-body>
-        </za-panel>
-
-        <za-panel>
-          <za-panel-header title="无标签栏"></za-panel-header>
-          <za-panel-body>
-            <za-cell>
-              <za-input type="text" placeholder="标题" @change='handleChange3'/>
-            </za-cell>
-            <za-cell>
-              <za-input autosize v-model='v4' type="textarea" rows='4' placeholder="摘要"></za-input>
-            </za-cell>
-          </za-panel-body>
-        </za-panel>
-
-        <za-panel>
-          <za-panel-header title="显示输入字数"></za-panel-header>
-          <za-panel-body>
-            <za-cell>
-              <za-input autosize show-length type="textarea" rows="4" max-length="200" placeholder="摘要" v-model='v5'></za-input>
-            </za-cell>
-          </za-panel-body>
-        </za-panel>
+    <za-cell title='单行文本'>
+      <za-input ref='inputFirst' v-model='v1' type="text" placeholder="type is text" @change='handleChange'></za-input>
+    </za-cell>
+    <za-cell title='多行文本'>
+      <za-input v-model='v2' type="textarea" placeholder="type is textarea" @change='handleChange2'></za-input>
+    </za-cell>
+    <za-cell>
+      <a @click='focus'>click to focus the first input</a>
+    </za-cell>
 ```
 :::
 
-::: api
+:::demo 输入类型
+```html
+    <za-cell title='数字'>
+      <za-input-number v-model='v5' type="number"  @change='handleChange'></za-input-number>
+    </za-cell>
+    <za-cell title='金额'>
+      <za-input-number v-model='v6' type="price"  @change='handleChange'></za-input-number>
+    </za-cell>
+      <za-cell title='证件'>
+      <za-input-number v-model='v7' type="idcard"  @change='handleChange'></za-input-number>
+    </za-cell>
+```
+:::
+
+:::demo 高度自适应
+```html
+    <za-cell title='多行文本'>
+      <za-input autosize v-model='v3' type="textarea" placeholder="this is a autosize textarea"></za-input>
+    </za-cell>
+```
+:::
+
+:::demo 无标签栏
+```html
+    <za-cell>
+      <za-input type="text" placeholder="标题" @change='handleChange3'/>
+    </za-cell>
+    <za-cell>
+      <za-input autosize v-model='v4' type="textarea" rows='4' placeholder="摘要"></za-input>
+    </za-cell>
+```
+:::
+
+:::demo 显示输入字数
+```html
+    <za-cell>
+      <za-input autosize show-length type="textarea" rows="4" max-length="200" placeholder="摘要" v-model='v5'></za-input>
+    </za-cell>
+```
+:::
+
 ### API
 
 #### Input Attributes
@@ -111,4 +101,3 @@ export default {
 | 事件名称 | 说明 | 回调参数 |
 | :--- | :--- | :--- |
 | change | 当绑定值变化时触发的事件 | 最新的值 |
-:::

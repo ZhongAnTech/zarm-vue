@@ -14,26 +14,32 @@ export default {
 </script>
 
 
-:::demo
+:::demo 普通
 ```html
       <za-panel>
-        <za-panel-header title='普通' ></za-panel-header>
         <za-panel-body>
           <za-cell>body</za-cell>
         </za-panel-body>
       </za-panel>
+```
+:::
 
+:::demo 带更多按钮
+```html
       <za-panel>
-        <za-panel-header title='带更多按钮'>
+        <za-panel-header title="带更多按钮">
           <a slot='more' @click='handleClick'>更多</a>
         </za-panel-header>
         <za-panel-body>
           <za-cell>body</za-cell>
         </za-panel-body>
       </za-panel>
+```
+:::
 
+:::demo 带底部
+```html
       <za-panel>
-        <za-panel-header title='带底部' ></za-panel-header>
         <za-panel-body>
           <za-cell>body</za-cell>
         </za-panel-body>
@@ -43,7 +49,6 @@ export default {
 ```
 :::
 
-::: api
 ### API
 
 #### panel
@@ -69,4 +74,3 @@ export default {
 | prefixCls | string | za-panel | | 类名前缀 |
 | title | String | | | 标题，也可以用slot |
 | more | String | | | 更多，也可以用slot |
-:::

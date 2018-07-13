@@ -27,125 +27,114 @@ export default {
 </script>
 
 
-:::demo
+:::demo 基本
 ```html
-    <za-panel>
-      <za-panel-header title="基本"></za-panel-header>
-      <za-panel-body>
-        <za-tabs v-model="activeName" @change="handleClick">
-          <za-tab-pane label='用户管理' name='first'>
-            <div class='content'>用户管理</div>
-          </za-tab-pane>
-          <za-tab-pane label='配置管理' name='second'>
-            <div class='content'>配置管理</div>
-          </za-tab-pane>
-          <za-tab-pane label='角色管理' name='third'>
-            <div class='content'>角色管理</div>
-          </za-tab-pane>
-        </za-tabs>
-      </za-panel-body>
-    </za-panel>
+  <za-tabs v-model="activeName" @change="handleClick">
+    <za-tab-pane label='用户管理' name='first'>
+      <div class='content'>用户管理</div>
+    </za-tab-pane>
+    <za-tab-pane label='配置管理' name='second'>
+      <div class='content'>配置管理</div>
+    </za-tab-pane>
+    <za-tab-pane label='角色管理' name='third'>
+      <div class='content'>角色管理</div>
+    </za-tab-pane>
+  </za-tabs>
+```
+:::
 
-    <za-panel>
-      <za-panel-header title="可滑动"></za-panel-header>
-      <za-panel-body>
-        <za-tabs v-model="activeNameSwipe" @change="handleClick" canSwipe>
-          <za-tab-pane label='选项卡1' name='first'>
-            <div class='content'>试试左滑</div>
-          </za-tab-pane>
-          <za-tab-pane label='选项卡2' name='second'>
-            <div class='content'>试试左右滑</div>
-          </za-tab-pane>
-          <za-tab-pane label='选项卡3' name='third'>
-            <div class='content'>试试右滑</div>
-          </za-tab-pane>
-        </za-tabs>
-      </za-panel-body>
-    </za-panel>
+:::demo 可滑动
+```html
+  <za-tabs v-model="activeNameSwipe" @change="handleClick" canSwipe>
+    <za-tab-pane label='选项卡1' name='first'>
+      <div class='content'>试试左滑</div>
+    </za-tab-pane>
+    <za-tab-pane label='选项卡2' name='second'>
+      <div class='content'>试试左右滑</div>
+    </za-tab-pane>
+    <za-tab-pane label='选项卡3' name='third'>
+      <div class='content'>试试右滑</div>
+    </za-tab-pane>
+  </za-tabs>
+```
+:::
 
-    <za-panel>
-      <za-panel-header title="联动"></za-panel-header>
-      <za-panel-body>
-        <za-tabs v-model="activeName6" @change="handleClick2">
-          <za-tab-pane label='用户管理' name='first'>
-            <div class='content'>用户管理</div>
-          </za-tab-pane>
-          <za-tab-pane label='配置管理' name='second'>
-            <div class='content'>配置管理</div>
-          </za-tab-pane>
-          <za-tab-pane label='角色管理' name='third'>
-            <div class='content'>角色管理</div>
-          </za-tab-pane>
-        </za-tabs>
-        <za-tabs v-model="activeName7" @change="handleClick">
-          <za-tab-pane label='用户管理' name='first'>
-            <div class='content'>用户管理</div>
-          </za-tab-pane>
-          <za-tab-pane label='配置管理' name='second'>
-            <div class='content'>配置管理</div>
-          </za-tab-pane>
-          <za-tab-pane label='角色管理' name='third'>
-            <div class='content'>角色管理</div>
-          </za-tab-pane>
-        </za-tabs>
-      </za-panel-body>
-    </za-panel>
+:::demo 联动
+```html
+  <za-tabs v-model="activeName6" @change="handleClick2">
+    <za-tab-pane label='用户管理' name='first'>
+      <div class='content'>用户管理</div>
+    </za-tab-pane>
+    <za-tab-pane label='配置管理' name='second'>
+      <div class='content'>配置管理</div>
+    </za-tab-pane>
+    <za-tab-pane label='角色管理' name='third'>
+      <div class='content'>角色管理</div>
+    </za-tab-pane>
+  </za-tabs>
+  <za-tabs v-model="activeName7" @change="handleClick">
+    <za-tab-pane label='用户管理' name='first'>
+      <div class='content'>用户管理</div>
+    </za-tab-pane>
+    <za-tab-pane label='配置管理' name='second'>
+      <div class='content'>配置管理</div>
+    </za-tab-pane>
+    <za-tab-pane label='角色管理' name='third'>
+      <div class='content'>角色管理</div>
+    </za-tab-pane>
+  </za-tabs>
+```
+:::
 
-    <za-panel>
-      <za-panel-header title="指定默认选项"></za-panel-header>
-      <za-panel-body>
-        <za-tabs v-model="activeName8" @change="handleClick">
-          <za-tab-pane label='用户管理' name='first'>
-            <div class='content'>用户管理</div>
-          </za-tab-pane>
-          <za-tab-pane label='配置管理' name='second'>
-            <div class='content'>配置管理</div>
-          </za-tab-pane>
-          <za-tab-pane label='角色管理' name='third'>
-            <div class='content'>角色管理</div>
-          </za-tab-pane>
-        </za-tabs>
-      </za-panel-body>
-    </za-panel>
+:::demo 指定默认选项
+```html
+  <za-tabs v-model="activeName8" @change="handleClick">
+    <za-tab-pane label='用户管理' name='first'>
+      <div class='content'>用户管理</div>
+    </za-tab-pane>
+    <za-tab-pane label='配置管理' name='second'>
+      <div class='content'>配置管理</div>
+    </za-tab-pane>
+    <za-tab-pane label='角色管理' name='third'>
+      <div class='content'>角色管理</div>
+    </za-tab-pane>
+  </za-tabs>
+```
+:::
 
-    <za-panel>
-      <za-panel-header title="指定线条宽度"></za-panel-header>
-      <za-panel-body>
-        <za-tabs v-model="activeName9" @change="handleClick" :lineWidth='60'>
-          <za-tab-pane label='用户管理' name='first'>
-            <div class='content'>用户管理</div>
-          </za-tab-pane>
-          <za-tab-pane label='配置管理' name='second'>
-            <div class='content'>配置管理</div>
-          </za-tab-pane>
-          <za-tab-pane label='角色管理' name='third'>
-            <div class='content'>角色管理</div>
-          </za-tab-pane>
-        </za-tabs>
-      </za-panel-body>
-    </za-panel>
+:::demo 指定线条宽度
+```html
+  <za-tabs v-model="activeName9" @change="handleClick" :lineWidth='60'>
+    <za-tab-pane label='用户管理' name='first'>
+      <div class='content'>用户管理</div>
+    </za-tab-pane>
+    <za-tab-pane label='配置管理' name='second'>
+      <div class='content'>配置管理</div>
+    </za-tab-pane>
+    <za-tab-pane label='角色管理' name='third'>
+      <div class='content'>角色管理</div>
+    </za-tab-pane>
+  </za-tabs>
+```
+:::
 
-    <za-panel>
-      <za-panel-header title="禁用指定选项"></za-panel-header>
-      <za-panel-body>
-        <za-tabs v-model="activeName0" @change="handleClick">
-          <za-tab-pane label='用户管理' name='first'>
-            <div class='content'>用户管理</div>
-          </za-tab-pane>
-          <za-tab-pane label='配置管理' name='second' disabled>
-            <div class='content'>配置管理</div>
-          </za-tab-pane>
-          <za-tab-pane label='角色管理' name='third'>
-            <div class='content'>角色管理</div>
-          </za-tab-pane>
-        </za-tabs>
-      </za-panel-body>
-    </za-panel>
+:::demo 禁用指定选项
+```html
+  <za-tabs v-model="activeName0" @change="handleClick">
+    <za-tab-pane label='用户管理' name='first'>
+      <div class='content'>用户管理</div>
+    </za-tab-pane>
+    <za-tab-pane label='配置管理' name='second' disabled>
+      <div class='content'>配置管理</div>
+    </za-tab-pane>
+    <za-tab-pane label='角色管理' name='third'>
+      <div class='content'>角色管理</div>
+    </za-tab-pane>
+  </za-tabs>
 ```
 :::
 
 
-::: api
 ### API
 
 #### Tabs Attributes
@@ -172,4 +161,3 @@ export default {
 | disabled | bool | false | | 是否禁用 |
 | label | string | | | 标题 |
 | name | string | | | 标识 |
-:::

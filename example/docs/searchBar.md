@@ -35,45 +35,32 @@ export default {
 </script>
 
 
-:::demo
+:::demo 基本
 ```html
-  <za-panel>
-    <za-panel-header title="基本"></za-panel-header>
-    <za-panel-body>
-      <za-search-bar placeholder="搜索" 
-          cancelText="取消" 
-          :showCancel="false" 
-          @change="handleChange"
-          @submit="handleSubmit"
-          @blur="handleBlur"
-          @focus="handleFocus"
-          @clear="handleClear"
-          @cancel="handleCancel"
-       ></za-search-bar>
-    </za-panel-body>
-  </za-panel>
-  <za-panel>
-    <za-panel-header title="始终展示取消按钮"></za-panel-header>
-    <za-panel-body>
-      <za-search-bar placeholder="搜索" 
-          shape="round"
-          cancelText="取消" 
-          :showCancel="true" 
-          value="默认搜索关键字"
-       ></za-search-bar>
-    </za-panel-body>
-  </za-panel>
-  <za-panel>
-    <za-panel-header title="手动获取焦点"></za-panel-header>
-    <za-panel-body>
-      <za-search-bar ref="searchRef" placeholder="搜索" shape="radius"
-          cancelText="取消" ></za-search-bar>
-    </za-panel-body>
-  </za-panel>
+  <za-search-bar placeholder="搜索" 
+      cancelText="取消" 
+      :showCancel="false" 
+      @change="handleChange"
+      @submit="handleSubmit"
+      @blur="handleBlur"
+      @focus="handleFocus"
+      @clear="handleClear"
+      @cancel="handleCancel"
+    ></za-search-bar>
 ```
 :::
 
-::: api
+:::demo 始终展示取消按钮
+```html
+  <za-search-bar placeholder="搜索" 
+      shape="round"
+      cancelText="取消" 
+      :showCancel="true" 
+      value="默认搜索关键字"
+    ></za-search-bar>
+```
+:::
+
 ### API
 
 #### SearchBar Attributes
@@ -98,4 +85,3 @@ export default {
 | clear | 当绑定值被清除时触发的事件 | 最新的值 |
 | cancel | 当取消操作时触发的事件 | |
 | submit | 当绑定值变化时触发的Form搜索事件 | 最新的值 |
-:::

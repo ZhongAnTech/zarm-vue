@@ -18,50 +18,41 @@ export default {
 </script>
 
 
-:::demo
+:::demo 提示信息
 ```html
-  <za-panel>
-    <za-panel-header title="提示信息"></za-panel-header>
-    <za-panel-body>
-      <za-cell>
-        <za-button size='xs' theme='error' slot='description' @click='visible1 = true'>开启</za-button>
-        错误提示
-      </za-cell>
-      <za-cell>
-        <za-button size='xs' theme='success' slot='description' @click='visible2 = true'>开启</za-button>
-        成功提示(close-on-click-modal)
-      </za-cell>
-      <za-cell>
-        <za-button size='xs' slot='description' @click='visible3 = true'>开启</za-button>
-        指定关闭时间
-      </za-cell>
-    </za-panel-body>
-  </za-panel>
-
-  <za-panel>
-    <za-panel-header title="加载中"></za-panel-header>
-    <za-panel-body>
-      <za-cell>
-        <za-button size='xs' slot='description' @click='visible4 = true'>开启</za-button>
-        Loading
-      </za-cell>
-    </za-panel-body>
-  </za-panel>
-</div>
-
-<za-toast :visible.sync='visible1' @close='toastClose'>默认3秒自动关闭</za-toast>
-<za-toast :visible.sync='visible2' @close='toastClose' :close-on-click-modal='true'>
-  <div class='box'>
-    <za-icon type="right-round-fill" class='box-icon' />
-    <div class='box-text'>预约成功</div>
-  </div>
-</za-toast>
-<za-toast :visible.sync='visible3' @close='toastClose' :duration='10000'>指定10秒自动关闭</za-toast>
-<za-loading :visible.sync='visible4'></za-loading>
+  <za-cell>
+    <za-button size='xs' theme='error' slot='description' @click='visible1 = true'>开启</za-button>
+    错误提示
+  </za-cell>
+  <za-cell>
+    <za-button size='xs' theme='success' slot='description' @click='visible2 = true'>开启</za-button>
+    成功提示(close-on-click-modal)
+  </za-cell>
+  <za-cell>
+    <za-button size='xs' slot='description' @click='visible3 = true'>开启</za-button>
+    指定关闭时间
+  </za-cell>
+  <za-toast :visible.sync='visible1' @close='toastClose'>默认3秒自动关闭</za-toast>
+  <za-toast :visible.sync='visible2' @close='toastClose' :close-on-click-modal='true'>
+    <div class='box'>
+      <za-icon type="right-round-fill" class='box-icon' ></za-icon>
+      <div class='box-text'>预约成功</div>
+    </div>
+  </za-toast>
+  <za-toast :visible.sync='visible3' @close='toastClose' :duration='10000'>指定10秒自动关闭</za-toast>
 ```
 :::
 
-::: api
+:::demo 加载中
+```html
+  <za-cell>
+    <za-button size='xs' slot='description' @click='visible4 = true'>开启</za-button>
+    Loading
+  </za-cell>
+  <za-loading :visible.sync='visible4'></za-loading>
+```
+:::
+
 
 `zarm-vue 为 Vue.prototype 上添加了全局方法：$zaToast 因此在 vue instance 内可以采用
 this.$zaToast(messgae, options) 或 this.$zaToast(options) 的方式调用`。
@@ -112,5 +103,3 @@ export default{
 | 事件名称 | 说明 | 回调参数 |
 | :--- | :--- | :--- |
 | close | toast关闭时触发 | 1.reason (可能值: clickaway, timeout) 2.event 事件对象(只有clickaway时有) |
-
-:::

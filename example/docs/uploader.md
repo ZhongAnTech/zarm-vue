@@ -41,61 +41,54 @@ export default {
 </script>
 
 
-:::demo
+:::demo 点击一次选择单张
 ```html
-    <za-panel>
-      <za-panel-header title="点击一次选择单张"></za-panel-header>
-      <za-panel-body>
-        <div class="uploader-wrapper" style="display:flex;padding:15px;">
-          <za-badge sup v-for= '(i, index) in files' class="uploader-item" shape='circle' :key='index' @click='remove(index)' style="display:inline-block;margin-right:15px;align-items: center;justify-content: center;width:74px;height:74px;border:2px dashed #ddd;">
-            <za-icon type='wrong' slot='text' ></za-icon>
-            <div class='uploader-item-img'>
-              <a :href="i.thumbnail" target="_blank"><img :src="i.thumbnail" alt=""></a>
-            </div>
-          </za-badge>
-          <div class="uploader-wrapper">
-            <za-uploader
-              class="uploader-btn" style="display:flex;align-items: center;justify-content: center;width:74px;height:74px;border:2px dashed #ddd;"
-              accept="image/jpg, image/jpeg, image/gif, image/png"
-              @change='handleChange'>
-              <za-icon type="add" style="fontSize:30px;"/>
-            </za-uploader>
-          </div>
+    <div class="uploader-wrapper" style="display:flex;padding:15px;">
+      <za-badge sup v-for= '(i, index) in files' class="uploader-item" shape='circle' :key='index' @click='remove(index)' style="display:inline-block;margin-right:15px;align-items: center;justify-content: center;width:74px;height:74px;border:2px dashed #ddd;">
+        <za-icon type='wrong' slot='text' ></za-icon>
+        <div class='uploader-item-img'>
+          <a :href="i.thumbnail" target="_blank"><img :src="i.thumbnail" alt=""></a>
         </div>
-      </za-panel-body>
-    </za-panel>
+      </za-badge>
+      <div class="uploader-wrapper">
+        <za-uploader
+          class="uploader-btn" style="display:flex;align-items: center;justify-content: center;width:74px;height:74px;border:2px dashed #ddd;"
+          accept="image/jpg, image/jpeg, image/gif, image/png"
+          @change='handleChange'>
+          <za-icon type="add" style="fontSize:30px;"/>
+        </za-uploader>
+      </div>
+    </div>
+```
+:::
 
-    <za-panel>
-      <za-panel-header title="点击一次选择多张"></za-panel-header>
-      <za-panel-body>
-        <div class="uploader-wrapper" style="display:flex;padding:15px;">
-          <za-badge sup v-for= '(i, index) in fileList' class="uploader-item" shape='circle' :key='index' @click='remove2(index)' style="display:inline-block;margin-right:15px;align-items: center;justify-content: center;width:74px;height:74px;border:2px dashed #ddd;">
-            <za-icon type='wrong' slot='text'></za-icon>
-            <div class='uploader-item-img'>
-              <a :href="i.thumbnail" target="_blank"><img :src="i.thumbnail" alt=""></a>
-            </div>
-          </za-badge>
-          <div class="uploader-wrapper">
-            <za-uploader
-              v-if='fileList.length < 5'
-              multiple
-              class="uploader-btn"
-              style="display:flex;align-items: center;justify-content: center;width:74px;height:74px;border:2px dashed #ddd;"
-              :before-change='beforeChange'
-              accept="image/jpg, image/jpeg, image/gif, image/png"
-              @change='handleChangeMulti'>
-              <za-icon type="add" />
-            </za-uploader>
-          </div>
+::: demo 点击一次选择多张
+```html
+    <div class="uploader-wrapper" style="display:flex;padding:15px;">
+      <za-badge sup v-for= '(i, index) in fileList' class="uploader-item" shape='circle' :key='index' @click='remove2(index)' style="display:inline-block;margin-right:15px;align-items: center;justify-content: center;width:74px;height:74px;border:2px dashed #ddd;">
+        <za-icon type='wrong' slot='text'></za-icon>
+        <div class='uploader-item-img'>
+          <a :href="i.thumbnail" target="_blank"><img :src="i.thumbnail" alt=""></a>
         </div>
-      </za-panel-body>
-    </za-panel>
-  <za-toast :visible.sync='visible' :duration='1000'>删除成功</za-toast>
+      </za-badge>
+      <div class="uploader-wrapper">
+        <za-uploader
+          v-if='fileList.length < 5'
+          multiple
+          class="uploader-btn"
+          style="display:flex;align-items: center;justify-content: center;width:74px;height:74px;border:2px dashed #ddd;"
+          :before-change='beforeChange'
+          accept="image/jpg, image/jpeg, image/gif, image/png"
+          @change='handleChangeMulti'>
+          <za-icon type="add" />
+        </za-uploader>
+      </div>
+    </div>
+    <za-toast :visible.sync='visible' :duration='1000'>删除成功</za-toast>
 ```
 :::
 
 
-::: api
 ### API
 
 #### Uploader
@@ -114,4 +107,3 @@ export default {
 | 事件名称 | 说明 | 回调参数 |
 | :--- | :--- | :--- |
 | change | 选择文件后触发的事件 | 1.file对象 |
-:::

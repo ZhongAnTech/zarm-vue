@@ -12,12 +12,8 @@ export default {
 };
 </script>
 
-:::demo 
+:::demo 基本
 ```html
-  <za-panel>
-    <za-panel-header title="基本">
-    </za-panel-header>
-    <za-panel-body>
       <za-cell has-arrow title="点状">
         <za-badge slot='description' shape='dot' @click='handleClick'></za-badge>
       </za-cell>
@@ -33,12 +29,12 @@ export default {
           <za-badge text='999+' shape='round'></za-badge>
         </span>
       </za-cell>
-    </za-panel-body>
-  </za-panel>
-  <za-panel>
-    <za-panel-header title='上标位置'>
-    </za-panel-header>
-    <za-panel-body class="custom-panel">
+```
+:::
+
+::: demo 上标位置
+```html
+    <div class="custom-panel">
       <div class="box">
         <za-badge sup shape='dot' @click='handleClick'><div class="box-item" /></za-badge>
       </div>
@@ -51,13 +47,10 @@ export default {
       <div class="box">
         <za-badge sup shape='round' text='999+' @click='handleClick'><div class="box-item" /></za-badge>
       </div>
-
-    </za-panel-body>
-  </za-panel>
+    </div>
 ```
 :::
 
-::: api
 ### API
 
 #### Badge Attributes
@@ -74,4 +67,3 @@ export default {
 | 事件名称 | 说明 | 回调参数 |
 | :--- | :--- | :--- |
 | click | click时触发的事件 | event 事件对象 |
-:::

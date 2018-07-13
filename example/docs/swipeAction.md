@@ -27,40 +27,34 @@ export default {
 };
 </script>
 
-:::demo
+:::demo 基本
 ```html
-    <za-panel>
-      <za-panel-header title="基本"></za-panel-header>
-      <za-panel-body>
-        <za-swipe-action
-          autoClose
-          @close='handleClose'
-          @open='handleOpen'
-          :right="action1">
-          <za-cell>左滑看看（自动关闭）</za-cell>
-        </za-swipe-action>
+    <za-swipe-action
+      autoClose
+      @close='handleClose'
+      @open='handleOpen'
+      :right="action1">
+      <za-cell>左滑看看（自动关闭）</za-cell>
+    </za-swipe-action>
 
-        <za-swipe-action
-          @close='handleClose'
-          @open='handleOpen'
-          :left="action1">
-          <za-cell>右滑看看</za-cell>
-        </za-swipe-action>
+    <za-swipe-action
+      @close='handleClose'
+      @open='handleOpen'
+      :left="action1">
+      <za-cell>右滑看看</za-cell>
+    </za-swipe-action>
 
-        <za-swipe-action
-          @close='handleClose'
-          @open='handleOpen'
-          :left="action1"
-          :right="action1">
-          <za-cell>左右都能滑动</za-cell>
-        </za-swipe-action>
-      </za-panel-body>
-    </za-panel>
+    <za-swipe-action
+      @close='handleClose'
+      @open='handleOpen'
+      :left="action1"
+      :right="action1">
+      <za-cell>左右都能滑动</za-cell>
+    </za-swipe-action>
 ```
 :::
 
 
-::: api
 ### API
 
 #### SwipeAction Attributes
@@ -77,4 +71,3 @@ export default {
 | :--- | :--- | :--- |
 | open | 打开时的事件 | direaction, 可能值left, right |
 | close | 关闭时的事件 | reason, 可能值retract, touchaway |
-:::
