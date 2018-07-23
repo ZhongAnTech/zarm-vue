@@ -91,9 +91,6 @@ export default {
     },
   },
   methods: {
-    getCurrentPosition(e) {
-      return e.touches[0].pageX;
-    },
     onDragStart() {
       if (this.disabled || this.isClosing) {
         return;
