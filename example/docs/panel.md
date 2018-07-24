@@ -24,10 +24,10 @@ export default {
 ```
 :::
 
-:::demo 带更多按钮
+:::demo 带标题
 ```html
       <za-panel>
-        <za-panel-header title="带更多按钮">
+        <za-panel-header title="标题">
           <a slot='more' @click='handleClick'>更多</a>
         </za-panel-header>
         <za-panel-body>

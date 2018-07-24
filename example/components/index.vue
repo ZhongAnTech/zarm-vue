@@ -37,14 +37,14 @@
           <za-cell hasArrow @click="$router.push('/switch')">
             开关 Switch
           </za-cell>
-          <za-cell hasArrow @click="$router.push('/uploader')">
-            上传组件 Uploader
+          <za-cell hasArrow @click="$router.push('/filepicker')">
+            文件选择器 FilePicker
           </za-cell>
           <za-cell hasArrow @click="$router.push('/slider')">
-            滑块组件 Slider
+            滑动输入框 Slider
           </za-cell>
            <za-cell hasArrow @click="$router.push('/searchbar')">
-            搜索栏组件 SearchBar
+            搜索栏 SearchBar
           </za-cell>
         </za-panel-body>
       </za-panel>
@@ -79,8 +79,8 @@
       <za-panel>
         <za-panel-header title="数据展示"/>
         <za-panel-body>
-          <za-cell hasArrow @click="$router.push('/accordion')">
-            手风琴 Accordion
+          <za-cell hasArrow @click="$router.push('/collapse')">
+            折叠面板 Collapse
           </za-cell>
           <za-cell hasArrow @click="$router.push('/badge')">
             徽标 Badge

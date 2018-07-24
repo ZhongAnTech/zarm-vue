@@ -3,14 +3,14 @@ import Emitter from '@/mixins/emitter';
 import findParent from '@/mixins/find-parent';
 
 export default {
-  name: 'zaAccordionItem',
+  name: 'zaCollapseItem',
   mixins: [Emitter, findParent],
   props: {
     prefixCls: {
       type: String,
-      default: 'za-accordion',
+      default: 'za-collapse',
     },
-    aiTag: {
+    activeKey: {
       type: String,
       default: '',
     },
@@ -28,33 +28,33 @@ export default {
     };
   },
   created() {
-    this.findParent('zaAccordion');
+    this.findParent('zaCollapse');
     this.setDefaultActive();
   },
   computed: {
-    itemActiveTag() {
-      let itemActiveTag;
-      if (!this.aiTag) {
-        itemActiveTag = -1;
+    itemActiveKey() {
+      let itemActiveKey;
+      if (!this.activeKey) {
+        itemActiveKey = -1;
       } else {
-        itemActiveTag = this.aiTag;
+        itemActiveKey = this.activeKey;
       }
-      return itemActiveTag;
+      return itemActiveKey;
     },
   },
   methods: {
-    isActive(tag, activeTag) {
-      const itemTag = tag || this.aiTag;
-      this.itemActiveTags = (activeTag !== undefined) ? activeTag : [];
-      const result = this.itemActiveTags.indexOf(itemTag) > -1;
+    isActive(tag, activeKey) {
+      const itemTag = tag || this.activeKey;
+      this.itemActiveKeys = (activeKey !== undefined) ? activeKey : [];
+      const result = this.itemActiveKeys.indexOf(itemTag) > -1;
       return result;
     },
     setDefaultActive() {
-      const { parent, itemActiveTag } = this;
+      const { parent, itemActiveKey } = this;
       this.itemAnimated = parent.animated;
       this.itemOpen = parent.open;
       this.multiple = parent.multiple;
-      this.active = this.isActive(itemActiveTag, parent.activeTag);
+      this.active = this.isActive(itemActiveKey, parent.activeKey);
       this.$nextTick(() => {
         if (this.itemAnimated) {
           this.setAnimateStyle(this.active);
@@ -89,7 +89,7 @@ export default {
         return;
       }
       this.setActive();
-      parent.onItemChange(this.itemActiveTag);
+      parent.onItemChange(this.itemActiveKey);
     },
     setAnimateStyle(active) {
       const newActive = active;

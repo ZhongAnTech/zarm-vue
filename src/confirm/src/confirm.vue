@@ -42,7 +42,7 @@ export default {
     },
     radius: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     animationDuration: {
       type: Number,

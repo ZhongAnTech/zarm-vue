@@ -6,13 +6,13 @@
 
 <script>
 export default {
-  name: 'zaAccordion',
+  name: 'zaCollapse',
   props: {
     prefixCls: {
       type: String,
-      default: 'za-accordion',
+      default: 'za-collapse',
     },
-    defaultActiveTag: {
+    defaultActiveKey: {
       type: Array,
       default: () => [],
     },
@@ -31,34 +31,34 @@ export default {
   },
   data() {
     return {
-      activeTag: [],
+      activeKey: [],
     };
   },
   created() {
-    this.activeTag = this.getActiveIndex();
+    this.activeKey = this.getActiveIndex();
   },
   methods: {
     onItemChange(key) {
-      const { multiple, activeTag } = this;
-      const hasKey = activeTag.indexOf(key) > -1;
+      const { multiple, activeKey } = this;
+      const hasKey = activeKey.indexOf(key) > -1;
 
       let newActiveIndex = [];
       if (!multiple) {
         if (hasKey) {
-          newActiveIndex = activeTag.filter(i => i !== key);
+          newActiveIndex = activeKey.filter(i => i !== key);
         } else {
-          newActiveIndex = activeTag.slice(0);
+          newActiveIndex = activeKey.slice(0);
           newActiveIndex.push(key);
         }
       } else {
         newActiveIndex = hasKey ? [] : [key];
       }
-      this.activeTag = newActiveIndex;
+      this.activeKey = newActiveIndex;
       this.$emit('change', key);
     },
     getActiveIndex() {
-      const { defaultActiveTag, multiple } = this;
-      const defaultIndex = (defaultActiveTag !== undefined) ? defaultActiveTag : [];
+      const { defaultActiveKey, multiple } = this;
+      const defaultIndex = (defaultActiveKey !== undefined) ? defaultActiveKey : [];
       return multiple ? [defaultIndex[0]] : defaultIndex;
     },
   },

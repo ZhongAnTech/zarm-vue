@@ -1,8 +1,8 @@
 <template lang="html">
-  <Container class="uploader-page">
-    <PageHeader title="上传组件 Uploader" />
+  <Container class="zaCollapse-page">
+    <PageHeader title="折叠面板 zaCollapse" />
     <Demo></Demo>
-    <PageFooter />
+    <PageFooter/>
   </Container>
 </template>
 
@@ -10,9 +10,7 @@
 import Container from '../common/Container.vue';
 import PageHeader from '../common/PageHeader.vue';
 import PageFooter from '../common/PageFooter.vue';
-import Demo from '../docs/uploader.md';
-
-import '../styles/pages/UploaderPage.scss';
+import Demo from '../docs/collapse.md';
 
 export default {
   components: {

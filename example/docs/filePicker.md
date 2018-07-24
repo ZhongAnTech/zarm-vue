@@ -51,12 +51,12 @@ export default {
         </div>
       </za-badge>
       <div class="uploader-wrapper">
-        <za-uploader
+        <za-file-picker
           class="uploader-btn" style="display:flex;align-items: center;justify-content: center;width:74px;height:74px;border:2px dashed #ddd;"
           accept="image/jpg, image/jpeg, image/gif, image/png"
           @change='handleChange'>
           <za-icon type="add" style="fontSize:30px;"/>
-        </za-uploader>
+        </za-file-picker>
       </div>
     </div>
 ```
@@ -72,7 +72,7 @@ export default {
         </div>
       </za-badge>
       <div class="uploader-wrapper">
-        <za-uploader
+        <za-file-picker
           v-if='fileList.length < 5'
           multiple
           class="uploader-btn"
@@ -81,7 +81,7 @@ export default {
           accept="image/jpg, image/jpeg, image/gif, image/png"
           @change='handleChangeMulti'>
           <za-icon type="add" />
-        </za-uploader>
+        </za-file-picker>
       </div>
     </div>
     <za-toast :visible.sync='visible' :duration='1000'>删除成功</za-toast>
@@ -95,7 +95,7 @@ export default {
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-uploader | | 类名前缀 |
+| prefixCls | string | za-filepicker | | 类名前缀 |
 | accept | string | | | 允许上传的附件格式 |
 | multiple | bool | false | | 是否多选 |
 | capture | string | | 照相机`camera`, 摄像机`camcorder`, 录音`microphone`| 唤起的原生应用 |

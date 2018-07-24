@@ -11,7 +11,7 @@ import Container from '../common/Container.vue';
 import PageHeader from '../common/PageHeader.vue';
 import PageFooter from '../common/PageFooter.vue';
 import Demo from '../docs/panel.md';
-
+import '../styles/pages/PanelPage.scss';
 export default {
   components: {
     Container,

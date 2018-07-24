@@ -1,19 +1,19 @@
-import Accordion from '@/accordion';
+import Collapse from '@/collapse';
 import { createTest, createVue, destroyVM } from '../util';
 
-describe('Accordion', () => {
+describe('collapse', () => {
   let vm;
   afterEach(() => {
     destroyVM(vm);
   });
 
   it('create', () => {
-    vm = createTest(Accordion, {
-      prefixCls: 'za-accordion',
+    vm = createTest(Collapse, {
+      prefixCls: 'za-collapse',
     }, true);
     const el = vm.$el;
     vm.$nextTick(() => { // eslint-disable-line no-unused-vars
-      expect(el.querySelector('.za-accordion')).to.exsit;
+      expect(el.querySelector('.za-collapse')).to.exsit;
     });
   });
 
@@ -21,26 +21,26 @@ describe('Accordion', () => {
     let index;
     vm = createVue({
       template: `
-        <za-accordion @change='handleClick'>
-          <za-accordion-item title="50元套餐" aiTag='0'>
+        <za-collapse @change='handleClick'>
+          <za-collapse-item title="50元套餐" activeKey='0'>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
-          </za-accordion-item>
-          <za-accordion-item title="100元套餐" aiTag='1'>
+          </za-collapse-item>
+          <za-collapse-item title="100元套餐" activeKey='1'>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
-          </za-accordion-item>
-          <za-accordion-item title="200元套餐" aiTag='2'>
+          </za-collapse-item>
+          <za-collapse-item title="200元套餐" activeKey='2'>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
-          </za-accordion-item>
-        </za-accordion>
+          </za-collapse-item>
+        </za-collapse>
       `,
       methods: {
         handleClick(n) {
@@ -48,7 +48,7 @@ describe('Accordion', () => {
         },
       },
     }, true);
-    const titleEl = vm.$el.querySelector('.za-accordion-item-title');
+    const titleEl = vm.$el.querySelector('.za-collapse-item-title');
     titleEl.click();
     vm.$nextTick(() => { // eslint-disable-line no-unused-vars
       expect(index).to.equal('0');
@@ -56,13 +56,13 @@ describe('Accordion', () => {
   });
 
   it('activeTag', done => {
-    vm = createTest(Accordion, {
-      prefixCls: 'za-accordion',
-      defaultActiveTag: ['0'],
+    vm = createTest(Collapse, {
+      prefixCls: 'za-collapse',
+      defaultActiveKey: ['0'],
     }, true);
     vm.$nextTick(() => { // eslint-disable-line no-unused-vars
-      expect(vm.activeTag[0]).to.exsit;
-      expect(vm.activeTag[0] === '0').to.be.true;
+      expect(vm.activeKey[0]).to.exsit;
+      expect(vm.activeKey[0] === '0').to.be.true;
       done();
     });
   });
@@ -70,60 +70,60 @@ describe('Accordion', () => {
   it('animated', () => {
     vm = createVue({
       template: `
-        <za-accordion animated>
-          <za-accordion-item title="50元套餐" aiTag='0'>
+        <za-collapse animated>
+          <za-collapse-item title="50元套餐" activeKey='0'>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
-          </za-accordion-item>
-          <za-accordion-item title="100元套餐" aiTag='1'>
+          </za-collapse-item>
+          <za-collapse-item title="100元套餐" activeKey='1'>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
-          </za-accordion-item>
-          <za-accordion-item title="200元套餐" aiTag='2'>
+          </za-collapse-item>
+          <za-collapse-item title="200元套餐" activeKey='2'>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
-          </za-accordion-item>
-        </za-accordion>
+          </za-collapse-item>
+        </za-collapse>
       `,
     }, true);
     const el = vm.$el;
 
-    expect(el.querySelector('.za-accordion-item')).to.exist;
-    expect(el.querySelector('.za-accordion-item-content')).to.exist;
+    expect(el.querySelector('.za-collapse-item')).to.exist;
+    expect(el.querySelector('.za-collapse-item-content')).to.exist;
 
-    const itemContent = el.querySelector('.za-accordion-item-content');
-    expect(itemContent.classList.contains('za-accordion-item-content-anim')).to.be.true;
+    const itemContent = el.querySelector('.za-collapse-item-content');
+    expect(itemContent.classList.contains('za-collapse-item-content-anim')).to.be.true;
   });
 
   it('defaultActiveTag', () => {
     vm = createVue({
       template: `
-        <za-accordion animated :defaultActiveTag='defaultActive'>
-          <za-accordion-item title="50元套餐" aiTag='1'>
+        <za-collapse animated :defaultActiveKey='defaultActive'>
+          <za-collapse-item title="50元套餐" activeKey='1'>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
-          </za-accordion-item>
-          <za-accordion-item title="100元套餐" aiTag='2'>
+          </za-collapse-item>
+          <za-collapse-item title="100元套餐" activeKey='2'>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
-          </za-accordion-item>
-          <za-accordion-item title="200元套餐" aiTag='3'>
+          </za-collapse-item>
+          <za-collapse-item title="200元套餐" activeKey='3'>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
-          </za-accordion-item>
-        </za-accordion>
+          </za-collapse-item>
+        </za-collapse>
       `,
       data() {
         return {
@@ -132,7 +132,7 @@ describe('Accordion', () => {
       },
     }, true);
     const el = vm.$el;
-    const item = el.querySelectorAll('.za-accordion-item');
+    const item = el.querySelectorAll('.za-collapse-item');
     const activeArr = vm.defaultActive;
     activeArr.forEach((arr, index) => {
       expect(item[index].classList.contains('active')).to.be.true;
@@ -142,26 +142,26 @@ describe('Accordion', () => {
   it('multiple', done => {
     vm = createVue({
       template: `
-        <zaAccordion animated  :multiple='true' :defaultActiveTag='defaultActive'>
-          <zaAccordionItem title="50元套餐" aiTag='0'>
+        <za-collapse animated  :multiple='true' :defaultActiveKey='defaultActive'>
+          <za-collapse-item title="50元套餐" activeKey='0'>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
-          </zaAccordionItem>
-          <zaAccordionItem title="100元套餐" aiTag='1'>
+          </za-collapse-item>
+          <za-collapse-item title="100元套餐" activeKey='1'>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
-          </zaAccordionItem>
-          <zaAccordionItem title="200元套餐" aiTag='2'>
+          </za-collapse-item>
+          <za-collapse-item title="200元套餐" activeKey='2'>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
-          </zaAccordionItem>
-        </zaAccordion>
+          </za-collapse-item>
+        </za-collapse>
       `,
       data() {
         return {
@@ -169,10 +169,10 @@ describe('Accordion', () => {
         };
       },
     }, true);
-    const item = vm.$el.querySelectorAll('.za-accordion-item-title');
+    const item = vm.$el.querySelectorAll('.za-collapse-item-title');
     item[1].click();
     vm.$nextTick(() => { // eslint-disable-line no-unused-vars
-      const curActiveItem = vm.$el.querySelectorAll('.za-accordion-item')[1];
+      const curActiveItem = vm.$el.querySelectorAll('.za-collapse-item')[1];
       expect(curActiveItem.classList.contains('active')).to.be.true;
       done();
     });
@@ -181,27 +181,27 @@ describe('Accordion', () => {
   it('open', () => {
     vm = createVue({
       template: `
-        <za-accordion open>
-          <za-accordion-item title="50元套餐">
+        <za-collapse open>
+          <za-collapse-item title="50元套餐">
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
-          </za-accordion-item>
-          <za-accordion-item title="100元套餐">
+          </za-collapse-item>
+          <za-collapse-item title="100元套餐">
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
-          </za-accordion-item>
-          <za-accordion-item title="200元套餐">
+          </za-collapse-item>
+          <za-collapse-item title="200元套餐">
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
-          </za-accordion-item>
-        </za-accordion-item>
-      </za-accordion>
+          </za-collapse-item>
+        </za-collapse-item>
+      </za-collapse>
       `,
       data() {
         return {
@@ -209,10 +209,10 @@ describe('Accordion', () => {
       },
     }, true);
     const el = vm.$el;
-    const item = el.querySelectorAll('.za-accordion-item');
+    const item = el.querySelectorAll('.za-collapse-item');
     // 验证初始状态全部打开, 验证无箭头
     expect(item[0].classList.contains('active')).to.be.true;
-    expect(item[0].querySelector('.za-accordion-item-arrow').classList.contains('za-accordion-item-arrow-hidden')).to.be.true;
+    expect(item[0].querySelector('.za-collapse-item-arrow').classList.contains('za-collapse-item-arrow-hidden')).to.be.true;
     // 验证点击后不收缩
     item[0].click();
     expect(item[0].classList.contains('active')).to.be.true;

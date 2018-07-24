@@ -33,11 +33,11 @@
 import handleFileInfo from './util';
 
 export default {
-  name: 'zaUploader',
+  name: 'zaFilePicker',
   props: {
     prefixCls: {
       type: String,
-      default: 'za-uploader',
+      default: 'za-filepicker',
     },
     disabled: {
       type: Boolean,

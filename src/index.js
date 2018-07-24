@@ -1,5 +1,5 @@
-import Accordion from '../src/accordion';
-import AccordionItem from '../src/accordion-item';
+import Collapse from '../src/collapse';
+import CollapseItem from '../src/collapse-item';
 import Actionsheet from '../src/actionsheet';
 import Alert from '../src/alert';
 import Badge from '../src/badge';
@@ -48,12 +48,12 @@ import Tabs from '../src/tabs';
 import TabPane from '../src/tab-pane';
 import Toast from '../src/toast';
 import Tooltip from '../src/tooltip';
-import Uploader from '../src/uploader';
+import FilePicker from '../src/file-picker';
 
-const version = '1.2.1';
+const version = '2.0.0';
 const components = [
-  Accordion,
-  AccordionItem,
+  Collapse,
+  CollapseItem,
   Actionsheet,
   Alert,
   Badge,
@@ -102,7 +102,7 @@ const components = [
   TabPane,
   Toast,
   Tooltip,
-  Uploader,
+  FilePicker,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -126,8 +126,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export {
   install,
-  Accordion,
-  AccordionItem,
+  Collapse,
+  CollapseItem,
   Actionsheet,
   Alert,
   Badge,
@@ -176,7 +176,7 @@ export {
   TabPane,
   Toast,
   Tooltip,
-  Uploader,
+  FilePicker,
 };
 
 export default {
