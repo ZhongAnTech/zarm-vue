@@ -5,14 +5,12 @@
 </template>
 
 <script>
-// let itemId = 0;
-
 export default {
-  name: 'zaSwipeItem',
+  name: 'zaCarouselItem',
   props: {
     prefixCls: {
       type: String,
-      default: 'za-swipe', // naming different from zarm
+      default: 'za-carousel', // naming different from zarm
     },
   },
 };

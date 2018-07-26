@@ -38,9 +38,9 @@ import Slider from '../src/slider';
 import Spinner from '../src/spinner';
 import StackPicker from '../src/stack-picker';
 import Stepper from '../src/stepper';
-import Swipe from '../src/swipe';
+import Carousel from '../src/carousel';
 import SwipeAction from '../src/swipe-action';
-import SwipeItem from '../src/swipe-item';
+import CarouselItem from '../src/carousel-item';
 import Switch from '../src/switch';
 import Radio from '../src/radio';
 import RadioGroup from '../src/radio-group';
@@ -94,9 +94,9 @@ const components = [
   Spinner,
   StackPicker,
   Stepper,
-  Swipe,
+  Carousel,
   SwipeAction,
-  SwipeItem,
+  CarouselItem,
   Switch,
   Tabs,
   TabPane,
@@ -168,9 +168,9 @@ export {
   Spinner,
   StackPicker,
   Stepper,
-  Swipe,
+  Carousel,
   SwipeAction,
-  SwipeItem,
+  CarouselItem,
   Switch,
   Tabs,
   TabPane,

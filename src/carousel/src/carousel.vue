@@ -1,15 +1,16 @@
 <script>
+import { guid } from '@/utils/misc';
 import zaDrag from '@/drag';
 
 export default {
-  name: 'zaSwipe',
+  name: 'zaCarousel',
   components: {
     zaDrag,
   },
   props: {
     prefixCls: {
       type: String,
-      default: 'za-swipe', // naming different from zarm
+      default: 'za-carousel', // naming different from zarm
     },
     direction: {
       type: String,
@@ -86,8 +87,8 @@ export default {
   mounted() {
     this.startAutoPlay();
     window.addEventListener('resize', this.resize);
-    this.$refs.swipeItems.addEventListener('webkitTransitionEnd', this.transitionEnd);
-    this.$refs.swipeItems.addEventListener('transitionend', this.transitionEnd);
+    this.$refs.carouselItems.addEventListener('webkitTransitionEnd', this.transitionEnd);
+    this.$refs.carouselItems.addEventListener('transitionend', this.transitionEnd);
     // 设置起始位置编号
     this.onJumpTo(this.currentActiveIndex);
   },
@@ -100,8 +101,8 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.resize);
-    this.$refs.swipeItems.removeEventListener('webkitTransitionEnd', this.transitionEnd);
-    this.$refs.swipeItems.removeEventListener('transitionend', this.transitionEnd);
+    this.$refs.carouselItems.removeEventListener('webkitTransitionEnd', this.transitionEnd);
+    this.$refs.carouselItems.removeEventListener('transitionend', this.transitionEnd);
   },
   methods: {
     onDragStart() {
@@ -164,7 +165,7 @@ export default {
         return;
       }
 
-      const dom = this.$refs.swipeItems;
+      const dom = this.$refs.carouselItems;
 
       const moveDistanceRatio = this.isX
         ? Math.abs(offsetX / dom.offsetWidth)
@@ -226,7 +227,7 @@ export default {
     },
     // 移动到指定编号的位置
     onMoveTo(index, speed) {
-      const dom = this.$refs.swipeItems;
+      const dom = this.$refs.carouselItems;
       if (!dom) return;
 
       this.translateX = -dom.offsetWidth * (index + this.loop);
@@ -243,7 +244,7 @@ export default {
     },
     // 执行过渡动画
     doTransition(offset, duration) {
-      const dom = this.$refs.swipeItems;
+      const dom = this.$refs.carouselItems;
       let x = 0;
       let y = 0;
 
@@ -260,7 +261,7 @@ export default {
     },
     transitionEnd() {
       const activeIndex = this.currentActiveIndex;
-      const dom = this.$refs.swipeItems;
+      const dom = this.$refs.carouselItems;
       this.translateX = -dom.offsetWidth * (activeIndex + this.loop);
       this.translateY = -dom.offsetHeight * (activeIndex + this.loop);
       this.doTransition({ x: this.translateX, y: this.translateY }, 0);
@@ -278,14 +279,14 @@ export default {
     },
     // remove text vnode
     validSlotLength() {
-      // swipe use swipe-item as direct children
+      // carousel use carousel-item as direct children
       return this.validSlots().length;
     },
     validSlots() {
-      // fix tabs use canSwipe bug
+      // fix tabs use cancarousel bug
       return this.$slots.default
         .filter(d => d.componentOptions &&
-        (d.componentOptions.tag === 'za-swipe-item' ||
+        (d.componentOptions.tag === 'za-carousel-item' ||
         d.componentOptions.tag === 'za-tab-pane'));
     },
   },
@@ -314,7 +315,7 @@ export default {
       cloned.context = vnode.context;
       cloned.ns = vnode.ns;
       cloned.isStatic = vnode.isStatic;
-      cloned.key = vnode.key;
+      cloned.key = vnode.key + guid();
       return cloned;
     }
 
@@ -341,7 +342,7 @@ export default {
           dragMove={onDragMove}
           dragEnd={onDragEnd}>
           <div
-            ref='swipeItems'
+            ref='carouselItems'
             class={`${prefixCls}-items`}
             style={itemsStyle}>
             {lastItem}

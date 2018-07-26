@@ -1,6 +1,6 @@
 <template lang="html">
-  <Container class="swipe-page">
-    <PageHeader title="图片轮播 swipe" />
+  <Container class="carousel-page">
+    <PageHeader title="走马灯 carousel" />
     <Demo></Demo>
     <PageFooter />
   </Container>
@@ -10,8 +10,8 @@
 import Container from '../common/Container.vue';
 import PageHeader from '../common/PageHeader.vue';
 import PageFooter from '../common/PageFooter.vue';
-import Demo from '../docs/swipe.md';
-import '../styles/pages/SwipePage.scss';
+import Demo from '../docs/carousel.md';
+import '../styles/pages/carouselPage.scss';
 
 
 export default {

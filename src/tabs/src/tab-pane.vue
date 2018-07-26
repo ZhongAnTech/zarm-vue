@@ -1,11 +1,11 @@
 <script>
-import zaSwipeItem from '../../swipe-item';
+import zaCarouselItem from '../../carousel-item';
 
 let paneIndex = 0;
 export default {
   name: 'zaTabPane',
   components: {
-    zaSwipeItem,
+    zaCarouselItem,
   },
   props: {
     prefixCls: {
@@ -78,7 +78,7 @@ export default {
       active: name === currentName,
     };
 
-    const panel = canSwipe ? <za-swipe-item>{this.$slots.default}</za-swipe-item>
+    const panel = canSwipe ? <za-carousel-item>{this.$slots.default}</za-carousel-item>
       :
       (
         <div class={`${prefixCls}-panel`}>

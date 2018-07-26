@@ -2,13 +2,13 @@
 // change the name of this component to Tabs (zarm call it Tab)
 import { defaultThemeValidator } from '@/utils/validator';
 import TabNav from './tab-nav';
-import zaSwipe from '../../swipe';
+import zaCarousel from '../../carousel';
 
 export default {
   name: 'zaTabs',
   components: {
     TabNav,
-    zaSwipe,
+    zaCarousel,
   },
   props: {
     prefixCls: {

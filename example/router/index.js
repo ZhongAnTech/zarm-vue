@@ -152,10 +152,10 @@ export default new Router({
       },
     },
     {
-      path: '/swipe',
+      path: '/carousel',
       component: Bundle,
       meta: {
-        mRender: () => import('../components/swipePage.vue')
+        mRender: () => import('../components/carouselPage.vue')
       },
     },
     {

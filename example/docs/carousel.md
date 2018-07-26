@@ -29,10 +29,10 @@ export default {
       console.log(index);
     },
     onJumpTo(){
-      this.$refs.swipe.onJumpTo(0)
+      this.$refs.carousel.onJumpTo(0)
     },
     onSlideTo(){
-      this.$refs.swipe.onSlideTo(2)
+      this.$refs.carousel.onSlideTo(2)
     }
   },
 };
@@ -41,54 +41,55 @@ export default {
 
 :::demo 基本
 ```html
-    <za-swipe
+    <za-carousel
       direction='left'
       @changeStart='handleChangeStart'
       @changeEnd='handleChangeEnd'>
-      <za-swipe-item
+      <za-carousel-item
         :key='index'
         v-for='(i, index) in ITEMS'>
-        <div class='swipe-item-pic'>
+        <div class='carousel-item-pic'>
           <span style="display:block;width:100%;height:100px;text-align:center;line-height:100px;">{{i.img}}</span>
         </div>
-      </za-swipe-item>
-    </za-swipe>
+      </za-carousel-item>
+    </za-carousel>
 ```
 :::
 
 :::demo 纵向
 ```html
-    <za-swipe
+    <za-carousel
+      height='100'
       direction='bottom'
       @changeStart='handleChangeStart'
       @changeEnd='handleChangeEnd'>
-      <za-swipe-item
+      <za-carousel-item
         :key='index'
         v-for='(i, index) in ITEMS'>
-        <div class='swipe-item-pic'>
+        <div class='carousel-item-pic'>
           <span style="display:block;width:100%;height:100px;text-align:center;line-height:100px;">{{i.img}}</span>
         </div>
-      </za-swipe-item>
-    </za-swipe>
+      </za-carousel-item>
+    </za-carousel>
 ```
 :::
 
 :::demo 循环轮播
 ```html
-    <za-swipe
-      ref='swipe'
+    <za-carousel
+      ref='carousel'
       direction='left'
       loop
       @changeStart='handleChangeStart'
       @changeEnd='handleChangeEnd'>
-      <za-swipe-item
+      <za-carousel-item
         :key='index'
         v-for='(i, index) in ITEMS'>
-        <div class='swipe-item-pic'>
+        <div class='carousel-item-pic'>
           <span style="display:block;width:100%;height:100px;text-align:center;line-height:100px;">{{i.img}}</span>
         </div>
-      </za-swipe-item>
-    </za-swipe>
+      </za-carousel-item>
+    </za-carousel>
     <div class="controls" style="text-align:center;padding-bottom:20px;">
       <za-button
         size="sm"
@@ -103,34 +104,34 @@ export default {
 
 :::demo 自动轮播
 ```html
-    <za-swipe
+    <za-carousel
       direction='left'
       loop
       auto-play>
-      <za-swipe-item
+      <za-carousel-item
         :key='index'
         v-for='(i, index) in ITEMS'>
-        <div class='swipe-item-pic'>
+        <div class='carousel-item-pic'>
           <span style="display:block;width:100%;height:100px;text-align:center;line-height:100px;">{{i.img}}</span>
         </div>
-      </za-swipe-item>
-    </za-swipe>
+      </za-carousel-item>
+    </za-carousel>
 ```
 :::
 
 ### API
 
-#### Swipe Attributes
+#### Carousel Attributes
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-swipe | | 类名前缀 |
+| prefixCls | string | za-carousel | | 类名前缀 |
 | direction | string | 'left' | 'left', 'right', 'top', 'bottom' | 滑动方向 |
 | height | number, string | | | 高度 |
 | loop | bool | false | | 是否循环 |
 | autoPlay | bool | false | | 是否自动轮播 |
 
-#### Swipe Events
+#### Carousel Events
 | 事件名称 | 说明 | 回调参数 |
 | :--- | :--- | :--- |
 | changeStart | 动画开始时触发的事件 | index, 当前处于激活状态幻灯片的index值 |
