@@ -65,8 +65,8 @@ export default {
       const { parent, active, multiple, itemAnimated } = this;
       let activeStatus;
       if (multiple) {
-        const accordionItemRefs = parent.$children;
-        accordionItemRefs.forEach((item) => {
+        const collapseItemRefs = parent.$children;
+        collapseItemRefs.forEach((item) => {
           if (item.active) {
             item.active = false;
             setTimeout(() => {
@@ -119,7 +119,7 @@ export default {
   render() {
     const { prefixCls, active, itemOpen, title, itemAnimated, animatedHeight } = this;
     return (
-      <div class={{ [`${prefixCls}-item`]: true, active: active || itemOpen }} ref='accordionItem'>
+      <div class={{ [`${prefixCls}-item`]: true, active: active || itemOpen }} ref='collapseItem'>
         <div class={`${prefixCls}-item-title`} on-click={this.onClickItem}>
           <div>{title}</div>
           <div class={{ [`${prefixCls}-item-arrow`]: true, [`${prefixCls}-item-arrow-hidden`]: itemOpen }}></div>

@@ -8,44 +8,55 @@ describe('Keyboard', () => {
     destroyVM(vm);
   });
 
-  it('create number keyboard', () => {
+  it('create number keyboard', done => {
     vm = createTest(Keyboard, {
       type: 'number',
     }, true);
     const el = vm.$el;
     vm.$nextTick(() => {
-      expect(el.querySelector('.za-keyboard-item').innerText.trim()).to.equal('1');
+      setTimeout(() => {
+        expect(el.querySelector('.za-keyboard-item').innerText.trim()).to.equal('1');
+        done();
+      }, 20);
     });
   });
 
-  it('create price keyboard', () => {
+  it('create price keyboard', done => {
     vm = createTest(Keyboard, {
       type: 'price',
     }, true);
     const el = vm.$el;
     vm.$nextTick(() => {
-      expect(el.querySelector('.za-keyboard-item').innerText.trim()).to.equal('1');
+      setTimeout(() => {
+        expect(el.querySelector('.za-keyboard-item').innerText.trim()).to.equal('1');
+        done();
+      }, 20);
     });
   });
 
-  it('create idcard keyboard', () => {
+  it('create idcard keyboard', done => {
     vm = createTest(Keyboard, {
       type: 'idcard',
     }, true);
     const el = vm.$el;
     vm.$nextTick(() => {
-      expect(el.querySelector('.za-keyboard-item').innerText.trim()).to.equal('1');
+      setTimeout(() => {
+        expect(el.querySelector('.za-keyboard-item').innerText.trim()).to.equal('1');
+        done();
+      }, 20);
     });
   });
 
-  it('create keyboard picker', () => {
+  it('create keyboard picker', done => {
     vm = createTest(KeyboardPicker, {
       type: 'number',
       visible: true,
     }, true);
-    const el = vm.$el;
     vm.$nextTick(() => {
-      expect(el.querySelector('.za-keyboard-item').innerText.trim()).to.equal('1');
+      setTimeout(() => {
+        expect(document.querySelector('.za-keyboard-item').innerText.trim()).to.equal('1');
+        done();
+      }, 20);
     });
   });
 
@@ -63,8 +74,10 @@ describe('Keyboard', () => {
     }, true);
     vm.$el.querySelector('.za-keyboard-item').click();
     vm.$nextTick(() => {
-      expect(result).to.equal('1');
-      done();
+      setTimeout(() => {
+        expect(result).to.equal('1');
+        done();
+      }, 20);
     });
   });
 
@@ -82,8 +95,10 @@ describe('Keyboard', () => {
     }, true);
     vm.$el.querySelector('.za-keyboard-item-ok').click();
     vm.$nextTick(() => {
-      expect(result).to.equal('ok');
-      done();
+      setTimeout(() => {
+        expect(result).to.equal('ok');
+        done();
+      }, 20);
     });
   });
 });

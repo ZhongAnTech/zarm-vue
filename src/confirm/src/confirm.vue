@@ -1,5 +1,5 @@
 <template lang="html">
-  <za-modal ref='modal' :closeOnClickModal='false' :visible='currentVisible' :radius='radius' :animationDuration='animationDuration' :title='title'>
+  <za-modal ref='modal' :get-container="getContainer" :closeOnClickModal='false' :visible='currentVisible' :radius='radius' :animationDuration='animationDuration' :title='title'>
     <div :class='prefixCls'>
       <template v-if='!$slots.default'>{{message}}</template>
       <slot></slot>
@@ -66,6 +66,7 @@ export default {
   data() {
     return {
       currentVisible: this.visible,
+      getContainer: () => document.body,
     };
   },
 };

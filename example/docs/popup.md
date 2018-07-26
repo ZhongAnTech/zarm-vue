@@ -1,4 +1,5 @@
 <script>
+const div1 = document.body;
 export default {
   data() {
     return {
@@ -6,12 +7,14 @@ export default {
       visible2: false,
       visible3: false,
       visible4: false,
+      visible5: false,
     }
   },
   methods: {
     popupClose(reason, event) {
       console.log(reason, event);
     },
+    getContainer: () => div1,
   },
 };
 </script>
@@ -80,6 +83,27 @@ export default {
 ```
 :::
 
+:::demo 设置挂载容器
+```html
+  <za-cell>
+    <za-button size='xs' slot='description' @click='visible5 = true'>开启</za-button>
+    从下方弹出
+  </za-cell>
+
+  <za-popup
+    :visible.sync='visible5'
+    direction="bottom"
+    :get-container="getContainer"
+    @close='popupClose'
+  >
+  <div class="popup-box" style="height: 100%;padding: 20px 20px 100px;background: #fff;">
+    <za-button size="sm" @click='visible5 = false'>设置挂载容器</za-button>
+  </div>
+  </za-popup>
+```
+:::
+
+
 ### API
 
 #### Popup Attributes
@@ -89,6 +113,7 @@ export default {
 | prefixCls | string | za-popup | | 类名前缀 |
 | visible | bool | false | | 是否显示, 支持.sync修饰符 |
 | direction | string | 'bottom' | 'top', 'bottom', 'left', 'right' | 弹出方向 |
+| getContainer | func |  | | 自定义挂载Dom节点 |
 | autoClose | bool | false | | 是否自动关闭 |
 | duration | number | 3000 | | 自动关闭前停留的时间（单位：毫秒） |
 | maskType | string | 'normal' | 'transparent', 'light', 'normal', 'dark' | 遮罩层的类型 |

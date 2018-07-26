@@ -6,7 +6,7 @@ describe('DatePicker', () => {
     destroyVM(vm);
   });
 
-  it('create', done => {
+  it('create', () => {
     vm = createVue({
       template: `
       <za-date-picker
@@ -22,10 +22,8 @@ describe('DatePicker', () => {
         };
       },
     }, true);
-    vm.$el.click();
     vm.$nextTick(() => {
-      expect(vm.visible).to.equal(true);
-      done();
+      expect(vm.$el.querySelector('.za-datepicker')).to.exsit;
     });
   });
 
@@ -49,16 +47,16 @@ describe('DatePicker', () => {
       },
       methods: {
         handleOk(v) {
-          // console.log(v);
           value = v;
         },
       },
     }, true);
-    vm.$el.click();
     vm.$nextTick(() => {
-      vm.$el.querySelector('.za-picker-submit').click();
-      expect(value.getFullYear()).to.equal(2018);
-      done();
+      document.querySelector('.za-picker-submit').click();
+      setTimeout(() => {
+        expect(value.getFullYear()).to.equal(2018);
+        done();
+      }, 20);
     });
   });
 
@@ -87,12 +85,13 @@ describe('DatePicker', () => {
         },
       },
     }, true);
-    vm.$el.click();
     vm.$nextTick(() => {
-      vm.$el.querySelector('.za-picker-submit').click();
-      expect(value.getFullYear()).to.equal(2018);
-      expect(value.getMonth()).to.equal(4);
-      done();
+      document.querySelector('.za-picker-submit').click();
+      setTimeout(() => {
+        expect(value.getFullYear()).to.equal(2018);
+        expect(value.getMonth()).to.equal(4);
+        done();
+      }, 20);
     });
   });
 
@@ -121,11 +120,12 @@ describe('DatePicker', () => {
         },
       },
     }, true);
-    vm.$el.click();
     vm.$nextTick(() => {
-      vm.$el.querySelector('.za-picker-submit').click();
-      expect(value.getMonth()).to.equal(4);
-      done();
+      document.querySelector('.za-picker-submit').click();
+      setTimeout(() => {
+        expect(value.getMonth()).to.equal(4);
+        done();
+      }, 20);
     });
   });
 
@@ -154,12 +154,13 @@ describe('DatePicker', () => {
         },
       },
     }, true);
-    vm.$el.click();
     vm.$nextTick(() => {
-      vm.$el.querySelector('.za-picker-submit').click();
-      expect(value.getHours()).to.equal(9);
-      expect(value.getMinutes()).to.equal(45);
-      done();
+      document.querySelector('.za-picker-submit').click();
+      setTimeout(() => {
+        expect(value.getHours()).to.equal(9);
+        expect(value.getMinutes()).to.equal(45);
+        done();
+      }, 20);
     });
   });
 
@@ -188,12 +189,13 @@ describe('DatePicker', () => {
         },
       },
     }, true);
-    vm.$el.click();
     vm.$nextTick(() => {
-      vm.$el.querySelector('.za-picker-submit').click();
-      expect(value.getHours()).to.equal(9);
-      expect(value.getMinutes()).to.equal(20);
-      done();
+      document.querySelector('.za-picker-submit').click();
+      setTimeout(() => {
+        expect(value.getHours()).to.equal(9);
+        expect(value.getMinutes()).to.equal(20);
+        done();
+      }, 20);
     });
   });
 
@@ -219,10 +221,12 @@ describe('DatePicker', () => {
         },
       },
     }, true);
-    vm.$el.querySelector('.za-picker-submit').click();
     vm.$nextTick(() => {
-      expect(value.getFullYear()).to.equal(2000);
-      done();
+      document.querySelector('.za-picker-submit').click();
+      setTimeout(() => {
+        expect(value.getFullYear()).to.equal(2000);
+        done();
+      }, 20);
     });
   });
 
@@ -251,9 +255,11 @@ describe('DatePicker', () => {
     vm.$nextTick(() => {
       vm.value = '2018-07-06';
       vm.$nextTick(() => {
-        vm.$el.querySelector('.za-picker-submit').click();
-        expect(value.getFullYear()).to.equal(2018);
-        done();
+        document.querySelector('.za-picker-submit').click();
+        setTimeout(() => {
+          expect(value.getFullYear()).to.equal(2018);
+          done();
+        }, 20);
       });
     });
   });

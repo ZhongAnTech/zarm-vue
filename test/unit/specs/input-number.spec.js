@@ -11,9 +11,8 @@ describe('InputNumber', () => {
     vm = createTest(InputNumber, {
       prefixCls: 'za-input-number',
     }, true);
-    const el = vm.$el;
     vm.$nextTick(() => { // eslint-disable-line no-unused-vars
-      expect(el.querySelector('.za-input-number')).to.exsit;
+      expect(vm.$el.querySelector('.za-input-number')).to.exsit;
     });
   });
 
@@ -34,16 +33,15 @@ describe('InputNumber', () => {
     });
   });
 
-  it('type', done => {
+  it('type', () => {
     vm = createVue({
       template: `
         <za-input-number type="number"></za-input-number>
       `,
     }, true);
     vm.$nextTick(() => {
-      const disabledItem = vm.$el.querySelectorAll('.za-keyboard-item')[9];
+      const disabledItem = document.querySelectorAll('.za-keyboard-item')[9];
       expect(disabledItem.classList.contains('za-keyboard-item-disabled')).to.be.true;
-      done();
     });
   });
 
@@ -55,10 +53,12 @@ describe('InputNumber', () => {
     }, true);
     vm.$el.click();
     vm.$nextTick(() => {
-      const zaMaskEl = vm.$el.querySelector('.za-mask');
-      zaMaskEl.click();
-      expect(vm.$el.querySelector('.za-popup').classList.contains('.za-popup-hidden')).to.be.false;
-      done();
+      const zaMaskEl = document.querySelector('.za-mask');
+      setTimeout(() => {
+        zaMaskEl.click();
+        expect(document.querySelector('.za-popup').classList.contains('.za-popup-hidden')).to.be.false;
+        done();
+      }, 20);
     });
   });
 
@@ -73,11 +73,13 @@ describe('InputNumber', () => {
         };
       },
     }, true);
-    vm.v1 = '12311';
     vm.$nextTick(() => {
-      const contentEl = vm.$el.querySelector('.za-input-content');
-      expect(contentEl.innerText).to.equal('12311');
-      done();
+      vm.v1 = '12311';
+      setTimeout(() => {
+        const contentEl = vm.$el.querySelector('.za-input-content');
+        expect(contentEl.innerText).to.equal('12311');
+        done();
+      }, 20);
     });
   });
 
@@ -92,10 +94,12 @@ describe('InputNumber', () => {
         };
       },
     }, true);
+    document.querySelector('.za-keyboard-item').click();
     vm.$nextTick(() => {
-      vm.$el.querySelector('.za-keyboard-item').click();
-      expect(vm.v1).to.equal('1231');
-      done();
+      setTimeout(() => {
+        expect(vm.v1).to.equal('1231');
+        done();
+      }, 20);
     });
   });
 });

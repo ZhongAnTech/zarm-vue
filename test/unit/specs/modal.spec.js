@@ -16,16 +16,17 @@ describe('Modal', () => {
       data() {
         return {
           visible: true,
-          title: 'dialog title',
+          title: 'dialog',
         };
       },
     }, true);
 
     vm.$nextTick(() => {
-      expect(document.querySelector('.za-modal')).to.exist;
-      expect(vm.$el.querySelector('.za-modal-header-title').innerText).to.equal('dialog title');
-      expect(vm.$el.style.display).to.not.equal('none');
-      done();
+      setTimeout(() => {
+        expect(document.querySelector('.za-modal')).to.exist;
+        expect(vm.$el.style.display).to.not.equal('none');
+        done();
+      }, 20);
     });
   });
 
@@ -47,8 +48,8 @@ describe('Modal', () => {
     }, true);
 
     vm.$nextTick(() => {
-      expect(vm.$el.querySelector('.za-modal-footer span').textContent).to.equal('this is footer');
-      expect(vm.$el.querySelector('.za-modal-body span').textContent).to.equal('模态框内容');
+      expect(document.querySelector('.za-modal-footer span').textContent).to.equal('this is footer');
+      expect(document.querySelector('.za-modal-body span').textContent).to.equal('模态框内容');
       done();
     });
   });
@@ -80,9 +81,9 @@ describe('Modal', () => {
           document.querySelector('.za-icon-wrong').click();
           vm.$nextTick(() => {
             expect(vm.visible).to.equal(false);
+            done();
           });
         });
-        done();
       });
     });
   });
@@ -112,9 +113,8 @@ describe('Modal', () => {
       },
     }, true);
     vm.$nextTick(() => {
-      expect(vm.$el.querySelector('.za-modal-dialog').classList.contains('rotate-enter')).to.true;
-      expect(vm.$el.querySelector('.za-mask').classList.contains('transparent')).to.true;
-      // expect(vm.$el.style.animationDuration === '100ms').to.true;
+      expect(document.querySelector('.za-modal-dialog').classList.contains('rotate-enter')).to.true;
+      expect(document.querySelector('.za-mask').classList.contains('transparent')).to.true;
       done();
     });
   });

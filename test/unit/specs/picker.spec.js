@@ -80,8 +80,8 @@ describe('Picker', () => {
         };
       },
     }, true);
-    vm.$el.click();
     vm.$nextTick(() => {
+      vm.$el.click();
       expect(vm.$refs.picker.currentValue).to.equal('1');
       done();
     });
@@ -120,9 +120,9 @@ describe('Picker', () => {
         },
       },
     }, true);
-    vm.$el.click();
     vm.$nextTick(() => {
-      vm.$el.querySelector('.za-picker-submit').click();
+      vm.$el.click();
+      document.querySelector('.za-picker-submit').click();
       expect(value[1].value).to.equal('3');
       done();
     });
@@ -169,9 +169,8 @@ describe('Picker', () => {
         },
       },
     }, true);
-    vm.$el.click();
     vm.$nextTick(() => {
-      vm.$el.querySelector('.za-picker-submit').click();
+      document.querySelector('.za-picker-submit').click();
       expect(value[1].value).to.equal('12');
       done();
     });
@@ -203,7 +202,7 @@ describe('Picker', () => {
     vm.$nextTick(() => {
       vm.data1 = data2;
       vm.$nextTick(() => {
-        const items = vm.$el.querySelectorAll('.za-wheel-item').length;
+        const items = document.querySelectorAll('.za-wheel-item').length;
         expect(items).to.equal(3);
         done();
       });
@@ -232,7 +231,7 @@ describe('Picker', () => {
     vm.$el.click();
     vm.$nextTick(() => {
       expect(vm.visible).to.equal(true);
-      vm.$el.querySelector('.za-picker-cancel').click();
+      document.querySelector('.za-picker-cancel').click();
       vm.$nextTick(() => {
         expect(vm.visible).to.equal(false);
         done();
@@ -266,7 +265,7 @@ describe('Picker', () => {
         },
       },
     }, true);
-    vm.$el.querySelector('.za-picker-submit').click();
+    document.querySelector('.za-picker-submit').click();
     vm.$nextTick(() => {
       expect(value.value).to.equal('1');
       expect(value.label).to.equal('选项一');
@@ -296,7 +295,7 @@ describe('Picker', () => {
       },
     }, true);
     vm.$nextTick(() => {
-      const wrapper = vm.$el.querySelector('.za-wheel');
+      const wrapper = document.querySelector('.za-wheel');
       dispatchTouchStart(wrapper, {
         pageX: 50,
         pageY: 50,

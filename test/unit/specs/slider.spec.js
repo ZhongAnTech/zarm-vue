@@ -8,7 +8,7 @@ describe('Slider', () => {
     destroyVM(vm);
   });
 
-  it('create', () => {
+  it('create', done => {
     vm = createVue({
       template: `
       <za-slider
@@ -16,15 +16,19 @@ describe('Slider', () => {
       ></za-slider>
       `,
     }, true);
-    expect(vm.$el.classList.contains('za-slider')).to.be.true;
+    vm.$nextTick(() => {
+      expect(vm.$el.classList.contains('za-slider')).to.be.true;
+      done();
+    });
   });
 
-  it('slider shadow position', () => {
+  it('slider shadow position', done => {
     vm = createTest(Slider, {
       prefixCls: 'za-slider',
     }, true);
     vm.$nextTick(() => { // eslint-disable-line no-unused-vars
       vm.$el.click();
+      done();
     });
   });
 
@@ -42,8 +46,8 @@ describe('Slider', () => {
         },
       },
     }, true);
-    expect(vm.$el.classList.contains('za-slider')).to.be.true;
     vm.$nextTick(() => {
+      expect(vm.$el.classList.contains('za-slider')).to.be.true;
       vm.value = 10;
       done();
     });

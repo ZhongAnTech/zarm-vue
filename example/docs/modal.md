@@ -18,6 +18,13 @@ export default {
     handleOk(){
       alert('ok')
     },
+    showAlert() {
+      this.$zaAlert('警告12', {
+        callback: (event) => {
+          console.log(event)
+        }
+      })
+    },
     handleCancel(){
       this.visible7 = false
     }
@@ -51,20 +58,6 @@ export default {
     <za-button slot='description' size='xs' @click='visible5 = true'>开启</za-button>
     动画效果
   </za-cell>
-```
-:::
-
-::: demo 特定场景
-```html
-  <za-cell>
-    <za-button slot='description' size='xs' @click='visible6 = true' theme="warning">开启</za-button>
-    警告框 Alert
-  </za-cell>
-
-  <za-cell>
-    <za-button slot='description' size='xs' @click='visible7 = true' theme="warning">开启</za-button>
-    确认框 Confirm
-  </za-cell>
 
   <za-modal :visible.sync='visible1' @close='handleClose' title="标题" :showClose='true'>
     模态框内容
@@ -94,6 +87,21 @@ export default {
     moveUp、moveDown、moveLeft、moveRight：移出移入效果<br />
     slideUp、slideDown、slideLeft、slideRight：滑出滑入效果<br />
   </za-modal>
+
+```
+:::
+
+::: demo 特定场景
+```html
+  <za-cell>
+    <za-button slot='description' size='xs' @click='visible6 = true' theme="warning">开启</za-button>
+    警告框 Alert
+  </za-cell>
+
+  <za-cell>
+    <za-button slot='description' size='xs' @click='visible7 = true' theme="warning">开启</za-button>
+    确认框 Confirm
+  </za-cell>
 
   <za-alert :visible.sync='visible6' radius title="警告" message="这里是警告信息" @close='handleClose'></za-alert>
   <za-confirm :visible='visible7' title="确认信息" message="你确定要这样做吗？" :ok='handleOk' :cancel='handleCancel'></za-confirm>

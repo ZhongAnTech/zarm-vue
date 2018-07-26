@@ -23,12 +23,14 @@
 
 <script>
 import zaMask from '../../mask';
+import getContainer from '../../mixins/get-container';
 
 export default {
   name: 'zaPopup',
   components: {
     zaMask,
   },
+  mixins: [getContainer],
   props: {
     prefixCls: {
       type: String,

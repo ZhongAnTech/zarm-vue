@@ -51,9 +51,10 @@ const createTest = function (Compo, propsData = {}, mounted = false) {
  * @param  {Object} vm
  */
 const destroyVM = function (vm) {
-  if (vm.$el && vm.$el.parentNode) {
-    vm.$el.parentNode.removeChild(vm.$el);
-  }
+  vm.$destroy && vm.$destroy();
+  vm.$el &&
+  vm.$el.parentNode &&
+  vm.$el.parentNode.removeChild(vm.$el);
 };
 
 /**

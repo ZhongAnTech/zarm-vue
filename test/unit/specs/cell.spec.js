@@ -7,7 +7,7 @@ describe('Cell', () => {
     destroyVM(vm);
   });
 
-  it('create', () => {
+  it('create', done => {
     vm = createVue(Cell, {
       template: `
       <za-cell title='标题文字'>
@@ -15,43 +15,58 @@ describe('Cell', () => {
       </za-cell>
       `,
     }, true);
-    const el = vm.$el;
-    expect(el.classList.contains('za-cell')).to.be.true;
+    vm.$nextTick(() => {
+      expect(vm.$el.classList.contains('za-cell')).to.be.true;
+      done();
+    });
   });
 
-  it('prefixCls', () => {
+  it('prefixCls', done => {
     vm = createTest(Cell, {
       prefixCls: 'za-cell-test',
     }, true);
-    const el = vm.$el;
-    expect(el.classList.contains('za-cell-test')).to.be.true;
+    vm.$nextTick(() => {
+      expect(vm.$el.classList.contains('za-cell-test')).to.be.true;
+      done();
+    });
   });
 
-  it('title', () => {
+  it('title', done => {
     vm = createTest(Cell, {
       title: '测试',
     }, true);
-    const el = vm.$el.querySelector('.za-cell-title');
-    expect(el.innerText === '测试').to.be.true;
+    vm.$nextTick(() => {
+      setTimeout(() => {
+        const el = vm.$el.querySelector('.za-cell-title');
+        expect(el.innerText === '测试').to.be.true;
+        done();
+      }, 20);
+    });
   });
 
-  it('theme', () => {
+  it('theme', done => {
     vm = createTest(Cell, {
       theme: 'primary',
     }, true);
-    const el = vm.$el;
-    expect(el.classList.contains('theme-primary')).to.be.true;
+    vm.$nextTick(() => {
+      const el = vm.$el;
+      expect(el.classList.contains('theme-primary')).to.be.true;
+      done();
+    });
   });
 
-  it('disabled', () => {
+  it('disabled', done => {
     vm = createTest(Cell, {
       disabled: true,
     }, true);
     const el = vm.$el;
-    expect(el.classList.contains('disabled')).to.be.true;
+    setTimeout(() => {
+      expect(el.classList.contains('disabled')).to.be.true;
+      done();
+    }, 20);
   });
 
-  it('hasIcon', () => {
+  it('hasIcon', done => {
     vm = createVue({
       template: `
         <za-cell>
@@ -59,9 +74,10 @@ describe('Cell', () => {
         </za-cell>
       `,
     }, true);
-    const el = vm.$el;
-    expect(el.querySelector('.za-icon-right')).to.exist;
-    expect(el.classList.contains('has-icon')).to.to.true;
+    setTimeout(() => {
+      expect(vm.$el.querySelector('.za-icon-right')).to.exist;
+      done();
+    }, 20);
   });
 
   it('click', done => {
@@ -77,7 +93,6 @@ describe('Cell', () => {
       },
     }, true);
     vm.$el.click();
-
     setTimeout(_ => { // eslint-disable-line no-unused-vars
       expect(result).to.exist;
       done();

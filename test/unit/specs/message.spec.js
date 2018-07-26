@@ -7,16 +7,19 @@ describe('Message', () => {
     destroyVM(vm);
   });
 
-  it('create', () => {
+  it('create', done => {
     vm = createTest(Message, {
       prefixCls: 'za-message',
       theme: 'primary',
       size: 'lg',
     }, true);
-    const el = vm.$el;
-    expect(el.classList.contains('za-message')).to.be.true;
-    expect(el.classList.contains('theme-primary')).to.be.true;
-    expect(el.classList.contains('size-lg')).to.be.true;
+    vm.$nextTick(() => {
+      const el = vm.$el;
+      expect(el.classList.contains('za-message')).to.be.true;
+      expect(el.classList.contains('theme-primary')).to.be.true;
+      expect(el.classList.contains('size-lg')).to.be.true;
+      done();
+    });
   });
 
   it('closable', done => {
@@ -32,11 +35,13 @@ describe('Message', () => {
         };
       },
     }, true);
-    expect(vm.$el.querySelector('.za-icon-wrong')).to.exist;
-    vm.$el.querySelector('.za-icon-wrong').click();
     vm.$nextTick(() => {
-      expect(vm.visible).to.equal(false);
-      done();
+      expect(vm.$el.querySelector('.za-icon-wrong')).to.exist;
+      vm.$el.querySelector('.za-icon-wrong').click();
+      setTimeout(() => {
+        expect(vm.visible).to.equal(false);
+        done();
+      }, 20);
     });
   });
 
@@ -54,11 +59,13 @@ describe('Message', () => {
         },
       },
     }, true);
-    expect(vm.$el.querySelector('.za-icon-arrow-right')).to.exist;
-    vm.$refs.message.$el.click();
     vm.$nextTick(() => {
-      expect(result).to.exist;
-      done();
+      expect(vm.$el.querySelector('.za-icon-arrow-right')).to.exist;
+      vm.$refs.message.$el.click();
+      setTimeout(() => {
+        expect(result).to.exist;
+        done();
+      }, 20);
     });
   });
 });

@@ -6,25 +6,31 @@ describe('NoticeBar', () => {
     destroyVM(vm);
   });
 
-  it('create', () => {
+  it('create', done => {
     vm = createVue({
       template: `
         <za-notice-bar theme='primary' size='lg'>noticeBar</za-notice-bar>
       `,
     }, true);
-    const el = vm.$el;
-    expect(el.classList.contains('za-message')).to.be.true;
-    expect(el.classList.contains('theme-primary')).to.be.true;
-    expect(el.classList.contains('size-lg')).to.be.true;
+    vm.$nextTick(() => {
+      const el = vm.$el;
+      expect(el.classList.contains('za-message')).to.be.true;
+      expect(el.classList.contains('theme-primary')).to.be.true;
+      expect(el.classList.contains('size-lg')).to.be.true;
+      done();
+    });
   });
-  it('hasArrow', () => {
+  it('hasArrow', done => {
     vm = createVue({
       template: `
         <za-notice-bar hasArrow >noticeBar</za-notice-bar>
       `,
     }, true);
-    const el = vm.$el;
-    expect(el.querySelector('.za-icon-arrow-right')).to.exist;
+    vm.$nextTick(() => {
+      const el = vm.$el;
+      expect(el.querySelector('.za-icon-arrow-right')).to.exist;
+      done();
+    });
   });
   it('closable', () => {
     vm = createVue({
