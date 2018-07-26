@@ -1,8 +1,8 @@
 <template lang="html">
-  <Container class="panel-page">
-    <PageHeader title="面板 Panel" />
+  <Container class="zaCollapse-page">
+    <PageHeader title="折叠面板 zaCollapse" />
     <Demo></Demo>
-    <PageFooter />
+    <PageFooter/>
   </Container>
 </template>
 
@@ -10,8 +10,8 @@
 import Container from '../common/Container.vue';
 import PageHeader from '../common/PageHeader.vue';
 import PageFooter from '../common/PageFooter.vue';
-import Demo from '../docs/panel.md';
-import '../styles/pages/PanelPage.scss';
+import Demo from '../docs/collapse.md';
+
 export default {
   components: {
     Container,

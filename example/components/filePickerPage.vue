@@ -1,6 +1,6 @@
 <template lang="html">
-  <Container class="panel-page">
-    <PageHeader title="面板 Panel" />
+  <Container class="uploader-page">
+    <PageHeader title="文件选择器 FilePicker" />
     <Demo></Demo>
     <PageFooter />
   </Container>
@@ -10,8 +10,10 @@
 import Container from '../common/Container.vue';
 import PageHeader from '../common/PageHeader.vue';
 import PageFooter from '../common/PageFooter.vue';
-import Demo from '../docs/panel.md';
-import '../styles/pages/PanelPage.scss';
+import Demo from '../docs/filePicker.md';
+
+import '../styles/pages/UploaderPage.scss';
+
 export default {
   components: {
     Container,

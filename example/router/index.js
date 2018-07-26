@@ -117,10 +117,10 @@ export default new Router({
       },
     },
     {
-      path: '/uploader',
+      path: '/filepicker',
       component: Bundle,
       meta: {
-        mRender: () => import('../components/uploaderPage.vue')
+        mRender: () => import('../components/filePickerPage.vue')
       },
     },
     {
@@ -152,10 +152,10 @@ export default new Router({
       },
     },
     {
-      path: '/swipe',
+      path: '/carousel',
       component: Bundle,
       meta: {
-        mRender: () => import('../components/swipePage.vue')
+        mRender: () => import('../components/carouselPage.vue')
       },
     },
     {
@@ -208,10 +208,10 @@ export default new Router({
       },
     },
     {
-      path: '/accordion',
+      path: '/collapse',
       component: Bundle,
       meta: {
-        mRender: () => import('../components/accordionPage.vue')
+        mRender: () => import('../components/collapsePage.vue')
       },
     },
     {
