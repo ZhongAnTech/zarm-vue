@@ -6,7 +6,7 @@ describe('Loading', () => {
     destroyVM(vm);
   });
 
-  it('create', () => {
+  it('create', done => {
     vm = createVue({
       template: `
         <za-loading ref='loading' :visible.sync='visible'></za-loading>
@@ -17,10 +17,13 @@ describe('Loading', () => {
         };
       },
     }, true);
-    expect(vm.$el.classList.contains('za-loading')).to.be.true;
+    vm.$nextTick(() => {
+      expect(vm.$el.classList.contains('za-loading')).to.be.true;
+      done();
+    });
   });
 
-  it('hide', () => {
+  it('hide', done => {
     vm = createVue({
       template: `
         <za-loading :visible.sync='visible'></za-loading>
@@ -34,6 +37,7 @@ describe('Loading', () => {
     vm.visible = false;
     vm.$nextTick(() => {
       expect(vm.$el.classList.contains('za-loading-open')).to.be.false;
+      done();
     });
   });
 });

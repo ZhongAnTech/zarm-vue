@@ -71,8 +71,8 @@ describe('CascadePicker', () => {
         },
       },
     }, true);
-    vm.$el.querySelector('.za-picker-submit').click();
     vm.$nextTick(() => {
+      document.querySelector('.za-picker-submit').click();
       expect(value[0].label).to.equal('北京市');
       done();
     });

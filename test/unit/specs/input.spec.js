@@ -49,14 +49,17 @@ describe('Input', () => {
     expect(vm.$el.querySelector('textarea')).to.exist;
   });
 
-  it('showLength', () => {
+  it('showLength', done => {
     vm = createVue({
       template: `
         <za-input autosize showLength type="textarea" rows="4" maxLength="200" placeholder="摘要" value='123456'>
         </za-input>
       `,
     }, true);
-    expect(vm.$el.querySelector('.za-input-length').innerText).to.equal('6/200');
+    setTimeout(() => {
+      expect(vm.$el.querySelector('.za-input-length').innerText).to.equal('6/200');
+      done();
+    }, 20);
   });
 
   it('rows', () => {

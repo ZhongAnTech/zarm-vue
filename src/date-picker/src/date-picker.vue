@@ -15,6 +15,7 @@
     <za-popup
       class='za-popup-inner'
       :visible='currentVisible'
+      :get-container="getContainer"
       @close='onMaskClick'
       :closeOnClickModal='closeOnClickModal'>
       <div :class='`${prefixCls}-wrapper`'>
@@ -122,6 +123,7 @@ export default {
   },
   data() {
     return {
+      getContainer: () => document.body,
       isSelect: this.$options.name === 'zaDateSelect',
       currentVisible: this.visible,
       date: '',

@@ -55,69 +55,36 @@ describe('collapse', () => {
     });
   });
 
-  it('activeTag', done => {
+  it('activeKey', done => {
     vm = createTest(Collapse, {
-      prefixCls: 'za-collapse',
       defaultActiveKey: ['0'],
     }, true);
     vm.$nextTick(() => { // eslint-disable-line no-unused-vars
-      expect(vm.activeKey[0]).to.exsit;
-      expect(vm.activeKey[0] === '0').to.be.true;
-      done();
+      setTimeout(() => {
+        expect(vm.activeKey[0]).to.exsit;
+        expect(vm.activeKey[0] === '0').to.be.true;
+        done();
+      }, 20);
     });
   });
 
-  it('animated', () => {
+  it('defaultActiveKey', () => {
     vm = createVue({
       template: `
-        <za-collapse animated>
-          <za-collapse-item title="50元套餐" activeKey='0'>
+        <za-collapse :defaultActiveKey='defaultActive'>
+          <za-collapse-item title="50元套餐" activeKey='a'>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
           </za-collapse-item>
-          <za-collapse-item title="100元套餐" activeKey='1'>
+          <za-collapse-item title="100元套餐" activeKey='b'>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
           </za-collapse-item>
-          <za-collapse-item title="200元套餐" activeKey='2'>
-            <div>我是200元套餐内容</div>
-            <div>我是200元套餐内容</div>
-            <div>我是200元套餐内容</div>
-            <div>我是200元套餐内容</div>
-          </za-collapse-item>
-        </za-collapse>
-      `,
-    }, true);
-    const el = vm.$el;
-
-    expect(el.querySelector('.za-collapse-item')).to.exist;
-    expect(el.querySelector('.za-collapse-item-content')).to.exist;
-
-    const itemContent = el.querySelector('.za-collapse-item-content');
-    expect(itemContent.classList.contains('za-collapse-item-content-anim')).to.be.true;
-  });
-
-  it('defaultActiveTag', () => {
-    vm = createVue({
-      template: `
-        <za-collapse animated :defaultActiveKey='defaultActive'>
-          <za-collapse-item title="50元套餐" activeKey='1'>
-            <div>我是50元套餐内容</div>
-            <div>我是50元套餐内容</div>
-            <div>我是50元套餐内容</div>
-            <div>我是50元套餐内容</div>
-          </za-collapse-item>
-          <za-collapse-item title="100元套餐" activeKey='2'>
-            <div>我是100元套餐内容</div>
-            <div>我是100元套餐内容</div>
-            <div>我是100元套餐内容</div>
-            <div>我是100元套餐内容</div>
-          </za-collapse-item>
-          <za-collapse-item title="200元套餐" activeKey='3'>
+          <za-collapse-item title="200元套餐" activeKey='c'>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
@@ -127,7 +94,7 @@ describe('collapse', () => {
       `,
       data() {
         return {
-          defaultActive: ['1', '2'],
+          defaultActive: ['a', 'b'],
         };
       },
     }, true);
@@ -139,10 +106,10 @@ describe('collapse', () => {
     });
   });
 
-  it('multiple', done => {
+  it('multiple', () => {
     vm = createVue({
       template: `
-        <za-collapse animated  :multiple='true' :defaultActiveKey='defaultActive'>
+        <za-collapse :multiple='true' :defaultActiveKey='defaultActive'>
           <za-collapse-item title="50元套餐" activeKey='0'>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
@@ -174,7 +141,6 @@ describe('collapse', () => {
     vm.$nextTick(() => { // eslint-disable-line no-unused-vars
       const curActiveItem = vm.$el.querySelectorAll('.za-collapse-item')[1];
       expect(curActiveItem.classList.contains('active')).to.be.true;
-      done();
     });
   });
 
@@ -200,7 +166,6 @@ describe('collapse', () => {
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
           </za-collapse-item>
-        </za-collapse-item>
       </za-collapse>
       `,
       data() {

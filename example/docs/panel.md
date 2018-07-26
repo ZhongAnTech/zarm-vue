@@ -24,7 +24,7 @@ export default {
 ```
 :::
 
-:::demo 带标题
+:::demo 标题
 ```html
       <za-panel>
         <za-panel-header title="标题">

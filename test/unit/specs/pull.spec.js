@@ -25,7 +25,7 @@ describe('Pull', () => {
     destroyVM(vm);
   });
 
-  it('create', () => {
+  it('create', done => {
     vm = createVue({
       template: `
         <za-pull>
@@ -35,12 +35,14 @@ describe('Pull', () => {
         </za-pull>
       `,
     }, true);
-    const el = vm.$el;
-    expect(el.classList.contains('za-pull')).to.be.true;
-    vm.$destroy();
+    vm.$nextTick(() => {
+      const el = vm.$el;
+      expect(el.classList.contains('za-pull')).to.be.true;
+      done();
+    });
   });
 
-  it('refreshing and success', () => {
+  it('refreshing and success', done => {
     vm = createVue({
       template: `
         <za-pull :refreshing='refreshing' :duration='50'>
@@ -55,11 +57,14 @@ describe('Pull', () => {
         };
       },
     }, true);
-    const el = vm.$el;
-    expect(el.getElementsByTagName('svg')[0].classList.contains('rotate360')).to.be.true;
+    vm.$nextTick(() => {
+      const el = vm.$el;
+      expect(el.getElementsByTagName('svg')[0].classList.contains('rotate360')).to.be.true;
+      done();
+    });
   });
 
-  it('drag refreshing', () => {
+  it('drag refreshing', done => {
     vm = createVue({
       template: `
         <za-pull :refreshing='refreshing' :onRefresh='refresh(1)'>
@@ -82,18 +87,21 @@ describe('Pull', () => {
         },
       },
     }, true);
-    const wrapper = vm.$el;
-    dispatchTouchStart(wrapper, {
-      pageX: 50,
-      pageY: 0,
-    });
-    dispatchTouchMove(wrapper, {
-      pageX: 50,
-      pageY: 50,
-    });
-    dispatchTouchEnd(wrapper, {
-      pageX: 50,
-      pageY: 50,
+    vm.$nextTick(() => {
+      const wrapper = vm.$el;
+      dispatchTouchStart(wrapper, {
+        pageX: 50,
+        pageY: 0,
+      });
+      dispatchTouchMove(wrapper, {
+        pageX: 50,
+        pageY: 50,
+      });
+      dispatchTouchEnd(wrapper, {
+        pageX: 50,
+        pageY: 50,
+      });
+      done();
     });
   });
 

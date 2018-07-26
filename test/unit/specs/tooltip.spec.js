@@ -7,7 +7,7 @@ describe('Tooltip', () => {
     destroyVM(vm);
   });
 
-  it('create', () => {
+  it('create', done => {
     vm = createTest(Tooltip, {
       prefixCls: 'za-tooltip',
       visible: true,
@@ -15,6 +15,7 @@ describe('Tooltip', () => {
     const el = vm.$el;
     vm.$nextTick(() => { // eslint-disable-line no-unused-vars
       expect(el.querySelector('.za-tooltip')).to.exsit;
+      done();
     });
   });
 

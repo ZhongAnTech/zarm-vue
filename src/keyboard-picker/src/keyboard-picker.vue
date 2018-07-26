@@ -3,6 +3,7 @@
     <za-popup
           class='za-popup-inner'
           :visible='currentVisible'
+          :get-container="getContainer"
           maskType="transparent"
           @close='onMaskClick'
           :closeOnClickModal='closeOnClickModal'>
@@ -40,6 +41,7 @@ export default {
   data() {
     return {
       currentVisible: this.visible,
+      getContainer: () => document.body,
     };
   },
   watch: {

@@ -37,6 +37,7 @@
  */
 import zaMask from '../../mask';
 import zaIcon from '../../icon';
+import getContainer from '../../mixins/get-container';
 
 export default {
   name: 'zaModal',
@@ -44,6 +45,7 @@ export default {
     zaMask,
     zaIcon,
   },
+  mixins: [getContainer],
   props: {
     prefixCls: {
       type: String,

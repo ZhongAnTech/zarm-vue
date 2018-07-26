@@ -7,13 +7,14 @@ describe('ActionSheet', () => {
     destroyVM(vm);
   });
 
-  it('create', () => {
+  it('create', done => {
     vm = createTest(ActionSheet, {
       prefixCls: 'za-actionsheet',
     }, true);
     const el = vm.$el;
     vm.$nextTick(() => {
       expect(el.querySelector('.za-actionsheet')).to.exsit;
+      done();
     });
   }, true);
 
@@ -82,18 +83,21 @@ describe('ActionSheet', () => {
     });
   });
 
-  it('cancelText', () => {
+  it('cancelText', done => {
     vm = createTest(ActionSheet, {
       prefixCls: 'za-actionsheet',
       cancelText: '关闭',
     }, true);
     const el = vm.$el;
     vm.$nextTick(() => {
-      expect(el.querySelector('.za-actionsheet-cancel').innerText).to.equal('关闭');
+      setTimeout(() => {
+        expect(el.querySelector('.za-actionsheet-cancel').innerText).to.equal('关闭');
+        done();
+      }, 20);
     });
   });
 
-  it('showCancel', () => {
+  it('showCancel', done => {
     vm = createTest(ActionSheet, {
       prefixCls: 'za-actionsheet',
       showCancel: false,
@@ -101,6 +105,7 @@ describe('ActionSheet', () => {
     const el = vm.$el;
     vm.$nextTick(() => {
       expect(!el.querySelector('.za-actionsheet-cancel')).to.exsit;
+      done();
     });
   });
 });
