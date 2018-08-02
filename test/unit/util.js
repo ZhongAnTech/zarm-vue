@@ -1,7 +1,4 @@
 import Vue from 'vue';
-import ZarmVue from '@';
-
-Vue.use(ZarmVue);
 
 let id = 0;
 
