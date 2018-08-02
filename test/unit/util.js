@@ -1,101 +1,54 @@
 import Vue from 'vue';
+import { mount, TransitionStub } from '@vue/test-utils';
 
-let id = 0;
-
-const createElm = function () {
-  const elm = document.createElement('div');
-
-  elm.id = `app${id}`;
-  id += 1;
-  document.body.appendChild(elm);
-
-  return elm;
+export {
+  mount
 };
 
-/**
- * 创建一个 Vue 的实例对象
- * @param  {Object|String}  Compo   组件配置，可直接传 template
- * @param  {Boolean=false} mounted 是否添加到 DOM 上
- * @return {Object} vm
- */
-const createVue = function (Compo, mounted = false) {
-  if (Object.prototype.toString.call(Compo) === '[object String]') {
-    Compo = { template: Compo };
-  }
-  return new Vue(Compo).$mount(mounted === false ? null : createElm());
-};
+// Trigger pointer/touch event
+export function trigger(wrapper, eventName, x = 0, y = 0) {
+  const el = wrapper.element ? wrapper.element : wrapper;
+  const touch = {
+    identifier: Date.now(),
+    target: el,
+    pageX: x,
+    pageY: y,
+    clientX: x,
+    clientY: y,
+    radiusX: 2.5,
+    radiusY: 2.5,
+    rotationAngle: 10,
+    force: 0.5
+  };
 
-/**
- * 创建一个测试组件实例
- * @link http://vuejs.org/guide/unit-testing.html#Writing-Testable-Components
- * @param  {Object}  Compo          - 组件对象
- * @param  {Object}  propsData      - props 数据
- * @param  {Boolean=false} mounted  - 是否添加到 DOM 上
- * @return {Object} vm
- */
-const createTest = function (Compo, propsData = {}, mounted = false) {
-  if (propsData === true || propsData === false) {
-    mounted = propsData;
-    propsData = {};
-  }
-  const elm = createElm();
-  const Ctor = Vue.extend(Compo);
-  return new Ctor({ propsData }).$mount(mounted === false ? null : elm);
-};
+  const event = document.createEvent('CustomEvent');
+  event.initCustomEvent(eventName, true, true, {});
+  event.touches = [touch];
+  event.targetTouches = [touch];
+  event.changedTouches = [touch];
+  event.clientX = x;
+  event.clientY = y;
 
-/**
- * 回收 vm
- * @param  {Object} vm
- */
-const destroyVM = function (vm) {
-  vm.$destroy && vm.$destroy();
-  vm.$el &&
-  vm.$el.parentNode &&
-  vm.$el.parentNode.removeChild(vm.$el);
-};
+  el.dispatchEvent(event);
+}
 
-/**
- * 触发一个事件
- * mouseenter, mouseleave, mouseover, keyup, change, click 等
- * @param  {Element} elm
- * @param  {String} name
- * @param  {*} opts
- */
-const triggerEvent = function (elm, name, ...opts) {
-  let eventName;
+// simulate drag gesture
+export function triggerDrag(el, x = 0, y = 0) {
+  trigger(el, 'touchstart', 0, 0);
+  trigger(el, 'touchmove', x / 4, y / 4);
+  trigger(el, 'touchmove', x / 3, y / 3);
+  trigger(el, 'touchmove', x / 2, y / 2);
+  trigger(el, 'touchmove', x, y);
+  trigger(el, 'touchend', x, y);
+}
 
-  if (/^mouse|click/.test(name)) {
-    eventName = 'MouseEvents';
-  } else if (/^key/.test(name)) {
-    eventName = 'KeyboardEvent';
-  } else {
-    eventName = 'HTMLEvents';
-  }
-  const evt = document.createEvent(eventName);
+// promisify setTimeout
+export function later(delay) {
+  return new Promise(resolve => {
+    setTimeout(resolve, delay);
+  });
+}
 
-  evt.initEvent(name, ...opts);
-  elm.dispatchEvent
-    ? elm.dispatchEvent(evt)
-    : elm.fireEvent(`on${name}`, evt);
-
-  return elm;
-};
-
-/**
- * 触发 “mouseup” 和 “mousedown” 事件
- * @param {Element} elm
- * @param {*} opts
- */
-const triggerClick = function (elm, ...opts) {
-  triggerEvent(elm, 'mousedown', ...opts);
-  triggerEvent(elm, 'mouseup', ...opts);
-
-  return elm;
-};
-
-module.exports = {
-  createVue,
-  createTest,
-  destroyVM,
-  triggerClick,
-};
+export function transitionStub() {
+  Vue.component('transition', TransitionStub);
+}

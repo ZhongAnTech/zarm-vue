@@ -1,28 +1,29 @@
 import ActionSheet from '@/actionsheet';
-import { createTest, createVue, destroyVM } from '../util';
+import { mount } from '../util';
 
 describe('ActionSheet', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
 
   it('create', done => {
-    vm = createTest(ActionSheet, {
-      prefixCls: 'za-actionsheet',
-    }, true);
-    const el = vm.$el;
+    const wrapper = mount(ActionSheet, {
+      propsData: {
+        prefixCls: 'za-actionsheet'
+      }
+    });
+    const { vm } = wrapper;
     vm.$nextTick(() => {
-      expect(el.querySelector('.za-actionsheet')).to.exsit;
+      expect(vm.$el.querySelector('.za-actionsheet')).toBeTruthy();
       done();
     });
   }, true);
 
-  it('actions', done => {
+  it('cancel action', done => {
     let result;
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        ActionSheet
+      },
       template: `
-        <za-actionsheet :visible.sync='visible' :actions='actions' @cancel='handleCancel'/>
+        <ActionSheet :visible.sync='visible' :actions='actions' @cancel='handleCancel'/>
       `,
       data() {
         return {
@@ -42,22 +43,27 @@ describe('ActionSheet', () => {
       },
       methods: {
         handleCancel(evt) {
-          result = evt;
+          result = 1;
         },
       },
-    }, true);
-    vm.$el.querySelector('.za-mask').click();
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+    vm.$el.querySelector('.za-actionsheet-cancel>.za-actionsheet-item').click();
     vm.$nextTick(() => {
-      expect(vm.visible).to.be.false;
-      expect(result).to.exist;
+      expect(vm.visible).toEqual(false);
+      expect(result).toEqual(1);
       done();
     });
   });
 
   it('visible', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        ActionSheet
+      },
       template: `
-        <za-actionsheet :visible.sync='visible' :actions='actions'/>
+        <ActionSheet :visible.sync='visible' :actions='actions'/>
       `,
       data() {
         return {
@@ -75,36 +81,40 @@ describe('ActionSheet', () => {
           }],
         };
       },
-    }, true);
+    }
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.$el.querySelector('.za-mask').click();
     vm.$nextTick(() => {
-      expect(vm.visible).to.be.false;
+      expect(vm.visible).toBe(false);
       done();
     });
   });
 
   it('cancelText', done => {
-    vm = createTest(ActionSheet, {
-      prefixCls: 'za-actionsheet',
-      cancelText: '关闭',
-    }, true);
-    const el = vm.$el;
+    const wrapper = mount(ActionSheet, {
+      propsData: {
+        prefixCls: 'za-actionsheet',
+        cancelText: '关闭',
+      }
+    });
+    const { vm } = wrapper;
     vm.$nextTick(() => {
-      setTimeout(() => {
-        expect(el.querySelector('.za-actionsheet-cancel').innerText).to.equal('关闭');
-        done();
-      }, 20);
+      expect(vm.$el.querySelector('.za-actionsheet-cancel')).toBeTruthy();
+      done();
     });
   });
 
   it('showCancel', done => {
-    vm = createTest(ActionSheet, {
-      prefixCls: 'za-actionsheet',
-      showCancel: false,
-    }, true);
-    const el = vm.$el;
+    const wrapper = mount(ActionSheet, {
+      propsData: {
+        prefixCls: 'za-actionsheet',
+        showCancel: false,
+      }
+    });
+    const { vm } = wrapper;
     vm.$nextTick(() => {
-      expect(!el.querySelector('.za-actionsheet-cancel')).to.exsit;
+      expect(vm.$el.querySelector('.za-actionsheet-cancel')).toBeNull();
       done();
     });
   });
