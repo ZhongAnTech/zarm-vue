@@ -1,23 +1,24 @@
-import InputNumber from '@/input-number';
-import { createTest, createVue, destroyVM } from '../util';
+import zaInputNumber from '@/input-number';
+import { mount } from '../util';
 
 describe('InputNumber', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
-
   it('create', () => {
-    vm = createTest(InputNumber, {
-      prefixCls: 'za-input-number',
-    }, true);
-    vm.$nextTick(() => { // eslint-disable-line no-unused-vars
-      expect(vm.$el.querySelector('.za-input-number')).to.exsit;
+    const wrapper = mount(zaInputNumber, {
+      propsData: {
+        prefixCls: 'za-input-number',
+      },
+    });
+    const { vm } = wrapper;
+    vm.$nextTick(() => {
+      expect(wrapper.find('.za-input-number')).toBeTruthy();
     });
   });
 
   it('onFocus', () => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaInputNumber,
+      },
       template: `
         <za-input-number type="number"></za-input-number>
       `,
@@ -26,44 +27,64 @@ describe('InputNumber', () => {
           visible: false,
         };
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.$el.click();
-    vm.$nextTick(() => { // eslint-disable-line no-unused-vars
-      expect(vm.$el.classList.contains('focus')).to.exsit;
+    vm.$nextTick(() => {
+      expect(wrapper.contains('.focus')).toBeTruthy();
     });
   });
 
   it('type', () => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaInputNumber,
+      },
       template: `
         <za-input-number type="number"></za-input-number>
       `,
-    }, true);
+      data() {
+        return {
+          visible: false,
+        };
+      },
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.$nextTick(() => {
       const disabledItem = document.querySelectorAll('.za-keyboard-item')[9];
-      expect(disabledItem.classList.contains('za-keyboard-item-disabled')).to.be.true;
+      expect(disabledItem.classList.contains('za-keyboard-item-disabled')).toBe(true);
     });
   });
 
   it('hide', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaInputNumber,
+      },
       template: `
         <za-input-number type="number"></za-input-number>
       `,
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.$el.click();
     vm.$nextTick(() => {
       const zaMaskEl = document.querySelector('.za-mask');
       setTimeout(() => {
         zaMaskEl.click();
-        expect(document.querySelector('.za-popup').classList.contains('.za-popup-hidden')).to.be.false;
+        expect(document.querySelector('.za-popup').classList.contains('.za-popup-hidden')).toBe(false);
         done();
       }, 20);
     });
   });
 
   it('v-model', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaInputNumber,
+      },
       template: `
         <za-input-number type="number" v-model='v1'></za-input-number>
       `,
@@ -72,19 +93,24 @@ describe('InputNumber', () => {
           v1: '12323',
         };
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.$nextTick(() => {
       vm.v1 = '12311';
       setTimeout(() => {
-        const contentEl = vm.$el.querySelector('.za-input-content');
-        expect(contentEl.innerText).to.equal('12311');
+        const contentEl = wrapper.find('.za-input-content');
+        expect(contentEl.text()).toEqual('12311');
         done();
       }, 20);
     });
   });
 
   it('key click', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaInputNumber,
+      },
       template: `
         <za-input-number type="number" v-model='v1'></za-input-number>
       `,
@@ -93,13 +119,13 @@ describe('InputNumber', () => {
           v1: '123',
         };
       },
-    }, true);
-    document.querySelector('.za-keyboard-item').click();
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+    wrapper.find('.za-keyboard-item').trigger('click');
     vm.$nextTick(() => {
-      setTimeout(() => {
-        expect(vm.v1).to.equal('1231');
-        done();
-      }, 20);
+      expect(vm.v1).toEqual('1231');
+      done();
     });
   });
 });

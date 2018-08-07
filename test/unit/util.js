@@ -1,9 +1,7 @@
 import Vue from 'vue';
 import { mount, TransitionStub } from '@vue/test-utils';
 
-export {
-  mount
-};
+export { mount };
 
 // Trigger pointer/touch event
 export function trigger(wrapper, eventName, x = 0, y = 0) {
@@ -18,7 +16,7 @@ export function trigger(wrapper, eventName, x = 0, y = 0) {
     radiusX: 2.5,
     radiusY: 2.5,
     rotationAngle: 10,
-    force: 0.5
+    force: 0.5,
   };
 
   const event = document.createEvent('CustomEvent');

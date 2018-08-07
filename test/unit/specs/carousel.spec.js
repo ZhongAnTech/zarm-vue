@@ -1,69 +1,16 @@
-import { createVue, destroyVM } from '../util';
-import { dispatchTouchStart, dispatchTouchMove, dispatchTouchEnd } from '../touchs';
+import zaCarousel from '@/carousel';
+import zaCarouselItem from '@/carousel-item';
+import { mount, triggerDrag } from '../util';
 
 describe('Carousel', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
-
   it('create', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaCarousel,
+        zaCarouselItem,
+      },
       template: `
-      <za-carousel direction='left'>
-        <za-carousel-item>
-          <div>carousel1</div>
-        </za-carousel-item>
-        <za-carousel-item>
-          <div>carousel2</div>
-        </za-carousel-item>
-        <za-carousel-item>
-          <div>carousel3</div>
-        </za-carousel-item>
-      </za-carousel>
-      `,
-    }, true);
-
-    vm.$nextTick(() => {
-      expect(vm.$el.classList.contains('za-carousel')).to.true;
-      expect(vm.$el.querySelector('.za-carousel-items').children.length).to.equal(3);
-      vm.$destroy();
-      done();
-    });
-  });
-
-  it('loop', done => {
-    vm = createVue({
-      template: `
-      <za-carousel
-        loop
-        direction='left'>
-        <za-carousel-item>
-          <div>carousel1</div>
-        </za-carousel-item>
-        <za-carousel-item>
-          <div>carousel2</div>
-        </za-carousel-item>
-        <za-carousel-item>
-          <div>carousel3</div>
-        </za-carousel-item>
-      </za-carousel>
-      `,
-    }, true);
-    vm.$nextTick(() => {
-      expect(vm.$el.querySelector('.za-carousel-items').children.length)
-        .to.equal(5);
-      done();
-    });
-  });
-
-  it('autoPlay', done => {
-    vm = createVue({
-      template: `
-        <za-carousel
-          :autoPlayIntervalTime='50'
-          autoPlay
-          direction='left'>
+        <za-carousel direction='left'>
           <za-carousel-item>
             <div>carousel1</div>
           </za-carousel-item>
@@ -75,12 +22,71 @@ describe('Carousel', () => {
           </za-carousel-item>
         </za-carousel>
       `,
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+    vm.$nextTick(() => {
+      expect(vm.$el.classList.contains('za-carousel')).toBe(true);
+      expect(vm.$el.querySelector('.za-carousel-items').children.length).toEqual(3);
+      vm.$destroy();
+      done();
+    });
+  });
 
+  it('loop', done => {
+    const TestCompo = {
+      components: {
+        zaCarousel,
+        zaCarouselItem,
+      },
+      template: `
+        <za-carousel loop direction='left'>
+          <za-carousel-item>
+            <div>carousel1</div>
+          </za-carousel-item>
+          <za-carousel-item>
+            <div>carousel2</div>
+          </za-carousel-item>
+          <za-carousel-item>
+            <div>carousel3</div>
+          </za-carousel-item>
+        </za-carousel>
+      `,
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+    vm.$nextTick(() => {
+      expect(vm.$el.querySelector('.za-carousel-items').children.length).toEqual(5);
+      done();
+    });
+  });
+
+  it('autoPlay', done => {
+    const TestCompo = {
+      components: {
+        zaCarousel,
+        zaCarouselItem,
+      },
+      template: `
+        <za-carousel :autoPlayIntervalTime='50' autoPlay direction='left'>
+          <za-carousel-item>
+            <div>carousel1</div>
+          </za-carousel-item>
+          <za-carousel-item>
+            <div>carousel2</div>
+          </za-carousel-item>
+          <za-carousel-item>
+            <div>carousel3</div>
+          </za-carousel-item>
+        </za-carousel>
+      `,
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     setTimeout(() => {
       setTimeout(() => {
         const translate = vm.$el.querySelector('.za-carousel-items').style.transform;
-        expect(translate).to.not.equal('translate3d(0px, 0px, 0px)');
+        expect(translate).not.toEqual('translate3d(0px, 0px, 0px)');
         done();
       }, 60);
     }, 10);
@@ -88,25 +94,29 @@ describe('Carousel', () => {
 
   it('mannul click', done => {
     let result;
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaCarousel,
+        zaCarouselItem,
+      },
       template: `
-      <za-carousel
-        ref='carousel'
-        direction='left'
-        :autoPlayIntervalTime='50'
-        @change='handleChange'
-        @changeStart='handleChangeStart'
-        @changeEnd='handleChangeEnd'>
-        <za-carousel-item>
-          <div>carousel1</div>
-        </za-carousel-item>
-        <za-carousel-item>
-          <div>carousel2</div>
-        </za-carousel-item>
-        <za-carousel-item>
-          <div>carousel3</div>
-        </za-carousel-item>
-      </za-carousel>
+        <za-carousel
+          ref='carousel'
+          direction='left'
+          :autoPlayIntervalTime='50'
+          @change='handleChange'
+          @changeStart='handleChangeStart'
+          @changeEnd='handleChangeEnd'>
+          <za-carousel-item>
+            <div>carousel1</div>
+          </za-carousel-item>
+          <za-carousel-item>
+            <div>carousel2</div>
+          </za-carousel-item>
+          <za-carousel-item>
+            <div>carousel3</div>
+          </za-carousel-item>
+        </za-carousel>
       `,
       methods: {
         handleChange(index) {
@@ -119,50 +129,47 @@ describe('Carousel', () => {
           result = index;
         },
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     const carousel = vm.$refs.carousel;
     carousel.onJumpTo(1);
     setTimeout(() => {
-      expect(result).to.equal(1);
-      expect(carousel.currentActiveIndex).to.equal(1);
+      expect(result).toEqual(1);
+      expect(carousel.currentActiveIndex).toEqual(1);
       carousel.onSlideTo(2);
       setTimeout(() => {
-        expect(result).to.equal(2);
-        expect(carousel.currentActiveIndex).to.equal(2);
+        expect(carousel.currentActiveIndex).toEqual(2);
         done();
       }, 350);
     }, 60);
   });
 
   it('drag change', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaCarousel,
+        zaCarouselItem,
+      },
       template: `
-      <za-carousel direction='left'>
-        <za-carousel-item>
-          <div>carousel1</div>
-        </za-carousel-item>
-        <za-carousel-item>
-          <div>carousel2</div>
-        </za-carousel-item>
-        <za-carousel-item>
-          <div>carousel3</div>
-        </za-carousel-item>
-      </za-carousel>
+        <za-carousel direction='left'>
+          <za-carousel-item>
+            <div>carousel1</div>
+          </za-carousel-item>
+          <za-carousel-item>
+            <div>carousel2</div>
+          </za-carousel-item>
+          <za-carousel-item>
+            <div>carousel3</div>
+          </za-carousel-item>
+        </za-carousel>
       `,
-    }, true);
-    const wrapper = vm.$el.querySelector('.za-carousel-items');
-    dispatchTouchStart(wrapper, {
-      pageX: 50,
-      pageY: 50,
-    });
-    dispatchTouchMove(wrapper, {
-      pageX: -450,
-      pageY: 50,
-    });
-    dispatchTouchEnd(wrapper, {
-      pageX: -450,
-      pageY: 50,
-    });
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+    const el = vm.$el.querySelector('.za-carousel-items');
+    triggerDrag(el, 50, 50);
+    triggerDrag(el, -450, 50);
     vm.$nextTick(() => {
       done();
     });
