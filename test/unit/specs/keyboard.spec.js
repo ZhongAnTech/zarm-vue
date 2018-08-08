@@ -1,104 +1,76 @@
-// import Keyboard from '@/keyboard';
-// import KeyboardPicker from '@/keyboard-picker';
-// import { createTest, createVue, destroyVM } from '../util';
+import Keyboard from '@/keyboard';
+import KeyboardPicker from '@/keyboard-picker';
+import { mount } from '../util';
 
-// describe('Keyboard', () => {
-//   let vm;
-//   afterEach(() => {
-//     destroyVM(vm);
-//   });
+describe('Keyboard', () => {
+  it('create number keyboard', () => {
+    const wrapper = mount(KeyboardPicker, {
+      propsData: {
+        type: 'number',
+      },
+    });
+    expect(wrapper.contains('.za-keyboard-item')).toBe(true);
+  });
 
-//   it('create number keyboard', done => {
-//     vm = createTest(Keyboard, {
-//       type: 'number',
-//     }, true);
-//     const el = vm.$el;
-//     vm.$nextTick(() => {
-//       setTimeout(() => {
-//         expect(el.querySelector('.za-keyboard-item').innerText.trim()).to.equal('1');
-//         done();
-//       }, 20);
-//     });
-//   });
+  it('create price keyboard', () => {
+    const wrapper = mount(Keyboard, {
+      type: 'price',
+    });
+    expect(wrapper.contains('.za-keyboard-item')).toBe(true);
+  });
 
-//   it('create price keyboard', done => {
-//     vm = createTest(Keyboard, {
-//       type: 'price',
-//     }, true);
-//     const el = vm.$el;
-//     vm.$nextTick(() => {
-//       setTimeout(() => {
-//         expect(el.querySelector('.za-keyboard-item').innerText.trim()).to.equal('1');
-//         done();
-//       }, 20);
-//     });
-//   });
+  it('create idcard keyboard', () => {
+    const wrapper = mount(Keyboard, {
+      type: 'idcard',
+    });
+    expect(wrapper.contains('.za-keyboard-item')).toBe(true);
+  });
 
-//   it('create idcard keyboard', done => {
-//     vm = createTest(Keyboard, {
-//       type: 'idcard',
-//     }, true);
-//     const el = vm.$el;
-//     vm.$nextTick(() => {
-//       setTimeout(() => {
-//         expect(el.querySelector('.za-keyboard-item').innerText.trim()).to.equal('1');
-//         done();
-//       }, 20);
-//     });
-//   });
+  it('create keyboard picker', () => {
+    const wrapper = mount(KeyboardPicker, {
+      type: 'number',
+      visible: true,
+    });
+    expect(wrapper.contains('.za-keyboard-item')).toBe(true);
+  });
 
-//   it('create keyboard picker', done => {
-//     vm = createTest(KeyboardPicker, {
-//       type: 'number',
-//       visible: true,
-//     }, true);
-//     vm.$nextTick(() => {
-//       setTimeout(() => {
-//         expect(document.querySelector('.za-keyboard-item').innerText.trim()).to.equal('1');
-//         done();
-//       }, 20);
-//     });
-//   });
+  it('click 1 key', () => {
+    let result;
+    const TestCompo = {
+      components: {
+        ZaKeyboard: Keyboard,
+      },
+      template: `
+        <za-keyboard @keyClick='handleClick'/>
+      `,
+      methods: {
+        handleClick(key) {
+          result = key;
+        },
+      },
+    };
+    const wrapper = mount(TestCompo);
+    wrapper.find('.za-keyboard-item').trigger('click');
+    expect(result).toBe('1');
+  });
 
-//   it('click 1 key', done => {
-//     let result;
-//     vm = createVue({
-//       template: `
-//         <za-keyboard @keyClick='handleClick'/>
-//       `,
-//       methods: {
-//         handleClick(key) {
-//           result = key;
-//         },
-//       },
-//     }, true);
-//     vm.$el.querySelector('.za-keyboard-item').click();
-//     vm.$nextTick(() => {
-//       setTimeout(() => {
-//         expect(result).to.equal('1');
-//         done();
-//       }, 20);
-//     });
-//   });
-
-//   it('click ok key', done => {
-//     let result;
-//     vm = createVue({
-//       template: `
-//         <za-keyboard @keyClick='handleClick'/>
-//       `,
-//       methods: {
-//         handleClick(key) {
-//           result = key;
-//         },
-//       },
-//     }, true);
-//     vm.$el.querySelector('.za-keyboard-item-ok').click();
-//     vm.$nextTick(() => {
-//       setTimeout(() => {
-//         expect(result).to.equal('ok');
-//         done();
-//       }, 20);
-//     });
-//   });
-// });
+  it('click ok key', () => {
+    let result;
+    const TestCompo = {
+      components: {
+        ZaKeyboard: Keyboard,
+      },
+      template: `
+        <za-keyboard @keyClick='handleClick'/>
+      `,
+      methods: {
+        handleClick(key) {
+          result = key;
+        },
+      },
+    };
+    const wrapper = mount(TestCompo);
+    wrapper.find('.za-keyboard-item-ok').trigger('click');
+    expect(result).toBe('ok');
+  });
+});

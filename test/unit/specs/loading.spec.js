@@ -1,43 +1,35 @@
-// import { createVue, destroyVM } from '../util';
+import ZaLoading from '@/loading';
+import { mount } from '../util';
 
-// describe('Loading', () => {
-//   let vm;
-//   afterEach(() => {
-//     destroyVM(vm);
-//   });
+describe('Loading', () => {
+  it('create', () => {
+    const wrapper = mount({
+      components: { ZaLoading },
+      template: `
+        <za-loading ref='loading' :visible.sync='visible'></za-loading>
+      `,
+      data() {
+        return {
+          visible: true,
+        };
+      },
+    }, true);
+    expect(wrapper.contains('.za-loading')).toBe(true);
+  });
 
-//   it('create', done => {
-//     vm = createVue({
-//       template: `
-//         <za-loading ref='loading' :visible.sync='visible'></za-loading>
-//       `,
-//       data() {
-//         return {
-//           visible: true,
-//         };
-//       },
-//     }, true);
-//     vm.$nextTick(() => {
-//       expect(vm.$el.classList.contains('za-loading')).to.be.true;
-//       done();
-//     });
-//   });
-
-//   it('hide', done => {
-//     vm = createVue({
-//       template: `
-//         <za-loading :visible.sync='visible'></za-loading>
-//       `,
-//       data() {
-//         return {
-//           visible: true,
-//         };
-//       },
-//     }, true);
-//     vm.visible = false;
-//     vm.$nextTick(() => {
-//       expect(vm.$el.classList.contains('za-loading-open')).to.be.false;
-//       done();
-//     });
-//   });
-// });
+  it('hide', () => {
+    const wrapper = mount({
+      components: { ZaLoading },
+      template: `
+        <za-loading :visible.sync='visible'></za-loading>
+      `,
+      data() {
+        return {
+          visible: true,
+        };
+      },
+    }, true);
+    wrapper.setData({ visible: false });
+    expect(wrapper.contains('.za-loading-open')).toBe(false);
+  });
+});
