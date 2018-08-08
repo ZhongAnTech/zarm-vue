@@ -1,6 +1,6 @@
 import zaSwipeAction from '@/swipe-action';
-import {mount} from '../util';
-import {dispatchTouchStart, dispatchTouchMove, dispatchTouchEnd} from '../touchs';
+import { mount } from '../util';
+import { dispatchTouchStart, dispatchTouchMove, dispatchTouchEnd } from '../touchs';
 
 describe('SwipeAction', () => {
   it('create', () => {
@@ -22,30 +22,28 @@ describe('SwipeAction', () => {
             {
               theme: 'error',
               text: '右按钮1',
-              onClick: () => {
-              },
+              onClick: () => {},
             },
             {
               theme: 'success',
               text: '右按钮2',
-              onClick: () => {
-              },
+              onClick: () => {},
             },
           ],
         };
       },
     };
-    
+
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
-    
+    const { vm } = wrapper;
+
     expect(vm.$el.classList.contains('za-swipeAction')).toBe(true);
     vm.$destroy();
   });
-  
+
   it('btn click', done => {
     let result;
-    
+
     const TestCompo = {
       components: {
         zaSwipeAction,
@@ -71,17 +69,16 @@ describe('SwipeAction', () => {
             {
               theme: 'success',
               text: '右按钮2',
-              onClick: () => {
-              },
+              onClick: () => {},
             },
           ],
         };
       },
     };
-    
+
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
-    
+    const { vm } = wrapper;
+
     const el = vm.$el;
     el.querySelector('.theme-error').click();
     vm.$nextTick(() => {
@@ -89,7 +86,7 @@ describe('SwipeAction', () => {
       done();
     });
   });
-  
+
   it('disabled', done => {
     const TestCompo = {
       components: {
@@ -109,23 +106,21 @@ describe('SwipeAction', () => {
             {
               theme: 'error',
               text: '右按钮1',
-              onClick: () => {
-              },
+              onClick: () => {},
             },
             {
               theme: 'success',
               text: '右按钮2',
-              onClick: () => {
-              },
+              onClick: () => {},
             },
           ],
         };
       },
     };
-    
+
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
-    
+    const { vm } = wrapper;
+
     const content = vm.$el.querySelector('.za-swipeAction-content');
     dispatchTouchStart(content, {
       pageX: 10,
@@ -143,7 +138,7 @@ describe('SwipeAction', () => {
       done();
     });
   });
-  
+
   it('drag move left', done => {
     const TestCompo = {
       components: {
@@ -163,22 +158,20 @@ describe('SwipeAction', () => {
             {
               theme: 'error',
               text: '右按钮1',
-              onClick: () => {
-              },
+              onClick: () => {},
             },
             {
               theme: 'success',
               text: '右按钮2',
-              onClick: () => {
-              },
+              onClick: () => {},
             },
           ],
         };
       },
     };
-    
+
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
+    const { vm } = wrapper;
     const content = vm.$el.querySelector('.za-swipeAction-content');
     dispatchTouchStart(content, {
       pageX: 10,
@@ -196,7 +189,7 @@ describe('SwipeAction', () => {
       done();
     });
   });
-  
+
   it('drag move right', done => {
     const TestCompo = {
       components: {
@@ -216,23 +209,21 @@ describe('SwipeAction', () => {
             {
               theme: 'error',
               text: '右按钮1',
-              onClick: () => {
-              },
+              onClick: () => {},
             },
             {
               theme: 'success',
               text: '右按钮2',
-              onClick: () => {
-              },
+              onClick: () => {},
             },
           ],
         };
       },
     };
-    
+
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
-    
+    const { vm } = wrapper;
+
     const content = vm.$el.querySelector('.za-swipeAction-content');
     dispatchTouchStart(content, {
       pageX: 10,

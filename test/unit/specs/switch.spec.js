@@ -1,5 +1,6 @@
 import zaSwitch from '@/switch';
-import {mount} from '../util';
+import { mount } from '../util';
+
 describe('Switch', () => {
   it('create', () => {
     const TestCompo = {
@@ -10,15 +11,15 @@ describe('Switch', () => {
         <za-switch theme='success' size='lg' ></za-switch>
       `,
     };
-  
+
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
-    
+    const { vm } = wrapper;
+
     expect(vm.$el.classList.contains('za-switch')).toBe(true);
     expect(vm.$el.classList.contains('theme-success')).toBe(true);
     expect(vm.$el.classList.contains('size-lg')).toBe(true);
   });
-  
+
   it('default', () => {
     const TestCompo = {
       components: {
@@ -33,9 +34,9 @@ describe('Switch', () => {
         };
       },
     };
-  
+
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
+    const { vm } = wrapper;
     expect(vm.$el.classList.contains('checked')).toBe(true);
   });
   it('click', done => {
@@ -58,15 +59,14 @@ describe('Switch', () => {
         },
       },
     };
-  
+
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
-    
+    const { vm } = wrapper;
+
     vm.$el.querySelector('input').click();
     vm.$nextTick(() => {
       expect(result).not.toBeUndefined();
       done();
     });
   });
-  
 });

@@ -1,6 +1,7 @@
-import zaToast from '@/toast'
-import {mount} from '../util';
-import zaLoading from '@/loading'
+import zaToast from '@/toast';
+import zaLoading from '@/loading';
+import { mount } from '../util';
+
 const $zaToast = zaToast.root;
 const $zaLoading = zaLoading.root;
 
@@ -20,12 +21,12 @@ describe('Toast', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
-    
+    const { vm } = wrapper;
+
     expect(vm.$el.classList.contains('za-toast')).toBe(true);
     expect(vm.$el.classList.contains('za-toast-open')).toBe(true);
   });
-  
+
   it('open and close', done => {
     const TestCompo = {
       components: {
@@ -41,9 +42,9 @@ describe('Toast', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
-    
-    expect(vm.$el.classList.contains('za-toast-open')).toBe(true)
+    const { vm } = wrapper;
+
+    expect(vm.$el.classList.contains('za-toast-open')).toBe(true);
     setTimeout(() => {
       expect(vm.$el.classList.contains('za-toast-open')).toBe(false);
       vm.visible = true;
@@ -53,7 +54,7 @@ describe('Toast', () => {
       }, 30);
     }, 60);
   });
-  
+
   it('close on modal', done => {
     const TestCompo = {
       components: {
@@ -69,15 +70,15 @@ describe('Toast', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
-    
+    const { vm } = wrapper;
+
     vm.$el.querySelector('.za-mask').click();
     setTimeout(() => {
       expect(vm.$el.classList.contains('za-toast-open')).toBe(false);
       done();
     }, 60);
   });
-  
+
   it('$zaToast', done => {
     const TestCompo = {
       template: `
@@ -90,15 +91,15 @@ describe('Toast', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
-    
+    const { vm } = wrapper;
+
     vm.$el.click();
     vm.$nextTick(() => {
       expect(document.querySelector('.za-toast')).not.toBeUndefined();
       done();
     });
   });
-  
+
   it('$zaToast with options', done => {
     const TestCompo = {
       template: `
@@ -113,15 +114,15 @@ describe('Toast', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
-    
+    const { vm } = wrapper;
+
     vm.$el.click();
     vm.$nextTick(() => {
       expect(document.querySelector('.za-toast .za-toast-container').innerHTML).toEqual('test');
       done();
     });
   });
-  
+
   it('$zaLoading', done => {
     const TestCompo = {
       template: `
@@ -137,8 +138,8 @@ describe('Toast', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
-    
+    const { vm } = wrapper;
+
     vm.$el.click();
     setTimeout(() => {
       expect(document.querySelector('.za-loading-open')).not.toBeUndefined();
@@ -148,7 +149,7 @@ describe('Toast', () => {
       }, 100);
     }, 20);
   });
-  
+
   it('v-za-loading', done => {
     const TestCompo = {
       template: `
@@ -169,8 +170,8 @@ describe('Toast', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
-    
+    const { vm } = wrapper;
+
     vm.$el.click();
     setTimeout(() => {
       expect(document.querySelector('.za-loading-open')).not.toBeUndefined();

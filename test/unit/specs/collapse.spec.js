@@ -3,7 +3,7 @@ import zaCollapseItem from '@/collapse-item';
 import { mount } from '../util';
 
 describe('collapse', () => {
-  it('create', () => {
+  it('create zaCollapse', () => {
     const wrapper = mount(zaCollapse, {
       propsData: {
         prefixCls: 'za-collapse',

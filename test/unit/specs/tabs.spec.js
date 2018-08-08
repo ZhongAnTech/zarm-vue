@@ -1,6 +1,6 @@
 import zaTabs from '@/tabs';
-import zaTabPane from '@/tab-pane'
-import {mount} from '../util';
+import zaTabPane from '@/tab-pane';
+import { mount } from '../util';
 
 describe('Tabs', () => {
   it('create', () => {
@@ -10,19 +10,19 @@ describe('Tabs', () => {
         theme: 'primary',
       },
     });
-    
-    const {vm} = wrapper;
+
+    const { vm } = wrapper;
     const el = vm.$el;
     expect(el.classList.contains('za-tab')).toBe(true);
     expect(el.classList.contains('theme-primary')).toBe(true);
   });
-  
+
   it('change active tab', done => {
     let result;
     const TestCompo = {
       components: {
         zaTabs,
-        zaTabPane
+        zaTabPane,
       },
       template: `
         <za-tabs v-model="activeName" @change="handleClick">
@@ -48,10 +48,10 @@ describe('Tabs', () => {
         };
       },
     };
-  
+
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
-    
+    const { vm } = wrapper;
+
     vm.$nextTick(() => {
       vm.$el.querySelectorAll('.za-tab-header-item')[1].click();
       expect(result).not.toBeUndefined();

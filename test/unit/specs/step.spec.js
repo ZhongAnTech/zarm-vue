@@ -1,5 +1,5 @@
 import zaStepper from '@/stepper';
-import {mount} from '../util';
+import { mount } from '../util';
 
 describe('Stepper', () => {
   it('create', () => {
@@ -16,7 +16,7 @@ describe('Stepper', () => {
     expect(wrapper.contains('.size-xl')).toBe(true);
     expect(wrapper.contains('.shape-radius')).toBe(true);
   });
-  
+
   it('input value', done => {
     const TestCompo = {
       components: {
@@ -31,10 +31,10 @@ describe('Stepper', () => {
         };
       },
     };
-    
+
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
-    
+    const { vm } = wrapper;
+
     vm.$nextTick(() => {
       const inputElm = wrapper.find('input');
       inputElm.setValue(12);
@@ -44,7 +44,7 @@ describe('Stepper', () => {
       });
     });
   });
-  
+
   it('input limit min', done => {
     const TestCompo = {
       components: {
@@ -60,7 +60,7 @@ describe('Stepper', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
+    const { vm } = wrapper;
     vm.$nextTick(() => {
       const inputElm = wrapper.find('input');
       inputElm.setValue(-4);
@@ -70,7 +70,7 @@ describe('Stepper', () => {
       });
     });
   });
-  
+
   it('input limit max', done => {
     const TestCompo = {
       components: {
@@ -86,7 +86,7 @@ describe('Stepper', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
+    const { vm } = wrapper;
     vm.$nextTick(() => {
       const inputElm = wrapper.find('input');
       inputElm.setValue(4);
@@ -96,7 +96,7 @@ describe('Stepper', () => {
       });
     });
   });
-  
+
   it('add and minus', done => {
     let result;
     const TestCompo = {
@@ -118,7 +118,7 @@ describe('Stepper', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
+    const { vm } = wrapper;
     vm.$el.querySelector('.za-stepper-sub').click();
     vm.$nextTick(() => {
       expect(result).not.toBeUndefined();
@@ -130,7 +130,7 @@ describe('Stepper', () => {
       });
     });
   });
-  
+
   it('add and minus with step = 2', done => {
     let result;
     const TestCompo = {
@@ -152,7 +152,7 @@ describe('Stepper', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
+    const { vm } = wrapper;
     vm.$el.querySelector('.za-stepper-sub').click();
     vm.$nextTick(() => {
       expect(result).not.toBeUndefined();
@@ -164,7 +164,7 @@ describe('Stepper', () => {
       });
     });
   });
-  
+
   it('disabled', done => {
     let result;
     const TestCompo = {
@@ -186,8 +186,8 @@ describe('Stepper', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
-  
+    const { vm } = wrapper;
+
     vm.$el.querySelector('.za-stepper-sub').click();
     vm.$nextTick(() => {
       expect(result).toBeUndefined();
@@ -195,7 +195,7 @@ describe('Stepper', () => {
       done();
     });
   });
-  
+
   it('min', done => {
     const TestCompo = {
       components: {
@@ -210,16 +210,16 @@ describe('Stepper', () => {
         };
       },
     };
-  
+
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
+    const { vm } = wrapper;
     vm.$el.querySelector('.za-stepper-sub').click();
     vm.$nextTick(() => {
       expect(vm.stepper).toEqual(-3);
       done();
     });
   });
-  
+
   it('max', done => {
     const TestCompo = {
       components: {
@@ -234,15 +234,13 @@ describe('Stepper', () => {
         };
       },
     };
-  
+
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
+    const { vm } = wrapper;
     vm.$el.querySelector('.za-stepper-plus').click();
     vm.$nextTick(() => {
       expect(vm.stepper).toEqual(3);
       done();
     });
   });
-  
-  
 });

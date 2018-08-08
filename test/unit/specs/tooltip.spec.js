@@ -1,5 +1,6 @@
-import zaTooltip from '@/tooltip'
-import {mount} from '../util';
+import zaTooltip from '@/tooltip';
+import { mount } from '../util';
+
 const $zaTooltip = zaTooltip.root;
 
 describe('Tooltip', () => {
@@ -10,15 +11,16 @@ describe('Tooltip', () => {
         visible: true,
       },
     });
-  
-    const {vm} = wrapper;
+
+    const { vm } = wrapper;
     const el = vm.$el;
-    vm.$nextTick(() => { // eslint-disable-line no-unused-vars
+    vm.$nextTick(() => {
+      // eslint-disable-line no-unused-vars
       expect(el.querySelector('.za-tooltip')).not.toBeUndefined();
       done();
     });
   });
-  
+
   it('visible', done => {
     const TestCompo = {
       components: {
@@ -34,8 +36,8 @@ describe('Tooltip', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
-    
+    const { vm } = wrapper;
+
     vm.$nextTick(() => {
       vm.$refs.tooltip.currentVisible = true;
       vm.$nextTick(() => {
@@ -44,7 +46,7 @@ describe('Tooltip', () => {
       });
     });
   });
-  
+
   it('message', done => {
     const TestCompo = {
       components: {
@@ -60,7 +62,7 @@ describe('Tooltip', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
+    const { vm } = wrapper;
 
     vm.$nextTick(() => {
       const messageEl = vm.$el.querySelector('.za-tooltip-inner');
@@ -68,10 +70,10 @@ describe('Tooltip', () => {
       done();
     });
   });
-  
+
   it('$zaTooltip', done => {
     let evl;
-  
+
     const TestCompo = {
       components: {
         zaTooltip,
@@ -86,13 +88,13 @@ describe('Tooltip', () => {
       },
       methods: {
         showTooltip() {
-          evl = $zaTooltip({message: this.message});
+          evl = $zaTooltip({ message: this.message });
         },
       },
     };
     const wrapper = mount(TestCompo);
-    const {vm} = wrapper;
-    
+    const { vm } = wrapper;
+
     vm.$el.click();
     vm.$nextTick(() => {
       expect(evl.message).toEqual('test');
