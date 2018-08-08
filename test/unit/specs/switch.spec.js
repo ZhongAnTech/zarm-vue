@@ -1,23 +1,29 @@
-import { createVue, destroyVM } from '../util';
-
+import zaSwitch from '@/switch';
+import {mount} from '../util';
 describe('Switch', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
-
   it('create', () => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaSwitch,
+      },
       template: `
         <za-switch theme='success' size='lg' ></za-switch>
       `,
-    }, true);
-    expect(vm.$el.classList.contains('za-switch')).to.be.true;
-    expect(vm.$el.classList.contains('theme-success')).to.be.true;
-    expect(vm.$el.classList.contains('size-lg')).to.be.true;
+    };
+  
+    const wrapper = mount(TestCompo);
+    const {vm} = wrapper;
+    
+    expect(vm.$el.classList.contains('za-switch')).toBe(true);
+    expect(vm.$el.classList.contains('theme-success')).toBe(true);
+    expect(vm.$el.classList.contains('size-lg')).toBe(true);
   });
+  
   it('default', () => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaSwitch,
+      },
       template: `
         <za-switch v-model='switch1'></za-switch>
       `,
@@ -26,12 +32,18 @@ describe('Switch', () => {
           switch1: true,
         };
       },
-    }, true);
-    expect(vm.$el.classList.contains('checked')).to.be.true;
+    };
+  
+    const wrapper = mount(TestCompo);
+    const {vm} = wrapper;
+    expect(vm.$el.classList.contains('checked')).toBe(true);
   });
   it('click', done => {
     let result;
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaSwitch,
+      },
       template: `
         <za-switch v-model='switch1' @change='handleChange'></za-switch>
       `,
@@ -45,11 +57,16 @@ describe('Switch', () => {
           result = evt;
         },
       },
-    }, true);
+    };
+  
+    const wrapper = mount(TestCompo);
+    const {vm} = wrapper;
+    
     vm.$el.querySelector('input').click();
     vm.$nextTick(() => {
-      expect(result).to.exist;
+      expect(result).not.toBeUndefined();
       done();
     });
   });
+  
 });

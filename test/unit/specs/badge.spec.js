@@ -1,62 +1,65 @@
-import Badge from '@/badge';
-import { createTest, createVue, destroyVM } from '../util';
+import zaBadge from '@/badge';
+import { mount } from '../util';
 
 describe('Badge', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
-
   it('prefixCls', () => {
-    vm = createTest(Badge, {
-      prefixCls: 'za-badge-1',
-    }, true);
-    const buttonElm = vm.$el;
-    expect(buttonElm.classList.contains('za-badge-1')).to.be.true;
+    const wrapper = mount(zaBadge, {
+      propsData: {
+        prefixCls: 'za-badge',
+      },
+    });
+    expect(wrapper.contains('.za-badge')).toBe(true);
   });
 
   it('theme', () => {
-    vm = createTest(Badge, {
-      theme: 'info',
-    }, true);
-    const buttonElm = vm.$el;
-    expect(buttonElm.classList.contains('theme-info')).to.be.true;
+    const wrapper = mount(zaBadge, {
+      propsData: {
+        theme: 'info',
+      },
+    });
+    expect(wrapper.contains('.theme-info')).toBe(true);
   });
 
   it('shape', () => {
-    vm = createTest(Badge, {
-      shape: 'radius',
-    }, true);
-    const buttonElm = vm.$el;
-    expect(buttonElm.classList.contains('shape-radius')).to.be.true;
+    const wrapper = mount(zaBadge, {
+      propsData: {
+        shape: 'radius',
+      },
+    });
+    expect(wrapper.contains('.shape-radius')).toBe(true);
   });
 
   it('sup', () => {
-    vm = createTest(Badge, {
-      sup: true,
-    }, true);
-    const buttonElm = vm.$el;
-    expect(buttonElm.querySelector('.za-badge-sup-up')).to.exits;
+    const wrapper = mount(zaBadge, {
+      propsData: {
+        sup: true,
+      },
+    });
+    expect(wrapper.contains('.za-badge-sup-up')).toBe(true);
   });
 
   it('click', done => {
     let result;
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaBadge,
+      },
       template: `
         <za-badge sup shape='round' text='999+' @click="handleClick">
           <div>test</div>
         </za-badge>
       `,
       methods: {
-        handleClick(evt) {
-          result = evt;
+        handleClick() {
+          result = 1;
         },
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.$el.querySelector('.za-badge-sup').click();
-
-    setTimeout(_ => { // eslint-disable-line no-unused-vars
-      expect(result).to.exist;
+    setTimeout(() => {
+      expect(result).toEqual(1);
       done();
     }, 50);
   });

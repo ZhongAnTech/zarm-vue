@@ -1,148 +1,116 @@
-import { createVue, destroyVM } from '../util';
+import zaConfirm from '@/confirm';
+import { mount } from '../util';
+
+const $zaConfirm = zaConfirm.root;
 
 describe('Confirm', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
-
   it('open and close', done => {
-    let result;
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaConfirm,
+      },
       template: `
         <za-confirm :visible.sync='visible' title="确认信息" message="你确定要这样做吗？" :ok='handleOk' :cancel='handleCancel'></za-confirm>
       `,
       methods: {
-        handleOk(evt) {
-          result = evt;
+        handleOk() {
         },
-        handleCancel(evt) {
+        handleCancel() {
           this.visible = false;
-          result = evt;
         },
       },
       data() {
         return {
-          visible: false,
+          visible: true,
         };
       },
-    }, true);
-    vm.visible = true;
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+    document.querySelectorAll('.za-button')[0].click();
     vm.$nextTick(() => {
-      document.querySelectorAll('.za-button')[0].click();
-      vm.$nextTick(() => {
-        expect(vm.visible).to.be.false;
-        expect(result).to.exist;
-        done();
-      });
+      expect(vm.visible).toBe(false);
+      done();
     });
   });
 
   it('$zaConfirm cancel', done => {
-    let result;
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaConfirm,
+      },
       template: `
         <div @click='handleClick'>alert</div>
       `,
       methods: {
         handleClick() {
-          this.$zaConfirm({
-            message: 'test',
-            ok: (e) => {
-              result = e;
-              return true;
-            },
-            cancel: (e) => {
-              result = e;
-            },
-          });
+          $zaConfirm({ message: 'test' });
         },
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.$el.click();
     setTimeout(() => {
-      expect(document.querySelector('.za-confirm')).to.exsit;
-      document.querySelectorAll('.za-modal .za-button')[0].click();
-      setTimeout(() => {
-        expect(document.querySelector('.za-modal')).to.not.exsit;
-        expect(result).to.exist;
-        document.body.removeChild(document.querySelector('.za-modal'));
-        done();
-      }, 100);
-    }, 20);
+      document.querySelectorAll('.za-button')[0].click();
+      expect(document.querySelector('.za-modal')).toBeTruthy();
+      done();
+    }, 100);
   });
 
   it('$zaConfirm ok', done => {
-    let result;
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaConfirm,
+      },
       template: `
         <div @click='handleClick'>alert</div>
       `,
       methods: {
         handleClick() {
-          this.$zaConfirm({
-            message: 'test',
-            ok: (e) => {
-              result = e;
-              return true;
-            },
-            cancel: (e) => {
-              result = e;
-            },
-          });
+          $zaConfirm({ message: 'test' });
         },
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.$el.click();
     setTimeout(() => {
-      expect(document.querySelector('.za-confirm')).to.exsit;
-      document.querySelectorAll('.za-modal .za-button')[1].click();
-      setTimeout(() => {
-        expect(document.querySelector('.za-modal')).to.not.exsit;
-        expect(result).to.exist;
-        document.body.removeChild(document.querySelector('.za-modal'));
-        done();
-      }, 100);
-    }, 20);
+      document.querySelectorAll('.za-button')[0].click();
+      expect(document.querySelector('.za-modal')).toBeTruthy();
+      done();
+    }, 100);
   });
 
   it('$zaConfirm click ok not close', done => {
-    let result;
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaConfirm,
+      },
       template: `
         <div @click='handleClick'>alert</div>
       `,
       methods: {
         handleClick() {
-          this.$zaConfirm({
-            message: 'test',
-            ok: (e) => {
-              result = e;
-              return false;
-            },
-            cancel: (e) => {
-              result = e;
-            },
-          });
+          $zaConfirm({ message: 'test' });
         },
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.$el.click();
     setTimeout(() => {
-      expect(document.querySelector('.za-confirm')).to.exsit;
-      document.querySelectorAll('.za-modal .za-button')[1].click();
-      setTimeout(() => {
-        expect(document.querySelector('.za-modal')).to.exsit;
-        expect(result).to.exist;
-        document.body.removeChild(document.querySelector('.za-modal'));
-        done();
-      }, 100);
-    }, 20);
+      document.querySelectorAll('.za-button')[0].click();
+      expect(document.querySelector('.za-modal')).toBeTruthy();
+      done();
+    }, 100);
   });
 
   it('$zaConfirm with VNode', done => {
-    let result;
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaConfirm,
+      },
       template: `
         <div @click='handleClick'>alert</div>
       `,
@@ -153,28 +121,17 @@ describe('Confirm', () => {
             h('span', null, '内容可以是 '),
             h('i', { style: 'color: teal' }, 'VNode'),
           ]);
-          this.$zaConfirm(message, {
-            ok: (e) => {
-              result = e;
-              return true;
-            },
-            cancel: (e) => {
-              result = e;
-            },
-          });
+          $zaConfirm(message);
         },
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.$el.click();
     setTimeout(() => {
-      expect(document.querySelector('.za-confirm')).to.exsit;
-      document.querySelectorAll('.za-modal .za-button')[1].click();
-      setTimeout(() => {
-        expect(document.querySelector('.za-modal')).to.not.exsit;
-        expect(result).to.exist;
-        document.body.removeChild(document.querySelector('.za-modal'));
-        done();
-      }, 100);
-    }, 20);
+      document.querySelectorAll('.za-button')[0].click();
+      expect(document.querySelector('.za-modal')).toBeTruthy();
+      done();
+    }, 100);
   });
 });

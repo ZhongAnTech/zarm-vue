@@ -1,25 +1,24 @@
-import Icon from '@/icon';
-import { createTest, createVue, destroyVM } from '../util';
+import zaIcon from '@/icon';
+import { mount } from '../util';
 
 describe('Icon', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
-
   it('create', () => {
-    vm = createTest(Icon, {
-      prefixCls: 'za-icon',
-      theme: 'primary',
-    }, true);
-    const el = vm.$el;
-    expect(el.classList.contains('za-icon')).to.be.true;
-    expect(el.classList.contains('theme-primary')).to.be.true;
+    const wrapper = mount(zaIcon, {
+      propsData: {
+        prefixCls: 'za-icon',
+        theme: 'primary',
+      },
+    });
+    expect(wrapper.contains('.za-icon')).toBe(true);
+    expect(wrapper.contains('.theme-primary')).toBe(true);
   });
 
   it('click', done => {
     let result;
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaIcon,
+      },
       template: `
         <za-icon theme="primary" type='right' @click='handleClick'/>
       `,
@@ -28,10 +27,12 @@ describe('Icon', () => {
           result = evt;
         },
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.$el.click();
     vm.$nextTick(() => {
-      expect(result).to.exist;
+      expect(result).not.toBeUndefined();
       done();
     });
   });

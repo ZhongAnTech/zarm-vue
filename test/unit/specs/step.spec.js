@@ -1,28 +1,27 @@
-import Stepper from '@/stepper';
-import { createTest, createVue, destroyVM } from '../util';
+import zaStepper from '@/stepper';
+import {mount} from '../util';
 
 describe('Stepper', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
-
   it('create', () => {
-    vm = createTest(Stepper, {
-      prefixCls: 'za-stepper',
-      theme: 'primary',
-      size: 'xl',
-      shape: 'radius',
-    }, true);
-    const el = vm.$el;
-    expect(el.classList.contains('za-stepper')).to.be.true;
-    expect(el.classList.contains('theme-primary')).to.be.true;
-    expect(el.classList.contains('size-xl')).to.be.true;
-    expect(el.classList.contains('shape-radius')).to.be.true;
+    const wrapper = mount(zaStepper, {
+      propsData: {
+        prefixCls: 'za-stepper',
+        theme: 'primary',
+        size: 'xl',
+        shape: 'radius',
+      },
+    });
+    expect(wrapper.contains('.za-stepper')).toBe(true);
+    expect(wrapper.contains('.theme-primary')).toBe(true);
+    expect(wrapper.contains('.size-xl')).toBe(true);
+    expect(wrapper.contains('.shape-radius')).toBe(true);
   });
-
+  
   it('input value', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaStepper,
+      },
       template: `
         <za-stepper v-model='stepper'></za-stepper>
       `,
@@ -31,18 +30,26 @@ describe('Stepper', () => {
           stepper: 0,
         };
       },
-    }, true);
+    };
+    
+    const wrapper = mount(TestCompo);
+    const {vm} = wrapper;
+    
     vm.$nextTick(() => {
-      vm.stepper = 12;
+      const inputElm = wrapper.find('input');
+      inputElm.setValue(12);
       vm.$nextTick(() => {
-        expect(vm.$el.querySelector('input').value).to.equal('12');
+        expect(vm.stepper).toEqual(12);
         done();
       });
     });
   });
-
+  
   it('input limit min', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaStepper,
+      },
       template: `
         <za-stepper v-model='stepper' :min="-3"></za-stepper>
       `,
@@ -51,16 +58,24 @@ describe('Stepper', () => {
           stepper: 0,
         };
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const {vm} = wrapper;
     vm.$nextTick(() => {
-      vm.stepper = -4;
-      expect(vm.$el.querySelector('input').value).to.equal('0');
-      done();
+      const inputElm = wrapper.find('input');
+      inputElm.setValue(-4);
+      vm.$nextTick(() => {
+        expect(vm.stepper).toEqual(-3);
+        done();
+      });
     });
   });
-
+  
   it('input limit max', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaStepper,
+      },
       template: `
         <za-stepper v-model='stepper' :max="3"></za-stepper>
       `,
@@ -69,17 +84,25 @@ describe('Stepper', () => {
           stepper: 0,
         };
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const {vm} = wrapper;
     vm.$nextTick(() => {
-      vm.stepper = 4;
-      expect(vm.$el.querySelector('input').value).to.equal('0');
-      done();
+      const inputElm = wrapper.find('input');
+      inputElm.setValue(4);
+      vm.$nextTick(() => {
+        expect(vm.stepper).toEqual(3);
+        done();
+      });
     });
   });
-
+  
   it('add and minus', done => {
     let result;
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaStepper,
+      },
       template: `
         <za-stepper v-model='stepper' @change='handleChange'></za-stepper>
       `,
@@ -93,22 +116,27 @@ describe('Stepper', () => {
           stepper: 0,
         };
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const {vm} = wrapper;
     vm.$el.querySelector('.za-stepper-sub').click();
     vm.$nextTick(() => {
-      expect(result).to.exist;
-      expect(vm.stepper).to.equal(-1);
+      expect(result).not.toBeUndefined();
+      expect(vm.stepper).toEqual(-1);
       vm.$el.querySelector('.za-stepper-plus').click();
       vm.$nextTick(() => {
-        expect(vm.stepper).to.equal(0);
+        expect(vm.stepper).toEqual(0);
         done();
       });
     });
   });
-
+  
   it('add and minus with step = 2', done => {
     let result;
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaStepper,
+      },
       template: `
         <za-stepper v-model='stepper' @change='handleChange' :step='2'></za-stepper>
       `,
@@ -122,22 +150,27 @@ describe('Stepper', () => {
           stepper: 0,
         };
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const {vm} = wrapper;
     vm.$el.querySelector('.za-stepper-sub').click();
     vm.$nextTick(() => {
-      expect(result).to.exist;
-      expect(vm.stepper).to.equal(-2);
+      expect(result).not.toBeUndefined();
+      expect(vm.stepper).toEqual(-2);
       vm.$el.querySelector('.za-stepper-plus').click();
       vm.$nextTick(() => {
-        expect(vm.stepper).to.equal(0);
+        expect(vm.stepper).toEqual(0);
         done();
       });
     });
   });
-
+  
   it('disabled', done => {
     let result;
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaStepper,
+      },
       template: `
         <za-stepper v-model='stepper' @change='handleChange' disabled></za-stepper>
       `,
@@ -151,17 +184,23 @@ describe('Stepper', () => {
           stepper: 0,
         };
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const {vm} = wrapper;
+  
     vm.$el.querySelector('.za-stepper-sub').click();
     vm.$nextTick(() => {
-      expect(result).to.not.exist;
-      expect(vm.stepper).to.equal(0);
+      expect(result).toBeUndefined();
+      expect(vm.stepper).toEqual(0);
       done();
     });
   });
-
+  
   it('min', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaStepper,
+      },
       template: `
         <za-stepper v-model='stepper' :min='-3' :step='10'></za-stepper>
       `,
@@ -170,16 +209,22 @@ describe('Stepper', () => {
           stepper: 0,
         };
       },
-    }, true);
+    };
+  
+    const wrapper = mount(TestCompo);
+    const {vm} = wrapper;
     vm.$el.querySelector('.za-stepper-sub').click();
     vm.$nextTick(() => {
-      expect(vm.stepper).to.equal(-3);
+      expect(vm.stepper).toEqual(-3);
       done();
     });
   });
-
+  
   it('max', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaStepper,
+      },
       template: `
         <za-stepper v-model='stepper' :max='3' :step='5'></za-stepper>
       `,
@@ -188,11 +233,16 @@ describe('Stepper', () => {
           stepper: 0,
         };
       },
-    }, true);
+    };
+  
+    const wrapper = mount(TestCompo);
+    const {vm} = wrapper;
     vm.$el.querySelector('.za-stepper-plus').click();
     vm.$nextTick(() => {
-      expect(vm.stepper).to.equal(3);
+      expect(vm.stepper).toEqual(3);
       done();
     });
   });
+  
+  
 });

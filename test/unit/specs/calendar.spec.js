@@ -1,29 +1,26 @@
-import { createVue, destroyVM } from '../util';
+import zaCalendar from '@/calendar';
+import { mount } from '../util';
 
 describe('Calendar', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
-
   it('create', () => {
-    vm = createVue({
-      template: `
-      <za-calendar />
-      `,
-    }, true);
-    expect(vm.$el.classList.contains('za-calendar')).to.be.true;
+    const wrapper = mount(zaCalendar);
+    const { vm } = wrapper;
+    expect(vm.$el.classList.contains('za-calendar')).toBe(true);
   });
 
   it('set selectedValue', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaCalendar,
+      },
       template: `
-      <za-calendar 
-      ref='calendar'
-      :visible.sync='visible' 
-      @changed='changeDate' 
-      @ok='handleOk1' 
-      :selectedValue='value1' />
+        <za-calendar 
+          ref='calendar'
+          :visible.sync='visible' 
+          @changed='changeDate' 
+          @ok='handleOk1' 
+          :selectedValue='value1' 
+        />
       `,
       data() {
         return {
@@ -39,25 +36,31 @@ describe('Calendar', () => {
           this.value1 = date;
         },
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.visible = true;
     vm.$refs.calendar.setChanged('2018-02-23');
     vm.$nextTick(() => {
-      expect(vm.value1[0]).to.equal('2018-02-23');
+      expect(vm.value1[0]).toEqual('2018-02-23');
       done();
     });
   });
 
   it('set selectedRangeValue', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaCalendar,
+      },
       template: `
-      <za-calendar 
-      ref='calendar'
-      :multiSelected='isMultiSelected'
-      :visible.sync='visible' 
-      @changed='changeDate' 
-      @ok='handleOk1' 
-      :selectedValue='value1' />
+        <za-calendar 
+         ref='calendar'
+         :multiSelected='isMultiSelected'
+         :visible.sync='visible' 
+         @changed='changeDate' 
+         @ok='handleOk1' 
+         :selectedValue='value1' 
+        />
       `,
       data() {
         return {
@@ -74,13 +77,15 @@ describe('Calendar', () => {
           this.value1 = date;
         },
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.visible = true;
     vm.$refs.calendar.setChanged('2018-02-23');
     vm.$refs.calendar.setChanged('2018-03-20');
     vm.$nextTick(() => {
-      expect(vm.value1[0]).to.equal('2018-02-23');
-      expect(vm.value1[1]).to.equal('2018-03-20');
+      expect(vm.value1[0]).toEqual('2018-02-23');
+      expect(vm.value1[1]).toEqual('2018-03-20');
       done();
     });
   });
