@@ -1,121 +1,99 @@
-// import { createVue, destroyVM } from '../util';
+import ZaModal from '@/modal';
+import { mount } from '../util';
 
-// describe('Modal', () => {
-//   let vm;
-//   afterEach(() => {
-//     destroyVM(vm);
-//   });
+describe('Modal', () => {
+  it('create', () => {
+    const wrapper = mount({
+      components: { ZaModal },
+      template: `
+        <za-modal :visible.sync='visible' :title="title">
+          模态框内容
+        </za-modal>
+      `,
+      data() {
+        return {
+          visible: true,
+          title: 'dialog',
+        };
+      },
+    }, true);
+    expect(wrapper.contains('.za-modal')).toBe(true);
+    expect(wrapper.element.style.display).not.toBe('none');
+  });
 
-//   it('create', done => {
-//     vm = createVue({
-//       template: `
-//         <za-modal :visible.sync='visible' :title="title">
-//           模态框内容
-//         </za-modal>
-//       `,
-//       data() {
-//         return {
-//           visible: true,
-//           title: 'dialog',
-//         };
-//       },
-//     }, true);
+  it('render good', () => {
+    const wrapper = mount({
+      components: { ZaModal },
+      template: `
+        <za-modal :visible.sync='visible' :title="title">
+          <span>模态框内容</span>
+          <div slot='footer'><span>{{footer}}</span></div>
+        </za-modal>
+      `,
+      data() {
+        return {
+          visible: true,
+          title: 'dialog title',
+          footer: 'this is footer',
+        };
+      },
+    }, true);
+    expect(wrapper.find('.za-modal-footer span').text()).toBe('this is footer');
+    expect(wrapper.find('.za-modal-body span').text()).toBe('模态框内容');
+  });
 
-//     vm.$nextTick(() => {
-//       setTimeout(() => {
-//         expect(document.querySelector('.za-modal')).to.exist;
-//         expect(vm.$el.style.display).to.not.equal('none');
-//         done();
-//       }, 20);
-//     });
-//   });
+  it('open and close', () => {
+    const wrapper = mount({
+      components: { ZaModal },
+      template: `
+        <za-modal :visible.sync='visible' :title="title" :close-on-click-modal='true' :showClose='true'>
+          <span>模态框内容</span>
+          <div slot='footer'><span>{{footer}}</span></div>
+        </za-modal>
+      `,
+      data() {
+        return {
+          visible: false,
+          title: 'dialog title',
+          footer: 'this is footer',
+        };
+      },
+    }, true);
+    wrapper.setData({ visible: true });
+    expect(wrapper.attributes().style.display).not.toBe('none');
+    wrapper.find('.za-mask').trigger('click');
+    expect(wrapper.vm.visible).toBe(false);
+    wrapper.setData({ visible: true });
+    wrapper.find('.za-icon-wrong').trigger('click');
+    expect(wrapper.vm.visible).toBe(false);
+  });
 
-//   it('render good', done => {
-//     vm = createVue({
-//       template: `
-//         <za-modal :visible.sync='visible' :title="title">
-//           <span>模态框内容</span>
-//           <div slot='footer'><span>{{footer}}</span></div>
-//         </za-modal>
-//       `,
-//       data() {
-//         return {
-//           visible: true,
-//           title: 'dialog title',
-//           footer: 'this is footer',
-//         };
-//       },
-//     }, true);
-
-//     vm.$nextTick(() => {
-//       expect(document.querySelector('.za-modal-footer span').textContent).to.equal('this is footer');
-//       expect(document.querySelector('.za-modal-body span').textContent).to.equal('模态框内容');
-//       done();
-//     });
-//   });
-
-//   it('open and close', done => {
-//     vm = createVue({
-//       template: `
-//         <za-modal :visible.sync='visible' :title="title" :close-on-click-modal='true' :showClose='true'>
-//           <span>模态框内容</span>
-//           <div slot='footer'><span>{{footer}}</span></div>
-//         </za-modal>
-//       `,
-//       data() {
-//         return {
-//           visible: false,
-//           title: 'dialog title',
-//           footer: 'this is footer',
-//         };
-//       },
-//     }, true);
-//     vm.visible = true;
-//     vm.$nextTick(() => {
-//       expect(vm.$el.style.display).to.not.equal('none');
-//       document.querySelector('.za-mask').click();
-//       vm.$nextTick(() => {
-//         expect(vm.visible).to.equal(false);
-//         vm.visible = true;
-//         vm.$nextTick(() => {
-//           document.querySelector('.za-icon-wrong').click();
-//           vm.$nextTick(() => {
-//             expect(vm.visible).to.equal(false);
-//             done();
-//           });
-//         });
-//       });
-//     });
-//   });
-
-//   it('animation', done => {
-//     vm = createVue({
-//       template: `
-//         <za-modal
-//           :visible.sync='visible'
-//           :title="title"
-//           :showClose='true'
-//           animationType="rotate"
-//           :animationDuration='animationDuration'
-//           :maskType='maskType'>
-//           <span>模态框内容</span>
-//           <div slot='footer'><span>{{footer}}</span></div>
-//         </za-modal>
-//       `,
-//       data() {
-//         return {
-//           visible: true,
-//           title: 'dialog title',
-//           footer: 'this is footer',
-//           animationDuration: 100,
-//           maskType: 'transparent',
-//         };
-//       },
-//     }, true);
-//     vm.$nextTick(() => {
-//       expect(document.querySelector('.za-modal-dialog').classList.contains('rotate-enter')).to.true;
-//       expect(document.querySelector('.za-mask').classList.contains('transparent')).to.true;
-//       done();
-//     });
-//   });
-// });
+  it('animation', () => {
+    const wrapper = mount({
+      components: { ZaModal },
+      template: `
+        <za-modal
+          :visible.sync='visible'
+          :title="title"
+          :showClose='true'
+          animationType="rotate"
+          :animationDuration='animationDuration'
+          :maskType='maskType'>
+          <span>模态框内容</span>
+          <div slot='footer'><span>{{footer}}</span></div>
+        </za-modal>
+      `,
+      data() {
+        return {
+          visible: true,
+          title: 'dialog title',
+          footer: 'this is footer',
+          animationDuration: 100,
+          maskType: 'transparent',
+        };
+      },
+    }, true);
+    expect(wrapper.find('.za-modal-dialog').classes().includes('rotate-enter')).toBe(true);
+    expect(wrapper.find('.za-mask').classes().includes('transparent')).toBe(true);
+  });
+});

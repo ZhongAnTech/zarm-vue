@@ -1,116 +1,100 @@
-// import { createVue, destroyVM } from '../util';
+import ZaNoticeBar from '@/notice-bar';
+import { mount } from '../util';
 
-// describe('NoticeBar', () => {
-//   let vm;
-//   afterEach(() => {
-//     destroyVM(vm);
-//   });
+describe('NoticeBar', () => {
+  it('create', () => {
+    const wrapper = mount({
+      components: { ZaNoticeBar },
+      template: `
+        <za-notice-bar theme='primary' size='lg'>noticeBar</za-notice-bar>
+      `,
+    }, true);
+    expect(wrapper.classes().includes('za-message')).toBe(true);
+    expect(wrapper.classes().includes('theme-primary')).toBe(true);
+    expect(wrapper.classes().includes('size-lg')).toBe(true);
+  });
+  it('hasArrow', () => {
+    const wrapper = mount({
+      components: { ZaNoticeBar },
+      template: `
+        <za-notice-bar hasArrow >noticeBar</za-notice-bar>
+      `,
+    }, true);
+    expect(wrapper.find('.za-icon-arrow-right').exists()).toBe(true);
+  });
+  it('closable', () => {
+    const wrapper = mount({
+      components: { ZaNoticeBar },
+      template: `
+        <za-notice-bar closable >noticeBar</za-notice-bar>
+      `,
+    }, true);
+    expect(wrapper.find('.za-icon-wrong').exists()).toBe(true);
+  });
+  it('icon', () => {
+    const wrapper = mount({
+      components: { ZaNoticeBar },
+      template: `
+      <za-notice-bar icon='wrong-round'>
+        自定义icon，自定义主题，显示关闭按钮。
+      </za-notice-bar>
+      `,
+    }, true);
+    expect(wrapper.find('.za-icon-wrong-round').exists()).toBe(true);
+  });
+  it('unmount', () => {
+    const wrapper = mount({
+      components: { ZaNoticeBar },
+      template: `
+      <div>
+        <za-notice-bar icon='wrong-round' v-if='visible'>
+        自定义icon，自定义主题，显示关闭按钮。
+        </za-notice-bar>
+      </div>
+      `,
+      data() {
+        return {
+          visible: true,
+        };
+      },
+    }, true);
+    wrapper.setData({ visible: false });
+    expect(wrapper.find('.za-noticebar').exists()).toBe(false);
+  });
 
-//   it('create', done => {
-//     vm = createVue({
-//       template: `
-//         <za-notice-bar theme='primary' size='lg'>noticeBar</za-notice-bar>
-//       `,
-//     }, true);
-//     vm.$nextTick(() => {
-//       const el = vm.$el;
-//       expect(el.classList.contains('za-message')).to.be.true;
-//       expect(el.classList.contains('theme-primary')).to.be.true;
-//       expect(el.classList.contains('size-lg')).to.be.true;
-//       done();
-//     });
-//   });
-//   it('hasArrow', done => {
-//     vm = createVue({
-//       template: `
-//         <za-notice-bar hasArrow >noticeBar</za-notice-bar>
-//       `,
-//     }, true);
-//     vm.$nextTick(() => {
-//       const el = vm.$el;
-//       expect(el.querySelector('.za-icon-arrow-right')).to.exist;
-//       done();
-//     });
-//   });
-//   it('closable', () => {
-//     vm = createVue({
-//       template: `
-//         <za-notice-bar closable >noticeBar</za-notice-bar>
-//       `,
-//     }, true);
-//     const el = vm.$el;
-//     expect(el.querySelector('.za-icon-wrong')).to.exist;
-//   });
-//   it('icon', () => {
-//     vm = createVue({
-//       template: `
-//       <za-notice-bar icon='wrong-round'>
-//         自定义icon，自定义主题，显示关闭按钮。
-//       </za-notice-bar>
-//       `,
-//     }, true);
-//     const el = vm.$el;
-//     expect(el.querySelector('.za-icon-wrong-round')).to.exist;
-//   });
-//   it('unmount', done => {
-//     vm = createVue({
-//       template: `
-//       <div>
-//         <za-notice-bar icon='wrong-round' v-if='visible'>
-//         自定义icon，自定义主题，显示关闭按钮。
-//         </za-notice-bar>
-//       </div>
-//       `,
-//       data() {
-//         return {
-//           visible: true,
-//         };
-//       },
-//     }, true);
-//     vm.visible = false;
-//     vm.$nextTick(() => {
-//       expect(vm.$el.querySelector('.za-noticebar')).to.not.exist;
-//       done();
-//     });
-//   });
+  it('visible', () => {
+    let result;
+    const wrapper = mount({
+      components: { ZaNoticeBar },
+      template: `
+        <za-notice-bar :visible.sync='visible' @click='handleClick' closable>
+          noticeBar
+        </za-notice-bar>
+      `,
+      methods: {
+        handleClick(evt) {
+          result = evt;
+        },
+      },
+      data() {
+        return {
+          visible: true,
+        };
+      },
+    }, true);
+    wrapper.find('.za-icon-wrong').trigger('click');
+    expect(result).toBeDefined();
+    expect(wrapper.vm.visible).toBe(false);
+  });
 
-//   it('visible', done => {
-//     let result;
-//     vm = createVue({
-//       template: `
-//         <za-notice-bar :visible.sync='visible' @click='handleClick' closable>
-//           noticeBar
-//         </za-notice-bar>
-//       `,
-//       methods: {
-//         handleClick(evt) {
-//           result = evt;
-//         },
-//       },
-//       data() {
-//         return {
-//           visible: true,
-//         };
-//       },
-//     }, true);
-//     vm.$el.querySelector('.za-icon-wrong').click();
-//     vm.$nextTick(() => {
-//       expect(result).to.exist;
-//       expect(vm.visible).to.be.false;
-//       done();
-//     });
-//   });
-
-//   it('autoscroll', done => {
-//     vm = createVue({
-//       template: `
-//         <za-notice-bar autoscroll>自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。</za-notice-bar>
-//       `,
-//     }, true);
-//     const body = vm.$el.querySelector('.za-noticebar-body');
-//     vm.$nextTick(() => {
-//       expect(body.style.left).to.not.equal(0);
-//       done();
-//     }, 1500);
-//   });
-// });
+  it('autoscroll', () => {
+    const wrapper = mount({
+      components: { ZaNoticeBar },
+      template: `
+        <za-notice-bar autoscroll>自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。</za-notice-bar>
+      `,
+    }, true);
+    const body = wrapper.find('.za-noticebar-body').element;
+    expect(body.style.left).not.toBe(0);
+  });
+});
