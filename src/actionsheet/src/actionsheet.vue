@@ -1,5 +1,5 @@
 <template lang="html">
-  <za-popup :visible='currentVisible' @close='handlePopupClose'>
+  <za-popup :visible='currentVisible' :get-container="getContainer" @close='handlePopupClose'>
     <div :class='{
       [`${prefixCls}`]: true,
       [`shape-${shape}`]: !!shape,
@@ -64,6 +64,7 @@ export default {
   data() {
     return {
       currentVisible: this.visible,
+      getContainer: () => document.body,
     };
   },
   watch: {

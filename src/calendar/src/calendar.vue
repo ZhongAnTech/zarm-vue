@@ -17,6 +17,7 @@
 <script>
 import dateItem from './dateItem';
 import dateUtil from './date';
+import getContainer from '../../mixins/get-container';
 
 const defaultMinDate = new Date();
 const defaultMaxDate = dateUtil.addYears(new Date(), 1);
@@ -26,6 +27,7 @@ export default {
   components: {
     dateItem,
   },
+  mixins: [getContainer],
   props: {
     prefixCls: {
       type: String,

@@ -10,6 +10,8 @@ export default {
       maxDate: new Date('2018-10-10'),
       value2: ['2018-02-24','2018-03-10'],
       isMultiSelected: true,
+      value3: [],
+      getContainer: () => document.body,
     }
   },
   methods: {
@@ -32,6 +34,10 @@ export default {
     handleOk2(date) {
       this.value2 = date;
       console.log(date); // eslint-disable-line
+    },
+    handleOk3(date) {
+      this.value3 = date;
+      console.log(date); // eslint-disable-line
     }
   },
 };
@@ -41,10 +47,10 @@ export default {
 ```html
   <za-cell title='选择时间' @click='showCal1'>{{value1.join(',')}}</za-cell>
   <za-cell title='选择时间范围' @click='showCal2'>{{value2.join(',')}}</za-cell>
-  <za-cell title='选择时间范围' @click='showCal3'></za-cell>
-  <za-calendar :visible.sync='visible1' @changed='changeDate' @ok='handleOk1' :selected-value='value1' ></za-calendar>
-  <za-calendar :visible.sync='visible2' @ok='handleOk2' :multi-selected='isMultiSelected' :selected-value='value2'></za-calendar>
-  <za-calendar :visible.sync='visible3' :min='minDate' :max='maxDate' ></za-calendar>
+  <za-cell title='时间范围限制' @click='showCal3'>{{value3.join(',')}}</za-cell>
+  <za-calendar :get-container="getContainer" :visible.sync='visible1' @changed='changeDate' @ok='handleOk1' :selected-value='value1' ></za-calendar>
+  <za-calendar :get-container="getContainer" :visible.sync='visible2' @ok='handleOk2' :multi-selected='isMultiSelected' :selected-value='value2'></za-calendar>
+  <za-calendar :get-container="getContainer" :selected-value='value3' :visible.sync='visible3' :min='minDate' :max='maxDate' @ok='handleOk3'></za-calendar>
 ```
 :::
 
