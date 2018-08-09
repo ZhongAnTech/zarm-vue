@@ -1,16 +1,15 @@
-import { createVue, destroyVM } from '../util';
+import zaSwipeAction from '@/swipe-action';
+import { mount } from '../util';
 import { dispatchTouchStart, dispatchTouchMove, dispatchTouchEnd } from '../touchs';
 
 describe('SwipeAction', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
-
   it('create', () => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaSwipeAction,
+      },
       template: `
-      <za-swipe-action
+        <za-swipe-action
         theme='primary'
         autoClose
         :right="action1">
@@ -33,16 +32,24 @@ describe('SwipeAction', () => {
           ],
         };
       },
-    }, true);
-    expect(vm.$el.classList.contains('za-swipeAction')).to.true;
+    };
+
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+
+    expect(vm.$el.classList.contains('za-swipeAction')).toBe(true);
     vm.$destroy();
   });
 
   it('btn click', done => {
     let result;
-    vm = createVue({
+
+    const TestCompo = {
+      components: {
+        zaSwipeAction,
+      },
       template: `
-      <za-swipe-action
+        <za-swipe-action
         theme='primary'
         autoClose
         :right="action1">
@@ -67,19 +74,26 @@ describe('SwipeAction', () => {
           ],
         };
       },
-    }, true);
+    };
+
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+
     const el = vm.$el;
     el.querySelector('.theme-error').click();
     vm.$nextTick(() => {
-      expect(result).to.equal('isClicked');
+      expect(result).toEqual('isClicked');
       done();
     });
   });
 
   it('disabled', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaSwipeAction,
+      },
       template: `
-      <za-swipe-action
+        <za-swipe-action
         theme='primary'
         disabled
         :left="action1">
@@ -102,17 +116,21 @@ describe('SwipeAction', () => {
           ],
         };
       },
-    }, true);
-    const wrapper = vm.$el.querySelector('.za-swipeAction-content');
-    dispatchTouchStart(wrapper, {
+    };
+
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+
+    const content = vm.$el.querySelector('.za-swipeAction-content');
+    dispatchTouchStart(content, {
       pageX: 10,
       pageY: 10,
     });
-    dispatchTouchMove(wrapper, {
+    dispatchTouchMove(content, {
       pageX: -300,
       pageY: 10,
     });
-    dispatchTouchEnd(wrapper, {
+    dispatchTouchEnd(content, {
       pageX: -300,
       pageY: 10,
     });
@@ -122,9 +140,12 @@ describe('SwipeAction', () => {
   });
 
   it('drag move left', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaSwipeAction,
+      },
       template: `
-      <za-swipe-action
+        <za-swipe-action
         theme='primary'
         autoClose
         :right="action1">
@@ -147,17 +168,20 @@ describe('SwipeAction', () => {
           ],
         };
       },
-    }, true);
-    const wrapper = vm.$el.querySelector('.za-swipeAction-content');
-    dispatchTouchStart(wrapper, {
+    };
+
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+    const content = vm.$el.querySelector('.za-swipeAction-content');
+    dispatchTouchStart(content, {
       pageX: 10,
       pageY: 10,
     });
-    dispatchTouchMove(wrapper, {
+    dispatchTouchMove(content, {
       pageX: -300,
       pageY: 10,
     });
-    dispatchTouchEnd(wrapper, {
+    dispatchTouchEnd(content, {
       pageX: -300,
       pageY: 10,
     });
@@ -167,9 +191,12 @@ describe('SwipeAction', () => {
   });
 
   it('drag move right', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaSwipeAction,
+      },
       template: `
-      <za-swipe-action
+        <za-swipe-action
         theme='primary'
         autoClose
         :left="action1">
@@ -192,17 +219,21 @@ describe('SwipeAction', () => {
           ],
         };
       },
-    }, true);
-    const wrapper = vm.$el.querySelector('.za-swipeAction-content');
-    dispatchTouchStart(wrapper, {
+    };
+
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+
+    const content = vm.$el.querySelector('.za-swipeAction-content');
+    dispatchTouchStart(content, {
       pageX: 10,
       pageY: 10,
     });
-    dispatchTouchMove(wrapper, {
+    dispatchTouchMove(content, {
       pageX: 300,
       pageY: 10,
     });
-    dispatchTouchEnd(wrapper, {
+    dispatchTouchEnd(content, {
       pageX: 300,
       pageY: 10,
     });

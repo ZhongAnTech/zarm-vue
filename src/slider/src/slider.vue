@@ -69,6 +69,8 @@ export default {
   },
   mounted() {
     this.init();
+    // fixed jest unit undefined $zaTooltip
+    this.$zaTooltip = zaTooltip.root;
   },
   methods: {
     getInitValue(defaultValue) {

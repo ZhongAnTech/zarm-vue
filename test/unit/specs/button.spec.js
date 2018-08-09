@@ -1,108 +1,117 @@
-import Button from '@/button';
-import { createTest, createVue, destroyVM } from '../util';
+import zaButton from '@/button';
+import { mount } from '../util';
 
 describe('Button', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
-
   it('create', () => {
-    vm = createTest(Button, {
-      theme: 'primary',
-    }, true);
-    const buttonElm = vm.$el;
-    expect(buttonElm.classList.contains('theme-primary')).to.be.true;
+    const wrapper = mount(zaButton, {
+      propsData: {
+        theme: 'primary',
+      },
+    });
+    expect(wrapper.contains('.theme-primary')).toBe(true);
   });
 
   it('prefixCls', () => {
-    vm = createTest(Button, {
-      prefixCls: 'za-button-test',
-    }, true);
-    const buttonElm = vm.$el;
-    expect(buttonElm.classList.contains('za-button-test')).to.be.true;
+    const wrapper = mount(zaButton, {
+      propsData: {
+        prefixCls: 'za-button-test',
+      },
+    });
+    expect(wrapper.contains('.za-button-test')).toBe(true);
   });
 
   it('size', () => {
-    vm = createTest(Button, {
-      size: 'xl',
-    }, true);
-    const buttonElm = vm.$el;
-    expect(buttonElm.classList.contains('size-xl')).to.be.true;
+    const wrapper = mount(zaButton, {
+      propsData: {
+        size: 'xl',
+      },
+    });
+    expect(wrapper.contains('.size-xl')).toBe(true);
   });
 
   it('shape', () => {
-    vm = createTest(Button, {
-      shape: 'radius',
-    }, true);
-    const buttonElm = vm.$el;
-    expect(buttonElm.classList.contains('shape-radius')).to.be.true;
+    const wrapper = mount(zaButton, {
+      propsData: {
+        shape: 'radius',
+      },
+    });
+    expect(wrapper.contains('.shape-radius')).toBe(true);
   });
 
   it('block', () => {
-    vm = createTest(Button, {
-      block: true,
-    }, true);
-    const buttonElm = vm.$el;
-    expect(buttonElm.classList.contains('block')).to.be.true;
+    const wrapper = mount(zaButton, {
+      propsData: {
+        block: true,
+      },
+    });
+    expect(wrapper.contains('.block')).toBe(true);
   });
 
   it('bordered', () => {
-    vm = createTest(Button, {
-      bordered: true,
-    }, true);
-    const buttonElm = vm.$el;
-    expect(buttonElm.classList.contains('bordered')).to.be.true;
+    const wrapper = mount(zaButton, {
+      propsData: {
+        bordered: true,
+      },
+    });
+    expect(wrapper.contains('.bordered')).toBe(true);
   });
 
   it('active', () => {
-    vm = createTest(Button, {
-      active: true,
-    }, true);
-    const buttonElm = vm.$el;
-    expect(buttonElm.classList.contains('active')).to.be.true;
+    const wrapper = mount(zaButton, {
+      propsData: {
+        active: true,
+      },
+    });
+    expect(wrapper.contains('.active')).toBe(true);
   });
 
   it('focus', () => {
-    vm = createTest(Button, {
-      focus: true,
-    }, true);
-    const buttonElm = vm.$el;
-    expect(buttonElm.classList.contains('focus')).to.be.true;
+    const wrapper = mount(zaButton, {
+      propsData: {
+        focus: true,
+      },
+    });
+    expect(wrapper.contains('.focus')).toBe(true);
   });
 
   it('disabled', () => {
-    vm = createTest(Button, {
-      disabled: true,
-    }, true);
-    const buttonElm = vm.$el;
-    expect(buttonElm.classList.contains('disabled')).to.be.true;
+    const wrapper = mount(zaButton, {
+      propsData: {
+        disabled: true,
+      },
+    });
+    expect(wrapper.contains('.disabled')).toBe(true);
   });
 
   it('loading', () => {
-    vm = createTest(Button, {
-      loading: true,
-    }, true);
-    const buttonElm = vm.$el;
-    expect(buttonElm.getElementsByTagName('svg')[0].classList.contains('rotate360')).to.be.true;
+    const wrapper = mount(zaButton, {
+      propsData: {
+        loading: true,
+      },
+    });
+    expect(wrapper.contains('.rotate360')).toBe(true);
   });
 
   it('click', done => {
     let result;
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaButton,
+      },
       template: `
         <za-button @click="handleClick"></za-button>
       `,
       methods: {
-        handleClick(evt) {
-          result = evt;
+        handleClick() {
+          result = 1;
         },
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.$el.click();
-
-    setTimeout(_ => { // eslint-disable-line no-unused-vars
-      expect(result).to.exist;
+    setTimeout(() => {
+      expect(result).toEqual(1);
       done();
     }, 20);
   });

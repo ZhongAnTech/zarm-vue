@@ -1,13 +1,15 @@
-import { createVue, destroyVM } from '../util';
+// import { createVue, destroyVM } from '../util';
+import zaRadioGroup from '@/radio-group';
+import zaRadio from '@/radio';
+import { mount } from '../util';
 
 describe('Radio', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
-
   it('create', () => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaRadioGroup,
+        zaRadio
+      },
       template: `
         <za-radio-group theme='primary' type='button' shape='radius' v-model='radio' ref='radio'>
           <za-radio ref='a' label='a'>a</za-radio>
@@ -20,16 +22,22 @@ describe('Radio', () => {
           radio: '',
         };
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     const el = vm.$el;
-    expect(el.classList.contains('shape-radius')).to.be.true;
-    expect(vm.$refs.a.$el.classList.contains('theme-primary')).to.be.true;
-    expect(vm.$refs.a.$el.classList.contains('za-radio')).to.be.true;
-    expect(vm.$refs.a.$el.classList.contains('za-button')).to.be.true;
+    expect(el.classList.contains('shape-radius')).toBe(true);
+    expect(vm.$refs.a.$el.classList.contains('theme-primary')).toBe(true);
+    expect(vm.$refs.a.$el.classList.contains('za-radio')).toBe(true);
+    expect(vm.$refs.a.$el.classList.contains('za-button')).toBe(true);
   });
 
   it('disabled', () => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaRadioGroup,
+        zaRadio
+      },
       template: `
         <za-radio-group theme='primary' type='button' disabled>
           <za-radio ref='a' label='a'>a</za-radio>
@@ -37,12 +45,18 @@ describe('Radio', () => {
           <za-radio ref='c' label='c'>c</za-radio>
         </za-radio-group>
       `,
-    }, true);
-    expect(vm.$refs.a.$el.classList.contains('disabled')).to.be.true;
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+    expect(vm.$refs.a.$el.classList.contains('disabled')).toBe(true);
   });
 
   it('default value', () => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaRadioGroup,
+        zaRadio
+      },
       template: `
         <za-radio-group theme='primary' type='button' v-model='radio'>
           <za-radio ref='a' label='a'>a</za-radio>
@@ -55,13 +69,19 @@ describe('Radio', () => {
           radio: 'a',
         };
       },
-    }, true);
-    expect(vm.$refs.a.$el.classList.contains('checked')).to.be.true;
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+    expect(vm.$refs.a.$el.classList.contains('checked')).toBe(true);
   });
 
   it('click', done => {
     let result;
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaRadioGroup,
+        zaRadio
+      },
       template: `
         <za-radio-group theme='primary' type='button' v-model='radio' @change='handleChange'>
           <za-radio ref='a' label='a'>a</za-radio>
@@ -79,12 +99,15 @@ describe('Radio', () => {
           radio: '',
         };
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.$refs.a.$el.querySelector('input').click();
     vm.$nextTick(() => {
-      expect(vm.radio).to.equal('a');
-      expect(result).to.equal('a');
+      expect(vm.radio).toEqual('a');
+      expect(result).toEqual('a');
       done();
     });
   });
+
 });

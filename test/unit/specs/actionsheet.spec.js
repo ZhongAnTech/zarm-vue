@@ -1,110 +1,123 @@
-import ActionSheet from '@/actionsheet';
-import { createTest, createVue, destroyVM } from '../util';
+import zaActionsheet from '@/actionsheet';
+import { mount } from '../util';
 
 describe('ActionSheet', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
+  it('create', () => {
+    const wrapper = mount(zaActionsheet, {
+      propsData: {
+        prefixCls: 'za-actionsheet',
+      },
+    });
+    expect(wrapper.contains('.za-actionsheet')).toBe(true);
   });
 
-  it('create', done => {
-    vm = createTest(ActionSheet, {
-      prefixCls: 'za-actionsheet',
-    }, true);
-    const el = vm.$el;
-    vm.$nextTick(() => {
-      expect(el.querySelector('.za-actionsheet')).to.exsit;
-      done();
-    });
-  }, true);
-
-  it('actions', done => {
+  it('cancel action', done => {
     let result;
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaActionsheet,
+      },
       template: `
         <za-actionsheet :visible.sync='visible' :actions='actions' @cancel='handleCancel'/>
       `,
       data() {
         return {
           visible: true,
-          actions: [{
-            text: '操作一',
-            onClick: () => {},
-          }, {
-            text: '操作二',
-            onClick: () => () => {},
-          }, {
-            theme: 'error',
-            text: '操作三',
-            onClick: () => () => {},
-          }],
+          actions: [
+            {
+              text: '操作一',
+              onClick: () => {},
+            },
+            {
+              text: '操作二',
+              onClick: () => () => {},
+            },
+            {
+              theme: 'error',
+              text: '操作三',
+              onClick: () => () => {},
+            },
+          ],
         };
       },
       methods: {
-        handleCancel(evt) {
-          result = evt;
+        handleCancel() {
+          result = 1;
         },
       },
-    }, true);
-    vm.$el.querySelector('.za-mask').click();
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+    wrapper.find('.za-actionsheet-cancel>.za-actionsheet-item').trigger('click');
     vm.$nextTick(() => {
-      expect(vm.visible).to.be.false;
-      expect(result).to.exist;
+      expect(vm.visible).toEqual(false);
+      expect(result).toEqual(1);
       done();
     });
   });
 
   it('visible', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaActionsheet,
+      },
       template: `
         <za-actionsheet :visible.sync='visible' :actions='actions'/>
       `,
       data() {
         return {
           visible: true,
-          actions: [{
-            text: '操作一',
-            onClick: () => {},
-          }, {
-            text: '操作二',
-            onClick: () => () => {},
-          }, {
-            theme: 'error',
-            text: '操作三',
-            onClick: () => () => {},
-          }],
+          actions: [
+            {
+              text: '操作一',
+              onClick: () => {},
+            },
+            {
+              text: '操作二',
+              onClick: () => () => {},
+            },
+            {
+              theme: 'error',
+              text: '操作三',
+              onClick: () => () => {},
+            },
+          ],
         };
       },
-    }, true);
-    vm.$el.querySelector('.za-mask').click();
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+    wrapper.find('.za-mask').trigger('click');
     vm.$nextTick(() => {
-      expect(vm.visible).to.be.false;
+      expect(vm.visible).toBe(false);
       done();
     });
   });
 
   it('cancelText', done => {
-    vm = createTest(ActionSheet, {
-      prefixCls: 'za-actionsheet',
-      cancelText: '关闭',
-    }, true);
-    const el = vm.$el;
+    const wrapper = mount(zaActionsheet, {
+      propsData: {
+        prefixCls: 'za-actionsheet',
+        cancelText: '关闭',
+      },
+    });
+    const { vm } = wrapper;
     vm.$nextTick(() => {
-      setTimeout(() => {
-        expect(el.querySelector('.za-actionsheet-cancel').innerText).to.equal('关闭');
-        done();
-      }, 20);
+      expect(wrapper.contains('.za-actionsheet-cancel')).toBeTruthy();
+      done();
     });
   });
 
   it('showCancel', done => {
-    vm = createTest(ActionSheet, {
-      prefixCls: 'za-actionsheet',
-      showCancel: false,
-    }, true);
-    const el = vm.$el;
+    const wrapper = mount(zaActionsheet, {
+      propsData: {
+        prefixCls: 'za-actionsheet',
+        showCancel: false,
+      },
+    });
+    const { vm } = wrapper;
     vm.$nextTick(() => {
-      expect(!el.querySelector('.za-actionsheet-cancel')).to.exsit;
+      expect(wrapper.contains('.za-actionsheet-cancel')).toBe(false);
       done();
     });
   });

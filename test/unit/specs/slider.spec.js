@@ -1,157 +1,82 @@
-import Slider from '@/slider';
-import { createVue, createTest, destroyVM } from '../util';
-import { dispatchTouchStart, dispatchTouchMove, dispatchTouchEnd } from '../touchs';
+import zaSlider from '@/slider';
+import { mount, trigger, triggerDrag } from '../util';
+
+Element.prototype.getBoundingClientRect = jest.fn(() => ({ width: 100, left: 0 }));
 
 describe('Slider', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
-
   it('create', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaSlider,
+      },
       template: `
-      <za-slider
-      :value='0'
-      ></za-slider>
+        <za-slider
+        :value='0'
+        ></za-slider>
       `,
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.$nextTick(() => {
-      expect(vm.$el.classList.contains('za-slider')).to.be.true;
+      expect(wrapper.contains('.za-slider')).toBe(true);
       done();
     });
   });
 
   it('slider shadow position', done => {
-    vm = createTest(Slider, {
-      prefixCls: 'za-slider',
-    }, true);
-    vm.$nextTick(() => { // eslint-disable-line no-unused-vars
+    const wrapper = mount(zaSlider, {
+      propsData: {
+        prefixCls: 'za-slider',
+      },
+    });
+    const { vm } = wrapper;
+    vm.$nextTick(() => {
       vm.$el.click();
       done();
     });
   });
 
   it('change value', done => {
-    vm = createVue({
-      template: `
-       <za-slider
-       ref='slider'
-       @change='handleChange'
-       ></za-slider>
-      `,
-      methods: {
-        handleChange(ev, v) {
-          console.log(v); // eslint-disable-line
-        },
+    const TestCompo = {
+      components: {
+        zaSlider,
       },
-    }, true);
+      template: `
+        <za-slider
+        ref='slider'
+        :value='v'
+        ></za-slider>
+      `,
+      data() {
+        return {
+          v: 0,
+        };
+      },
+    };
+    const wrapper = mount(TestCompo, { attachToDocument: true });
+    const { vm } = wrapper;
+    const el = wrapper.find('.za-slider-handle');
+    triggerDrag(el, 100, 0);
     vm.$nextTick(() => {
-      expect(vm.$el.classList.contains('za-slider')).to.be.true;
-      vm.value = 10;
+      expect(vm.$refs.slider.value).not.toEqual(0);
       done();
     });
   });
 
-  it('drag', done => {
-    let result;
-    vm = createVue({
-      template: `
-       <za-slider
-       ref='slider'
-       @change='handleChange'
-       ></za-slider>
-      `,
-      methods: {
-        handleChange(ev, v) {
-          result = v;
-        },
+  it('drag event', () => {
+    const TestCompo = {
+      components: {
+        zaSlider,
       },
-    }, true);
-    const wrapper = vm.$el.querySelector('.za-slider-handle');
-    dispatchTouchStart(wrapper, {
-      pageX: 50,
-      pageY: 50,
-    });
-    dispatchTouchMove(wrapper, {
-      pageX: 150,
-      pageY: 50,
-    });
-    dispatchTouchEnd(wrapper, {
-      pageX: 150,
-      pageY: 50,
-    });
-    vm.$nextTick(() => {
-      expect(result).to.exsit;
-      done();
-    });
-  });
-
-  it('drag min offset', done => {
-    let result;
-    vm = createVue({
       template: `
-       <za-slider
-       ref='slider'
-       @change='handleChange'
-       ></za-slider>
+        <za-slider
+        ref='slider'
+        :value='0'
+        ></za-slider>
       `,
-      methods: {
-        handleChange(ev, v) {
-          result = v;
-        },
-      },
-    }, true);
-    const wrapper = vm.$el.querySelector('.za-slider-handle');
-    dispatchTouchStart(wrapper, {
-      pageX: 50,
-      pageY: 50,
-    });
-    dispatchTouchMove(wrapper, {
-      pageX: -500,
-      pageY: 50,
-    });
-    dispatchTouchEnd(wrapper, {
-      pageX: -500,
-      pageY: 50,
-    });
-    vm.$nextTick(() => {
-      expect(result).to.exsit;
-      done();
-    });
-  });
-
-  it('drag max offset', done => {
-    let result;
-    vm = createVue({
-      template: `
-       <za-slider
-       ref='slider'
-       @change='handleChange'
-       ></za-slider>
-      `,
-      methods: {
-        handleChange(ev, v) {
-          result = v;
-        },
-      },
-    }, true);
-    const wrapper = vm.$el.querySelector('.za-slider-handle');
-    dispatchTouchStart(wrapper, {
-      pageX: 50,
-      pageY: 50,
-    });
-    dispatchTouchMove(wrapper, {
-      pageX: 1000,
-      pageY: 50,
-    });
-    dispatchTouchEnd(wrapper, {
-      pageX: 1000,
-      pageY: 50,
-    });
-    vm.$nextTick(() => {
-      expect(result).to.exsit;
-      done();
-    });
+    };
+    const wrapper = mount(TestCompo, { attachToDocument: true });
+    const el = wrapper.find('.za-slider-handle');
+    triggerDrag(el, 100, 0);
   });
 });

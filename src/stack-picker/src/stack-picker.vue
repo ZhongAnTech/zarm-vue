@@ -11,7 +11,7 @@
         [`${prefixCls}-container`]: true,
         [`${prefixCls}-hidden`]: !currentVisible,
       }' @click.stop='() => {}'>
-        <za-popup :visible='currentVisible' @close='onPopupClose'>
+        <za-popup :visible='currentVisible' :get-container="getContainer" @close='onPopupClose'>
           <div :class='`${prefixCls}-wrapper`'>
             <div :class='`${prefixCls}-header`'>
               <div :class='`${prefixCls}-cancel`' @click='handleCancel'>{{cancelText}}</div>
@@ -153,6 +153,7 @@ export default {
   },
   data() {
     const data = this.resolveProps(this);
+    data.getContainer = () => document.body;
     data.currentVisible = this.visible;
     data.oldValue = data.currentValue;
     return data;
@@ -274,12 +275,10 @@ export default {
       if (isLast && !errorMsg) {
         this.currentValue = value;
         this.errorMsg = errorMsg;
-        // this.$emit('input', value.map(v => v[this.valueMember]));
         this.$emit('change', value.map(v => v[this.valueMember]));
       } else {
         this.currentValue = value;
         this.errorMsg = errorMsg;
-        // this.$emit('input', value.map(v => v[this.valueMember]));
         this.$emit('change', value.map(v => v[this.valueMember]));
       }
     },

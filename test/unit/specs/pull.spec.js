@@ -1,4 +1,5 @@
-import { createVue, destroyVM } from '../util';
+import zaPull from '@/pull';
+import { mount } from '../util';
 import { dispatchTouchStart, dispatchTouchMove, dispatchTouchEnd } from '../touchs';
 
 const REFRESH_STATE = {
@@ -20,13 +21,11 @@ const LOAD_STATE = {
 };
 
 describe('Pull', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
-
   it('create', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaPull,
+      },
       template: `
         <za-pull>
           <div>1</div>
@@ -34,16 +33,20 @@ describe('Pull', () => {
           <div>3</div>
         </za-pull>
       `,
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.$nextTick(() => {
-      const el = vm.$el;
-      expect(el.classList.contains('za-pull')).to.be.true;
+      expect(vm.$el.classList.contains('za-pull')).toBe(true);
       done();
     });
   });
 
   it('refreshing and success', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaPull,
+      },
       template: `
         <za-pull :refreshing='refreshing' :duration='50'>
           <div>1</div>
@@ -56,16 +59,20 @@ describe('Pull', () => {
           refreshing: true,
         };
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.$nextTick(() => {
-      const el = vm.$el;
-      expect(el.getElementsByTagName('svg')[0].classList.contains('rotate360')).to.be.true;
+      expect(vm.$el.getElementsByTagName('svg')[0].classList.contains('rotate360')).toBe(true);
       done();
     });
   });
 
   it('drag refreshing', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaPull,
+      },
       template: `
         <za-pull :refreshing='refreshing' :onRefresh='refresh(1)'>
           <div>1</div>
@@ -86,18 +93,19 @@ describe('Pull', () => {
           });
         },
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.$nextTick(() => {
-      const wrapper = vm.$el;
-      dispatchTouchStart(wrapper, {
+      dispatchTouchStart(vm.$el, {
         pageX: 50,
         pageY: 0,
       });
-      dispatchTouchMove(wrapper, {
+      dispatchTouchMove(vm.$el, {
         pageX: 50,
         pageY: 50,
       });
-      dispatchTouchEnd(wrapper, {
+      dispatchTouchEnd(vm.$el, {
         pageX: 50,
         pageY: 50,
       });
@@ -106,7 +114,10 @@ describe('Pull', () => {
   });
 
   it('pull and drop', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaPull,
+      },
       template: `
         <za-pull :duration='50' ref='pull'>
           <div>1</div>
@@ -114,21 +125,25 @@ describe('Pull', () => {
           <div>3</div>
         </za-pull>
       `,
-    }, true);
-    const el = vm.$el;
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.$refs.pull.doRefreshAction(REFRESH_STATE.pull, 10);
     vm.$nextTick(() => {
-      expect(el.getElementsByTagName('svg')[0].classList.contains('za-spinner')).to.be.true;
+      expect(vm.$el.getElementsByTagName('svg')[0].classList.contains('za-spinner')).toBe(true);
       vm.$refs.pull.doRefreshAction(REFRESH_STATE.drop, 110);
       vm.$nextTick(() => {
-        expect(el.getElementsByTagName('svg')[0].classList.contains('za-spinner')).to.be.true;
+        expect(vm.$el.getElementsByTagName('svg')[0].classList.contains('za-spinner')).toBe(true);
         done();
       });
     });
   });
 
   it('customer render refresh', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaPull,
+      },
       template: `
         <za-pull :duration='50' ref='pull'>
           <div>1</div>
@@ -156,20 +171,22 @@ describe('Pull', () => {
           </template>
         </za-pull>
       `,
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     const el = vm.$el;
     vm.$refs.pull.doRefreshAction(REFRESH_STATE.pull, 10);
     vm.$nextTick(() => {
-      expect(el.querySelector('.custom-control1')).to.exist;
+      expect(el.querySelector('.custom-control1')).toBeTruthy();
       vm.$refs.pull.doRefreshAction(REFRESH_STATE.drop, 110);
       vm.$nextTick(() => {
-        expect(el.querySelector('.custom-control2')).to.exist;
+        expect(el.querySelector('.custom-control2')).toBeTruthy();
         vm.$refs.pull.doRefreshAction(REFRESH_STATE.loading, 100);
         vm.$nextTick(() => {
-          expect(el.querySelector('.custom-control3')).to.exist;
+          expect(el.querySelector('.custom-control3')).toBeTruthy();
           vm.$refs.pull.doRefreshAction(REFRESH_STATE.success, 100);
           vm.$nextTick(() => {
-            expect(el.querySelector('.custom-control4')).to.exist;
+            expect(el.querySelector('.custom-control4')).toBeTruthy();
             done();
           });
         });
@@ -178,7 +195,10 @@ describe('Pull', () => {
   });
 
   it('customer render load success', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaPull,
+      },
       template: `
         <za-pull :duration='50' ref='pull'>
           <div>1</div>
@@ -196,21 +216,26 @@ describe('Pull', () => {
           </template>
         </za-pull>
       `,
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     const el = vm.$el;
     vm.$refs.pull.doLoadAction(LOAD_STATE.loading, 10);
     vm.$nextTick(() => {
-      expect(el.querySelector('.custom-control3')).to.exist;
+      expect(el.querySelector('.custom-control3')).toBeTruthy();
       vm.$refs.pull.doLoadAction(LOAD_STATE.complete, 110);
       vm.$nextTick(() => {
-        expect(el.querySelector('.custom-control1')).to.exist;
+        expect(el.querySelector('.custom-control1')).toBeTruthy();
         done();
       });
     });
   });
 
   it('customer render load failure', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaPull,
+      },
       template: `
         <za-pull :duration='50' ref='pull'>
           <div>1</div>
@@ -228,16 +253,18 @@ describe('Pull', () => {
           </template>
         </za-pull>
       `,
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     const el = vm.$el;
     vm.$refs.pull.doLoadAction(LOAD_STATE.loading, 10);
     vm.$nextTick(() => {
-      expect(el.querySelector('.custom-control3')).to.exist;
+      expect(el.querySelector('.custom-control3')).toBeTruthy();
       vm.$refs.pull.doLoadAction(LOAD_STATE.failure, 110);
       vm.$nextTick(() => {
-        expect(el.querySelector('.custom-control2')).to.exist;
+        expect(el.querySelector('.custom-control2')).toBeTruthy();
         done();
       });
     });
   });
-});
+})

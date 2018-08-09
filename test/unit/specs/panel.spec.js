@@ -1,13 +1,13 @@
-import { createVue, destroyVM } from '../util';
+import ZaPanel from '@/panel';
+import ZaPanelBody from '@/panel-body';
+import ZaPanelHeader from '@/panel-header';
+import ZaPanelFooter from '@/panel-footer';
+import { mount } from '../util';
 
 describe('Panel', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
-
   it('create', () => {
-    vm = createVue({
+    const wrapper = mount({
+      components: { ZaPanel, ZaPanelBody, ZaPanelHeader, ZaPanelFooter },
       template: `
         <za-panel>
           <za-panel-header title='普通列表项'/>
@@ -19,15 +19,16 @@ describe('Panel', () => {
         </za-panel>
       `,
     }, true);
-    expect(vm.$el.classList.contains('za-panel'));
-    expect(vm.$el.querySelector('.za-panel-header .za-panel-title').innerText).to.equal('普通列表项');
-    expect(vm.$el.querySelector('.za-panel-body span').innerText).to.equal('标题文字');
-    expect(vm.$el.querySelector('.za-panel-footer .za-panel-title').innerText).to.equal('footer');
-    expect(vm.$el.querySelector('.za-panel-footer .za-panel-more').innerText).to.equal('more');
+    expect(wrapper.classes().includes('za-panel')).toBe(true);
+    expect(wrapper.find('.za-panel-header .za-panel-title').text()).toBe('普通列表项');
+    expect(wrapper.find('.za-panel-body span').text()).toBe('标题文字');
+    expect(wrapper.find('.za-panel-footer .za-panel-title').text()).toBe('footer');
+    expect(wrapper.find('.za-panel-footer .za-panel-more').text()).toBe('more');
   });
 
   it('create using slot', () => {
-    vm = createVue({
+    const wrapper = mount({
+      components: { ZaPanel, ZaPanelBody, ZaPanelHeader, ZaPanelFooter },
       template: `
         <za-panel>
           <za-panel-header>
@@ -44,11 +45,11 @@ describe('Panel', () => {
         </za-panel>
       `,
     }, true);
-    expect(vm.$el.classList.contains('za-panel'));
-    expect(vm.$el.querySelector('.za-panel-header .za-panel-title span').innerText).to.equal('普通列表项');
-    expect(vm.$el.querySelector('.za-panel-header .za-panel-more span').innerText).to.equal('more');
-    expect(vm.$el.querySelector('.za-panel-body span').innerText).to.equal('标题文字');
-    expect(vm.$el.querySelector('.za-panel-footer .za-panel-title span').innerText).to.equal('title');
-    expect(vm.$el.querySelector('.za-panel-footer .za-panel-more span').innerText).to.equal('more');
+    expect(wrapper.classes().includes('za-panel')).toBe(true);
+    expect(wrapper.find('.za-panel-header .za-panel-title span').text()).toBe('普通列表项');
+    expect(wrapper.find('.za-panel-header .za-panel-more span').text()).toBe('more');
+    expect(wrapper.find('.za-panel-body span').text()).toBe('标题文字');
+    expect(wrapper.find('.za-panel-footer .za-panel-title span').text()).toBe('title');
+    expect(wrapper.find('.za-panel-footer .za-panel-more span').text()).toBe('more');
   });
 });

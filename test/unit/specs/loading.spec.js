@@ -1,13 +1,10 @@
-import { createVue, destroyVM } from '../util';
+import ZaLoading from '@/loading';
+import { mount } from '../util';
 
 describe('Loading', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
-
-  it('create', done => {
-    vm = createVue({
+  it('create', () => {
+    const wrapper = mount({
+      components: { ZaLoading },
       template: `
         <za-loading ref='loading' :visible.sync='visible'></za-loading>
       `,
@@ -17,14 +14,12 @@ describe('Loading', () => {
         };
       },
     }, true);
-    vm.$nextTick(() => {
-      expect(vm.$el.classList.contains('za-loading')).to.be.true;
-      done();
-    });
+    expect(wrapper.contains('.za-loading')).toBe(true);
   });
 
-  it('hide', done => {
-    vm = createVue({
+  it('hide', () => {
+    const wrapper = mount({
+      components: { ZaLoading },
       template: `
         <za-loading :visible.sync='visible'></za-loading>
       `,
@@ -34,10 +29,7 @@ describe('Loading', () => {
         };
       },
     }, true);
-    vm.visible = false;
-    vm.$nextTick(() => {
-      expect(vm.$el.classList.contains('za-loading-open')).to.be.false;
-      done();
-    });
+    wrapper.setData({ visible: false });
+    expect(wrapper.contains('.za-loading-open')).toBe(false);
   });
 });

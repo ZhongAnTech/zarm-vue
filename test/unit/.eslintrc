@@ -1,18 +1,10 @@
 {
   "env": {
-    "mocha": true
+    "jest": true
   },
-  "globals": {
-    "expect": true,
-    "sinon": true
+  "globals": { 
   },
   "rules": {
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "optionalDependencies": ["test/unit/index.js", "test/unit/util.js"]
-      }
-    ],
     "no-unused-expressions": "off"
   }
 }

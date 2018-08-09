@@ -1,60 +1,65 @@
-import Checkbox from '@/checkbox';
-import { createTest, createVue, destroyVM } from '../util';
+import zaCheckbox from '@/checkbox';
+import zaCheckboxGroup from '@/checkbox-group';
+import { mount } from '../util';
 
 describe('Checkbox', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
-
   it('create single', () => {
-    vm = createTest(Checkbox, {
-      prefixCls: 'za-checkbox',
-    }, true);
-    const el = vm.$el;
-    expect(el.classList.contains('za-checkbox')).to.be.true;
+    const wrapper = mount(zaCheckbox, {
+      propsData: {
+        prefixCls: 'za-checkbox',
+      },
+    });
+    expect(wrapper.contains('.za-checkbox')).toBe(true);
   });
 
   it('theme single', () => {
-    vm = createTest(Checkbox, {
-      theme: 'primary',
-      type: 'button',
+    const wrapper = mount(zaCheckbox, {
+      propsData: {
+        theme: 'primary',
+        type: 'button',
+      },
     });
-    const el = vm.$el;
-    expect(el.classList.contains('theme-primary'));
+    expect(wrapper.contains('.theme-primary')).toBe(true);
   });
 
-  it('type single', () => {
-    vm = createTest(Checkbox, {
-      type: 'cell',
+  it('type cell', () => {
+    const wrapper = mount(zaCheckbox, {
+      propsData: {
+        type: 'cell',
+      },
     });
-    const el = vm.$el;
-    expect(el.classList.contains('za-cell'));
+    expect(wrapper.contains('.za-cell')).toBe(true);
   });
 
-  it('type cell single with click', done => {
-    vm = createTest(Checkbox, {
-      type: 'cell',
+  it('single with click', done => {
+    const wrapper = mount(zaCheckbox, {
+      propsData: {
+        type: 'cell',
+      },
     });
-    const el = vm.$el;
-    expect(el.classList.contains('za-cell'));
-    el.click();
+    const { vm } = wrapper;
+    vm.$el.click();
     vm.$nextTick(() => {
-      expect(vm.model).to.equal(true);
+      expect(vm.model).toEqual(true);
       done();
     });
   });
 
   it('disabled', () => {
-    vm = createTest(Checkbox, {
-      disabled: true,
+    const wrapper = mount(zaCheckbox, {
+      propsData: {
+        disabled: true,
+      },
     });
-    const el = vm.$el;
-    expect(el.classList.contains('disabled'));
+    expect(wrapper.contains('.disabled')).toBe(true);
   });
 
   it('group create', () => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaCheckbox,
+        zaCheckboxGroup,
+      },
       template: `
         <za-checkbox-group v-model='checkboxGroup' @change='handleGroupChange'>
           <za-checkbox v-for='(city, index) in cities' :label="city" :key="city"  :disabled='index === 2'>{{city}}</za-checkbox>
@@ -71,15 +76,19 @@ describe('Checkbox', () => {
 
         },
       },
-    }, true);
-    const el = vm.$el;
-    expect(el.classList.contains('za-checkbox-group'));
+    };
+    const wrapper = mount(TestCompo);
+    expect(wrapper.contains('.za-checkbox-group')).toBe(true);
   });
 
   it('group shape type theme block', () => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaCheckbox,
+        zaCheckboxGroup,
+      },
       template: `
-        <za-checkbox-group v-model='checkboxGroup' shape='radius' type='button' theme='primary' block>
+        <za-checkbox-group v-model='checkboxGroup' @change='handleGroupChange' shape='radius' type='button' theme='primary' block>
           <za-checkbox v-for='(city, index) in cities' :label="city" :key="city"  :disabled='index === 2'>{{city}}</za-checkbox>
         </za-checkbox-group>
       `,
@@ -89,18 +98,26 @@ describe('Checkbox', () => {
           checkboxGroup: [],
         };
       },
-    }, true);
-    const el = vm.$el;
-    expect(el.classList.contains('shape-radius')).to.be.true;
-    expect(el.classList.contains('block')).to.be.true;
-    expect(el.querySelector('.za-button').classList.contains('theme-primary')).to.be.true;
-    expect(el.querySelector('.za-button')).to.exist;
+      methods: {
+        handleGroupChange() {
+
+        },
+      },
+    };
+    const wrapper = mount(TestCompo);
+    expect(wrapper.contains('.shape-radius')).toBe(true);
+    expect(wrapper.contains('.block')).toBe(true);
+    expect(wrapper.contains('.za-button.theme-primary')).toBe(true);
   });
 
   it('group type=cell with click and unclick', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaCheckbox,
+        zaCheckboxGroup,
+      },
       template: `
-        <za-checkbox-group v-model='checkboxGroup' shape='radius' type='cell'>
+        <za-checkbox-group v-model='checkboxGroup' @change='handleGroupChange' shape='radius' type='cell'>
           <za-checkbox v-for='(city, index) in cities' :label="city" :key="city"  :disabled='index === 2'>{{city}}</za-checkbox>
         </za-checkbox-group>
       `,
@@ -110,21 +127,31 @@ describe('Checkbox', () => {
           checkboxGroup: [],
         };
       },
-    }, true);
-    const el = vm.$el;
-    el.querySelectorAll('.za-cell-inner')[0].click();
+      methods: {
+        handleGroupChange() {
+
+        },
+      },
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+    wrapper.find('.za-cell-inner').trigger('click');
     vm.$nextTick(() => {
-      expect(vm.checkboxGroup.indexOf('上海')).to.equal(0);
-      el.querySelectorAll('.za-cell-inner')[0].click();
+      expect(vm.checkboxGroup.indexOf('上海')).toEqual(0);
+      wrapper.find('.za-cell-inner').trigger('click');
       vm.$nextTick(() => {
-        expect(vm.checkboxGroup.indexOf('上海')).to.equal(-1);
+        expect(vm.checkboxGroup.indexOf('上海')).toEqual(-1);
         done();
       });
     });
   });
 
   it('group default check', () => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaCheckbox,
+        zaCheckboxGroup,
+      },
       template: `
         <za-checkbox-group v-model='checkboxGroup'>
           <za-checkbox v-for='(city, i) in cities' :label="city" :key="city" :disabled='i === 2'>
@@ -138,15 +165,24 @@ describe('Checkbox', () => {
           checkboxGroup: ['上海'],
         };
       },
-    }, true);
-    const el = vm.$el;
-    const firstCheckbox = el.querySelectorAll('.za-checkbox-input')[0];
-    expect(firstCheckbox.checked).to.be.true;
+      methods: {
+        handleGroupChange() {
+
+        },
+      },
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+    const firstCheckbox = vm.$el.querySelector('.za-checkbox-input');
+    expect(firstCheckbox.checked).toBe(true);
   });
 
   it('change', done => {
     let result;
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaCheckbox,
+      },
       template: `
         <za-checkbox v-model='v1' @change='handleChange'>单独使用</za-checkbox>
       `,
@@ -156,26 +192,30 @@ describe('Checkbox', () => {
         };
       },
       methods: {
-        handleChange(evt) {
-          result = evt;
+        handleChange() {
+          result = 1;
         },
       },
-    }, true);
-    const el = vm.$el;
-    const input = vm.$el.querySelector('.za-checkbox-input');
-    input.click();
-
-    vm.$nextTick(_ => { // eslint-disable-line no-unused-vars
-      expect(el.classList.contains('checked')).to.be.true;
-      expect(input.checked).to.be.true;
-      expect(vm.v1).to.be.true;
-      expect(result).to.exist;
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+    wrapper.find('.za-checkbox-input').trigger('click');
+    vm.$nextTick(() => {
+      const firstCheckbox = vm.$el.querySelector('.za-checkbox-input');
+      expect(wrapper.contains('.checked')).toBe(true);
+      expect(firstCheckbox.checked).toBe(true);
+      expect(vm.v1).toBe(true);
+      expect(result).toEqual(1);
       done();
     });
   });
 
   it('group to be true', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaCheckbox,
+        zaCheckboxGroup,
+      },
       template: `
         <za-checkbox-group v-model='checkboxGroup'>
           <za-checkbox label="a" ref="a">a</za-checkbox>
@@ -187,11 +227,13 @@ describe('Checkbox', () => {
           checkboxGroup: [],
         };
       },
-    }, true);
-    expect(vm.$refs.a.isGroup).to.be.true;
-    vm.$refs.a.$el.querySelector('.za-checkbox-input').click();
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+    expect(vm.$refs.a.isGroup).toBe(true);
+    wrapper.find('.za-checkbox-input').trigger('click');
     vm.$nextTick(() => {
-      expect(vm.checkboxGroup.indexOf('a') !== -1).to.be.true;
+      expect(vm.checkboxGroup.indexOf('a') !== -1).toBe(true);
       done();
     });
   });

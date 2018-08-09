@@ -1,44 +1,39 @@
-import SearchBar from '@/search-bar';
-import { createTest, createVue, destroyVM } from '../util';
+import zaSearchBar from '@/search-bar';
+import { mount } from '../util';
 
 describe('SearchBar', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
+
+  it('create', () => {
+    const wrapper = mount(zaSearchBar, {
+      propsData: {
+        prefixCls: 'za-search-bar',
+      },
+    });
+    expect(wrapper.contains('.za-search-bar')).toBe(true);
   });
 
-  it('create', done => {
-    vm = createTest(SearchBar, {
-      prefixCls: 'za-search-bar',
-    }, true);
-    const el = vm.$el;
-    vm.$nextTick(() => { // eslint-disable-line no-unused-vars
-      expect(el.querySelector('.za-search-bar')).to.exsit;
-      done();
+  it('shape', () => {
+    const wrapper = mount(zaSearchBar, {
+      propsData: {
+        prefixCls: 'za-search-bar',
+        shape: 'round',
+      },
     });
-  });
-
-  it('shape', done => {
-    vm = createTest(SearchBar, {
-      prefixCls: 'za-search-bar',
-      shape: 'round',
-    }, true);
-    const el = vm.$el;
-    vm.$nextTick(() => { // eslint-disable-line no-unused-vars
-      expect(el.querySelector('.shape-round')).to.exsit;
-      done();
-    });
+    expect(wrapper.contains('.shape-round')).toBe(true);
   });
 
   it('placeholder', done => {
-    vm = createTest(SearchBar, {
-      prefixCls: 'za-search-bar',
-    }, true);
+    const wrapper = mount(zaSearchBar, {
+      propsData: {
+        prefixCls: 'za-search-bar',
+      },
+    });
+    const { vm } = wrapper;
+    const el = vm.$el;
     vm.$nextTick(() => { // eslint-disable-line no-unused-vars
       setTimeout(() => {
-        const el = vm.$el;
-        const placholderText = el.querySelector('.za-search-bar-mock-placeholder').innerText;
-        expect(placholderText).to.equal('搜索');
+        const placholderText = el.querySelector('.za-search-bar-mock-placeholder').innerHTML;
+        expect(placholderText).toEqual('搜索');
         done();
       }, 20);
     });
@@ -46,7 +41,10 @@ describe('SearchBar', () => {
 
   it('clear', done => {
     let result;
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaSearchBar,
+      },
       template: `
         <za-search-bar placeholder="搜索" 
           shape="round"
@@ -61,18 +59,23 @@ describe('SearchBar', () => {
           result = val;
         },
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+    wrapper.find('.za-input-clear').trigger('click');
     vm.$nextTick(() => {
-      document.querySelector('.za-input-clear').click();
       vm.$nextTick(() => {
-        expect(result).to.equal('');
+        expect(result).toEqual('');
         done();
       });
     });
   });
 
   it('cancel', done => {
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaSearchBar,
+      },
       template: `
         <za-search-bar placeholder="搜索" 
           shape="round"
@@ -81,12 +84,15 @@ describe('SearchBar', () => {
           value="默认搜索关键字"
         />
       `,
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+    const el = vm.$el;
+    wrapper.find('.za-input-clear').trigger('click');
     vm.$nextTick(() => {
-      document.querySelector('.za-input-clear').click();
       vm.$nextTick(() => {
-        const searchInputEl = document.querySelector('input[type="search"]');
-        expect(searchInputEl.value).to.equal('');
+        const searchInputEl = el.querySelector('input[type="search"]')
+        expect(searchInputEl.value).toEqual('');
         done();
       });
     });

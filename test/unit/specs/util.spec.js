@@ -12,7 +12,7 @@ describe('utils', () => {
     events.on(div, 'click', callback);
     div.click();
     setTimeout(() => {
-      expect(a).to.equal(1);
+      expect(a).toEqual(1);
       done();
     }, 50);
   });
@@ -20,7 +20,7 @@ describe('utils', () => {
     events.off(div, 'click', callback);
     div.click();
     setTimeout(() => {
-      expect(a).to.equal(1);
+      expect(a).toEqual(1);
       done();
     }, 50);
   });
@@ -28,16 +28,16 @@ describe('utils', () => {
     events.once(div, 'click', callback);
     div.click();
     setTimeout(() => {
-      expect(a).to.equal(2);
+      expect(a).toEqual(2);
       done();
     });
   });
   it('defaultThemeValidator', () => {
     const theme = defaultThemeValidator('primary');
-    expect(theme).to.equal(true);
+    expect(theme).toEqual(true);
   });
   it('enumGenerator', () => {
     const g = enumGenerator(['a', 'b'])('a');
-    expect(g).to.equal(true);
+    expect(g).toEqual(true);
   });
 });

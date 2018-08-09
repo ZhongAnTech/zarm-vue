@@ -1,100 +1,96 @@
-import Cell from '@/cell';
-import { createTest, createVue, destroyVM } from '../util';
+import zaCell from '@/cell';
+import zaIcon from '@/icon';
+import { mount } from '../util';
 
 describe('Cell', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
-
-  it('create', done => {
-    vm = createVue(Cell, {
+  it('create', () => {
+    const TestCompo = {
+      components: {
+        zaCell,
+      },
       template: `
-      <za-cell title='标题文字'>
-        <div slot='description'>描述文字</div>
-      </za-cell>
+        <za-cell title='标题文字'>
+          <div slot='description'>描述文字</div>
+        </za-cell>
       `,
-    }, true);
-    vm.$nextTick(() => {
-      expect(vm.$el.classList.contains('za-cell')).to.be.true;
-      done();
+    };
+    const wrapper = mount(TestCompo);
+    expect(wrapper.contains('.za-cell')).toBe(true);
+  });
+
+  it('prefixCls', () => {
+    const wrapper = mount(zaCell, {
+      propsData: {
+        prefixCls: 'za-cell-test',
+      },
     });
+    expect(wrapper.contains('.za-cell-test')).toBe(true);
   });
 
-  it('prefixCls', done => {
-    vm = createTest(Cell, {
-      prefixCls: 'za-cell-test',
-    }, true);
-    vm.$nextTick(() => {
-      expect(vm.$el.classList.contains('za-cell-test')).to.be.true;
-      done();
+  it('title', () => {
+    const wrapper = mount(zaCell, {
+      propsData: {
+        title: '测试',
+      },
     });
+    const el = wrapper.find('.za-cell-title');
+    expect(el.text()).toEqual('测试');
   });
 
-  it('title', done => {
-    vm = createTest(Cell, {
-      title: '测试',
-    }, true);
-    vm.$nextTick(() => {
-      setTimeout(() => {
-        const el = vm.$el.querySelector('.za-cell-title');
-        expect(el.innerText === '测试').to.be.true;
-        done();
-      }, 20);
+  it('theme', () => {
+    const wrapper = mount(zaCell, {
+      propsData: {
+        theme: 'primary',
+      },
     });
+    expect(wrapper.contains('.theme-primary')).toBe(true);
   });
 
-  it('theme', done => {
-    vm = createTest(Cell, {
-      theme: 'primary',
-    }, true);
-    vm.$nextTick(() => {
-      const el = vm.$el;
-      expect(el.classList.contains('theme-primary')).to.be.true;
-      done();
+  it('disabled', () => {
+    const wrapper = mount(zaCell, {
+      propsData: {
+        disabled: true,
+      },
     });
+    expect(wrapper.contains('.disabled')).toBe(true);
   });
 
-  it('disabled', done => {
-    vm = createTest(Cell, {
-      disabled: true,
-    }, true);
-    const el = vm.$el;
-    setTimeout(() => {
-      expect(el.classList.contains('disabled')).to.be.true;
-      done();
-    }, 20);
-  });
-
-  it('hasIcon', done => {
-    vm = createVue({
+  it('hasIcon', () => {
+    const TestCompo = {
+      components: {
+        zaCell,
+        zaIcon,
+      },
       template: `
         <za-cell>
           <za-icon type='right' slot='icon'/>
         </za-cell>
       `,
-    }, true);
-    setTimeout(() => {
-      expect(vm.$el.querySelector('.za-icon-right')).to.exist;
-      done();
-    }, 20);
+    };
+    const wrapper = mount(TestCompo);
+    expect(wrapper.contains('.za-icon-right')).toBe(true);
   });
 
   it('click', done => {
     let result;
-    vm = createVue({
+    const TestCompo = {
+      components: {
+        zaCell,
+      },
       template: `
         <za-cell @click="handleClick">标题</za-cell>
       `,
       methods: {
-        handleClick(evt) {
-          result = evt;
+        handleClick() {
+          result = 1;
         },
       },
-    }, true);
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
     vm.$el.click();
-    setTimeout(_ => { // eslint-disable-line no-unused-vars
-      expect(result).to.exist;
+    setTimeout(() => {
+      expect(result).toEqual(1);
       done();
     }, 20);
   });
