@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <!-- import CSS -->
   <!-- <link rel="stylesheet" href="https://unpkg.com/zarm-vue@latest/zarm-vue.default.css"> -->
   <link rel="stylesheet" href="../release/zarm-vue.default.css">
@@ -11,7 +12,8 @@
 </head>
 <body>
   <div id="app">
-      <za-button v-za-loading="loading" theme="primary">普通按钮</za-button>
+      <za-button theme="primary" @click="showAlert">普通按钮</za-button>
+      <za-slider :default-value='20'></za-slider>
   </div>
 </body>
 <script>
@@ -21,6 +23,11 @@
       return {
         loading: true,
       }
+    },
+    methods: {
+      showAlert() {
+        this.$zaAlert('这是一个Alert框。');
+      },
     }
   })
 </script>
