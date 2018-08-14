@@ -211,6 +211,7 @@ export default{
 | animationDuration | number | 200 | | 动画执行时间 |
 | width | string, number | '70%' | | 宽度 |
 | close-on-click-modal | bool | false | | 是否可以通过点击遮罩层关闭modal |
+| getContainer | Func |  |  | 指定挂载的父容器DOM节点 |
 
 #### Modal Events
 

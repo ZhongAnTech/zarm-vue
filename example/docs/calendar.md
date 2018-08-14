@@ -48,8 +48,8 @@ export default {
   <za-cell title='选择时间' @click='showCal1'>{{value1.join(',')}}</za-cell>
   <za-cell title='选择时间范围' @click='showCal2'>{{value2.join(',')}}</za-cell>
   <za-cell title='时间范围限制' @click='showCal3'>{{value3.join(',')}}</za-cell>
-  <za-calendar :get-container="getContainer" :visible.sync='visible1' @changed='changeDate' @ok='handleOk1' :selected-value='value1' ></za-calendar>
-  <za-calendar :get-container="getContainer" :visible.sync='visible2' @ok='handleOk2' :multi-selected='isMultiSelected' :selected-value='value2'></za-calendar>
+  <za-calendar :visible.sync='visible1' @changed='changeDate' @ok='handleOk1' :selected-value='value1' ></za-calendar>
+  <za-calendar :visible.sync='visible2' @ok='handleOk2' :multi-selected='isMultiSelected' :selected-value='value2'></za-calendar>
   <za-calendar :get-container="getContainer" :selected-value='value3' :visible.sync='visible3' :min='minDate' :max='maxDate' @ok='handleOk3'></za-calendar>
 ```
 :::
@@ -71,6 +71,7 @@ export default {
 | dateItemFormat | string | | 'YYYY年MM月' | 月份标题格式化 |
 | cancelBtnText | string | '取消' |  | 取消按钮文案 |
 | okBtnText | string | '确定' |  | 确定按钮文案 |
+| getContainer | Func |  |  | 指定挂载的父容器DOM节点 |
 
 #### Calendar Events
 | 事件名称 | 说明 | 回调参数 |
