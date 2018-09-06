@@ -1,6 +1,7 @@
 @import '../../../styles/core/mixins/index';
 @import '../../../styles/core/functions/index';
 @import '../../../styles/variables';
+
 $prefixCls: za-calendar;
 $lineHeight: r(45);
 $borderRadius: r(45);
@@ -23,33 +24,40 @@ $borderRadius: r(45);
   padding-bottom: 20px;
   padding-top: r(50);
   background: #fff;
+
   ul,
   li {
     list-style: none;
     padding: 0;
     margin: 0;
   }
+
   .#{$prefixCls}-item {
     text-align: center;
   }
+
   .#{$prefixCls}-action {
     @extend %clearfix;
+
     background-color: $calendar-action-bg;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 100;
     cursor: pointer;
+
     .ok-btn {
       padding: r(15);
       float: left;
       color: $calendar-date-selected-color;
     }
+
     .cancel-btn {
       padding: r(15);
       float: right;
     }
   }
+
   .#{$prefixCls}-month {
     padding: 15px 0;
     color: $calendar-month-title;
@@ -57,6 +65,7 @@ $borderRadius: r(45);
     font-weight: bold;
     border-bottom: 1px solid $calendar-border-color;
   }
+
   .#{$prefixCls}-day {
     &:after {
       content: '';
@@ -66,6 +75,7 @@ $borderRadius: r(45);
       clear: both;
     }
   }
+
   .#{$prefixCls}-day li {
     float: left;
     width: 14.285714285714286%;
@@ -73,9 +83,11 @@ $borderRadius: r(45);
     vertical-align: middle;
     line-height: 45px;
   }
+
   .#{$prefixCls}-date {
     width: 100%;
     font-size: 15px;
+
     &:after {
       content: '';
       display: block;
@@ -84,9 +96,11 @@ $borderRadius: r(45);
       clear: both;
     }
   }
+
   .#{$prefixCls}-selected-suffix {
     display: block;
   }
+
   .#{$prefixCls}-date li {
     position: relative;
     float: left;
@@ -99,6 +113,7 @@ $borderRadius: r(45);
     cursor: pointer;
     color: $calendar-date-color;
     vertical-align: middle;
+
     .date-item {
       display: block;
       width: $borderRadius;
@@ -108,9 +123,11 @@ $borderRadius: r(45);
       border-radius: $borderRadius;
     }
   }
+
   .#{$prefixCls}-date li.#{$prefixCls}-festival {
     font-weight: bold;
   }
+
   .#{$prefixCls}-date li.#{$prefixCls}-selected {
     .date-item {
       position: relative;
@@ -119,14 +136,17 @@ $borderRadius: r(45);
       color: #fff;
       font-weight: bold;
     }
+
     &.#{$prefixCls}-range-selected.#{$prefixCls}-start-selected {
       border-top-left-radius: $borderRadius;
       border-bottom-left-radius: $borderRadius;
     }
+
     &.#{$prefixCls}-range-selected.#{$prefixCls}-end-selected {
       border-top-right-radius: $borderRadius;
       border-bottom-right-radius: $borderRadius;
     }
+
     &.#{$prefixCls}-start-selected:after {
       content: '';
       display: block;
@@ -139,6 +159,7 @@ $borderRadius: r(45);
       border-top-left-radius: $borderRadius;
       border-bottom-left-radius: $borderRadius;
     }
+
     &.#{$prefixCls}-end-selected:after {
       content: '';
       display: block;
@@ -152,21 +173,26 @@ $borderRadius: r(45);
       border-bottom-right-radius: $borderRadius;
     }
   }
+
   .#{$prefixCls}-date li.#{$prefixCls}-range-selected {
     background: $calendar-selected-range-color;
     font-weight: bold;
   }
+
   .#{$prefixCls}-date li.#{$prefixCls}-invalid {
     color: #c9c9c9;
     cursor: auto;
   }
+
   .#{$prefixCls}-date li.#{$prefixCls}-invalid:hover {
     background: none;
   }
+
   .#{$prefixCls}-more {
     text-align: center;
     padding: 15px 0;
   }
+
   .#{$prefixCls}-mask {
     display: none;
     position: fixed;
@@ -177,6 +203,7 @@ $borderRadius: r(45);
     height: 100%;
     background-color: #fff;
   }
+
   .#{$prefixCls}-year {
     display: block;
     padding: 15px;
@@ -187,4 +214,3 @@ $borderRadius: r(45);
     background-color: $calendar-selected-range-color;
   }
 }
-
