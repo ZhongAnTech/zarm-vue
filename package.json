@@ -28,6 +28,7 @@
     "url": "https://github.com/ZhonganTechENG/zarm-vue/issues"
   },
   "main": "lib/index.js",
+  "typings": "types/index.d.ts",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
