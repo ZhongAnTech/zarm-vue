@@ -53,10 +53,9 @@ export default {
       visible4: false,
       visible6: false,
       visible7: false,
-      v1: '2',
+      v1: ['2'],
       v2: ['2','3'],
       v3: ['2','21'],
-      v4: '',
       v5: ['2','22'],
       v6: '',
       v7: '',
@@ -182,7 +181,28 @@ export default {
 ```
 :::
 
-:::demo 城市选择器Select
+:::demo 表单选择器
+```html         
+  <za-cell title="单项选择">
+    <za-select
+      v-model='v1'
+      :data-source='data1'
+      @ok='handleOk'
+      @change='handleChange'
+      @cancel='handleCancel'/>
+  </za-cell>
+  <za-cell title="多项选择">
+    <za-select
+      :data-source='data2'
+      v-model='v2'
+      @ok='handleOk'
+      @change='handleChange'
+      @cancel='handleCancel'/>
+  </za-cell>
+```
+:::
+
+:::demo 城市选择器
 ```html         
   <za-cell title="省市选择">
     <za-select

@@ -136,7 +136,7 @@ export default {
     },
     selectedValue() {
       // eslint-disable-next-line
-      return this.isSingleColumn && !isArray(this.currentValue) ? [this.currentValue] : this.currentValue;
+      return !isArray(this.currentValue) ? [this.currentValue] : this.currentValue;
     },
     isSingleColumn() {
       const { dataSource } = this;
@@ -167,7 +167,7 @@ export default {
     onChange(selected) {
       const { valueMember } = this;
       const value = selected.map(item => item[valueMember]);
-      this.currentValue = this.isSingleColumn ? value[0] : value;
+      this.currentValue = value;
       this.$emit('change', this.currentValue);
     },
     handleCancel() {
@@ -226,7 +226,6 @@ export default {
     },
     displayGenerator(value) {
       const { displayRender, displayMember, displayAddon } = this;
-      // if (oldValue.length === 0) return;
       if (typeof displayRender === 'function') {
         return displayRender(value);
       }
