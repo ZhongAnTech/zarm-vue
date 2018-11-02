@@ -7,11 +7,10 @@
 </template>
 
 <script>
+import Demo from 'docs/2.0.0/toast.md';
 import Container from '../common/Container.vue';
 import PageHeader from '../common/PageHeader.vue';
 import PageFooter from '../common/PageFooter.vue';
-import Demo from '../docs/toast.md';
-
 import '../styles/pages/ToastPage.scss';
 
 export default {

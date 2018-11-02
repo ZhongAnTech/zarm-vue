@@ -15,7 +15,8 @@ function resolve(dir) {
 module.exports = merge(baseWebpackConfig, {
   mode: 'development',
   entry: {
-    app: resolve('./example/main.js'),
+    demo: resolve('./example/main.js'),
+    site: resolve('./site/main.js'),
   },
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap }),
@@ -32,8 +33,15 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.NoEmitOnErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: 'index.html',
+      filename: 'demo.html',
       template: 'example/index.html',
+      chunks: ['demo'],
+      inject: true,
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'site.html',
+      template: 'site/index.html',
+      chunks: ['site'],
       inject: true,
     }),
     new FriendlyErrorsPlugin(),

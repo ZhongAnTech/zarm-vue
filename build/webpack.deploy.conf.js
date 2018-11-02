@@ -23,6 +23,7 @@ module.exports = merge(baseWebpackConfig, {
   },
   entry: {
     app: path.join(__dirname, '../example/deploy.js'),
+    site: path.join(__dirname, '../site/deploy.js'),
   },
   // cheap-module-eval-source-map is faster for development
   output: {

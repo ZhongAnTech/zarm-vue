@@ -7,10 +7,10 @@
 </template>
 
 <script>
+import Demo from 'docs/2.0.0/cell.md';
 import Container from '../common/Container.vue';
 import PageHeader from '../common/PageHeader.vue';
 import PageFooter from '../common/PageFooter.vue';
-import Demo from '../docs/cell.md';
 import '../styles/pages/CellPage.scss';
 
 export default {
