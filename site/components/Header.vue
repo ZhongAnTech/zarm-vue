@@ -8,8 +8,18 @@
       </div>
       <nav>
         <ul>
-          <li><a href="#/documents/quick-start">文档</a></li>
+          <li><a href="#/documents/quickstart">文档</a></li>
           <li><a href="https://github.com/ZhonganTechENG/zarm-vue" target="_blank" rel="noopener noreferrer">Github</a></li>
+          <li>
+            <el-select v-model="value" placeholder="请选择" size="small">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
+          </li>
         </ul>
       </nav>
     </div>
@@ -18,6 +28,27 @@
 
 <script>
 export default {
+  data() {
+    return {
+      options: [{
+        value: '选项1',
+        label: '黄金糕'
+      }, {
+        value: '选项2',
+        label: '双皮奶'
+      }, {
+        value: '选项3',
+        label: '蚵仔煎'
+      }, {
+        value: '选项4',
+        label: '龙须面'
+      }, {
+        value: '选项5',
+        label: '北京烤鸭'
+      }],
+      value: ''
+    }
+  }
 };
 </script>
 
