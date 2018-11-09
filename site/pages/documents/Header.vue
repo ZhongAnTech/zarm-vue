@@ -12,8 +12,19 @@
       </div>
       <nav>
         <ul>
+          <li><a href="#/">首页</a></li>
           <li><a href="#/documents/quick-start">文档</a></li>
           <li><a href="https://github.com/ZhonganTechENG/zarm" target="_blank" rel="noopener noreferrer">Github</a></li>
+          <li>
+            <el-select v-model="value" placeholder="请选择" size="small">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
+          </li>
         </ul>
       </nav>
     </div>
@@ -24,17 +35,14 @@
 export default {
   data() {
     return {
-
+      options: [],
+      value: ''
     };
   },
-  components: {
-
-  },
   created() {
-
-  },
-  mounted() {
-
+    const { version, versionList } = this.$store.state;
+    this.options = versionList;
+    this.value = version;
   },
   methods: {
 
@@ -131,7 +139,6 @@ export default {
   
       li {
         float: left;
-        padding: 0 40px;
         text-align: center;
         font-size: 16px;
         color: #999;

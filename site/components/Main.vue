@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     doStart() {
-      window.location.href = '#/documents/quickstart';
+      window.location.href = '#/documents/quick-start';
     },
     goToGit() {
       window.location.href = 'https://github.com/ZhonganTechENG/zarm-vue';

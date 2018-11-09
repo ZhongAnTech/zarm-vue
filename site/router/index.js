@@ -22,6 +22,10 @@ export default new Router({
           path: 'badge',
           component: () => import('../pages/components/badgePage'),
         },
+        {
+          path: 'input',
+          component: () => import('../pages/components/inputPage'),
+        },
       ],
     },
   ],

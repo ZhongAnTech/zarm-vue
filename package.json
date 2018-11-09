@@ -63,7 +63,8 @@
     "better-scroll": "^1.8.3",
     "element-ui": "^2.4.9",
     "github-markdown-css": "^2.10.0",
-    "normalize.css": "^8.0.0"
+    "normalize.css": "^8.0.0",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^6.2.0",

@@ -39,6 +39,7 @@
 <script>
 import Format from '../../utils/format';
 import Demo from '../../demos';
+import Utils from 'site/utils';
 export default {
   data() {
     return {
@@ -62,8 +63,10 @@ export default {
   methods: {
     handleOpen(node) {
       console.log(node);
+      const v = this.$store.state.version;
       this.$router.push({
-        path: `${Format.camel2Dash(node.name)}`
+        path: `${Format.camel2Dash(node.name)}`,
+        query: { v }
       });
     }
   }

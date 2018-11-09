@@ -1,6 +1,6 @@
 <template lang="html">
   <Container>
-    <BadgeDemo></BadgeDemo>
+    <InputDemo></InputDemo>
   </Container>
 </template>
 
@@ -14,8 +14,8 @@ export default {
   },
   created() {
     const v = this.$store.state.version;
-    Vue.component('BadgeDemo', function(resolve, reject) {
-      require([`docs/${v}/badge.md`], resolve)
+    Vue.component('InputDemo', function(resolve, reject) {
+      require([`docs/${v}/input.md`], resolve)
     });
   }
 };
