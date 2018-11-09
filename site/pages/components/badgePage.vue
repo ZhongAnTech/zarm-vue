@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Demo from '../../../README.md';
+import Demo from 'docs/2.0.0/badge.md';
 
 export default {
   components: {

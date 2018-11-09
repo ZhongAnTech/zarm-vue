@@ -9,6 +9,14 @@ export default new Router({
     {
       path: '/',
       component: Index,
-    }
+    },
+    {
+      path: '/quickstart',
+      component: () => import('../pages/documents/quickStart.vue')
+    },
+    {
+      path: '/badge',
+      component: () => import('../pages/components/badgePage.vue')
+    },
   ],
 });
