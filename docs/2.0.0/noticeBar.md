@@ -13,6 +13,7 @@ export default {
 };
 </script>
 
+## 通告栏 NoticeBar
 
 :::demo 基本
 ```html

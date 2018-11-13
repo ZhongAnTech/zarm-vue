@@ -5,10 +5,9 @@ import ElementUI from 'element-ui';
 import router from './router';
 import store from './store';
 import 'normalize.css';
+import 'highlight.js/styles/github-gist.css';
 import 'element-ui/lib/theme-chalk/index.css';
 import './styles/index.scss';
-import 'highlight.js/styles/github-gist.css';
-import 'github-markdown-css'
 Vue.use(ElementUI);
 Vue.use(zarmVue);
 Vue.config.productionTip = false;

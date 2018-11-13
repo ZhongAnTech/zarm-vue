@@ -40,6 +40,7 @@ export default {
 };
 </script>
 
+## 文件选择器 FilePicker
 
 :::demo 点击一次选择单张
 ```html

@@ -13,20 +13,17 @@ import SlideNav from './SlideNav';
 export default {
   data() {
     return {
-    };
+      path: null
+    }
   },
   components: {
     Header,
     SlideNav
   },
-  created() {
-
-  },
-  mounted() {
-
-  },
-  methods: {
-
+  watch: {
+    '$route'(val) {
+      this.path = val.path.replace('/documents/', '');
+    }
   }
 };
 </script>

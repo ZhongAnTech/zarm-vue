@@ -1,20 +1,29 @@
 <template lang="html">
   <Container>
-    <InputDemo></InputDemo>
+    <Demo></Demo>
+    <Simulator :url="path" />
   </Container>
 </template>
 
 <script>
 import Vue from 'vue';
+import Simulator from "./Simulator";
 import Container from 'site/components/Container';
 
 export default {
   components: {
-    Container
+    Container,
+    Simulator
+  },
+  data() {
+    return {
+      path: null
+    }
   },
   created() {
     const v = this.$store.state.version;
-    Vue.component('InputDemo', function(resolve, reject) {
+    this.path = this.$route.path.replace('/documents/', '');
+    Vue.component('Demo', function(resolve, reject) {
       require([`docs/${v}/input.md`], resolve)
     });
   }

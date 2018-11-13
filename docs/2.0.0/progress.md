@@ -24,6 +24,7 @@ export default {
 };
 </script>
 
+## 进度条 Progress
 
 :::demo 基本
 ```html

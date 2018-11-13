@@ -37,14 +37,13 @@ main {
   overflow: hidden;
 
   .main-container {
-    position: relative;
-    min-height: 500px;
-    margin-left: -1px;
-    padding: 0 60px 140px 340px;
-    background: #fff;
-    overflow: hidden;
     border-left: 1px solid #ebedf0;
     font-size: 16px;
+    margin-left: -1px;
+    min-height: 500px;
+    overflow: hidden;
+    padding: 0 560px 140px 340px;
+    position: relative;
   }
 
   .simulator {

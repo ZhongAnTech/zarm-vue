@@ -18,7 +18,7 @@ export default {
 };
 </script>
 
-### 折叠面板 Collapse
+## 折叠面板 Collapse
 
 ::: demo 基本
 ```html
