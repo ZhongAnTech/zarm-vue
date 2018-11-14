@@ -117,7 +117,7 @@ export default new Router({
       },
     },
     {
-      path: '/filepicker',
+      path: '/file-picker',
       component: Bundle,
       meta: {
         mRender: () => import('../components/filePickerPage.vue')
@@ -131,7 +131,7 @@ export default new Router({
       },
     },
     {
-      path: '/actionsheet',
+      path: '/action-sheet',
       component: Bundle,
       meta: {
         mRender: () => import('../components/actionsheetPage.vue')
@@ -145,7 +145,7 @@ export default new Router({
       },
     },
     {
-      path: '/swipeaction',
+      path: '/swipe-action',
       component: Bundle,
       meta: {
         mRender: () => import('../components/swipeactionPage.vue')
@@ -166,7 +166,7 @@ export default new Router({
       },
     },
     {
-      path: '/datepicker',
+      path: '/date-picker',
       component: Bundle,
       meta: {
         mRender: () => import('../components/datePickerPage.vue')
@@ -187,7 +187,7 @@ export default new Router({
       },
     },
     {
-      path: '/noticebar',
+      path: '/notice-bar',
       component: Bundle,
       meta: {
         mRender: () => import('../components/noticeBarPage.vue')
@@ -215,7 +215,7 @@ export default new Router({
       },
     },
     {
-      path: '/searchbar',
+      path: '/search-bar',
       component: Bundle,
       meta: {
         mRender: () => import('../components/searchBarPage.vue')

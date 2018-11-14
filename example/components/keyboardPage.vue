@@ -1,6 +1,6 @@
 <template lang="html">
   <Container>
-    <PageHeader title="数字键盘 Keyboard & KeyboardPicker" />
+    <PageHeader title="虚拟键盘 Keyboard & KeyboardPicker" />
     <Demo></Demo>
     <PageFooter />
   </Container>

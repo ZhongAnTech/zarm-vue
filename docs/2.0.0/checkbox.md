@@ -53,6 +53,8 @@ export default {
 };
 </script>
 
+## 复选框 Checkbox
+
 :::demo 基本
 ```html
     <za-cell>

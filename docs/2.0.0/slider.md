@@ -12,6 +12,7 @@ export default {
 };
 </script>
 
+## 滑动输入条 Slider
 
 :::demo 基本
 ```html
