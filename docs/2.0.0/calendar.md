@@ -19,6 +19,9 @@ export default {
     handleChange(val) {
       this.multiple = !(this.multiple + 1) % 2;
     },
+    disabledDate(date) {
+      return false;
+    }
   },
 };
 </script>
@@ -58,6 +61,7 @@ export default {
     v-model='value'
     @change="change"
     :multiple="multiple == '1'"
+    :disabledDate="disabledDate" 
     :min='min'
     :max='max'/>
 ```

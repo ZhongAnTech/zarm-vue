@@ -90,7 +90,7 @@ li {
     cursor: disabled;
 
     .#{$prefixCls}_date-num {
-      color: $color-text-disabled!important;
+      color: $color-text-disabled important;
     }
   }
 
