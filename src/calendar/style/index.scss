@@ -3,17 +3,13 @@
 @import '../../../styles/variables';
 
 $prefixCls: za-calendar;
-$lineHeight: r(45);
-$borderRadius: r(45);
 
-%clearfix {
-  &::after {
-    content: '';
-    display: table;
-    clear: both;
-  }
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
-
 .#{$prefixCls} {
   position: absolute;
   top: 0;
@@ -22,195 +18,116 @@ $borderRadius: r(45);
   width: 100%;
   min-height: 100%;
   padding-bottom: 20px;
-  padding-top: r(50);
   background: #fff;
+  padding-top: 40px;
+  transition: all .5s;
+  transform: translateX(0);
+}
 
-  ul,
-  li {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+.#{$prefixCls}-translate-enter,.#{$prefixCls}-translate-leave-active{
+  transform: translateX(100%);
+}
 
-  .#{$prefixCls}-item {
-    text-align: center;
-  }
-
-  .#{$prefixCls}-action {
-    @extend %clearfix;
-
-    background-color: $calendar-action-bg;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    cursor: pointer;
-
-    .ok-btn {
-      padding: r(15);
-      float: left;
-      color: $calendar-date-selected-color;
+.#{$prefixCls}_week {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3001;
+  display: flex;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background: $calendar-week-bg;
+  color: $calendar-week-color;
+}
+.#{$prefixCls}_week-item {
+  flex: 1;
+  text-align: center;
+}
+.#{$prefixCls}_month{
+  
+}
+.#{$prefixCls}_month-head{
+  font-size: 17px;
+  font-weight: 500;
+  color: $calendar-month-title-color;
+  margin: 20px 0 0 30px;
+}
+.#{$prefixCls}_dates{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.#{$prefixCls}_dates-item{
+  position: relative;
+  width: (100%/7);
+  padding-bottom: (100%/7);
+  
+  &.inrange{
+    &::after{
+      content: ' ';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 0;
+      width: 100%;
+      height: 30px;
+      background: $calendar-dates-inrange-bg;
     }
-
-    .cancel-btn {
-      padding: r(15);
-      float: right;
-    }
-  }
-
-  .#{$prefixCls}-month {
-    padding: 15px 0;
-    color: $calendar-month-title;
-    font-size: 15px;
-    font-weight: bold;
-    border-bottom: 1px solid $calendar-border-color;
-  }
-
-  .#{$prefixCls}-day {
-    &:after {
-      content: '';
-      display: block;
-      height: 0;
-      overflow: hidden;
-      clear: both;
-    }
-  }
-
-  .#{$prefixCls}-day li {
-    float: left;
-    width: 14.285714285714286%;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 45px;
-  }
-
-  .#{$prefixCls}-date {
-    width: 100%;
-    font-size: 15px;
-
-    &:after {
-      content: '';
-      display: block;
-      height: 0;
-      overflow: hidden;
-      clear: both;
+    .#{$prefixCls}_date-num{
+      color: $calendar-dates-inrange-color;
     }
   }
 
-  .#{$prefixCls}-selected-suffix {
-    display: block;
-  }
-
-  .#{$prefixCls}-date li {
-    position: relative;
-    float: left;
-    width: 14.285714285714286%;
-    height: $lineHeight;
-    line-height: $lineHeight;
-    text-align: center;
-    overflow: hidden;
-    word-break: break-all;
-    cursor: pointer;
-    color: $calendar-date-color;
-    vertical-align: middle;
-
-    .date-item {
-      display: block;
-      width: $borderRadius;
-      height: $borderRadius;
-      line-height: $lineHeight;
-      margin: 0 auto;
-      border-radius: $borderRadius;
-    }
-  }
-
-  .#{$prefixCls}-date li.#{$prefixCls}-festival {
-    font-weight: bold;
-  }
-
-  .#{$prefixCls}-date li.#{$prefixCls}-selected {
-    .date-item {
-      position: relative;
-      z-index: 10;
-      background: $calendar-date-selected-color;
+  &.active{
+    .#{$prefixCls}_date-num{
       color: #fff;
-      font-weight: bold;
-    }
-
-    &.#{$prefixCls}-range-selected.#{$prefixCls}-start-selected {
-      border-top-left-radius: $borderRadius;
-      border-bottom-left-radius: $borderRadius;
-    }
-
-    &.#{$prefixCls}-range-selected.#{$prefixCls}-end-selected {
-      border-top-right-radius: $borderRadius;
-      border-bottom-right-radius: $borderRadius;
-    }
-
-    &.#{$prefixCls}-start-selected:after {
-      content: '';
-      display: block;
-      position: absolute;
-      width: 100%;
-      top: 0;
-      height: 100%;
-      left: 4px;
-      background-color: $calendar-selected-range-color;
-      border-top-left-radius: $borderRadius;
-      border-bottom-left-radius: $borderRadius;
-    }
-
-    &.#{$prefixCls}-end-selected:after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      right: 4px;
-      background-color: $calendar-selected-range-color;
-      border-top-right-radius: $borderRadius;
-      border-bottom-right-radius: $borderRadius;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 50%;
+      text-align: center;
+      background: $calendar-dates-active-bg;
     }
   }
 
-  .#{$prefixCls}-date li.#{$prefixCls}-range-selected {
-    background: $calendar-selected-range-color;
-    font-weight: bold;
-  }
 
-  .#{$prefixCls}-date li.#{$prefixCls}-invalid {
-    color: #c9c9c9;
-    cursor: auto;
+  &.disabled{
+    cursor: disabled;
+    .#{$prefixCls}_date-num{
+      color: $color-text-disabled;
+    }
   }
-
-  .#{$prefixCls}-date li.#{$prefixCls}-invalid:hover {
-    background: none;
+  &.inrange:last-child::after,&:nth-child(7n).inrange::after,&.active.inrange::after{
+    border-radius: 0 15px 15px 0;
+    width: calc(50% + 15px);
+    right: calc(50% - 15px);
   }
-
-  .#{$prefixCls}-more {
-    text-align: center;
-    padding: 15px 0;
+  &:nth-child(7n + 1).inrange::after,&:not(.inrange) + .inrange::after{
+    border-radius:  15px 0 0 15px;
+    width: calc(50% + 15px);
+    left: calc(50% - 15px);
   }
-
-  .#{$prefixCls}-mask {
-    display: none;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    z-index: 2999;
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
+  &:not(.inrange) + .inrange:nth-child(7n)::after,&.active.inrange:last-child::after{
+    border-radius:  15px;
+    width: 30px;
+    left: calc(50% - 15px);
   }
-
-  .#{$prefixCls}-year {
-    display: block;
-    padding: 15px;
-    text-align: left;
-    color: #666;
-    font-weight: 800;
-    border-bottom: 1px solid $calendar-selected-range-color;
-    background-color: $calendar-selected-range-color;
-  }
+}
+.#{$prefixCls}_dates-item_warp{
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.#{$prefixCls}_date-num{
+  font-size: 16px;
+  font-weight: 400;
+  color: $calendar-dates-color;
 }

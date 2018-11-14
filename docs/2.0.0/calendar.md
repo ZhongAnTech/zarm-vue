@@ -4,13 +4,13 @@ export default {
     return {
       visible1: false,
       visible2: false,
-      value1: [],
       visible3: false,
-      minDate: new Date('2018-01-11'),
-      maxDate: new Date('2018-10-10'),
-      value2: ['2018-02-24','2018-03-10'],
+      minDate: '2018-02-02',
+      maxDate: '2018-02-28',
+      value1: new Date(),
+      value2: [new Date()  + 10 * 24 * 60 * 60 * 1000, new Date().getTime() + 20 * 24 * 60 * 60 * 1000],
       isMultiSelected: true,
-      value3: [],
+      value3: ['2018-02-11', '2018-02-15'],
       getContainer: () => document.body,
     }
   },
@@ -24,20 +24,41 @@ export default {
     showCal3() {
       this.visible3 = true;
     },
-    changeDate(date) {
-      console.log(date); // eslint-disable-line
+    handle1Change(date) {
+      console.log(date);
+      if(date) this.visible1 = false;
     },
-    handleOk1(date) {
-      this.value1 = date;
-      console.log(date); // eslint-disable-line
+    handle2Change(date){
+      console.log(date);
+      if(date) this.visible2 = false;
     },
-    handleOk2(date) {
-      this.value2 = date;
-      console.log(date); // eslint-disable-line
+    handle3Change(date) {
+      console.log(date);
+      if(date) this.visible3 = false;
     },
-    handleOk3(date) {
-      this.value3 = date;
-      console.log(date); // eslint-disable-line
+    dateFormat(date, fmt = 'yyyy-MM-dd')  {
+      if (!date || !fmt) {
+        return date;
+      }
+      date = new Date(date.toString().replace(/-/g, '/'));
+      const o = {
+        'M+': date.getMonth() + 1, // 月份
+        'd+': date.getDate(), // 日
+        'H+': date.getHours(), // 小时
+        'm+': date.getMinutes(), // 分
+        's+': date.getSeconds(), // 秒
+        'q+': Math.floor((date.getMonth() + 3) / 3), // 季度
+        S: date.getMilliseconds(), // 毫秒
+      };
+      if (/(y+)/.test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (`${date.getFullYear()}`).substr(4 - RegExp.$1.length));
+      }
+      Object.keys(o).forEach((k) => {
+        if (new RegExp(`(${k})`).test(fmt)) {
+          fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : ((`00${o[k]}`).substr((`${o[k]}`).length)));
+        }
+      });
+      return fmt;
     }
   },
 };
@@ -45,12 +66,12 @@ export default {
 
 :::demo 简单日历
 ```html
-  <za-cell title='选择时间' @click='showCal1'>{{value1.join(',')}}</za-cell>
-  <za-cell title='选择时间范围' @click='showCal2'>{{value2.join(',')}}</za-cell>
-  <za-cell title='时间范围限制' @click='showCal3'>{{value3.join(',')}}</za-cell>
-  <za-calendar :visible.sync='visible1' @changed='changeDate' @ok='handleOk1' :selected-value='value1' ></za-calendar>
-  <za-calendar :visible.sync='visible2' @ok='handleOk2' :multi-selected='isMultiSelected' :selected-value='value2'></za-calendar>
-  <za-calendar :get-container="getContainer" :selected-value='value3' :visible.sync='visible3' :min='minDate' :max='maxDate' @ok='handleOk3'></za-calendar>
+  <za-cell title='选择时间' @click='showCal1'>{{dateFormat(value1)}}</za-cell>
+  <za-cell title='选择时间范围' @click='showCal2'>{{value2 ? value2.map(val=>dateFormat(val)).join(',') : '请选择'}}</za-cell>
+  <za-cell title='时间范围限制' @click='showCal3'>{{value3 ? value3.map(val=>dateFormat(val)).join(',') : '请选择'}}</za-cell>
+  <za-calendar :visible='visible1' v-model='value1' @change='handle1Change'  ></za-calendar>
+  <za-calendar :visible='visible2' v-model='value2' @change="handle2Change" multiple  ></za-calendar>
+  <za-calendar :visible='visible3' v-model='value3' @change="handle3Change" multiple :min='minDate' :max='maxDate'></za-calendar>
 ```
 :::
 

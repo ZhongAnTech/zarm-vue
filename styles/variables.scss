@@ -119,12 +119,14 @@ $spinner-diameter-md: r(20);
 $spinner-diameter-lg: r(31);
 
 /* calendar */
-$calendar-action-bg: #f3f2f7;
-$calendar-border-color: #e9e9e9;
-$calendar-month-title: #000;
-$calendar-date-color: #666;
-$calendar-date-selected-color: #12c287;
-$calendar-selected-range-color: #ccf2e6;
+$calendar-week-bg: #FAFAFA;
+$calendar-week-color: #909090;
+$calendar-month-title-color: #464646;
+$calendar-dates-color: #464646;
+$calendar-dates-color-disabled: #464646;
+$calendar-dates-active-bg: #12c287;
+$calendar-dates-inrange-color: #12c287;
+$calendar-dates-inrange-bg: #D1F3E7;
 
 // ActionSheet
 $actionsheet-margin: 0;
