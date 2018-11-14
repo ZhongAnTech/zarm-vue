@@ -37,7 +37,7 @@ export default {
     theme: {
       type: String,
       validator: defaultThemeValidator,
-      default: 'primary',
+      default: 'default',
     },
     size: {},
     closable: {
