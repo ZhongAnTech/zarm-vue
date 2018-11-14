@@ -10,11 +10,8 @@ li {
   padding: 0;
   margin: 0;
 }
+
 .#{$prefixCls} {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 3000;
   width: 100%;
   min-height: 100%;
   padding-bottom: 20px;
@@ -22,10 +19,6 @@ li {
   padding-top: 40px;
   transition: all .5s;
   transform: translateX(0);
-}
-
-.#{$prefixCls}-translate-enter,.#{$prefixCls}-translate-leave-active{
-  transform: translateX(100%);
 }
 
 .#{$prefixCls}_week {
@@ -40,31 +33,32 @@ li {
   background: $calendar-week-bg;
   color: $calendar-week-color;
 }
+
 .#{$prefixCls}_week-item {
   flex: 1;
   text-align: center;
 }
-.#{$prefixCls}_month{
-  
-}
-.#{$prefixCls}_month-head{
+
+.#{$prefixCls}_month-head {
   font-size: 17px;
   font-weight: 500;
   color: $calendar-month-title-color;
   margin: 20px 0 0 30px;
 }
-.#{$prefixCls}_dates{
+
+.#{$prefixCls}_dates {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
-.#{$prefixCls}_dates-item{
+
+.#{$prefixCls}_dates-item {
   position: relative;
   width: (100%/7);
   padding-bottom: (100%/7);
-  
-  &.inrange{
-    &::after{
+
+  &.inrange {
+    &::after {
       content: ' ';
       position: absolute;
       top: 50%;
@@ -74,13 +68,14 @@ li {
       height: 30px;
       background: $calendar-dates-inrange-bg;
     }
-    .#{$prefixCls}_date-num{
+
+    .#{$prefixCls}_date-num {
       color: $calendar-dates-inrange-color;
     }
   }
 
-  &.active{
-    .#{$prefixCls}_date-num{
+  &.active {
+    .#{$prefixCls}_date-num {
       color: #fff;
       width: 30px;
       height: 30px;
@@ -91,30 +86,38 @@ li {
     }
   }
 
-
-  &.disabled{
+  &.disabled {
     cursor: disabled;
-    .#{$prefixCls}_date-num{
-      color: $color-text-disabled;
+
+    .#{$prefixCls}_date-num {
+      color: $color-text-disabled!important;
     }
   }
-  &.inrange:last-child::after,&:nth-child(7n).inrange::after,&.active.inrange::after{
+
+  &.inrange:last-child::after,
+  &:nth-child(7n).inrange::after,
+  &.active.inrange::after {
     border-radius: 0 15px 15px 0;
     width: calc(50% + 15px);
     right: calc(50% - 15px);
   }
-  &:nth-child(7n + 1).inrange::after,&:not(.inrange) + .inrange::after{
-    border-radius:  15px 0 0 15px;
+
+  &:nth-child(7n + 1).inrange::after,
+  &:not(.inrange) + .inrange::after {
+    border-radius: 15px 0 0 15px;
     width: calc(50% + 15px);
     left: calc(50% - 15px);
   }
-  &:not(.inrange) + .inrange:nth-child(7n)::after,&.active.inrange:last-child::after{
-    border-radius:  15px;
+
+  &:not(.inrange) + .inrange:nth-child(7n)::after,
+  &.active.inrange:last-child::after {
+    border-radius: 15px;
     width: 30px;
     left: calc(50% - 15px);
   }
 }
-.#{$prefixCls}_dates-item_warp{
+
+.#{$prefixCls}_dates-item_warp {
   z-index: 20;
   display: flex;
   flex-wrap: wrap;
@@ -126,7 +129,8 @@ li {
   left: 0;
   top: 0;
 }
-.#{$prefixCls}_date-num{
+
+.#{$prefixCls}_date-num {
   font-size: 16px;
   font-weight: 400;
   color: $calendar-dates-color;

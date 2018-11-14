@@ -70,10 +70,6 @@
           return false;
         },
       },
-      visible: {
-        type: Boolean,
-        default: false,
-      },
     },
     data() {
       return {
@@ -134,8 +130,7 @@
     },
     render() {
       return (
-      <transition name={`${this.prefixCls}-translate`}>
-        <div class={`${this.prefixCls} ${this.className}`} style={this.styles} v-show={this.visible}>
+        <div class={`${this.prefixCls} ${this.className}`} style={this.styles}>
           <ul class={`${this.prefixCls}_week`}>
             {
               weekList.map(item => <li class={`${this.prefixCls}_week-item`}>
@@ -170,11 +165,15 @@
             }
           </ul>
         </div>
-      </transition>
       );
     },
     created() {
       this.componentInit();
+    },
+    watch: {
+      multiple() { this.componentInit(); },
+      max() { this.componentInit(); },
+      min() { this.componentInit(); },
     },
   };
 </script>

@@ -2,76 +2,64 @@
 export default {
   data() {
     return {
-      visible1: false,
-      visible2: false,
-      visible3: false,
-      minDate: '2018-02-02',
-      maxDate: '2018-02-28',
-      value1: new Date(),
-      value2: [new Date()  + 10 * 24 * 60 * 60 * 1000, new Date().getTime() + 20 * 24 * 60 * 60 * 1000],
-      isMultiSelected: true,
-      value3: ['2018-02-11', '2018-02-15'],
-      getContainer: () => document.body,
+      min: '2018-02-02',
+      max: '2018-02-28',
+      value: '2018-02-25',
+      multiple: 0,
+      multipleOptions: [
+        { value: '1', label: "true" },
+        { value: '0', label: "false" }
+      ]
     }
   },
   methods: {
-    showCal1() {
-      this.visible1 = true;
-    },
-    showCal2() {
-      this.visible2 = true;
-    },
-    showCal3() {
-      this.visible3 = true;
-    },
-    handle1Change(date) {
+    change(date) {
       console.log(date);
-      if(date) this.visible1 = false;
     },
-    handle2Change(date){
-      console.log(date);
-      if(date) this.visible2 = false;
+    handleChange(val) {
+      this.multiple = !(this.multiple + 1) % 2;
     },
-    handle3Change(date) {
-      console.log(date);
-      if(date) this.visible3 = false;
-    },
-    dateFormat(date, fmt = 'yyyy-MM-dd')  {
-      if (!date || !fmt) {
-        return date;
-      }
-      date = new Date(date.toString().replace(/-/g, '/'));
-      const o = {
-        'M+': date.getMonth() + 1, // 月份
-        'd+': date.getDate(), // 日
-        'H+': date.getHours(), // 小时
-        'm+': date.getMinutes(), // 分
-        's+': date.getSeconds(), // 秒
-        'q+': Math.floor((date.getMonth() + 3) / 3), // 季度
-        S: date.getMilliseconds(), // 毫秒
-      };
-      if (/(y+)/.test(fmt)) {
-        fmt = fmt.replace(RegExp.$1, (`${date.getFullYear()}`).substr(4 - RegExp.$1.length));
-      }
-      Object.keys(o).forEach((k) => {
-        if (new RegExp(`(${k})`).test(fmt)) {
-          fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : ((`00${o[k]}`).substr((`${o[k]}`).length)));
-        }
-      });
-      return fmt;
-    }
   },
 };
 </script>
 
 :::demo 简单日历
 ```html
-  <za-cell title='选择时间' @click='showCal1'>{{dateFormat(value1)}}</za-cell>
-  <za-cell title='选择时间范围' @click='showCal2'>{{value2 ? value2.map(val=>dateFormat(val)).join(',') : '请选择'}}</za-cell>
-  <za-cell title='时间范围限制' @click='showCal3'>{{value3 ? value3.map(val=>dateFormat(val)).join(',') : '请选择'}}</za-cell>
-  <za-calendar :visible='visible1' v-model='value1' @change='handle1Change'  ></za-calendar>
-  <za-calendar :visible='visible2' v-model='value2' @change="handle2Change" multiple  ></za-calendar>
-  <za-calendar :visible='visible3' v-model='value3' @change="handle3Change" multiple :min='minDate' :max='maxDate'></za-calendar>
+  <za-cell title="multiple">
+    <za-select
+      v-model='multiple'
+      @ok='handleChange'
+      :data-source='multipleOptions'/>
+  </za-cell>
+  <za-cell title="min">
+    <za-date-select
+    v-model='min'
+    title="选择日期"
+    placeholder="请选择日期"
+    mode='date'
+    format='yyyy-MM-dd'
+    max='2030-10-25'
+    min='1917-10-25'>
+    </za-date-select>
+  </za-cell>
+  <za-cell title="max">
+    <za-date-select
+    v-model='max'
+    title="选择日期"
+    placeholder="请选择日期"
+    mode='date'
+    format='yyyy-MM-dd'
+    max='2030-10-25'
+    min='1917-10-25'>
+    </za-date-select>
+  </za-cell>
+  
+  <za-calendar
+    v-model='value'
+    @change="change"
+    :multiple="multiple == '1'"
+    :min='min'
+    :max='max'/>
 ```
 :::
 
