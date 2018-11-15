@@ -83,7 +83,8 @@ li {
       border-radius: 50%;
       text-align: center;
       background: $calendar-dates-active-bg;
-      box-shadow: 1px 1px 5px #12c286;
+      box-shadow: 0 r(2) r(5) 0 rgba($calendar-day-selected-background, 0.15);
+
     }
   }
 
