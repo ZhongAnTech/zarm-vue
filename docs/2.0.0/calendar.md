@@ -75,19 +75,13 @@ export default {
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-calendar | | 类名前缀 |
 | titles | Array | | ['日', '一', '二', '三', '四', '五', '六'] | 周期标题 |
-| visible | bool | false | | 是否显示, 支持.sync 修饰符 (v2.3.0+) |
-| multiSelected | boolean | false |  | 是否日期范围选择开关 |
-| selectedValue | Array | | ['2017-01-01'] 或日期范围['2017-01-01','2017-11-11']  | 设置选中的日期 |
-| min | Date | 当天日期 |  | 最小日期限制 |
-| max | Date | 当天日期开始往后一年 |  | 最大日期限制 |
-| months | number | 12 |  | 可显示的最大月份数 |
-| dateItemFormat | string | | 'YYYY年MM月' | 月份标题格式化 |
-| cancelBtnText | string | '取消' |  | 取消按钮文案 |
-| okBtnText | string | '确定' |  | 确定按钮文案 |
-| getContainer | Func |  |  | 指定挂载的父容器DOM节点 |
+| multiple | boolean | false |  | 是否日期范围选择开关 |
+| defaultValue | String / Number / Date / [Date, Date] | 无 | 设置选中的日期 |
+| v-model | String / Number / Date / [Date, Date] | 无 | 双向绑定日期值 |
+| min | String / Number / Date | 当天日期 |  | 最小日期限制 |
+| max | String / Number / Date | 当天日期开始往后一年 |  | 最大日期限制 |
 
 #### Calendar Events
 | 事件名称 | 说明 | 回调参数 |
 | :--- | :--- | :--- |
-| changed | 当选择日期点击时触发的事件。| Date日期数组，['2017-01-01'] |
-| ok | 当点击确定按钮时触发的事件。| Date日期数组，['2017-01-01'] |
+| change | 当选择日期点击时触发的事件。| multiple 为 true 返回 [Date, Date]，否则返回 Date |

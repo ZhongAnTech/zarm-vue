@@ -54,7 +54,7 @@
       },
       dateRender: {
         type: Function,
-        default(date, disabled) {
+        default(date) {
           return <div class={`${this.prefixCls}_date-num`}>{date.getDate()}</div>;
         },
       },
