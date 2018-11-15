@@ -1,6 +1,6 @@
 <template lang="html">
   <Container class="carousel-page">
-    <PageHeader title="走马灯 carousel" />
+    <PageHeader title="走马灯 Carousel" />
     <Demo></Demo>
     <PageFooter />
   </Container>

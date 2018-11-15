@@ -1,6 +1,6 @@
 <template lang="html">
   <Container class='cell-page'>
-    <PageHeader title="列表 Cell" />
+    <PageHeader title="列表项 Cell" />
     <Demo></Demo>
     <PageFooter />
   </Container>

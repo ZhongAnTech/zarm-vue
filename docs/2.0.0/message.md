@@ -15,6 +15,8 @@ export default {
 </script>
 
 
+## 消息 Message
+
 :::demo 基本用法
 ```html
   <za-message>默认</za-message>

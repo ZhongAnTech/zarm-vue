@@ -34,6 +34,7 @@ export default {
 };
 </script>
 
+## 搜索框 SearchBar
 
 :::demo 基本
 ```html

@@ -86,7 +86,7 @@ module.exports = {
         description: '滑动操作',
       },
       {
-        name: 'ActivityIndicator',
+        name: 'Spinner',
         description: '活动指示器',
       },
     ],

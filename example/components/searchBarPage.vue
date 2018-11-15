@@ -1,6 +1,6 @@
 <template lang="html">
   <Container class="noticebar-page">
-    <PageHeader title="搜索栏 SearchBar" />
+    <PageHeader title="搜索框 SearchBar" />
     <Demo></Demo>
     <PageFooter />
   </Container>

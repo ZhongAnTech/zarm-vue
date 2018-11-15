@@ -1,6 +1,6 @@
 <template lang="html">
   <Container class="spinner-page">
-    <PageHeader title="指示器 Spinner" />
+    <PageHeader title="活动指示器 Spinner" />
     <Demo></Demo>
     <PageFooter />
   </Container>

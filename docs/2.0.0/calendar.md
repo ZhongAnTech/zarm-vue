@@ -43,6 +43,8 @@ export default {
 };
 </script>
 
+## 日历 Calendar
+
 :::demo 简单日历
 ```html
   <za-cell title='选择时间' @click='showCal1'>{{value1.join(',')}}</za-cell>
