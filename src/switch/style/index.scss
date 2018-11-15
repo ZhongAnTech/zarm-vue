@@ -17,11 +17,11 @@ $prefixCls: za-switch;
 
   &-input {
     position: relative;
-    width: r(51);
-    height: r(31);
+    width: r(53);
+    height: r(32);
     border: r(1) solid #e5e5e5;
     border-radius: r(15.5);
-    background-color: #e5e5e5;
+    background-color: #fff;
     vertical-align: middle;
     outline: 0;
     transition: background-color 0.1s, border 0.1s;
@@ -33,20 +33,20 @@ $prefixCls: za-switch;
       position: absolute;
       top: 0;
       left: 0;
-      height: r(29);
+      height: r(30);
       border-radius: r(14.5);
     }
 
     &:before {
       width: r(49);
-      background-color: #fdfdfd;
+      background-color: #fff;
       transition: transform 0.35s cubic-bezier(0.45, 1, 0.4, 1), -webkit-transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
     }
 
     &:after {
-      width: r(29);
+      width: r(30);
       background-color: #fff;
-      box-shadow: 0 r(1) r(3) rgba(0, 0, 0, 0.4);
+      box-shadow: r(-1) r(2) r(2) 0px rgba(0,0,0,0.1),0px r(2) r(11.5) 0px rgba(0,0,0,0.08),0px 0px r(2) 0px rgba(0,0,0,0.2);
       transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35), -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
     }
 
@@ -56,7 +56,8 @@ $prefixCls: za-switch;
       }
 
       &:after {
-        transform: translateX(r(20));
+        transform: translateX(r(21));
+        box-shadow: 0 r(1) r(1) 0 rgba(0,127,84,1);
       }
     }
   }
