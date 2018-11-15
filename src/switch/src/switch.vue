@@ -102,8 +102,10 @@ export default {
         return true;
       }
       if (this.defaultChecked) {
+        this.$emit('input', this.onName);
         return true;
       }
+      this.$emit('input', this.offName);
       return defaultVal;
     },
     handleChange(event) {

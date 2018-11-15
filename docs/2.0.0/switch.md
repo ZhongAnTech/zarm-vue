@@ -2,9 +2,9 @@
 export default {
   data() {
     return {
-      switch1: 'off',
+      switch1: null,
       switch2: 'on',
-      switch3: 'on',
+      switch3: 'off',
       check: false
     }
   },
@@ -33,7 +33,7 @@ export default {
     </za-cell>
     <za-cell>
       <za-switch slot='description' 
-      defaultChecked ></za-switch>
+      defaultChecked></za-switch>
       默认开
     </za-cell>
     <za-cell>
@@ -59,7 +59,7 @@ export default {
       @change='handleChange3'
        >
       </za-switch>
-      受控开关（默认关）{{switch3}}
+      受控开关（默认关）
     </za-cell>
 ```
 :::

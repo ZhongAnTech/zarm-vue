@@ -46,7 +46,7 @@ $prefixCls: za-switch;
     &:after {
       width: r(30);
       background-color: #fff;
-      box-shadow: r(-1) r(2) r(2) 0px rgba(0,0,0,0.1),0px r(2) r(11.5) 0px rgba(0,0,0,0.08),0px 0px r(2) 0px rgba(0,0,0,0.2);
+      box-shadow: r(-1) r(2) r(2) r(0) rgba(0, 0, 0, 0.1), r(0) r(2) r(11.5) r(0) rgba(0, 0, 0, 0.08), r(0) r(0) r(2) r(0) rgba(0, 0, 0, 0.2);
       transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35), -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
     }
 
@@ -57,7 +57,7 @@ $prefixCls: za-switch;
 
       &:after {
         transform: translateX(r(21));
-        box-shadow: 0 r(1) r(1) 0 rgba(0,127,84,1);
+        box-shadow: 0 r(1) r(1) 0 rgba(0, 127, 84, 1);
       }
     }
   }
