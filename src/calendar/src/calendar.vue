@@ -1,6 +1,7 @@
 
 <script>
   import {
+    setDisabledFuc,
     generatorRangeDates,
     normalizeDate,
     getNextYear,
@@ -14,6 +15,7 @@
     multipleValueNormalize,
     clickMultipleHandleOne,
   } from './multipleMode';
+  import DateItem from './dateItem';
 
   const today = new Date();
   const weekList = ['日', '一', '二', '三', '四', '五', '六'];
@@ -21,6 +23,9 @@
   const valueType = [Date, String, Number, Array];
   export default {
     name: 'zaCalendar',
+    components: {
+      DateItem,
+    },
     props: {
       prefixCls: {
         type: String,
@@ -51,7 +56,7 @@
       dateRender: {
         type: Function,
         default(date, disabled) {
-          return <div class={`${this.prefixCls}_date-num${disabled ? ' disabled' : ''}`}>{date.getDate()}</div>;
+          return <div class={`${this.prefixCls}_date-num`}>{date.getDate()}</div>;
         },
       },
       className: {
@@ -101,6 +106,7 @@
         this.$emit('input', value);
       },
       componentInit() {
+        setDisabledFuc(this.disabledDate);
         this.monthList = generatorRangeDates(normalizeDate(this.min), normalizeDate(this.max));
         this.multiple ? this._multipleInit() : this._singleInit();
         this.normalizeValue = null;
@@ -149,14 +155,13 @@
                     }
                     {
                       month.dates.map(dateItem => {
-                        dateItem.disabled = dateItem.disabled ? dateItem.disabled : this.disabledDate(dateItem.date);
-                        return <li class={
-                          `${this.prefixCls}_dates-item${dateItem.active ? ' active' : ''}${dateItem.inrange ? ' inrange' : ''}${dateItem.disabled ? ' disabled' : ''}`}
-                          onClick={() => this._dateClick(dateItem)}>
-                          <div class={`${this.prefixCls}_dates-item_warp`}>
-                            {this.dateRender(dateItem.date, dateItem.disabled)}
-                          </div>
-                        </li>;
+                        return <date-item
+                          nativeOnClick={() => this._dateClick(dateItem)}
+                          data={dateItem}
+                          prefixCls={this.prefixCls}
+                          dateRender={this.dateRender}
+                        >
+                        </date-item>;
                       })
                     }
                   </ul>

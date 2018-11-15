@@ -1,6 +1,6 @@
 export const ONEDAYTIMESTAP = 24 * 60 * 60 * 1000;
 const ONEYEARTIMESTAP = 365 * ONEDAYTIMESTAP;
-
+let disabledFuc;
 const getNumMouthBeginDate = (date, nextNum = 0) => {
   const nextMonthNum = date.getMonth() + 1 + nextNum;
   return new Date(`${date.getFullYear() + Math.floor(nextMonthNum / 12.0001)}/${nextMonthNum % 12 || 12}/01`);
@@ -41,18 +41,24 @@ const dateFormat = (date, fmt) => {
   });
   return fmt;
 };
+export const setDisabledFuc = fuc => {
+  disabledFuc = fuc;
+};
 export const getNextYear = date => {
   return new Date(date.getTime() + ONEYEARTIMESTAP);
 };
 
 const datePartGerator = (length, beginDate, value) => {
   if (!length) return [];
-  return Array.from({ length }, (val, index) => ({
-    date: new Date(beginDate + (index * ONEDAYTIMESTAP)),
-    disabled: value,
-    active: false,
-    inrange: false,
-  }));
+  return Array.from({ length }, (val, index) => {
+    const date = new Date(beginDate + (index * ONEDAYTIMESTAP));
+    return {
+      date,
+      disabled: value || disabledFuc(date),
+      active: false,
+      inrange: false,
+    };
+  });
 };
 export const generatorCurrentMouthDates = (min, max) => {
   const beginDate = getNumMouthBeginDate(min);

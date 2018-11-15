@@ -2,7 +2,7 @@ import zaCalendar from '@/calendar';
 import { mount } from '../util';
 
 describe('Calendar', () => {
-  it('create', done => {
+  it('create', () => {
     const wrapper = mount(zaCalendar);
     const { vm } = wrapper;
     expect(vm.$el.classList.contains('za-calendar')).toBe(true);
@@ -65,7 +65,7 @@ describe('Calendar', () => {
     vm.$nextTick(() => {
       expect(vm.value[0]).toBe(selectedDate[0].date);
       expect(vm.value[1]).toBe(selectedDate[1].date);
-      expect(vm.$el.querySelectorAll('inrange').length).toBe(11);
+      expect(vm.$el.querySelectorAll('.inrange').length).toBe(11);
       done();
     });
   });
