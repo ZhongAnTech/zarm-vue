@@ -1,5 +1,4 @@
 export const ONEDAYTIMESTAP = 24 * 60 * 60 * 1000;
-const ONEYEARTIMESTAP = 365 * ONEDAYTIMESTAP;
 let disabledFuc;
 const getNumMouthBeginDate = (date, nextNum = 0) => {
   const nextMonthNum = date.getMonth() + 1 + nextNum;
@@ -45,7 +44,9 @@ export const setDisabledFuc = fuc => {
   disabledFuc = fuc;
 };
 export const getNextYear = date => {
-  return new Date(date.getTime() + ONEYEARTIMESTAP);
+  date = new Date(date.getTime());
+  date.setFullYear(date.getFullYear() + 1);
+  return date;
 };
 
 const datePartGerator = (length, beginDate, value) => {

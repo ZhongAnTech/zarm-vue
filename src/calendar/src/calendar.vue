@@ -45,7 +45,7 @@
       max: {
         type: dateType,
         default() {
-          return getNextYear(today);
+          return getNextYear(normalizeDate(this.$options.propsData.min) || today);
         },
       },
       multiple: {
@@ -125,9 +125,9 @@
         if (this.normalizeValue) {
           const date = [];
           date[0] = this._findDateInMonthList(this.normalizeValue[0]);
-          if (!date[0]) return console.error('your value is not in range');
+          if (!date[0] || date[0].dateModel.disabled) return console.error('your value is not in range');
           date[1] = this._findDateInMonthList(this.normalizeValue[1]);
-          if (!date[1]) return console.error('your value is not in range');
+          if (!date[1] || date[1].dateModel.disabled) return console.error('your value is not in range');
           this._dateClick(date[0].dateModel);
           this._dateClick(date[1].dateModel);
         }

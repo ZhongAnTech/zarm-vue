@@ -14,7 +14,7 @@ export default {
   },
   methods: {
     change(date) {
-      console.log(date);
+      console.log('change:' + date);
     },
     handleChange(val) {
       this.multiple = !(this.multiple + 1) % 2;
@@ -23,6 +23,11 @@ export default {
       return false;
     }
   },
+  watch: {
+    value(val) {
+      console.log('watch:' + val);
+    }
+  }
 };
 </script>
 
@@ -79,7 +84,7 @@ export default {
 | defaultValue | String / Number / Date / [Date, Date] | 无 | 设置选中的日期 |
 | v-model | String / Number / Date / [Date, Date] | 无 | 双向绑定日期值 |
 | min | String / Number / Date | 当天日期 |  | 最小日期限制 |
-| max | String / Number / Date | 当天日期开始往后一年 |  | 最大日期限制 |
+| max | String / Number / Date | min开始往后一年 |  | 最大日期限制 |
 
 #### Calendar Events
 | 事件名称 | 说明 | 回调参数 |

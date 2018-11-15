@@ -14,5 +14,5 @@ export const clickSingleHandle = function (dateConfig) {
   } else {
     this.selectedDate = null;
   }
-  this._dateEmit(this.selectedDate.date);
+  this._dateEmit(this.selectedDate && this.selectedDate.date);
 };
