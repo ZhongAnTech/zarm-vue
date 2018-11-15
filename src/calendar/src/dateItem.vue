@@ -6,7 +6,7 @@ export default {
     prefixCls: String,
     dateRender: Function,
   },
-  render(h, context) {
+  render() {
     return (
       <li class={
         `${this.prefixCls}_dates-item${this.data.active ? ' active' : ''}${this.data.inrange ? ' inrange' : ''}${this.data.disabled ? ' disabled' : ''}`}>
