@@ -39,7 +39,7 @@ export default {
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| theme | string | 'primary' | 'default', 'primary', 'success', 'warning', 'error' | 主题 |
+| theme | string | 'primary' | 'primary', 'success', 'warning', 'error' | 主题 |
 | icon | string | | | 设置图标 |
 | closable | bool | false | | 是否显示关闭按钮 |
 | hasArrow | bool | false | | 是否显示箭头 |

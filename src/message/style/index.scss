@@ -41,10 +41,6 @@ $prefixCls: za-message;
     padding-left: r(10);
   }
 
-  &.theme-default {
-    @include message-theme($color-text, transparent, transparent);
-  }
-
   &.theme-primary {
     @include message-theme($button-primary-border, $button-primary-activebg, $button-primary-border);
   }

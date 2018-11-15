@@ -41,7 +41,7 @@ export default {
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-noticebar | | 类名前缀 |
-| theme | string | 'warning' | 'default', 'primary', 'success', 'warning', 'error' | 主题 |
+| theme | string | 'warning' | 'primary', 'success', 'warning', 'error' | 主题 |
 | icon | string | | | 设置图标 |
 | scrollable | bool | false | | 是否开启自动滚动轮播 |
 | closable | bool | false | | 是否显示关闭按钮 |
