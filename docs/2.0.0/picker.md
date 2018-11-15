@@ -157,6 +157,7 @@ export default {
 };
 </script>
 
+## 选择器 Picker & Select
 
 :::demo 基本
 ```html

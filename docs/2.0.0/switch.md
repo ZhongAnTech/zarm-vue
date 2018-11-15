@@ -22,6 +22,7 @@ export default {
 };
 </script>
 
+## 开关 Switch
 
 :::demo 基本
 ```html

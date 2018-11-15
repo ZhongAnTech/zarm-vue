@@ -12,6 +12,8 @@ export default {
 };
 </script>
 
+## 徽标 Badge
+
 :::demo 基本
 ```html
       <za-cell has-arrow title="点状">

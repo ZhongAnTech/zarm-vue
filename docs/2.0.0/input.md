@@ -28,6 +28,7 @@ export default {
 };
 </script>
 
+## 文本框 Input
 
 :::demo 普通
 ```html
@@ -84,6 +85,38 @@ export default {
 ```
 :::
 
+### Vue JavaScript代码
+
+``` js
+export default {
+  data() {
+    return {
+      v1:'',
+      v2:'这是一个textarea',
+      v3:'',
+      v4:'',
+      v5:'',
+      v6:'',
+      v7:'327198092039342',
+    }
+  },
+  methods: {
+    handleChange(v) {
+      console.log(this.v1, v);
+    },
+    handleChange2(v) {
+      console.log(this.v2, v);
+    },
+    handleChange3(v) {
+      console.log(v);
+    },
+    focus() {
+      this.$refs.inputFirst.focus()
+    },
+  },
+};
+```
+
 ### API
 
 #### Input Attributes
@@ -92,8 +125,8 @@ export default {
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-input | | 类名前缀 |
 | type | string | text | | 显示类型 |
-| disabled | bool | false | | 是否禁用 |
-| rows | string, number | | | 多行文本时的显示行数 |
+| disabled | `bool` | false | | 是否禁用 |
+| rows | `string`, `number` | | | 多行文本时的显示行数 |
 | autosize | bool | false | | 是否高度自适应 |
 | showLength | bool | false | | 是否显示输入字数 |
 
