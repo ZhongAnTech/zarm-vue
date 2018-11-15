@@ -43,10 +43,10 @@ $prefixCls: za-badge;
     justify-content: center;
     align-items: center;
     top: auto;
-    font-size: r(12);
+    font-size: r(10);
     color: #fff;
-    height: r(19);
-    padding: 0 r(5);
+    height: r(14);
+    padding: 0 r(4);
     white-space: nowrap;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -68,24 +68,36 @@ $prefixCls: za-badge;
     }
   }
 
+  &.shape-rect {
+    .#{$prefixCls}-sup {
+      border-radius: 0;
+    }
+  }
+
   &.shape-radius {
     .#{$prefixCls}-sup {
-      border-radius: r(4);
+      border-radius: r(2);
     }
   }
 
   &.shape-round {
     .#{$prefixCls}-sup {
-      min-width: r(19);
-      border-radius: r(19);
+      border-radius: r(8);
     }
   }
 
   &.shape-circle {
     .#{$prefixCls}-sup {
-      width: r(19);
+      width: r(14);
       padding: 0;
-      border-radius: r(19);
+      border-radius: r(8);
+    }
+  }
+
+  &.shape-leaf {
+    .#{$prefixCls}-sup {
+      min-width: r(8);
+      border-radius: r(7.5) r(7.5) r(7.5) 0;
     }
   }
 }

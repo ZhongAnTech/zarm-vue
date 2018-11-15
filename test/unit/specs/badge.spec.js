@@ -11,13 +11,22 @@ describe('Badge', () => {
     expect(wrapper.contains('.za-badge')).toBe(true);
   });
 
+  it('className', () => {
+    const wrapper = mount(zaBadge, {
+      propsData: {
+        className: 'za-test',
+      },
+    });
+    expect(wrapper.contains('.za-badge')).toBe(true);
+  });
+
   it('theme', () => {
     const wrapper = mount(zaBadge, {
       propsData: {
-        theme: 'info',
+        theme: 'error',
       },
     });
-    expect(wrapper.contains('.theme-info')).toBe(true);
+    expect(wrapper.contains('.theme-error')).toBe(true);
   });
 
   it('shape', () => {
