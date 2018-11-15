@@ -15,7 +15,7 @@ export default {
     theme: {
       type: String,
       validator: defaultThemeValidator,
-      default: 'default',
+      default: 'warning',
     },
     closable: {
       type: Boolean,
