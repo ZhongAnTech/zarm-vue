@@ -25,7 +25,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    autoscroll: {
+    scrollable: {
       type: Boolean,
       default: false,
     },
@@ -69,7 +69,7 @@ export default {
     },
   },
   mounted() {
-    if (!this.autoscroll) return;
+    if (!this.scrollable) return;
 
     const distance = this.$refs.wrapper.offsetWidth - this.$refs.content.offsetWidth;
     if (distance > 0) return;

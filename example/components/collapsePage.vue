@@ -1,6 +1,6 @@
 <template lang="html">
   <Container class="zaCollapse-page">
-    <PageHeader title="折叠面板 zaCollapse" />
+    <PageHeader title="折叠面板 Collapse" />
     <Demo></Demo>
     <PageFooter/>
   </Container>

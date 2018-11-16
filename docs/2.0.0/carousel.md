@@ -38,6 +38,7 @@ export default {
 };
 </script>
 
+## 走马灯 Carousel
 
 :::demo 基本
 ```html

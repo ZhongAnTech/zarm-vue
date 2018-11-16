@@ -1,6 +1,6 @@
 <template lang="html">
   <Container class="slider-page">
-    <PageHeader title="滑块 Slider" />
+    <PageHeader title="滑动输入条 Slider" />
        <Demo></Demo>
       <PageFooter />
     </Container>

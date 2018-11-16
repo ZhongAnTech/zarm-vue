@@ -1,30 +1,17 @@
-<template>
-  <div class="page">
-
-  </div>
+<template lang="html">
+  <Container>
+    <Demo></Demo>
+  </Container>
 </template>
 
 <script>
+import Container from '../../components/Container';
+import Demo from '../../../README.md';
+
 export default {
-  data() {
-    return {
-
-    };
-  },
   components: {
-
-  },
-  created() {
-
-  },
-  mounted() {
-
-  },
-  methods: {
-
+    Container,
+    Demo
   }
 };
 </script>
-
-<style scoped lang="scss">
-</style>

@@ -14,15 +14,15 @@ $theme-info: #347af6;
 $theme-info-light: rgba($theme-info, 0.1);
 $theme-info-dark: darken($theme-info, 10%);
 
-$theme-success: #69c964;
+$theme-success: #12c287;
 $theme-success-light: rgba($theme-success, 0.1);
 $theme-success-dark: darken($theme-success, 10%);
 
-$theme-warning: #eca632;
+$theme-warning: #ec9131;
 $theme-warning-light: rgba($theme-warning, 0.1);
 $theme-warning-dark: darken($theme-warning, 10%);
 
-$theme-error: #e55546;
+$theme-error: #ff5050;
 $theme-error-light: rgba($theme-error, 0.1);
 $theme-error-dark: darken($theme-error, 10%);
 
@@ -65,17 +65,17 @@ $radius-round: r(1000);
 $radius-circle: 50%;
 
 // 文字色
-$color-text: #333;                       // 基本
+$color-text: #464646;                    // 基本
 $color-text-inverse: #fff;               // 反色
 $color-text-placeholder: #a9a9a9;        // 文本框提示
-$color-text-disabled: #bbb;              // 失效
-$color-text-caption: #999;               // 辅助描述
+$color-text-disabled: #bcbcbc;           // 失效
+$color-text-caption: #909090;            // 辅助描述
 $color-link: $theme-primary;               // 链接
 $color-shadow: rgba(56, 56, 56, .15);    // 阴影色
 
 // 背景色
-$background-active: #ddd;
-$background-disabled: #e1e1e1;
+$background-active: #e6e6e6;
+$background-disabled: #bcbcbc;
 
 // 透明度
 $opacity-disabled: .5;

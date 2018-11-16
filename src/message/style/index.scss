@@ -45,10 +45,6 @@ $prefixCls: za-message;
     @include message-theme($button-primary-border, $button-primary-activebg, $button-primary-border);
   }
 
-  &.theme-info {
-    @include message-theme($button-info-border, $button-info-activebg, $button-info-border);
-  }
-
   &.theme-success {
     @include message-theme($button-success-border, $button-success-activebg, $button-success-border);
   }
