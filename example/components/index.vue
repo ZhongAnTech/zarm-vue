@@ -58,6 +58,9 @@
           <za-cell hasArrow @click="$router.push('/button')">
             按钮 Button
           </za-cell>
+          <za-cell hasArrow @click="$router.push('/message')">
+            消息 Message
+          </za-cell>
           <za-cell hasArrow @click="$router.push('/modal')">
             模态框 Modal
           </za-cell>
@@ -91,10 +94,7 @@
           <za-cell hasArrow @click="$router.push('/icon')">
             图标 Icon
           </za-cell>
-          <za-cell hasArrow @click="$router.push('/message')">
-            消息 Message
-          </za-cell>
-          <za-cell hasArrow @click="$router.push('/noticebar')">
+          <za-cell hasArrow @click="$router.push('/notice-bar')">
             通知栏 NoticeBar
           </za-cell>
           <za-cell hasArrow @click="$router.push('/panel')">
