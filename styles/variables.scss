@@ -83,6 +83,9 @@ $opacity-mask: .4;
 $opacity-toast: .7;
 $opacity-tooltip: .7;
 
+/* 组件前缀 */
+$prefixCls-badge: za-badge;
+
 /* button */
 $button-default-color: $theme-default;
 $button-default-bg: #ddd;
@@ -146,3 +149,12 @@ $padding-v-xl: r(12);
 $keyboard-item-height: r(50);
 $keyboard-item-font-size: r(28);
 $keyboard-icon-font-size: r(21);
+
+// Badge
+$badge-height: r(14);
+$badge-font-size: r(10);
+$badge-padding-h: r(4);
+$badge-dot-diameter: r(8);
+$badge-radius-radius: r(2);
+$badge-round-radius: r(8);
+$badge-text-color:#fff;
