@@ -5,6 +5,8 @@
 $prefixCls: za-noticebar;
 
 .#{$prefixCls} {
+  display: flex;
+  align-items: center;
   width: 100%;
   height: r(24);
   position: relative;
@@ -13,7 +15,6 @@ $prefixCls: za-noticebar;
   &-body {
     position: absolute;
     left: 0;
-    top: r(2);
     white-space: nowrap;
   }
 }
