@@ -7,20 +7,17 @@ const selectedClean = function () {
   this.selectedDate.forEach(val => { val && (val.active = false); });
   this.selectedDate = null;
 };
-const rangeClean = function () {
-  this.rangeArr.forEach(val => { val.inrange = false; });
+export const rangeClean = function () {
+  this.rangeArr && this.rangeArr.forEach(val => { val.inrange = false; });
   this.rangeArr = null;
   selectedClean.call(this);
-  this._dateEmit(null);
 };
 export const setRange = function (dateArray) {
   dateArray = makeMinDateInfront(dateArray);
   let minIndex = this._findDateInAllDatesIndex(dateArray[0]);
   let minInListIndex = this._findDateMonthIndex(minIndex);
-  if (minInListIndex === -1) return console.error('your value is not in range');
   let maxIndex = this._findDateInAllDatesIndex(dateArray[1]);
   const maxInListIndex = this._findDateMonthIndex(maxIndex);
-  if (maxInListIndex === -1) return console.error('your value is not in range');
   this.rangeArr = [];
   let currentArrayIndex;
   const concatRangeArr = max => {
@@ -42,9 +39,32 @@ export const multipleValueNormalize = function () {
   value = value instanceof Array ? [normalizeDate(value[0]), normalizeDate(value[1])] : [];
   this.normalizeValue = value[0] && value[1] ? value : null;
 };
+export const multipleValueInit = function () {
+  multipleValueNormalize.call(this);
+  if (this.normalizeValue) {
+    const date = [];
+    date[0] = this._findDateInMonthList(this.normalizeValue[0]);
+    if (!date[0] || date[0].dateModel.disabled) {
+      this._dateEmit(null);
+      return console.error('your value is not in range');
+    }
+    date[1] = this._findDateInMonthList(this.normalizeValue[1]);
+    if (!date[1] || date[1].dateModel.disabled) {
+      this._dateEmit(null);
+      return console.error('your value is not in range');
+    }
+    this._dateClick(date[0].dateModel);
+    this._dateClick(date[1].dateModel);
+  } else {
+    this._dateEmit(null);
+  }
+};
 export const clickMultipleHandleOne = function (dateConfig) {
   if (dateConfig.disabled) return false;
-  this.rangeArr && rangeClean.call(this);
+  if (this.rangeArr) {
+    rangeClean.call(this);
+    this._dateEmit(null);
+  }
   dateConfig.active = true;
   this.selectedDate = [dateConfig];
   this._dateClick = clickMultipleHandleTwo; // eslint-disable-line

@@ -1,10 +1,21 @@
 export const ONEDAYTIMESTAP = 24 * 60 * 60 * 1000;
 let disabledFuc;
-const getNumMouthBeginDate = (date, nextNum = 0) => {
-  const nextMonthNum = date.getMonth() + 1 + nextNum;
-  return new Date(`${date.getFullYear() + Math.floor(nextMonthNum / 12.0001)}/${nextMonthNum % 12 || 12}/01`);
+
+const getTodayBeginTime = date => {
+  date = new Date(date.getTime());
+  date.setHours(0);
+  date.setMinutes(0);
+  date.setSeconds(0);
+  date.setMilliseconds(0);
+  return date;
 };
 
+const getNumMouthBeginDate = (date, nextNum = 0) => {
+  date = new Date(date.getTime());
+  date.setDate(1);
+  date.setMonth(date.getMonth() + nextNum);
+  return date;
+};
 
 const getMonthDateCount = date => {
   const currentMonthBeginDate = getNumMouthBeginDate(date, 0);
@@ -105,8 +116,9 @@ export const generatorRangeDates = (min, max) => {
   return result;
 };
 export const normalizeDate = date => {
+  if (typeof date === 'string') date = date.replace(/(\d{4}).+?(\d{2}).+?(\d{2})/, '$1/$2/$3');
   date = date instanceof Date ? date : new Date(date);
-  return availableDate(date) ? date : null;
+  return availableDate(date) ? getTodayBeginTime(date) : null;
 };
 export const makeMinDateInfront = dateArr => {
   return dateArr[0].getTime() > dateArr[1].getTime() ? [dateArr[1], dateArr[0]] : dateArr;

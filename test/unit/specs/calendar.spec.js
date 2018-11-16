@@ -9,25 +9,25 @@ describe('Calendar', () => {
     template: `
       <za-calendar 
         ref='calendar'
-        defaultValue="2018-08-07"
-        min="2018-05-06"
-        max="2018-10-02"
+        :defaultValue="defaultValue"
+        min="2018/05/06"
+        max="2018/10/02"
         v-model='value'
         :multiple="multiple"
       />
     `,
     data: {
-      value: '',
+      value: '2018/05/08',
       multiple: false,
       max: "2018-10-02",
-      min: "2018-05-06"
+      min: "2018-05-06",
+      defaultValue: "2018/08/07"
     },
   };
   const wrapper = mount(TestCompo);
   const { vm } = wrapper;
   const calendar = vm.$refs.calendar;
   it('set sigleValue', done => {
-    expect(vm.$el.querySelectorAll('.active').length).toBe(1);
     calendar._dateClick(calendar.monthList[0].dates[0]);
     expect(vm.value).not.toBe(calendar.monthList[0].dates[0].date);
     calendar._dateClick(calendar.monthList[0].dates[10]);
@@ -39,27 +39,26 @@ describe('Calendar', () => {
 
   it('sigle to multiple', done => {
     vm.multiple = true;
+    const disableSelectedDate = [calendar.monthList[0].dates[0], calendar.monthList[0].dates[4]];
+    const selectedDate = [calendar.monthList[0].dates[10], calendar.monthList[0].dates[20]];
+    vm.defaultValue = [selectedDate[0].date, selectedDate[1].date];
     vm.$forceUpdate();
     setTimeout(()=>{
-      const disableSelectedDate = [calendar.monthList[0].dates[0], calendar.monthList[0].dates[4]];
-      const selectedDate = [calendar.monthList[0].dates[10], calendar.monthList[0].dates[20]];
-
       calendar._dateClick(disableSelectedDate[0]);
       calendar._dateClick(disableSelectedDate[1]);
-      expect(vm.value).toBe(null);
+      expect(vm.value.length === 2).toBe(true);
 
       calendar._dateClick(selectedDate[0]);
       calendar._dateClick(selectedDate[1]);
       
-      expect(vm.value[0]).toBe(selectedDate[0].date);
-      expect(vm.value[1]).toBe(selectedDate[1].date);
+      expect(vm.value).toEqual([selectedDate[0].date, selectedDate[1].date]);
       calendar._dateClick(selectedDate[1]);
       expect(vm.value).toBe(null);
       done();
       
     },500)
   });
-  it('set max', done =>{
+  it('default max', done =>{
     const TestCompo = {
       components: {
         zaCalendar,

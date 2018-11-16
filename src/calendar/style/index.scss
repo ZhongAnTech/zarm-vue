@@ -13,16 +13,15 @@ li {
 
 .#{$prefixCls} {
   width: 100%;
-  min-height: 100%;
+  min-height: $calendar-height;
   padding-bottom: 20px;
-  background: #fff;
+  background: $calendar-background;
   padding-top: 40px;
   transition: all .5s;
   transform: translateX(0);
 }
 
 .#{$prefixCls}_week {
-  position: fixed;
   top: 0;
   left: 0;
   z-index: 3001;
@@ -30,8 +29,9 @@ li {
   width: 100%;
   height: 40px;
   line-height: 40px;
-  background: $calendar-week-bg;
-  color: $calendar-week-color;
+  background: $calendar-week-bar-background;
+  color: $calendar-week-bar-color;
+  font-size: $calendar-week-bar-fontsize;
 }
 
 .#{$prefixCls}_week-item {
@@ -40,9 +40,9 @@ li {
 }
 
 .#{$prefixCls}_month-head {
-  font-size: 17px;
+  font-size: $calendar-day-title-fontsize;
   font-weight: 500;
-  color: $calendar-month-title-color;
+  color: $calendar-day-color;
   margin: 20px 0 0 30px;
 }
 
@@ -54,8 +54,8 @@ li {
 
 .#{$prefixCls}_dates-item {
   position: relative;
-  width: (100%/7);
-  padding-bottom: (100%/7);
+  width: 14.28571%;
+  padding-bottom: 14.28571%;
 
   &.inrange {
     &::after {
@@ -66,24 +66,24 @@ li {
       z-index: 0;
       width: 100%;
       height: 30px;
-      background: $calendar-dates-inrange-bg;
+      background: $calendar-day-range-background;
     }
 
     .#{$prefixCls}_date-num {
-      color: $calendar-dates-inrange-color;
+      color: $calendar-day-range-color;
     }
   }
 
   &.active {
     .#{$prefixCls}_date-num {
-      color: #fff;
+      color: $calendar-day-selected-color;
       width: 30px;
       height: 30px;
       line-height: 30px;
       border-radius: 50%;
       text-align: center;
-      background: $calendar-dates-active-bg;
-      box-shadow: 0 r(2) r(5) 0 $calendar-day-selected-background;
+      background: $calendar-day-selected-background;
+      box-shadow: $calendar-day-today-shadow;
     }
   }
 
@@ -130,7 +130,7 @@ li {
 }
 
 .#{$prefixCls}_date-num {
-  font-size: 16px;
+  font-size: $calendar-day-fontsize;
   font-weight: 400;
-  color: $calendar-dates-color;
+  color: $calendar-day-color;
 }

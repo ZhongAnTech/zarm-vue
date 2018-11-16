@@ -2,10 +2,11 @@
 export default {
   data() {
     return {
-      min: '2018-02-02',
-      max: '2018-02-28',
-      value: '2018-02-25',
-      multiple: 0,
+      min: "2018-05-06",
+      max: "2018-10-02",
+      value: '2018-05-08',
+      defaultValue: ["2018-05-07", "2018-06-08"],
+      multiple: 1,
       multipleOptions: [
         { value: '1', label: "true" },
         { value: '0', label: "false" }
@@ -17,7 +18,7 @@ export default {
       console.log('change:' + date);
     },
     handleChange(val) {
-      this.multiple = !(this.multiple + 1) % 2;
+      this.multiple = val.value;
     },
     disabledDate(date) {
       return false;
@@ -65,6 +66,7 @@ export default {
   <za-calendar
     v-model='value'
     @change="change"
+    :defaultValue="defaultValue"
     :multiple="multiple == '1'"
     :disabledDate="disabledDate" 
     :min='min'
