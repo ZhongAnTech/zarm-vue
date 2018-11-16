@@ -10,6 +10,16 @@
         <ul>
           <li><a href="#/documents/quick-start">文档</a></li>
           <li><a href="https://github.com/ZhonganTechENG/zarm-vue" target="_blank" rel="noopener noreferrer">Github</a></li>
+          <li>
+            <el-select v-model="value" placeholder="请选择" size="small">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
+          </li>
         </ul>
       </nav>
     </div>
@@ -18,6 +28,17 @@
 
 <script>
 export default {
+  data() {
+    return {
+      options: [],
+      value: ''
+    }
+  },
+  created() {
+    const { version, versionList } = this.$store.state;
+    this.options = versionList;
+    this.value = version;
+  }
 };
 </script>
 

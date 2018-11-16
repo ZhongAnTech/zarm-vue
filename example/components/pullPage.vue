@@ -1,6 +1,6 @@
 <template lang="html">
   <Container class="pull-page">
-    <PageHeader title="下拉刷新 Pull" />
+    <PageHeader title="上拉加载下拉刷新 Pull" />
     <Demo></Demo>
     <PageFooter />
   </Container>

@@ -32,6 +32,8 @@ export default {
 };
 </script>
 
+## 模态框 Modal
+
 ::: demo 基本
 ```html
   <za-cell>

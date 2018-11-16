@@ -87,11 +87,11 @@ describe('NoticeBar', () => {
     expect(wrapper.vm.visible).toBe(false);
   });
 
-  it('autoscroll', () => {
+  it('scrollable', () => {
     const wrapper = mount({
       components: { ZaNoticeBar },
       template: `
-        <za-notice-bar autoscroll>自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。</za-notice-bar>
+        <za-notice-bar scrollable>自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。</za-notice-bar>
       `,
     }, true);
     const body = wrapper.find('.za-noticebar-body').element;
