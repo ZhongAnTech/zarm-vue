@@ -4,29 +4,34 @@
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
       checked: !!currentCheck,
-      [`${className}`]:!!className,
+
       disabled,
     }'    
   >
     <input
+      ref="input"
       type="checkbox"
       :class='`${prefixCls}-input`'
       :disabled='disabled'
       :checked='currentCheck'
-      :value='currentCheck?onName:offName'
+      :value='getVal(currentCheck)'
       @change='handleChange'
     />
+     
   </span>
 </template>
 
 <script>
 import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
-// import { valid } from 'semver';
 
 const activeName = 'on';
 const inActiveName = 'off';
 export default {
   name: 'zaSwitch',
+  model: {
+    prop: 'checked',
+    event: 'change',
+  },
   props: {
     prefixCls: {
       type: String,
@@ -50,26 +55,9 @@ export default {
       type: Boolean,
       default: false,
     },
-    className: {
-      type: String,
-      default: null,
-    },
-    value: {
-      type: String,
-      validator: enumGenerator([activeName, inActiveName]),
-      default: null,
-    },
     checked: {
       type: Boolean,
       default: null,
-    },
-    onName: {
-      type: String,
-      default: activeName,
-    },
-    offName: {
-      type: String,
-      default: inActiveName,
     },
   },
   data() {
@@ -77,43 +65,30 @@ export default {
       currentCheck: this.getChecked(false),
     };
   },
-  mounted() {
-    if (typeof this.checked !== 'object') {
-      if (!((this.checked && this.value === this.onName) || (!this.checked && this.value === this.offName))) {
-        this.$emit('input', this.checked ? this.onName : this.offName);
-      }
-    }
-  },
   watch: {
-    'value'(val, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
-      this.currentCheck = val === this.onName;
-    },
     'checked'(val, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
+      if (val === this.currentCheck) return;
       this.currentCheck = val;
-      this.$emit('input', val ? this.onName : this.offName);
     },
   },
   methods: {
-    getChecked(defaultVal) {
-      if (typeof this.checked !== 'object') {
-        return this.checked;
-      }
-      if (typeof this.value !== 'object' && this.value && this.value === this.onName) {
-        return true;
+    getChecked(defaultChecked) {
+      if (this.checked) {
+        return !defaultChecked;
       }
       if (this.defaultChecked) {
-        this.$emit('input', this.onName);
-        return true;
+        return !defaultChecked;
       }
-      this.$emit('input', this.offName);
-      return defaultVal;
+      return defaultChecked;
+    },
+    getVal(checked) {
+      return checked ? activeName : inActiveName;
     },
     handleChange(event) {
       if (this.disabled) return;
       const checked = event.target.checked;
       this.currentCheck = checked;
-      this.$emit('input', checked ? this.onName : this.offName);
-      this.$emit('change', event);
+      this.$emit('change', checked);
     },
   },
 };

@@ -8,7 +8,7 @@ describe('Switch', () => {
         zaSwitch,
       },
       template: `
-        <za-switch theme='success' size='lg' className="test" disabled defaultChecked></za-switch>
+        <za-switch theme='success' size='lg' disabled defaultChecked></za-switch>
       `,
     };
 
@@ -18,7 +18,6 @@ describe('Switch', () => {
     expect(vm.$el.classList.contains('za-switch')).toBe(true);
     expect(vm.$el.classList.contains('theme-success')).toBe(true);
     expect(vm.$el.classList.contains('size-lg')).toBe(true);
-    expect(vm.$el.classList.contains('test')).toBe(true);
     expect(vm.$el.classList.contains('disabled')).toBe(true);
     expect(vm.$el.classList.contains('checked')).toBe(true);
   });
@@ -33,7 +32,7 @@ describe('Switch', () => {
       `,
       data() {
         return {
-          switch1: 'on',
+          switch1: true,
         };
       },
     };
@@ -52,7 +51,7 @@ describe('Switch', () => {
       `,
       data() {
         return {
-          switch1: 'off',
+          switch1: false,
         };
       },
     };
@@ -60,104 +59,6 @@ describe('Switch', () => {
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
     expect(vm.$el.classList.contains('checked')).not.toBe(true);
-  });
-  it('checked && v-model === "on",Switch is checked ', () => {
-    let result = 'on';
-    const TestCompo = {
-      components: {
-        zaSwitch,
-      },
-      template: `
-        <za-switch checked v-model='switch1'></za-switch>
-      `,
-      data() {
-        return {
-          switch1: result,
-        };
-      },
-      mounted(){
-        result = this.switch1;
-      }
-    };
-
-    const wrapper = mount(TestCompo);
-    const { vm } = wrapper;
-    expect(vm.$el.classList.contains('checked')).toBe(true);
-    expect(result).toBe('on');
-  });
-  it('checked && v-model === "off",Switch is checked ', () => {
-    let result = 'off';
-    const TestCompo = {
-      components: {
-        zaSwitch,
-      },
-      template: `
-        <za-switch checked v-model='switch1'></za-switch>
-      `,
-      data() {
-        return {
-          switch1: result,
-        };
-      },
-      mounted(){
-        result = this.switch1;
-      }
-    };
-
-    const wrapper = mount(TestCompo);
-    const { vm } = wrapper;
-    expect(vm.$el.classList.contains('checked')).toBe(true);
-    expect(result).toBe('on');
-  });
-  it('!checked && v-model === "on",Switch is not checked ', () => {
-    let result = 'on';
-    const TestCompo = {
-      components: {
-        zaSwitch,
-      },
-      template: `
-        <za-switch checked v-model='switch1' :checked='checked'></za-switch>
-      `,
-      data() {
-        return {
-          switch1: result,
-          checked: false
-        };
-      },
-      mounted(){
-        result = this.switch1;
-      }
-    };
-
-    const wrapper = mount(TestCompo);
-    const { vm } = wrapper;
-    expect(vm.$el.classList.contains('checked')).not.toBe(true);
-    expect(result).not.toBe('on');
-  });
-  it('!checked && v-model === "off",Switch is not checked ', () => {
-    let result = 'off';
-    const TestCompo = {
-      components: {
-        zaSwitch,
-      },
-      template: `
-        <za-switch checked v-model='switch1' :checked="check"></za-switch>
-      `,
-      data() {
-        return {
-          switch1: result,
-          check: false
-        };
-      },
-      mounted(){
-        result = this.switch1;
-      }
-    };
-
-    const wrapper = mount(TestCompo);
-    const { vm } = wrapper;
-    expect(vm.$el.classList.contains('checked')).not.toBe(true);
-    expect(result).not.toBe('on');
   });
   it('click', done => {
     let result;
@@ -170,7 +71,7 @@ describe('Switch', () => {
       `,
       data() {
         return {
-          switch1: 'on',
+          switch1: true,
         };
       },
       methods: {
@@ -200,7 +101,7 @@ describe('Switch', () => {
       `,
       data() {
         return {
-          switch1: 'on',
+          switch1: true,
         };
       },
       methods: {
