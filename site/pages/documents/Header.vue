@@ -5,7 +5,15 @@
         <a href="#/">ZARM-VUE</a>
       </div>
       <div class="search">
-        
+        <el-select v-model="componentName" @change="handleChange" filterable placeholder="搜索组件..." style="width:280px">
+          <el-option
+            v-for="item in componentList"
+            :clearable='true'
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
       </div>
       <div class="version">
         
@@ -32,20 +40,47 @@
 </template>
 
 <script>
+import Format from '../../utils/format';
+import Demo from '../../demos'; 
 export default {
   data() {
     return {
+      Demo,
+      componentList: [],
+      componentName: '',
       options: [],
       value: ''
     };
   },
   created() {
     const { version, versionList } = this.$store.state;
+    this.initComponentList();
     this.options = versionList;
     this.value = version;
   },
+  watch: {
+    "$route"(val) {
+      const { path } = this.$route;
+      this.activeName = path.replace('/documents/', '')
+    }
+  },
   methods: {
-
+    initComponentList() {
+      const { components } = this.Demo;
+      const List = [...components.form, ...components.feedback, ...components.view, ...components.navigation];
+      this.componentList = List.map(i => (
+        { label: i.name + ' ' + i.description, value: Format.camel2Dash(i.name) }
+      ));
+    },
+    handleChange(val) {
+      console.log(val);
+      const v = this.$store.state.version;
+      this.$router.push({
+        path: `${Format.camel2Dash(val)}`,
+        query: { v }
+      });
+      this.componentName = '';
+    }
   }
 };
 </script>
@@ -83,7 +118,7 @@ export default {
   
   .search {
     float: left;
-    margin-top: 19px;
+    margin-top: 15px;
     margin-left: 20px;
   
     .tag-input-box {

@@ -10,6 +10,7 @@ const store = new Vuex.Store({
   strict: debug,
   plugins: middlewares,
   state: {
+    activeName: 'quick-start',
     lang: 'ZH',
     version: '2.0.0',
     versionList: [{
@@ -19,12 +20,18 @@ const store = new Vuex.Store({
   },
   actions: {
     setVersion (context, payload) {
-      context.commit('update', payload)
+      context.commit('updateVersion', payload)
+    },
+    setActiveName (context, payload) {
+      context.commit('updateActive', payload)
     }
   },
   mutations: {
-    update (state, data) {
+    updateVersion (state, data) {
       state.version = data
+    },
+    updateActive (state, data) {
+      state.activeName = data
     }
   }
 });

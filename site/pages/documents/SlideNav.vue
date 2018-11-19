@@ -57,8 +57,11 @@ export default {
     this.docNav = documents;
     this.componentNav = components;
   },
-  mounted() {
-
+  watch: {
+    "$route"(val) {
+      const { path } = this.$route;
+      this.activeName = path.replace('/documents/', '')
+    }
   },
   methods: {
     handleOpen(node) {
