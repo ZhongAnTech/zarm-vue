@@ -1,6 +1,7 @@
 <template lang="html">
   <span :class='{
     [`${prefixCls}`]: true,
+    [`${className}`]: true,
     [`theme-${theme}`]: !!theme,
     [`shape-${shape}`]: !!shape,
     }'>
@@ -26,6 +27,10 @@ export default {
       type: String,
       default: 'za-badge',
     },
+    className: {
+      type: String,
+      default: null,
+    },
     theme: {
       type: String,
       validator: defaultThemeValidator,
@@ -33,7 +38,7 @@ export default {
     },
     shape: {
       type: String,
-      validator: enumGenerator(['dot', 'radius', 'round', 'circle']),
+      validator: enumGenerator(['dot', 'rect', 'radius', 'round', 'circle', 'leaf']),
       default: null,
     },
     sup: {
