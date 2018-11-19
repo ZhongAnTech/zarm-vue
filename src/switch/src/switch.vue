@@ -2,7 +2,6 @@
   <span :class='{
       [`${prefixCls}`]: true,
       [`theme-${theme}`]: !!theme,
-      [`size-${size}`]: !!size,
       checked: !!currentCheck,
 
       disabled,
@@ -22,7 +21,6 @@
 </template>
 
 <script>
-import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
 
 const activeName = 'on';
 const inActiveName = 'off';
@@ -41,16 +39,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    theme: {
-      type: String,
-      validator: defaultThemeValidator,
-      default: 'primary',
-    },
-    size: {
-      type: String,
-      validator: enumGenerator(['xl', 'lg', 'sm', 'xs']),
-      default: null,
-    },
     disabled: {
       type: Boolean,
       default: false,
@@ -63,6 +51,7 @@ export default {
   data() {
     return {
       currentCheck: this.getChecked(false),
+      theme: 'primary',
     };
   },
   watch: {

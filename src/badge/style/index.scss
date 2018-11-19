@@ -1,7 +1,7 @@
 @import '../../../styles/variables';
 @import '../../../styles/core/mixins/index';
 @import '../../../styles/core/functions/index';
-$prefixCls: za-badge;
+$prefixCls: $prefixCls-badge;
 
 @mixin badge-theme($color) {
   .#{$prefixCls} {
@@ -43,10 +43,10 @@ $prefixCls: za-badge;
     justify-content: center;
     align-items: center;
     top: auto;
-    font-size: r(12);
+    font-size: $badge-font-size;
     color: #fff;
-    height: r(19);
-    padding: 0 r(5);
+    height: $badge-height;
+    padding: 0 $badge-padding-h;
     white-space: nowrap;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -61,31 +61,43 @@ $prefixCls: za-badge;
 
   &.shape-dot {
     .#{$prefixCls}-sup {
-      width: r(8);
-      height: r(8);
+      width: $badge-dot-diameter;
+      height: $badge-dot-diameter;
       padding: 0;
-      border-radius: 100%;
+      border-radius: $radius-circle;
+    }
+  }
+
+  &.shape-rect {
+    .#{$prefixCls}-sup {
+      border-radius: 0;
     }
   }
 
   &.shape-radius {
     .#{$prefixCls}-sup {
-      border-radius: r(4);
+      border-radius: $badge-radius-radius;
     }
   }
 
   &.shape-round {
     .#{$prefixCls}-sup {
-      min-width: r(19);
-      border-radius: r(19);
+      border-radius: $badge-round-radius;
     }
   }
 
   &.shape-circle {
     .#{$prefixCls}-sup {
-      width: r(19);
+      width: $badge-height;
       padding: 0;
-      border-radius: r(19);
+      border-radius: $badge-round-radius;
+    }
+  }
+
+  &.shape-leaf {
+    .#{$prefixCls}-sup {
+      min-width: $badge-height;
+      border-radius: $radius-round $radius-round $radius-round 0;
     }
   }
 }

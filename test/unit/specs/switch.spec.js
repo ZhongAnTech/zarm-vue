@@ -8,7 +8,7 @@ describe('Switch', () => {
         zaSwitch,
       },
       template: `
-        <za-switch theme='success' size='lg' disabled defaultChecked></za-switch>
+        <za-switch disabled defaultChecked></za-switch>
       `,
     };
 
@@ -16,8 +16,6 @@ describe('Switch', () => {
     const { vm } = wrapper;
 
     expect(vm.$el.classList.contains('za-switch')).toBe(true);
-    expect(vm.$el.classList.contains('theme-success')).toBe(true);
-    expect(vm.$el.classList.contains('size-lg')).toBe(true);
     expect(vm.$el.classList.contains('disabled')).toBe(true);
     expect(vm.$el.classList.contains('checked')).toBe(true);
   });
