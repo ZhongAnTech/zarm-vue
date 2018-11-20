@@ -10,12 +10,18 @@ describe('Calendar', () => {
       <za-calendar 
         ref='calendar'
         :defaultValue="defaultValue"
+        :disabledDate="disabledDate"
         min="2018/05/06"
         max="2018/10/02"
         v-model='value'
         :multiple="multiple"
       />
     `,
+    methods:{
+      disabledDate(date) {
+        return date.getDate() === 28;// 10倍数的可用
+      }
+    },
     data: {
       value: '2018/05/08',
       multiple: false,
@@ -28,6 +34,9 @@ describe('Calendar', () => {
   const { vm } = wrapper;
   const calendar = vm.$refs.calendar;
   it('set sigleValue', done => {
+    expect(calendar.monthList.find(month=>{
+      return !month.dates[27].disabled
+    })).toBe(undefined);
     calendar._dateClick(calendar.monthList[0].dates[0]);
     expect(vm.value).not.toBe(calendar.monthList[0].dates[0].date);
     calendar._dateClick(calendar.monthList[0].dates[10]);

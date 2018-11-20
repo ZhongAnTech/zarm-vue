@@ -21,7 +21,7 @@ export default {
       this.multiple = val.value;
     },
     disabledDate(date) {
-      return false;
+      return date.getDate() % 10;// 10倍数的不可用
     }
   },
   watch: {
