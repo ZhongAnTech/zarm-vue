@@ -197,9 +197,11 @@ export default {
         if (this.cascade) {
           return formatToInit(data[0], valueMember, cols);
         }
-        return data.map(d => (d[0][valueMember]));
+        const value = data.map(d => (d[0][valueMember]));
+        return this.isSingleColumn ? value[0] : value;
       }
-      return currentValue;
+      // return currentValue;
+      return this.isSingleColumn && isArray(currentValue) ? currentValue[0] : currentValue;
     },
     display() {
       const { currentValue, data } = this;
