@@ -1,8 +1,18 @@
 
 /* base */
 $base-fontSize: 14;
+$background-active: #e6e6e6;
+$background-disabled: #bcbcbc;
 
-$theme-default: #333;
+$disabled-opacity: .5;
+$disabled-background: #ddd;
+$disabled-color: #999;
+$placeholder-color: #a9a9a9;
+$icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
+$radius-round: r(1000);
+$radius-circle: 50%;
+
+$theme-default: #e6e6e6;
 $theme-default-light: rgba($theme-default, 0.5);
 $theme-default-dark: darken($theme-default, 10%);
 
@@ -26,43 +36,12 @@ $theme-error: #ff5050;
 $theme-error-light: rgba($theme-error, 0.1);
 $theme-error-dark: darken($theme-error, 10%);
 
-$radius-xl: r(4);
-$radius-lg: r(4);
-$radius-md: r(4);
-$radius-sm: r(4);
-$radius-xs: r(4);
-
-$height-xl: r(52);
-$height-lg: r(48);
-$height-md: r(44);
-$height-sm: r(34);
-$height-xs: r(27);
-
-$padding-xl: r(25);
-$padding-lg: r(20);
-$padding-md: r(16);
-$padding-sm: r(15);
-$padding-xs: r(10);
-
+// 字体大小
 $fontSize-xl: r(18);
-$fontSize-lg: r(18);
-$fontSize-md: r(17);
-$fontSize-sm: r(14);
-$fontSize-xs: r(14);
-
-$zIndex-mask: 1000;
-$zIndex-popup: 1300;
-$zIndex-modal: 1400;
-$zIndex-toast: 1500;
-$zIndex-loading: 1500;
-
-$disabled-opacity: .5;
-$disabled-background: #ddd;
-$disabled-color: #999;
-$placeholder-color: #a9a9a9;
-$icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
-$radius-round: r(1000);
-$radius-circle: 50%;
+$fontSize-lg: r(15);
+$fontSize-md: r(14);
+$fontSize-sm: r(12);
+$fontSize-xs: r(10);
 
 // 文字色
 $color-text: #464646;                    // 基本
@@ -73,15 +52,59 @@ $color-text-caption: #909090;            // 辅助描述
 $color-link: $theme-primary;               // 链接
 $color-shadow: rgba(56, 56, 56, .15);    // 阴影色
 
+// 圆角
+$radius-xl: r(4);
+$radius-lg: r(4);
+$radius-md: r(4);
+$radius-sm: r(4);
+$radius-xs: r(4);
+
+// 透明度
+$opacity-disabled: .6;
+$opacity-mask: .5;
+$opacity-toast: .8;
+$opacity-tooltip: .8;
+
 // 背景色
 $background-active: #e6e6e6;
 $background-disabled: #bcbcbc;
 
-// 透明度
-$opacity-disabled: .5;
-$opacity-mask: .4;
-$opacity-toast: .7;
-$opacity-tooltip: .7;
+// 边框色
+$border-color: #e6e6e6;
+$border-disabled: #bcbcbc;
+
+// 高度
+$height-xl: r(52);
+$height-lg: r(48);
+$height-md: r(44);
+$height-sm: r(34);
+$height-xs: r(27);
+
+// 间距
+$padding-xl: r(25);
+$padding-lg: r(20);
+$padding-md: r(16);
+$padding-sm: r(15);
+$padding-xs: r(10);
+
+// 水平间距
+$padding-h-sm: r(5);
+$padding-h-md: r(8);
+$padding-h-lg: r(16);
+$padding-h-xl: r(20);
+
+// 垂直间距
+$padding-v-sm: r(2);
+$padding-v-md: r(6);
+$padding-v-lg: r(9);
+$padding-v-xl: r(12);
+
+// 堆叠顺序
+$zIndex-mask: 1000;
+$zIndex-popup: 1300;
+$zIndex-modal: 1400;
+$zIndex-toast: 1500;
+$zIndex-loading: 1500;
 
 /* 组件前缀 */
 $prefixCls-badge: za-badge;
@@ -138,12 +161,6 @@ $actionsheet-item-font-size: r(16);
 $collapse-height: r(45);
 $collapse-padding: r(15);
 $collapse-arrow-color: #c7c7cc;
-
-// 垂直间距
-$padding-v-sm: r(2);
-$padding-v-md: r(6);
-$padding-v-lg: r(9);
-$padding-v-xl: r(12);
 
 // Keyboard
 $keyboard-item-height: r(50);
