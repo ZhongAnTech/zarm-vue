@@ -151,13 +151,13 @@ export default {
         <div class={`${prefixCls}-container`}>
           {
             !canSwipe ? this.$slots.default :
-              <za-swipe
+              <za-carousel
                 showPagination={false}
                 activeIndex={currentIndex}
-                ref='swipe'
+                ref='carousel'
                 on-change={handleSwipeChange}>
                 {this.$slots.default}
-              </za-swipe>
+              </za-carousel>
           }
         </div>
       </div>
