@@ -215,7 +215,7 @@ export default new Router({
       },
     },
     {
-      path: '/search-bar',
+      path: '/searchBar',
       component: Bundle,
       meta: {
         mRender: () => import('../components/searchBarPage.vue')
