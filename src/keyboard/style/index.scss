@@ -24,13 +24,16 @@ $prefixCls: za-keyboard;
     }
 
     &-ok {
-      font-size: r(21);
+      font-size: r(16);
       @include button-theme($color-text-inverse, $theme-primary, $button-default-border);
     }
 
-    &-disabled,
+    &-disabled {
+      background-color: #fff;
+    }
+
     &-disabled:active {
-      background-color: $disabled-background;
+      background-color: $keyboard-disabled-background;
     }
   }
 

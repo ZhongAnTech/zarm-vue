@@ -163,9 +163,10 @@ $collapse-padding: r(15);
 $collapse-arrow-color: #c7c7cc;
 
 // Keyboard
-$keyboard-item-height: r(50);
-$keyboard-item-font-size: r(28);
+$keyboard-item-height: r(54);
+$keyboard-item-font-size: r(30);
 $keyboard-icon-font-size: r(21);
+$keyboard-disabled-background: #eee;
 
 // Switch
 $switch-width: r(53);
@@ -176,6 +177,7 @@ $switch-box-shadow-start: rgba(0, 0, 0, 0.1);
 $switch-box-shadow-center: rgba(0, 0, 0, 0.08);
 $switch-box-shadow-end: rgba(0, 0, 0, 0.2);
 $switch-box-checked-shadow: rgba(0, 0, 0, 0.2);
+
 // Badge
 $badge-height: r(14);
 $badge-font-size: r(10);
