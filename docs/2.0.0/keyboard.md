@@ -1,4 +1,10 @@
 <script>
+const getValue = (v, key) => {
+  if (key == 'delete') {
+    return v.slice(0, -1)
+  }
+  return `${v}${key}`
+}
 export default {
   data() {
     return {
