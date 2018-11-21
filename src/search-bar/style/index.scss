@@ -9,6 +9,10 @@ $prefixCls: za-search-bar;
 .#{$prefixCls} {
   background: #fff;
 
+  .za-input {
+    padding: r(10) 0;
+  }
+
   input[type="search"]::-webkit-search-cancel-button {
     display: none;
   }
@@ -17,14 +21,14 @@ $prefixCls: za-search-bar;
     -webkit-appearance: none;
     position: absolute;
     left: r(0);
-    top: r(2);
+    top: r(0);
     opacity: 0;
     width: 100%;
     text-align: left;
     color: #000;
     // height: r(24);
-    font-size: r(15);
-    line-height: r(21);
+    font-size: r(14);
+    line-height: r(20);
     background-color: transparent;
     border: 0;
 
@@ -34,7 +38,7 @@ $prefixCls: za-search-bar;
   }
 
   &-form {
-    height: r(45);
+    height: r(44);
     margin: 0 r(15);
     display: flex;
     align-items: center;
@@ -53,8 +57,8 @@ $prefixCls: za-search-bar;
     position: relative;
     flex: 1;
     width: 100%;
-    height: r(30);
-    padding: r(3);
+    height: r(28);
+    padding: r(4);
     background: #eee;
     overflow: hidden;
 
@@ -76,9 +80,9 @@ $prefixCls: za-search-bar;
     left: 0;
     // top: r(5);
     width: 100%;
-    height: r(24);
-    line-height: r(24);
-    font-size: r(15);
+    height: r(20);
+    line-height: r(20);
+    font-size: r(14);
     color: #7e7e7e;
 
     &-container {
