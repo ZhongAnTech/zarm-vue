@@ -20,7 +20,7 @@
       </div>
       <div :class="{
           [`${prefixCls}-cancel`]: true,
-          [`${prefixCls}-cancel-show`]: !!(showCancel || (currentValue && currentValue.length > 0))
+          [`${prefixCls}-cancel-show`]: !!(showCancel || focusStatus || (currentValue && currentValue.length > 0))
         }" ref="cancelRef" @click="onCancel">{{cancelText}}</div>
     </form>
   </div>
@@ -114,7 +114,6 @@
 
       onFocus() {
         this.focusStatus = true;
-        this.showCancel = true;
         this.focusAnim();
         this.$emit('focus');
       },
