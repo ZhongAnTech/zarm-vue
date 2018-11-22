@@ -1,5 +1,5 @@
 <template lang="html">
-  <div :class="prefixCls">
+  <div :class="[prefixCls, className]">
     <slot></slot>
   </div>
 </template>
@@ -12,8 +12,15 @@ export default {
       type: String,
       default: 'za-collapse',
     },
+    className: {
+      type: String,
+    },
     defaultActiveKey: {
-      type: Array,
+      type: [String, Number, Array],
+      default: () => [],
+    },
+    activeKey: {
+      type: [String, Number, Array],
       default: () => [],
     },
     multiple: {
@@ -31,35 +38,49 @@ export default {
   },
   data() {
     return {
-      activeKey: [],
+      currActiveKey: [],
     };
   },
+  watch: {
+    activeKey(val) {
+      this.$nextTick(() => {
+        const currActiveKey = typeof val === 'object' ? val : [val];
+        this.currActiveKey = this.multiple ? currActiveKey : [currActiveKey[0]];
+      });
+    },
+  },
   created() {
-    this.activeKey = this.getActiveIndex();
+    const { multiple, activeKey } = this;
+    const currActiveKey = typeof activeKey === 'object' ? activeKey : [activeKey];
+    if (currActiveKey.length > 0) {
+      this.currActiveKey = multiple ? currActiveKey : [currActiveKey[0]];
+    } else {
+      this.currActiveKey = this.getActiveIndex();
+    }
   },
   methods: {
     onItemChange(key) {
-      const { multiple, activeKey } = this;
-      const hasKey = activeKey.indexOf(key) > -1;
+      const { multiple, currActiveKey } = this;
+      const hasKey = currActiveKey.indexOf(key) > -1;
 
       let newActiveIndex = [];
       if (!multiple) {
         if (hasKey) {
-          newActiveIndex = activeKey.filter(i => i !== key);
+          newActiveIndex = currActiveKey.filter(i => i !== key);
         } else {
-          newActiveIndex = activeKey.slice(0);
+          newActiveIndex = currActiveKey.slice(0);
           newActiveIndex.push(key);
         }
       } else {
         newActiveIndex = hasKey ? [] : [key];
       }
-      this.activeKey = newActiveIndex;
+      this.currActiveKey = newActiveIndex;
       this.$emit('change', key);
     },
     getActiveIndex() {
       const { defaultActiveKey, multiple } = this;
-      const defaultIndex = (defaultActiveKey !== undefined) ? defaultActiveKey : [];
-      return multiple ? [defaultIndex[0]] : defaultIndex;
+      const defaultIndex = (typeof defaultActiveKey === 'object') ? defaultActiveKey : [defaultActiveKey];
+      return multiple ? defaultIndex : [defaultIndex[0]];
     },
   },
 };
