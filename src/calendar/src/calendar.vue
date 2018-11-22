@@ -1,221 +1,212 @@
-<template>
- <div :class='`${prefixCls}`' v-show='visible'>
-  <div :class='`${prefixCls}-action`'>
-   <div class='cancel-btn' @click='handlecancel'>{{cancelBtnText}}</div>
-   <div class='ok-btn' @click='handleok'>{{okBtnText}}</div>
-  </div>
-  <div :class='`${prefixCls}-item`' v-for='item in monthItems'>
-   <div :class='`${prefixCls}-month`'>{{item.monthText}}</div>
-   <ul :class='`${prefixCls}-day`'>
-    <li :key='index' v-for='(item, index) in titles'>{{item}}</li>
-   </ul>
-   <date-item :prefixCls='prefixCls' :min-date='minDate' :max-date='maxDate' :selected-suffix='selectedSuffix' :selected-value='selected' :month='item'
-    @changed='setChanged' :multi-selected='multiSelected' name='calendar'></date-item>
-  </div>
- </div>
-</template>
 <script>
-import dateItem from './dateItem';
-import dateUtil from './date';
-import getContainer from '../../mixins/get-container';
+  import {
+    setDisabledFuc,
+    generatorRangeDates,
+    normalizeDate,
+    getNextYear,
+    ONEDAYTIMESTAP,
+  } from './utils';
+  import {
+    sigleDateClean,
+    sigleValueInit,
+    clickSingleHandle,
+  } from './sigleMode';
+  import {
+    rangeClean,
+    multipleValueInit,
+    clickMultipleHandleOne,
+  } from './multipleMode';
+  import DateItem from './dateItem';
 
-const defaultMinDate = new Date();
-const defaultMaxDate = dateUtil.addYears(new Date(), 1);
-
-export default {
-  name: 'zaCalendar',
-  components: {
-    dateItem,
-  },
-  mixins: [getContainer],
-  props: {
-    prefixCls: {
-      type: String,
-      default: 'za-calendar',
+  const today = new Date();
+  const weekList = ['日', '一', '二', '三', '四', '五', '六'];
+  const dateType = [Date, String, Number];
+  const valueType = [Date, String, Number, Array];
+  const doWeigth = ['clean', '_rangeInit', '_choiceInitType', 'valueInit'];
+  let changeBySelf = false;
+  export default {
+    name: 'zaCalendar',
+    components: {
+      DateItem,
     },
-    multiSelected: {
-      type: Boolean,
-      default: false,
+    props: {
+      prefixCls: {
+        type: String,
+        default: 'za-calendar',
+      },
+      defaultValue: {
+        type: valueType,
+      },
+      value: {
+        type: valueType,
+      },
+      min: {
+        type: dateType,
+        default() {
+          return today;
+        },
+      },
+      max: {
+        type: dateType,
+        default() {
+          return getNextYear(normalizeDate(this.$options.propsData.min) || today);
+        },
+      },
+      multiple: {
+        type: Boolean,
+        default: false,
+      },
+      dateRender: {
+        type: Function,
+        default(date) {
+          return <div class={`${this.prefixCls}_date-num`}>{date.getDate()}</div>;
+        },
+      },
+      className: {
+        type: String,
+        default: '',
+      },
+      styles: {
+        type: Object,
+        default() {
+          return {};
+        },
+      },
+      disabledDate: {
+        type: Function,
+        default() {
+          return false;
+        },
+      },
     },
-    visible: {
-      type: Boolean,
-      default: false,
+    data() {
+      return {
+        monthList: [],
+        waitingFuc: {},
+      };
     },
-    titles: {
-      type: Array,
-      default: () => ['日', '一', '二', '三', '四', '五', '六'],
-    },
-    dateItemFormat: {
-      type: String,
-      default: 'yyyy年MM月',
-    },
-    min: {
-      type: Date,
-      default: () => defaultMinDate,
-    },
-    max: {
-      type: Date,
-      default: () => defaultMaxDate,
-    },
-    months: {
-      type: Number,
-      default: 13,
-    },
-    okBtnText: {
-      type: String,
-      default: '确定',
-    },
-    cancelBtnText: {
-      type: String,
-      default: '取消',
-    },
-    selectedSuffix: String,
-    selectedValue: Array,
-  },
-  data() {
-    return {
-      minDate: this.getMinDate(),
-      maxDate: this.getMaxDate(),
-      selected: this.getInitValue(),
-      monthItems: [],
-    };
-  },
-  created() {
-    this.$nextTick(() => {
-      this.createMonthItems();
-    });
-  },
-  watch: {
-    visible(val) {
-      if (val === true) {
-        // console.log(val) // eslint-disable-line
-        this.selected = this.getInitValue();
-        this.setRangeSelected();
-      }
-    },
-  },
-  methods: {
-    getInitValue() {
-      const value = this.selectedValue || [];
-      // console.log(value) // eslint-disable-line
-      return value;
-    },
-    getMinDate() {
-      const value = this.min || defaultMinDate;
-      return value;
-    },
-    getMaxDate() {
-      const value = this.max || defaultMaxDate;
-      return value;
-    },
-    setChanged(item) {
-      const self = this;
-      self.scrollY = document.body.scrollTop;
-      if (self.multiSelected) {
-        if (self.selected.length === 0) {
-          self.selected[0] = item;
-        } else if (self.selected.length === 1) {
-          if (dateUtil.compareDate(self.selected[0], item) > 0) {
-            self.selected[1] = self.selected[0];
-            self.selected[0] = item;
-          } else {
-            self.selected[1] = item;
-          }
-        } else {
-          self.selected = [item];
-        }
-        self.setRangeSelected();
-        self.$emit('changed', self.selected);
-      } else {
-        self.selected = [item];
-        self.setRangeSelected();
-        self.$emit('changed', self.selected);
-      }
-    },
-    setRangeSelected() {
-      const self = this;
-      const prefixCls = this.prefixCls;
-      Array.prototype.forEach.call(self.$el.querySelectorAll('li[data-value]'), (el) => {
-        const _date = el.getAttribute('data-value');
-        if (_date === '') return;
-        el.classList.remove(`${prefixCls}-selected`);
-        el.classList.remove(`${prefixCls}-start-selected`);
-        el.classList.remove(`${prefixCls}-end-selected`);
-        el.classList.remove(`${prefixCls}-range-selected`);
-
-        if (self.selected.length === 1) {
-          if (_date === self.selected[0]) {
-            el.classList.add(`${prefixCls}-selected`);
-          }
-          return;
-        }
-
-        if (dateUtil.compareDate(self.selected[0], self.selected[1]) < 0) {
-          if (dateUtil.compareDate(_date, self.selected[0]) > 0
-            && dateUtil.compareDate(_date, self.selected[1]) < 0) {
-            el.classList.add(`${prefixCls}-range-selected`);
-          } else if (_date === self.selected[0]) {
-            el.classList.add(`${prefixCls}-start-selected`);
-            el.classList.add(`${prefixCls}-selected`);
-          } else if (_date === self.selected[1]) {
-            el.classList.add(`${prefixCls}-end-selected`);
-            el.classList.add(`${prefixCls}-selected`);
-          } else {
-            el.classList.remove(`${prefixCls}-range-selected`);
-          }
-        } else {
-          if (dateUtil.compareDate(_date, self.selected[1]) > 0 && dateUtil.compareDate(_date, self.selected[0]) < 0) { // eslint-disable-line
-            el.classList.add(`${prefixCls}-range-selected`);
-          } else if (_date === self.selected[0]) {
-            el.classList.add(`${prefixCls}-end-selected`);
-            el.classList.add(`${prefixCls}-selected`);
-          } else if (_date === self.selected[1]) {
-            el.classList.add(`${prefixCls}-start-selected`);
-            el.classList.add(`${prefixCls}-selected`);
-          } else {
-            el.classList.remove(`${prefixCls}-range-selected`);
-          }
-        }
-      });
-    },
-    createMonthItems() {
-      const self = this;
-      const _minDate = self.minDate ? new Date(self.minDate) : new Date();
-      let i = 0;
-      let _start;
-
-      while (i < self.months) {
-        _start = self.setLastDate(_minDate, i);
-        self.$set(self.monthItems, i, {
-          monthText: dateUtil.formatDate(_start, self.dateItemFormat),
-          date: self.resetDate(_start),
+    methods: {
+      _findDateInAllDatesIndex(date) {
+        return Math.ceil((date.getTime() - this.monthList[0].dates[0].date.getTime()) / ONEDAYTIMESTAP);
+      },
+      _findDateMonthIndex(index) {
+        let monthIndex = Math.floor(index / 30);
+        monthIndex = this.monthList[monthIndex - 1] && this.monthList[monthIndex - 1].maxIndex >= index ? monthIndex - 1 : monthIndex;
+        if (!this.monthList[monthIndex]) { return -1; }
+        return monthIndex;
+      },
+      _findDateInMonthList(date) {
+        const index = this._findDateInAllDatesIndex(date);
+        const monthIndex = this._findDateMonthIndex(index);
+        if (monthIndex === -1) return null;
+        const dateIndex = this.monthList[monthIndex].dates.length - (this.monthList[monthIndex].maxIndex - index);
+        return {
+          index,
+          dateModel: this.monthList[monthIndex].dates[dateIndex],
+        };
+      },
+      _dateEmit(value) {
+        changeBySelf = true;
+        this.$emit('change', value);
+        this.$emit('input', value);
+      },
+      _componentInit() {
+        this._rangeInit();
+        this._choiceInitType();
+        this.valueInit();
+        this.normalizeValue = null;
+      },
+      _rangeInit() {
+        setDisabledFuc(this.disabledDate);
+        this.monthList = generatorRangeDates(normalizeDate(this.min), normalizeDate(this.max));
+      },
+      _choiceInitType() {
+        this.multiple ? this._multipleInit() : this._singleInit();
+      },
+      _singleInit() {
+        this.clean = sigleDateClean;
+        this._dateClick = clickSingleHandle;
+        this.valueInit = sigleValueInit;
+      },
+      _multipleInit() {
+        this.clean = rangeClean;
+        this._dateClick = clickMultipleHandleOne;
+        this.valueInit = multipleValueInit;
+      },
+      _pushWaitingStack(...arg) {
+        arg.forEach(val => {
+          this.waitingFuc[val] = true;
         });
-        i++;// eslint-disable-line
-      }
+        this._activeWaitingRun();
+      },
+      _activeWaitingRun() {
+        this.timer && clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
+          doWeigth.forEach(val => {
+            this.waitingFuc[val] && this[val]();
+          });
+          this.waitingFuc = {};
+        }, 10);
+      },
     },
-    setLastDate(date, months) {
-      const _date = new Date(date);
-      _date.setDate(1);
-      return dateUtil.addMonths(_date, months);
+    render() {
+      return (
+        <div class={`${this.prefixCls} ${this.className}`} style={this.styles}>
+          <ul class={`${this.prefixCls}_week`}>
+            {
+              weekList.map(item => <li class={`${this.prefixCls}_week-item`}>
+                  {item}
+                </li>)
+            }
+          </ul>
+          <ul class={`${this.prefixCls}_month`}>
+            {
+              this.monthList.map(month => {
+                return (<li>
+                  <h3 class={`${this.prefixCls}_month-head`}>{month.title}</h3>
+                  <ul class={`${this.prefixCls}_dates`}>
+                    {
+                      Array.from({ length: month.dates[0].date.getDay() }, () => <li class={`${this.prefixCls}_dates-item`}/>)
+                    }
+                    {
+                      month.dates.map(dateItem => {
+                        return <date-item
+                          nativeOnClick={() => this._dateClick(dateItem)}
+                          data={dateItem}
+                          prefixCls={this.prefixCls}
+                          dateRender={this.dateRender}
+                        >
+                        </date-item>;
+                      })
+                    }
+                  </ul>
+                </li>);
+              })
+            }
+          </ul>
+        </div>
+      );
     },
-    getDateYear(d) {
-      return d.getFullYear();
+    created() {
+      this._componentInit();
     },
-    getDateMonth(d) {
-      const _m = d.getMonth() + 1;
-      return _m > 12 ? 12 : _m;
+    watch: {
+      multiple() {
+        this._pushWaitingStack('clean', '_choiceInitType');
+      },
+      max() {
+        this._pushWaitingStack('_rangeInit', 'valueInit');
+      },
+      min() {
+        this._pushWaitingStack('_rangeInit', 'valueInit');
+      },
+      defaultValue() {
+        this._pushWaitingStack('valueInit');
+      },
+      value() {
+        !changeBySelf && !this.defaultValue && this._pushWaitingStack('valueInit');
+        changeBySelf = false;
+      },
     },
-    resetDate(d) {
-      const _date = d.setDate(1);
-      return _date;
-    },
-    handlecancel() {
-      this.$emit('update:visible', false);
-    },
-    handleok() {
-      this.$emit('ok', this.selected);
-      this.$emit('update:visible', false);
-    },
-  },
-};
+  };
 </script>
