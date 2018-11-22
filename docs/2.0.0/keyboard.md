@@ -66,7 +66,7 @@ export default {
 
 :::demo 键盘
 ```html
-    <za-keyboard type="number" ></za-keyboard>
+    <za-keyboard type="number" className="demo-class"></za-keyboard>
 ```
 :::
 
@@ -78,13 +78,14 @@ export default {
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-keyboard | | 类名前缀 |
 | type | string | 'number' | | 键盘类型，可选`number`,`price`,`idcard` |
-
+| class | string | | | 追加类名 |
 
 #### keyboardPicker Attributes
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | visible | bool | false | | 是否显示, 支持.sync修饰符 (v2.3.0+) |
+| type | string | 'number' | | 键盘类型，可选`number`,`price`,`idcard` |
 
 #### keyboard & keyboardPicker Events
 | 事件名称 | 说明 | 回调参数 |
