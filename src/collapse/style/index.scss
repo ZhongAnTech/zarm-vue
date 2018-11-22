@@ -7,6 +7,7 @@ $prefixCls: za-collapse;
 
 .#{$prefixCls} {
   overflow: hidden;
+
   &-item {
     &-title {
       position: relative;
@@ -14,6 +15,7 @@ $prefixCls: za-collapse;
       line-height: $collapse-height;
       padding: 0 $collapse-padding;
       @include onepx(bottom);
+
       &:after {
         left: r(15);
       }
@@ -24,6 +26,7 @@ $prefixCls: za-collapse;
       height: 0;
       overflow: hidden;
       @include onepx(bottom);
+
       &:after {
         left: r(15);
       }
@@ -63,6 +66,7 @@ $prefixCls: za-collapse;
         transform: rotate(-135deg);
       }
     }
+
     &.disabled {
       .#{$prefixCls}-item-arrow {
         border-right-color: $collapse-arrow-disabled-color;
@@ -74,6 +78,7 @@ $prefixCls: za-collapse;
       &-title,
       &-content {
         @include onepx(bottom);
+
         &:after {
           left: r(15);
         }
