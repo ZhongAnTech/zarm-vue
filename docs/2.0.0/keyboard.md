@@ -78,7 +78,7 @@ export default {
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-keyboard | | 类名前缀 |
 | type | string | 'number' | | 键盘类型，可选`number`,`price`,`idcard` |
-| class | string | | | 追加类名 |
+| className | string | | | 追加类名 |
 
 #### keyboardPicker Attributes
 
