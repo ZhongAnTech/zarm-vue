@@ -9,8 +9,13 @@ test/e2e/reports
 lib/
 release/
 docs/_book
+
+# package & yarn lock
+yarn.lock
 package-lock.json
+
 # Editor directories and files
+.vscode
 .idea
 *.suo
 *.ntvs*
