@@ -22,7 +22,7 @@
         <div slot='description'>描述文字</div>
       </za-cell>
       <za-cell title='标题文字'>
-        <img src="https://avatars2.githubusercontent.com/u/499550?v=4&s=72" alt="" slot='icon'>
+        <img src="https://avatars2.githubusercontent.com/u/499550?v=4&s=24" alt="" slot='icon'>
         <div slot='description'>描述文字</div>
       </za-cell>
 ```
@@ -54,7 +54,7 @@
       </za-cell>
       <za-cell is-link title='标题文字' has-arrow @click='() => {}'>
         <div slot='description'>描述文字</div>
-        <img src="https://avatars2.githubusercontent.com/u/499550?v=4&s=72" alt="" slot='icon'>
+        <img src="https://avatars2.githubusercontent.com/u/499550?v=4&s=24" alt="" slot='icon'>
       </za-cell>
       <za-cell is-link has-arrow @click='() => {}'>
         <div slot='description'>描述文字</div>
@@ -62,7 +62,7 @@
           <div class='box-title'>标题文字</div>
           <div class='box-description'>描述文字</div>
         </div>
-        <img src="https://avatars2.githubusercontent.com/u/499550?v=4&s=72" alt="" slot='icon'>
+        <img src="https://avatars2.githubusercontent.com/u/499550?v=4&s=48" alt="" slot='icon'>
       </za-cell>
 ```
 :::
