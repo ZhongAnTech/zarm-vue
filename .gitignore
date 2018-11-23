@@ -9,7 +9,7 @@ test/e2e/reports
 lib/
 release/
 docs/_book
-
+package-lock.json
 # Editor directories and files
 .idea
 *.suo
