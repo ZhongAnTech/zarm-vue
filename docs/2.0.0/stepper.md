@@ -67,7 +67,7 @@ export default {
       <za-stepper slot='description' v-model='stepper9' @change='handleChange'></za-stepper>
     </za-cell>
     <za-cell title="获取变化的值">
-      <za-stepper slot='description'  v-model='stepper10'  @inputChange='handleInputChange'></za-stepper>
+      <za-stepper slot='description'  v-model='stepper10' @input='handleInputChange'></za-stepper>
     </za-cell>
 ```
 :::

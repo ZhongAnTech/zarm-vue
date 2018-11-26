@@ -107,7 +107,7 @@ export default {
         this.currentValue = value;
       }
       this.lastValue = this.currentValue;
-      this.$emit('inputChange', Number(this.currentValue));
+      this.$emit('input', Number(this.currentValue));
       this.$emit('change', event);
       this.handleAutoWidth(value);
     },
@@ -120,7 +120,7 @@ export default {
         this.currentValue = value;
       }
       this.lastValue = this.currentValue;
-      this.$emit('inputChange', Number(this.currentValue));
+      this.$emit('input', Number(this.currentValue));
       this.$emit('change', event);
       this.handleAutoWidth(value);
     },
@@ -143,7 +143,7 @@ export default {
         this.$nextTick(() => {
           this.currentValue = this.min;
           this.lastValue = this.currentValue;
-          this.$emit('inputChange', Number(this.currentValue));
+          this.$emit('input', Number(this.currentValue));
           this.$emit('change', event);
         });
       } else if (this.max !== null && value > this.max) {
@@ -151,13 +151,13 @@ export default {
         this.$nextTick(() => {
           this.currentValue = this.max;
           this.lastValue = this.currentValue;
-          this.$emit('inputChange', Number(this.currentValue));
+          this.$emit('input', Number(this.currentValue));
           this.$emit('change', event);
         });
       } else {
         this.currentValue = value;
         this.lastValue = this.currentValue;
-        this.$emit('inputChange', Number(this.currentValue));
+        this.$emit('input', Number(this.currentValue));
         this.$emit('change', event);
       }
       this.handleAutoWidth(value);
