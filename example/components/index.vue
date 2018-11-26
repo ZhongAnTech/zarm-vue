@@ -37,7 +37,7 @@
           <za-cell hasArrow @click="$router.push('/switch')">
             开关 Switch
           </za-cell>
-          <za-cell hasArrow @click="$router.push('/filepicker')">
+          <za-cell hasArrow @click="$router.push('/file-picker')">
             文件选择器 FilePicker
           </za-cell>
           <za-cell hasArrow @click="$router.push('/slider')">
