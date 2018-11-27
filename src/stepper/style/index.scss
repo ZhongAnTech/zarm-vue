@@ -25,8 +25,8 @@ $prefixCls: za-stepper;
       }
     }
 
-    &-body{
-        border: 1px solid $color;
+    &-body {
+      border: 1px solid $color;
     }
   }
 }
@@ -147,7 +147,8 @@ $prefixCls: za-stepper;
   width: r(36);
   height: r(36);
 }
-.za-stepper.theme-default .za-stepper-body{
+
+.za-stepper.theme-default .za-stepper-body {
   height: r(36);
   border: 1px solid #e6e6e6;
 }
