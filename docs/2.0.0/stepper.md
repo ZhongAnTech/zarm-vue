@@ -50,7 +50,7 @@ export default {
 :::demo 多形状
 ```html
       <za-cell title="默认">
-        <za-stepper slot='description' v-model='stepper6'></za-stepper>
+        <za-stepper slot='description' v-model='stepper6' theme="default"></za-stepper>
       </za-cell>
       <za-cell title="圆角">
         <za-stepper slot='description' v-model='stepper7' shape="radius"></za-stepper>
@@ -67,7 +67,7 @@ export default {
       <za-stepper slot='description' v-model='stepper9' @change='handleChange'></za-stepper>
     </za-cell>
     <za-cell title="获取变化的值">
-      <za-stepper slot='description'  v-model='stepper10' @input='handleInputChange'></za-stepper>
+      <za-stepper slot='description'  v-model='stepper10' @inputChange='handleInputChange'></za-stepper>
     </za-cell>
 ```
 :::

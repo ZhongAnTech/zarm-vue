@@ -15,7 +15,7 @@
     >
       <za-icon type='minus'></za-icon>
     </span>
-    <input ref='stepper-input' :class='`${prefixCls}-body`' type="tel" :disabled='disabled' :value='currentValue' @input='handleInput'/>
+    <input ref='stepper-input' maxlength="22" :class='`${prefixCls}-body`' type="tel" :disabled='disabled' :value='currentValue' @input='handleInput'/>
     <span :class='{
         [`${prefixCls}-plus`]: true,
         disabled: plusDisabled,
@@ -107,7 +107,7 @@ export default {
         this.currentValue = value;
       }
       this.lastValue = this.currentValue;
-      this.$emit('input', Number(this.currentValue));
+      this.$emit('inputChange', Number(this.currentValue));
       this.$emit('change', event);
       this.handleAutoWidth(value);
     },
@@ -120,7 +120,7 @@ export default {
         this.currentValue = value;
       }
       this.lastValue = this.currentValue;
-      this.$emit('input', Number(this.currentValue));
+      this.$emit('inputChange', Number(this.currentValue));
       this.$emit('change', event);
       this.handleAutoWidth(value);
     },
@@ -143,7 +143,7 @@ export default {
         this.$nextTick(() => {
           this.currentValue = this.min;
           this.lastValue = this.currentValue;
-          this.$emit('input', Number(this.currentValue));
+          this.$emit('inputChange', Number(this.currentValue));
           this.$emit('change', event);
         });
       } else if (this.max !== null && value > this.max) {
@@ -151,24 +151,24 @@ export default {
         this.$nextTick(() => {
           this.currentValue = this.max;
           this.lastValue = this.currentValue;
-          this.$emit('input', Number(this.currentValue));
+          this.$emit('inputChange', Number(this.currentValue));
           this.$emit('change', event);
         });
       } else {
         this.currentValue = value;
         this.lastValue = this.currentValue;
-        this.$emit('input', Number(this.currentValue));
+        this.$emit('inputChange', Number(this.currentValue));
         this.$emit('change', event);
       }
       this.handleAutoWidth(value);
     },
     handleAutoWidth(val) {
       const numLen = Number(val.toString().length);
-      const nowLen = (numLen * 10) + 10;
+      const nowLen = (numLen * 10) + 20;
       if (numLen > 3) {
         this.$refs['stepper-input'].style.width = `${nowLen}px`;
       } else {
-        this.$refs['stepper-input'].style.width = '40px';
+        this.$refs['stepper-input'].style.width = '50px';
       }
     },
   },
