@@ -164,20 +164,34 @@ $calendar-day-range-color: #12c286; // 日期文字范围内颜色
 $calendar-day-width: 14.28571%; // 日期宽度
 $calendar-day-height: r(40); // 日期高度
 
+/* cell */
+$cell-background: #fff; 						// 背景色
+$cell-active-background: #e6e6e6;				// 点击时高亮背景色
+$cell-line-padding-left: r(16);                 // 分隔线左边距
+$cell-title-color: $color-text;                 // 标题文字颜色
+$cell-title-font-size: r(15);                   // 标题文字大小
+$cell-description-color: $color-text-caption;   // 描述文字颜色
+$cell-description-font-size: r(15);             // 描述文字大小
+$cell-label-width: r(100);                      // 表单label宽度
+$cell-arrow-color: #bcbcbc;                     // 箭头颜色
+$cell-arrow-length: r(10);                      // 箭头长度
+
 // ActionSheet
 $actionsheet-margin: 0;
 $actionsheet-item-height: r(50);
 $actionsheet-item-font-size: r(16);
 
 // Collapse
-$collapse-height: r(45);
+$collapse-height: r(52);
 $collapse-padding: r(15);
-$collapse-arrow-color: #c7c7cc;
+$collapse-arrow-color: #C2C2C2;
+$collapse-arrow-disabled-color: #EEEEEE;
 
 // Keyboard
-$keyboard-item-height: r(50);
-$keyboard-item-font-size: r(28);
+$keyboard-item-height: r(54);
+$keyboard-item-font-size: r(30);
 $keyboard-icon-font-size: r(21);
+$keyboard-disabled-background: #eee;
 
 // Switch
 $switch-width: r(53);
@@ -188,6 +202,7 @@ $switch-box-shadow-start: rgba(0, 0, 0, 0.1);
 $switch-box-shadow-center: rgba(0, 0, 0, 0.08);
 $switch-box-shadow-end: rgba(0, 0, 0, 0.2);
 $switch-box-checked-shadow: rgba(0, 0, 0, 0.2);
+
 // Badge
 $badge-height: r(14);
 $badge-font-size: r(10);

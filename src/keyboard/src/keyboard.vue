@@ -1,5 +1,5 @@
 <template lang="html">
-  <div :class="prefixCls" @click.stop='() => {}'>
+  <div :class="[prefixCls, className]" @click.stop='() => {}'>
     <div :class="`${prefixCls}-keys`">
       <div
           v-for="(text, index) in getKeys()"
@@ -53,6 +53,10 @@ export default {
     prefixCls: {
       type: String,
       default: 'za-keyboard',
+    },
+    className: {
+      type: String,
+      default: '',
     },
     type: {
       type: String,
