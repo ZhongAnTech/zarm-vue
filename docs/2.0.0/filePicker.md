@@ -28,12 +28,12 @@ export default {
       this.fileList.splice(index, 1);
       this.visible = true
     },
-    beforeChange(){
+    beforeSelect(){
       if(this.fileList.length > 5){
         alert('超过5张')
         return false
       }else{
-        alert('before change')
+        alert('before select')
       }
     }
   },
@@ -42,11 +42,11 @@ export default {
 
 ## 文件选择器 FilePicker
 
-:::demo 点击一次选择单张
+:::demo 基本用法
 ```html
     <div class="uploader-wrapper" style="display:flex;padding:15px;">
-      <za-badge sup v-for= '(i, index) in files' class="uploader-item" shape='circle' :key='index' @click='remove(index)' style="display:inline-block;margin-right:15px;align-items: center;justify-content: center;width:74px;height:74px;border:2px dashed #ddd;">
-        <za-icon type='wrong' slot='text' ></za-icon>
+      <za-badge sup v-for= '(i, index) in files' class="uploader-item" shape='circle' :key='index' @click='remove(index)' style="display:inline-block;margin-right:15px;align-items: center;justify-content: center;width:74px;height:74px;border:2px solid #ddd;">
+        <za-icon type='wrong' slot='text' style="font-size:10px;"></za-icon>
         <div class='uploader-item-img'>
           <a :href="i.thumbnail" target="_blank"><img :src="i.thumbnail" alt=""></a>
         </div>
@@ -63,11 +63,11 @@ export default {
 ```
 :::
 
-::: demo 点击一次选择多张
+::: demo 多选模式
 ```html
     <div class="uploader-wrapper" style="display:flex;padding:15px;">
-      <za-badge sup v-for= '(i, index) in fileList' class="uploader-item" shape='circle' :key='index' @click='remove2(index)' style="display:inline-block;margin-right:15px;align-items: center;justify-content: center;width:74px;height:74px;border:2px dashed #ddd;">
-        <za-icon type='wrong' slot='text'></za-icon>
+      <za-badge sup v-for= '(i, index) in fileList' class="uploader-item" shape='circle' :key='index' @click='remove2(index)' style="display:inline-block;margin-right:15px;align-items: center;justify-content: center;width:74px;height:74px;border:2px solid #ddd;">
+        <za-icon type='wrong' slot='text' style="font-size:10px;"></za-icon>
         <div class='uploader-item-img'>
           <a :href="i.thumbnail" target="_blank"><img :src="i.thumbnail" alt=""></a>
         </div>
@@ -78,7 +78,7 @@ export default {
           multiple
           class="uploader-btn"
           style="display:flex;align-items: center;justify-content: center;width:74px;height:74px;border:2px dashed #ddd;"
-          :before-change='beforeChange'
+          :before-select='beforeSelect'
           accept="image/jpg, image/jpeg, image/gif, image/png"
           @change='handleChangeMulti'>
           <za-icon type="add" />
@@ -89,6 +89,20 @@ export default {
 ```
 :::
 
+:::demo 禁用状态
+```html
+    <div class="uploader-wrapper" style="display:flex;padding:15px;">
+      <div class="uploader-wrapper">
+        <za-file-picker
+          class="uploader-btn" style="display:flex;align-items: center;justify-content: center;width:74px;height:74px;border:2px dashed #ddd;"
+          disabled>
+          <za-icon type="add" style="fontSize:30px;"/>
+        </za-file-picker>
+      </div>
+    </div>
+```
+:::
+
 
 ### API
 
@@ -96,15 +110,14 @@ export default {
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-filepicker | | 类名前缀 |
-| accept | string | | | 允许上传的附件格式 |
-| multiple | bool | false | | 是否多选 |
-| capture | string | | 照相机`camera`, 摄像机`camcorder`, 录音`microphone`| 唤起的原生应用 |
+| accept | string | | | 允许上传的附件格式,参考File文件类型 |
+| multiple | bool | false | | 是否支持多选 |
 | disabled | bool | false | | 是否禁用 |
-| before-change | func |  | | 选择前触发的回调 |
+| prefixCls | string | za-filepicker | | 类名前缀 |
 
 #### Uploader Event
 
 | 事件名称 | 说明 | 回调参数 |
 | :--- | :--- | :--- |
-| change | 选择文件后触发的事件 | 1.file对象 |
+| beforeSelect | 选择前触发的事件 |() => boolean |
+| change | 值变化时触发的回调函数。multiple为true时，返回文件数组格式，否则为文件对象 |(file?: object \| object[]) => void |
