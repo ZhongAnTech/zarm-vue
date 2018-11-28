@@ -24,6 +24,10 @@ $prefixCls: za-stepper;
         }
       }
     }
+
+    &-body {
+      border: 1px solid $color;
+    }
   }
 }
 
@@ -44,6 +48,10 @@ $prefixCls: za-stepper;
     .#{$prefixCls}-plus {
       border-radius: $radius-md;
     }
+
+    .#{$prefixCls}-body {
+      border-radius: r(4);
+    }
   }
 
   &.shape-circle {
@@ -51,10 +59,25 @@ $prefixCls: za-stepper;
     .#{$prefixCls}-plus {
       border-radius: 50%;
     }
+
+    .#{$prefixCls}-body {
+      border-radius: r(400);
+    }
+  }
+
+  &.shape-plump {
+    .#{$prefixCls}-sub,
+    .#{$prefixCls}-plus {
+      border-radius: 50%;
+    }
+
+    .#{$prefixCls}-body {
+      border-radius: r(4);
+    }
   }
 
   &.theme-primary {
-    @include stepper-theme($theme-primary, $theme-primary-light);
+    @include stepper-theme(#E6E6E6, $theme-primary-light);
   }
 
   &.theme-info {
@@ -88,20 +111,44 @@ $prefixCls: za-stepper;
     font-size: r(18);
     font-weight: bold;
     cursor: pointer;
+
+    .za-icon {
+      font-size: r(12);
+    }
   }
 
   &-body {
     position: relative;
-    width: r(40);
-    margin: 0 r(10);
+    width: r(50);
+    margin: 0 r(4);
     padding: 0;
-    height: r(27);
-    border: 0;
-    border-radius: 0;
-    color: $theme-default;
     text-align: center;
+    height: r(27);
+    border-radius: 0;
+    color: #464646;
+    font-size: r(14);
     outline: 0;
     -webkit-appearance: none;
+    border: 1px solid #e6e6e6;
+    caret-color: #12c287;
   }
 }
 
+.za-stepper.theme-primary .za-stepper-sub,
+.za-stepper.theme-primary .za-stepper-plus {
+  color: #464646;
+  border: 1px solid #e6e6e6;
+}
+
+.za-stepper.theme-default .za-stepper-sub,
+.za-stepper.theme-default .za-stepper-plus {
+  color: #464646;
+  border: 1px solid #e6e6e6;
+  width: r(36);
+  height: r(36);
+}
+
+.za-stepper.theme-default .za-stepper-body {
+  height: r(36);
+  border: 1px solid #e6e6e6;
+}
