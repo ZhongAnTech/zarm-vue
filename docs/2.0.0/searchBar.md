@@ -62,6 +62,20 @@ export default {
 ```
 :::
 
+:::demo 点击获取焦点
+```html
+  <za-search-bar placeholder="搜索" 
+      shape="round"
+      cancelText="取消" 
+      :showCancel="true" 
+      ref="searchRef"
+    ></za-search-bar>  
+  <za-cell>    
+    <za-button theme="primary" size="xs" shape="radius" @click="handleClick">点击获取焦点</za-button>
+  </za-cell>
+```
+:::
+
 ### API
 
 #### SearchBar Attributes
@@ -71,11 +85,13 @@ export default {
 | prefixCls | string | za-search-bar | | 类名前缀 |
 | placeholder | string | text | | placeholder |
 | disabled | bool | false | | 是否禁用 |
+| defaultValue | string | | | 初始值 |
 | value | string, number | | | 搜索关键字 |
-| shape | string |  | | 形状，`round`,`radius` |
+| shape | string | radius | | 形状，`round`,`radius` |
 | cancelText | string | '取消' | | 取消文本 |
 | showCancel | bool | false | | 是否显示取消操作 |
 | clearable | bool | false | | 是否可以清除操作 |
+| maxLength | number | | | 输入字数上限 |
 
 #### SearchBar Events
 | 事件名称 | 说明 | 回调参数 |

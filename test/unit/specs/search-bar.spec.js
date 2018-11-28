@@ -21,24 +21,7 @@ describe('SearchBar', () => {
     });
     expect(wrapper.contains('.shape-round')).toBe(true);
   });
-
-  it('placeholder', done => {
-    const wrapper = mount(zaSearchBar, {
-      propsData: {
-        prefixCls: 'za-search-bar',
-      },
-    });
-    const { vm } = wrapper;
-    const el = vm.$el;
-    vm.$nextTick(() => { // eslint-disable-line no-unused-vars
-      setTimeout(() => {
-        const placholderText = el.querySelector('.za-search-bar-mock-placeholder').innerHTML;
-        expect(placholderText).toEqual('搜索');
-        done();
-      }, 20);
-    });
-  });
-
+  
   it('clear', done => {
     let result;
     const TestCompo = {
@@ -71,30 +54,113 @@ describe('SearchBar', () => {
     });
   });
 
-  it('cancel', done => {
+  it('event:cancel', done => {
+    let result;
+    let focus;
     const TestCompo = {
       components: {
         zaSearchBar,
       },
       template: `
-        <za-search-bar placeholder="搜索" 
-          shape="round"
-          cancelText="取消" 
-          :showCancel="true" 
-          value="默认搜索关键字"
-        />
+        <za-search-bar
+          placeholder="请输入内容"
+          @cancel="handleCancel"
+          @focus="handleFocus"
+          :value="input">
+        </za-search-bar>
       `,
+      data() {
+        return {
+          input: 'a',
+        };
+      },
+      methods: {
+        handleCancel() {
+          result = 1;
+        },
+        handleFocus() {
+          focus = true
+        }
+      },
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    const el = vm.$el;
-    wrapper.find('.za-input-clear').trigger('click');
+    wrapper.setData({'focusStatus': true});
     vm.$nextTick(() => {
+      wrapper.find('.za-search-bar-cancel').trigger('click');
       vm.$nextTick(() => {
-        const searchInputEl = el.querySelector('input[type="search"]')
-        expect(searchInputEl.value).toEqual('');
+        expect(result).not.toBeUndefined();
         done();
       });
     });
   });
+
+  it('event:change', done => {
+    let result;
+    const TestCompo = {
+      components: {
+        zaSearchBar,
+      },
+      template: `
+        <za-search-bar
+          placeholder="请输入内容"
+          @change="handleInput"
+          :value="input">
+        </za-search-bar>
+      `,
+      data() {
+        return {
+          input: 'a',
+        };
+      },
+      methods: {
+        handleInput() {
+          result = 1;
+        }
+      },
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+    wrapper.find('input').setValue('blur');
+    vm.$nextTick(() => {
+      expect(result).not.toBeUndefined();
+      done();
+    });
+  });
+
+  it('event:submit', done => {
+    let result;
+    const TestCompo = {
+      components: {
+        zaSearchBar,
+      },
+      template: `
+        <za-search-bar
+          placeholder="请输入内容"
+          @submit="handleSubmit"
+          ref="inputRef"
+          :value="input">
+        </za-search-bar>
+      `,
+      data() {
+        return {
+          input: 'a',
+        };
+      },
+      methods: {
+        handleSubmit() {
+          result = true;
+        }
+      },
+    };
+    const wrapper = mount(TestCompo);
+    wrapper.find('.za-search-bar-form').trigger('submit');
+    const { vm } = wrapper;
+    vm.$nextTick(() => {
+      expect(result).toBe(true);
+      done();
+    });
+  });
+
+
 });
