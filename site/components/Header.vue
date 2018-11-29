@@ -2,7 +2,7 @@
   <header>
     <div class="header-container">
       <div class="logo">
-        <a href="#/">ZARM-VUE</a>
+        <a href="javascript:void();">ZARM-VUE</a>
       </div>
       <div class="search">
       </div>

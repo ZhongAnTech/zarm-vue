@@ -2,45 +2,59 @@
 
 :::demo 基本
 ```html
-            <za-button theme="primary">普通按钮</za-button>
-            <za-button theme="primary" block>块级按钮</za-button>
-            <za-button theme="primary" block active>激活状态的按钮</za-button>
-            <za-button theme="primary" block disabled>禁用状态的按钮</za-button>
+            <za-button bordered>default</za-button>
+            <za-button theme="primary">primary</za-button>
 ```
-::: 
+:::
+
+:::demo 块级按钮
+```html
+            <za-button block bordered>default</za-button>
+            <za-button block bordered disabled>禁用状态的按钮</za-button>
+            <za-button theme="primary" block>幽灵按钮</za-button>
+            <za-button theme="primary" block disabled>激活状态的按钮</za-button>
+```
+:::
 
 :::demo 幽灵按钮
 ```html
-            <za-button block bordered>幽灵按钮</za-button>
-            <za-button block bordered active>激活状态的按钮</za-button>
-            <za-button block bordered disabled>禁用状态的按钮</za-button>
-            <za-button theme="primary" block bordered>幽灵按钮</za-button>
-            <za-button theme="primary" block bordered active>激活状态的按钮</za-button>
-            <za-button theme="primary" block bordered disabled>禁用状态的按钮</za-button>
+            <za-button block ghost bordered>primary ghost</za-button>
+            <za-button block ghost bordered disabled>primary ghost disabled</za-button>
 ```
-::: 
+:::
+
+:::demo 按钮主题
+```html
+            <za-button bordered>default</za-button>
+            <za-button theme="primary">primary</za-button>
+            <za-button theme="success">success</za-button>
+            <za-button theme="warning">warning</za-button>
+            <za-button theme="error">error</za-button>
+```
+:::
 
 :::demo 按钮大小
 ```html
-            <za-button theme="primary" size='xl'>xl</za-button>
-            <za-button theme="primary" size='lg'>lg</za-button>
-            <za-button theme="primary">md</za-button>
-            <za-button theme="primary" size='sm'>sm</za-button>
-            <za-button theme="primary" size='xs'>xs</za-button>
+            <za-button bordered size='lg'>lg</za-button>
+            <za-button bordered >md</za-button>
+            <za-button bordered size='sm'>sm</za-button>
+            <za-button bordered size='xs'>xs</za-button>
 ```
-::: 
+:::
 
-:::demo 多形状
+:::demo 按钮形状
 ```html
           <za-panel-body>
-            <za-button bordered shape="radius">圆角按钮</za-button>
-            <za-button bordered shape="round">椭圆角按钮</za-button>
-            <za-button bordered shape="circle">GO</za-button>
-            <za-button bordered shape="circle">
-              <za-icon type='right' slot='icon'></za-icon>
+            <za-button theme="primary">rect</za-button>
+            <za-button theme="primary" shape="radius">radius</za-button>
+             <za-button theme="primary" shape="round">round</za-button>
+            <za-button theme="primary" shape="circle">circle</za-button>
+            <za-button shape="circle" bordered>
+              <za-icon type="right" slot='icon'></za-icon>
             </za-button>
+           </za-panel-body>
 ```
-::: 
+:::
 
 :::demo 带icon的按钮
 ```html

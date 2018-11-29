@@ -14,8 +14,13 @@ const store = new Vuex.Store({
     lang: 'ZH',
     version: '2.0.0',
     versionList: [{
+      value: '1.4.1',
+      label: '1.4.1',
+      path: 'https://chuanshuoye.github.io/zarm-vue-doc/#/zh-CN'
+    },{
       value: '2.0.0',
-      label: '2.0.0'
+      label: '2.0.0-alpha1',
+      path: '#/documents/quick-start?v=2.0.0'
     }]
   },
   actions: {

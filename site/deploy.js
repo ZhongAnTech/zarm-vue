@@ -6,7 +6,7 @@ import router from './router';
 import store from './store';
 import 'normalize.css';
 import 'highlight.js/styles/github-gist.css';
-import 'element-ui/lib/theme-chalk/index.css';
+import './styles/themes/index.css';
 import './styles/index.scss';
 Vue.use(ElementUI);
 Vue.use(zarmVue);

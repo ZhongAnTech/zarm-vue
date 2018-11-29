@@ -50,7 +50,7 @@ export default {
     accept: String,
     capture: String,
     quality: Number,
-    beforeChange: {
+    beforeSelect: {
       type: Function,
       default: () => {},
     },
@@ -60,12 +60,12 @@ export default {
       this.$refs.file.click();
     },
     handleDefaultInput(event) {
-      const { beforeChange, disabled } = this;
+      const { beforeSelect, disabled } = this;
       // 防止选择同一张图片两次造成 onChange 事件不触发
       event.target.value = null; // eslint-disable-line no-param-reassign
 
       // 阻止 input onChange 默认事件
-      if (beforeChange(event) === false || disabled) {
+      if (beforeSelect(event) === false || disabled) {
         event.preventDefault();
       }
     },

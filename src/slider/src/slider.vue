@@ -1,19 +1,21 @@
 <template lang="html">
   <div :class='{[`${prefixCls}`]: true,disabled}'>
-    <div :class='`${prefixCls}-line`' ref='line'>
-      <div :class='`${prefixCls}-line-bg`' :style='{width:`${offset}px`}'></div>
-    </div>
     <za-drag
       :dragStart='onDragStart'
       :dragMove='onDragMove'
       :dragEnd='onDragEnd'>
       <div
-        :class='`${prefixCls}-handle`'
         :aria-valuemin='min'
         :aria-valuemax='max'
-        :aria-valuenow='value'
-        :style='{left:`${offset}px`}'>
-       <div :class='`${prefixCls}-handle-shadow`' ref="shadow"></div>
+        :aria-valuenow='value'>
+        <div :class='`${prefixCls}-line`' ref='line'>
+          <div :class='`${prefixCls}-line-bg`' :style='{width:`${offset}px`}'></div>
+        </div>
+        <div
+          :class='`${prefixCls}-handle`'
+          :style='{left:`${offset}px`}'>
+          <div :class='`${prefixCls}-handle-shadow`' ref="shadow"></div>
+        </div>
       </div>
      </za-drag>
   </div>
@@ -87,7 +89,7 @@ export default {
     },
     onDragMove(event, { offsetX }) {
       const { disabled } = this;
-      if (disabled) return;
+      if (disabled || !this.tooltip || Number.isNaN(offsetX)) return;
       event.preventDefault();
       let offset = this.offsetStart + offsetX;
       if (offset < 0) {
@@ -111,16 +113,18 @@ export default {
       const value = this.getValueByOffset(offset);
       offset = this.getOffsetByValue(value);
       this.offset = offset;
+      // if (Number.isNaN(offsetX)) return false;
       this.value = value;
       this.tooltip.message = value;
       this.setShadowPosition();
       return true;
     },
     onDragEnd(event, { offsetX }) {
-      this.tooltip.close();
+      if (this.tooltip) {
+        this.tooltip.close();
+      }
       if (Number.isNaN(offsetX)) return;
       this.offsetStart += offsetX;
-      // const { onChange } = this;
       this.$emit('change', event, this.value);
     },
     /**

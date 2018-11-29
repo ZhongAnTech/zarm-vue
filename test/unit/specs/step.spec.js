@@ -23,13 +23,18 @@ describe('Stepper', () => {
         zaStepper,
       },
       template: `
-        <za-stepper v-model='stepper'></za-stepper>
+        <za-stepper v-model='stepper' @inputChange='handleInputChange'></za-stepper>
       `,
       data() {
         return {
           stepper: 0,
         };
       },
+      methods: {
+        handleInputChange (val) {
+            this.stepper = val
+        }
+      }
     };
 
     const wrapper = mount(TestCompo);
@@ -51,13 +56,18 @@ describe('Stepper', () => {
         zaStepper,
       },
       template: `
-        <za-stepper v-model='stepper' :min="-3"></za-stepper>
+        <za-stepper v-model='stepper' :min="-3" @inputChange='handleInputChange'></za-stepper>
       `,
       data() {
         return {
           stepper: 0,
         };
       },
+      methods: {
+        handleInputChange (val) {
+            this.stepper = val
+        }
+      }
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
@@ -77,13 +87,18 @@ describe('Stepper', () => {
         zaStepper,
       },
       template: `
-        <za-stepper v-model='stepper' :max="3"></za-stepper>
+        <za-stepper v-model='stepper' :max="3" @inputChange='handleInputChange'></za-stepper>
       `,
       data() {
         return {
           stepper: 0,
         };
       },
+      methods: {
+        handleInputChange (val) {
+            this.stepper = val
+        }
+      }
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
@@ -104,12 +119,15 @@ describe('Stepper', () => {
         zaStepper,
       },
       template: `
-        <za-stepper v-model='stepper' @change='handleChange'></za-stepper>
+        <za-stepper v-model='stepper' @change='handleChange' @inputChange='handleInputChange'></za-stepper>
       `,
       methods: {
         handleChange(evt) {
           result = evt;
         },
+        handleInputChange (val) {
+            this.stepper = val
+        }
       },
       data() {
         return {
@@ -138,12 +156,15 @@ describe('Stepper', () => {
         zaStepper,
       },
       template: `
-        <za-stepper v-model='stepper' @change='handleChange' :step='2'></za-stepper>
+        <za-stepper v-model='stepper' @change='handleChange' :step='2' @inputChange='handleInputChange'></za-stepper>
       `,
       methods: {
         handleChange(evt) {
           result = evt;
         },
+        handleInputChange (val) {
+            this.stepper = val
+        }
       },
       data() {
         return {
@@ -202,12 +223,17 @@ describe('Stepper', () => {
         zaStepper,
       },
       template: `
-        <za-stepper v-model='stepper' :min='-3' :step='10'></za-stepper>
+        <za-stepper v-model='stepper' :min='-3' :step='10' @inputChange='handleInputChange'></za-stepper>
       `,
       data() {
         return {
           stepper: 0,
         };
+      },
+      methods: {
+        handleInputChange (val) {
+            this.stepper = val
+        }
       },
     };
 
@@ -226,12 +252,17 @@ describe('Stepper', () => {
         zaStepper,
       },
       template: `
-        <za-stepper v-model='stepper' :max='3' :step='5'></za-stepper>
+        <za-stepper v-model='stepper' :max='3' :step='5' @inputChange='handleInputChange'></za-stepper>
       `,
       data() {
         return {
           stepper: 0,
         };
+      },
+      methods: {
+        handleInputChange (val) {
+            this.stepper = val
+        }
       },
     };
 
