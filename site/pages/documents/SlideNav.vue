@@ -84,7 +84,7 @@ export default {
   width: 280px;
   border-right: 1px solid #ebedf0;
   margin-right: -1px;
-  padding: 30px 0 50px 0;
+  padding: 30px 0 50px 4px;
   overflow-y: scroll;
   z-index: 1;
   .el-menu {
@@ -97,5 +97,9 @@ export default {
   .chinese {
     opacity: .6;
   }
+}
+
+.el-menu-item {
+  color: #666;
 }
 </style>

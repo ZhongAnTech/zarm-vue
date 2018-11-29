@@ -1,4 +1,4 @@
-# zarm-vue UI
+# zarm-vue
 [![Build Status](https://www.travis-ci.org/ZhonganTechENG/zarm-vue.svg?branch=master)](https://www.travis-ci.org/ZhonganTechENG/zarm-vue)
 [![Coverage Status](https://img.shields.io/coveralls/ZhonganTechENG/zarm-vue/master.svg)](https://coveralls.io/github/ZhonganTechENG/zarm-vue?branch=master)
 [![npm package](https://img.shields.io/npm/v/zarm-vue.svg)](https://www.npmjs.org/package/zarm-vue)
@@ -7,11 +7,6 @@
 ![CSS gzip size](http://img.badgesize.io/https://unpkg.com/zarm-vue@latest/zarm-vue.default.css?compression=gzip&label=gzip%20size:%20CSS)
 <a href="https://www.npmjs.com/package/zarm-vue"><img src="https://img.shields.io/npm/l/zarm-vue.svg" alt="License"></a>
 <script style="display:none;"></script>
-
-### 使用文档
-
-[传送门](https://chuanshuoye.github.io/zarm-vue-doc/#/zh-CN)
-
 
 ### Install 安装
 

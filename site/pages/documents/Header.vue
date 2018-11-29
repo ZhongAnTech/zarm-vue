@@ -2,7 +2,7 @@
   <header class="header">
     <div class="header-container">
       <div class="logo">
-        <a href="#/">ZARM-VUE</a>
+        <a href="javascript:void();">ZARM-VUE</a>
       </div>
       <div class="search">
         <el-select v-model="componentName" @change="handleChange" filterable placeholder="搜索组件..." style="width:280px">
@@ -16,15 +16,7 @@
         </el-select>
       </div>
       <div class="version">
-        
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#/">首页</a></li>
-          <li><a href="#/documents/quick-start">文档</a></li>
-          <li><a href="https://github.com/ZhonganTechENG/zarm" target="_blank" rel="noopener noreferrer">Github</a></li>
-          <li>
-            <el-select v-model="value" placeholder="请选择" size="small">
+        <el-select v-model="value" placeholder="请选择" size="small" @change="handleVerChange">
               <el-option
                 v-for="item in options"
                 :key="item.value"
@@ -32,7 +24,12 @@
                 :value="item.value">
               </el-option>
             </el-select>
-          </li>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="https://zarm.design">React</a></li>
+          <li><a href="#/documents/quick-start">Vue</a></li>
+          <li><a href="https://github.com/ZhonganTechENG/zarm-vue" target="_blank" rel="noopener noreferrer">Github</a></li>
         </ul>
       </nav>
     </div>
@@ -80,6 +77,9 @@ export default {
         query: { v }
       });
       this.componentName = '';
+    },
+    handleVerChange(val) {
+      window.location = this.options.find(i => i.value === val).path;
     }
   }
 };
@@ -142,8 +142,7 @@ export default {
 
   .version {
     float: right;
-    height: 65px;
-    line-height: 65px;
+    margin-top: 15px;
     margin-right: 125px;
 
     .tag-input-box {
