@@ -83,10 +83,10 @@ describe('SearchBar', () => {
         }
       },
     };
-    const wrapper = mount(TestCompo);
+    const wrapper = mount(TestCompo, { sync: false });
     const { vm } = wrapper;
     wrapper.setData({'focusStatus': true});
-    vm.$nextTick(() => {
+    setTimeout(() => {
       wrapper.find('.za-search-bar-cancel').trigger('click');
       vm.$nextTick(() => {
         expect(result).not.toBeUndefined();

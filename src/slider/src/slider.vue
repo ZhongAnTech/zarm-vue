@@ -7,15 +7,14 @@
       <div
         :aria-valuemin='min'
         :aria-valuemax='max'
-        :aria-valuenow='value'
-        >
+        :aria-valuenow='value'>
         <div :class='`${prefixCls}-line`' ref='line'>
           <div :class='`${prefixCls}-line-bg`' :style='{width:`${offset}px`}'></div>
         </div>
         <div
           :class='`${prefixCls}-handle`'
           :style='{left:`${offset}px`}'>
-        <div :class='`${prefixCls}-handle-shadow`' ref="shadow"></div>
+          <div :class='`${prefixCls}-handle-shadow`' ref="shadow"></div>
         </div>
       </div>
      </za-drag>
@@ -71,9 +70,9 @@ export default {
     };
   },
   mounted() {
+    this.init();
     // fixed jest unit undefined $zaTooltip
     this.$zaTooltip = zaTooltip.root;
-    this.init();
   },
   methods: {
     getInitValue(defaultValue) {
