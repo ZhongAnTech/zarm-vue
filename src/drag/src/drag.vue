@@ -1,4 +1,13 @@
 <script>
+const EVENTS_MAP = {
+  touchstart: 'touchstart',
+  touchmove: 'touchmove',
+  touchend: 'touchend',
+  mousedown: 'touchstart',
+  mousemove: 'touchmove',
+  mouseup: 'touchend',
+};
+
 export default {
   name: 'zaDrag',
   props: {
@@ -18,24 +27,34 @@ export default {
   created() {
     this.dragState = {};
   },
-
   methods: {
     touchstart(event) {
       const dragState = this.dragState;
-      const touch = event.touches[0];
-
-      dragState.startX = touch.pageX;
-      dragState.startY = touch.pageY;
+      if (!event.touches) {
+        dragState.startX = event.clientX;
+        dragState.startY = event.clientY;
+      } else {
+        const touch = event.touches[0];
+        dragState.startX = touch.pageX;
+        dragState.startY = touch.pageY;
+      }
       dragState.startTime = new Date();
       this.dragStart(event, dragState);
     },
 
     touchmove(event) {
       const dragState = this.dragState;
-      const touch = event.touches[0];
+      let currentX;
+      let currentY;
 
-      const currentX = touch.pageX;
-      const currentY = touch.pageY;
+      if (!event.touches) {
+        currentX = event.clientX;
+        currentY = event.clientY;
+      } else {
+        const touch = event.touches[0];
+        currentX = touch.pageX;
+        currentY = touch.pageY;
+      }
 
       const offsetX = currentX - dragState.startX;
       const offsetY = currentY - dragState.startY;
@@ -59,12 +78,12 @@ export default {
 
       this.dragEnd(event, dragState);
 
-      this.dragState = {};
+      this.dragState = Object.create(null);
     },
 
     attachListener(listeners) {
-      ['touchstart', 'touchmove', 'touchend'].forEach(key => {
-        listeners[key] = this[key];
+      ['touchstart', 'touchmove', 'touchend', 'mousedown', 'mousemove', 'mouseup'].forEach(key => {
+        listeners[key] = this[EVENTS_MAP[key]];
       });
     },
   },
