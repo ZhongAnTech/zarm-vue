@@ -23,6 +23,7 @@ import Mask from '../src/mask';
 import Message from '../src/message';
 import Modal from '../src/modal';
 import NoticeBar from '../src/notice-bar';
+import NavBar from '../src/nav-bar';
 import Panel from '../src/panel';
 import PanelHeader from '../src/panel-header';
 import PanelBody from '../src/panel-body';
@@ -77,6 +78,7 @@ const components = [
   Message,
   Modal,
   NoticeBar,
+  NavBar,
   Panel,
   PanelHeader,
   PanelBody,
@@ -151,6 +153,7 @@ export {
   Message,
   Modal,
   NoticeBar,
+  NavBar,
   Panel,
   PanelHeader,
   PanelBody,

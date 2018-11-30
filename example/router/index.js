@@ -194,6 +194,13 @@ export default new Router({
       },
     },
     {
+      path: '/nav-bar',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/navBarPage.vue')
+      },
+    },
+    {
       path: '/panel',
       component: Bundle,
       meta: {

@@ -87,6 +87,10 @@ export default new Router({
           component: () => import('../pages/components/NoticeBarPage'),
         },
         {
+          path: 'nav-bar',
+          component: () => import('../pages/components/NavBarPage'),
+        },
+        {
           path: 'picker',
           component: () => import('../pages/components/PickerPage'),
         },
