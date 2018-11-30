@@ -27,8 +27,8 @@
       </div>
       <nav>
         <ul>
-          <li><a href="https://zarm.design">React</a></li>
-          <li><a href="#/documents/quick-start">Vue</a></li>
+          <li><a href="https://zarm.design">React 组件</a></li>
+          <li><a href="#/documents/quick-start">Vue 组件</a></li>
           <li><a href="https://github.com/ZhonganTechENG/zarm-vue" target="_blank" rel="noopener noreferrer">Github</a></li>
         </ul>
       </nav>
