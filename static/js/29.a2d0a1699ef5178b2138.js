@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[29],{189:function(e,t,a){},355:function(e,t,a){"use strict";a.r(t);var n=a(228),o=a(62),s=a(60),r=a(61),i=(a(189),{components:{Container:o.a,PageHeader:s.a,PageFooter:r.a,Demo:n.default}}),l=a(1),c=Object(l.a)(i,function(){var e=this.$createElement,t=this._self._c||e;return t("Container",{staticClass:"modal-page"},[t("PageHeader",{attrs:{title:"模态框 Modal"}}),this._v(" "),t("Demo"),this._v(" "),t("PageFooter")],1)},[],!1,null,null,null);t.default=c.exports}}]);
-//# sourceMappingURL=29.a2d0a1699ef5178b2138.js.map
