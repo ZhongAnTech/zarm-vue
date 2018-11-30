@@ -19,6 +19,10 @@ export default new Router({
           component: () => import('../pages/documents/QuickStart'),
         },
         {
+          path: 'change-log',
+          component: () => import('../pages/documents/ChangeLog'),
+        },
+        {
           path: 'badge',
           component: () => import('../pages/components/BadgePage'),
         },
