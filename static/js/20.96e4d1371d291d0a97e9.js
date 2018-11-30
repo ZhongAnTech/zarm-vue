@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[20],{188:function(e,t,a){},320:function(e,t,a){"use strict";a.r(t);var n=a(225),o=a(62),s=a(60),r=a(61),i=(a(188),{components:{Container:o.a,PageHeader:s.a,PageFooter:r.a,Demo:n.default}}),l=a(1),c=Object(l.a)(i,function(){var e=this.$createElement,t=this._self._c||e;return t("Container",{staticClass:"badge-page"},[t("PageHeader",{attrs:{title:"徽标 Badge"}}),this._v(" "),t("Demo"),this._v(" "),t("PageFooter")],1)},[],!1,null,null,null);t.default=c.exports}}]);
-//# sourceMappingURL=20.96e4d1371d291d0a97e9.js.map
