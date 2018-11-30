@@ -1,4 +1,13 @@
-# zarm-vue
+<p align="center">
+  <a href="http://zarm.design">
+    <img width="200" src="https://zarm.design/images/logo.ce68565d.svg">
+  </a>
+</p>
+
+<h1 align="center">Zarm Vue</h1>
+
+<div align="center">
+  
 [![Build Status](https://www.travis-ci.org/ZhonganTechENG/zarm-vue.svg?branch=master)](https://www.travis-ci.org/ZhonganTechENG/zarm-vue)
 [![Coverage Status](https://img.shields.io/coveralls/ZhonganTechENG/zarm-vue/master.svg)](https://coveralls.io/github/ZhonganTechENG/zarm-vue?branch=master)
 [![npm package](https://img.shields.io/npm/v/zarm-vue.svg)](https://www.npmjs.org/package/zarm-vue)
@@ -7,6 +16,14 @@
 ![CSS gzip size](http://img.badgesize.io/https://unpkg.com/zarm-vue@latest/zarm-vue.default.css?compression=gzip&label=gzip%20size:%20CSS)
 <a href="https://www.npmjs.com/package/zarm-vue"><img src="https://img.shields.io/npm/l/zarm-vue.svg" alt="License"></a>
 <script style="display:none;"></script>
+
+</div>
+
+### 版本
+
+- 稳定版：[![npm package](https://img.shields.io/npm/v/zarm-vue.svg)](https://www.npmjs.org/package/zarm-vue)
+
+- 开发版：[![npm package](https://img.shields.io/npm/v/zarm-vue/alpha.svg)](https://www.npmjs.org/package/zarm-vue)
 
 ### Install 安装
 

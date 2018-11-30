@@ -74,6 +74,7 @@ module.exports = merge(baseWebpackConfig, {
       filename: config.build.demo,
       template: path.join(__dirname, '../example/index.html'),
       inject: true,
+      favicon: './site/styles/images/favicon.ico',
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -89,6 +90,7 @@ module.exports = merge(baseWebpackConfig, {
       filename: config.build.site,
       template: path.join(__dirname, '../site/index.html'),
       pathname: '/zarm-vue/',
+      favicon: './site/styles/images/favicon.ico',
       inject: true,
       minify: {
         removeComments: true,

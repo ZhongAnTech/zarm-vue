@@ -46,6 +46,10 @@ main {
     position: relative;
   }
 
+  &.document-quick-start .main-container{
+    padding: 0 60px 140px 340px;
+  }
+
   .simulator {
     position: fixed;
     top: 105px;

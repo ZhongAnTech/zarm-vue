@@ -22,7 +22,7 @@
           <za-cell hasArrow @click="$router.push('/picker')">
             选择器 Picker & Select
           </za-cell>
-          <za-cell hasArrow @click="$router.push('/datepicker')">
+          <za-cell hasArrow @click="$router.push('/date-picker')">
             日期选择器 DatePicker & DateSelect
           </za-cell>
           <za-cell hasArrow @click="$router.push('/calendar')">
@@ -43,7 +43,7 @@
           <za-cell hasArrow @click="$router.push('/slider')">
             滑动输入框 Slider
           </za-cell>
-           <za-cell hasArrow @click="$router.push('/searchbar')">
+           <za-cell hasArrow @click="$router.push('/search-bar')">
             搜索栏 SearchBar
           </za-cell>
         </za-panel-body>
@@ -52,7 +52,7 @@
       <za-panel>
         <za-panel-header title="操作反馈"/>
         <za-panel-body>
-          <za-cell hasArrow @click="$router.push('/actionsheet')">
+          <za-cell hasArrow @click="$router.push('/action-sheet')">
             动作面板 ActionSheet
           </za-cell>
           <za-cell hasArrow @click="$router.push('/button')">
@@ -70,7 +70,7 @@
           <za-cell hasArrow @click="$router.push('/pull')">
             下拉刷新 Pull
           </za-cell>
-          <za-cell hasArrow @click="$router.push('/swipeaction')">
+          <za-cell hasArrow @click="$router.push('/swipe-action')">
             滑动操作 SwipeAction
           </za-cell>
           <za-cell hasArrow @click="$router.push('/toast')">

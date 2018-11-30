@@ -2,7 +2,10 @@
   <header class="header">
     <div class="header-container">
       <div class="logo">
-        <a href="javascript:void();">ZARM-VUE</a>
+        <a href="https://zarm.design">
+          <img alt="logo" :src="require('../../styles/images/logo.svg')" />
+          Zarm
+        </a>
       </div>
       <div class="search">
         <el-select v-model="componentName" @change="handleChange" filterable placeholder="搜索组件..." style="width:280px">
@@ -27,8 +30,9 @@
       </div>
       <nav>
         <ul>
-          <li><a href="https://zarm.design">React 组件</a></li>
-          <li><a href="#/documents/quick-start">Vue 组件</a></li>
+          <li><a href="https://zarm.design">首页</a></li>
+          <li><a href="https://zarm.design/#/documents/quick-start">React 组件</a></li>
+          <li><a href="#/documents/quick-start" class="active">Vue 组件</a></li>
           <li><a href="https://github.com/ZhonganTechENG/zarm-vue" target="_blank" rel="noopener noreferrer">Github</a></li>
         </ul>
       </nav>
@@ -106,7 +110,11 @@ export default {
     font-size: 24px;
     font-weight: 600;
     text-align: center;
-  
+    img {
+      height: 32px;
+      margin-right: 10px;
+      margin-top: -5px;
+    }
     a {
       display: block;
       height: 65px;
@@ -143,7 +151,7 @@ export default {
   .version {
     float: right;
     margin-top: 15px;
-    margin-right: 125px;
+    margin-right: 60px;
 
     .tag-input-box {
       width: 130px;
@@ -163,7 +171,7 @@ export default {
     float: right;
     height: 65px;
     line-height: 65px;
-    margin-right: 100px;
+    margin-right: 30px;
   
     ul {
       list-style: none;
@@ -173,6 +181,7 @@ export default {
   
       li {
         float: left;
+        padding: 0 30px;
         text-align: center;
         font-size: 16px;
         color: #999;

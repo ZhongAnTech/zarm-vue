@@ -42,7 +42,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 header {
   position: fixed;
   top: 0;

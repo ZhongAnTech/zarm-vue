@@ -1,5 +1,5 @@
 <template lang="html">
-  <Container>
+  <Container class="document-quick-start">
     <Demo></Demo>
   </Container>
 </template>
@@ -15,3 +15,7 @@ export default {
   }
 };
 </script>
+
+<style scoped lang='scss'>
+
+</style>
