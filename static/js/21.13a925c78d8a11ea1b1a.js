@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[21],{242:function(e,t,a){},326:function(e,t,a){"use strict";a.r(t);var n=a(226),o=a(62),s=a(60),r=a(61),i=(a(242),{components:{Container:o.a,PageHeader:s.a,PageFooter:r.a,Demo:n.default}}),l=a(1),c=Object(l.a)(i,function(){var e=this.$createElement,t=this._self._c||e;return t("Container",{staticClass:"tab-page"},[t("PageHeader",{attrs:{title:"标签页 Tabs"}}),this._v(" "),t("Demo"),this._v(" "),t("PageFooter")],1)},[],!1,null,null,null);t.default=c.exports}}]);
-//# sourceMappingURL=21.13a925c78d8a11ea1b1a.js.map
