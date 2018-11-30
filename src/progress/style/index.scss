@@ -8,6 +8,16 @@ $prefixCls: za-progress;
   .#{$prefixCls}-bg {
     background-color: $color;
   }
+
+  .#{$prefixCls}-line {
+    stroke: $color;
+  }
+}
+
+@mixin spinner-theme($color) {
+  .#{$prefixCls}-line {
+    stroke: $color;
+  }
 }
 
 .#{$prefixCls} {
@@ -29,13 +39,13 @@ $prefixCls: za-progress;
   &-bg {
     height: 100%;
     background-color: $theme-primary;
-    transition: width .3s;
+    transition: width .5s;
   }
 
-  &-circle {
+  &-circle,
+  &-semi-circle {
     display: inline-block;
     width: r(150);
-    height: r(150);
 
     .#{$prefixCls} {
       &-inner {
@@ -50,15 +60,30 @@ $prefixCls: za-progress;
       &-text {
         display: block;
         position: absolute;
-        top: 50%;
         left: 0;
         width: 100%;
         margin: 0;
         text-align: center;
         line-height: 1;
-        transform: translateY(-50%);
         font-size: r(30);
       }
+    }
+  }
+
+  &-circle {
+    height: r(150);
+
+    .#{$prefixCls}-text {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &-semi-circle {
+    height: r(75);
+
+    .#{$prefixCls}-text {
+      bottom: 0;
     }
   }
 
@@ -80,6 +105,16 @@ $prefixCls: za-progress;
 
   &.theme-error {
     @include progress-theme($theme-error);
+  }
+
+  .#{$prefixCls}-line {
+    fill-opacity: 0;
+    transition: .5s;
+  }
+
+  .#{$prefixCls}-track {
+    fill-opacity: 0;
+    stroke: #e6e6e6;
   }
 }
 

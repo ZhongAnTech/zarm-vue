@@ -15,8 +15,8 @@
           </div>
         </div>
         <za-input type="search" :placeholder="placeholder" :value="currentValue" :disabled="disabled" :clearable="clearable" ref="inputRef"
-          @focus="onFocus" @compositionStart="handleComposition" @compositionUpdate="handleComposition" @compositionEnd="handleComposition"
-          @change="onChange" @blur="onBlur" @clear="onClear" />
+          :maxLength='maxLength' @focus="onFocus" @compositionStart="handleComposition" @compositionUpdate="handleComposition"
+          @compositionEnd="handleComposition" @change="onChange" @blur="onBlur" @clear="onClear" />
       </div>
       <div :class="{
           [`${prefixCls}-cancel`]: true,
@@ -41,7 +41,11 @@
         default: '搜索',
       },
       value: [String, Number],
-      shape: [String],
+      maxLength: [Number],
+      shape: {
+        type: String,
+        default: 'raduis',
+      },
       disabled: {
         type: Boolean,
         default: false,
@@ -161,7 +165,7 @@
 
       onSubmit(e) {
         e.preventDefault();
-        this.inputRef.blur();
+        this.$refs.inputRef.blur();
         this.$emit('submit', this.currentValue);
       },
 

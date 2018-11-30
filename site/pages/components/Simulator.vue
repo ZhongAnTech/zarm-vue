@@ -14,7 +14,7 @@ export default {
   },
   computed: {
     componentPath() {
-      return `${window.location.origin}/demo.html#/${this.url}`;
+      return `${window.CONFIG.pathname}demo.html#/${this.url}`;
     }
   }
 };

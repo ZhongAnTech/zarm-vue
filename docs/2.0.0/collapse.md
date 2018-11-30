@@ -2,12 +2,12 @@
 export default {
   data() {
     return {
-      active: [0],
+      activeKey: ['1', '2']
     }
   },
   created() {
     setTimeout(() => {
-        this.active = [1];
+        this.activeKey = ['1']
     }, 2000);
   },
   methods: {
@@ -18,28 +18,19 @@ export default {
 };
 </script>
 
+<style>
+.za-collapse-item-content-inner {
+  color: #999;
+}
+</style>
+
 ## 折叠面板 Collapse
 
 ::: demo 基本
 ```html
     <za-collapse @change='onChange'>
-      <za-collapse-item title="50元套餐" activeKey='0'>
-        <div>我是50元套餐内容</div>
-        <div>我是50元套餐内容</div>
-        <div>我是50元套餐内容</div>
-        <div>我是50元套餐内容</div>
-      </za-collapse-item>
-      <za-collapse-item title="100元套餐" activeKey='1'>
-        <div>我是100元套餐内容</div>
-        <div>我是100元套餐内容</div>
-        <div>我是100元套餐内容</div>
-        <div>我是100元套餐内容</div>
-      </za-collapse-item>
-      <za-collapse-item title="200元套餐" activeKey='2'>
-        <div>我是200元套餐内容</div>
-        <div>我是200元套餐内容</div>
-        <div>我是200元套餐内容</div>
-        <div>我是200元套餐内容</div>
+      <za-collapse-item title="单行文本" itemKey='0'>
+        <div>更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文</div>
       </za-collapse-item>
     </za-collapse>
     <script>
@@ -56,24 +47,15 @@ export default {
 
 ::: demo 手风琴模式
 ```html
-    <za-collapse animated  :multiple='true' :defaultActiveKey="['a']">
-      <za-collapse-item title="50元套餐" activeKey='a'>
-        <div>我是50元套餐内容</div>
-        <div>我是50元套餐内容</div>
-        <div>我是50元套餐内容</div>
-        <div>我是50元套餐内容</div>
+    <za-collapse animated defaultActiveKey="a" activeKey="b">
+      <za-collapse-item title="单行文本" itemKey='a'>
+        <div>更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文</div>
       </za-collapse-item>
-      <za-collapse-item title="100元套餐" activeKey='b'>
-        <div>我是100元套餐内容</div>
-        <div>我是100元套餐内容</div>
-        <div>我是100元套餐内容</div>
-        <div>我是100元套餐内容</div>
+      <za-collapse-item title="单行文本" itemKey='b'>
+        <div>更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文</div>
       </za-collapse-item>
-      <za-collapse-item title="200元套餐" activeKey='c'>
-        <div>我是200元套餐内容</div>
-        <div>我是200元套餐内容</div>
-        <div>我是200元套餐内容</div>
-        <div>我是200元套餐内容</div>
+      <za-collapse-item title="单行文本" itemKey='c'>
+        <div>更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文</div>
       </za-collapse-item>
     </za-collapse>
 ```
@@ -81,73 +63,52 @@ export default {
 
 ::: demo 默认展开项
 ```html
-    <za-collapse animated :defaultActiveKey="['a']">
-      <za-collapse-item title="50元套餐" activeKey='a'>
-        <div>我是50元套餐内容</div>
-        <div>我是50元套餐内容</div>
-        <div>我是50元套餐内容</div>
-        <div>我是50元套餐内容</div>
+    <za-collapse multiple animated :defaultActiveKey="['a']">
+      <za-collapse-item title="单行文本" itemKey='a'>
+        <div>更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文</div>
       </za-collapse-item>
-      <za-collapse-item title="100元套餐" activeKey='b'>
-        <div>我是100元套餐内容</div>
-        <div>我是100元套餐内容</div>
-        <div>我是100元套餐内容</div>
-        <div>我是100元套餐内容</div>
-      </za-collapse-item>
-      <za-collapse-item title="200元套餐" activeKey='c'>
-        <div>我是200元套餐内容</div>
-        <div>我是200元套餐内容</div>
-        <div>我是200元套餐内容</div>
-        <div>我是200元套餐内容</div>
+      <za-collapse-item title="单行文本" itemKey='b'>
+        <div>更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文</div>
       </za-collapse-item>
     </za-collapse>
 ```
 :::
 
-::: demo 强制展开模式
+::: demo 禁用子项
 ```html
-    <za-collapse open>
-      <za-collapse-item title="50元套餐">
-        <div>我是50元套餐内容</div>
-        <div>我是50元套餐内容</div>
-        <div>我是50元套餐内容</div>
-        <div>我是50元套餐内容</div>
+    <za-collapse multiple animated :defaultActiveKey="['a']">
+      <za-collapse-item title="单行文本" itemKey='a' disabled>
+        <div>更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文</div>
       </za-collapse-item>
-      <za-collapse-item title="100元套餐">
-        <div>我是100元套餐内容</div>
-        <div>我是100元套餐内容</div>
-        <div>我是100元套餐内容</div>
-        <div>我是100元套餐内容</div>
-      </za-collapse-item>
-      <za-collapse-item title="200元套餐">
-        <div>我是200元套餐内容</div>
-        <div>我是200元套餐内容</div>
-        <div>我是200元套餐内容</div>
-        <div>我是200元套餐内容</div>
+      <za-collapse-item title="单行文本" itemKey='b'>
+        <div>更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文</div>
       </za-collapse-item>
     </za-collapse>
 ```
 :::
-
 
 #### Collapse Attributes
-
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-collapse | | 类名前缀 |
-| defaultActiveKey | array | |  | 默认展开的activeKey数组 |
-| multiple | bool | |  | 是否手风琴模式 |
-| animated | bool | | false | 是否开启展开动画 |
-| open | bool | false | | 强制默认展开 |
+| defaultActiveKey | number string Array< number string >	 | |  | 初始展开项 |
+| activeKey | number string Array < number string >	| |  | 当前展开项 |
+| multiple | bool | false |  | 是否允许打开多项 |
+| animated | bool | false |  | 是否添加展开动画 |
 
 #### CollapseItem Attributes
-
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| activeKey | string |  | | collapseItem唯一标示 |
+| itemKey | string |  | | collapseItem唯一标示 对应activeKey|
 | title | string |  |  | 标题的文案 |
+| disabled | bool | false |  | 是否禁用 |
 
 #### Collapse Events
 | 事件名称 | 说明 | 回调参数 |
 | :--- | :--- | :--- |
 | change | 当Collapse切换时触发的事件 | 返回切换的activeKey |
+
+#### CollapseItem Events
+| 事件名称 | 说明 | 回调参数 |
+| :--- | :--- | :--- |
+| item-change | 当CollapseItem切换时触发的事件 | 返回itemKey |

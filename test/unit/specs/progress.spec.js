@@ -8,90 +8,89 @@ describe('Progress', () => {
         zaProgress,
       },
       template: `
-        <za-progress :percent='percent' :theme='theme' type='line' :strokeWidth='10'>
+        <za-progress :percent='percent' type='line' weight='normal' >
           {{percent + '%'}}
         </za-progress>
       `,
       data() {
         return {
-          percent: 0,
-          theme: 'primary',
+          percent: 10,
         };
       },
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
     expect(wrapper.contains('.za-progress')).toBe(true);
-    expect(wrapper.contains('.theme-primary')).toBe(true);
     expect(wrapper.contains('.za-progress-line')).toBe(true);
-    expect(vm.$el.querySelector('.za-progress-inner').style.height).toEqual('10px');
+    expect(vm.$el.querySelector('.za-progress-inner').style.height).toEqual('8px');
   });
 
-  it('circle', () => {
-    const TestCompo = {
-      components: {
-        zaProgress,
+  it('type', () => {
+    const wrapper = mount(zaProgress, {
+      propsData: {
+        type: 'semi-circle',
+        percent: 50,
       },
-      template: `
-        <za-progress type='circle' :percent='percent' :theme='theme'>
-          <span>{{percent}}%</span>
-        </za-progress>
-      `,
-      data() {
-        return {
-          percent: 10,
-          theme: 'primary',
-        };
+    });
+    expect(wrapper.contains('.za-progress-semi-circle')).toBe(true);
+  });
+
+  it('percent', () => {
+    const wrapper = mount(zaProgress, {
+      propsData: {
+        type: 'semi-circle',
+        percent: 50,
       },
-    };
-    const wrapper = mount(TestCompo);
-    expect(wrapper.contains('.za-progress-circle')).toBe(true);
+    });
+    const {
+      vm
+    } = wrapper;
+    expect(wrapper.contains('.za-progress-semi-circle')).toBe(true);
+    const strokeDasharray = parseInt(vm.$el.querySelector('.za-progress-line').style.strokeDasharray)
+    const strokeDashoffset = parseInt(vm.$el.querySelector('.za-progress-line').style.strokeDashoffset)
+    expect(strokeDashoffset).toEqual(strokeDasharray * 2);
+  });
+
+  it('prefixCls', () => {
+    const wrapper = mount(zaProgress, {
+      propsData: {
+        prefixCls: 'my-progress',
+      },
+    });
+    expect(wrapper.contains('.my-progress')).toBe(true);
+  });
+
+  it('shape', () => {
+    const wrapper = mount(zaProgress, {
+      propsData: {
+        weight: 10,
+        shape: 'round',
+      },
+    });
+    const {
+      vm
+    } = wrapper;
+    expect(vm.$el.querySelector('.za-progress-inner').style.borderRadius).toEqual('10px');
+  });
+
+  it('weight', () => {
+    const wrapper = mount(zaProgress, {
+      propsData: {
+        weight: 12,
+      },
+    });
+    const {
+      vm
+    } = wrapper;
+    expect(vm.$el.querySelector('.za-progress-inner').style.height).toEqual('12px');
+  });
+
+  it('theme', () => {
+    const wrapper = mount(zaProgress, {
+      propsData: {
+        theme: 'info',
+      },
+    });
+    expect(wrapper.contains('.theme-info')).toBe(true);
   });
 });
-// import { createVue, destroyVM } from '../util';
-
-// describe('Progress', () => {
-//   let vm;
-//   afterEach(() => {
-//     destroyVM(vm);
-//   });
-
-//   it('create', () => {
-//     vm = createVue({
-//       template: `
-//         <za-progress :percent='percent' :theme='theme' type='line' :strokeWidth='10'>
-//           {{percent + '%'}}
-//         </za-progress>
-//       `,
-//       data() {
-//         return {
-//           percent: 0,
-//           theme: 'primary',
-//         };
-//       },
-//     }, true);
-//     const el = vm.$el;
-//     expect(el.classList.contains('za-progress'));
-//     expect(el.classList.contains('theme-primary'));
-//     expect(el.classList.contains('za-progress-line'));
-//     expect(el.querySelector('.za-progress-inner').style.height).to.equal('10px');
-//   });
-
-//   it('circle', () => {
-//     vm = createVue({
-//       template: `
-//         <za-progress type='circle' :percent='percent' :theme='theme'>
-//           <span>{{percent}}%</span>
-//         </za-progress>
-//       `,
-//       data() {
-//         return {
-//           percent: 10,
-//           theme: 'primary',
-//         };
-//       },
-//     }, true);
-//     const el = vm.$el;
-//     expect(el.classList.contains('za-progress-circle'));
-//   });
-// });
