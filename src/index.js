@@ -23,6 +23,7 @@ import Mask from '../src/mask';
 import Message from '../src/message';
 import Modal from '../src/modal';
 import NoticeBar from '../src/notice-bar';
+import NavBar from '../src/nav-bar';
 import Panel from '../src/panel';
 import PanelHeader from '../src/panel-header';
 import PanelBody from '../src/panel-body';
@@ -35,7 +36,7 @@ import Pull from '../src/pull';
 import SearchBar from '../src/search-bar';
 import Select from '../src/select';
 import Slider from '../src/slider';
-import Spinner from '../src/spinner';
+import ActivityIndicator from '../src/activity-indicator';
 import StackPicker from '../src/stack-picker';
 import Stepper from '../src/stepper';
 import Carousel from '../src/carousel';
@@ -77,6 +78,7 @@ const components = [
   Message,
   Modal,
   NoticeBar,
+  NavBar,
   Panel,
   PanelHeader,
   PanelBody,
@@ -91,7 +93,7 @@ const components = [
   SearchBar,
   Select,
   Slider,
-  Spinner,
+  ActivityIndicator,
   StackPicker,
   Stepper,
   Carousel,
@@ -151,6 +153,7 @@ export {
   Message,
   Modal,
   NoticeBar,
+  NavBar,
   Panel,
   PanelHeader,
   PanelBody,
@@ -165,7 +168,7 @@ export {
   SearchBar,
   Select,
   Slider,
-  Spinner,
+  ActivityIndicator,
   StackPicker,
   Stepper,
   Carousel,

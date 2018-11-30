@@ -17,11 +17,11 @@ import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
 const diameter = 62;
 
 export default {
-  name: 'zaSpinner',
+  name: 'zaActivityIndicator',
   props: {
     prefixCls: {
       type: String,
-      default: 'za-spinner',
+      default: 'za-activity-indicator',
     },
     size: {
       type: String,

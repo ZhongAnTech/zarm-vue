@@ -1,7 +1,7 @@
 <script>
 import zaDrag from '@/drag';
 import zaIcon from '@/icon';
-import zaSpinner from '@/spinner';
+import zaActivityIndicator from '@/activity-indicator';
 import Event from '@/utils/events';
 import { isThenable, warn } from '@/utils/misc';
 
@@ -28,7 +28,7 @@ export default {
   components: {
     zaDrag,
     zaIcon,
-    zaSpinner,
+    zaActivityIndicator,
   },
   props: {
     prefixCls: {
@@ -257,7 +257,7 @@ export default {
           });
           return refreshPull || (
             <div class={`${prefixCls}-control`}>
-              <za-spinner percent={percent} />
+              <za-activity-indicator percent={percent} />
               <span>下拉刷新</span>
             </div>
           );
@@ -268,7 +268,7 @@ export default {
           });
           return refreshDrop || (
             <div class={`${prefixCls}-control`}>
-              <za-spinner percent={100} />
+              <za-activity-indicator percent={100} />
               <span>释放立即刷新</span>
             </div>
           );
@@ -279,7 +279,7 @@ export default {
           });
           return refreshLoading || (
             <div class={`${prefixCls}-control`}>
-              <za-spinner class="rotate360" />
+              <za-activity-indicator class="rotate360" />
               <span>加载中</span>
             </div>
           );
@@ -321,7 +321,7 @@ export default {
           });
           return loadLoading || (
             <div class={`${prefixCls}-control`}>
-              <za-spinner class='rotate360'/>
+              <za-activity-indicator class='rotate360'/>
               <span>加载中</span>
             </div>
           );

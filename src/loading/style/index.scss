@@ -2,7 +2,7 @@
 @import '../../../styles/core/functions/index';
 @import '../../../styles/variables';
 @import '../../toast/style/index';
-@import '../../spinner/style/index';
+@import '../../activity-indicator/style/index';
 $prefixCls: za-loading;
 
 .#{$prefixCls} {

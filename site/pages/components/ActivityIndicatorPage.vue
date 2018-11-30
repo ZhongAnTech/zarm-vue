@@ -24,7 +24,7 @@ export default {
     const v = this.$store.state.version;
     this.path = this.$route.path.replace('/documents/', '');
     Vue.component('Demo', function(resolve, reject) {
-      require([`docs/${v}/spinner.md`], resolve)
+      require([`docs/${v}/activityIndicator.md`], resolve)
     });
   }
 };

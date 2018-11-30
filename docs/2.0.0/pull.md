@@ -92,7 +92,7 @@ export default {
       </template>
       <template slot-scope='props' slot='refreshLoading'>
         <div class='custom-control'>
-          <za-spinner class="rotate360" />
+          <za-activity-indicator class="rotate360" />
         </div>
       </template>
       <template slot-scope='props' slot='refreshSuccess'>
@@ -135,7 +135,7 @@ scopedSlots 用来覆盖默认样式，定义的会覆盖，不定义的默认�
 
     <template scope='props' slot='refreshLoading'>
       <div class='custom-control'>
-        <za-spinner class="rotate360" />
+        <za-activity-indicator class="rotate360" />
       </div>
     </template>
 

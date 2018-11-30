@@ -90,7 +90,7 @@ module.exports = {
         description: '滑动操作',
       },
       {
-        name: 'Spinner',
+        name: 'ActivityIndicator',
         description: '活动指示器',
       },
     ],
@@ -137,10 +137,10 @@ module.exports = {
         name: 'Tabs',
         description: '标签页',
       },
-      // {
-      //   name: 'NavBar',
-      //   description: '导航栏',
-      // },
+      {
+        name: 'NavBar',
+        description: '导航栏',
+      },
     ],
   },
 };

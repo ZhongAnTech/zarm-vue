@@ -11,7 +11,7 @@
     disabled,
   }' @click='handleClick'>
     <span :class='`${prefixCls}-content`'>
-      <za-spinner class="rotate360" v-if='loading'/>
+      <za-activity-indicator class="rotate360" v-if='loading'/>
       <slot name='icon' v-else></slot>
       <span>
         <slot></slot>
@@ -22,13 +22,13 @@
 
 <script>
 // necessary when used alone
-import zaSpinner from '@/spinner';
+import zaActivityIndicator from '@/activity-indicator';
 import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
 
 export default {
   name: 'zaButton',
   components: {
-    zaSpinner,
+    zaActivityIndicator,
   },
   props: {
     prefixCls: {

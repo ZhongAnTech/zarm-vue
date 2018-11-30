@@ -1,7 +1,7 @@
 @import '../../../styles/core/mixins/index';
 @import '../../../styles/core/functions/index';
 @import '../../../styles/variables';
-$prefixCls: za-spinner;
+$prefixCls: za-activity-indicator;
 $PI: 3.141592674;
 
 @mixin spinner-theme($color) {

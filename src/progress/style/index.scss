@@ -1,7 +1,7 @@
 @import '../../../styles/core/mixins/index';
 @import '../../../styles/core/functions/index';
 @import '../../../styles/variables';
-@import '../../spinner/style/index';
+@import '../../activity-indicator/style/index';
 $prefixCls: za-progress;
 
 @mixin progress-theme($color) {

@@ -47,10 +47,10 @@ export default new Router({
       },
     },
     {
-      path: '/spinner',
+      path: '/activity-indicator',
       component: Bundle,
       meta: {
-        mRender: () => import('../components/spinnerPage.vue')
+        mRender: () => import('../components/activityIndicatorPage.vue')
       },
     },
     {
@@ -191,6 +191,13 @@ export default new Router({
       component: Bundle,
       meta: {
         mRender: () => import('../components/noticeBarPage.vue')
+      },
+    },
+    {
+      path: '/nav-bar',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/navBarPage.vue')
       },
     },
     {
