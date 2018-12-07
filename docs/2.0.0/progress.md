@@ -1,47 +1,4 @@
-<script>
-export default {
-  data() {
-    return {
-      percent: 10,
-      theme: 'primary',
-      shape: 'round',
-      weight: 'normal',
-      prefixCls: 'za-progress',
-      dataSource:[
-        { value: 'default', label: 'default' },
-        { value: 'primary', label: 'primary' },
-        { value: 'info', label: 'info' },
-        { value: 'warning', label: 'warning' },
-        { value: 'error', label: 'error' },
-      ],
-      shapeSource:[
-        { value: 'rect', label: 'rect' },
-        { value: 'round', label: 'round' },
-      ],
-      weightSource:[
-        { value: 'normal', label: 'normal' },
-        { value: 'thin', label: 'thin' },
-        { value: 12, label: '12' },
-      ],
-    }
-  },
-  methods: {
-    handleStepChange(e) {
 
-    },
-    handleOk(v) {
-      this.theme = v.value;
-    },
-    handleShape(v) {
-      this.shape = v.value;
-    },
-    handleWeight(v) {
-      this.weight = v.value;
-    },
-
-  },
-};
-</script>
 
 ## 进度条 Progress
 
@@ -104,6 +61,54 @@ export default {
   </za-cell>
 ```
 :::
+
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+      percent: 10,
+      theme: 'primary',
+      shape: 'round',
+      weight: 'normal',
+      prefixCls: 'za-progress',
+      dataSource:[
+        { value: 'default', label: 'default' },
+        { value: 'primary', label: 'primary' },
+        { value: 'info', label: 'info' },
+        { value: 'warning', label: 'warning' },
+        { value: 'error', label: 'error' },
+      ],
+      shapeSource:[
+        { value: 'rect', label: 'rect' },
+        { value: 'round', label: 'round' },
+      ],
+      weightSource:[
+        { value: 'normal', label: 'normal' },
+        { value: 'thin', label: 'thin' },
+        { value: 12, label: '12' },
+      ],
+    }
+  },
+  methods: {
+    handleStepChange(e) {
+
+    },
+    handleOk(v) {
+      this.theme = v.value;
+    },
+    handleShape(v) {
+      this.shape = v.value;
+    },
+    handleWeight(v) {
+      this.weight = v.value;
+    },
+
+  },
+};
+</script>
+```
 
 ### API
 

@@ -1,29 +1,4 @@
-<script>
-export default {
-  data() {
-    return {
-      city: null,
-      index: null,
-      cities: ['上海', '北京', '广州', '深圳'],
-      num: ['选项一', '选项二', '选项三', '选项四'],
-      radioGroup1: '',
-      radioGroup2: '上海',
-      radioGroup3: '',
-      radioGroup4: '',
-      radioGroup5: '',
-      radioGroup6: '',
-      radioGroup7: '',
-      radioGroup8: '',
-      radioGroup9: '',
-    };
-  },
-  methods: {
-    handleGroupChange(v) {
-      console.log(v);
-    }
-  },
-};
-</script>
+
 
 ## 单选框 Radio
 
@@ -91,6 +66,36 @@ export default {
   </za-radio-group>
 ```
 :::
+
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+      city: null,
+      index: null,
+      cities: ['上海', '北京', '广州', '深圳'],
+      num: ['选项一', '选项二', '选项三', '选项四'],
+      radioGroup1: '',
+      radioGroup2: '上海',
+      radioGroup3: '',
+      radioGroup4: '',
+      radioGroup5: '',
+      radioGroup6: '',
+      radioGroup7: '',
+      radioGroup8: '',
+      radioGroup9: '',
+    };
+  },
+  methods: {
+    handleGroupChange(v) {
+      console.log(v);
+    }
+  },
+};
+</script>
+```
 
 ### API
 

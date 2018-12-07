@@ -1,11 +1,4 @@
-<script>
-export default {
-  data() {
-    return {
-    }
-  }
-};
-</script>
+
 
 ## 活动指示器 ActivityIndicator
 
@@ -25,6 +18,18 @@ export default {
   </za-cell>
 ```
 :::
+
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+    }
+  }
+};
+</script>
+```
 
 ### API
 

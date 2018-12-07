@@ -1,38 +1,3 @@
-<script>
-export default {
-  data() {
-    return {
-      visible1: false,
-      visible2: false,
-      visible3: false,
-      actions1: [{
-        text: '操作一',
-        onClick: () => console.log('action 1'),
-      },{
-        text: '操作二',
-        onClick: () => console.log('action 2'),
-      },{
-        theme: 'error',
-        text: '操作三',
-        onClick: () => console.log('action 3'),
-      }],
-      actions2: [{
-        text: '操作一',
-        onClick: () => console.log('action 1'),
-      },{
-        text: '操作二',
-        onClick: () => console.log('action 2'),
-      }],
-    }
-  },
-  methods: {
-    cancelCb(reason, event){
-      console.log(reason, event)
-    }
-  },
-};
-</script>
-
 ## 动作面板 ActionSheet
 
 :::demo 基本
@@ -88,6 +53,43 @@ export default {
     }
   },
 };
+```
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+      visible1: false,
+      visible2: false,
+      visible3: false,
+      actions1: [{
+        text: '操作一',
+        onClick: () => console.log('action 1'),
+      },{
+        text: '操作二',
+        onClick: () => console.log('action 2'),
+      },{
+        theme: 'error',
+        text: '操作三',
+        onClick: () => console.log('action 3'),
+      }],
+      actions2: [{
+        text: '操作一',
+        onClick: () => console.log('action 1'),
+      },{
+        text: '操作二',
+        onClick: () => console.log('action 2'),
+      }],
+    }
+  },
+  methods: {
+    cancelCb(reason, event){
+      console.log(reason, event)
+    }
+  },
+};
+</script>
 ```
 
 ### API

@@ -1,17 +1,4 @@
-<script>
-export default {
-  data() {
-    return {
-      switch1: false,
-    }
-  },
-  methods: {
-    handleChange(checked){
-      console.log(checked);
-    }
-  }
-};
-</script>
+
 
 ## 开关 Switch
 
@@ -39,7 +26,23 @@ export default {
 ```
 :::
 
-
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+      switch1: false,
+    }
+  },
+  methods: {
+    handleChange(checked){
+      console.log(checked);
+    }
+  }
+};
+</script>
+```
 
 
 ### API

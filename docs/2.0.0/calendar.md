@@ -1,36 +1,4 @@
-<script>
-export default {
-  data() {
-    return {
-      min: "2018-05-06",
-      max: "2018-10-02",
-      value: '2018-05-08',
-      defaultValue: ["2018-05-07", "2018-06-08"],
-      multiple: 1,
-      multipleOptions: [
-        { value: '1', label: "true" },
-        { value: '0', label: "false" }
-      ]
-    }
-  },
-  methods: {
-    change(date) {
-      console.log('change:' + date);
-    },
-    handleChange(val) {
-      this.multiple = val.value;
-    },
-    disabledDate(date) {
-      return date.getDate() % 10;// 10倍数的不可用
-    }
-  },
-  watch: {
-    value(val) {
-      console.log('watch:' + val);
-    }
-  }
-};
-</script>
+
 
 ## 日历 Calendar
 
@@ -75,6 +43,43 @@ export default {
     :max='max'/>
 ```
 :::
+
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+      min: "2018-05-06",
+      max: "2018-10-02",
+      value: '2018-05-08',
+      defaultValue: ["2018-05-07", "2018-06-08"],
+      multiple: "1",
+      multipleOptions: [
+        { value: '1', label: "true" },
+        { value: '0', label: "false" }
+      ]
+    }
+  },
+  methods: {
+    change(date) {
+      console.log('change:' + date);
+    },
+    handleChange(val) {
+      this.multiple = val.value;
+    },
+    disabledDate(date) {
+      return date.getDate() % 10;// 10倍数的不可用
+    }
+  },
+  watch: {
+    value(val) {
+      console.log('watch:' + val);
+    }
+  }
+};
+</script>
+```
 
 ### API
 

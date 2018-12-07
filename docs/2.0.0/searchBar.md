@@ -1,38 +1,3 @@
-<script>
-export default {
-  data() {
-    return {
-      value: "",
-    }
-  },
-  methods: {
-    handleClick(){
-      this.$refs.searchRef.focus();
-    },
-    handleChange(val){
-      this.value = val
-    },
-    handleSubmit(val){
-      console.log(`搜索内容为${val}`);
-    },
-    handleChange(val){
-      console.log(`搜索内容为${val}`);
-    },
-    handleFocus(){
-      console.log('获取焦点');
-    },
-    handleBlur(){
-      console.log('失去焦点');
-    },
-    handleClear(){
-      console.log('点击了清除');
-    },
-    handleCancel(){
-      console.log('点击了取消');
-    }
-  },
-};
-</script>
 
 ## 搜索框 SearchBar
 
@@ -76,6 +41,44 @@ export default {
 ```
 :::
 
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+      value: "",
+    }
+  },
+  methods: {
+    handleClick(){
+      this.$refs.searchRef.focus();
+    },
+    handleChange(val){
+      this.value = val
+    },
+    handleSubmit(val){
+      console.log(`搜索内容为${val}`);
+    },
+    handleChange(val){
+      console.log(`搜索内容为${val}`);
+    },
+    handleFocus(){
+      console.log('获取焦点');
+    },
+    handleBlur(){
+      console.log('失去焦点');
+    },
+    handleClear(){
+      console.log('点击了清除');
+    },
+    handleCancel(){
+      console.log('点击了取消');
+    }
+  },
+};
+</script>
+```
 ### API
 
 #### SearchBar Attributes

@@ -1,32 +1,4 @@
-<script>
-export default {
-  data() {
-    return {
-      v1:'',
-      v2:'这是一个textarea',
-      v3:'',
-      v4:'',
-      v5:'',
-      v6:'',
-      v7:'327198092039342',
-    }
-  },
-  methods: {
-    handleChange(v) {
-      console.log(this.v1, v);
-    },
-    handleChange2(v) {
-      console.log(this.v2, v);
-    },
-    handleChange3(v) {
-      console.log(v);
-    },
-    focus() {
-      this.$refs.inputFirst.focus()
-    },
-  },
-};
-</script>
+
 
 ## 文本框 Input
 
@@ -85,9 +57,9 @@ export default {
 ```
 :::
 
-### Vue JavaScript代码
-
-``` js
+### Vue Script
+```javascript
+<script name="vue">
 export default {
   data() {
     return {
@@ -115,6 +87,7 @@ export default {
     },
   },
 };
+</script>
 ```
 
 ### API

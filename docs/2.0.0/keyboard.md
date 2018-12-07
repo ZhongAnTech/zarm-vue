@@ -1,4 +1,33 @@
-<script>
+
+
+## 虚拟键盘 Keyboard & KeyboardPicker
+
+:::demo 类型
+```html
+    <za-cell title='数字' @click="showPicker('visible1')">
+      {{v1}}
+    </za-cell>
+    <za-cell title='金额' @click="showPicker('visible2')">
+      {{v2}}
+    </za-cell>
+      <za-cell title='证件' @click="showPicker('visible3')">
+      {{v3}}
+    </za-cell>
+    <za-keyboard-picker :visible.sync="visible1" type="number" @keyClick="handleChange1" ></za-keyboard-picker>
+    <za-keyboard-picker :visible.sync="visible2" type="price" @keyClick="handleChange2" ></za-keyboard-picker>
+    <za-keyboard-picker :visible.sync="visible3" type="idcard" @keyClick="handleChange3" ></za-keyboard-picker>
+```
+:::
+
+:::demo 键盘
+```html
+    <za-keyboard type="number" className="demo-class"></za-keyboard>
+```
+:::
+
+### Vue Script
+```javascript
+<script name="vue">
 const getValue = (v, key) => {
   if (key == 'delete') {
     return v.slice(0, -1)
@@ -44,31 +73,7 @@ export default {
   },
 };
 </script>
-
-## 虚拟键盘 Keyboard & KeyboardPicker
-
-:::demo 类型
-```html
-    <za-cell title='数字' @click="showPicker('visible1')">
-      {{v1}}
-    </za-cell>
-    <za-cell title='金额' @click="showPicker('visible2')">
-      {{v2}}
-    </za-cell>
-      <za-cell title='证件' @click="showPicker('visible3')">
-      {{v3}}
-    </za-cell>
-    <za-keyboard-picker :visible.sync="visible1" type="number" @keyClick="handleChange1" ></za-keyboard-picker>
-    <za-keyboard-picker :visible.sync="visible2" type="price" @keyClick="handleChange2" ></za-keyboard-picker>
-    <za-keyboard-picker :visible.sync="visible3" type="idcard" @keyClick="handleChange3" ></za-keyboard-picker>
 ```
-:::
-
-:::demo 键盘
-```html
-    <za-keyboard type="number" className="demo-class"></za-keyboard>
-```
-:::
 
 ### API
 

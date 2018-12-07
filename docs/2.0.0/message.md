@@ -1,18 +1,4 @@
-<script>
-export default {
-  data() {
-    return {
-      visible: true
-    }
-  },
-  methods: {
-    handleClick(event) {
-      console.log(event);
-      alert('click this message!');
-    }
-  },
-};
-</script>
+
 
 
 ## 消息 Message
@@ -32,6 +18,25 @@ export default {
   <za-message closable :visible.sync='visible'>可关闭的</za-message>
 ```
 :::
+
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+      visible: true
+    }
+  },
+  methods: {
+    handleClick(event) {
+      console.log(event);
+      alert('click this message!');
+    }
+  },
+};
+</script>
+```
 
 ### API
 

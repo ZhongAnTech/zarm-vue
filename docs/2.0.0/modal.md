@@ -1,36 +1,4 @@
-<script>
-export default {
-  data() {
-    return {
-      visible1: false,
-      visible2: false,
-      visible3: false,
-      visible4: false,
-      visible5: false,
-      visible6: false,
-      visible7: false,
-    };
-  },
-  methods: {
-    handleClose(reason, event){
-      console.log(reason, event);
-    },
-    handleOk(){
-      alert('ok')
-    },
-    showAlert() {
-      this.$zaAlert('警告12', {
-        callback: (event) => {
-          console.log(event)
-        }
-      })
-    },
-    handleCancel(){
-      this.visible7 = false
-    }
-  },
-};
-</script>
+
 
 ## 模态框 Modal
 
@@ -195,6 +163,43 @@ export default{
 
 ```html
 <za-confirm :visible='visible' title="确认信息" message="你确定吗？" :ok='handleOk' :cancel='handleCancel' ></za-confirm>
+```
+
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+      visible1: false,
+      visible2: false,
+      visible3: false,
+      visible4: false,
+      visible5: false,
+      visible6: false,
+      visible7: false,
+    };
+  },
+  methods: {
+    handleClose(reason, event){
+      console.log(reason, event);
+    },
+    handleOk(){
+      alert('ok')
+    },
+    showAlert() {
+      this.$zaAlert('警告12', {
+        callback: (event) => {
+          console.log(event)
+        }
+      })
+    },
+    handleCancel(){
+      this.visible7 = false
+    }
+  },
+};
+</script>
 ```
 
 

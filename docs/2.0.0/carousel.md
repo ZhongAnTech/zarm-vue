@@ -1,15 +1,100 @@
-<script>
+
+## 走马灯 Carousel
+
+:::demo 基本
+```html
+    <za-carousel
+      direction='left'
+      @changeStart='handleChangeStart'
+      @changeEnd='handleChangeEnd'>
+      <za-carousel-item
+        :key='index'
+        v-for='(i, index) in ITEMS'>
+        <div class='carousel-item-pic'>
+           <img :src="i.url" :alt="i.img" :draggable="false" />
+        </div>
+      </za-carousel-item>
+    </za-carousel>
+```
+:::
+
+:::demo 纵向
+```html
+    <za-carousel
+      height='180'
+      direction='bottom'
+      @changeStart='handleChangeStart'
+      @changeEnd='handleChangeEnd'>
+      <za-carousel-item
+        :key='index'
+        v-for='(i, index) in ITEMS'>
+        <div class='carousel-item-pic'>
+           <img :src="i.url" :alt="i.img" :draggable="false" />
+        </div>
+      </za-carousel-item>
+    </za-carousel>
+```
+:::
+
+:::demo 循环轮播
+```html
+    <za-carousel
+      ref='carousel'
+      direction='left'
+      loop
+      @changeStart='handleChangeStart'
+      @changeEnd='handleChangeEnd'>
+      <za-carousel-item
+        :key='index'
+        v-for='(i, index) in ITEMS'>
+        <div class='carousel-item-pic'>
+           <img :src="i.url" :alt="i.img" :draggable="false" />
+        </div>
+      </za-carousel-item>
+    </za-carousel>
+    <div class="controls" style="text-align:center;padding-bottom:20px;">
+      <za-button
+        size="sm"
+        @click='onJumpTo'>无动画切换指定页</za-button>
+      <za-button
+        size="sm"
+        style="margin-left:10px;"
+        @click='onSlideTo'>滑动到指定页</za-button>
+    </div>
+```
+:::
+
+:::demo 自动轮播
+```html
+    <za-carousel
+      direction='left'
+      loop
+      auto-play>
+      <za-carousel-item
+        :key='index'
+        v-for='(i, index) in ITEMS'>
+        <div class='carousel-item-pic'>
+          <img :src="i.url" :alt="i.img" :draggable="false" />
+        </div>
+      </za-carousel-item>
+    </za-carousel>
+```
+:::
+
+### Vue Script
+```javascript
+<script name="vue">
 const ITEMS = [
   {
-    url: '#',
+    url: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
     img: '1',
   },
   {
-    url: '#',
+    url: 'https://static.zhongan.com/website/health/zarm/images/banners/2.png',
     img: '2',
   },
   {
-    url: '#',
+    url: 'https://static.zhongan.com/website/health/zarm/images/banners/3.png',
     img: '3',
   },
 ];
@@ -37,88 +122,7 @@ export default {
   },
 };
 </script>
-
-## 走马灯 Carousel
-
-:::demo 基本
-```html
-    <za-carousel
-      direction='left'
-      @changeStart='handleChangeStart'
-      @changeEnd='handleChangeEnd'>
-      <za-carousel-item
-        :key='index'
-        v-for='(i, index) in ITEMS'>
-        <div class='carousel-item-pic'>
-          <span style="display:block;width:100%;height:100px;text-align:center;line-height:100px;">{{i.img}}</span>
-        </div>
-      </za-carousel-item>
-    </za-carousel>
 ```
-:::
-
-:::demo 纵向
-```html
-    <za-carousel
-      height='100'
-      direction='bottom'
-      @changeStart='handleChangeStart'
-      @changeEnd='handleChangeEnd'>
-      <za-carousel-item
-        :key='index'
-        v-for='(i, index) in ITEMS'>
-        <div class='carousel-item-pic'>
-          <span style="display:block;width:100%;height:100px;text-align:center;line-height:100px;">{{i.img}}</span>
-        </div>
-      </za-carousel-item>
-    </za-carousel>
-```
-:::
-
-:::demo 循环轮播
-```html
-    <za-carousel
-      ref='carousel'
-      direction='left'
-      loop
-      @changeStart='handleChangeStart'
-      @changeEnd='handleChangeEnd'>
-      <za-carousel-item
-        :key='index'
-        v-for='(i, index) in ITEMS'>
-        <div class='carousel-item-pic'>
-          <span style="display:block;width:100%;height:100px;text-align:center;line-height:100px;">{{i.img}}</span>
-        </div>
-      </za-carousel-item>
-    </za-carousel>
-    <div class="controls" style="text-align:center;padding-bottom:20px;">
-      <za-button
-        size="sm"
-        @click='onJumpTo'>无动画切换指定页</za-button>
-      <za-button
-        size="sm"
-        style="margin-left:10px;"
-        @click='onSlideTo'>滑动到指定页</za-button>
-    </div>
-```
-:::
-
-:::demo 自动轮播
-```html
-    <za-carousel
-      direction='left'
-      loop
-      auto-play>
-      <za-carousel-item
-        :key='index'
-        v-for='(i, index) in ITEMS'>
-        <div class='carousel-item-pic'>
-          <span style="display:block;width:100%;height:100px;text-align:center;line-height:100px;">{{i.img}}</span>
-        </div>
-      </za-carousel-item>
-    </za-carousel>
-```
-:::
 
 ### API
 

@@ -1,16 +1,4 @@
-<script>
-export default {
-  data() {
-    return {
-    }
-  },
-  methods: {
-    clickHandle() {
-      alert('clickHandle');
-    },
-  },
-};
-</script>
+
 
 ## 导航栏 NavBar
 
@@ -46,6 +34,23 @@ export default {
   </za-nav-bar>
 ```
 :::
+
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+    }
+  },
+  methods: {
+    clickHandle() {
+      alert('clickHandle');
+    },
+  },
+};
+</script>
+```
 
 ### API
 

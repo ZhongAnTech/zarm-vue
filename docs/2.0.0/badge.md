@@ -1,17 +1,3 @@
-<script>
-export default {
-  data() {
-    return {
-    }
-  },
-  methods: {
-    handleClick(e) {
-      console.log(e);
-    },
-  },
-};
-</script>
-
 ## 徽标 Badge
 
 :::demo 基本
@@ -126,6 +112,23 @@ export default {
     </div>
 ```
 :::
+
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+    }
+  },
+  methods: {
+    handleClick(e) {
+      console.log(e);
+    },
+  },
+};
+</script>
+```
 
 ### API
 

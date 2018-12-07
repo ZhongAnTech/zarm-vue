@@ -1,4 +1,99 @@
-<script>
+
+
+## 选择器 Picker & Select
+
+:::demo 基本
+```html
+  <za-cell title="单列">
+      <za-button slot='description' size='xs' @click='visible1 = true'>开启</za-button>
+  </za-cell>
+  <za-cell title="多列">
+      <za-button slot='description' size='xs' @click='visible2 = true'>开启</za-button>
+  </za-cell>
+  <za-cell title="多列联动">
+      <za-button slot='description' size='xs' @click='visible3 = true'>开启</za-button>
+  </za-cell>
+  <za-cell title="自定义格式">
+      <za-button slot='description' size='xs' @click='visible4 = true'>开启</za-button>
+  </za-cell>
+
+  <za-picker :close-on-click-modal='false' :visible.sync='visible1'  :data-source='data1' @ok='handleOk1'  ></za-picker>
+  <za-picker :visible.sync='visible2' :data-source='data2'  @ok='handleOk' ></za-picker>
+  <za-picker :visible.sync='visible3' :data-source='data3'  @ok='handleOk' ></za-picker>
+  <za-picker :visible.sync='visible4' :data-source='data4'  @ok='handleOk2' placeholder='自定义placeholder'
+          value-member="code" :item-render='(item) => item.name' ></za-picker>
+```
+:::
+
+:::demo 表单选择器
+```html         
+  <za-cell title="单项选择">
+    <za-select
+      v-model='v1'
+      :data-source='data1'
+      @ok='handleOk'
+      @change='handleChange'
+      @cancel='handleCancel'/>
+  </za-cell>
+  <za-cell title="多项选择">
+    <za-select
+      :data-source='data2'
+      v-model='v2'
+      @ok='handleOk'
+      @change='handleChange'
+      @cancel='handleCancel'/>
+  </za-cell>
+```
+:::
+
+:::demo 城市选择器
+```html         
+  <za-cell title="省市选择">
+    <za-select
+      v-model='v6'
+      :data-source='District'
+      @ok='handleOk'
+      @change='handleChange'
+      @cancel='handleCancel'
+      :cols='2'/>
+  </za-cell>
+  <za-cell title="省市区选择">
+    <za-select
+      :data-source='District'
+      v-model='v7'
+      :display-render="selected => selected.map(item => item.label).join('／')"
+      @ok='handleOk'
+      @change='handleChange'
+      @cancel='handleCancel'/>
+  </za-cell>
+```
+:::
+
+:::demo 层叠式选择器StackPicker
+```html
+    <za-cell title="级联选择">
+      <za-stack-picker
+        v-model='v10'
+        title="级联选择"
+        placeholder="请选择"
+        :data-source='District'
+        :display-render="selected => selected.map(item => item.label).join('-')"
+        @ok='handleOk'
+        @change='handleChange'
+        @cancel='handleCancel'/>
+    </za-cell>
+```
+:::
+
+:::demo 平铺选择器PickerView
+```html   
+    <za-picker-view :default-value="v5" :data-source='data5' @change='handleChange' />
+```
+:::
+
+### Vue Script
+```javascript
+<script name="vue">
 const District = [{
   "value": "340000",
   "label": "安徽省",
@@ -156,98 +251,7 @@ export default {
   },
 };
 </script>
-
-## 选择器 Picker & Select
-
-:::demo 基本
-```html
-  <za-cell title="单列">
-      <za-button slot='description' size='xs' @click='visible1 = true'>开启</za-button>
-  </za-cell>
-  <za-cell title="多列">
-      <za-button slot='description' size='xs' @click='visible2 = true'>开启</za-button>
-  </za-cell>
-  <za-cell title="多列联动">
-      <za-button slot='description' size='xs' @click='visible3 = true'>开启</za-button>
-  </za-cell>
-  <za-cell title="自定义格式">
-      <za-button slot='description' size='xs' @click='visible4 = true'>开启</za-button>
-  </za-cell>
-
-  <za-picker :close-on-click-modal='false' :visible.sync='visible1'  :data-source='data1' @ok='handleOk1'  ></za-picker>
-  <za-picker :visible.sync='visible2' :data-source='data2'  @ok='handleOk' ></za-picker>
-  <za-picker :visible.sync='visible3' :data-source='data3'  @ok='handleOk' ></za-picker>
-  <za-picker :visible.sync='visible4' :data-source='data4'  @ok='handleOk2' placeholder='自定义placeholder'
-          value-member="code" :item-render='(item) => item.name' ></za-picker>
 ```
-:::
-
-:::demo 表单选择器
-```html         
-  <za-cell title="单项选择">
-    <za-select
-      v-model='v1'
-      :data-source='data1'
-      @ok='handleOk'
-      @change='handleChange'
-      @cancel='handleCancel'/>
-  </za-cell>
-  <za-cell title="多项选择">
-    <za-select
-      :data-source='data2'
-      v-model='v2'
-      @ok='handleOk'
-      @change='handleChange'
-      @cancel='handleCancel'/>
-  </za-cell>
-```
-:::
-
-:::demo 城市选择器
-```html         
-  <za-cell title="省市选择">
-    <za-select
-      v-model='v6'
-      :data-source='District'
-      @ok='handleOk'
-      @change='handleChange'
-      @cancel='handleCancel'
-      :cols='2'/>
-  </za-cell>
-  <za-cell title="省市区选择">
-    <za-select
-      :data-source='District'
-      v-model='v7'
-      :display-render="selected => selected.map(item => item.label).join('／')"
-      @ok='handleOk'
-      @change='handleChange'
-      @cancel='handleCancel'/>
-  </za-cell>
-```
-:::
-
-:::demo 层叠式选择器StackPicker
-```html
-    <za-cell title="级联选择">
-      <za-stack-picker
-        v-model='v10'
-        title="级联选择"
-        placeholder="请选择"
-        :data-source='District'
-        :display-render="selected => selected.map(item => item.label).join('-')"
-        @ok='handleOk'
-        @change='handleChange'
-        @cancel='handleCancel'/>
-    </za-cell>
-```
-:::
-
-:::demo 平铺选择器PickerView
-```html   
-    <za-picker-view :default-value="v5" :data-source='data5' @change='handleChange' />
-```
-:::
-
 
 ### API
 

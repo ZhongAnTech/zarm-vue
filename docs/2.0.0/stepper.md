@@ -1,29 +1,4 @@
-<script>
-export default {
-  data() {
-    return {
-      stepper1: 0,
-      stepper2: 2,
-      stepper3: 0,
-      stepper4: 0,
-      stepper5: 0,
-      stepper6: 0,
-      stepper7: 0,
-      stepper8: 0,
-      stepper9: 0,
-      stepper10: 0,
-    }
-  },
-  methods: {
-    handleChange(event) {
-      console.log(event);
-    },
-    handleInputChange(v) {
-      console.log(v);
-    }
-  },
-};
-</script>
+
 
 ## 步进器 Stepper
 
@@ -72,6 +47,35 @@ export default {
 ```
 :::
 
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+      stepper1: 0,
+      stepper2: 2,
+      stepper3: 0,
+      stepper4: 0,
+      stepper5: 0,
+      stepper6: 0,
+      stepper7: 0,
+      stepper8: 0,
+      stepper9: 0,
+      stepper10: 0,
+    }
+  },
+  methods: {
+    handleChange(event) {
+      console.log(event);
+    },
+    handleInputChange(v) {
+      console.log(v);
+    }
+  },
+};
+</script>
+```
 
 ### API
 

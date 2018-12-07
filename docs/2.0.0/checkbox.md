@@ -1,57 +1,4 @@
-<script>
-export default {
-  data() {
-    return {
-      v1: false,
-      v2: true,
-      v3: false,
-      v4: true,
-      v5: false,
-      city: null,
-      cities: ['上海', '北京', '广州', '深圳'],
-      provice: [],
-      provices: [{
-        city: '条件A',
-        checked: false,
-        checkeds: []
-      },{
-        city: '条件B',
-        checked: false,
-        checkeds: []
-      }],
-      checkboxGroup: ['上海'],
-      checkboxGroup2: [],
-      checkboxGroup3: ['上海', '北京'],
-      checkboxGroup4: [],
-      checkboxGroup5: [],
-      checkboxGroup6: [],
-      checkboxGroup7: [],
-      checkboxGroup8: [],
-      checkboxGroupCompact: [],
-      checkboxGroupCompact2: [],
-    }
-  },
-  methods: {
-    handleChange(v, e) {
-      console.log(v, e);
-    },
-    handleGroupChange(v, e){
-      console.log(v, e);
-    },
-    handleNextGroupChange(v, e) {
-      console.log(v);
-      if (v.length) {
-        this.provices[0].checked = true;
-      } else {
-        this.provices[0].checked = false;
-      }
-    },
-    handleArrGroupChange(v, e) {
-      console.log(v, e);
-    },
-  },
-};
-</script>
+
 
 ## 复选框 Checkbox
 
@@ -199,6 +146,63 @@ export default {
 ```
 :::
 
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+      v1: false,
+      v2: true,
+      v3: false,
+      v4: true,
+      v5: false,
+      city: null,
+      cities: ['上海', '北京', '广州', '深圳'],
+      provice: [],
+      provices: [{
+        city: '条件A',
+        checked: false,
+        checkeds: []
+      },{
+        city: '条件B',
+        checked: false,
+        checkeds: []
+      }],
+      checkboxGroup: ['上海'],
+      checkboxGroup2: [],
+      checkboxGroup3: ['上海', '北京'],
+      checkboxGroup4: [],
+      checkboxGroup5: [],
+      checkboxGroup6: [],
+      checkboxGroup7: [],
+      checkboxGroup8: [],
+      checkboxGroupCompact: [],
+      checkboxGroupCompact2: [],
+    }
+  },
+  methods: {
+    handleChange(v, e) {
+      console.log(v, e);
+    },
+    handleGroupChange(v, e){
+      console.log(v, e);
+    },
+    handleNextGroupChange(v, e) {
+      console.log(v);
+      if (v.length) {
+        this.provices[0].checked = true;
+      } else {
+        this.provices[0].checked = false;
+      }
+    },
+    handleArrGroupChange(v, e) {
+      console.log(v, e);
+    },
+  },
+};
+</script>
+```
 
 ### API
 

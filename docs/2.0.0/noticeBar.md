@@ -1,17 +1,4 @@
-<script>
-export default {
-  data() {
-    return {
-      visible: true,
-    }
-  },
-  methods: {
-    handleClick(){
-      alert('click this notice!');
-    }
-  },
-};
-</script>
+
 
 ## 通告栏 NoticeBar
 
@@ -33,6 +20,24 @@ export default {
   </za-notice-bar>
 ```
 :::
+
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+      visible: true,
+    }
+  },
+  methods: {
+    handleClick(){
+      alert('click this notice!');
+    }
+  },
+};
+</script>
+```
 
 ### API
 

@@ -1,4 +1,21 @@
-<script>
+
+
+## 图标 Icon
+
+:::demo 基本
+```html
+  <div class="grid">
+    <div v-for='(i, index) in ICONS' class="grid-column" style="width: 33.33%;display: inline-block;padding: 15px;text-align: center;" :key="index">
+      <za-icon theme="primary" :type='i' class='icon'></za-icon>
+      <span class="icon-name">{{i}}</span>
+    </div>
+  </div>
+```
+:::
+
+### Vue Script
+```javascript
+<script name="vue">
 const ICONS = [
   'right', 'right-round', 'right-round-fill',
   'wrong', 'wrong-round', 'wrong-round-fill',
@@ -20,19 +37,7 @@ export default {
   }
 };
 </script>
-
-## 图标 Icon
-
-:::demo 基本
-```html
-  <div class="grid">
-    <div v-for='(i, index) in ICONS' class="grid-column" style="width: 33.33%;display: inline-block;padding: 15px;text-align: center;" :key="index">
-      <za-icon theme="primary" :type='i' class='icon'></za-icon>
-      <span class="icon-name">{{i}}</span>
-    </div>
-  </div>
 ```
-:::
 
 ### API
 

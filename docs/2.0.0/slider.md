@@ -1,16 +1,4 @@
-<script>
-export default {
-  data() {
-    return {
-    }
-  },
-  methods: {
-    handleChange(ev,value){
-      console.log(value)
-    }
-  },
-};
-</script>
+
 
 ## 滑动输入条 Slider
 
@@ -40,6 +28,23 @@ export default {
   </za-cell>
 ```
 :::
+
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+    }
+  },
+  methods: {
+    handleChange(ev,value){
+      console.log(value)
+    }
+  },
+};
+</script>
+```
 
 ### API
 

@@ -1,44 +1,4 @@
-<script>
-export default {
-  data() {
-    return {
-      files: [],
-      fileList: [],
-      visible: false,
-    }
-  },
-  methods: {
-    handleChange(data){
-      console.log(data);
-      this.files.push(data)
-    },
-    handleChangeMulti(dataList){
-      if(dataList.length + this.fileList.length > 5){
-        alert('超过5张')
-        this.fileList = this.fileList.concat(...(dataList.slice(0, 5 - this.fileList.length)));
-      }else{
-        this.fileList = this.fileList.concat(...dataList);
-      }
-    },
-    remove(index){
-      this.files.splice(index, 1);
-      this.visible = true
-    },
-    remove2(index){
-      this.fileList.splice(index, 1);
-      this.visible = true
-    },
-    beforeSelect(){
-      if(this.fileList.length > 5){
-        alert('超过5张')
-        return false
-      }else{
-        alert('before select')
-      }
-    }
-  },
-};
-</script>
+
 
 ## 文件选择器 FilePicker
 
@@ -103,6 +63,50 @@ export default {
 ```
 :::
 
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+      files: [],
+      fileList: [],
+      visible: false,
+    }
+  },
+  methods: {
+    handleChange(data){
+      console.log(data);
+      this.files.push(data)
+    },
+    handleChangeMulti(dataList){
+      if(dataList.length + this.fileList.length > 5){
+        alert('超过5张')
+        this.fileList = this.fileList.concat(...(dataList.slice(0, 5 - this.fileList.length)));
+      }else{
+        this.fileList = this.fileList.concat(...dataList);
+      }
+    },
+    remove(index){
+      this.files.splice(index, 1);
+      this.visible = true
+    },
+    remove2(index){
+      this.fileList.splice(index, 1);
+      this.visible = true
+    },
+    beforeSelect(){
+      if(this.fileList.length > 5){
+        alert('超过5张')
+        return false
+      }else{
+        alert('before select')
+      }
+    }
+  },
+};
+</script>
+```
 
 ### API
 

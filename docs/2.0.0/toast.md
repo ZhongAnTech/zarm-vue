@@ -1,22 +1,3 @@
-<script>
-export default {
-  data() {
-    return {
-      visible1: false,
-      visible2: false,
-      visible3: false,
-      visible4: false,
-      isLoading: false
-    }
-  },
-  methods: {
-    toastClose(reason, event){
-      console.log(reason, event);
-    }
-  },
-};
-</script>
-
 ## 轻提示 Toast
 
 :::demo 提示信息
@@ -87,6 +68,27 @@ export default{
 </script>
 ```
 
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+      visible1: false,
+      visible2: false,
+      visible3: false,
+      visible4: false,
+      isLoading: false
+    }
+  },
+  methods: {
+    toastClose(reason, event){
+      console.log(reason, event);
+    }
+  },
+};
+</script>
+```
 
 ### API
 

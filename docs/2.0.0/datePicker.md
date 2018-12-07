@@ -1,40 +1,4 @@
-<script>
-export default {
-  data() {
-    return {
-      visible1: false,
-      visible2: false,
-      visible3: false,
-      visible4: false,
-      visible5: false,
-      v1:'',
-      v2:'',
-      v3:'',
-      v4:'',
-      v5:'2008-01-10',
-      v6:'2018-12-24 11:23',
-      v7:'2008-01-10',
-      minuteStep: 15,
-    }
-  },
-  methods: {
-    handleOk(v){
-      console.log('it may still scrolling when ok is clicked. so ues v-model or @change instead')
-      console.log(v);
-      this.$zaToast(v.toString())
-    },
-    handleChange(v){
-      console.log(v);
-    },
-    handleCancel(event){
-      console.log('cancelled');
-    },
-    displayGenerator(selected) {
-      return selected.map(item => item.name).join('/')
-    }
-  },
-};
-</script>
+
 
 ## 日期选择器 DatePicker & DateSelect
 
@@ -143,6 +107,46 @@ export default {
 ```
 :::
 
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+      visible1: false,
+      visible2: false,
+      visible3: false,
+      visible4: false,
+      visible5: false,
+      v1:'',
+      v2:'',
+      v3:'',
+      v4:'',
+      v5:'2008-01-10',
+      v6:'2018-12-24 11:23',
+      v7:'2008-01-10',
+      minuteStep: 15,
+    }
+  },
+  methods: {
+    handleOk(v){
+      console.log('it may still scrolling when ok is clicked. so ues v-model or @change instead')
+      console.log(v);
+      this.$zaToast(v.toString())
+    },
+    handleChange(v){
+      console.log(v);
+    },
+    handleCancel(event){
+      console.log('cancelled');
+    },
+    displayGenerator(selected) {
+      return selected.map(item => item.name).join('/')
+    }
+  },
+};
+</script>
+```
 
 ### API
 

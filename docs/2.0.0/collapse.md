@@ -1,22 +1,4 @@
-<script>
-export default {
-  data() {
-    return {
-      activeKey: ['1', '2']
-    }
-  },
-  created() {
-    setTimeout(() => {
-        this.activeKey = ['1']
-    }, 2000);
-  },
-  methods: {
-    onChange(n){
-      console.log(n);
-    },
-  },
-};
-</script>
+
 
 <style>
 .za-collapse-item-content-inner {
@@ -86,6 +68,29 @@ export default {
     </za-collapse>
 ```
 :::
+
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+      activeKey: ['1', '2']
+    }
+  },
+  created() {
+    setTimeout(() => {
+        this.activeKey = ['1']
+    }, 2000);
+  },
+  methods: {
+    onChange(n){
+      console.log(n);
+    },
+  },
+};
+</script>
+```
 
 #### Collapse Attributes
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |

@@ -1,30 +1,4 @@
-<script>
-export default {
-  data() {
-    return {
-      activeName: 'first',
-      activeName2: 'first',
-      activeName3: 'first',
-      activeName4: 'first',
-      activeName5: 'first',
-      activeName6: 'first',
-      activeName7: 'first',
-      activeName8: 'second',
-      activeName9: 'first',
-      activeName0: 'first',
-      activeNameSwipe: 'first',
-    }
-  },
-  methods: {
-    handleClick(tab, event) {
-      // console.log(tab, event);
-    },
-    handleClick2(tab, event){
-      this.activeName7 = this.activeName6;
-    }
-  },
-};
-</script>
+
 
 ## 标签页 Tabs
 
@@ -135,6 +109,36 @@ export default {
 ```
 :::
 
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+      activeName: 'first',
+      activeName2: 'first',
+      activeName3: 'first',
+      activeName4: 'first',
+      activeName5: 'first',
+      activeName6: 'first',
+      activeName7: 'first',
+      activeName8: 'second',
+      activeName9: 'first',
+      activeName0: 'first',
+      activeNameSwipe: 'first',
+    }
+  },
+  methods: {
+    handleClick(tab, event) {
+      // console.log(tab, event);
+    },
+    handleClick2(tab, event){
+      this.activeName7 = this.activeName6;
+    }
+  },
+};
+</script>
+```
 
 ### API
 

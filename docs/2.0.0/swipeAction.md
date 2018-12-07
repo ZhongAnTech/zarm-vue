@@ -1,31 +1,4 @@
-<script>
-export default {
-  data() {
-    return {
-      action1:[
-        {
-          theme: 'error',
-          text: '右按钮1',
-          onClick: () => console.log('右按钮1'),
-        },
-        {
-          theme: 'success',
-          text: '右按钮2',
-          onClick: () => console.log('右按钮2'),
-        },
-      ]
-    }
-  },
-  methods: {
-    handleClose(reason) {
-      console.log(reason);
-    },
-    handleOpen(reason) {
-      console.log(reason);
-    },
-  },
-};
-</script>
+
 
 ## 滑动操作 SwipeAction
 
@@ -56,6 +29,37 @@ export default {
 ```
 :::
 
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  data() {
+    return {
+      action1:[
+        {
+          theme: 'error',
+          text: '右按钮1',
+          onClick: () => console.log('右按钮1'),
+        },
+        {
+          theme: 'success',
+          text: '右按钮2',
+          onClick: () => console.log('右按钮2'),
+        },
+      ]
+    }
+  },
+  methods: {
+    handleClose(reason) {
+      console.log(reason);
+    },
+    handleOpen(reason) {
+      console.log(reason);
+    },
+  },
+};
+</script>
+```
 
 ### API
 

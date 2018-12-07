@@ -1,23 +1,4 @@
-<script>
-const div1 = document.body;
-export default {
-  data() {
-    return {
-      visible1: false,
-      visible2: false,
-      visible3: false,
-      visible4: false,
-      visible5: false,
-    }
-  },
-  methods: {
-    popupClose(reason, event) {
-      console.log(reason, event);
-    },
-    getContainer: () => div1,
-  },
-};
-</script>
+
 
 ## 弹出框 Popup
 
@@ -104,6 +85,29 @@ export default {
 ```
 :::
 
+### Vue Script
+```javascript
+<script name="vue">
+const div1 = document.body;
+export default {
+  data() {
+    return {
+      visible1: false,
+      visible2: false,
+      visible3: false,
+      visible4: false,
+      visible5: false,
+    }
+  },
+  methods: {
+    popupClose(reason, event) {
+      console.log(reason, event);
+    },
+    getContainer: () => div1,
+  },
+};
+</script>
+```
 
 ### API
 
