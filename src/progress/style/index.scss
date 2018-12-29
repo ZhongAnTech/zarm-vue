@@ -95,8 +95,8 @@ $prefixCls: za-progress;
     @include progress-theme($theme-primary);
   }
 
-  &.theme-info {
-    @include progress-theme($theme-info);
+  &.theme-success {
+    @include progress-theme($theme-success);
   }
 
   &.theme-warning {

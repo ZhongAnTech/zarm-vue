@@ -34,33 +34,6 @@
 ```
 :::
 
-:::demo 联动
-```html
-  <za-tabs v-model="activeName6" @change="handleClick2">
-    <za-tab-pane label='用户管理' name='first'>
-      <div class='content'>用户管理</div>
-    </za-tab-pane>
-    <za-tab-pane label='配置管理' name='second'>
-      <div class='content'>配置管理</div>
-    </za-tab-pane>
-    <za-tab-pane label='角色管理' name='third'>
-      <div class='content'>角色管理</div>
-    </za-tab-pane>
-  </za-tabs>
-  <za-tabs v-model="activeName7" @change="handleClick">
-    <za-tab-pane label='用户管理' name='first'>
-      <div class='content'>用户管理</div>
-    </za-tab-pane>
-    <za-tab-pane label='配置管理' name='second'>
-      <div class='content'>配置管理</div>
-    </za-tab-pane>
-    <za-tab-pane label='角色管理' name='third'>
-      <div class='content'>角色管理</div>
-    </za-tab-pane>
-  </za-tabs>
-```
-:::
-
 :::demo 指定默认选项
 ```html
   <za-tabs v-model="activeName8" @change="handleClick">

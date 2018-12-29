@@ -4,48 +4,39 @@
 
 :::demo 基本
 ```html
-      <za-cell title="普通">
-        <za-stepper slot='description' v-model='stepper1'></za-stepper>
+      <za-cell title="默认">
+        <za-stepper slot='description' v-model='stepper6' ></za-stepper>
+      </za-cell>
+      <za-cell title="小号">
+        <za-stepper slot='description' v-model='stepper1' size="sm"></za-stepper>
       </za-cell>
       <za-cell title="设置默认值">
-        <za-stepper slot='description' v-model='stepper2'></za-stepper>
+        <za-stepper slot='description' v-model='stepper2' size="sm"></za-stepper>
       </za-cell>
       <za-cell title="设置上下限">
-        <za-stepper slot='description' v-model='stepper3' :min='-3' :max='3'></za-stepper>
+        <za-stepper slot='description' v-model='stepper3' :min='-3' :max='3' size="sm"></za-stepper>
       </za-cell>
       <za-cell title="设置步长">
-        <za-stepper slot='description' v-model='stepper4' :step='0.5'></za-stepper>
+        <za-stepper slot='description' v-model='stepper4' :step='0.5' size="sm"></za-stepper>
       </za-cell>
       <za-cell title="禁用状态">
-        <za-stepper slot='description' v-model='stepper5' disabled></za-stepper>
+        <za-stepper slot='description' v-model='stepper5' disabled size="sm"></za-stepper>
       </za-cell>
 ```
 :::
 
 :::demo 多形状
 ```html
-      <za-cell title="默认">
-        <za-stepper slot='description' v-model='stepper6' theme="default"></za-stepper>
-      </za-cell>
+      
       <za-cell title="圆角">
-        <za-stepper slot='description' v-model='stepper7' shape="radius"></za-stepper>
+        <za-stepper slot='description' v-model='stepper7' shape="radius" size="sm"></za-stepper>
       </za-cell>
       <za-cell title="圆型">
-        <za-stepper slot='description' v-model='stepper8' shape="circle"></za-stepper>
+        <za-stepper slot='description' v-model='stepper8' shape="circle" size="sm"></za-stepper>
       </za-cell>
 ```
 :::
 
-:::demo 回调事件
-```html
-    <za-cell title="获取evnet事件">
-      <za-stepper slot='description' v-model='stepper9' @change='handleChange'></za-stepper>
-    </za-cell>
-    <za-cell title="获取变化的值">
-      <za-stepper slot='description'  v-model='stepper10' @inputChange='handleInputChange'></za-stepper>
-    </za-cell>
-```
-:::
 
 ### Vue Script
 ```javascript
@@ -84,7 +75,7 @@ export default {
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-stepper | | 类名前缀,自定义组件样式 |
-| theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
+| size | string | 'md' | 'md', 'sm' | 主题 |
 | shape | string | | 'radius', 'circle' | 形状 |
 | v-model | number | | | 绑定值 |
 | disabled | bool | false | | 是否禁用 |

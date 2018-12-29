@@ -56,9 +56,6 @@
       @ok='handleWeight'
     />
   </za-cell>
-  <za-cell title='修改类名前缀'>
-    <za-input type="text" placeholder="请输入修改类名前缀" v-model='prefixCls'></za-input>
-  </za-cell>
 ```
 :::
 
@@ -72,11 +69,9 @@ export default {
       theme: 'primary',
       shape: 'round',
       weight: 'normal',
-      prefixCls: 'za-progress',
       dataSource:[
-        { value: 'default', label: 'default' },
         { value: 'primary', label: 'primary' },
-        { value: 'info', label: 'info' },
+        { value: 'success', label: 'success' },
         { value: 'warning', label: 'warning' },
         { value: 'error', label: 'error' },
       ],
@@ -87,7 +82,6 @@ export default {
       weightSource:[
         { value: 'normal', label: 'normal' },
         { value: 'thin', label: 'thin' },
-        { value: 12, label: '12' },
       ],
     }
   },
@@ -115,8 +109,8 @@ export default {
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-progress | | 类名前缀 |
-| theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
+| theme | string | 'primary' | 'primary', 'success', 'warning', 'error' | 主题 |
 | percent | number | 0 | | 进度百分比（范围：0～100） |
 | shape | string | 'rect' | 'rect', 'round' | 线条形状 |
-| weight | string or number | 'normal' | 'normal', 'thin' , 线条粗细(px) | 线条粗细 |
+| weight | string or number | 'normal' | 'normal', 'thin' | 线条粗细 |
 | type | string | 'line' | 'line', 'circle' , 'semi-circle' | 类型 |

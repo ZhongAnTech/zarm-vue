@@ -1,9 +1,5 @@
-
-/* base */
+// base
 $base-fontSize: 14;
-$background-active: #e6e6e6;
-$background-disabled: #bcbcbc;
-
 $disabled-opacity: .5;
 $disabled-background: #ddd;
 $disabled-color: #999;
@@ -12,6 +8,7 @@ $icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
 $radius-round: r(1000);
 $radius-circle: 50%;
 
+// theme
 $theme-default: #e6e6e6;
 $theme-default-light: rgba($theme-default, 0.5);
 $theme-default-dark: darken($theme-default, 10%);
@@ -35,6 +32,14 @@ $theme-warning-dark: darken($theme-warning, 10%);
 $theme-error: #ff5050;
 $theme-error-light: rgba($theme-error, 0.1);
 $theme-error-dark: darken($theme-error, 10%);
+
+// 背景色
+$background-active: #e6e6e6;
+$background-disabled: #bcbcbc;
+
+// 边框色
+$border-color: #e6e6e6;
+$border-disabled: #bcbcbc;
 
 // 字体大小
 $fontSize-xl: r(18);
@@ -211,3 +216,7 @@ $badge-dot-diameter: r(8);
 $badge-radius-radius: r(2);
 $badge-round-radius: r(8);
 $badge-text-color:#fff;
+
+// Stepper
+$stepper-height-sm: r(28);
+$stepper-height-md: r(36);

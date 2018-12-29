@@ -6,14 +6,12 @@ describe('Stepper', () => {
     const wrapper = mount(zaStepper, {
       propsData: {
         prefixCls: 'za-stepper',
-        theme: 'primary',
-        size: 'xl',
+        size: 'sm',
         shape: 'radius',
       },
     });
     expect(wrapper.contains('.za-stepper')).toBe(true);
-    expect(wrapper.contains('.theme-primary')).toBe(true);
-    expect(wrapper.contains('.size-xl')).toBe(true);
+    expect(wrapper.contains('.size-sm')).toBe(true);
     expect(wrapper.contains('.shape-radius')).toBe(true);
   });
 

@@ -19,8 +19,8 @@ const store = new Vuex.Store({
       path: 'https://chuanshuoye.github.io/zarm-vue-doc/#/zh-CN'
     },{
       value: '2.0.0',
-      label: '2.0.0-alpha.3',
-      path: '#/documents/quick-start?v=2.0.0'
+      label: '2.0.0-alpha.4',
+      path: '#/documents/quick-start'
     }]
   },
   actions: {
