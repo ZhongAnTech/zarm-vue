@@ -1,14 +1,11 @@
-// base
+// 基础
 $base-fontSize: 14;
-$disabled-opacity: .5;
-$disabled-background: #ddd;
-$disabled-color: #999;
 $placeholder-color: #a9a9a9;
-$icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
-$radius-round: r(1000);
-$radius-circle: 50%;
 
-// theme
+// 图标字体
+$icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
+
+// 主题
 $theme-default: #e6e6e6;
 $theme-default-light: rgba($theme-default, 0.5);
 $theme-default-dark: darken($theme-default, 10%);
@@ -63,6 +60,8 @@ $radius-lg: r(4);
 $radius-md: r(4);
 $radius-sm: r(4);
 $radius-xs: r(4);
+$radius-round: r(1000);
+$radius-circle: 50%;
 
 // 透明度
 $opacity-disabled: .6;
@@ -77,6 +76,11 @@ $background-disabled: #bcbcbc;
 // 边框色
 $border-color: #e6e6e6;
 $border-disabled: #bcbcbc;
+
+// 禁用
+$disabled-opacity: .5;
+$disabled-background: #ddd;
+$disabled-color: #999;
 
 // 高度
 $height-xl: r(52);
@@ -110,9 +114,6 @@ $zIndex-popup: 1300;
 $zIndex-modal: 1400;
 $zIndex-toast: 1500;
 $zIndex-loading: 1500;
-
-/* 组件前缀 */
-$prefixCls-badge: za-badge;
 
 /* button */
 $button-default-color: $color-text;
