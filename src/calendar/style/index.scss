@@ -14,9 +14,7 @@ li {
 .#{$prefixCls} {
   width: 100%;
   min-height: $calendar-height;
-  // padding-bottom: 20px;
   background: $calendar-background;
-  // padding-top: 40px;
   transition: all .5s;
   transform: translateX(0);
 }

@@ -33,7 +33,6 @@
   <za-calendar
     v-model='value'
     @change="change"
-    :defaultValue="defaultValue"
     :multiple="multiple == '1'"
     :dateRender="dateRender"
     :disabledDate="disabledDate" 
@@ -48,10 +47,9 @@
 export default {
   data() {
     return {
-      min: "2018-05-06",
+      min: "2018-01-06",
       max: "2018-10-02",
-      value: '2018-05-08',
-      defaultValue: ["2018-05-07", "2018-06-08"],
+      value: ['2018-01-10', '2018-03-20'],
       multiple: "1",
       multipleOptions: [
         { value: '1', label: "true" },
@@ -67,14 +65,16 @@ export default {
       this.multiple = val.value;
     },
     disabledDate(date) {
-      return date.getDate() % 10;// 10倍数的不可用
+      if (/(0|6)/.test(date.getDay())) {
+        return true;
+      }
     },
     dateRender(date) {
       const h = this.$createElement;
-      if (/(0|6)/.test(date.getDay())) {
-        return h('span', { style: 'color: #12c287' }, date.getDay());
+      if (/(6)/.test(date.getDate())) {
+        return h('za-badge', { props: { theme: 'primary', sup: true, shape: 'dot' }}, date.getDate());
       }
-      return date.getDate();
+      return h('span', { class: 'za-calendar_date-num' }, date.getDate());
     }
   },
   watch: {
