@@ -1,5 +1,3 @@
-
-
 ## 日历 Calendar
 
 :::demo 简单日历
@@ -32,12 +30,12 @@
     min='1917-10-25'>
     </za-date-select>
   </za-cell>
-  
   <za-calendar
     v-model='value'
     @change="change"
     :defaultValue="defaultValue"
     :multiple="multiple == '1'"
+    :dateRender="dateRender"
     :disabledDate="disabledDate" 
     :min='min'
     :max='max'/>
@@ -70,6 +68,13 @@ export default {
     },
     disabledDate(date) {
       return date.getDate() % 10;// 10倍数的不可用
+    },
+    dateRender(date) {
+      const h = this.$createElement;
+      if (/(0|6)/.test(date.getDay())) {
+        return h('span', { style: 'color: #12c287' }, date.getDay());
+      }
+      return date.getDate();
     }
   },
   watch: {
