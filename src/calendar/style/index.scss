@@ -54,10 +54,11 @@ li {
   position: relative;
   width: 14.28571%;
   padding-bottom: 14.28571%;
-  color: $calendar-day-range-color;
-  .#{$prefixCls}_dates-item_warp{
 
+  .#{$prefixCls}_dates-item_warp {
+    color: $calendar-day-range-color;
   }
+
   &.inrange {
     &::after {
       content: ' ';
@@ -72,9 +73,10 @@ li {
   }
 
   &.active {
-    .#{$prefixCls}_dates-item_warp{
+    .#{$prefixCls}_dates-item_warp {
       color: $calendar-day-selected-color;
     }
+
     .#{$prefixCls}_date-num {
       width: 30px;
       height: 30px;
@@ -82,7 +84,8 @@ li {
       border-radius: 50%;
       text-align: center;
     }
-    &:before{
+
+    &::before {
       content: '';
       z-index: 1;
       position: absolute;
