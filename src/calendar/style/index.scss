@@ -55,6 +55,10 @@ li {
   width: 14.28571%;
   padding-bottom: 14.28571%;
 
+  .#{$prefixCls}_dates-item_warp {
+    color: $calendar-day-range-color;
+  }
+
   &.inrange {
     &::after {
       content: ' ';
@@ -66,28 +70,39 @@ li {
       height: 30px;
       background: $calendar-day-range-background;
     }
-
-    .#{$prefixCls}_date-num {
-      color: $calendar-day-range-color;
-    }
   }
 
   &.active {
-    .#{$prefixCls}_date-num {
+    .#{$prefixCls}_dates-item_warp {
       color: $calendar-day-selected-color;
+    }
+
+    .#{$prefixCls}_date-num {
       width: 30px;
       height: 30px;
       line-height: 30px;
       border-radius: 50%;
       text-align: center;
+    }
+
+    &::before {
+      content: '';
+      z-index: 1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
       background: $calendar-day-selected-background;
       box-shadow: $calendar-day-today-shadow;
     }
   }
 
   &.disabled {
-    .#{$prefixCls}_date-num {
-      color: $color-text-disabled !important;
+    .#{$prefixCls}_dates-item_warp {
+      color: $color-text-disabled;
     }
   }
 
@@ -115,20 +130,16 @@ li {
 }
 
 .#{$prefixCls}_dates-item_warp {
-  z-index: 20;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
   position: absolute;
+  z-index: 2;
   width: 100%;
   height: 100%;
   left: 0;
   top: 0;
-}
-
-.#{$prefixCls}_date-num {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   font-size: $calendar-day-fontsize;
   font-weight: 400;
-  color: $calendar-day-color;
 }
