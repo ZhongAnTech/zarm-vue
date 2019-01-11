@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[39],{270:function(e,t,a){},339:function(e,t,a){"use strict";a.r(t);var n=a(228),o=a(60),l=a(61),s=a(62),r=(a(270),{components:{Container:o.a,PageHeader:l.a,PageFooter:s.a,Demo:n.default}}),i=a(1),u=Object(i.a)(r,function(){var e=this.$createElement,t=this._self._c||e;return t("Container",{staticClass:"pull-page"},[t("PageHeader",{attrs:{title:"上拉加载下拉刷新 Pull"}}),this._v(" "),t("Demo"),this._v(" "),t("PageFooter")],1)},[],!1,null,null,null);t.default=u.exports}}]);
+//# sourceMappingURL=39.468b67b2333b9edc53de.js.map
