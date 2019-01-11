@@ -24,7 +24,7 @@ export default {
   },
   provide() {
     return {
-      localeProvider: this.locale[this.lang],
+      localeProvider: this,
     };
   },
 };

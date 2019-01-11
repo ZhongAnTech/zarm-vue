@@ -11,17 +11,17 @@
         <div :class="`${prefixCls}-mock`">
           <div :class="`${prefixCls}-mock-container`" ref="searchContainer">
             <za-icon type="search" />
-            <span :class="`${prefixCls}-mock-placeholder`" v-show="isVisibility">{{placeholderText}}</span>
+            <span :class="`${prefixCls}-mock-placeholder`" v-show="isVisibility">{{placeholder || placeholderText}}</span>
           </div>
         </div>
-        <za-input type="search" :placeholder="placeholderText" :value="currentValue" :disabled="disabled" :clearable="clearable" ref="inputRef"
+        <za-input type="search" :placeholder="placeholder || placeholderText" :value="currentValue" :disabled="disabled" :clearable="clearable" ref="inputRef"
           :maxLength='maxLength' @focus="onFocus" @compositionStart="handleComposition" @compositionUpdate="handleComposition"
           @compositionEnd="handleComposition" @change="onChange" @blur="onBlur" @clear="onClear" />
       </div>
       <div :class="{
           [`${prefixCls}-cancel`]: true,
           [`${prefixCls}-cancel-show`]: !!(showCancel || focusStatus || (currentValue && currentValue.length > 0))
-        }" ref="cancelRef" @click="onCancel">{{cancelBtnText}}</div>
+        }" ref="cancelRef" @click="onCancel">{{cancelText || cancelBtnText}}</div>
     </form>
   </div>
 </template>
@@ -80,7 +80,7 @@ export default {
     };
   },
   watch: {
-    'value'(value, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
+    value(value) {
       if (value === this.currentValue) return;
       this.currentValue = value;
     },
@@ -90,10 +90,10 @@ export default {
       return this.currentValue ? 0 : 1;
     },
     cancelBtnText() {
-      return this.cancelText || this.getLocales('cancelText') || '关闭';
+      return this.localeProvider.lang ? this.getLocales('cancelText') : '取消';
     },
     placeholderText() {
-      return this.placeholder || this.getLocales('placeholder') || '搜索';
+      return this.localeProvider.lang ? this.getLocales('placeholder') : '搜索';
     },
   },
   mounted() {
@@ -104,7 +104,7 @@ export default {
   methods: {
     // 国际化
     getLocales(key) {
-      return Locale.getLocaleByComponent(this, 'SearchBar', key);
+      return Locale.getLocaleByComponent(this.localeProvider, 'SearchBar', key);
     },
     // 初始化搜索提示文字的位置
     calculatePositon() {

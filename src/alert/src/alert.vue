@@ -5,7 +5,7 @@
       <slot></slot>
     </div>
     <template slot='footer'>
-      <za-button block bordered @click='handleClose'>{{cancelBtnText}}</za-button>
+      <za-button block bordered @click='handleClose'>{{cancelText || cancelBtnText}}</za-button>
     </template>
   </za-modal>
 </template>
@@ -52,13 +52,13 @@ export default {
   },
   computed: {
     cancelBtnText() {
-      return this.cancelText || this.getLocales('cancelText') || '关闭';
+      return this.localeProvider.lang ? this.getLocales('cancelText') : '关闭';
     },
   },
   methods: {
     // 国际化
     getLocales(key) {
-      return Locale.getLocaleByComponent(this, 'Alert', key);
+      return Locale.getLocaleByComponent(this.localeProvider, 'Alert', key);
     },
     handleClose(event) {
       this.$refs.modal.leave('modal-close', event);

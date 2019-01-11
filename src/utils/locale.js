@@ -1,9 +1,10 @@
 export default {
-  getLocaleByComponent($component, name = '', key) {
-    if (!$component.localeProvider) return '';
-    const componentProvider = $component.localeProvider[name];
-    if (componentProvider) {
-      return componentProvider[key];
+  getLocaleByComponent(localeProvider, name = '', key) {
+    if (!localeProvider) return '';
+    const currentLang = localeProvider.lang;
+    if (currentLang) {
+      const currentProvider = localeProvider.locale[currentLang];
+      return currentProvider[name][key];
     }
     return '';
   },

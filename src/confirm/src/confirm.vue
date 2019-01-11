@@ -5,8 +5,8 @@
       <slot></slot>
     </div>
     <template slot='footer'>
-      <za-button block bordered @click='cancel'>{{cancelBtnText}}</za-button>
-      <za-button block bordered theme="primary" @click='ok'>{{okBtnText}}</za-button>
+      <za-button block bordered @click='cancel'>{{cancelText || cancelBtnText}}</za-button>
+      <za-button block bordered theme="primary" @click='ok'>{{okText || okBtnText}}</za-button>
     </template>
   </za-modal>
 </template>
@@ -65,10 +65,10 @@ export default {
   },
   computed: {
     cancelBtnText() {
-      return this.cancelText || this.getLocales('cancelText') || '关闭';
+      return this.localeProvider.lang ? this.getLocales('cancelText') : '关闭';
     },
     okBtnText() {
-      return this.okText || this.getLocales('okText') || '确定';
+      return this.localeProvider.lang ? this.getLocales('okText') : '确定';
     },
   },
   watch: {
@@ -86,7 +86,7 @@ export default {
   methods: {
     // 国际化
     getLocales(key) {
-      return Locale.getLocaleByComponent(this, 'Confirm', key);
+      return Locale.getLocaleByComponent(this.localeProvider, 'Confirm', key);
     },
   },
 };
