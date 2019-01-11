@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[19],{245:function(e,t,a){},379:function(e,t,a){"use strict";a.r(t);var n=a(233),o=a(62),i=a(61),r=a(60),s=(a(245),{components:{Container:o.a,PageHeader:i.a,PageFooter:r.a,Demo:n.default}}),l=a(1),c=Object(l.a)(s,function(){var e=this.$createElement,t=this._self._c||e;return t("Container",{staticClass:"radio-page"},[t("PageHeader",{attrs:{title:"单选框 Radio"}}),this._v(" "),t("Demo"),this._v(" "),t("PageFooter")],1)},[],!1,null,null,null);t.default=c.exports}}]);
-//# sourceMappingURL=19.0d18efb3b0c03254ce46.js.map
