@@ -3,38 +3,35 @@
 
 :::demo 基本
 ```html
-  <za-search-bar placeholder="搜索" 
-      cancelText="取消" 
-      :showCancel="false" 
-      @change="handleChange"
-      @submit="handleSubmit"
-      @blur="handleBlur"
-      @focus="handleFocus"
-      @clear="handleClear"
-      @cancel="handleCancel"
-    ></za-search-bar>
+  <za-search-bar
+    :showCancel="false" 
+    @change="handleChange"
+    @submit="handleSubmit"
+    @blur="handleBlur"
+    @focus="handleFocus"
+    @clear="handleClear"
+    @cancel="handleCancel"
+  ></za-search-bar>
 ```
 :::
 
 :::demo 始终展示取消按钮
 ```html
-  <za-search-bar placeholder="搜索" 
-      shape="round"
-      cancelText="取消" 
-      :showCancel="true" 
-      value="默认搜索关键字"
-    ></za-search-bar>
+  <za-search-bar
+    shape="round"
+    :showCancel="true" 
+    value="默认搜索关键字"
+  ></za-search-bar>
 ```
 :::
 
 :::demo 点击获取焦点
 ```html
-  <za-search-bar placeholder="搜索" 
-      shape="round"
-      cancelText="取消" 
-      :showCancel="true" 
-      ref="searchRef"
-    ></za-search-bar>  
+  <za-search-bar
+    shape="round"
+    :showCancel="true" 
+    ref="searchRef"
+  ></za-search-bar>  
   <za-cell>    
     <za-button theme="primary" size="xs" shape="radius" @click="handleClick">点击获取焦点</za-button>
   </za-cell>

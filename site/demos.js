@@ -142,5 +142,11 @@ module.exports = {
         description: '导航栏',
       },
     ],
+    other: [
+      {
+        name: 'LocaleProvider',
+        description: '国际化',
+      },
+    ],
   },
 };

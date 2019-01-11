@@ -146,6 +146,10 @@ export default new Router({
           path: 'toast',
           component: () => import('../pages/components/ToastPage'),
         },
+        {
+          path: 'locale-provider',
+          component: () => import('../pages/components/LocaleProviderPage'),
+        },
       ],
     },
   ],

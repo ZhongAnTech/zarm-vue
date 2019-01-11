@@ -228,5 +228,12 @@ export default new Router({
         mRender: () => import('../components/searchBarPage.vue')
       },
     },
+    {
+      path: '/locale-provider',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/localeProviderPage.vue')
+      },
+    },
   ],
 });

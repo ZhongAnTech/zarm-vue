@@ -50,6 +50,7 @@ import TabPane from '../src/tab-pane';
 import Toast from '../src/toast';
 import Tooltip from '../src/tooltip';
 import FilePicker from '../src/file-picker';
+import LocaleProvider from '../src/locale-provider';
 
 const version = '2.0.0';
 const components = [
@@ -105,6 +106,7 @@ const components = [
   Toast,
   Tooltip,
   FilePicker,
+  LocaleProvider,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -180,6 +182,7 @@ export {
   Toast,
   Tooltip,
   FilePicker,
+  LocaleProvider,
 };
 
 export default {

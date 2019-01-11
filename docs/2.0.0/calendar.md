@@ -74,7 +74,7 @@ export default {
       if (/(6)/.test(date.getDate())) {
         return h('za-badge', { props: { theme: 'primary', sup: true, shape: 'dot' }}, date.getDate());
       }
-      return h('span', { class: 'za-calendar_date-num' }, date.getDate());
+      return h('span', date.getDate());
     }
   },
   watch: {

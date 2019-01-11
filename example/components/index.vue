@@ -123,6 +123,16 @@
         </za-panel-body>
       </za-panel>
 
+       <za-panel>
+        <za-panel-header title="其他(1)"/>
+        <za-panel-body>
+          <za-cell hasArrow @click="$router.push('/locale-provider')">
+            国际化 LocaleProvider
+          </za-cell>
+        </za-panel-body>
+      </za-panel>
+
+
     </main>
     <PageFooter />
   </Container>

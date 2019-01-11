@@ -31,6 +31,11 @@
             <p slot="title">{{component.name}}  <span class="chinese">{{component.description}}</span></p>
           </el-menu-item>
         </el-menu-item-group>
+        <el-menu-item-group title="其他">
+          <el-menu-item :index="Format.camel2Dash(component.name)" v-for="(component, index) in componentNav.other" :key="index" @click="handleOpen(component)">
+            <p slot="title">{{component.name}}  <span class="chinese">{{component.description}}</span></p>
+          </el-menu-item>
+        </el-menu-item-group>
       </el-submenu>
     </el-menu>
   </div>

@@ -21,7 +21,6 @@
 </template>
 
 <script>
-// necessary when used alone
 import zaActivityIndicator from '@/activity-indicator';
 import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
 
@@ -74,11 +73,6 @@ export default {
       type: Boolean,
       default: false,
     },
-  },
-  data() {
-    return {
-
-    };
   },
   methods: {
     handleClick(event) {
