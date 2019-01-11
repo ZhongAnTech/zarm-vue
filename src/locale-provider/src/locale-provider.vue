@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import defaultLocale from './index';
+import defaultLocale from './default';
 
 export default {
   name: 'zaLocaleProvider',

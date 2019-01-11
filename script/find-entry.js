@@ -20,6 +20,7 @@ module.exports = function () {
       }
     });
     console.log(`build components start`);
+    console.log(entries);
     return entries;
   } catch (err) {
     throw new Error(err.message);
