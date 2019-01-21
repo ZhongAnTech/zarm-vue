@@ -68,7 +68,7 @@ export default {
   methods: {
     initComponentList() {
       const { components } = this.Demo;
-      const List = [...components.form, ...components.feedback, ...components.view, ...components.navigation];
+      const List = [...components.form, ...components.feedback, ...components.view, ...components.navigation, ...components.other];
       this.componentList = List.map(i => (
         { label: i.name + ' ' + i.description, value: Format.camel2Dash(i.name) }
       ));

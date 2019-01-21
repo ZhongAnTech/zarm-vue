@@ -8,6 +8,10 @@ module.exports = {
       name: 'ChangeLog',
       description: '更新日志',
     },
+    {
+      name: 'CustomTheme',
+      description: '主题配置',
+    }
   ],
   components: {
     form: [

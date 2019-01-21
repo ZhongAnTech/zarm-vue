@@ -23,6 +23,10 @@ export default new Router({
           component: () => import('../pages/documents/ChangeLog'),
         },
         {
+          path: 'custom-theme',
+          component: () => import('../pages/documents/CustomTheme'),
+        },
+        {
           path: 'badge',
           component: () => import('../pages/components/BadgePage'),
         },
