@@ -14,10 +14,10 @@ delete baseWebpackConfig.entry;
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'production',
-  devtool: config.build.productionSourceMap ? '#source-map' : false,
+  // devtool: config.build.productionSourceMap ? '#source-map' : false,
   module: {
     rules: utils.styleLoaders({
-      sourceMap: config.build.productionSourceMap,
+      sourceMap: false,
       extract: true,
     }),
   },
