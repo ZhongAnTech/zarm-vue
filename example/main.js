@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import Vue from 'vue';
 import zarmVue from '../src/index';
 import App from './app';
