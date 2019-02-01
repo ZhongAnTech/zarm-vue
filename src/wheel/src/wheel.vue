@@ -66,6 +66,11 @@ export default {
         wheelItemClass: `${prefixCls}-item`,
         adjustTime: 100,
       },
+      mouseWheel: {
+        speed: 20,
+        invert: false,
+        easeTime: 300,
+      },
       probeType: 3,
     });
 
