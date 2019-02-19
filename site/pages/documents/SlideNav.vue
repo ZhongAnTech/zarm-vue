@@ -6,6 +6,7 @@
       class="el-menu-vertical-demo">
       <el-menu-item :index="Format.camel2Dash(doc.name)" v-for="(doc, index) in docNav" :key="index" @click="handleOpen(doc)">
         <span slot="title">{{doc.description}}</span>
+        <a style="display:none" :href="getLinkPath(doc)"></a>
       </el-menu-item>
       <el-submenu index="2">
         <template slot="title">
@@ -14,26 +15,31 @@
         <el-menu-item-group title="数据录入">
           <el-menu-item :index="Format.camel2Dash(component.name)" v-for="(component, index) in componentNav.form" :key="index" @click="handleOpen(component)">
             <p slot="title">{{component.name}}  <span class="chinese">{{component.description}}</span></p>
+            <a style="display:none" :href="getLinkPath(component)"></a>
           </el-menu-item>
         </el-menu-item-group>
         <el-menu-item-group title="操作反馈">
           <el-menu-item :index="Format.camel2Dash(component.name)" v-for="(component, index) in componentNav.feedback" :key="index" @click="handleOpen(component)">
             <p slot="title">{{component.name}}  <span class="chinese">{{component.description}}</span></p>
+            <a style="display:none" :href="getLinkPath(component)"></a>
           </el-menu-item>
         </el-menu-item-group>
         <el-menu-item-group title="数据展示">
           <el-menu-item :index="Format.camel2Dash(component.name)" v-for="(component, index) in componentNav.view" :key="index" @click="handleOpen(component)">
             <p slot="title">{{component.name}}  <span class="chinese">{{component.description}}</span></p>
+            <a style="display:none" :href="getLinkPath(component)"></a>
           </el-menu-item>
         </el-menu-item-group>
         <el-menu-item-group title="导航">
           <el-menu-item :index="Format.camel2Dash(component.name)" v-for="(component, index) in componentNav.navigation" :key="index" @click="handleOpen(component)">
             <p slot="title">{{component.name}}  <span class="chinese">{{component.description}}</span></p>
+            <a style="display:none" :href="getLinkPath(component)"></a>
           </el-menu-item>
         </el-menu-item-group>
         <el-menu-item-group title="其他">
           <el-menu-item :index="Format.camel2Dash(component.name)" v-for="(component, index) in componentNav.other" :key="index" @click="handleOpen(component)">
             <p slot="title">{{component.name}}  <span class="chinese">{{component.description}}</span></p>
+            <a style="display:none" :href="getLinkPath(component)"></a>
           </el-menu-item>
         </el-menu-item-group>
       </el-submenu>
@@ -69,12 +75,14 @@ export default {
     }
   },
   methods: {
+    getLinkPath(node) {
+      return `#/documents/${Format.camel2Dash(node.name)}`
+    },
     handleOpen(node) {
       console.log(node);
       const v = this.$store.state.version;
       this.$router.push({
-        path: `${Format.camel2Dash(node.name)}`,
-        query: { v }
+        path: `${Format.camel2Dash(node.name)}`
       });
     }
   }
