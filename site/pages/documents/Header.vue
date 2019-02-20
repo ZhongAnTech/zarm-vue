@@ -8,6 +8,8 @@
         </a>
       </div>
       <div class="search">
+        <input placeholder="搜索组件..." ref="searchInput" />
+        <!--
         <el-select v-model="componentName" @change="handleChange" filterable placeholder="搜索组件..." style="width:280px">
           <el-option
             v-for="item in componentList"
@@ -17,6 +19,7 @@
             :value="item.value">
           </el-option>
         </el-select>
+        -->
       </div>
       <div class="version">
         <el-select v-model="value" placeholder="请选择" size="small" @change="handleVerChange">
@@ -58,6 +61,14 @@ export default {
     this.initComponentList();
     this.options = versionList;
     this.value = version;
+  },
+  mounted() {
+    docsearch({
+      apiKey: '59f746e0b69134f4afaece614544e197', 
+      indexName: 'zarm-vue', 
+      inputSelector: '.search input',
+      debug: false,
+    });
   },
   watch: {
     "$route"(val) {
@@ -107,7 +118,7 @@ export default {
     float: left;
     width: 280px;
     height: 100%;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 600;
     text-align: center;
     img {
@@ -126,24 +137,39 @@ export default {
   
   .search {
     float: left;
-    margin-top: 15px;
-    margin-left: 20px;
+    margin-top: 16px;
+    margin-left: 50px;
   
-    .tag-input-box {
-      width: 200px;
+    input {
+      display: inline-block;
+      background: transparent;
       border: 0;
-  
-      &-active {
-        box-shadow: none;
+      outline: 0 none;
+      width: 200px;
+      height: 33px;
+      padding: 0 8px;
+    }
+
+    .algolia-autocomplete {
+      .ds-dropdown-menu {
+        border: none;
+        box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
+    
+        [class^="ds-dataset-"] {
+          border: none;
+        }
+    
+        &:before {
+          display: none;
+        }
       }
-  
-      > .ui-icon {
-        display: none;
+    
+      .algolia-docsearch-suggestion--title {
+        color: #464646;
       }
-  
-      > .input-div-placeholder,
-      > .value-text {
-        font-size: 14px;
+    
+      .algolia-docsearch-suggestion--highlight {
+        color: #12c287;
       }
     }
   }
@@ -151,7 +177,7 @@ export default {
   .version {
     float: right;
     margin-top: 15px;
-    margin-right: 60px;
+    margin-right: 30px;
 
     .tag-input-box {
       width: 130px;
