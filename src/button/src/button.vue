@@ -76,6 +76,7 @@ export default {
   },
   methods: {
     handleClick(event) {
+      if (this.disabled) return;
       this.$emit('click', event);
     },
   },

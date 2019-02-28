@@ -9,8 +9,8 @@
 
 :::demo 块级按钮
 ```html
-            <za-button block bordered>default</za-button>
-            <za-button block bordered disabled>禁用状态的按钮</za-button>
+            <za-button block bordered @click="handleClick">default</za-button>
+            <za-button block bordered disabled @click="handleClick">禁用状态的按钮</za-button>
             <za-button theme="primary" block>幽灵按钮</za-button>
             <za-button theme="primary" block disabled>激活状态的按钮</za-button>
 ```
@@ -71,6 +71,20 @@
             </za-button>
 ```
 :::
+
+### Vue Script
+```javascript
+<script name="vue">
+export default {
+  methods: {
+    handleClick(n){
+      console.log(n);
+      alert('点击了我...');
+    },
+  },
+};
+</script>
+```
 
 ### API
 
