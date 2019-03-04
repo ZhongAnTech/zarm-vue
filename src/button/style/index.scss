@@ -1,6 +1,5 @@
-@import '../../../styles/core/mixins/index';
-@import '../../../styles/core/functions/index';
-@import '../../../styles/variables';
+@import '../../../styles/default';
+
 $prefixCls: za-button;
 
 .#{$prefixCls} {

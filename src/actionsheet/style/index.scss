@@ -1,37 +1,31 @@
-@import '../../../styles/variables';
-@import '../../../styles/core/mixins/index';
-@import '../../../styles/core/functions/index';
+@import '../../../styles/default';
 @import '../../popup/style/index';
 
-$prefixCls: za-actionsheet;
+// $prefixCls: za-actionsheet;
 
-.#{$prefixCls} {
+@include b(actionsheet) {
   margin: $actionsheet-margin;
 
-  &-spacing {
+  @include m(spacing) {
     margin: 0 r(10) r(10);
   }
 
-  &.shape-radius {
-    .#{$prefixCls} {
-      &-actions,
-      &-cancel {
-        border-radius: $radius-md;
-      }
+  @include m(radius) {
+    @include e(actions, cancel) {
+      border-radius: $radius-md;
     }
   }
 
-  &-actions,
-  &-cancel {
+  @include e(actions, cancel) {
     overflow: hidden;
     background-color: $color-text-inverse;
   }
 
-  &-cancel {
+  @include e(cancel) {
     margin-top: r(7);
   }
 
-  &-item {
+  @include e(item) {
     display: block;
     height: $actionsheet-item-height;
     line-height: $actionsheet-item-height;
@@ -46,19 +40,19 @@ $prefixCls: za-actionsheet;
       @include onepx(top);
     }
 
-    &.theme-primary {
+    @include m(primary) {
       color: $theme-primary;
     }
 
-    &.theme-success {
+    @include m(success) {
       color: $theme-success;
     }
 
-    &.theme-warning {
+    @include m(warning) {
       color: $theme-warning;
     }
 
-    &.theme-error {
+    @include m(error) {
       color: $theme-error;
     }
   }
