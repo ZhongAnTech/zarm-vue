@@ -9,25 +9,67 @@
   $active-border: $border;
   $active-color: $color;
 
-  &.bordered {
+  @include e(bordered) {
     background-color: #fff;
     border-color: $border;
     color: $color;
 
-    &:active,
-    &.active {
+    &:active {
       background-color: $activebg;
       color: $active-color;
     }
 
-    &.disabled,
+    @include m(active) {
+      background-color: $activebg;
+      color: $active-color;
+    }
+
     &:disabled {
       &:active,
-      &.active,
       &:focus,
-      &.focus,
-      &:visited,
-      &.visited {
+      &:visited {
+        background-color: #fff;
+        border-color: $border;
+        box-shadow: none;
+      }
+
+      @include m(active) {
+        background-color: #fff;
+        border-color: $border;
+        box-shadow: none;
+      }
+
+      @include m(focus) {
+        background-color: #fff;
+        border-color: $border;
+        box-shadow: none;
+      }
+
+      @include m(visited) {
+        background-color: #fff;
+        border-color: $border;
+        box-shadow: none;
+      }
+    }
+
+    @include m(disabled) {
+      background-color: #fff;
+      border-color: $border;
+      box-shadow: none;
+
+      @include m(active) {
+        background-color: #fff;
+        border-color: $border;
+        box-shadow: none;
+      }
+
+      @include m(focus) {
+        background-color: #fff;
+        border-color: $border;
+        box-shadow: none;
+      }
+
+      @include m(visited) {
         background-color: #fff;
         border-color: $border;
         box-shadow: none;
@@ -51,24 +93,66 @@
     color: $color;
   }
 
-  &:active,
-  &.active {
+  &:active {
     background-color: $active-background;
     border-color: $active-border;
   }
 
-  &.disabled,
+  @include m(active) {
+    background-color: $active-background;
+    border-color: $active-border;
+  }
+
   &:disabled {
     opacity: $disabled-opacity;
     color: rgba(#fff, $disabled-opacity);
     cursor: not-allowed;
 
     &:active,
-    &.active,
     &:focus,
-    &.focus,
-    &:visited,
-    &.visited {
+    &:visited {
+      background-color: $background;
+      border-color: $border;
+      box-shadow: none;
+    }
+
+    @include m(active) {
+      background-color: $background;
+      border-color: $border;
+      box-shadow: none;
+    }
+
+    @include m(focus) {
+      background-color: $background;
+      border-color: $border;
+      box-shadow: none;
+    }
+
+    @include m(visited) {
+      background-color: $background;
+      border-color: $border;
+      box-shadow: none;
+    }
+  }
+
+  @include m(disabled) {
+    opacity: $disabled-opacity;
+    color: rgba(#fff, $disabled-opacity);
+    cursor: not-allowed;
+
+    @include m(active) {
+      background-color: $background;
+      border-color: $border;
+      box-shadow: none;
+    }
+
+    @include m(focus) {
+      background-color: $background;
+      border-color: $border;
+      box-shadow: none;
+    }
+
+    @include m(visited) {
       background-color: $background;
       border-color: $border;
       box-shadow: none;
@@ -89,15 +173,15 @@
   height: $height;
   line-height: $height;
 
-  &.shape-radius {
+  @include m(radius) {
     border-radius: $border-radius;
   }
 
-  &.shape-round {
+  @include m(round) {
     border-radius: r(1000);
   }
 
-  &.shape-circle {
+  @include m(circle) {
     width: $height;
     height: $height;
     padding: 0;
@@ -139,19 +223,23 @@
   }
 
   /* disabled Button */
-  &.disabled,
   &:disabled {
     cursor: not-allowed;
     opacity: $opacity-disabled;
   }
 
+  @include m(disabled) {
+    cursor: not-allowed;
+    opacity: $opacity-disabled;
+  }
+
   /* block Button */
-  &.block {
+  @include e(block) {
     width: 100%;
     display: block;
   }
 
-  &-content {
+  @include e(content) {
     display: flex;
     width: 100%;
     height: 100%;
@@ -166,9 +254,8 @@
   border-style: solid;
   border-radius: $border-radius;
 
-  &.bordered {
+  @include m(bordered) {
     border-color: $border-color;
-    // @include onepx($border-color: $border-color, $border-radius: $border-radius);
   }
 }
 

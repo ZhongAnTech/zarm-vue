@@ -1,16 +1,16 @@
 <template lang="html">
   <a :class='{
     [`${prefixCls}`]: true,
-    [`theme-${theme}`]: !!theme,
-    [`size-${size}`]: !!size,
-    [`shape-${shape}`]: !!shape,
-    block,
-    bordered,
-    active,
-    focus,
-    disabled,
+    [`${prefixCls}--${theme}`]: !!theme,
+    [`${prefixCls}--${shape}`]: !!shape,
+    [`${prefixCls}__block`]: !!block,
+    [`${prefixCls}__bordered`]: !!bordered,
+    [`${prefixCls}--${size}`]: !!size,
+    [`${prefixCls}--active`]:  !!active,
+    [`${prefixCls}--focus`]:  !!focus,
+    [`${prefixCls}--disabled`]:  !!disabled,
   }' @click='handleClick'>
-    <span :class='`${prefixCls}-content`'>
+    <span :class='`${prefixCls}__content`'>
       <za-activity-indicator class="rotate360" v-if='loading'/>
       <slot name='icon' v-else></slot>
       <span>
