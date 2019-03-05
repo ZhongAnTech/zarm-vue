@@ -9,7 +9,7 @@
   $active-border: $border;
   $active-color: $color;
 
-  @include e(bordered) {
+  @include m(bordered) {
     background-color: #fff;
     border-color: $border;
     color: $color;
