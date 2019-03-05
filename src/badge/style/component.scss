@@ -1,41 +1,39 @@
 $prefixCls: za-badge;
 
 @mixin badge-theme($color) {
-  .#{$prefixCls} {
-    &-sup {
-      background-color: $color;
-    }
+  @include e(sup) {
+    background-color: $color;
   }
 }
 
-.#{$prefixCls} {
+@include b(badge) {
   position: relative;
   display: inline-block;
   vertical-align: middle;
   line-height: 1;
   @include badge-theme($theme-default);
 
-  &.theme-primary {
+  @include m(primary) {
     @include badge-theme($theme-primary);
   }
 
-  &.theme-info {
+  @include m(info) {
     @include badge-theme($theme-info);
   }
 
-  &.theme-success {
+  @include m(success) {
     @include badge-theme($theme-success);
   }
 
-  &.theme-warning {
+  @include m(warning) {
     @include badge-theme($theme-warning);
   }
 
-  &.theme-error {
+  @include m(error) {
     @include badge-theme($theme-error);
   }
 
-  &-sup {
+  @include e(sup) {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,7 +46,7 @@ $prefixCls: za-badge;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
 
-    &-up {
+    @include m(up) {
       position: absolute;
       top: 0;
       right: 0;
@@ -56,8 +54,8 @@ $prefixCls: za-badge;
     }
   }
 
-  &.shape-dot {
-    .#{$prefixCls}-sup {
+  @include m(dot) {
+    @include e(sup) {
       width: $badge-dot-diameter;
       height: $badge-dot-diameter;
       padding: 0;
@@ -65,34 +63,34 @@ $prefixCls: za-badge;
     }
   }
 
-  &.shape-rect {
-    .#{$prefixCls}-sup {
+  @include m(rect) {
+    @include e(sup) {
       border-radius: 0;
     }
   }
 
-  &.shape-radius {
-    .#{$prefixCls}-sup {
+  @include m(radius) {
+    @include e(sup) {
       border-radius: $badge-radius-radius;
     }
   }
 
-  &.shape-round {
-    .#{$prefixCls}-sup {
+  @include m(round) {
+    @include e(sup) {
       border-radius: $badge-round-radius;
     }
   }
 
-  &.shape-circle {
-    .#{$prefixCls}-sup {
+  @include m(circle) {
+    @include e(sup) {
       width: $badge-height;
       padding: 0;
       border-radius: $badge-round-radius;
     }
   }
 
-  &.shape-leaf {
-    .#{$prefixCls}-sup {
+  @include m(leaf) {
+    @include e(sup) {
       min-width: $badge-height;
       border-radius: $radius-round $radius-round $radius-round 0;
     }

@@ -2,13 +2,13 @@
   <span :class='{
     [`${prefixCls}`]: true,
     [`${className}`]: true,
-    [`theme-${theme}`]: !!theme,
-    [`shape-${shape}`]: !!shape,
+    [`${prefixCls}--${shape}`]: !!shape,
+    [`${prefixCls}--${theme}`]: !!theme,
     }'>
     <slot></slot>
     <sup :class='{
-      [`${prefixCls}-sup`]: true,
-      [`${prefixCls}-sup-up`]: sup,
+      [`${prefixCls}__sup`]: true,
+      [`${prefixCls}__sup--up`]: sup,
       }'
       @click='supClick'>
       {{text}}
