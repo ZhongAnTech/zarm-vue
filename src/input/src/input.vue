@@ -1,9 +1,9 @@
 <template lang="html">
   <div :class="{
-    [this.prefixCls]: true,
-    disabled
+    [`${prefixCls}`]: true,
+    [`${prefixCls}--disabled`]: !!disabled
     }">
-    <div :class='`${prefixCls}-placeholder`' v-if='type === "date"'>{{placeholder}}</div>
+    <div :class='`${prefixCls}__placeholder`' v-if='type === "date"'>{{placeholder}}</div>
     <textarea
       ref='input'
       :readonly='readonly'
@@ -34,10 +34,10 @@
       @compositionEnd="handleComposition"
     />
     <za-icon v-if="clearable" type="wrong-round-fill" :class="{
-      [`${prefixCls}-clear`]: true,
-      [`${prefixCls}-clear-show`]: !!(focused && currentValue && currentValue.length > 0)
+      [`${prefixCls}__clear`]: true,
+      [`${prefixCls}__clear--show`]: !!(focused && currentValue && currentValue.length > 0)
     }" @click="onClear" />
-    <div :class='`${prefixCls}-length`' v-if='showLength && maxLength'>{{`${length}/${maxLength}`}}</div>
+    <div :class='`${prefixCls}__length`' v-if='showLength && maxLength'>{{`${length}/${maxLength}`}}</div>
   </div>
 </template>
 

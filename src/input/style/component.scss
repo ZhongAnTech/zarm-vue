@@ -1,14 +1,14 @@
 $prefixCls: za-input;
 
-.#{$prefixCls} {
+@include b(input) {
   position: relative;
   width: 100%;
   padding: r(12) 0;
 
-  &.clearable {
+  @include e(clearable) {
     padding-right: r(30);
 
-    .#{$prefixCls}-content {
+    @include e(content) {
       right: r(30);
     }
   }
@@ -25,8 +25,8 @@ $prefixCls: za-input;
     outline: 0;
     -webkit-appearance: none;
 
-    &[type="date"],
-    &[type="text"] {
+    &[type='date'],
+    &[type='text'] {
       height: r(21);
     }
 
@@ -34,8 +34,12 @@ $prefixCls: za-input;
       color: $placeholder-color;
     }
 
-    &.disabled,
     &:disabled {
+      cursor: not-allowed;
+      opacity: $opacity-disabled;
+    }
+
+    @include m(disabled) {
       cursor: not-allowed;
       opacity: $opacity-disabled;
     }
@@ -51,7 +55,7 @@ $prefixCls: za-input;
     overflow: visible;
   }
 
-  &-placeholder {
+  @include e(placeholder) {
     position: absolute;
     left: 0;
     top: 0;
@@ -60,7 +64,7 @@ $prefixCls: za-input;
     color: #c1c1c1;
   }
 
-  &-clear {
+  @include e(clear) {
     position: absolute;
     visibility: hidden;
     color: #d5d5d5;
@@ -71,26 +75,26 @@ $prefixCls: za-input;
     right: 0;
     font-size: r(18);
 
-    &-show {
+    @include m(show) {
       visibility: visible;
     }
   }
 
-  &-length {
+  @include e(length) {
     text-align: right;
     color: #c1c1c1;
     font-size: r(12);
   }
 
-  &-number {
+  @include e(number) {
     line-height: r(24);
 
-    &-picker {
+    @include e(picker) {
       background-color: #fff;
     }
 
-    &.focus {
-      .#{$prefixCls}-content {
+    @include m(focus) {
+      @include e(content) {
         transform: translate3d(0, 0, 0);
 
         &:after {
@@ -106,7 +110,7 @@ $prefixCls: za-input;
     }
   }
 
-  &-content {
+  @include e(content) {
     position: absolute;
     top: 0;
     left: 0;
@@ -131,4 +135,3 @@ $prefixCls: za-input;
     opacity: 1;
   }
 }
-
