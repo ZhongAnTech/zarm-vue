@@ -1,6 +1,2 @@
-@import '../../../styles/default';
-$prefixCls: za-locale-provider;
-
-.#{$prefixCls} {
-  display: contents;
-}
+@import '../../../styles/default.scss';
+@import './component.scss';

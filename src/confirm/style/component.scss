@@ -1,0 +1,9 @@
+@import '../../button/style/component.scss';
+@import '../../modal/style/component.scss';
+
+$prefixCls: za-confirm;
+
+.#{$prefixCls} {
+  text-align: center;
+}
+

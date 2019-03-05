@@ -1,0 +1,26 @@
+$prefixCls: za-wheel;
+$itemHeight: r(34);
+$itemRows: 5;
+
+.#{$prefixCls} {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  height: $itemRows * $itemHeight;
+  width: 100%;
+
+  &-content {
+    margin-top: 68px;
+  }
+
+  &-item {
+    text-align: center;
+    font-size: r(18);
+    line-height: $itemHeight;
+    height: $itemHeight;
+    color: #000;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}

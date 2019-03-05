@@ -1,9 +1,2 @@
-@import '../../../styles/default';
-@import '../../button/style/index';
-@import '../../modal/style/index';
-
-$prefixCls: za-alert;
-
-.#{$prefixCls} {
-  text-align: center;
-}
+@import '../../../styles/default.scss';
+@import './component.scss';

@@ -1,0 +1,8 @@
+@import '../../button/style/component.scss';
+@import '../../modal/style/component.scss';
+
+$prefixCls: za-alert;
+
+.#{$prefixCls} {
+  text-align: center;
+}

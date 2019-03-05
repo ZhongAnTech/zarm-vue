@@ -1,0 +1,19 @@
+@import '../../message/style/component.scss';
+
+$prefixCls: za-noticebar;
+
+.#{$prefixCls} {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: r(24);
+  position: relative;
+  overflow: hidden;
+
+  &-body {
+    position: absolute;
+    left: 0;
+    white-space: nowrap;
+  }
+}
+

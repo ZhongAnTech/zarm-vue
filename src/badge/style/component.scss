@@ -1,0 +1,100 @@
+$prefixCls: za-badge;
+
+@mixin badge-theme($color) {
+  .#{$prefixCls} {
+    &-sup {
+      background-color: $color;
+    }
+  }
+}
+
+.#{$prefixCls} {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  @include badge-theme($theme-default);
+
+  &.theme-primary {
+    @include badge-theme($theme-primary);
+  }
+
+  &.theme-info {
+    @include badge-theme($theme-info);
+  }
+
+  &.theme-success {
+    @include badge-theme($theme-success);
+  }
+
+  &.theme-warning {
+    @include badge-theme($theme-warning);
+  }
+
+  &.theme-error {
+    @include badge-theme($theme-error);
+  }
+
+  &-sup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: auto;
+    font-size: $badge-font-size;
+    color: #fff;
+    height: $badge-height;
+    padding: 0 $badge-padding-h;
+    white-space: nowrap;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+
+    &-up {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translateX(50%) translateY(-50%);
+    }
+  }
+
+  &.shape-dot {
+    .#{$prefixCls}-sup {
+      width: $badge-dot-diameter;
+      height: $badge-dot-diameter;
+      padding: 0;
+      border-radius: $radius-circle;
+    }
+  }
+
+  &.shape-rect {
+    .#{$prefixCls}-sup {
+      border-radius: 0;
+    }
+  }
+
+  &.shape-radius {
+    .#{$prefixCls}-sup {
+      border-radius: $badge-radius-radius;
+    }
+  }
+
+  &.shape-round {
+    .#{$prefixCls}-sup {
+      border-radius: $badge-round-radius;
+    }
+  }
+
+  &.shape-circle {
+    .#{$prefixCls}-sup {
+      width: $badge-height;
+      padding: 0;
+      border-radius: $badge-round-radius;
+    }
+  }
+
+  &.shape-leaf {
+    .#{$prefixCls}-sup {
+      min-width: $badge-height;
+      border-radius: $radius-round $radius-round $radius-round 0;
+    }
+  }
+}

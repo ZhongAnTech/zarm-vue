@@ -4,7 +4,7 @@ const chalk = require('chalk');
 
 module.exports = function () {
   const entries = {};
-  const partten = path.join(__dirname, '../src/**/component.js');
+  const partten = path.join(__dirname, '../src/**/style/component.js');
   try {
     console.log(chalk.blue('build components theme css start'));
     Glob.sync(partten, {}).forEach(file => {
