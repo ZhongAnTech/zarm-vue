@@ -1,5 +1,5 @@
-@function containsmodifier($selector) {
-  $selector: selectortostring($selector);
+@function containsModifier($selector) {
+  $selector: selectorToString($selector);
   @if str-index($selector, $modifier-separator) {
     @return true;
   }
@@ -8,8 +8,8 @@
   }
 }
 
-@function containselement($selector) {
-  $selector: selectortostring($selector);
+@function containsElement($selector) {
+  $selector: selectorToString($selector);
   @if str-index($selector, $element-separator) {
     @return true;
   }
@@ -18,16 +18,16 @@
   }
 }
 
-@function selectortostring($selector) {
+@function selectorToString($selector) {
   $selector: inspect($selector); //cast to string
   $selector: str-slice($selector, 2, -2); //remove brackets
   @return $selector;
 }
 
-@function getblock($selector) {
-  $selector: selectortostring($selector);
+@function getBlock($selector) {
+  $selector: selectorToString($selector);
   $start: 0;
-  @if containselement($selector) {
+  @if containsElement($selector) {
     $start: str-index($selector, $element-separator) - 1;
   }
   @else {
@@ -39,25 +39,16 @@
 @function getElements($elements) {
   $selector: &;
   $currentSelector: '';
-  @if containsmodifier($selector) {
-    $selector: getblock($selector);
+  @if containsModifier($selector) {
+    $selector: getBlock($selector);
   }
   @each $unit in $elements {
-    @if containselement($selector) {
-      $block: getblock($selector);
-      $currentSelector: #{$currentSelector +
-        $selector}
-        #{$block +
-        $element-separator +
-        $unit +
-        ','};
+    @if containsElement($selector) {
+      $block: getBlock($selector);
+      $currentSelector: #{$currentSelector + $selector} #{$block + $element-separator + $unit + ','};
     }
     @else {
-      $currentSelector: #{$currentSelector +
-        $selector +
-        $element-separator +
-        $unit +
-        ','};
+      $currentSelector: #{$currentSelector + $selector + $element-separator + $unit + ','};
     }
   }
   @return $currentSelector;
@@ -71,8 +62,8 @@
 
 @mixin e($element...) {
   $selector: &;
-  $elements: getelements($element);
-  @if containsmodifier($selector) {
+  $elements: getElements($element);
+  @if containsModifier($selector) {
     @at-root {
       #{$selector} {
         #{$elements} {
@@ -92,8 +83,8 @@
 
 @mixin m($modifier) {
   $selector: &;
-  @if containsmodifier($selector) {
-    $selector: getblock($selector);
+  @if containsModifier($selector) {
+    $selector: getBlock($selector);
     @at-root {
       #{&}#{$selector + $modifier-separator + $modifier} {
         @content;
