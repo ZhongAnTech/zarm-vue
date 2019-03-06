@@ -1,19 +1,19 @@
 <template lang="html">
   <div :class='{
     [`${prefixCls}`]: true,
-    [`theme-${theme}`]: !!theme,
-    [`size-${size}`]: !!size,
+    [`${prefixCls}--${theme}`]: !!theme,
+    [`${prefixCls}--${size}`]: !!size,
   }' @click='handleClick' v-if='currentVisible'>
-    <div :class='`${prefixCls}-header`'>
-      <div :class='`${prefixCls}-icon`' v-if='$slots.icon || icon'>
+    <div :class='`${prefixCls}__header`'>
+      <div :class='`${prefixCls}__icon`' v-if='$slots.icon || icon'>
         <slot name='icon'></slot>
         <za-icon :type='icon' v-if='!$slots.icon'></za-icon>
       </div>
     </div>
-    <div :class='`${prefixCls}-body`'>
+    <div :class='`${prefixCls}__body`'>
       <slot></slot>
     </div>
-    <div :class='`${prefixCls}-footer`' v-if='closable || hasArrow'>
+    <div :class='`${prefixCls}__footer`' v-if='closable || hasArrow'>
       <za-icon type="arrow-right" v-if='hasArrow'></za-icon>
       <za-icon type="wrong" v-if='closable' @click='wrongIconClick'></za-icon>
     </div>

@@ -1,13 +1,11 @@
 @import '../../icon/style/component.scss';
 
-$prefixCls: za-message;
-
 @mixin message-theme($color, $background, $border) {
   color: $color;
   background-color: $background;
 }
 
-.#{$prefixCls} {
+@include b(message) {
   display: flex;
   position: relative;
   padding: r(6) r(8);
@@ -15,23 +13,22 @@ $prefixCls: za-message;
   font-size: r(12);
   @include message-theme($button-default-border, $button-default-activebg, $button-default-border);
 
-  &-icon {
+  @include e(icon) {
     margin-right: r(5);
     margin-top: r(1);
   }
 
-  &-header,
-  &-footer {
+  @include e(header,footer) {
     line-height: 1;
   }
 
-  &-body {
+  @include e(body) {
     flex: 1;
     display: flex;
     align-items: center;
   }
 
-  &-footer {
+  @include e(footer) {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,32 +36,32 @@ $prefixCls: za-message;
     padding-left: r(10);
   }
 
-  &.theme-primary {
+  @include m(primary) {
     @include message-theme($button-primary-border, $button-primary-activebg, $button-primary-border);
   }
 
-  &.theme-success {
+  @include m(success) {
     @include message-theme($button-success-border, $button-success-activebg, $button-success-border);
   }
 
-  &.theme-warning {
+  @include m(warning) {
     @include message-theme($button-warning-border, $button-warning-activebg, $button-warning-border);
   }
 
-  &.theme-error {
+  @include m(error) {
     @include message-theme($button-error-border, $button-error-activebg, $button-error-border);
   }
 
-  &.size-lg {
+  @include m(lg) {
     min-height: r(42);
     padding: r(9) r(15);
 
-    .#{$prefixCls}-icon {
+    @include e(icon) {
       margin-right: r(10);
       margin-top: r(4);
     }
 
-    .#{$prefixCls}-body {
+    @include e(body) {
       font-size: r(15);
     }
   }

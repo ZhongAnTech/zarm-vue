@@ -2,7 +2,7 @@
 
 $prefixCls: za-modal;
 
-.#{$prefixCls} {
+@include b(modal) {
   position: fixed;
   left: 0;
   top: 0;
@@ -16,18 +16,18 @@ $prefixCls: za-modal;
   overflow: auto;
   z-index: $zIndex-modal;
 
-  &.radius {
-    .#{$prefixCls}-dialog {
+  @include m(radius) {
+    @include e(dialog) {
       border-radius: $radius-md;
     }
   }
 
-  &-wrapper {
+  @include e(wrapper) {
     width: 100%;
     margin: auto 0;
   }
 
-  &-dialog {
+  @include e(dialog) {
     position: relative;
     margin: r(60) auto;
     background: #fff;
@@ -36,10 +36,8 @@ $prefixCls: za-modal;
     z-index: $zIndex-modal + 1;
   }
 
-  &-header {
+  @include e(header) {
     position: relative;
-    /* height: r(50); */
-    /* border-bottom: 1px solid #e9e9e9; */
     padding: r(20) r(15) 0 r(15);
     text-align: center;
 
@@ -64,7 +62,7 @@ $prefixCls: za-modal;
     }
   }
 
-  &-body {
+  @include e(body) {
     font-size: r(15);
     color: #999;
     padding: r(15);
@@ -72,7 +70,7 @@ $prefixCls: za-modal;
     user-select: auto;
   }
 
-  &-footer {
+  @include e(footer) {
     display: flex;
     width: 100%;
 
@@ -96,7 +94,7 @@ $prefixCls: za-modal;
       }
     }
 
-    &.block {
+    @include m(block) {
       display: block;
 
       a {
