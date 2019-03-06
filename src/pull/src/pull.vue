@@ -256,7 +256,7 @@ export default {
             percent,
           });
           return refreshPull || (
-            <div class={`${prefixCls}-control`}>
+            <div class={`${prefixCls}__control`}>
               <za-activity-indicator percent={percent} />
               <span>下拉刷新</span>
             </div>
@@ -267,7 +267,7 @@ export default {
             percent,
           });
           return refreshDrop || (
-            <div class={`${prefixCls}-control`}>
+            <div class={`${prefixCls}__control`}>
               <za-activity-indicator percent={100} />
               <span>释放立即刷新</span>
             </div>
@@ -278,7 +278,7 @@ export default {
             percent,
           });
           return refreshLoading || (
-            <div class={`${prefixCls}-control`}>
+            <div class={`${prefixCls}__control`}>
               <za-activity-indicator class="rotate360" />
               <span>加载中</span>
             </div>
@@ -289,7 +289,7 @@ export default {
             percent,
           });
           return refreshSuccess || (
-            <div class={`${prefixCls}-control`}>
+            <div class={`${prefixCls}__control`}>
               <za-icon type="right-round" theme="success" />
               <span>加载成功</span>
             </div>
@@ -300,7 +300,7 @@ export default {
             percent,
           });
           return refreshFailure || (
-            <div class={`${prefixCls}-control`}>
+            <div class={`${prefixCls}__control`}>
               <za-icon type="wrong-round" theme="error" />
               <span>加载失败</span>
             </div>
@@ -320,7 +320,7 @@ export default {
             percent,
           });
           return loadLoading || (
-            <div class={`${prefixCls}-control`}>
+            <div class={`${prefixCls}__control`}>
               <za-activity-indicator class='rotate360'/>
               <span>加载中</span>
             </div>
@@ -331,7 +331,7 @@ export default {
             percent,
           });
           return loadComplete || (
-            <div class={`${prefixCls}-control`}>
+            <div class={`${prefixCls}__control`}>
               <span>我是有底线的</span>
             </div>
           );
@@ -341,7 +341,7 @@ export default {
             percent,
           });
           return loadFailure || (
-            <div class={`${prefixCls}-control`}>
+            <div class={`${prefixCls}__control`}>
               <za-icon type="wrong-round" theme="error" />
               <span>加载失败</span>
             </div>
@@ -359,11 +359,11 @@ export default {
         <div
           ref='pull'
           class={`${prefixCls}`}>
-          <div class={`${prefixCls}-refresh`} style={refreshStyle}>
+          <div class={`${prefixCls}__refresh`} style={refreshStyle}>
             {renderRefresh()}
           </div>
           {this.$slots.default}
-          <div class={`${prefixCls}-load`} style={loadStyle}>
+          <div class={`${prefixCls}__load`} style={loadStyle}>
             {renderLoad()}
           </div>
         </div>

@@ -10531,9 +10531,9 @@ yeoman-generator@^2.0.5:
     through2 "^2.0.0"
     yeoman-environment "^2.0.5"
 
-zarm-vue-loader@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/zarm-vue-loader/-/zarm-vue-loader-2.0.4.tgz#418f0929e1a565d0066a7faa1164fd8708ac9958"
+zarm-vue-loader@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/zarm-vue-loader/-/zarm-vue-loader-3.0.0.tgz#822a1eed78b947cdbe5a43777b93529f6d575ffc"
   dependencies:
     cheerio "^0.20.0"
     highlight.js "^9.4.0"

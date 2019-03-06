@@ -1,16 +1,15 @@
 <template lang="html">
   <span :class='{
       [`${prefixCls}`]: true,
-      [`theme-${theme}`]: !!theme,
-      checked: !!currentCheck,
-
-      disabled,
+      [`${prefixCls}--${theme}`]: !!theme,
+      [`${prefixCls}--checked`]: !!currentCheck,
+      [`${prefixCls}--disabled`]: disabled,
     }'    
   >
     <input
       ref="input"
       type="checkbox"
-      :class='`${prefixCls}-input`'
+      :class='`${prefixCls}__input`'
       :disabled='disabled'
       :checked='currentCheck'
       :value='getVal(currentCheck)'

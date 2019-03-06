@@ -1,19 +1,18 @@
-$prefixCls: za-wheel;
-$itemHeight: r(34);
-$itemRows: 5;
+@include b(wheel) {
+  $itemHeight: r(34);
+  $itemRows: 5;
 
-.#{$prefixCls} {
   display: block;
   position: relative;
   overflow: hidden;
   height: $itemRows * $itemHeight;
   width: 100%;
 
-  &-content {
+  @include e(content) {
     margin-top: 68px;
   }
 
-  &-item {
+  @include e(item) {
     text-align: center;
     font-size: r(18);
     line-height: $itemHeight;

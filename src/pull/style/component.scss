@@ -1,10 +1,7 @@
 @import '../../icon/style/component.scss';
 
-$prefixCls: za-pull;
-
-.#{$prefixCls} {
-  &-refresh,
-  &-load {
+@include b(pull) {
+  @include e(refresh,load) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,17 +10,17 @@ $prefixCls: za-pull;
     height: 0;
   }
 
-  &-refresh {
+  @include e(refresh) {
     align-items: flex-end;
     transition: all .3s;
   }
 
-  &-load {
+  @include e(load) {
     position: relative;
     @include onepx(top);
   }
 
-  &-control {
+  @include e(control) {
     display: flex;
     align-items: center;
     padding: r(10) 0;
@@ -40,4 +37,3 @@ $prefixCls: za-pull;
     }
   }
 }
-

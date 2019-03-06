@@ -1,9 +1,7 @@
-$prefixCls: za-popup;
-
-.#{$prefixCls} {
+@include b(popup) {
   position: relative;
 
-  &-wrapper {
+  @include e(wrapper) {
     position: fixed;
     transform: translate(0, 0);
     transition-property: transform;
@@ -36,8 +34,8 @@ $prefixCls: za-popup;
     }
   }
 
-  &-hidden {
-    .#{$prefixCls}-wrapper {
+  @include m(hidden) {
+    @include e(wrapper) {
       &-bottom {
         transform: translate(0, 100%);
       }
@@ -56,4 +54,3 @@ $prefixCls: za-popup;
     }
   }
 }
-

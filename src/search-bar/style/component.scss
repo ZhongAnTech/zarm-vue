@@ -1,12 +1,10 @@
 @import '../../input/style/component.scss';
 @import '../../icon/style/component.scss';
 
-$prefixCls: za-search-bar;
-
-.#{$prefixCls} {
+@include b(search-bar) {
   background: #fff;
 
-  .za-input {
+  @include e(input) {
     padding: r(10) 0;
   }
 
@@ -23,7 +21,6 @@ $prefixCls: za-search-bar;
     width: 100%;
     text-align: left;
     color: #000;
-    // height: r(24);
     font-size: r(14);
     line-height: r(20);
     background-color: transparent;
@@ -34,7 +31,7 @@ $prefixCls: za-search-bar;
     }
   }
 
-  &-form {
+  @include e(form) {
     height: r(44);
     margin: 0 r(15);
     display: flex;
@@ -42,7 +39,7 @@ $prefixCls: za-search-bar;
     background: #fff;
     overflow: hidden;
 
-    &-focus {
+    @include m(focus) {
       input[type="search"] {
         opacity: 1;
         padding: 0 r(28) 0 r(26);
@@ -50,7 +47,7 @@ $prefixCls: za-search-bar;
     }
   }
 
-  &-content {
+  @include e(content) {
     position: relative;
     flex: 1;
     width: 100%;
@@ -59,23 +56,22 @@ $prefixCls: za-search-bar;
     background: #eee;
     overflow: hidden;
 
-    &.shape-radius {
+    @include m(radius) {
       border-radius: $radius-md;
     }
 
-    &.shape-round {
+    @include m(round) {
       border-radius: $radius-round;
     }
 
-    &.shape-circle {
+    @include m(circle) {
       border-radius: $radius-circle;
     }
   }
 
-  &-mock {
+  @include e(mock) {
     position: absolute;
     left: 0;
-    // top: r(5);
     width: 100%;
     height: r(20);
     line-height: r(20);
@@ -92,14 +88,14 @@ $prefixCls: za-search-bar;
       vertical-align: middle;
     }
 
-    .za-icon-search {
+    @include b(icon) {
       font-size: r(17);
       vertical-align: middle;
       margin-right: r(3);
     }
   }
 
-  &-cancel {
+  @include e(cancel) {
     font-size: r(14);
     color: #333;
     margin-left: r(15);

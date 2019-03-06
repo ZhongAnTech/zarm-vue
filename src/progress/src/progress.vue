@@ -1,26 +1,26 @@
 <template lang="html">
   <div :class='{
     [`${prefixCls}`]: true,
-    [`theme-${theme}`]: !!theme,
-    [`${prefixCls}-${type}`]: !!type,
+    [`${prefixCls}--${theme}`]: !!theme,
+    [`${prefixCls}--${type}`]: !!type,
     }'>
-    <div v-if="type==='circle' || type==='semi-circle'" :class='`${prefixCls}-inner`'>
+    <div v-if="type==='circle' || type==='semi-circle'" :class='`${prefixCls}__inner`'>
       <svg :class='{
         [`${prefixCls}`]: true,
-        [`type-${type}`]: true,
-        [`theme-${theme}`]: !!theme,
+        [`${prefixCls}__${type}`]: true,
+        [`${prefixCls}--${theme}`]: !!theme,
       }'
         :viewBox='viewBox'
         ref='svg'>
         <path
-          :class='`${prefixCls}-track`'
+          :class='`${prefixCls}__track`'
           :d='path'
           :stroke-width='calStrokeWidth'
           :stroke-linecap='strokeLinecap'
         />
         <path
           :d='path'
-          :class='`${prefixCls}-line`'
+          :class='`${prefixCls}__line`'
           :stroke-width='calStrokeWidth'
           :stroke-linecap='strokeLinecap'
           :stroke-dasharray='dasharray'
@@ -30,11 +30,11 @@
       </svg>
     </div>
 
-    <div v-else :class='`${prefixCls}-inner`' :style='{height: `${strokeWidth}px`, borderRadius: `${borderR}px`}'>
-      <div :class='`${prefixCls}-bg`' :style='{ width: `${percent}%`, borderRadius: `${borderR}px`}' />
+    <div v-else :class='`${prefixCls}__inner`' :style='{height: `${strokeWidth}px`, borderRadius: `${borderR}px`}'>
+      <div :class='`${prefixCls}__bg`' :style='{ width: `${percent}%`, borderRadius: `${borderR}px`}' />
     </div>
 
-    <div :class='`${prefixCls}-text`'>
+    <div :class='`${prefixCls}__text`'>
       <slot></slot>
     </div>
 

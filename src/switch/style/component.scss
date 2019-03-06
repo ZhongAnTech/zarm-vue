@@ -1,7 +1,5 @@
-$prefixCls: za-switch;
-
 @mixin switch-theme($color) {
-  .#{$prefixCls}-input {
+  @include e(input) {
     &:checked {
       border-color: $color;
       background-color: $color;
@@ -9,10 +7,10 @@ $prefixCls: za-switch;
   }
 }
 
-.#{$prefixCls} {
+@include b(switch) {
   @include switch-theme($theme-default);
 
-  &-input {
+  @include e(input) {
     position: relative;
     width: $switch-width;
     height: $switch-height;
@@ -58,28 +56,28 @@ $prefixCls: za-switch;
     }
   }
 
-  &.disabled {
+  @include m(disabled) {
     cursor: not-allowed;
     opacity: $disabled-opacity;
   }
 
-  &.theme-primary {
+  @include m(primary) {
     @include switch-theme($theme-primary);
   }
 
-  &.theme-info {
+  @include m(info) {
     @include switch-theme($theme-info);
   }
 
-  &.theme-success {
+  @include m(success) {
     @include switch-theme($theme-success);
   }
 
-  &.theme-warning {
+  @include m(warning) {
     @include switch-theme($theme-warning);
   }
 
-  &.theme-error {
+  @include m(error) {
     @include switch-theme($theme-error);
   }
 }

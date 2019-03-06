@@ -1,13 +1,11 @@
-$prefixCls: za-keyboard;
-
-.#{$prefixCls} {
+@include b(keyboard) {
   display: flex;
   flex-wrap: wrap;
   background-color: #fff;
   color: $color-text;
   user-select: none;
 
-  &-item {
+  @include e(item) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,26 +18,26 @@ $prefixCls: za-keyboard;
       color: $color-text;
     }
 
-    &-ok {
+    @include m(ok) {
       font-size: r(16);
       @include button-theme($color-text-inverse, $theme-primary, $button-default-border);
     }
 
-    &-disabled {
+    @include m(disabled) {
       background-color: #fff;
-    }
 
-    &-disabled:active {
-      background-color: $keyboard-disabled-background;
+      &:active {
+        background-color: $keyboard-disabled-background;
+      }
     }
   }
 
-  &-keys {
+  @include e(keys) {
     display: flex;
     flex-wrap: wrap;
     width: 75%;
 
-    .#{$prefixCls}-item {
+    @include e(item) {
       width: 33.333333%;
       height: $keyboard-item-height;
       @include onepx(top left);
@@ -50,12 +48,12 @@ $prefixCls: za-keyboard;
     }
   }
 
-  &-handle {
+  @include e(handle) {
     display: flex;
     flex-direction: column;
     width: 25%;
 
-    .#{$prefixCls}-item {
+    @include e(item) {
       flex: 1;
 
       &:first-of-type {
@@ -64,7 +62,7 @@ $prefixCls: za-keyboard;
     }
   }
 
-  &-icon {
+  @include e(icon) {
     font-size: $keyboard-icon-font-size;
   }
 }

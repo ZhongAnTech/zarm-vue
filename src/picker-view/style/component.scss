@@ -1,9 +1,7 @@
 @import '../../wheel/style/component.scss';
 
-$prefixCls: za-picker;
-
-.#{$prefixCls} {
-  &-panel {
+@include b(picker) {
+  @include e(panel) {
     height: 210px;
     position: relative;
     z-index: 600;
@@ -13,8 +11,7 @@ $prefixCls: za-picker;
     padding: 20px 0;
   }
 
-  &-mask-top,
-  &-mask-bottom {
+  @include e(mask-top,mask-bottom) {
     z-index: 10;
     width: 100%;
     height: 88px;
@@ -22,7 +19,7 @@ $prefixCls: za-picker;
     transform: translateZ(0);
   }
 
-  &-mask-top {
+  @include e(mask-top) {
     position: absolute;
     top: 0;
     background: linear-gradient(to top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.8));
@@ -40,7 +37,7 @@ $prefixCls: za-picker;
     }
   }
 
-  &-mask-bottom {
+  @include e(mask-bottom) {
     position: absolute;
     bottom: 0;
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.8));
@@ -58,7 +55,7 @@ $prefixCls: za-picker;
     }
   }
 
-  &-view {
+  @include e(view) {
     display: flex;
   }
 }

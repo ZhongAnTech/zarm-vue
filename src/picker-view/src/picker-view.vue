@@ -1,7 +1,7 @@
 <template lang="html">
-  <div :class='`${prefixCls}-panel`'>
-    <div :class='`${prefixCls}-mask-top`' />
-    <div :class='`${prefixCls}-view`'>
+  <div :class='`${prefixCls}__panel`'>
+    <div :class='`${prefixCls}__mask-top`' />
+    <div :class='`${prefixCls}__view`'>
       <Wheel
           v-for='(item,index) in data'
           :key='index+1'
@@ -17,7 +17,7 @@
           @change='onValueChange'
         />
     </div>
-    <div :class='`${prefixCls}-mask-bottom`' />
+    <div :class='`${prefixCls}__mask-bottom`' />
   </div>
 </template>
 <script>

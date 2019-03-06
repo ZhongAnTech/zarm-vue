@@ -1,72 +1,58 @@
 @import '../../icon/style/component.scss';
 
-$prefixCls: za-stepper;
-
 @mixin stepper-theme($color) {
-  .#{$prefixCls} {
-    &-sub,
-    &-plus {
-      border: 1px solid $color;
+  @include e(sub,plus) {
+    border: 1px solid $color;
+  }
 
-      &.disabled {
-        opacity: $disabled-opacity;
-        cursor: not-allowed;
-      }
-    }
-
-    &-body {
-      border: 1px solid $color;
-    }
+  @include e(body) {
+    border: 1px solid $color;
   }
 }
 
-.#{$prefixCls} {
+@include b(stepper) {
   display: flex;
   user-select: none;
   @include stepper-theme($border-color);
 
-  &.disabled {
-    .#{$prefixCls}-body {
+  @include m(disabled) {
+    @include e(sub, plus, body) {
       opacity: $disabled-opacity;
       cursor: not-allowed;
     }
   }
 
-  &.shape-radius {
-    .#{$prefixCls}-sub,
-    .#{$prefixCls}-plus {
+  @include m(radius) {
+    @include e(sub,plus) {
       border-radius: $radius-md;
     }
 
-    .#{$prefixCls}-body {
+    @include e(body) {
       border-radius: r(4);
     }
   }
 
-  &.shape-circle {
-    .#{$prefixCls}-sub,
-    .#{$prefixCls}-plus {
+  @include m(circle) {
+    @include e(sub,plus) {
       border-radius: 50%;
     }
 
-    .#{$prefixCls}-body {
+    @include e(body) {
       border-radius: r(400);
     }
   }
 
-  &.shape-plump {
-    .#{$prefixCls}-sub,
-    .#{$prefixCls}-plus {
+  @include m(plump) {
+    @include e(sub,plus) {
       border-radius: 50%;
     }
 
-    .#{$prefixCls}-body {
+    @include e(body) {
       border-radius: r(4);
     }
   }
 
-  &-sub,
-  &-plus {
+  @include e(sub,plus) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -77,12 +63,17 @@ $prefixCls: za-stepper;
     font-weight: bold;
     cursor: pointer;
 
-    .za-icon {
+    &-disabled {
+      opacity: $disabled-opacity;
+      cursor: not-allowed;
+    }
+
+    @include b(icon) {
       font-size: r(12);
     }
   }
 
-  &-body {
+  @include e(body) {
     position: relative;
     width: r(50);
     margin: 0 r(4);
@@ -98,28 +89,25 @@ $prefixCls: za-stepper;
     caret-color: #12c287;
   }
 
-  &.size-sm {
-    .#{$prefixCls} {
-      &-sub,
-      &-plus {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        width: $stepper-height-sm;
-        height: $stepper-height-sm;
-        font-size: r(18);
-        font-weight: bold;
-        cursor: pointer;
+  @include m(sm) {
+    @include e(sub,plus) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: $stepper-height-sm;
+      height: $stepper-height-sm;
+      font-size: r(18);
+      font-weight: bold;
+      cursor: pointer;
 
-        .za-icon {
-          font-size: r(12);
-        }
+      @include b(icon) {
+        font-size: r(12);
       }
+    }
 
-      &-body {
-        height: $stepper-height-sm;
-      }
+    @include e(body) {
+      height: $stepper-height-sm;
     }
   }
 }

@@ -1,6 +1,4 @@
-$prefixCls: za-checkbox;
-
-.#{$prefixCls} {
+@include b(checkbox) {
   display: inline-block;
   position: relative;
   margin-left: r(10);
@@ -9,12 +7,12 @@ $prefixCls: za-checkbox;
     margin-left: 0;
   }
 
-  &-wrapper {
+  @include e(wrapper) {
     display: flex;
     align-items: center;
   }
 
-  &-input {
+  @include e(input) {
     position: absolute;
     left: 0;
     top: 0;
@@ -23,15 +21,15 @@ $prefixCls: za-checkbox;
     opacity: 0;
   }
 
-  &-text {
+  @include e(text) {
     color: #333;
   }
 
-  &-inner + &-text {
+  &__inner + &__text {
     margin-left: r(10);
   }
 
-  &-inner {
+  @include e(inner) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,112 +47,99 @@ $prefixCls: za-checkbox;
       border-top: 0;
       border-left: 0;
       transform: rotate(45deg) scale(0);
-      transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
+      transition: all 0.2s cubic-bezier(0.71, -0.46, 0.88, 0.6);
     }
   }
-
-  /* 组合 */
-  &-group {
-    &.block {
-      display: flex;
-    }
-
-    &.shape-radius {
-      .#{$prefixCls} {
-        border-radius: $radius-md;
-      }
-    }
-
-    &.shape-round {
-      .#{$prefixCls} {
-        border-radius: r(15);
-      }
-    }
-
-    &.is-compact {
-      .#{$prefixCls} {
-        margin-left: -1px;
-      }
-
-      &.shape-radius {
-        .#{$prefixCls} {
-          border-radius: 0;
-
-          &:first-child {
-            border-radius: $radius-md 0 0 $radius-md;
-          }
-
-          &:last-child {
-            border-radius: 0 $radius-md $radius-md 0;
-          }
-        }
-      }
-
-      &.shape-round {
-        .#{$prefixCls} {
-          border-radius: 0;
-
-          &:first-child {
-            border-radius: r(15) 0 0 r(15);
-          }
-
-          &:last-child {
-            border-radius: 0 r(15) r(15) 0;
-          }
-        }
-      }
-    }
-  }
-
   /* 选中状态 */
-  &.checked {
-    .#{$prefixCls}-inner {
+  @include m(checked) {
+    @include e(inner) {
       &:before {
         transform: rotate(45deg) scale(1);
-        transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
+        transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
       }
     }
   }
 
   /* 禁用状态 */
-  &.disabled {
-    .#{$prefixCls} {
-      &-inner {
+  @include m(disabled) {
+    @include e(inner) {
+      border-color: $disabled-background;
+      cursor: not-allowed;
+
+      &:before {
         border-color: $disabled-background;
-        cursor: not-allowed;
-
-        &:before {
-          border-color: $disabled-background;
-        }
       }
+    }
 
-      &-text {
-        color: $disabled-color;
-      }
+    @include e(text) {
+      color: $disabled-color;
     }
   }
 
   /* 形状 */
-  &.shape-radius {
-    .#{$prefixCls} {
-      &-inner {
-        border-radius: $radius-md;
-      }
+  @include m(radius) {
+    @include e(inner) {
+      border-radius: $radius-md;
     }
   }
 
-  &.shape-round {
-    .#{$prefixCls} {
-      &-inner {
-        border-radius: r(20);
-      }
+  @include m(round) {
+    @include e(inner) {
+      border-radius: r(20);
     }
   }
 
-  &.shape-circle {
-    .#{$prefixCls} {
-      &-inner {
-        border-radius: r(1000);
+  @include m(circle) {
+    @include e(inner) {
+      border-radius: r(1000);
+    }
+  }
+}
+
+/* 组合 */
+@include b(checkbox-group) {
+  @include m(block) {
+    display: flex;
+  }
+
+  @include m(radius) {
+    @include b(checkbox) {
+      border-radius: $radius-md;
+    }
+  }
+
+  @include m(round) {
+    @include b(checkbox) {
+      border-radius: r(15);
+    }
+  }
+
+  @include m(compact) {
+    @include b(checkbox) {
+      margin-left: -1px;
+
+      @include m(radius) {
+        border-radius: 0;
+
+        &:first-child {
+          border-radius: $radius-md 0 0 $radius-md;
+        }
+
+        &:last-child {
+          border-radius: 0 $radius-md $radius-md 0;
+        }
+      }
+
+      @include m(round) {
+        border-radius: 0;
+
+        &:first-child {
+          border-radius: r(15) 0 0 r(15);
+        }
+
+        &:last-child {
+          border-radius: 0 r(15) r(15) 0;
+        }
       }
     }
   }

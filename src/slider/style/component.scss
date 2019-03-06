@@ -1,13 +1,11 @@
-$prefixCls: za-slider;
-
-.#{$prefixCls} {
+@include b(slider) {
   position: relative;
   width: 100%;
   height: r(2);
   margin: r(14) 0;
   padding: 0 r(14);
 
-  &-line {
+  @include e(line) {
     flex: 1;
     height: r(2);
     background-color: #d6d6d6;
@@ -18,7 +16,7 @@ $prefixCls: za-slider;
     }
   }
 
-  &-handle {
+  @include e(handle) {
     position: absolute;
     left: 0;
     top: r(-14);
@@ -34,7 +32,7 @@ $prefixCls: za-slider;
     }
   }
 
-  &.disabled {
+  @include m(disabled) {
     cursor: not-allowed;
     opacity: $disabled-opacity;
   }

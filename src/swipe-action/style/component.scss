@@ -1,13 +1,13 @@
-$prefixCls: za-swipeAction;
+@import '../../button/style/mixins.scss';
 
-.#{$prefixCls} {
+@include b(swipe-action) {
   position: relative;
 
-  &-content {
+  @include e(content) {
     position: relative;
   }
 
-  &-actions {
+  @include e(actions) {
     &-left,
     &-right {
       display: flex;
@@ -25,40 +25,40 @@ $prefixCls: za-swipeAction;
     }
   }
 
-  &-button {
+  @include e(button) {
     display: flex;
     width: r(80);
     justify-content: center;
     align-items: center;
     font-size: r(14);
 
-    &.theme-default {
+    @include m(default) {
       @include button-theme($button-default-color, $button-default-bg, $button-default-border);
       @include button-bordered($button-default-border, $button-default-bg, $button-default-border);
     }
 
     /* Button themes */
-    &.theme-primary {
+    @include m(primary) {
       @include button-theme($button-primary-color, $button-primary-bg, $button-primary-border);
       @include button-bordered($button-primary-border, $button-primary-bg, $button-primary-border);
     }
 
-    &.theme-info {
+    @include m(info) {
       @include button-theme($button-info-color, $button-info-bg, $button-info-border);
       @include button-bordered($button-info-border, $button-info-bg, $button-info-border);
     }
 
-    &.theme-success {
+    @include m(success) {
       @include button-theme($button-success-color, $button-success-bg, $button-success-border);
       @include button-bordered($button-success-border, $button-success-bg, $button-success-border);
     }
 
-    &.theme-warning {
+    @include m(warning) {
       @include button-theme($button-warning-color, $button-warning-bg, $button-warning-border);
       @include button-bordered($button-warning-border, $button-warning-bg, $button-warning-border);
     }
 
-    &.theme-error {
+    @include m(error) {
       @include button-theme($button-error-color, $button-error-bg, $button-error-border);
       @include button-bordered($button-error-border, $button-error-bg, $button-error-border);
     }
