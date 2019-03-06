@@ -1,14 +1,12 @@
-$prefixCls: za-panel;
-
-.#{$prefixCls} {
-  &-header {
+@include b(panel) {
+  @include e(header) {
     display: flex;
     padding: r(25) r(15) r(7) r(15);
     font-size: r(14);
     color: #999;
   }
 
-  &-footer {
+  @include e(footer) {
     display: flex;
     padding: r(7) r(15);
     margin-bottom: r(10);
@@ -16,13 +14,13 @@ $prefixCls: za-panel;
     color: #999;
   }
 
-  &-body {
+  @include e(body) {
     position: relative;
     background: #fff;
     @include onepx(top bottom);
   }
 
-  &-title {
+  @include e(title) {
     flex: 1;
 
     .za-icon {

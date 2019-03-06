@@ -1,8 +1,6 @@
 @import '../../message/style/component.scss';
 
-$prefixCls: za-navbar;
-
-.#{$prefixCls} {
+@include b(navbar) {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,7 +10,7 @@ $prefixCls: za-navbar;
   overflow: hidden;
   background: #fdfdfd;
 
-  &-title {
+  @include e(title) {
     color: #464646;
     font-weight: 500;
     font-size: r(18);
@@ -22,7 +20,7 @@ $prefixCls: za-navbar;
     transform: translate(-50%, 0);
   }
 
-  &-left {
+  @include e(left) {
     padding-left: r(16);
 
     .za-icon {
@@ -30,7 +28,7 @@ $prefixCls: za-navbar;
     }
   }
 
-  &-right {
+  @include e(right) {
     padding-right: r(16);
 
     .za-icon {
@@ -42,4 +40,3 @@ $prefixCls: za-navbar;
     font-size: r(24);
   }
 }
-

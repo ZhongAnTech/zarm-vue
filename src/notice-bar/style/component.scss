@@ -2,7 +2,7 @@
 
 $prefixCls: za-noticebar;
 
-.#{$prefixCls} {
+@include b(noticebar) {
   display: flex;
   align-items: center;
   width: 100%;
@@ -10,7 +10,7 @@ $prefixCls: za-noticebar;
   position: relative;
   overflow: hidden;
 
-  &-body {
+  @include e(body) {
     position: absolute;
     left: 0;
     white-space: nowrap;
