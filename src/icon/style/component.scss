@@ -1,16 +1,10 @@
-$prefixCls: za-icon;
-
-@mixin icon-theme($color) {
-  color: $color;
-}
-
 @font-face {
   font-family: "zarmicon";
   src: url('#{$icon-url}.eot');
   src: url('#{$icon-url}.eot?#iefix') format('embedded-opentype'), url('#{$icon-url}.woff') format('woff'), url('#{$icon-url}.ttf') format('truetype'), url('#{$icon-url}.svg#dragonicon') format('svg');
 }
 
-.#{$prefixCls} {
+@include b(icon) {
   display: inline-block;
   font-family: "zarmicon" !important;
   font-size: r(16);
@@ -18,28 +12,28 @@ $prefixCls: za-icon;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  &.theme-default {
-    @include icon-theme($theme-default);
+  @include m(default) {
+    color: $theme-default;
   }
 
-  &.theme-primary {
-    @include icon-theme($theme-primary);
+  @include m(primary) {
+    color: $theme-primary;
   }
 
-  &.theme-info {
-    @include icon-theme($theme-info);
+  @include m(info) {
+    color: $theme-info;
   }
 
-  &.theme-success {
-    @include icon-theme($theme-success);
+  @include m(success) {
+    color: $theme-success;
   }
 
-  &.theme-warning {
-    @include icon-theme($theme-warning);
+  @include m(warning) {
+    color: $theme-warning;
   }
 
-  &.theme-error {
-    @include icon-theme($theme-error);
+  @include m(error) {
+    color: $theme-error;
   }
 
   &-arrow-top:before { content: "\e60e"; }

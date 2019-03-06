@@ -1,14 +1,14 @@
 $prefixCls: za-filepicker;
 
-.#{$prefixCls} {
+@include b(filepicker) {
   position: relative;
   display: inline-block;
 
-  &.disabled {
+  @include m(disabled) {
     opacity: $disabled-opacity;
   }
 
-  &-trigger {
+  @include e(trigger) {
     position: absolute;
     left: 0;
     top: 0;
@@ -17,7 +17,7 @@ $prefixCls: za-filepicker;
     opacity: 0;
   }
 
-  &-input {
+  @include e(input) {
     display: none;
   }
 }

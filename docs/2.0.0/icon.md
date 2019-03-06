@@ -25,7 +25,7 @@ const ICONS = [
   'arrow-left', 'arrow-right', 'arrow-top', 'arrow-bottom',
   'add', 'add-round', 'add-round-fill',
   'minus', 'minus-round', 'minus-round-fill',
-  'broadcast',
+  'broadcast', 'search',
 ].sort();
 
 export default {
@@ -47,4 +47,4 @@ export default {
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-stepper | | 类名前缀 |
 | theme | string | 'default' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
-| type | string | | 'right', 'right-round', 'right-round-fill','wrong', 'wrong-round', 'wrong-round-fill', 'info-round', 'info-round-fill', 'question-round', 'question-round-fill', 'warning-round', 'warning-round-fill', 'arrow-left', 'arrow-right', 'arrow-top', 'arrow-bottom', 'add', 'add-round', 'add-round-fill', 'minus', 'minus-round', 'minus-round-fill', 'broadcast' | 图标类型 |
+| type | string | | 'right', 'right-round', 'right-round-fill','wrong', 'wrong-round', 'wrong-round-fill', 'info-round', 'info-round-fill', 'question-round', 'question-round-fill', 'warning-round', 'warning-round-fill', 'arrow-left', 'arrow-right', 'arrow-top', 'arrow-bottom', 'add', 'add-round', 'add-round-fill', 'minus', 'minus-round', 'minus-round-fill', 'broadcast', 'search' | 图标类型 |

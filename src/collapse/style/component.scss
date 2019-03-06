@@ -1,12 +1,8 @@
-@import '../../popup/style/component.scss';
-
-$prefixCls: za-collapse;
-
-.#{$prefixCls} {
+@include b(collapse) {
   overflow: hidden;
 
   &-item {
-    &-title {
+    @include e(title) {
       position: relative;
       height: $collapse-height;
       line-height: $collapse-height;
@@ -18,7 +14,7 @@ $prefixCls: za-collapse;
       }
     }
 
-    &-content {
+    @include e(content) {
       position: relative;
       height: 0;
       overflow: hidden;
@@ -31,13 +27,13 @@ $prefixCls: za-collapse;
       &-inner {
         padding: $padding-v-lg $collapse-padding;
       }
+
+      @include m(anim) {
+        transition: all 0.15s ease-out;
+      }
     }
 
-    &-content-anim {
-      transition: all 0.15s ease-out;
-    }
-
-    &-arrow {
+    @include e(arrow) {
       position: absolute;
       width: r(10);
       height: r(10);
@@ -49,31 +45,30 @@ $prefixCls: za-collapse;
       transition: transform 0.15s ease-out;
       transform-origin: 50% 50%;
 
-      &-hidden {
+      @include m(hidden) {
         visibility: hidden;
       }
     }
 
-    &.active {
-      .#{$prefixCls}-item-content {
+    @include m(active) {
+      @include e(content) {
         height: auto;
       }
 
-      .#{$prefixCls}-item-arrow {
+      @include e(arrow) {
         transform: rotate(-135deg);
       }
     }
 
-    &.disabled {
-      .#{$prefixCls}-item-arrow {
+    @include m(disabled) {
+      @include e(arrow) {
         border-right-color: $collapse-arrow-disabled-color;
         border-bottom-color: $collapse-arrow-disabled-color;
       }
     }
 
     @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
-      &-title,
-      &-content {
+      @include e(title, content) {
         @include onepx(bottom);
 
         &:after {

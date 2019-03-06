@@ -3,7 +3,7 @@
     v-if='visible'
     :class='{
       [`${prefixCls}`]: true,
-      [type]: !!type,
+      [`${prefixCls}--${type}`]: !!type,
     }' @click='handleClick'></div>
 </template>
 

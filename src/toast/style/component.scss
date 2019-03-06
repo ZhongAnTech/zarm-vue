@@ -1,8 +1,6 @@
 @import '../../mask/style/component.scss';
 
-$prefixCls: za-toast;
-
-.#{$prefixCls} {
+@include b(toast) {
   display: none;
   position: fixed;
   left: 0;
@@ -13,13 +11,13 @@ $prefixCls: za-toast;
   user-select: none;
   z-index: $zIndex-toast;
 
-  &-open {
+  @include m(open) {
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  &-container {
+  @include e(container) {
     position: relative;
     max-width: 70%;
     min-width: r(100);

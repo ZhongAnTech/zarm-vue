@@ -1,6 +1,4 @@
-$prefixCls: za-mask;
-
-.#{$prefixCls} {
+@include b(mask) {
   position: fixed;
   left: 0;
   top: 0;
@@ -9,15 +7,7 @@ $prefixCls: za-mask;
   background-color: rgba(0, 0, 0, $opacity-mask);
   z-index: $zIndex-mask;
 
-  // &.light {
-  //   background-color: rgba(255, 255, 255, .3);
-  // }
-
-  // &.dark {
-  //   background-color: rgba(0, 0, 0, .7);
-  // }
-
-  &.transparent {
+  @include m(transparent) {
     background-color: transparent;
   }
 }

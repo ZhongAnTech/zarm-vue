@@ -1,9 +1,9 @@
 <template lang="html">
   <div :class='{
     [`${prefixCls}`]: true,
-    [`${prefixCls}-open`]: currentVisible,
+    [`${prefixCls}--open`]: currentVisible,
     }'>
-    <div :class='`${prefixCls}-container`'>
+    <div :class='`${prefixCls}__container`'>
       <slot>{{message}}</slot>
     </div>
     <za-mask type="transparent" :visible='currentVisible' @mask-close='onMaskClose'></za-mask>
