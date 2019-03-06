@@ -1,4 +1,4 @@
-$prefixCls: za-button;
+@import './mixins.scss';
 
 @include b(button) {
   display: inline-block;

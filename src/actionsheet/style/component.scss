@@ -1,3 +1,4 @@
+@import '../../button/style/mixins.scss';
 @import '../../popup/style/component.scss';
 
 @include b(actionsheet) {

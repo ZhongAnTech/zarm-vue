@@ -1,13 +1,12 @@
 <template lang="html">
   <svg :class='{
     [`${prefixCls}`]: true,
-    [`${prefixCls}__line`]: true,
     [`${prefixCls}--${size}`]: !!size,
   }'
     :viewBox='`0 0 ${diameter} ${diameter}`'
     ref='svg'>
-    <circle :class='`${prefixCls}--path`' :cx='half' :cy='half' :r='r' fill="none" :style='{ strokeWidth }' />
-    <circle :class='`${prefixCls}--line`' :cx='half' :cy='half' :r='r' fill="none" :style='style' />
+    <circle :class='`${prefixCls}__path`' :cx='half' :cy='half' :r='r' fill="none" :style='{ strokeWidth }' />
+    <circle :class='`${prefixCls}__line`' :cx='half' :cy='half' :r='r' fill="none" :style='style' />
   </svg>
 </template>
 

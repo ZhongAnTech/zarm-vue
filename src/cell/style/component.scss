@@ -1,12 +1,10 @@
-$prefixCls: za-cell;
-
 @mixin cell-theme($color) {
-  .#{$prefixCls}-footer {
+  @include e(footer) {
     color: $cell-description-color;
   }
 }
 
-.#{$prefixCls} {
+@include b(cell) {
   position: relative;
   overflow: hidden;
   background: $cell-background;
@@ -17,55 +15,54 @@ $prefixCls: za-cell;
     left: $cell-line-padding-left;
   }
 
-  &.theme-primary {
+  @include m(primary) {
     @include cell-theme($theme-primary);
   }
 
-  &.theme-info {
+  @include m(info) {
     @include cell-theme($theme-info);
   }
 
-  &.theme-success {
+  @include m(success) {
     @include cell-theme($theme-success);
   }
 
-  &.theme-warning {
+  @include m(warning) {
     @include cell-theme($theme-warning);
   }
 
-  &.theme-error {
+  @include m(error) {
     @include cell-theme($theme-error);
   }
 
-  &.has-icon {
+  @include m(has-icon) {
     &:after {
       left: r(59);
     }
   }
 
-  &.is-link {
+  @include m(is-link) {
     cursor: pointer;
     user-select: none;
 
-    .#{$prefixCls}-inner {
+    @include e(inner) {
       &:active {
         background-color: $cell-active-background;
       }
     }
 
-    .#{$prefixCls}-title {
+    @include e(title) {
       flex: 1;
     }
   }
 
-  &.disabled {
-    .#{$prefixCls}-body,
-    .#{$prefixCls}-footer {
+  @include m(disabled) {
+    @include e(body, footer) {
       opacity: $disabled-opacity;
     }
   }
 
-  &-inner {
+  @include e(inner) {
     display: flex;
     align-items: center;
     padding: 0 r(15);
@@ -82,19 +79,19 @@ $prefixCls: za-cell;
     }
   }
 
-  &-body {
+  @include e(body) {
     flex: 1;
     display: flex;
   }
 
-  &-footer {
+  @include e(footer) {
     display: flex;
     justify-content: center;
     text-align: right;
     font-size: $cell-description-font-size;
   }
 
-  &-arrow {
+  @include e(arrow) {
     margin-left: r(5);
 
     &:after {
@@ -108,7 +105,7 @@ $prefixCls: za-cell;
     }
   }
 
-  &-icon {
+  @include e(icon) {
     text-align: center;
     margin-right: r(15);
     display: flex;
@@ -121,7 +118,7 @@ $prefixCls: za-cell;
     }
   }
 
-  &-title {
+  @include e(title) {
     width: $cell-label-width;
     padding: r(12) 0;
     overflow: hidden;
@@ -129,13 +126,13 @@ $prefixCls: za-cell;
     font-size: $cell-title-font-size;
   }
 
-  &-content {
+  @include e(content) {
     flex: 1;
     display: flex;
     align-items: center;
   }
 
-  &-help {
+  @include e(help) {
     padding: 0 r(15) r(10) r(15);
   }
 }

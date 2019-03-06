@@ -1,31 +1,21 @@
-$prefixCls: za-activity-indicator;
-$PI: 3.141592674;
-
-@mixin spinner-theme($color) {
-  @include e(line) {
-    stroke: $color;
-  }
-}
-
 @mixin spinner-size($diameter) {
   width: $diameter;
   height: $diameter;
 }
 
 @include b(activity-indicator) {
+  $PI: 3.141592674;
+
   display: inline-block;
   position: relative;
+  stroke: $theme-primary;
+  stroke-dasharray: 100 * $PI;
+  transition: .3s;
   transform: rotate(-90deg);
   @include spinner-size($spinner-diameter-md);
-  @include spinner-theme($theme-primary);
 
-  @include m(path) {
+  @include e(path) {
     stroke: #e6e6e6;
-  }
-
-  @include m(line) {
-    stroke-dasharray: 100 * $PI;
-    transition: .3s;
   }
 
   @include e(text) {
@@ -45,25 +35,4 @@ $PI: 3.141592674;
   @include m(lg) {
     @include spinner-size($spinner-diameter-lg);
   }
-
-  /* themes */
-  // @include m(default) {
-  //   @include spinner-theme($theme-default);
-  // }
-
-  // @include m(primary) {
-  //   @include spinner-theme($theme-primary);
-  // }
-
-  // @include m(info) {
-  //   @include spinner-theme($theme-info);
-  // }
-
-  // @include m(warning) {
-  //   @include spinner-theme($theme-warning);
-  // }
-
-  // @include m(error) {
-  //   @include spinner-theme($theme-error);
-  // }
 }
