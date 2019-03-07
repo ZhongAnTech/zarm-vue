@@ -4,7 +4,7 @@
     [`${prefixCls}--${theme}`]: !!theme,
     [`${prefixCls}--${shape}`]: !!shape,
     [`${prefixCls}--${size}`]: !!size,
-    [`${prefixCls}__block`]: !!block,
+    [`${prefixCls}--block`]: !!block,
     [`${prefixCls}--bordered`]: !!bordered,
     [`${prefixCls}--active`]:  !!active,
     [`${prefixCls}--focus`]:  !!focus,

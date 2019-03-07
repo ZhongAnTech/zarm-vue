@@ -21,8 +21,8 @@ describe('Progress', () => {
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
     expect(wrapper.contains('.za-progress')).toBe(true);
-    expect(wrapper.contains('.za-progress-line')).toBe(true);
-    expect(vm.$el.querySelector('.za-progress-inner').style.height).toEqual('8px');
+    expect(wrapper.contains('.za-progress--line')).toBe(true);
+    expect(vm.$el.querySelector('.za-progress__inner').style.height).toEqual('8px');
   });
 
   it('type', () => {
@@ -32,7 +32,7 @@ describe('Progress', () => {
         percent: 50,
       },
     });
-    expect(wrapper.contains('.za-progress-semi-circle')).toBe(true);
+    expect(wrapper.contains('.za-progress__semi-circle')).toBe(true);
   });
 
   it('percent', () => {
@@ -45,9 +45,9 @@ describe('Progress', () => {
     const {
       vm
     } = wrapper;
-    expect(wrapper.contains('.za-progress-semi-circle')).toBe(true);
-    const strokeDasharray = parseInt(vm.$el.querySelector('.za-progress-line').style.strokeDasharray)
-    const strokeDashoffset = parseInt(vm.$el.querySelector('.za-progress-line').style.strokeDashoffset)
+    expect(wrapper.contains('.za-progress__semi-circle')).toBe(true);
+    const strokeDasharray = parseInt(vm.$el.querySelector('.za-progress__line').style.strokeDasharray)
+    const strokeDashoffset = parseInt(vm.$el.querySelector('.za-progress__line').style.strokeDashoffset)
     expect(strokeDashoffset).toEqual(strokeDasharray * 2);
   });
 
@@ -70,7 +70,7 @@ describe('Progress', () => {
     const {
       vm
     } = wrapper;
-    expect(vm.$el.querySelector('.za-progress-inner').style.borderRadius).toEqual('10px');
+    expect(vm.$el.querySelector('.za-progress__inner').style.borderRadius).toEqual('10px');
   });
 
   it('weight', () => {
@@ -82,7 +82,7 @@ describe('Progress', () => {
     const {
       vm
     } = wrapper;
-    expect(vm.$el.querySelector('.za-progress-inner').style.height).toEqual('12px');
+    expect(vm.$el.querySelector('.za-progress__inner').style.height).toEqual('12px');
   });
 
   it('theme', () => {
@@ -91,6 +91,6 @@ describe('Progress', () => {
         theme: 'info',
       },
     });
-    expect(wrapper.contains('.theme-info')).toBe(true);
+    expect(wrapper.contains('.za-progress--info')).toBe(true);
   });
 });

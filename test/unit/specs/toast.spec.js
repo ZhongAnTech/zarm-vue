@@ -24,7 +24,7 @@ describe('Toast', () => {
     const { vm } = wrapper;
 
     expect(vm.$el.classList.contains('za-toast')).toBe(true);
-    expect(vm.$el.classList.contains('za-toast-open')).toBe(true);
+    expect(vm.$el.classList.contains('za-toast--open')).toBe(true);
   });
 
   it('open and close', done => {
@@ -44,12 +44,12 @@ describe('Toast', () => {
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
 
-    expect(vm.$el.classList.contains('za-toast-open')).toBe(true);
+    expect(vm.$el.classList.contains('za-toast--open')).toBe(true);
     setTimeout(() => {
-      expect(vm.$el.classList.contains('za-toast-open')).toBe(false);
+      expect(vm.$el.classList.contains('za-toast--open')).toBe(false);
       vm.visible = true;
       setTimeout(() => {
-        expect(vm.$el.classList.contains('za-toast-open')).toBe(false);
+        expect(vm.$el.classList.contains('za-toast--open')).toBe(false);
         done();
       }, 30);
     }, 60);
@@ -74,7 +74,7 @@ describe('Toast', () => {
 
     vm.$el.querySelector('.za-mask').click();
     setTimeout(() => {
-      expect(vm.$el.classList.contains('za-toast-open')).toBe(false);
+      expect(vm.$el.classList.contains('za-toast--open')).toBe(false);
       done();
     }, 60);
   });
@@ -118,7 +118,7 @@ describe('Toast', () => {
 
     vm.$el.click();
     vm.$nextTick(() => {
-      expect(document.querySelector('.za-toast .za-toast-container').innerHTML).toEqual('test');
+      expect(document.querySelector('.za-toast .za-toast__container').innerHTML).toEqual('test');
       done();
     });
   });
@@ -142,9 +142,9 @@ describe('Toast', () => {
 
     vm.$el.click();
     setTimeout(() => {
-      expect(document.querySelector('.za-loading-open')).not.toBeUndefined();
+      expect(document.querySelector('.za-loading--open')).not.toBeUndefined();
       setTimeout(() => {
-        expect(document.querySelector('.za-loading-open')).toBeNull();
+        expect(document.querySelector('.za-loading--open')).toBeNull();
         done();
       }, 100);
     }, 20);
@@ -174,9 +174,9 @@ describe('Toast', () => {
 
     vm.$el.click();
     setTimeout(() => {
-      expect(document.querySelector('.za-loading-open')).not.toBeUndefined();
+      expect(document.querySelector('.za-loading--open')).not.toBeUndefined();
       setTimeout(() => {
-        expect(document.querySelector('.za-loading-open')).toBeNull();
+        expect(document.querySelector('.za-loading--open')).toBeNull();
         done();
       }, 100);
     }, 20);

@@ -74,9 +74,9 @@ describe('StackPicker', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    document.querySelector('.za-stack-picker-stack-item').click();
+    document.querySelector('.za-stackpicker__stack-column-item').click();
     vm.$nextTick(() => {
-      expect(document.querySelector('.za-stack-picker-stack-item.active')).not.toBeUndefined();
+      expect(document.querySelector('.za-stackpicker__stack-column-item--active')).not.toBeUndefined();
       done();
     });
   });
@@ -110,7 +110,7 @@ describe('StackPicker', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    document.querySelector('.za-stack-picker-submit').click();
+    document.querySelector('.za-stackpicker__submit').click();
     vm.$nextTick(() => {
       expect(vm.$refs.stackPicker.currentValue.length).toEqual(2);
       done();

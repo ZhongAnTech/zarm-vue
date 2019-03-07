@@ -25,7 +25,7 @@ describe('DatePicker', () => {
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
     vm.$nextTick(() => {
-      expect(wrapper.find('.za-picker')).toBeTruthy();
+      expect(wrapper.find('.za-datepicker')).toBeTruthy();
     });
   });
 
@@ -58,7 +58,7 @@ describe('DatePicker', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    wrapper.find('.za-picker-submit').trigger('click');
+    wrapper.find('.za-datepicker__submit').trigger('click');
     vm.$nextTick(() => {
       expect(value.getFullYear()).toEqual(2018);
       done();
@@ -95,7 +95,7 @@ describe('DatePicker', () => {
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
     vm.$nextTick(() => {
-      wrapper.find('.za-picker-submit').trigger('click');
+      wrapper.find('.za-datepicker__submit').trigger('click');
       setTimeout(() => {
         expect(value.getFullYear()).toEqual(2018);
         expect(value.getMonth()).toEqual(4);
@@ -134,7 +134,7 @@ describe('DatePicker', () => {
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
     vm.$nextTick(() => {
-      wrapper.find('.za-picker-submit').trigger('click');
+      wrapper.find('.za-datepicker__submit').trigger('click');
       setTimeout(() => {
         expect(value.getMonth()).toEqual(4);
         done();
@@ -172,7 +172,7 @@ describe('DatePicker', () => {
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
     vm.$nextTick(() => {
-      wrapper.find('.za-picker-submit').trigger('click');
+      wrapper.find('.za-datepicker__submit').trigger('click');
       setTimeout(() => {
         expect(value.getHours()).toEqual(9);
         expect(value.getMinutes()).toEqual(45);
@@ -211,7 +211,7 @@ describe('DatePicker', () => {
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
     vm.$nextTick(() => {
-      wrapper.find('.za-picker-submit').trigger('click');
+      wrapper.find('.za-datepicker__submit').trigger('click');
       setTimeout(() => {
         expect(value.getHours()).toEqual(9);
         expect(value.getMinutes()).toEqual(20);
@@ -248,7 +248,7 @@ describe('DatePicker', () => {
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
     vm.$nextTick(() => {
-      wrapper.find('.za-picker-submit').trigger('click');
+      wrapper.find('.za-datepicker__submit').trigger('click');
       setTimeout(() => {
         expect(value.getFullYear()).toEqual(2000);
         done();

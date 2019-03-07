@@ -75,7 +75,7 @@ export default {
   props: {
     prefixCls: {
       type: String,
-      default: 'za-picker',
+      default: 'za-datepicker-view',
     },
     title: {
       type: String,

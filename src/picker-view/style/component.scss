@@ -1,6 +1,6 @@
 @import '../../wheel/style/component.scss';
 
-@include b(picker) {
+@include b(picker-view) {
   @include e(panel) {
     height: 210px;
     position: relative;

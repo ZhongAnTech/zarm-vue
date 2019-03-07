@@ -33,7 +33,7 @@ describe('Cell', () => {
         title: '测试',
       },
     });
-    const el = wrapper.find('.za-cell-title');
+    const el = wrapper.find('.za-cell__title');
     expect(el.text()).toEqual('测试');
   });
 
@@ -43,7 +43,7 @@ describe('Cell', () => {
         theme: 'primary',
       },
     });
-    expect(wrapper.contains('.theme-primary')).toBe(true);
+    expect(wrapper.contains('.za-cell--primary')).toBe(true);
   });
 
   it('disabled', () => {
@@ -52,7 +52,7 @@ describe('Cell', () => {
         disabled: true,
       },
     });
-    expect(wrapper.contains('.disabled')).toBe(true);
+    expect(wrapper.contains('.za-cell--disabled')).toBe(true);
   });
 
   it('hasIcon', () => {

@@ -37,7 +37,7 @@ describe('SwipeAction', () => {
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
 
-    expect(vm.$el.classList.contains('za-swipeAction')).toBe(true);
+    expect(vm.$el.classList.contains('za-swipe-action')).toBe(true);
     vm.$destroy();
   });
 
@@ -80,7 +80,7 @@ describe('SwipeAction', () => {
     const { vm } = wrapper;
 
     const el = vm.$el;
-    el.querySelector('.theme-error').click();
+    el.querySelector('.za-swipe-action__button--error').click();
     vm.$nextTick(() => {
       expect(result).toEqual('isClicked');
       done();
@@ -121,7 +121,7 @@ describe('SwipeAction', () => {
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
 
-    const content = vm.$el.querySelector('.za-swipeAction-content');
+    const content = vm.$el.querySelector('.za-swipe-action__content');
     dispatchTouchStart(content, {
       pageX: 10,
       pageY: 10,
@@ -172,7 +172,7 @@ describe('SwipeAction', () => {
 
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    const content = vm.$el.querySelector('.za-swipeAction-content');
+    const content = vm.$el.querySelector('.za-swipe-action__content');
     dispatchTouchStart(content, {
       pageX: 10,
       pageY: 10,
@@ -224,7 +224,7 @@ describe('SwipeAction', () => {
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
 
-    const content = vm.$el.querySelector('.za-swipeAction-content');
+    const content = vm.$el.querySelector('.za-swipe-action__content');
     dispatchTouchStart(content, {
       pageX: 10,
       pageY: 10,

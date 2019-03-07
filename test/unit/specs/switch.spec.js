@@ -16,8 +16,8 @@ describe('Switch', () => {
     const { vm } = wrapper;
 
     expect(vm.$el.classList.contains('za-switch')).toBe(true);
-    expect(vm.$el.classList.contains('disabled')).toBe(true);
-    expect(vm.$el.classList.contains('checked')).toBe(true);
+    expect(vm.$el.classList.contains('za-switch--disabled')).toBe(true);
+    expect(vm.$el.classList.contains('za-switch--checked')).toBe(true);
   });
   
   it('switchOn', () => {
@@ -37,7 +37,7 @@ describe('Switch', () => {
 
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    expect(vm.$el.classList.contains('checked')).toBe(true);
+    expect(vm.$el.classList.contains('za-switch--checked')).toBe(true);
   });
   it('switchOff', () => {
     const TestCompo = {
@@ -56,7 +56,7 @@ describe('Switch', () => {
 
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    expect(vm.$el.classList.contains('checked')).not.toBe(true);
+    expect(vm.$el.classList.contains('za-switch--checked')).not.toBe(true);
   });
   it('click', done => {
     let result;

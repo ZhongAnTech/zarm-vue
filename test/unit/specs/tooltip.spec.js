@@ -65,7 +65,7 @@ describe('Tooltip', () => {
     const { vm } = wrapper;
 
     vm.$nextTick(() => {
-      const messageEl = vm.$el.querySelector('.za-tooltip-inner');
+      const messageEl = vm.$el.querySelector('.za-tooltip__inner');
       expect(messageEl.innerHTML).toEqual('test');
       done();
     });

@@ -30,6 +30,6 @@ describe('Loading', () => {
       },
     }, true);
     wrapper.setData({ visible: false });
-    expect(wrapper.contains('.za-loading-open')).toBe(false);
+    expect(wrapper.contains('.za-loading--open')).toBe(false);
   });
 });

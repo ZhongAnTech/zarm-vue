@@ -11,8 +11,8 @@ describe('ZaMessage', () => {
       },
     }, true);
     expect(wrapper.contains('.za-message')).toBe(true);
-    expect(wrapper.contains('.theme-primary')).toBe(true);
-    expect(wrapper.contains('.size-lg')).toBe(true);
+    expect(wrapper.contains('.za-message--primary')).toBe(true);
+    expect(wrapper.contains('.za-message--lg')).toBe(true);
   });
 
   it('closable', () => {
