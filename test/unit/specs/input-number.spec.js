@@ -54,7 +54,7 @@ describe('InputNumber', () => {
     const { vm } = wrapper;
     vm.$nextTick(() => {
       const disabledItem = document.querySelectorAll('.za-keyboard__item')[9];
-      expect(disabledItem.classList.contains('za-keyboar__item--disabled')).toBe(true);
+      expect(disabledItem.classList.contains('za-keyboard__item--disabled')).toBe(true);
     });
   });
 
