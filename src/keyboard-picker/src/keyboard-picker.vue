@@ -1,16 +1,15 @@
 <template lang="html">
   <div :prefixCls="prefixCls" @click.stop='stopPropagation'>
     <za-popup
-          class='za-popup-inner'
-          :visible='currentVisible'
-          :get-container="getContainer"
-          maskType="transparent"
-          @close='onMaskClick'
-          :closeOnClickModal='closeOnClickModal'>
-          <za-keyboard 
-            :type="type"
-            @keyClick="onKeyClick"
-          />
+      :visible='currentVisible'
+      :get-container="getContainer"
+      maskType="transparent"
+      @close='onMaskClick'
+      :closeOnClickModal='closeOnClickModal'>
+      <za-keyboard 
+        :type="type"
+        @keyClick="onKeyClick"
+      />
     </za-popup>
   </div>
 </template>
