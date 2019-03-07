@@ -1,5 +1,3 @@
-$prefixCls: za-input;
-
 @include b(input) {
   position: relative;
   width: 100%;
@@ -92,20 +90,20 @@ $prefixCls: za-input;
     @include e(picker) {
       background-color: #fff;
     }
+  }
 
-    @include m(focus) {
-      @include e(content) {
-        transform: translate3d(0, 0, 0);
+  @include m(focus) {
+    @include e(content) {
+      transform: translate3d(0, 0, 0);
 
-        &:after {
-          content: ' ';
-          position: relative;
-          right: 0;
-          top: 10%;
-          height: 80%;
-          border-right: 1.5px solid #108ee9;
-          animation: custom-cursor 1s infinite step-start;
-        }
+      &:after {
+        content: ' ';
+        position: relative;
+        right: 0;
+        top: 10%;
+        height: 80%;
+        border-right: 1.5px solid #108ee9;
+        animation: custom-cursor 1s infinite step-start;
       }
     }
   }
