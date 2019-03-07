@@ -19,7 +19,7 @@ describe('SearchBar', () => {
         shape: 'round',
       },
     });
-    expect(wrapper.contains('.shape-round')).toBe(true);
+    expect(wrapper.contains('.za-search-bar__content--round')).toBe(true);
   });
   
   it('clear', done => {
@@ -45,7 +45,7 @@ describe('SearchBar', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    wrapper.find('.za-input-clear').trigger('click');
+    wrapper.find('.za-input__clear').trigger('click');
     vm.$nextTick(() => {
       vm.$nextTick(() => {
         expect(result).toEqual('');
@@ -87,7 +87,7 @@ describe('SearchBar', () => {
     const { vm } = wrapper;
     wrapper.setData({'focusStatus': true});
     setTimeout(() => {
-      wrapper.find('.za-search-bar-cancel').trigger('click');
+      wrapper.find('.za-search-bar__cancel').trigger('click');
       vm.$nextTick(() => {
         expect(result).not.toBeUndefined();
         done();
@@ -154,7 +154,7 @@ describe('SearchBar', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    wrapper.find('.za-search-bar-form').trigger('submit');
+    wrapper.find('.za-search-bar__form').trigger('submit');
     const { vm } = wrapper;
     vm.$nextTick(() => {
       expect(result).toBe(true);

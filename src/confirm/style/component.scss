@@ -1,0 +1,6 @@
+@import '../../button/style/component.scss';
+@import '../../modal/style/component.scss';
+
+@include b(confirm) {
+  text-align: center;
+}

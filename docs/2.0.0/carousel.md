@@ -90,11 +90,11 @@ const ITEMS = [
     img: '1',
   },
   {
-    url: 'https://static.zhongan.com/website/health/zarm/images/banners/2.png',
+    url: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
     img: '2',
   },
   {
-    url: 'https://static.zhongan.com/website/health/zarm/images/banners/3.png',
+    url: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
     img: '3',
   },
 ];

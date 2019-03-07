@@ -5,10 +5,10 @@
 :::demo 普通
 ```html
     <za-cell title='单行文本'>
-      <za-input ref='inputFirst' v-model='v1' type="text" placeholder="type is text" @change='handleChange'></za-input>
+      <za-input ref='inputFirst' v-model='v1' type="text" placeholder="type is text" @change='handleChange' :clearable="true"></za-input>
     </za-cell>
     <za-cell title='多行文本'>
-      <za-input v-model='v2' type="textarea" placeholder="type is textarea" @change='handleChange2'></za-input>
+      <za-input v-model='v2' type="textarea" placeholder="type is textarea" @change='handleChange2' :clearable="true"></za-input>
     </za-cell>
     <za-cell>
       <a @click='focus'>click to focus the first input</a>

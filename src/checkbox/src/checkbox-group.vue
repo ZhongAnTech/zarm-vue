@@ -1,10 +1,10 @@
 <template lang="html">
   <div :class="{
       [`${prefixCls}`]: true,
-      [`shape-${shape}`]: !!shape,
-      'is-compact': compact,
-      block,
-      disabled,
+      [`${prefixCls}--${shape}`]: !!shape,
+      [`${prefixCls}--compact`]: compact,
+      [`${prefixCls}--block`]: block,
+      [`${prefixCls}--disabled`]: disabled,
     }">
     <slot></slot>
   </div>

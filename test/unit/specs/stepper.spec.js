@@ -11,8 +11,8 @@ describe('Stepper', () => {
       },
     });
     expect(wrapper.contains('.za-stepper')).toBe(true);
-    expect(wrapper.contains('.size-sm')).toBe(true);
-    expect(wrapper.contains('.shape-radius')).toBe(true);
+    expect(wrapper.contains('.za-stepper--sm')).toBe(true);
+    expect(wrapper.contains('.za-stepper--radius')).toBe(true);
   });
 
   it('input value', done => {
@@ -135,11 +135,11 @@ describe('Stepper', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    vm.$el.querySelector('.za-stepper-sub').click();
+    vm.$el.querySelector('.za-stepper__sub').click();
     vm.$nextTick(() => {
       expect(result).not.toBeUndefined();
       expect(vm.stepper).toEqual(-1);
-      vm.$el.querySelector('.za-stepper-plus').click();
+      vm.$el.querySelector('.za-stepper__plus').click();
       vm.$nextTick(() => {
         expect(vm.stepper).toEqual(0);
         done();
@@ -172,11 +172,11 @@ describe('Stepper', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    vm.$el.querySelector('.za-stepper-sub').click();
+    vm.$el.querySelector('.za-stepper__sub').click();
     vm.$nextTick(() => {
       expect(result).not.toBeUndefined();
       expect(vm.stepper).toEqual(-2);
-      vm.$el.querySelector('.za-stepper-plus').click();
+      vm.$el.querySelector('.za-stepper__plus').click();
       vm.$nextTick(() => {
         expect(vm.stepper).toEqual(0);
         done();
@@ -207,7 +207,7 @@ describe('Stepper', () => {
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
 
-    vm.$el.querySelector('.za-stepper-sub').click();
+    vm.$el.querySelector('.za-stepper__sub').click();
     vm.$nextTick(() => {
       expect(result).toBeUndefined();
       expect(vm.stepper).toEqual(0);
@@ -237,7 +237,7 @@ describe('Stepper', () => {
 
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    vm.$el.querySelector('.za-stepper-sub').click();
+    vm.$el.querySelector('.za-stepper__sub').click();
     vm.$nextTick(() => {
       expect(vm.stepper).toEqual(-3);
       done();
@@ -266,7 +266,7 @@ describe('Stepper', () => {
 
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    vm.$el.querySelector('.za-stepper-plus').click();
+    vm.$el.querySelector('.za-stepper__plus').click();
     vm.$nextTick(() => {
       expect(vm.stepper).toEqual(3);
       done();

@@ -9,8 +9,8 @@ export default {
   render() {
     return (
       <li class={
-        `${this.prefixCls}_dates-item${this.data.active ? ' active' : ''}${this.data.inrange ? ' inrange' : ''}${this.data.disabled ? ' disabled' : ''}`}>
-        <div class={`${this.prefixCls}_dates-item_warp`}>
+        `${this.prefixCls}__dates-item${this.data.active ? ' active' : ''}${this.data.inrange ? ' inrange' : ''}${this.data.disabled ? ' disabled' : ''}`}>
+        <div class={`${this.prefixCls}__warp`}>
           {this.dateRender(this.data.date, this.data.disabled)}
         </div>
       </li>

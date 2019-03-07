@@ -1,26 +1,26 @@
 <template lang="html">
   <div :class='{
     [`${prefixCls}`]: true,
-    radius,
+    [`${prefixCls}--radius`]: !!radius,
     [`fade-${animationState}`]: true,
     }' :style='modalStyle'>
-    <div :class='`${prefixCls}-wrapper`'>
+    <div :class='`${prefixCls}__wrapper`'>
       <div :class='{
-        [`${prefixCls}-dialog`]: true,
+        [`${prefixCls}__dialog`]: true,
         [`${animationType}-${animationState}`]: true,
         [`fade-${animationState}`]: true,
         }' :style='dialogStyle' @click='(e) => e.stopPropagation()'>
-        <div :class='`${prefixCls}-header`' v-if='$slots.title || title'>
-          <div :class='`${prefixCls}-header-title`'>
+        <div :class='`${prefixCls}__header`' v-if='$slots.title || title'>
+          <div :class='`${prefixCls}__header-title`'>
             <slot name='title'></slot>
             <template v-if="!$slots.header">{{title}}</template>
           </div>
-          <div v-if='showClose' :class='`${prefixCls}-header-close`' @click='handleClose'><za-icon type='wrong'/></div>
+          <div v-if='showClose' :class='`${prefixCls}__header-close`' @click='handleClose'><za-icon type='wrong'/></div>
         </div>
-        <div :class='`${prefixCls}-body`'>
+        <div :class='`${prefixCls}__body`'>
           <slot></slot>
         </div>
-        <div :class='`${prefixCls}-footer`' v-if='$slots.footer'>
+        <div :class='`${prefixCls}__footer`' v-if='$slots.footer'>
           <slot name='footer'></slot>
         </div>
       </div>

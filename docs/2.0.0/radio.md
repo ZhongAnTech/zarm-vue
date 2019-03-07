@@ -45,9 +45,11 @@
 
 :::demo 块级样式
 ```html
-  <za-radio-group block compact shape='radius' type="button" v-model='radioGroup6' @change='handleGroupChange'>
-    <za-radio v-for='(city, index) in cities' :label='city' :key="city">{{city}}</za-radio>
-  </za-radio-group>
+  <div style="padding:10px;">
+    <za-radio-group block compact shape='radius' type="button" v-model='radioGroup6' @change='handleGroupChange'>
+      <za-radio v-for='(city, index) in cities' :label='city' :key="city">{{city}}</za-radio>
+    </za-radio-group>
+  </div>
 ```
 :::
 

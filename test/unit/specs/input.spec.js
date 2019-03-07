@@ -71,7 +71,7 @@ describe('Input', () => {
     };
     const wrapper = mount(TestCompo);
     setTimeout(() => {
-      expect(wrapper.find('.za-input-length').text()).toEqual('6/200');
+      expect(wrapper.find('.za-input__length').text()).toEqual('6/200');
       done();
     }, 20);
   });

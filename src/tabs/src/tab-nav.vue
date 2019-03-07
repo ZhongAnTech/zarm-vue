@@ -7,7 +7,7 @@ export default {
   props: {
     prefixCls: {
       type: String,
-      default: 'za-tab',
+      default: 'za-tabs',
     },
     disabled: {
       type: Boolean,
@@ -20,8 +20,6 @@ export default {
   methods: {
     handleClick(event) {
       if (this.disabled) return;
-      // this.dispatch('zaTabs', 'nav-click', [this.name, event]);
-      // this._tabs.changeCb(this, event);
       this.$emit('nav-click', this, event);
     },
   },
@@ -35,9 +33,9 @@ export default {
     } = this;
 
     const cls = {
-      [`${prefixCls}-header-item`]: true,
-      disabled,
-      active: this.name === currentName,
+      [`${prefixCls}__header-item`]: true,
+      [`${prefixCls}__header-item--disabled`]: !!disabled,
+      [`${prefixCls}__header-item--active`]: this.name === currentName,
     };
 
     return (

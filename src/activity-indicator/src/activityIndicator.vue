@@ -1,18 +1,17 @@
 <template lang="html">
   <svg :class='{
     [`${prefixCls}`]: true,
-    [`theme-${theme}`]: !!theme,
-    [`size-${size}`]: !!size,
+    [`${prefixCls}--${size}`]: !!size,
   }'
     :viewBox='`0 0 ${diameter} ${diameter}`'
     ref='svg'>
-    <circle :class='`${prefixCls}-path`' :cx='half' :cy='half' :r='r' fill="none" :style='{ strokeWidth }' />
-    <circle :class='`${prefixCls}-line`' :cx='half' :cy='half' :r='r' fill="none" :style='style' />
+    <circle :class='`${prefixCls}__path`' :cx='half' :cy='half' :r='r' fill="none" :style='{ strokeWidth }' />
+    <circle :class='`${prefixCls}__line`' :cx='half' :cy='half' :r='r' fill="none" :style='style' />
   </svg>
 </template>
 
 <script>
-import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
+import { enumGenerator } from '@/utils/validator';
 
 const diameter = 62;
 
@@ -27,11 +26,6 @@ export default {
       type: String,
       validator: enumGenerator(['xl', 'lg', 'sm', 'xs']),
       default: null,
-    },
-    theme: {
-      type: String,
-      validator: defaultThemeValidator,
-      default: 'primary',
     },
     strokeWidth: {
       type: Number,

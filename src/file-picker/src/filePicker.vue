@@ -1,10 +1,10 @@
 <template lang="html">
   <div :class='{
     [prefixCls]: true,
-    disabled,
+    [`${prefixCls}--disabled`]: !!disabled,
     }'>
     <input
-      :class='`${prefixCls}-input`'
+      :class='`${prefixCls}__input`'
       ref='file'
       type="file"
       :accept='accept'
@@ -13,7 +13,7 @@
       @click='handleDefaultInput'
       @change='handleChange'
     />
-    <span :class='`${prefixCls}-trigger`' @click='handleClick' />
+    <span :class='`${prefixCls}__trigger`' @click='handleClick' />
     <slot></slot>
   </div>
 </template>

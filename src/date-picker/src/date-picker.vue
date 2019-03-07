@@ -1,28 +1,27 @@
 <template lang='html'>
-  <div :class='{[`${prefixCls}`]: true,[`${prefixCls}-block`]: isSelect}'  @click='handleClick'>
+  <div :class='{[`${prefixCls}`]: true,[`${prefixCls}--block`]: isSelect}'  @click='handleClick'>
     <div v-if='isSelect' :class='{
-      [`${prefixCls}-input`]: true,
-      [`${prefixCls}-placeholder`]: !date,
-      [`${prefixCls}-disabled`]: !!disabled,
+      [`${prefixCls}--input`]: true,
+      [`${prefixCls}--placeholder`]: !date,
+      [`${prefixCls}--disabled`]: !!disabled,
     }'>
       <input type="hidden" :value='date' />
       {{date ? formatFn(date) : placeholder}}
     </div>
     <div :class='{
-        [`${prefixCls}-container`]: true,
+        [`${prefixCls}__container`]: true,
         [customCls]: !!customCls,
       }' @click.stop='() => {}'>
     <za-popup
-      class='za-popup-inner'
       :visible='currentVisible'
       :get-container="getContainer"
       @close='onMaskClick'
       :closeOnClickModal='closeOnClickModal'>
-      <div :class='`${prefixCls}-wrapper`'>
-        <div :class='`${prefixCls}-header`'>
-          <div :class='`${prefixCls}-cancel`' @click='onCancel'>{{cancelText}}</div>
-          <div :class='`${prefixCls}-title`'>{{title}}</div>
-          <div :class='`${prefixCls}-submit`' @click='onOk'>{{okText}}</div>
+      <div :class='`${prefixCls}__wrapper`'>
+        <div :class='`${prefixCls}__header`'>
+          <div :class='`${prefixCls}__cancel`' @click='onCancel'>{{cancelText}}</div>
+          <div :class='`${prefixCls}__title`'>{{title}}</div>
+          <div :class='`${prefixCls}__submit`' @click='onOk'>{{okText}}</div>
         </div>
          <za-date-picker-view
            :title="title"
@@ -70,7 +69,7 @@ export default {
   props: {
     prefixCls: {
       type: String,
-      default: 'za-picker',
+      default: 'za-datepicker',
     },
     title: {
       type: String,

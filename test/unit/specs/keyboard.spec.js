@@ -9,21 +9,21 @@ describe('Keyboard', () => {
         type: 'number',
       },
     });
-    expect(wrapper.contains('.za-keyboard-item')).toBe(true);
+    expect(wrapper.contains('.za-keyboard__item')).toBe(true);
   });
 
   it('create price keyboard', () => {
     const wrapper = mount(Keyboard, {
       type: 'price',
     });
-    expect(wrapper.contains('.za-keyboard-item')).toBe(true);
+    expect(wrapper.contains('.za-keyboard__item')).toBe(true);
   });
 
   it('create idcard keyboard', () => {
     const wrapper = mount(Keyboard, {
       type: 'idcard',
     });
-    expect(wrapper.contains('.za-keyboard-item')).toBe(true);
+    expect(wrapper.contains('.za-keyboard__item')).toBe(true);
   });
 
   it('create keyboard picker', () => {
@@ -31,7 +31,7 @@ describe('Keyboard', () => {
       type: 'number',
       visible: true,
     });
-    expect(wrapper.contains('.za-keyboard-item')).toBe(true);
+    expect(wrapper.contains('.za-keyboard__item')).toBe(true);
   });
 
   it('click 1 key', () => {
@@ -50,7 +50,7 @@ describe('Keyboard', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    wrapper.find('.za-keyboard-item').trigger('click');
+    wrapper.find('.za-keyboard__item').trigger('click');
     expect(result).toBe('1');
   });
 
@@ -70,7 +70,7 @@ describe('Keyboard', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    wrapper.find('.za-keyboard-item-ok').trigger('click');
+    wrapper.find('.za-keyboard__item--ok').trigger('click');
     expect(result).toBe('ok');
   });
 });

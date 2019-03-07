@@ -1,5 +1,5 @@
 <template lang="html">
-  <div :class="prefixCls">
+  <div :class="`${prefixCls}__body`">
     <slot></slot>
   </div>
 </template>
@@ -10,7 +10,7 @@ export default {
   props: {
     prefixCls: {
       type: String,
-      default: 'za-panel-body',
+      default: 'za-panel',
     },
   },
   data() {

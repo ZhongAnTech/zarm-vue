@@ -27,7 +27,7 @@ describe('Carousel', () => {
     const { vm } = wrapper;
     vm.$nextTick(() => {
       expect(vm.$el.classList.contains('za-carousel')).toBe(true);
-      expect(vm.$el.querySelector('.za-carousel-items').children.length).toEqual(3);
+      expect(vm.$el.querySelector('.za-carousel__items').children.length).toEqual(3);
       vm.$destroy();
       done();
     });
@@ -56,7 +56,7 @@ describe('Carousel', () => {
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
     vm.$nextTick(() => {
-      expect(vm.$el.querySelector('.za-carousel-items').children.length).toEqual(5);
+      expect(vm.$el.querySelector('.za-carousel__items').children.length).toEqual(5);
       done();
     });
   });
@@ -85,7 +85,7 @@ describe('Carousel', () => {
     const { vm } = wrapper;
     setTimeout(() => {
       setTimeout(() => {
-        const translate = vm.$el.querySelector('.za-carousel-items').style.transform;
+        const translate = vm.$el.querySelector('.za-carousel__items').style.transform;
         expect(translate).not.toEqual('translate3d(0px, 0px, 0px)');
         done();
       }, 60);
@@ -167,7 +167,7 @@ describe('Carousel', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    const el = vm.$el.querySelector('.za-carousel-items');
+    const el = vm.$el.querySelector('.za-carousel__items');
     triggerDrag(el, 50, 50);
     triggerDrag(el, -450, 50);
     vm.$nextTick(() => {

@@ -1,10 +1,10 @@
 <template lang="html">
-  <div :class="`${prefixCls}-footer`">
-    <div :class='`${prefixCls}-title`' v-if='$slots.title || title'>
+  <div :class="`${prefixCls}__footer`">
+    <div :class='`${prefixCls}__title`' v-if='$slots.title || title'>
       <slot name='title'></slot>
       <template v-if="!$slots.title">{{title}}</template>
     </div>
-    <div :class='`${prefixCls}-more`' v-if='$slots.more || more'>
+    <div :class='`${prefixCls}__more`' v-if='$slots.more || more'>
       <slot name='more'></slot>
       <template v-if="!$slots.more">{{more}}</template>
     </div>

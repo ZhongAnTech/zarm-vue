@@ -1,4 +1,2 @@
-@import '../../../styles/core/mixins/index';
-@import '../../../styles/core/functions/index';
-@import '../../../styles/variables';
-@import '../../panel/style/index';
+@import '../../../styles/default.scss';
+@import './component.scss';

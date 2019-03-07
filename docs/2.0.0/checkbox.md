@@ -112,6 +112,7 @@
 
 :::demo 块级样式
 ```html
+  <div style="padding:10px;">
     <za-checkbox-group
       v-model='checkboxGroupCompact2'
       type="button"
@@ -120,6 +121,7 @@
       @change='handleGroupChange'>
       <za-checkbox v-for='(city, index) in cities' :label="city" :key="city" :disabled='index === 2'>{{city}}</za-checkbox>
     </za-checkbox-group>
+  </div>
 ```
 :::
 

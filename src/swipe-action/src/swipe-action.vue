@@ -1,19 +1,19 @@
 <template lang="html">
   <div :class='`${prefixCls}`' ref='wrap' v-if='left.length || right.length'>
-    <div :class='`${prefixCls}-actions-left`' ref='left' v-if='left.length'>
+    <div :class='`${prefixCls}__actions-left`' ref='left' v-if='left.length'>
       <div v-for='(button, index) in left' :key='index' :class='{
-        [`${prefixCls}-button`]: true,
-        [`theme-${button.theme}`]: true,
+        [`${prefixCls}__button`]: true,
+        [`${prefixCls}__button--${button.theme}`]: true,
         }' @click='handleBtnClick(button, $event)'>
-        <div :class='`${prefixCls}-text`'>{{button.text || ('left' + index)}}</div>
+        <div :class='`${prefixCls}__text`'>{{button.text || ('left' + index)}}</div>
       </div>
     </div>
-    <div :class='`${prefixCls}-actions-right`' ref='right' v-if='right.length'>
+    <div :class='`${prefixCls}__actions-right`' ref='right' v-if='right.length'>
       <div v-for='(button, index) in right' :key='index' :class='{
-        [`${prefixCls}-button`]: true,
-        [`theme-${button.theme}`]: true,
+        [`${prefixCls}__button`]: true,
+        [`${prefixCls}__button--${button.theme}`]: true,
         }' @click='handleBtnClick(button, $event)'>
-        <div :class='`${prefixCls}-text`'>{{button.text || ('right' + index)}}</div>
+        <div :class='`${prefixCls}__text`'>{{button.text || ('right' + index)}}</div>
       </div>
     </div>
     <za-drag
@@ -21,14 +21,14 @@
       :dragMove='onDragMove'
       :dragEnd='onDragEnd'>
       <div
-        :class='`${prefixCls}-content`'
+        :class='`${prefixCls}__content`'
         ref='content'>
         <slot></slot>
       </div>
     </za-drag>
   </div>
-  <div v-else :class='`${prefixCls}-wrap`'>
-    <div :class='`${prefixCls}-content`'>
+  <div v-else :class='`${prefixCls}__wrap`'>
+    <div :class='`${prefixCls}__content`'>
       <slot></slot>
     </div>
   </div>
@@ -46,7 +46,7 @@ export default {
   props: {
     prefixCls: {
       type: String,
-      default: 'za-swipeAction', // naming different from zarm
+      default: 'za-swipe-action', // naming different from zarm
     },
     theme: {
       type: String,

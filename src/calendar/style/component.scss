@@ -1,0 +1,136 @@
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@include b(calendar) {
+  width: 100%;
+  min-height: $calendar-height;
+  background: $calendar-background;
+  transition: all 0.5s;
+  transform: translateX(0);
+
+  @include e(week) {
+    top: 0;
+    left: 0;
+    z-index: 3001;
+    display: flex;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background: $calendar-week-bar-background;
+    color: $calendar-week-bar-color;
+    font-size: $calendar-week-bar-fontsize;
+  }
+
+  @include e(week-item) {
+    flex: 1;
+    text-align: center;
+  }
+
+  @include e(month-head) {
+    font-size: $calendar-day-title-fontsize;
+    font-weight: 500;
+    color: $calendar-day-color;
+    margin: 20px 0 0 30px;
+  }
+
+  @include e(dates) {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @include e(warp) {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-size: $calendar-day-fontsize;
+    font-weight: 400;
+    color: $calendar-day-range-color;
+  }
+
+  @include e(dates-item) {
+    position: relative;
+    width: 14.28571%;
+    padding-bottom: 14.28571%;
+
+    &.active {
+      @include e(warp) {
+        color: $calendar-day-selected-color;
+      }
+
+      @include e(date-num) {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 50%;
+        text-align: center;
+      }
+
+      &::before {
+        content: '';
+        z-index: 1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: $calendar-day-selected-background;
+        box-shadow: $calendar-day-today-shadow;
+      }
+    }
+
+    &.disabled {
+      @include e(warp) {
+        color: $color-text-disabled;
+      }
+    }
+
+    &.inrange {
+      &::after {
+        content: ' ';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 0;
+        width: 100%;
+        height: 30px;
+        background: $calendar-day-range-background;
+      }
+    }
+
+    &.inrange:last-child::after,
+    &:nth-child(7n).inrange::after,
+    &.active.inrange::after {
+      border-radius: 0 15px 15px 0;
+      width: calc(50% + 16px);
+      right: calc(50% - 15px);
+    }
+
+    &:nth-child(7n + 1).inrange::after,
+    &:not(.inrange) + .inrange::after {
+      border-radius: 15px 0 0 15px;
+      width: calc(50% + 16px);
+      left: calc(50% - 15px);
+    }
+
+    &:not(.inrange) + .inrange:nth-child(7n)::after,
+    &:not(.inrange) + .active.inrange:last-child::after {
+      border-radius: 15px;
+      width: 30px;
+      left: calc(50% - 15px);
+    }
+  }
+}

@@ -1,24 +1,23 @@
 <template lang="html">
   <span :class='{
       [`${prefixCls}`]: true,
-      // [`theme-${theme}`]: !!theme,
-      [`size-${size}`]: !!size,
-      [`shape-${shape}`]: !!shape,
-      disabled,
+      [`${prefixCls}--${size}`]: !!size,
+      [`${prefixCls}--${shape}`]: !!shape,
+      [`${prefixCls}--disabled`]: !!disabled,
     }'
   >
     <span :class='{
-        [`${prefixCls}-sub`]: true,
-        disabled: subDisabled,
+        [`${prefixCls}__sub`]: true,
+        [`${prefixCls}__sub-disabled`]: subDisabled,
       }'
       @click='handleSubClick'
     >
       <za-icon type='minus'></za-icon>
     </span>
-    <input ref='stepper-input' maxlength="22" :class='`${prefixCls}-body`' type="tel" :disabled='disabled' :value='currentValue' @input='handleInput'/>
+    <input ref='stepper-input' maxlength="22" :class='`${prefixCls}__body`' type="tel" :disabled='disabled' :value='currentValue' @input='handleInput'/>
     <span :class='{
-        [`${prefixCls}-plus`]: true,
-        disabled: plusDisabled,
+        [`${prefixCls}__plus`]: true,
+        [`${prefixCls}__plus-disabled`]: plusDisabled,
       }'
       @click='handlePlusClick'
     >

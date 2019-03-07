@@ -109,7 +109,7 @@ describe('Picker', () => {
       },
     });
     wrapper.element.click();
-    wrapper.find('.za-picker-submit').trigger('click');
+    wrapper.find('.za-picker__submit').trigger('click');
     expect(value[1].value).toBe('3');
   });
 
@@ -154,7 +154,7 @@ describe('Picker', () => {
         },
       },
     });
-    wrapper.find('.za-picker-submit').trigger('click');
+    wrapper.find('.za-picker__submit').trigger('click');
     expect(value[1].value).toBe('12');
   });
 
@@ -184,7 +184,7 @@ describe('Picker', () => {
     }, { sync: false });
     wrapper.setData({ data1: data2 });
     wrapper.vm.$nextTick(() => {
-      const items = wrapper.findAll('.za-wheel-item').length;
+      const items = wrapper.findAll('.za-wheel__item').length;
       expect(items).toBe(3);
     });
   });
@@ -211,7 +211,7 @@ describe('Picker', () => {
     });
     wrapper.element.click();
     expect(wrapper.vm.visible).toBe(true);
-    wrapper.find('.za-picker-cancel').trigger('click');
+    wrapper.find('.za-picker__cancel').trigger('click');
     expect(wrapper.vm.visible).toBe(false);
   });
 
@@ -242,7 +242,7 @@ describe('Picker', () => {
         },
       },
     });
-    wrapper.find('.za-picker-submit').trigger('click');
+    wrapper.find('.za-picker__submit').trigger('click');
     expect(value.value).toBe('1');
     expect(value.label).toBe('选项一');
     expect(wrapper.vm.value[0]).toBe('1');

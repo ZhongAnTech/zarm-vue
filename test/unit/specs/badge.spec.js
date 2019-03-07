@@ -26,7 +26,7 @@ describe('Badge', () => {
         theme: 'error',
       },
     });
-    expect(wrapper.contains('.theme-error')).toBe(true);
+    expect(wrapper.contains('.za-badge--error')).toBe(true);
   });
 
   it('shape', () => {
@@ -35,7 +35,7 @@ describe('Badge', () => {
         shape: 'radius',
       },
     });
-    expect(wrapper.contains('.shape-radius')).toBe(true);
+    expect(wrapper.contains('.za-badge--radius')).toBe(true);
   });
 
   it('sup', () => {
@@ -44,7 +44,7 @@ describe('Badge', () => {
         sup: true,
       },
     });
-    expect(wrapper.contains('.za-badge-sup-up')).toBe(true);
+    expect(wrapper.contains('.za-badge__sup--up')).toBe(true);
   });
 
   it('click', done => {
@@ -66,7 +66,7 @@ describe('Badge', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    vm.$el.querySelector('.za-badge-sup').click();
+    vm.$el.querySelector('.za-badge__sup').click();
     setTimeout(() => {
       expect(result).toEqual(1);
       done();

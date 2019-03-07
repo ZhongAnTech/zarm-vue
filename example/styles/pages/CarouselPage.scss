@@ -1,11 +1,11 @@
 @import "../core/func";
 
 .carousel-page {
-  .carousel-item {
+  .za-carousel__item {
     width: 100vw;
     height: 48vw;
 
-    &-pic {
+    .carousel-item-pic {
       img {
         width: 100%;
         height: auto;

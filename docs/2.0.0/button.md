@@ -18,8 +18,8 @@
 
 :::demo 幽灵按钮
 ```html
-            <za-button block ghost bordered>primary ghost</za-button>
-            <za-button block ghost bordered disabled>primary ghost disabled</za-button>
+            <za-button theme="primary" block ghost bordered>primary ghost</za-button>
+            <za-button theme="primary" block ghost bordered disabled>primary ghost disabled</za-button>
 ```
 :::
 

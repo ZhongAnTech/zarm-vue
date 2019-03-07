@@ -1,3 +1,8 @@
+$namespace: 'za';
+$element-separator: '__';
+$modifier-separator: '--';
+$state-prefix: '--';
+
 // 基础
 $base-fontSize: 14;
 $placeholder-color: #a9a9a9;
@@ -221,3 +226,7 @@ $badge-text-color:#fff;
 // Stepper
 $stepper-height-sm: r(28);
 $stepper-height-md: r(36);
+
+// stackpicker
+$picker-item-height: r(30);
+$picker-stackitem-height: r(35);

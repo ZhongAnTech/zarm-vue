@@ -1,34 +1,34 @@
 <template lang="html">
   <div :class="{
-    [this.prefixCls]: true,
-    disabled,
-    [`theme-${theme}`]: !!theme,
-    'is-link': !disabled && !!isLink,
-    'has-icon': !!hasIcon,
-    'has-arrow': hasArrow,
+    [`${prefixCls}`]: true,
+    [`${prefixCls}--disabled`]: !!disabled,
+    [`${prefixCls}--${theme}`]: !!theme,
+    [`${prefixCls}--is-link`]: !disabled && !!isLink,
+    [`${prefixCls}--has-icon`]: !!hasIcon,
+    [`${prefixCls}--has-arrow`]: hasArrow,
     }" @click='handleClick'>
-    <div :class="`${prefixCls}-inner`">
-      <div :class='`${prefixCls}-header`'>
-        <div :class='`${prefixCls}-icon`' v-if='$slots.icon'>
+    <div :class="`${prefixCls}__inner`">
+      <div :class='`${prefixCls}__header`'>
+        <div :class='`${prefixCls}__icon`' v-if='$slots.icon'>
           <slot name='icon'></slot>
         </div>
       </div>
-      <div :class='`${prefixCls}-body`'>
-        <div :class='`${prefixCls}-title`' v-if='$slots.title || title'>
+      <div :class='`${prefixCls}__body`'>
+        <div :class='`${prefixCls}__title`' v-if='$slots.title || title'>
           <slot name='title'></slot>
           <template v-if="!$slots.title">{{title}}</template>
         </div>
-        <div :class='`${prefixCls}-content`'>
+        <div :class='`${prefixCls}__content`'>
           <slot></slot>
         </div>
       </div>
-      <div :class='`${prefixCls}-footer`' v-if='$slots.description || description'>
+      <div :class='`${prefixCls}__footer`' v-if='$slots.description || description'>
         <slot name='description'></slot>
         <template v-if="!$slots.description">{{description}}</template>
       </div>
-      <div :class='`${prefixCls}-arrow`' v-if='hasArrow'/>
+      <div :class='`${prefixCls}__arrow`' v-if='hasArrow'/>
     </div>
-    <div :class='`${prefixCls}-help`' v-if='$slots.help || help'>
+    <div :class='`${prefixCls}__help`' v-if='$slots.help || help'>
       <slot name='help'></slot>
       <template v-if="!$slots.help">{{help}}</template>
     </div>

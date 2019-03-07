@@ -2,14 +2,14 @@
   <div
        :class="{
          [`${prefixCls}`]: true,
-         [`${prefixCls}-number`]: true,
-         ['disabled']: disabled,
-         ['focus']: visible,
+         [`${prefixCls}__number`]: true,
+         [`${prefixCls}--disabled`]: disabled,
+         [`${prefixCls}--focus`]: visible,
        }" 
        @click="onFocus"
        >
-        <div v-show='!currentValue' :class="`${prefixCls}-placeholder`">{{ placeholder }}</div>
-        <div :class="`${prefixCls}-content`" ref="content">{{ currentValue }}</div>
+        <div v-show='!currentValue' :class="`${prefixCls}__placeholder`">{{ placeholder }}</div>
+        <div :class="`${prefixCls}__content`" ref="content">{{ currentValue }}</div>
         <input
           type="hidden"
           :value="currentValue"

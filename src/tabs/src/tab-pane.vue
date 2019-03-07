@@ -10,7 +10,7 @@ export default {
   props: {
     prefixCls: {
       type: String,
-      default: 'za-tab',
+      default: 'za-tabs',
     },
     disabled: {
       type: Boolean,
@@ -74,14 +74,14 @@ export default {
     } = this;
 
     const cls = {
-      [`${prefixCls}-panel-item`]: true,
-      active: name === currentName,
+      [`${prefixCls}__panel-item`]: true,
+      [`${prefixCls}__panel-item--active`]: name === currentName,
     };
 
     const panel = canSwipe ? <za-carousel-item>{this.$slots.default}</za-carousel-item>
       :
       (
-        <div class={`${prefixCls}-panel`}>
+        <div class={`${prefixCls}__panel`}>
           <div class={cls}>
             {this.$slots.default}
           </div>

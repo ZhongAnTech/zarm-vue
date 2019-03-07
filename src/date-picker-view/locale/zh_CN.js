@@ -1,3 +1,4 @@
+/* istanbul ignore next */
 export default {
   year: '年',
   month: '月',

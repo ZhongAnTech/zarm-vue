@@ -55,7 +55,7 @@ describe('Slider', () => {
     };
     const wrapper = mount(TestCompo, { attachToDocument: true });
     const { vm } = wrapper;
-    const el = wrapper.find('.za-slider-handle');
+    const el = wrapper.find('.za-slider__handle');
     triggerDrag(el, 100, 0);
     vm.$nextTick(() => {
       expect(vm.$refs.slider.value).not.toEqual(0);
@@ -76,7 +76,7 @@ describe('Slider', () => {
       `,
     };
     const wrapper = mount(TestCompo, { attachToDocument: true });
-    const el = wrapper.find('.za-slider-handle');
+    const el = wrapper.find('.za-slider__handle');
     triggerDrag(el, 100, 0);
   });
 });

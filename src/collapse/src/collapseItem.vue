@@ -128,14 +128,22 @@ export default {
   },
   render() {
     const { prefixCls, active, title, itemAnimated, animatedHeight, disabled } = this;
+    const itemCls = `${prefixCls}-item`;
     return (
-      <div class={{ [`${prefixCls}-item`]: true, active, disabled }} ref='collapseItem'>
-        <div class={`${prefixCls}-item-title`} on-click={this.onClickItem}>
+      <div class={{
+        [`${itemCls}`]: true,
+        [`${itemCls}--active`]: !!active,
+        [`${itemCls}--disabled`]: !!disabled,
+        }} ref='collapseItem'>
+        <div class={`${itemCls}__title`} on-click={this.onClickItem}>
           <div>{title}</div>
-          <div class={{ [`${prefixCls}-item-arrow`]: true }}></div>
+          <div class={{ [`${itemCls}__arrow`]: true }}></div>
         </div>
-        <div class={{ [`${prefixCls}-item-content`]: true, [`${prefixCls}-item-content-anim`]: itemAnimated }} ref='animateRoom' style={animatedHeight}>
-          <div class={`${prefixCls}-item-content-inner`}>
+        <div class={{
+          [`${itemCls}__content`]: true,
+          [`${itemCls}__content--anim`]: itemAnimated,
+          }} ref='animateRoom' style={animatedHeight}>
+          <div class={`${itemCls}__content-inner`}>
             {this.$slots.default}
           </div>
         </div>

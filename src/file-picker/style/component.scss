@@ -1,0 +1,24 @@
+$prefixCls: za-filepicker;
+
+@include b(filepicker) {
+  position: relative;
+  display: inline-block;
+
+  @include m(disabled) {
+    opacity: $disabled-opacity;
+  }
+
+  @include e(trigger) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+  }
+
+  @include e(input) {
+    display: none;
+  }
+}
+

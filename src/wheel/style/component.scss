@@ -1,0 +1,25 @@
+@include b(wheel) {
+  $itemHeight: r(34);
+  $itemRows: 5;
+
+  display: block;
+  position: relative;
+  overflow: hidden;
+  height: $itemRows * $itemHeight;
+  width: 100%;
+
+  @include e(content) {
+    margin-top: 68px;
+  }
+
+  @include e(item) {
+    text-align: center;
+    font-size: r(18);
+    line-height: $itemHeight;
+    height: $itemHeight;
+    color: #000;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}

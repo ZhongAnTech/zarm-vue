@@ -1,11 +1,2 @@
-@import '../../../styles/core/mixins/index';
-@import '../../../styles/core/functions/index';
-@import '../../../styles/variables';
-@import '../../button/style/index';
-@import '../../modal/style/index';
-$prefixCls: za-confirm;
-
-.#{$prefixCls} {
-  text-align: center;
-}
-
+@import '../../../styles/default.scss';
+@import './component.scss';

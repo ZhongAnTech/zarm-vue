@@ -8,7 +8,7 @@ describe('Button', () => {
         theme: 'primary',
       },
     });
-    expect(wrapper.contains('.theme-primary')).toBe(true);
+    expect(wrapper.contains('.za-button--primary')).toBe(true);
   });
 
   it('prefixCls', () => {
@@ -26,7 +26,7 @@ describe('Button', () => {
         size: 'xl',
       },
     });
-    expect(wrapper.contains('.size-xl')).toBe(true);
+    expect(wrapper.contains('.za-button--xl')).toBe(true);
   });
 
   it('shape', () => {
@@ -35,7 +35,7 @@ describe('Button', () => {
         shape: 'radius',
       },
     });
-    expect(wrapper.contains('.shape-radius')).toBe(true);
+    expect(wrapper.contains('.za-button--radius')).toBe(true);
   });
 
   it('block', () => {
@@ -44,7 +44,7 @@ describe('Button', () => {
         block: true,
       },
     });
-    expect(wrapper.contains('.block')).toBe(true);
+    expect(wrapper.contains('.za-button--block')).toBe(true);
   });
 
   it('bordered', () => {
@@ -53,7 +53,7 @@ describe('Button', () => {
         bordered: true,
       },
     });
-    expect(wrapper.contains('.bordered')).toBe(true);
+    expect(wrapper.contains('.za-button--bordered')).toBe(true);
   });
 
   it('active', () => {
@@ -62,7 +62,7 @@ describe('Button', () => {
         active: true,
       },
     });
-    expect(wrapper.contains('.active')).toBe(true);
+    expect(wrapper.contains('.za-button--active')).toBe(true);
   });
 
   it('focus', () => {
@@ -71,7 +71,7 @@ describe('Button', () => {
         focus: true,
       },
     });
-    expect(wrapper.contains('.focus')).toBe(true);
+    expect(wrapper.contains('.za-button--focus')).toBe(true);
   });
 
   it('disabled', () => {
@@ -80,7 +80,7 @@ describe('Button', () => {
         disabled: true,
       },
     });
-    expect(wrapper.contains('.disabled')).toBe(true);
+    expect(wrapper.contains('.za-button--disabled')).toBe(true);
   });
 
   it('loading', () => {

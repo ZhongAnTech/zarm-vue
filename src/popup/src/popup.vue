@@ -1,12 +1,12 @@
 <template lang="html">
   <div :class='{
       [`${prefixCls}`]: true,
-      [`${prefixCls}-hidden`]: !currentVisible,
+      [`${prefixCls}--hidden`]: !currentVisible,
     }'
   >
     <div :class='{
-        [`${prefixCls}-wrapper`]: true,
-        [`${prefixCls}-wrapper-${direction}`]: true,
+        [`${prefixCls}__wrapper`]: true,
+        [`${prefixCls}__wrapper-${direction}`]: true,
       }'
       :style='transitionDurationStyle'
     >
