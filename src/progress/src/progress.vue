@@ -26,7 +26,6 @@
           :stroke-dasharray='dasharray'
           :stroke-dashoffset='dashoffset'
         />
-
       </svg>
     </div>
 
