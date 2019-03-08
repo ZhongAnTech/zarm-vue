@@ -1,5 +1,5 @@
 <template lang="html">
-  <za-popup :visible='currentVisible' :get-container="getContainer" @close='handlePopupClose'>
+  <za-popup :visible='currentVisible' :get-container="getContainer" @maskClick='handlePopupClose'>
     <div :class='{
       [`${prefixCls}`]: true,
       [`shape-${shape}`]: !!shape,

@@ -7,8 +7,9 @@
     <div :class='{
         [`${prefixCls}-wrapper`]: true,
         [`${prefixCls}-wrapper-${direction}`]: true,
+        [`${animationType}-${animationState}`]: directionCenter,
       }'
-      :style='transitionDurationStyle'
+      :style='animationDurationStyle'
     >
       <slot></slot>
     </div>
@@ -17,7 +18,7 @@
       :style='animationDurationStyle'
       :visible='maskVisible'
       :type='maskType'
-      @mask-close='onMaskClose' />
+      @click="onMaskClick"/>
   </div>
 </template>
 
@@ -32,84 +33,80 @@ export default {
   },
   mixins: [getContainer],
   props: {
-    prefixCls: {
-      type: String,
-      default: 'za-popup',
-    },
-    direction: {
-      type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['top', 'right', 'bottom', 'left'].indexOf(v) >= 0;
-      },
-      default: 'bottom',
-    },
     visible: {
       type: Boolean,
       default: false,
     },
-    autoClose: {
-      type: Boolean,
-      default: false,
+    direction: {
+      type: String,
+      validator: function (v) { // eslint-disable-line object-shorthand
+        return ['top', 'right', 'bottom', 'left', 'center'].indexOf(v) >= 0;
+      },
+      default: 'center',
     },
-    mask: {
-      type: Boolean,
-      default: true,
-    },
-    duration: {
-      type: Number,
-      default: 3000,
+    animationType: {
+      type: String,
+      validator: function (v) { // eslint-disable-line object-shorthand
+        return [
+          'fade', 'door', 'flip', 'rotate', 'zoom',
+          'moveUp', 'moveDown', 'moveLeft', 'moveRight',
+          'slideUp', 'slideDown', 'slideLeft', 'slideRight',
+        ].indexOf(v) >= 0;
+      },
+      default: 'fade',
     },
     animationDuration: {
       type: Number,
       default: 200,
     },
-    maskType: {
-      type: String,
-      validator: function (v) { // eslint-disable-line object-shorthand
-        return ['transparent', 'light', 'normal', 'dark'].indexOf(v) >= 0;
-      },
-      default: 'normal',
-    },
-    closeOnClickModal: {
+    hasMask: {
       type: Boolean,
       default: true,
     },
+    maskType: {
+      type: String,
+      validator: function (v) { // eslint-disable-line object-shorthand
+        return ['normal', 'transparent'].indexOf(v) >= 0;
+      },
+      default: 'normal',
+    },
+    prefixCls: {
+      type: String,
+      default: 'za-popup',
+    },
   },
   computed: {
-    transitionDurationStyle() {
-      return {
-        WebkitTransitionDuration: `${this.animationDuration}ms`,
-        transitionDuration: `${this.animationDuration}ms`,
-      };
-    },
     animationDurationStyle() {
       return {
         WebkitAnimationDuration: `${this.animationDuration}ms`,
         animationDuration: `${this.animationDuration}ms`,
       };
     },
+    directionCenter() {
+      return this.direction === 'center';
+    },
   },
   data() {
     return {
       currentVisible: this.visible,
       animationState: 'enter',
-      maskVisible: this.mask && this.visible,
+      maskVisible: this.hasMask && this.visible,
     };
   },
   watch: {
     visible(value, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
       if (value === this.currentVisible) return;
-      if (this.timerEnter || this.timerLeave) {
-        clearTimeout(this.timerEnter);
-        clearTimeout(this.timerLeave);
-      }
+      this.removeTimer();
       if (value) {
         this.enter();
       } else {
-        this.currentVisible = value;
+        if (!this.directionCenter) {
+          this.currentVisible = value;
+        }
         this.animationState = 'leave';
         this.timerLeave = setTimeout(() => {
           this.maskVisible = false;
+          this.currentVisible = value;
         }, this.animationDuration);
       }
     },
@@ -119,45 +116,14 @@ export default {
       this.currentVisible = true;
       this.maskVisible = true;
       this.animationState = 'enter';
-
-      if (this.duration === 0) return;
-      if (this.timerEnter) {
-        clearTimeout(this.timerEnter);
-      }
-      if (this.autoClose) {
-        this.timerEnter = setTimeout(() => {
-          this.leave('timeout');
-        }, this.duration);
-      }
     },
-    leave(reason, event) {
-      this.currentVisible = false;
-      // mask start leaving
-      this.animationState = 'leave';
-      this.$emit('update:visible', false);
-      this.$emit('close', reason, event);
-
+    removeTimer() {
       if (this.timerLeave) {
         clearTimeout(this.timerLeave);
       }
-      // remove mask after animationDuration
-      this.timerLeave = setTimeout(() => {
-        this.maskVisible = false;
-      }, this.animationDuration);
     },
-    onMaskClose(event) {
-      if (!this.closeOnClickModal) return;
-      // clear autoClose timer
-      if (this.timerEnter) {
-        clearTimeout(this.timerEnter);
-      }
-      this.leave('clickaway', event);
-    },
-    removeTimer() {
-      if (this.timerEnter || this.timerLeave) {
-        clearTimeout(this.timerEnter);
-        clearTimeout(this.timerLeave);
-      }
+    onMaskClick(event) {
+      this.$emit('maskClick', event);
     },
   },
   mounted() {

@@ -11,7 +11,7 @@
         [`${prefixCls}-container`]: true,
         [`${prefixCls}-hidden`]: !currentVisible,
       }' @click.stop='() => {}'>
-        <za-popup :visible='currentVisible' :get-container="getContainer" @close='onPopupClose'>
+        <za-popup :visible='currentVisible' :get-container="getContainer" @maskClick='onPopupClose'>
           <div :class='`${prefixCls}-wrapper`'>
             <div :class='`${prefixCls}-header`'>
               <div :class='`${prefixCls}-cancel`' @click='handleCancel'>{{cancelText}}</div>

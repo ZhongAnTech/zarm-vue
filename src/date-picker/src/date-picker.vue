@@ -16,7 +16,7 @@
       class='za-popup-inner'
       :visible='currentVisible'
       :get-container="getContainer"
-      @close='onMaskClick'
+      @maskClick='onMaskClick'
       :closeOnClickModal='closeOnClickModal'>
       <div :class='`${prefixCls}-wrapper`'>
         <div :class='`${prefixCls}-header`'>

@@ -5,8 +5,7 @@
           :visible='currentVisible'
           :get-container="getContainer"
           maskType="transparent"
-          @close='onMaskClick'
-          :closeOnClickModal='closeOnClickModal'>
+          @maskClick='onMaskClick'>
           <za-keyboard 
             :prefixCls="prefixCls"
             :type="type"

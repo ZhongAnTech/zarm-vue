@@ -6,7 +6,7 @@
     <div :class='`${prefixCls}-container`'>
       <slot>{{message}}</slot>
     </div>
-    <za-mask type="transparent" :visible='currentVisible' @mask-close='onMaskClose'></za-mask>
+    <za-mask type="transparent" :visible='currentVisible' @click='onMaskClose'></za-mask>
   </div>
 </template>
 

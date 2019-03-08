@@ -4,7 +4,7 @@
     :class='{
       [`${prefixCls}`]: true,
       [type]: !!type,
-    }' @click='handleClick'></div>
+    }'></div>
 </template>
 
 <script>
@@ -22,15 +22,12 @@ export default {
     type: {
       type: String,
       validator: function (v) { // eslint-disable-line object-shorthand
-        return ['transparent', 'light', 'normal', 'dark'].indexOf(v) >= 0;
+        return ['transparent', 'normal'].indexOf(v) >= 0;
       },
       default: 'normal',
     },
   },
   methods: {
-    handleClick(event) {
-      this.$emit('mask-close', event);
-    },
   },
 };
 </script>
