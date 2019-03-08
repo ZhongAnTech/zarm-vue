@@ -83,6 +83,7 @@ export default {
   watch: {
     refreshing(val) {
       const refreshState = val ? REFRESH_STATE.loading : REFRESH_STATE.normal;
+      this.loadState = '';
       this.doRefreshAction(refreshState);
     },
     loading(val) {
@@ -147,8 +148,7 @@ export default {
       }
     },
     onSrcoll() {
-      if (this.refreshState !== REFRESH_STATE.normal ||
-        this.loadState !== LOAD_STATE.normal) {
+      if (this.refreshState !== REFRESH_STATE.normal || this.loadState === LOAD_STATE.loading || this.loadState === LOAD_STATE.complete) {
         return;
       }
       const { onLoad } = this;
