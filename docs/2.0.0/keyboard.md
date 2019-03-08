@@ -2,16 +2,20 @@
 
 ## 虚拟键盘 Keyboard & KeyboardPicker
 
-:::demo 类型
+:::demo 平铺键盘 Keyboard
 ```html
-    <za-cell title='数字' @click="showPicker('visible1')">
-      {{v1}}
-    </za-cell>
-    <za-cell title='金额' @click="showPicker('visible2')">
-      {{v2}}
-    </za-cell>
-      <za-cell title='证件' @click="showPicker('visible3')">
-      {{v3}}
+    <za-keyboard type="number" ></za-keyboard>
+```
+:::
+
+:::demo 键盘触发器 KeyboardPicker
+```html
+    <za-cell title="键盘类型">
+      <za-select
+        v-model='v1'
+        :data-source='data1'
+        @ok='handleOk'
+        @cancel='handleCancel'/>
     </za-cell>
     <za-keyboard-picker :visible.sync="visible1" type="number" @keyClick="handleChange1" ></za-keyboard-picker>
     <za-keyboard-picker :visible.sync="visible2" type="price" @keyClick="handleChange2" ></za-keyboard-picker>
@@ -19,11 +23,6 @@
 ```
 :::
 
-:::demo 键盘
-```html
-    <za-keyboard type="number" className="demo-class"></za-keyboard>
-```
-:::
 
 ### Vue Script
 ```javascript
@@ -41,20 +40,32 @@ export default {
       visible2: false,
       visible3: false,
       v1:'',
-      v2:'',
-      v3:'',
+      data1: [
+        { value: 'number', label: '数字' },
+        { value: 'price', label: '金额' },
+        { value: 'idcard', label: '证件' },
+      ]
     }
   },
   methods: {
+    handleOk(v) {
+      const self = this;
+      switch(v.value) {
+        case 'number': self.visible1 = true;break;
+        case 'price': self.visible2 = true;break;
+        case 'idcard': self.visible3 = true;break;
+        default:break;
+      }
+    },
+    handleCancel(v) {
+      this.v1 = '';
+    },
     handleChange1(key) {
       if (['close', 'ok'].indexOf(key) > -1) {
         return;
       }
       this.v1 = getValue(this.v1, key)
       console.log(this.v1);
-    },
-    showPicker(name) {
-      this[name] = true;
     },
     handleChange2(key) {
       if (['close', 'ok'].indexOf(key) > -1) {

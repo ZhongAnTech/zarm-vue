@@ -2,20 +2,20 @@
   <za-popup :visible='currentVisible' :get-container="getContainer" @maskClick='handlePopupClose'>
     <div :class='{
       [`${prefixCls}`]: true,
-      [`shape-${shape}`]: !!shape,
-      [`${prefixCls}-spacing`]: spacing,
+      [`${prefixCls}--${shape}`]: !!shape,
+      [`${prefixCls}--spacing`]: spacing,
     }'>
-      <div :class='`${prefixCls}-actions`'>
+      <div :class='`${prefixCls}__actions`'>
         <a v-for='(action, index) in actions' :class='{
-          [`${prefixCls}-item`]: true,
-          [`theme-${action.theme}`]: !!action.theme,
+          [`${prefixCls}__item`]: true,
+          [`${prefixCls}__${action.theme}`]: !!action.theme,
         }'
         :key='index'
         @click='action.onClick'
         >{{action.text}}</a>
       </div>
-      <div :class='`${prefixCls}-cancel`' v-if='showCancel'>
-        <a :class='`${prefixCls}-item`' @click='onCancel'>{{cancelText}}</a>
+      <div :class='`${prefixCls}__cancel`' v-if='showCancel'>
+        <a :class='`${prefixCls}__item`' @click='onCancel'>{{cancelText}}</a>
       </div>
     </div>
   </za-popup>

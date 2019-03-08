@@ -152,21 +152,21 @@
     render() {
       return (
         <div class={`${this.prefixCls} ${this.className}`} style={this.styles}>
-          <ul class={`${this.prefixCls}_week`}>
+          <ul class={`${this.prefixCls}__week`}>
             {
-              weekList.map(item => <li class={`${this.prefixCls}_week-item`}>
+              weekList.map(item => <li class={`${this.prefixCls}__week-item`}>
                   {item}
                 </li>)
             }
           </ul>
-          <ul class={`${this.prefixCls}_month`}>
+          <ul class={`${this.prefixCls}__month`}>
             {
               this.monthList.map(month => {
                 return (<li>
-                  <h3 class={`${this.prefixCls}_month-head`}>{month.title}</h3>
-                  <ul class={`${this.prefixCls}_dates`}>
+                  <h3 class={`${this.prefixCls}__month-head`}>{month.title}</h3>
+                  <ul class={`${this.prefixCls}__dates`}>
                     {
-                      Array.from({ length: month.dates[0].date.getDay() }, () => <li class={`${this.prefixCls}_dates-item`}/>)
+                      Array.from({ length: month.dates[0].date.getDay() }, () => <li class={`${this.prefixCls}__dates-item`}/>)
                     }
                     {
                       month.dates.map(dateItem => {

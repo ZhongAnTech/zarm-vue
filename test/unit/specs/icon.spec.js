@@ -10,7 +10,7 @@ describe('Icon', () => {
       },
     });
     expect(wrapper.contains('.za-icon')).toBe(true);
-    expect(wrapper.contains('.theme-primary')).toBe(true);
+    expect(wrapper.contains('.za-icon--primary')).toBe(true);
   });
 
   it('click', done => {

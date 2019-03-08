@@ -1,12 +1,12 @@
 <template lang="html">
   <div :class='`${prefixCls}`'>
-    <div :class="`${prefixCls}-left`">
+    <div :class="`${prefixCls}__left`">
       <slot name="left"></slot>
     </div>
-    <div :class='`${prefixCls}-title`'>
+    <div :class='`${prefixCls}__title`'>
       <slot name="title"></slot>
     </div>
-    <div :class='`${prefixCls}-right`'>
+    <div :class='`${prefixCls}__right`'>
       <slot name="right"></slot>
     </div>
   </div>

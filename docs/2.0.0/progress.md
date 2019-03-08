@@ -5,19 +5,19 @@
 :::demo 基本
 ```html
   <div class="progress" style="padding:20px 0;">
-    <za-progress :percent='percent' :theme='theme' :shape='shape' :weight='weight' :prefixCls='prefixCls' >
+    <za-progress :percent='percent' :theme='theme' :shape='shape' :weight='weight' >
       {{percent + '%'}}
     </za-progress>
   </div>
   <div class="progress">
-    <za-progress type='circle' :percent='percent' :theme='theme' :shape='shape' :weight='weight' :prefixCls='prefixCls'>
+    <za-progress type='circle' :percent='percent' :theme='theme' :shape='shape' :weight='weight'>
       <div class="progress-content">
         <span class="progress-text">{{percent}}</span><span class="progress-percent">%</span>
       </div>
     </za-progress>
   </div>
   <div class="progress">
-    <za-progress type='semi-circle' :percent='percent' :theme='theme' :shape='shape' :weight='weight' :prefixCls='prefixCls'>
+    <za-progress type='semi-circle' :percent='percent' :theme='theme' :shape='shape' :weight='weight'>
       <div class="progress-content">
         <span class="progress-text">{{percent}}</span><span class="progress-percent">%</span>
       </div>

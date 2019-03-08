@@ -1,5 +1,8 @@
 <template lang="html">
-  <div :class='{[`${prefixCls}`]: true,disabled}'>
+  <div :class='{
+    [`${prefixCls}`]: true,
+    [`${prefixCls}--disabled`]: !!disabled
+    }'>
     <za-drag
       :dragStart='onDragStart'
       :dragMove='onDragMove'
@@ -8,13 +11,13 @@
         :aria-valuemin='min'
         :aria-valuemax='max'
         :aria-valuenow='value'>
-        <div :class='`${prefixCls}-line`' ref='line'>
-          <div :class='`${prefixCls}-line-bg`' :style='{width:`${offset}px`}'></div>
+        <div :class='`${prefixCls}__line`' ref='line'>
+          <div :class='`${prefixCls}__line-bg`' :style='{width:`${offset}px`}'></div>
         </div>
         <div
-          :class='`${prefixCls}-handle`'
+          :class='`${prefixCls}__handle`'
           :style='{left:`${offset}px`}'>
-          <div :class='`${prefixCls}-handle-shadow`' ref="shadow"></div>
+          <div :class='`${prefixCls}__handle-shadow`' ref="shadow"></div>
         </div>
       </div>
      </za-drag>

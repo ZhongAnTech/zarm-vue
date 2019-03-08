@@ -49,7 +49,7 @@ describe('collapse', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    const titleEl = wrapper.find('.za-collapse-item-title');
+    const titleEl = wrapper.find('.za-collapse-item__title');
     titleEl.trigger('click');
     vm.$nextTick(() => {
       expect(index).toEqual('0');
@@ -95,7 +95,7 @@ describe('collapse', () => {
     const curActiveItem = vm.$el.querySelectorAll('.za-collapse-item')[2];
     vm.activeKey = ['1', '2', '3'];
     setTimeout(() => {
-      expect(curActiveItem.classList.contains('active')).toBe(true);
+      expect(curActiveItem.classList.contains('za-collapse-item--active')).toBe(true);
       done();
     }, 20);
   });
@@ -139,7 +139,7 @@ describe('collapse', () => {
     const item = vm.$el.querySelectorAll('.za-collapse-item');
     const activeArr = vm.defaultActive;
     activeArr.forEach((arr, index) => {
-      expect(item[index].classList.contains('active')).toBe(true);
+      expect(item[index].classList.contains('za-collapse-item--active')).toBe(true);
     });
   });
 
@@ -179,11 +179,11 @@ describe('collapse', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    const item = vm.$el.querySelectorAll('.za-collapse-item-title');
+    const item = vm.$el.querySelectorAll('.za-collapse-item__title');
     item[1].click();
     vm.$nextTick(() => {
       const curActiveItem = vm.$el.querySelectorAll('.za-collapse-item')[1];
-      expect(curActiveItem.classList.contains('active')).toBe(true);
+      expect(curActiveItem.classList.contains('za-collapse-item--active')).toBe(true);
     });
   });
 
@@ -222,6 +222,6 @@ describe('collapse', () => {
     const item = el.querySelectorAll('.za-collapse-item');
     // 验证点击后不收缩
     item[0].click();
-    expect(item[0].classList.contains('active')).toBe(true);
+    expect(item[0].classList.contains('za-collapse-item--active')).toBe(true);
   });
 });

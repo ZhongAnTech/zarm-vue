@@ -324,9 +324,9 @@ export default {
         <li
           role='tab'
           key={`pagination-${index}`}
-          class={{
-            active: index === currentActiveIndex,
-          }}
+          class={
+            index === currentActiveIndex ? `${prefixCls}__active` : ''
+          }
           style={paginationStyle} ></li>
       );
     });
@@ -343,7 +343,7 @@ export default {
           dragEnd={onDragEnd}>
           <div
             ref='carouselItems'
-            class={`${prefixCls}-items`}
+            class={`${prefixCls}__items`}
             style={itemsStyle}>
             {lastItem}
             {this.$slots.default}
@@ -352,7 +352,7 @@ export default {
         </za-drag>
         {
           showPagination &&
-          <div class={`${prefixCls}-pagination`}>
+          <div class={`${prefixCls}__pagination`}>
             <ul>
               {pagination}
             </ul>

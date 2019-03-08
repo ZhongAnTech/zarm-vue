@@ -53,8 +53,8 @@ describe('InputNumber', () => {
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
     vm.$nextTick(() => {
-      const disabledItem = document.querySelectorAll('.za-keyboard-item')[9];
-      expect(disabledItem.classList.contains('za-keyboard-item-disabled')).toBe(true);
+      const disabledItem = document.querySelectorAll('.za-keyboard__item')[9];
+      expect(disabledItem.classList.contains('za-keyboard__item--disabled')).toBe(true);
     });
   });
 
@@ -74,7 +74,7 @@ describe('InputNumber', () => {
       const zaMaskEl = document.querySelector('.za-mask');
       setTimeout(() => {
         zaMaskEl.click();
-        expect(document.querySelector('.za-popup').classList.contains('.za-popup-hidden')).toBe(false);
+        expect(document.querySelector('.za-popup').classList.contains('.za-popup--hidden')).toBe(false);
         done();
       }, 20);
     });
@@ -99,7 +99,7 @@ describe('InputNumber', () => {
     vm.$nextTick(() => {
       vm.v1 = '12311';
       setTimeout(() => {
-        const contentEl = wrapper.find('.za-input-content');
+        const contentEl = wrapper.find('.za-input__content');
         expect(contentEl.text()).toEqual('12311');
         done();
       }, 20);
@@ -122,7 +122,7 @@ describe('InputNumber', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    wrapper.find('.za-keyboard-item').trigger('click');
+    wrapper.find('.za-keyboard__item').trigger('click');
     vm.$nextTick(() => {
       expect(vm.v1).toEqual('1231');
       done();

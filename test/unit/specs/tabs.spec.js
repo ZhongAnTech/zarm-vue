@@ -6,15 +6,15 @@ describe('Tabs', () => {
   it('create', () => {
     const wrapper = mount(zaTabs, {
       propsData: {
-        prefixCls: 'za-tab',
+        prefixCls: 'za-tabs',
         theme: 'primary',
       },
     });
 
     const { vm } = wrapper;
     const el = vm.$el;
-    expect(el.classList.contains('za-tab')).toBe(true);
-    expect(el.classList.contains('theme-primary')).toBe(true);
+    expect(el.classList.contains('za-tabs')).toBe(true);
+    expect(el.classList.contains('za-tabs--primary')).toBe(true);
   });
 
   it('change active tab', done => {
@@ -53,7 +53,7 @@ describe('Tabs', () => {
     const { vm } = wrapper;
 
     vm.$nextTick(() => {
-      vm.$el.querySelectorAll('.za-tab-header-item')[1].click();
+      vm.$el.querySelectorAll('.za-tabs__header-item')[1].click();
       expect(result).not.toBeUndefined();
       expect(vm.activeName === 'second').toBe(true);
       done();

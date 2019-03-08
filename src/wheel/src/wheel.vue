@@ -1,9 +1,9 @@
 <template lang="html">
   <div :class='prefixCls' ref='wrapper'>
-    <div :class='`${prefixCls}-content`'>
+    <div :class='`${prefixCls}__content`'>
       <div
           :key='index+1'
-          :class='{[`${prefixCls}-item`]: true, [`${prefixCls}-item-selected`] : value === item[valueMember] }'
+          :class='{[`${prefixCls}__item`]: true, [`${prefixCls}__item--selected`] : value === item[valueMember] }'
           v-for='(item,index) in dataSource'
         >
           {{itemRender(item)}}
@@ -62,8 +62,8 @@ export default {
     this.BScroll = new BScroll(this.$refs.wrapper, {
       wheel: {
         selectedIndex: 0,
-        wheelWrapperClass: `${prefixCls}-content`,
-        wheelItemClass: `${prefixCls}-item`,
+        wheelWrapperClass: `${prefixCls}__content`,
+        wheelItemClass: `${prefixCls}__item`,
         adjustTime: 100,
       },
       mouseWheel: {

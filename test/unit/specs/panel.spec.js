@@ -20,10 +20,10 @@ describe('Panel', () => {
       `,
     }, true);
     expect(wrapper.classes().includes('za-panel')).toBe(true);
-    expect(wrapper.find('.za-panel-header .za-panel-title').text()).toBe('普通列表项');
-    expect(wrapper.find('.za-panel-body span').text()).toBe('标题文字');
-    expect(wrapper.find('.za-panel-footer .za-panel-title').text()).toBe('footer');
-    expect(wrapper.find('.za-panel-footer .za-panel-more').text()).toBe('more');
+    expect(wrapper.find('.za-panel__header .za-panel__title').text()).toBe('普通列表项');
+    expect(wrapper.find('.za-panel__body span').text()).toBe('标题文字');
+    expect(wrapper.find('.za-panel__footer .za-panel__title').text()).toBe('footer');
+    expect(wrapper.find('.za-panel__footer .za-panel__more').text()).toBe('more');
   });
 
   it('create using slot', () => {
@@ -46,10 +46,10 @@ describe('Panel', () => {
       `,
     }, true);
     expect(wrapper.classes().includes('za-panel')).toBe(true);
-    expect(wrapper.find('.za-panel-header .za-panel-title span').text()).toBe('普通列表项');
-    expect(wrapper.find('.za-panel-header .za-panel-more span').text()).toBe('more');
-    expect(wrapper.find('.za-panel-body span').text()).toBe('标题文字');
-    expect(wrapper.find('.za-panel-footer .za-panel-title span').text()).toBe('title');
-    expect(wrapper.find('.za-panel-footer .za-panel-more span').text()).toBe('more');
+    expect(wrapper.find('.za-panel__header .za-panel__title span').text()).toBe('普通列表项');
+    expect(wrapper.find('.za-panel__header .za-panel__more span').text()).toBe('more');
+    expect(wrapper.find('.za-panel__body span').text()).toBe('标题文字');
+    expect(wrapper.find('.za-panel__footer .za-panel__title span').text()).toBe('title');
+    expect(wrapper.find('.za-panel__footer .za-panel__more span').text()).toBe('more');
   });
 });

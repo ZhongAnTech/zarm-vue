@@ -1,0 +1,98 @@
+$prefixCls: za-badge;
+
+@mixin badge-theme($color) {
+  @include e(sup) {
+    background-color: $color;
+  }
+}
+
+@include b(badge) {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  @include badge-theme($theme-default);
+
+  @include m(primary) {
+    @include badge-theme($theme-primary);
+  }
+
+  @include m(info) {
+    @include badge-theme($theme-info);
+  }
+
+  @include m(success) {
+    @include badge-theme($theme-success);
+  }
+
+  @include m(warning) {
+    @include badge-theme($theme-warning);
+  }
+
+  @include m(error) {
+    @include badge-theme($theme-error);
+  }
+
+  @include e(sup) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: auto;
+    font-size: $badge-font-size;
+    color: #fff;
+    height: $badge-height;
+    padding: 0 $badge-padding-h;
+    white-space: nowrap;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+
+    @include m(up) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translateX(50%) translateY(-50%);
+    }
+  }
+
+  @include m(dot) {
+    @include e(sup) {
+      width: $badge-dot-diameter;
+      height: $badge-dot-diameter;
+      padding: 0;
+      border-radius: $radius-circle;
+    }
+  }
+
+  @include m(rect) {
+    @include e(sup) {
+      border-radius: 0;
+    }
+  }
+
+  @include m(radius) {
+    @include e(sup) {
+      border-radius: $badge-radius-radius;
+    }
+  }
+
+  @include m(round) {
+    @include e(sup) {
+      border-radius: $badge-round-radius;
+    }
+  }
+
+  @include m(circle) {
+    @include e(sup) {
+      width: $badge-height;
+      padding: 0;
+      border-radius: $badge-round-radius;
+    }
+  }
+
+  @include m(leaf) {
+    @include e(sup) {
+      min-width: $badge-height;
+      border-radius: $radius-round $radius-round $radius-round 0;
+    }
+  }
+}

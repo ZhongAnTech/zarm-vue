@@ -1,16 +1,16 @@
 <template lang="html">
   <a :class='{
     [`${prefixCls}`]: true,
-    [`theme-${theme}`]: !!theme,
-    [`size-${size}`]: !!size,
-    [`shape-${shape}`]: !!shape,
-    block,
-    bordered,
-    active,
-    focus,
-    disabled,
+    [`${prefixCls}--${theme}`]: !!theme,
+    [`${prefixCls}--${shape}`]: !!shape,
+    [`${prefixCls}--${size}`]: !!size,
+    [`${prefixCls}--block`]: !!block,
+    [`${prefixCls}--bordered`]: !!bordered,
+    [`${prefixCls}--active`]:  !!active,
+    [`${prefixCls}--focus`]:  !!focus,
+    [`${prefixCls}--disabled`]:  !!disabled,
   }' @click='handleClick'>
-    <span :class='`${prefixCls}-content`'>
+    <span :class='`${prefixCls}__content`'>
       <za-activity-indicator class="rotate360" v-if='loading'/>
       <slot name='icon' v-else></slot>
       <span>
@@ -76,8 +76,9 @@ export default {
   },
   methods: {
     handleClick(event) {
-      if (this.disabled) return;
-      this.$emit('click', event);
+      if (!this.disabled) {
+        this.$emit('click', event);
+      }
     },
   },
 };

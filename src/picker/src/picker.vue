@@ -1,31 +1,29 @@
 <template lang="html">
-  <div :class='{[`${prefixCls}`]: true,[`${prefixCls}-block`]: isSelect}' @click='handleClick'>
+  <div :class='{[`${prefixCls}`]: true,[`${prefixCls}--block`]: isSelect}' @click='handleClick'>
       <div  v-if='isSelect' :class='{
-        [`${prefixCls}-input`]: true,
-        [`${prefixCls}-placeholder`]: !selectedValue.join(displayAddon),
-        [`${prefixCls}-disabled`]: !!disabled,
+        [`${prefixCls}--input`]: true,
+        [`${prefixCls}--placeholder`]: !selectedValue.join(displayAddon),
+        [`${prefixCls}--disabled`]: !!disabled,
       }'>
         <input type="hidden" :value='currentValue' />
         {{display() || placeholder}}
       </div>
       <div :class='{
-          [`${prefixCls}-container`]: true,
+          [`${prefixCls}__container`]: true,
           [customCls]: !!customCls,
         }' @click.stop='() => {}'>
       <za-popup
-        class='za-popup-inner'
         :visible='currentVisible'
         :get-container="getContainer"
         @close='onMaskClick'
         :closeOnClickModal='closeOnClickModal'>
-        <div :class='`${prefixCls}-wrapper`'>
-          <div :class='`${prefixCls}-header`'>
-            <div :class='`${prefixCls}-cancel`' @click='handleCancel'>{{cancelText}}</div>
-            <div :class='`${prefixCls}-title`'>{{title}}</div>
-            <div :class='`${prefixCls}-submit`' @click='handleOk'>{{okText}}</div>
+        <div :class='`${prefixCls}__wrapper`'>
+          <div :class='`${prefixCls}__header`'>
+            <div :class='`${prefixCls}__cancel`' @click='handleCancel'>{{cancelText}}</div>
+            <div :class='`${prefixCls}__title`'>{{title}}</div>
+            <div :class='`${prefixCls}__submit`' @click='handleOk'>{{okText}}</div>
           </div>
           <za-picker-view
-            :prefixCls='prefixCls'
             :value='selectedValue'
             :valueMember='valueMember'
             :dataSource='dataSource'

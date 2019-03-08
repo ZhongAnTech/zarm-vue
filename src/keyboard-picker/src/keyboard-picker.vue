@@ -1,16 +1,14 @@
 <template lang="html">
-  <div @click.stop='stopPropagation'>
+  <div :prefixCls="prefixCls" @click.stop='stopPropagation'>
     <za-popup
-          class='za-popup-inner'
-          :visible='currentVisible'
-          :get-container="getContainer"
-          maskType="transparent"
-          @maskClick='onMaskClick'>
-          <za-keyboard 
-            :prefixCls="prefixCls"
-            :type="type"
-            @keyClick="onKeyClick"
-          />
+      :visible='currentVisible'
+      :get-container="getContainer"
+      maskType="transparent"
+      @maskClick='onMaskClick'>
+      <za-keyboard 
+        :type="type"
+        @keyClick="onKeyClick"
+      />
     </za-popup>
   </div>
 </template>
@@ -25,7 +23,7 @@ export default {
   props: {
     prefixCls: {
       type: String,
-      default: 'za-keyboard',
+      default: 'za-keyboard-picker',
     },
     type: String,
     visible: {

@@ -1,33 +1,35 @@
 <template lang="html">
   <za-cell v-if='radioType === "cell"' :disabled='radioDisabled' isLink>
     <za-icon slot='description' v-if='isChecked' type="right" :theme='radioDisabled ? null : groupTheme'></za-icon>
-    <input type="radio" :class='`${prefixCls}-input`' :checked='isChecked' :disabled='radioDisabled' :value='label' v-model='model' @change='onValueChange' />
+    <input type="radio" :class='`${prefixCls}__input`' :checked='isChecked' :disabled='radioDisabled' :value='label' v-model='model' @change='onValueChange' />
     <slot></slot>
   </za-cell>
   <za-button
     v-else-if='radioType === "button"'
     :class='{
       [`${prefixCls}`]: true,
-      checked: isChecked,
-      disabled: radioDisabled,
-      block: isBlock,
+      [`${prefixCls}--${groupTheme}`]: !!groupTheme,
+      [`${prefixCls}--${groupShape}`]: !!groupShape,
+      [`${prefixCls}--checked`]: isChecked,
+      [`${prefixCls}--disabled`]: radioDisabled,
+      [`${prefixCls}--block`]: isBlock,
     }' :theme='groupTheme' size='xs' :block='isBlock' :disabled='radioDisabled' :bordered='!isChecked' :shape='groupShape'>
-    <input type="radio" :class='`${prefixCls}-input`' :checked='isChecked' :disabled='radioDisabled' :value='label' v-model='model' @change='onValueChange' />
+    <input type="radio" :class='`${prefixCls}__input`' :checked='isChecked' :disabled='radioDisabled' :value='label' v-model='model' @change='onValueChange' />
     <slot></slot>
   </za-button>
   <div v-else :class='{
       [`${prefixCls}`]: true,
-      [`theme-${groupTheme}`]: !!groupTheme,
-      [`shape-${groupShape}`]: !!groupShape,
-      checked: isChecked,
-      disabled: radioDisabled,
+      [`${prefixCls}--${groupTheme}`]: !!groupTheme,
+      [`${prefixCls}--${groupShape}`]: !!groupShape,
+      [`${prefixCls}--checked`]: isChecked,
+      [`${prefixCls}--disabled`]: radioDisabled,
     }'>
-    <div :class='`${prefixCls}-wrapper`'>
-      <span :class='`${prefixCls}-inner`'></span>
-      <span :class='`${prefixCls}-text`' v-if='$slots.default'>
+    <div :class='`${prefixCls}__wrapper`'>
+      <span :class='`${prefixCls}__inner`'></span>
+      <span :class='`${prefixCls}__text`' v-if='$slots.default'>
         <slot></slot>
       </span>
-      <input type="radio" :class='`${prefixCls}-input`' :checked='isChecked' :disabled='radioDisabled' :value='label' v-model='model' @change='onValueChange' />
+      <input type="radio" :class='`${prefixCls}__input`' :checked='isChecked' :disabled='radioDisabled' :value='label' v-model='model' @change='onValueChange' />
     </div>
   </div>
 </template>

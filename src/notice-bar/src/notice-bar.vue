@@ -119,7 +119,7 @@ export default {
         on-click={handleClick}
         icon={icon}>
         <div class={prefixCls} ref='wrapper'>
-          <div class={`${prefixCls}-body`} ref='content' style={contentStyle}>
+          <div class={`${prefixCls}__body`} ref='content' style={contentStyle}>
             {this.$slots.default}
           </div>
         </div>

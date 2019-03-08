@@ -1,11 +1,11 @@
 <template lang="html">
-  <div :class="[prefixCls, className]" @click.stop='() => {}'>
-    <div :class="`${prefixCls}-keys`">
+  <div :class="prefixCls" @click.stop='() => {}'>
+    <div :class="`${prefixCls}__keys`">
       <div
           v-for="(text, index) in getKeys()"
           :class="{
-            [`${prefixCls}-item`]: true,
-            [`${prefixCls}-item-disabled`]: text.length === 0,
+            [`${prefixCls}__item`]: true,
+            [`${prefixCls}__item--disabled`]: text.length === 0,
           }"
           :key="index"
           @click="onKeyClick(text)"
@@ -18,11 +18,11 @@
           </template>
         </div>
     </div>
-    <div :class="`${prefixCls}-handle`">
+    <div :class="`${prefixCls}__handle`">
       <div
         :class="{
-          [`${prefixCls}-item`]: true,
-          [`${prefixCls}-item-delete`]: true,
+          [`${prefixCls}__item`]: true,
+          [`${prefixCls}__item--delete`]: true,
         }"
         @touchstart="onLongPressIn('delete')"
         @touchend="onLongPressOut"
@@ -30,8 +30,8 @@
         <za-icon type="deletekey" />
       </div>
       <div :class="{
-        [`${prefixCls}-item`]: true,
-        [`${prefixCls}-item-ok`]: true,
+        [`${prefixCls}__item`]: true,
+        [`${prefixCls}__item--ok`]: true,
       }"
       @click="onKeyClick('ok')">确定</div>
     </div>
@@ -53,10 +53,6 @@ export default {
     prefixCls: {
       type: String,
       default: 'za-keyboard',
-    },
-    className: {
-      type: String,
-      default: '',
     },
     type: {
       type: String,
