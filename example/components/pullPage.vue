@@ -93,7 +93,7 @@ export default {
       return () => new Promise((resolve, reject) => {
         this[`refreshing${index}`] = true;
         setTimeout(() => {
-          let length = index == 1 ? this.myData1.length : this.myData2.length
+          let length = index == 1 ? this.myData1.length : 15;
           this[`myData${index}`] = this.random(length);
           resolve(true);
           this[`refreshing${index}`] = false;
@@ -101,6 +101,7 @@ export default {
       })
     },
     loadData() {
+      console.log('loadData');
       this.loading = true
       return new Promise((resolve, reject) => {
         setTimeout(() => {
