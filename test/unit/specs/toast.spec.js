@@ -55,30 +55,6 @@ describe('Toast', () => {
     }, 60);
   });
 
-  it('close on modal', done => {
-    const TestCompo = {
-      components: {
-        zaToast,
-      },
-      template: `
-        <za-toast :visible.sync='visible' :close-on-click-modal='true'>默认3秒自动关闭</za-toast>
-      `,
-      data() {
-        return {
-          visible: true,
-        };
-      },
-    };
-    const wrapper = mount(TestCompo);
-    const { vm } = wrapper;
-
-    vm.$el.querySelector('.za-mask').click();
-    setTimeout(() => {
-      expect(vm.$el.classList.contains('za-toast--open')).toBe(false);
-      done();
-    }, 60);
-  });
-
   it('$zaToast', done => {
     const TestCompo = {
       template: `

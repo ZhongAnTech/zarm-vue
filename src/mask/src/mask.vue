@@ -4,7 +4,8 @@
     :class='{
       [`${prefixCls}`]: true,
       [`${prefixCls}--${type}`]: !!type,
-    }'></div>
+    }'
+    @click="maskClick"></div>
 </template>
 
 <script>
@@ -28,6 +29,9 @@ export default {
     },
   },
   methods: {
+    maskClick(e) {
+      this.$emit('click', e);
+    },
   },
 };
 </script>

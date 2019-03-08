@@ -228,12 +228,10 @@ export default {
       this.currentVisible = !this.currentVisible;
       this.$emit('update:visible', this.currentVisible);
     },
-    onPopupClose(reason) {
-      if (reason === 'clickaway') {
-        this.currentValue = this.oldValue;
-        this.currentVisible = !this.currentVisible;
-        this.$emit('update:visible', this.currentVisible);
-      }
+    onPopupClose() {
+      this.currentValue = this.oldValue;
+      this.currentVisible = !this.currentVisible;
+      this.$emit('update:visible', this.currentVisible);
     },
     handleCancel(event) {
       this.toggle();

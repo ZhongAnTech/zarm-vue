@@ -15,8 +15,7 @@
       <za-popup
         :visible='currentVisible'
         :get-container="getContainer"
-        @close='onMaskClick'
-        :closeOnClickModal='closeOnClickModal'>
+        @maskClick='onMaskClick'>
         <div :class='`${prefixCls}__wrapper`'>
           <div :class='`${prefixCls}__header`'>
             <div :class='`${prefixCls}__cancel`' @click='handleCancel'>{{cancelText}}</div>
@@ -236,10 +235,8 @@ export default {
       this.$emit('click', event);
       this.toggle();
     },
-    onMaskClick(reason) {
-      if (reason === 'clickaway') {
-        this.handleCancel();
-      }
+    onMaskClick() {
+      this.handleCancel();
     },
     // 切换显示状态
     toggle() {

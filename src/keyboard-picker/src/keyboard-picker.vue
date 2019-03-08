@@ -56,10 +56,8 @@ export default {
       Event.stopPropagation(e);
     },
     // 点击遮罩层
-    onMaskClick(reason) {
-      if (reason === 'clickaway') {
-        this.onCancel();
-      }
+    onMaskClick() {
+      this.onCancel();
     },
     onKeyClick(key) {
       if (['ok', 'close'].indexOf(key) > -1) {
