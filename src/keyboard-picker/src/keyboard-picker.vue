@@ -30,10 +30,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    closeOnClickModal: {
-      type: Boolean,
-      default: true,
-    },
   },
   data() {
     return {

@@ -4,6 +4,7 @@ import zaIcon from '@/icon';
 import zaActivityIndicator from '@/activity-indicator';
 import Event from '@/utils/events';
 import { isThenable, warn } from '@/utils/misc';
+import Throttle from '@/utils/throttle';
 
 const REFRESH_STATE = {
   normal: 0,  // 普通
@@ -73,17 +74,19 @@ export default {
   created() {
     this.refreshState = this.refreshing ? REFRESH_STATE.loading : REFRESH_STATE.normal;
     this.loadState = this.loading ? LOAD_STATE.loading : LOAD_STATE.normal;
+    const { onSrcoll } = this;
+    this.throttledScroll = Throttle(onSrcoll, 250);
   },
   mounted() {
-    Event.on(window, 'scroll', this.onSrcoll);
+    Event.on(window, 'scroll', this.throttledScroll);
   },
   beforeDestroy() {
-    Event.off(window, 'scroll', this.onSrcoll);
+    Event.off(window, 'scroll', this.throttledScroll);
   },
   watch: {
     refreshing(val) {
       const refreshState = val ? REFRESH_STATE.loading : REFRESH_STATE.normal;
-      this.loadState = '';
+      // this.loadState = '';
       this.doRefreshAction(refreshState);
     },
     loading(val) {
@@ -214,6 +217,7 @@ export default {
           this.doTransition({ offsetY: 'auto', duration: 0 });
           setTimeout(() => {
             this.doRefreshAction(REFRESH_STATE.normal);
+            this.doLoadAction(LOAD_STATE.normal);
           }, stayTime);
           break;
 

@@ -14,6 +14,7 @@
       <slot></slot>
     </div>
     <za-mask
+      v-if="mask"
       :class='[`fade-${animationState}`]'
       :style='animationDurationStyle'
       :visible='maskVisible'
