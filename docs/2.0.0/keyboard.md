@@ -10,16 +10,10 @@
 
 :::demo 键盘触发器 KeyboardPicker
 ```html
-    <za-cell title="键盘类型">
-      <za-select
-        v-model='v1'
-        :data-source='data1'
-        @ok='handleOk'
-        @cancel='handleCancel'/>
+    <za-cell title="拾取器触发">
+       <za-button slot='description' size='xs' @click='visible1 = true'>开启</za-button>
     </za-cell>
     <za-keyboard-picker :visible.sync="visible1" type="number" @keyClick="handleChange1" ></za-keyboard-picker>
-    <za-keyboard-picker :visible.sync="visible2" type="price" @keyClick="handleChange2" ></za-keyboard-picker>
-    <za-keyboard-picker :visible.sync="visible3" type="idcard" @keyClick="handleChange3" ></za-keyboard-picker>
 ```
 :::
 
@@ -37,49 +31,15 @@ export default {
   data() {
     return {
       visible1: false,
-      visible2: false,
-      visible3: false,
-      v1:'',
-      data1: [
-        { value: 'number', label: '数字' },
-        { value: 'price', label: '金额' },
-        { value: 'idcard', label: '证件' },
-      ]
     }
   },
   methods: {
-    handleOk(v) {
-      const self = this;
-      switch(v.value) {
-        case 'number': self.visible1 = true;break;
-        case 'price': self.visible2 = true;break;
-        case 'idcard': self.visible3 = true;break;
-        default:break;
-      }
-    },
-    handleCancel(v) {
-      this.v1 = '';
-    },
     handleChange1(key) {
       if (['close', 'ok'].indexOf(key) > -1) {
         return;
       }
       this.v1 = getValue(this.v1, key)
       console.log(this.v1);
-    },
-    handleChange2(key) {
-      if (['close', 'ok'].indexOf(key) > -1) {
-        return;
-      }
-      this.v2 = getValue(this.v2, key)
-      console.log(this.v2);
-    },
-    handleChange3(key) {
-      if (['close', 'ok'].indexOf(key) > -1) {
-        return;
-      }
-      this.v3 = getValue(this.v3, key)
-      console.log(this.v3);
     },
   },
 };

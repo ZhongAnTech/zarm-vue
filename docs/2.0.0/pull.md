@@ -2,13 +2,6 @@
 
 ## 上拉加载下拉刷新 Pull
 
-:::demo 基本
-```html
-    <za-pull :on-refresh='refresh(1)' :refreshing='refreshing1'>
-      <za-cell v-for='(i, index) in myData1' :key='index'>ID号 {{i}} </za-cell>
-    </za-pull>
-```
-:::
 
 :::demo 上拉加载下拉刷新
 ```html
@@ -138,19 +131,19 @@ on-refresh, on-load 这两个回调函数要求返回一个 Promise 对象。对
 ```javascript
 <script name="vue">
 let times = 0;
+let RandomLength = 25;
 
 export default {
   mounted() {
     this.refreshing2 = true
     setTimeout(() => {
-      this.myData2 = [1,2,3,4,5,6,7,8,9,10]
+      this.myData2 = this.random(RandomLength);
       this.refreshing2 = false
     }, 1500)
   },
   data() {
     return {
       i: null,
-      myData1: [1,2,3,4],
       myData2: [],
       refreshing1: false,
       refreshing2: false,
@@ -169,8 +162,7 @@ export default {
       return () => new Promise((resolve, reject) => {
         this[`refreshing${index}`] = true;
         setTimeout(() => {
-          let length = index == 1 ? this.myData1.length : this.myData2.length
-          this[`myData${index}`] = this.random(length);
+          this[`myData${index}`] = this.random(RandomLength);
           resolve(true);
           this[`refreshing${index}`] = false;
         }, 1000)

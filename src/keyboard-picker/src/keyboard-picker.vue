@@ -3,9 +3,8 @@
     <za-popup
       :visible='currentVisible'
       :get-container="getContainer"
-      maskType="transparent"
-      @close='onMaskClick'
-      :closeOnClickModal='closeOnClickModal'>
+      :mask="false"
+      maskType="transparent">
       <za-keyboard 
         :type="type"
         @keyClick="onKeyClick"
@@ -31,10 +30,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    closeOnClickModal: {
-      type: Boolean,
-      default: true,
-    },
   },
   data() {
     return {
@@ -55,12 +50,6 @@ export default {
   methods: {
     stopPropagation(e) {
       Event.stopPropagation(e);
-    },
-    // 点击遮罩层
-    onMaskClick(reason) {
-      if (reason === 'clickaway') {
-        this.onCancel();
-      }
     },
     onKeyClick(key) {
       if (['ok', 'close'].indexOf(key) > -1) {
