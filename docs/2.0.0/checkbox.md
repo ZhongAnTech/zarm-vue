@@ -209,17 +209,6 @@ export default {
     handleGroupChange(v, e){
       console.log(v, e);
     },
-    handleNextGroupChange(v, e) {
-      console.log(v);
-      if (v.length) {
-        this.provices[0].checked = true;
-      } else {
-        this.provices[0].checked = false;
-      }
-    },
-    handleArrGroupChange(v, e) {
-      console.log(v, e);
-    },
   },
 };
 </script>
