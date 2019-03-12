@@ -1,5 +1,5 @@
 <template lang="html">
-  <za-popup :visible='currentVisible' :get-container="getContainer" @close='handlePopupClose'>
+  <za-popup :visible='currentVisible' direction="bottom" :get-container="getContainer" @maskClick='handlePopupClose'>
     <div :class='{
       [`${prefixCls}`]: true,
       [`${prefixCls}--${shape}`]: !!shape,
@@ -79,12 +79,9 @@ export default {
       this.$emit('cancel', 'action', event);
       this.$emit('update:visible', false);
     },
-    handlePopupClose(reason, event) {
-      // if clickaway on mask then sync visible
-      if (reason === 'clickaway') {
-        this.$emit('cancel', reason, event);
-        this.$emit('update:visible', false);
-      }
+    handlePopupClose(event) {
+      this.$emit('cancel', 'clickaway', event);
+      this.$emit('update:visible', false);
     },
   },
 };

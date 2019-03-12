@@ -15,7 +15,8 @@
     <za-popup
       :visible='currentVisible'
       :get-container="getContainer"
-      @close='onMaskClick'
+      direction="bottom"
+      @maskClick='onMaskClick'
       :closeOnClickModal='closeOnClickModal'>
       <div :class='`${prefixCls}__wrapper`'>
         <div :class='`${prefixCls}__header`'>
@@ -153,10 +154,8 @@ export default {
       this.toggle();
     },
     // 点击遮罩层
-    onMaskClick(reason) {
-      if (reason === 'clickaway') {
-        this.onCancel();
-      }
+    onMaskClick() {
+      this.onCancel();
     },
     // 点击取消
     onCancel() {

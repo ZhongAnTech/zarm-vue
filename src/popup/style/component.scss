@@ -32,6 +32,16 @@
       top: 0;
       height: 100%;
     }
+
+    &-center {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   @include m(hidden) {
@@ -50,6 +60,10 @@
 
       &-right {
         transform: translate(100%, 0);
+      }
+
+      &-center {
+        display: none;
       }
     }
   }

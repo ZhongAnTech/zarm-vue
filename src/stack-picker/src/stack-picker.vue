@@ -11,7 +11,7 @@
         [`${prefixCls}__container`]: true,
         [`${prefixCls}--hidden`]: !currentVisible,
       }' @click.stop='() => {}'>
-        <za-popup :visible='currentVisible' :get-container="getContainer" @close='onPopupClose'>
+        <za-popup :visible='currentVisible' :get-container="getContainer" @maskClick='onPopupClose'>
           <div :class='`${prefixCls}__wrapper`'>
             <div :class='`${prefixCls}__header`'>
               <div :class='`${prefixCls}__cancel`' @click='handleCancel'>{{cancelText}}</div>
@@ -228,12 +228,10 @@ export default {
       this.currentVisible = !this.currentVisible;
       this.$emit('update:visible', this.currentVisible);
     },
-    onPopupClose(reason) {
-      if (reason === 'clickaway') {
-        this.currentValue = this.oldValue;
-        this.currentVisible = !this.currentVisible;
-        this.$emit('update:visible', this.currentVisible);
-      }
+    onPopupClose() {
+      this.currentValue = this.oldValue;
+      this.currentVisible = !this.currentVisible;
+      this.$emit('update:visible', this.currentVisible);
     },
     handleCancel(event) {
       this.toggle();

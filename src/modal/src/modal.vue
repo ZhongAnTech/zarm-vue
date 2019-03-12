@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-    <za-mask :visible='maskVisible' @mask-close='onMaskClose' :type='maskType'/>
+    <za-mask :visible='maskVisible' @click='onMaskClose' :type='maskType'/>
   </div>
 </template>
 
