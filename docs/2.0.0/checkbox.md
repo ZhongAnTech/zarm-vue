@@ -118,11 +118,9 @@
     shape="radius"
     @change="handleGroupChange"
   >
-    <za-checkbox
-      v-for="(city, index) in cities"
-      :value="city"
-      :key="city"
-    >{{city}}</za-checkbox>
+    <za-checkbox v-for="(city, index) in cities" :value="city" :key="city"
+      >{{city}}</za-checkbox
+    >
   </za-checkbox-group>
 </div>
 ```
@@ -243,16 +241,14 @@ export default {
 
 #### Checkbox Attributes
 
-| 属性      | 类型   | 默认值      | 可选值／参数                                                | 说明     |
-| :-------- | :----- | :---------- | :---------------------------------------------------------- | :------- |
-| prefixCls | string | za-checkbox |                                                             | 类名前缀 |
-| theme     | string | 'primary'   | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题     |
-| type      | string |             | 'button', 'cell'                                            | 显示类型 |
-| v-model   | string,number   |        |                                                             | 绑定选项值  |
-| value   | string,number   |        |                                                             | 选项值 |
-| checked   | bool   |        |                                                             | 是否选中 |
-| disabled  | bool   | false       |                                                             | 是否禁用 |
-
+| 属性      | 类型          | 默认值      | 可选值／参数                                                | 说明     |
+| :-------- | :------------ | :---------- | :---------------------------------------------------------- | :------- |
+| prefixCls | string        | za-checkbox |                                                             | 类名前缀 |
+| theme     | string        | 'primary'   | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题     |
+| type      | string        |             | 'button', 'cell'                                            | 显示类型 |
+| value     | string,number |             |                                                             | 选项值   |
+| checked   | bool          |             |                                                             | 是否选中 |
+| disabled  | bool          | false       |                                                             | 是否禁用 |
 
 #### Checkbox Group Events
 
@@ -265,4 +261,3 @@ export default {
 | 事件名称 | 说明                     | 回调参数                         |
 | :------- | :----------------------- | :------------------------------- |
 | change   | 当绑定值变化时触发的事件 | 1.选中的值列表，2.event 事件对象 |
-
