@@ -5,9 +5,7 @@
     [`${prefixCls}--${shape}`]: !!shape,
     [`${prefixCls}--${size}`]: !!size,
     [`${prefixCls}--block`]: !!block,
-    [`${prefixCls}--bordered`]: !!bordered,
-    [`${prefixCls}--active`]:  !!active,
-    [`${prefixCls}--focus`]:  !!focus,
+    [`${prefixCls}--bordered`]: !!ghost,
     [`${prefixCls}--disabled`]:  !!disabled,
   }' @click='handleClick'>
     <span :class='`${prefixCls}__content`'>
@@ -46,22 +44,14 @@ export default {
     },
     shape: {
       type: String,
-      validator: enumGenerator(['radius', 'round', 'circle']),
-      default: null,
+      validator: enumGenerator(['rect', 'radius', 'round', 'circle']),
+      default: 'radius',
     },
     block: {
       type: Boolean,
       default: false,
     },
-    bordered: {
-      type: Boolean,
-      default: false,
-    },
-    active: {
-      type: Boolean,
-      default: false,
-    },
-    focus: {
+    ghost: {
       type: Boolean,
       default: false,
     },

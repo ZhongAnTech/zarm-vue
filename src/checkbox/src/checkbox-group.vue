@@ -32,8 +32,8 @@ export default {
     },
     shape: {
       type: String,
-      validator: enumGenerator(['radius', 'round']),
-      default: null,
+      validator: enumGenerator(['rect', 'radius', 'round']),
+      default: 'radius',
     },
     disabled: {
       type: Boolean,

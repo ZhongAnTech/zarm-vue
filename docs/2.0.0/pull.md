@@ -1,37 +1,47 @@
-
-
 ## 上拉加载下拉刷新 Pull
 
-
 :::demo 上拉加载下拉刷新
+
 ```html
-    <za-pull :on-refresh='refresh(2)' :refreshing='refreshing2' :loading='loading' :on-load='loadData'>
-      <za-cell v-for='(i, index) in myData2' :key='index'>ID号 {{i}} </za-cell>
-      <!-- 此处的几个slot用来覆盖默认样式，定义的会覆盖，不定义的依然使用默认样式 -->
-      <template slot-scope='props' slot='refreshPull'>
-        <div class='custom-control' :style='{
+<za-pull
+  :on-refresh="refresh(2)"
+  :refreshing="refreshing2"
+  :loading="loading"
+  :on-load="loadData"
+>
+  <za-cell v-for="(i, index) in myData2" :key="index">ID号 {{i}} </za-cell>
+  <!-- 此处的几个slot用来覆盖默认样式，定义的会覆盖，不定义的依然使用默认样式 -->
+  <template slot-scope="props" slot="refreshPull">
+    <div
+      class="custom-control"
+      :style="{
           transform: `scale(${props.percent / 100})`
-          }'>
-          <img src='https://avatars2.githubusercontent.com/u/499550?v=4&s=72' alt="" />
-        </div>
-      </template>
-      <template slot-scope='props' slot='refreshDrop'>
-        <div class='custom-control'>
-          释放加载
-        </div>
-      </template>
-      <template slot-scope='props' slot='refreshLoading'>
-        <div class='custom-control'>
-          <za-activity-indicator class="rotate360" />
-        </div>
-      </template>
-      <template slot-scope='props' slot='refreshSuccess'>
-        <div class='custom-control'>
-          加载成功
-        </div>
-      </template>
-    </za-pull>
+          }"
+    >
+      <img
+        src="https://avatars2.githubusercontent.com/u/499550?v=4&s=72"
+        alt=""
+      />
+    </div>
+  </template>
+  <template slot-scope="props" slot="refreshDrop">
+    <div class="custom-control">
+      释放加载
+    </div>
+  </template>
+  <template slot-scope="props" slot="refreshLoading">
+    <div class="custom-control">
+      <za-activity-indicator class="rotate360" />
+    </div>
+  </template>
+  <template slot-scope="props" slot="refreshSuccess">
+    <div class="custom-control">
+      加载成功
+    </div>
+  </template>
+</za-pull>
 ```
+
 :::
 
 #### 上拉加载下拉刷新(自定义提示内容)
@@ -46,88 +56,104 @@ scopedSlots 用来覆盖默认样式，定义的会覆盖，不定义的默认�
 
 ```html
 <za-panel-body>
-  <za-pull :on-refresh='refresh' :refreshing='refreshing' :loading='loading' :on-load='loadData'>
-    <za-cell v-for='i in myData' :key='i'>第 {{i}} 行</za-cell>
+  <za-pull
+    :on-refresh="refresh"
+    :refreshing="refreshing"
+    :loading="loading"
+    :on-load="loadData"
+  >
+    <za-cell v-for="i in myData" :key="i">第 {{i}} 行</za-cell>
 
-    <template scope='props' slot='refreshPull'>
-      <div class='custom-control' :style='{
+    <template scope="props" slot="refreshPull">
+      <div
+        class="custom-control"
+        :style="{
         transform: `scale(${props.percent / 100})`
-        }'>
-        <img src='https://avatars2.githubusercontent.com/u/499550?v=4&s=72' alt="" />
+        }"
+      >
+        <img
+          src="https://avatars2.githubusercontent.com/u/499550?v=4&s=72"
+          alt=""
+        />
       </div>
     </template>
 
-    <template scope='props' slot='refreshDrop'>
-      <div class='custom-control'>
+    <template scope="props" slot="refreshDrop">
+      <div class="custom-control">
         释放加载
       </div>
     </template>
 
-    <template scope='props' slot='refreshLoading'>
-      <div class='custom-control'>
+    <template scope="props" slot="refreshLoading">
+      <div class="custom-control">
         <za-activity-indicator class="rotate360" />
       </div>
     </template>
 
-    <template scope='props' slot='refreshSuccess'>
-      <div class='custom-control'>
+    <template scope="props" slot="refreshSuccess">
+      <div class="custom-control">
         加载成功
       </div>
     </template>
-
   </za-pull>
 </za-panel-body>
 <script>
-export default{
+  export default {
     data() {
       return {
-        myData: [1,2,3,4],
+        myData: [1, 2, 3, 4],
         refreshing: false,
-        loading: false,
+        loading: false
       }
     },
     methods: {
-      random(length){
-        const newData = [];
-        for(let i = 0; i < length; i++){
+      random(length) {
+        const newData = []
+        for (let i = 0; i < length; i++) {
           newData.push(Math.round(Math.random() * 100))
         }
-        return newData;
+        return newData
       },
       refresh() {
-        this.refreshing = true;
+        this.refreshing = true
         return new Promise((resolve, reject) => {
-          fetch().then(res => {
-            this.refreshing = false;
-            resolve(true);
-          }).catch(e => {
-            this.refreshing = false;
-            reject(false)
-          })
+          fetch()
+            .then(res => {
+              this.refreshing = false
+              resolve(true)
+            })
+            .catch(e => {
+              this.refreshing = false
+              reject(false)
+            })
         })
       },
       loadData() {
         this.loading = true
         return new Promise((resolve, reject) => {
-          fetch().then(res => {
-            this.loading = false;
-            resolve(true);
-            // or resolve(false);
-          }).catch(e => {
-            this.loading = false;
-            reject(false)
-          })
+          fetch()
+            .then(res => {
+              this.loading = false
+              resolve(true)
+              // or resolve(false);
+            })
+            .catch(e => {
+              this.loading = false
+              reject(false)
+            })
         })
       }
-    },
-}
+    }
+  }
 </script>
 ```
-on-refresh, on-load 这两个回调函数要求返回一个 Promise 对象。对于on-refresh来说，resolve时表示刷新成功，reject则表示刷新失败。而对于on-load来说，resolve(true) 表示加载成功，并且还有更多数据，resolve(false) 表示加载成功，但后续没有数据了。reject则表示加载失败。
+
+on-refresh, on-load 这两个回调函数要求返回一个 Promise 对象。对于 on-refresh 来说，resolve 时表示刷新成功，reject 则表示刷新失败。而对于 on-load 来说，resolve(true) 表示加载成功，并且还有更多数据，resolve(false) 表示加载成功，但后续没有数据了。reject 则表示加载失败。
 
 **注意: zarm-vue 本身并不带有 Promise 库，请您根据自己的运行环境决定是否需要用引入 Promise Pollyfill.**
 
 ### Vue Script
+
 ```javascript
 <script name="vue">
 let times = 0;
@@ -198,14 +224,14 @@ export default {
 
 #### Pull Attributes
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-pull | | 类名前缀 |
-| refreshing | bool | false | 是否正在刷新 |
-| loading | bool | false | 是否正在加载 |
-| refreshInitDistance | number | 20 | | 下拉助跑距离 |
-| refreshDistance | number | 60 | | 下拉距离阀值 |
-| on-refresh | func | | | 达到阀值后释放触发刷新的回调函数 |
-| on-load | func | | | 下拉加载的回调函数 |
-| duration | number | 300 | | 动画执行时间，单位：ms |
-| stayTime | number | 1500 | | 加载成功停留时间 |
+| 属性                | 类型   | 默认值  | 可选值／参数 | 说明                             |
+| :------------------ | :----- | :------ | :----------- | :------------------------------- |
+| prefixCls           | string | za-pull |              | 类名前缀                         |
+| refreshing          | bool   | false   | 是否正在刷新 |
+| loading             | bool   | false   | 是否正在加载 |
+| refreshInitDistance | number | 20      |              | 下拉助跑距离                     |
+| refreshDistance     | number | 60      |              | 下拉距离阀值                     |
+| on-refresh          | func   |         |              | 达到阀值后释放触发刷新的回调函数 |
+| on-load             | func   |         |              | 下拉加载的回调函数               |
+| duration            | number | 300     |              | 动画执行时间，单位：ms           |
+| stayTime            | number | 1500    |              | 加载成功停留时间                 |

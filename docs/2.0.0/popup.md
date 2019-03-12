@@ -130,7 +130,6 @@ export default {
 | animationDuration | number | 200 | | 动画执行时间 |
 | hasMask | bool | false | | 是否包含遮罩 |
 | maskType | string | 'normal' | 'transparent', 'normal' | 遮罩层的类型 |
-| maskClick | func | | | 点击遮罩后出发的回调函数 |
 
 #### Popup Events
 | 事件名称 | 说明 | 回调参数 |

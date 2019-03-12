@@ -89,9 +89,9 @@
     }
   }
 
-  @include m(circle) {
+  @include m(rect) {
     @include e(inner) {
-      border-radius: r(1000);
+      border-radius: r(0);
     }
   }
 }
@@ -111,6 +111,12 @@
   @include m(round) {
     @include b(checkbox) {
       border-radius: r(15);
+    }
+  }
+
+  @include m(rect) {
+    @include e(inner) {
+      border-radius: r(0);
     }
   }
 

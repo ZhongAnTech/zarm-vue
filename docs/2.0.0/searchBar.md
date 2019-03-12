@@ -1,44 +1,48 @@
-
 ## 搜索框 SearchBar
 
 :::demo 基本
+
 ```html
-  <za-search-bar
-    :showCancel="false" 
-    @change="handleChange"
-    @submit="handleSubmit"
-    @blur="handleBlur"
-    @focus="handleFocus"
-    @clear="handleClear"
-    @cancel="handleCancel"
-  ></za-search-bar>
+<za-search-bar
+  :showCancel="false"
+  @change="handleChange"
+  @submit="handleSubmit"
+  @blur="handleBlur"
+  @focus="handleFocus"
+  @clear="handleClear"
+  @cancel="handleCancel"
+></za-search-bar>
 ```
+
 :::
 
 :::demo 始终展示取消按钮
+
 ```html
-  <za-search-bar
-    shape="round"
-    :showCancel="true" 
-    value="默认搜索关键字"
-  ></za-search-bar>
+<za-search-bar
+  shape="round"
+  :showCancel="true"
+  value="默认搜索关键字"
+></za-search-bar>
 ```
+
 :::
 
 :::demo 点击获取焦点
+
 ```html
-  <za-search-bar
-    shape="round"
-    :showCancel="true" 
-    ref="searchRef"
-  ></za-search-bar>  
-  <za-cell>    
-    <za-button theme="primary" size="xs" shape="radius" @click="handleClick">点击获取焦点</za-button>
-  </za-cell>
+<za-search-bar shape="round" :showCancel="true" ref="searchRef"></za-search-bar>
+<za-cell>
+  <za-button theme="primary" size="xs" shape="radius" @click="handleClick"
+    >点击获取焦点</za-button
+  >
+</za-cell>
 ```
+
 :::
 
 ### Vue Script
+
 ```javascript
 <script name="vue">
 export default {
@@ -76,29 +80,31 @@ export default {
 };
 </script>
 ```
+
 ### API
 
 #### SearchBar Attributes
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-search-bar | | 类名前缀 |
-| placeholder | string | text | | placeholder |
-| disabled | bool | false | | 是否禁用 |
-| defaultValue | string | | | 初始值 |
-| value | string, number | | | 搜索关键字 |
-| shape | string | radius | | 形状，`round`,`radius` |
-| cancelText | string | '取消' | | 取消文本 |
-| showCancel | bool | false | | 是否显示取消操作 |
-| clearable | bool | false | | 是否可以清除操作 |
-| maxLength | number | | | 输入字数上限 |
+| 属性         | 类型           | 默认值        | 可选值／参数 | 说明                   |
+| :----------- | :------------- | :------------ | :----------- | :--------------------- |
+| prefixCls    | string         | za-search-bar |              | 类名前缀               |
+| placeholder  | string         | text          |              | placeholder            |
+| disabled     | bool           | false         |              | 是否禁用               |
+| defaultValue | string         |               |              | 初始值                 |
+| value        | string, number |               |              | 搜索关键字             |
+| shape        | string         | radius        |              | 形状，`round`,`radius` |
+| cancelText   | string         | '取消'        |              | 取消文本               |
+| showCancel   | bool           | false         |              | 是否显示取消操作       |
+| clearable    | bool           | false         |              | 是否可以清除操作       |
+| maxLength    | number         |               |              | 输入字数上限           |
 
 #### SearchBar Events
-| 事件名称 | 说明 | 回调参数 |
-| :--- | :--- | :--- |
-| change | 当绑定值变化时触发的事件 | 最新的值 |
-| focus | 当获取焦点时触发的事件 |  |
-| blur | 当失去焦点时触发的事件 |  |
-| clear | 当绑定值被清除时触发的事件 | 最新的值 |
-| cancel | 当取消操作时触发的事件 | |
-| submit | 当绑定值变化时触发的Form搜索事件 | 最新的值 |
+
+| 事件名称 | 说明                               | 回调参数 |
+| :------- | :--------------------------------- | :------- |
+| change   | 当绑定值变化时触发的事件           | 最新的值 |
+| focus    | 当获取焦点时触发的事件             |          |
+| blur     | 当失去焦点时触发的事件             |          |
+| clear    | 当绑定值被清除时触发的事件         | 最新的值 |
+| cancel   | 当取消操作时触发的事件             |          |
+| submit   | 当绑定值变化时触发的 Form 搜索事件 | 最新的值 |

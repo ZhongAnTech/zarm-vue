@@ -70,7 +70,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    autosize: {
+    autoHeight: {
       type: Boolean,
       default: false,
     },
@@ -147,17 +147,17 @@ export default {
       }
     },
     initAutosize() {
-      if (this.autosize) {
+      if (this.autoHeight) {
         Autosize(this.$refs.input);
       }
     },
     destroyAutosize() {
-      if (this.autosize) {
+      if (this.autoHeight) {
         Autosize.destroy(this.$refs.input);
       }
     },
     updateAutosize() {
-      if (this.autosize) {
+      if (this.autoHeight) {
         Autosize.update(this.$refs.input);
       }
     },

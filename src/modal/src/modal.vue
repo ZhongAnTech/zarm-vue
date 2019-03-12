@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-    <za-mask :visible='maskVisible' @click='onMaskClose' :type='maskType'/>
+    <za-mask :visible='maskVisible' @click='onMaskClick' :type='maskType'/>
   </div>
 </template>
 
@@ -88,10 +88,6 @@ export default {
     minWidth: {
       type: Number,
       default: 270,
-    },
-    closeOnClickModal: {
-      type: Boolean,
-      default: false,
     },
     title: String,
     showClose: {
@@ -161,13 +157,13 @@ export default {
         this.maskVisible = false;
       }, this.animationDuration);
     },
-    onMaskClose(event) {
-      if (!this.closeOnClickModal) return;
+    onMaskClick(event) {
       // clear autoClose timer
       if (this.timer) {
         clearTimeout(this.timer);
       }
-      this.leave('clickaway', event);
+      this.$emit('maskClick', event);
+      this.handleClose(event);
     },
     handleClose(event) {
       this.leave('close', event);

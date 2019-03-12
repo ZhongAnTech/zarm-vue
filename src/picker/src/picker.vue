@@ -74,7 +74,6 @@ export default {
       type: String,
       default: '确定',
     },
-
     dataSource: {
       type: Array,
       required: true,
@@ -82,10 +81,6 @@ export default {
     disabled: {
       type: Boolean,
       default: false,
-    },
-    closeOnClickModal: {
-      type: Boolean,
-      default: true,
     },
     displayMember: {
       type: String,
@@ -236,7 +231,8 @@ export default {
       this.$emit('click', event);
       this.toggle();
     },
-    onMaskClick() {
+    onMaskClick(e) {
+      this.$emit('maskClick', e);
       this.handleCancel();
     },
     // 切换显示状态

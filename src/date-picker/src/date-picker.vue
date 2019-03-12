@@ -154,7 +154,8 @@ export default {
       this.toggle();
     },
     // 点击遮罩层
-    onMaskClick() {
+    onMaskClick(event) {
+      this.$emit('maskClick', event);
       this.onCancel();
     },
     // 点击取消

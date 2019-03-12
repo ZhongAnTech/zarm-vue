@@ -17,6 +17,7 @@
     display: inline-block;
     width: 100%;
     padding: 0;
+    color: $color-text;
     background-color: #fff;
     background-image: none;
     border: 0;
@@ -36,11 +37,11 @@
       cursor: not-allowed;
       opacity: $opacity-disabled;
     }
+  }
 
-    @include m(disabled) {
-      cursor: not-allowed;
-      opacity: $opacity-disabled;
-    }
+  @include m(disabled) {
+    cursor: not-allowed;
+    opacity: $opacity-disabled;
   }
 
   textarea {

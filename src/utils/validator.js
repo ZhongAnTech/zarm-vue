@@ -9,5 +9,5 @@ export function isArray(val) {
 }
 
 export function defaultThemeValidator(v) {
-  return ['default', 'primary', 'info', 'success', 'warning', 'error'].indexOf(v) >= 0;
+  return ['default', 'primary', 'info', 'success', 'warning', 'danger', 'error'].indexOf(v) >= 0;
 }
