@@ -62,7 +62,7 @@ describe('Checkbox', () => {
       },
       template: `
         <za-checkbox-group v-model='checkboxGroup' @change='handleGroupChange'>
-          <za-checkbox v-for='(city, index) in cities' :label="city" :key="city"  :disabled='index === 2'>{{city}}</za-checkbox>
+          <za-checkbox v-for='(city, index) in cities' :value="city" :key="city"  :disabled='index === 2'>{{city}}</za-checkbox>
         </za-checkbox-group>
       `,
       data() {
@@ -89,7 +89,7 @@ describe('Checkbox', () => {
       },
       template: `
         <za-checkbox-group v-model='checkboxGroup' @change='handleGroupChange' shape='radius' type='button' theme='primary' block>
-          <za-checkbox v-for='(city, index) in cities' :label="city" :key="city"  :disabled='index === 2'>{{city}}</za-checkbox>
+          <za-checkbox v-for='(city, index) in cities' :value="city" :key="city"  :disabled='index === 2'>{{city}}</za-checkbox>
         </za-checkbox-group>
       `,
       data() {
@@ -118,7 +118,7 @@ describe('Checkbox', () => {
       },
       template: `
         <za-checkbox-group v-model='checkboxGroup' @change='handleGroupChange' shape='radius' type='cell'>
-          <za-checkbox v-for='(city, index) in cities' :label="city" :key="city"  :disabled='index === 2'>{{city}}</za-checkbox>
+          <za-checkbox v-for='(city, index) in cities' :value="city" :key="city"  :disabled='index === 2'>{{city}}</za-checkbox>
         </za-checkbox-group>
       `,
       data() {
@@ -154,7 +154,7 @@ describe('Checkbox', () => {
       },
       template: `
         <za-checkbox-group v-model='checkboxGroup'>
-          <za-checkbox v-for='(city, i) in cities' :label="city" :key="city" :disabled='i === 2'>
+          <za-checkbox v-for='(city, i) in cities' :value="city" :key="city" :disabled='i === 2'>
             {{city}}
           </za-checkbox>
         </za-checkbox-group>
@@ -218,8 +218,8 @@ describe('Checkbox', () => {
       },
       template: `
         <za-checkbox-group v-model='checkboxGroup'>
-          <za-checkbox label="a" ref="a">a</za-checkbox>
-          <za-checkbox label="b" ref="b">b</za-checkbox>
+          <za-checkbox value="a" ref="a">a</za-checkbox>
+          <za-checkbox value="b" ref="b">b</za-checkbox>
         </za-checkbox-group>
       `,
       data() {

@@ -12,9 +12,9 @@ describe('Radio', () => {
       },
       template: `
         <za-radio-group theme='primary' type='button' shape='radius' v-model='radio' ref='radio'>
-          <za-radio ref='a' label='a'>a</za-radio>
-          <za-radio ref='b' label='b'>a</za-radio>
-          <za-radio ref='c' label='c'>a</za-radio>
+          <za-radio ref='a' value='a'>a</za-radio>
+          <za-radio ref='b' value='b'>a</za-radio>
+          <za-radio ref='c' value='c'>a</za-radio>
         </za-radio-group>
       `,
       data() {
@@ -40,9 +40,9 @@ describe('Radio', () => {
       },
       template: `
         <za-radio-group theme='primary' type='button' disabled>
-          <za-radio ref='a' label='a'>a</za-radio>
-          <za-radio ref='b' label='b'>b</za-radio>
-          <za-radio ref='c' label='c'>c</za-radio>
+          <za-radio ref='a' value='a'>a</za-radio>
+          <za-radio ref='b' value='b'>b</za-radio>
+          <za-radio ref='c' value='c'>c</za-radio>
         </za-radio-group>
       `,
     };
@@ -59,9 +59,9 @@ describe('Radio', () => {
       },
       template: `
         <za-radio-group theme='primary' type='button' v-model='radio'>
-          <za-radio ref='a' label='a'>a</za-radio>
-          <za-radio ref='b' label='b'>b</za-radio>
-          <za-radio ref='c' label='c'>c</za-radio>
+          <za-radio ref='a' value='a'>a</za-radio>
+          <za-radio ref='b' value='b'>b</za-radio>
+          <za-radio ref='c' value='c'>c</za-radio>
         </za-radio-group>
       `,
       data() {
@@ -84,9 +84,9 @@ describe('Radio', () => {
       },
       template: `
         <za-radio-group theme='primary' type='button' v-model='radio' @change='handleChange'>
-          <za-radio ref='a' label='a'>a</za-radio>
-          <za-radio ref='b' label='b'>b</za-radio>
-          <za-radio ref='c' label='c'>c</za-radio>
+          <za-radio ref='a' value='a'>a</za-radio>
+          <za-radio ref='b' value='b'>b</za-radio>
+          <za-radio ref='c' value='c'>c</za-radio>
         </za-radio-group>
       `,
       methods: {

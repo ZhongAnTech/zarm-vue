@@ -47,32 +47,32 @@ describe('Button', () => {
     expect(wrapper.contains('.za-button--block')).toBe(true);
   });
 
-  it('bordered', () => {
+  it('ghost', () => {
     const wrapper = mount(zaButton, {
       propsData: {
-        bordered: true,
+        ghost: true,
       },
     });
     expect(wrapper.contains('.za-button--bordered')).toBe(true);
   });
 
-  it('active', () => {
-    const wrapper = mount(zaButton, {
-      propsData: {
-        active: true,
-      },
-    });
-    expect(wrapper.contains('.za-button--active')).toBe(true);
-  });
+  // it('active', () => {
+  //   const wrapper = mount(zaButton, {
+  //     propsData: {
+  //       active: true,
+  //     },
+  //   });
+  //   expect(wrapper.contains('.za-button--active')).toBe(true);
+  // });
 
-  it('focus', () => {
-    const wrapper = mount(zaButton, {
-      propsData: {
-        focus: true,
-      },
-    });
-    expect(wrapper.contains('.za-button--focus')).toBe(true);
-  });
+  // it('focus', () => {
+  //   const wrapper = mount(zaButton, {
+  //     propsData: {
+  //       focus: true,
+  //     },
+  //   });
+  //   expect(wrapper.contains('.za-button--focus')).toBe(true);
+  // });
 
   it('disabled', () => {
     const wrapper = mount(zaButton, {

@@ -96,7 +96,7 @@ export default {
           val = true;
         }
         if (this.isGroup) {
-          this.dispatch('zaRadioGroup', 'input', [val]);
+          this.dispatch('zaRadioGroup', 'input', val);
         } else {
           this.$emit('input', val);
           this.currentChecked = val;
@@ -144,7 +144,7 @@ export default {
       // first emit('input') to make the model up to date
       this.$nextTick(_ => { // eslint-disable-line no-unused-vars
         if (this.isGroup) {
-          this.dispatch('zaRadioGroup', 'change', [[this.model], event]);
+          this.dispatch('zaRadioGroup', 'change', [this.model, event]);
         } else {
           this.$emit('change', this.model, event);
         }
