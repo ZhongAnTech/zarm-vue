@@ -4,6 +4,7 @@
       :visible='currentVisible'
       :get-container="getContainer"
       direction="bottom"
+      :hasMask="false"
       maskType="transparent"
       @maskClick='onMaskClick'>
       <za-keyboard 
