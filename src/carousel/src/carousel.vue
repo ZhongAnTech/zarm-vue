@@ -136,7 +136,6 @@ export default {
       }
 
       this.scrolling = false;
-      event.preventDefault();
 
       // 设置不循环的时候
       if (!this.loop) {
@@ -153,6 +152,7 @@ export default {
         }
       }
 
+      event.preventDefault();
       this.doTransition({ x: this.translateX + offsetX, y: this.translateY + offsetY }, 0);
       return true;
     },

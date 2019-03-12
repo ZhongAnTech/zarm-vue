@@ -60,7 +60,7 @@
 <za-modal
   :visible.sync="visible3"
   @close="handleClose"
-  @maskClick="handleClose"
+  @maskClick="visible3 = false"
   title="标题"
   :showClose="true"
 >
@@ -70,7 +70,7 @@
 <za-modal
   :visible.sync="visible4"
   @close="handleClose"
-  @maskClick="handleClose"
+  @maskClick="visible4 = false"
 >
   无头部
 </za-modal>
@@ -79,7 +79,7 @@
   :visible.sync="visible5"
   @close="handleClose"
   animationType="rotate"
-  @maskClick="handleClose"
+  @maskClick="visible5 = false"
   title="标题"
   :showClose="true"
 >

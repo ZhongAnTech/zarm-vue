@@ -46,7 +46,7 @@ describe('Modal', () => {
     const wrapper = mount({
       components: { ZaModal },
       template: `
-        <za-modal :visible.sync='visible' :title="title" :close-on-click-modal='true' :showClose='true'>
+        <za-modal :visible.sync='visible' :title="title" @maskClick='visible = false' :showClose='true'>
           <span>模态框内容</span>
           <div slot='footer'><span>{{footer}}</span></div>
         </za-modal>

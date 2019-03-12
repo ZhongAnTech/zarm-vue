@@ -4,9 +4,7 @@
       :visible='currentVisible'
       :get-container="getContainer"
       direction="bottom"
-      :hasMask="false"
-      maskType="transparent"
-      @maskClick='onMaskClick'>
+      :hasMask="false">
       <za-keyboard 
         :type="type"
         @keyClick="onKeyClick"
@@ -25,7 +23,7 @@ export default {
   props: {
     prefixCls: {
       type: String,
-      default: 'za-keyboard-picker',
+      default: 'za-keyboard',
     },
     type: String,
     visible: {
@@ -52,10 +50,6 @@ export default {
   methods: {
     stopPropagation(e) {
       Event.stopPropagation(e);
-    },
-    // 点击遮罩层
-    onMaskClick() {
-      this.onCancel();
     },
     onKeyClick(key) {
       if (['ok', 'close'].indexOf(key) > -1) {

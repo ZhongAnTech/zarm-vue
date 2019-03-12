@@ -158,12 +158,7 @@ export default {
       }, this.animationDuration);
     },
     onMaskClick(event) {
-      // clear autoClose timer
-      if (this.timer) {
-        clearTimeout(this.timer);
-      }
       this.$emit('maskClick', event);
-      this.handleClose(event);
     },
     handleClose(event) {
       this.leave('close', event);

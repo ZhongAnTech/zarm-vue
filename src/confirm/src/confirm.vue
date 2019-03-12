@@ -5,8 +5,8 @@
       <slot></slot>
     </div>
     <template slot='footer'>
-      <za-button block bordered @click='cancel'>{{cancelText || cancelBtnText}}</za-button>
-      <za-button block bordered theme="primary" @click='ok'>{{okText || okBtnText}}</za-button>
+      <za-button block ghost @click='cancel'>{{cancelText || cancelBtnText}}</za-button>
+      <za-button block ghost theme="primary" @click='ok'>{{okText || okBtnText}}</za-button>
     </template>
   </za-modal>
 </template>
