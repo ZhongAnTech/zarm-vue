@@ -15,6 +15,7 @@
       <za-popup
         :visible='currentVisible'
         :get-container="getContainer"
+        direction="bottom"
         @maskClick='onMaskClick'>
         <div :class='`${prefixCls}__wrapper`'>
           <div :class='`${prefixCls}__header`'>

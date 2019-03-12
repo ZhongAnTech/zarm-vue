@@ -3,6 +3,7 @@
     <za-popup
       :visible='currentVisible'
       :get-container="getContainer"
+      direction="bottom"
       maskType="transparent"
       @maskClick='onMaskClick'>
       <za-keyboard 

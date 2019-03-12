@@ -9,7 +9,7 @@
         [`${prefixCls}__wrapper-${direction}`]: true,
         [`${animationType}-${animationState}`]: directionCenter,
       }'
-      :style='animationDurationStyle'
+      :style='transitionDurationStyle'
     >
       <slot></slot>
     </div>
@@ -77,6 +77,12 @@ export default {
     },
   },
   computed: {
+    transitionDurationStyle() {
+      return {
+        WebkitTransitionDuration: `${this.animationDuration}ms`,
+        transitionDuration: `${this.animationDuration}ms`,
+      };
+    },
     animationDurationStyle() {
       return {
         WebkitAnimationDuration: `${this.animationDuration}ms`,
