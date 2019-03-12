@@ -8,7 +8,7 @@
       <div :class='`${prefixCls}__actions`'>
         <a v-for='(action, index) in actions' :class='{
           [`${prefixCls}__item`]: true,
-          [`${prefixCls}__${action.theme}`]: !!action.theme,
+          [`${prefixCls}__item--${action.theme}`]: !!action.theme,
         }'
         :key='index'
         @click='action.onClick'

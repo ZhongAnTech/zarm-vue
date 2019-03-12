@@ -30,14 +30,6 @@
     font-size: $actionsheet-item-font-size;
     @include button-base();
 
-    &:active {
-      background-color: $background-active;
-    }
-
-    &:not(:first-of-type) {
-      @include onepx(top);
-    }
-
     @include m(primary) {
       color: $theme-primary;
     }
@@ -52,6 +44,14 @@
 
     @include m(error) {
       color: $theme-error;
+    }
+
+    &:active {
+      background-color: $background-active;
+    }
+
+    &:not(:first-of-type) {
+      @include onepx(top);
     }
   }
 }

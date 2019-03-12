@@ -97,7 +97,8 @@ export default {
 | size | string | | 'xl', 'lg', 'sm', 'xs' | 大小 |
 | shape | string | | 'radius', 'round', 'circle' | 形状 |
 | block | bool | false | | 是否为块级元素 |
-| bordered | bool | false | | 是否是幽灵按钮 |
+| ghost | bool | false | | 是否是幽灵按钮 |
+| bordered | bool | false | | 是否带边框 |
 | disabled | bool | false | | 是否禁用 |
 | loading | bool | false | | 是否显示加载中 |
 
