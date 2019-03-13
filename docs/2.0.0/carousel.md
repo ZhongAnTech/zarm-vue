@@ -8,10 +8,8 @@
   @changeStart="handleChangeStart"
   @changeEnd="handleChangeEnd"
 >
-  <za-carousel-item :key="index" v-for="(i, index) in ITEMS">
-    <div class="carousel-item-pic">
+  <za-carousel-item :key="index" class="carousel-item-pic" v-for="(i, index) in ITEMS">
       <img :src="i.url" :alt="i.img" :draggable="false" />
-    </div>
   </za-carousel-item>
 </za-carousel>
 ```
@@ -27,10 +25,8 @@
   @changeStart="handleChangeStart"
   @changeEnd="handleChangeEnd"
 >
-  <za-carousel-item :key="index" v-for="(i, index) in ITEMS">
-    <div class="carousel-item-pic">
+  <za-carousel-item :key="index" class="carousel-item-pic" v-for="(i, index) in ITEMS">
       <img :src="i.url" :alt="i.img" :draggable="false" />
-    </div>
   </za-carousel-item>
 </za-carousel>
 ```
@@ -47,10 +43,8 @@
   @changeStart="handleChangeStart"
   @changeEnd="handleChangeEnd"
 >
-  <za-carousel-item :key="index" v-for="(i, index) in ITEMS">
-    <div class="carousel-item-pic">
+  <za-carousel-item :key="index" class="carousel-item-pic"  v-for="(i, index) in ITEMS">
       <img :src="i.url" :alt="i.img" :draggable="false" />
-    </div>
   </za-carousel-item>
 </za-carousel>
 <div class="controls" style="text-align:center;padding-bottom:20px;">
@@ -87,11 +81,11 @@ const ITEMS = [
     img: '1',
   },
   {
-    url: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
+    url: 'https://static.zhongan.com/website/health/zarm/images/banners/2.png',
     img: '2',
   },
   {
-    url: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
+    url: 'https://static.zhongan.com/website/health/zarm/images/banners/3.png',
     img: '3',
   },
 ];

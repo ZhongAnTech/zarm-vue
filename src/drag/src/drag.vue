@@ -1,11 +1,11 @@
 <script>
 const EVENTS_MAP = {
-  touchstart: 'touchstart',
-  touchmove: 'touchmove',
-  touchend: 'touchend',
-  mousedown: 'touchstart',
-  mousemove: 'touchmove',
-  mouseup: 'touchend',
+  touchstart: 'onTouchStart',
+  touchmove: 'onTouchMove',
+  touchend: 'onTouchEnd',
+  mousedown: 'onTouchStart',
+  mousemove: 'onTouchMove',
+  mouseup: 'onTouchEnd',
 };
 
 export default {
@@ -28,7 +28,7 @@ export default {
     this.dragState = {};
   },
   methods: {
-    touchstart(event) {
+    onTouchStart(event) {
       const dragState = this.dragState;
       if (!event.touches) {
         dragState.startX = event.clientX;
@@ -42,7 +42,7 @@ export default {
       this.dragStart(event, dragState);
     },
 
-    touchmove(event) {
+    onTouchMove(event) {
       const dragState = this.dragState;
       let currentX;
       let currentY;
@@ -66,18 +66,13 @@ export default {
         currentX,
         currentY,
       };
-
       if (!this.dragMove(event, state)) return; // only if it returns true
-
       this.dragState = state;
     },
 
-    touchend(event) {
+    onTouchEnd(event) {
       const dragState = this.dragState;
-      if (!dragState.currentX && !dragState.currentY) return;
-
       this.dragEnd(event, dragState);
-
       this.dragState = Object.create(null);
     },
 
@@ -88,21 +83,34 @@ export default {
     },
   },
   render() {
-    const defaultSlots = this.$slots.default || [];
-    // find the first none-text vnode
-    const firstDefaultSlots = defaultSlots.find(s => {
-      return s && s.tag;
-    });
-    if (!firstDefaultSlots) return null;
-    if (firstDefaultSlots.componentOptions) {
-      firstDefaultSlots.componentOptions.listeners =
-        firstDefaultSlots.componentOptions.listeners || {};
-      this.attachListener(firstDefaultSlots.componentOptions.listeners);
-    } else if (firstDefaultSlots.data) {
-      firstDefaultSlots.data.on = firstDefaultSlots.data.on || {};
-      this.attachListener(firstDefaultSlots.data.on);
-    }
-    return firstDefaultSlots;
+    // const defaultSlots = this.$slots.default || [];
+    // const firstDefaultSlots = defaultSlots.find(s => {
+    //   return s && s.tag;
+    // });
+    // if (!firstDefaultSlots) return null;
+    // if (firstDefaultSlots.componentOptions) {
+    //   firstDefaultSlots.componentOptions.listeners =
+    //     firstDefaultSlots.componentOptions.listeners || {};
+    //   this.attachListener(firstDefaultSlots.componentOptions.listeners);
+    // } else if (firstDefaultSlots.data) {
+    //   firstDefaultSlots.data.on = firstDefaultSlots.data.on || {};
+    //   this.attachListener(firstDefaultSlots.data.on);
+    // }
+    // return firstDefaultSlots;
+    return (
+      <div
+        ref="drag"
+        onTouchstart={this.onTouchStart}
+        onTouchmove={this.onTouchMove}
+        onTouchend={this.onTouchEnd}
+        onTouchcancel={this.onTouchEnd}
+        onMousedown={this.onTouchStart}
+        onMousemove={this.onTouchMove}
+        onMouseup={this.onTouchEnd}
+      >
+        {this.$slots.default}
+      </div>
+    );
   },
 };
 </script>
