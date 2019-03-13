@@ -21,7 +21,7 @@ export default {
     },
     height: {
       type: [Number, String],
-      default: 160,
+      default: '100%',
     },
     loop: {
       type: Boolean,
@@ -59,7 +59,7 @@ export default {
   computed: {
     itemsStyle() {
       return {
-        height: !this.isX && `${this.height}px`,
+        height: !this.isX && `${this.height}`,
         whiteSpace: this.isX && 'nowrap',
       };
     },

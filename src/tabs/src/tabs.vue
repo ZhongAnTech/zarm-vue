@@ -22,7 +22,7 @@ export default {
     },
     lineWidth: [String, Number],
     value: {},
-    canSwipe: {
+    slideable: {
       type: Boolean,
       default: false,
     },
@@ -68,7 +68,7 @@ export default {
     handleNavClick(item, event) {
       // order matters
       this.$emit('input', item.name);
-      if (!this.canSwipe) {
+      if (!this.slideable) {
         this.$emit('change', item, event);
       }
     },
@@ -111,7 +111,7 @@ export default {
       lineStyle,
       lineWidth,
       currentIndex,
-      canSwipe,
+      slideable,
       prefixCls,
       theme,
       handleSwipeChange,
@@ -150,7 +150,7 @@ export default {
         </div>
         <div class={`${prefixCls}__container`}>
           {
-            !canSwipe ? this.$slots.default :
+            !slideable ? this.$slots.default :
               <za-carousel
                 showPagination={false}
                 activeIndex={currentIndex}

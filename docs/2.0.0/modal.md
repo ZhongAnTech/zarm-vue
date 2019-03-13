@@ -83,6 +83,7 @@
   title="标题"
   :showClose="true"
 >
+<div style="height:100px">
   当前使用的是rotate旋转效果。<br /><br />
   支持多种动画效果：<br />
   zoom：缩放效果（默认）<br />
@@ -92,6 +93,7 @@
   flip：翻转效果<br />
   moveUp、moveDown、moveLeft、moveRight：移出移入效果<br />
   slideUp、slideDown、slideLeft、slideRight：滑出滑入效果<br />
+</div>
 </za-modal>
 ```
 

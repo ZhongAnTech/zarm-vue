@@ -21,7 +21,7 @@
 :::demo 可滑动
 
 ```html
-<za-tabs v-model="activeNameSwipe" @change="handleClick" canSwipe>
+<za-tabs v-model="activeNameSwipe" @change="handleClick" slideable>
   <za-tab-pane label="选项卡1" name="first">
     <div class="content">试试左滑</div>
   </za-tab-pane>
@@ -132,7 +132,7 @@ export default {
 | theme     | string         | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题                    |
 | v-model   | string         |           |                                                             | 绑定当前 tab 的 name 值 |
 | disabled  | bool           | false     |                                                             | 是否禁用                |
-| canSwipe  | bool           | false     |                                                             | 是否支持滑动切换        |
+| slideable  | bool           | false     |                                                             | 是否支持滑动切换        |
 | lineWidth | number, string |           |                                                             | 线条宽度                |
 
 #### Tabs Event

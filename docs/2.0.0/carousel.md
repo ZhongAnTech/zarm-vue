@@ -20,7 +20,7 @@
 
 ```html
 <za-carousel
-  height="180"
+  height="48vw"
   direction="bottom"
   @changeStart="handleChangeStart"
   @changeEnd="handleChangeEnd"
