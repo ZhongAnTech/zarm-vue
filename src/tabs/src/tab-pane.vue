@@ -23,8 +23,8 @@ export default {
     currentName() {
       return this.container && this.container.value;
     },
-    canSwipe() {
-      return this.container && this.container.canSwipe;
+    slideable() {
+      return this.container && this.container.slideable;
     },
     container() {
       let parent = this.$parent;
@@ -70,7 +70,7 @@ export default {
       prefixCls,
       currentName,
       name,
-      canSwipe,
+      slideable,
     } = this;
 
     const cls = {
@@ -78,7 +78,7 @@ export default {
       [`${prefixCls}__panel-item--active`]: name === currentName,
     };
 
-    const panel = canSwipe ? <za-carousel-item>{this.$slots.default}</za-carousel-item>
+    const panel = slideable ? <za-carousel-item>{this.$slots.default}</za-carousel-item>
       :
       (
         <div class={`${prefixCls}__panel`}>
