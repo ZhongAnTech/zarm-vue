@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import middlewares from './middle-wares';
+import packageJson from '../../package.json';
 
 Vue.use(Vuex);
 
@@ -19,7 +20,7 @@ const store = new Vuex.Store({
       path: 'https://chuanshuoye.github.io/zarm-vue-doc/#/zh-CN'
     },{
       value: '2.0.0',
-      label: '2.0.0-alpha.12',
+      label: packageJson.version,
       path: '#/documents/quick-start'
     }]
   },
