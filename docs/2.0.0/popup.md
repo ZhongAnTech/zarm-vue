@@ -42,6 +42,7 @@
   >
   <div class="popup-box" style="height: 100%;padding: 20px 20px 100px;background: #fff;">
     <za-button size="sm" @click='visible2 = false'>关闭弹层</za-button>
+    <za-button size="sm" @click='showAlert'>二次弹窗</za-button>
   </div>
   </za-popup>
 
@@ -110,6 +111,9 @@ export default {
     }
   },
   methods: {
+    showAlert() {
+      this.$zaAlert('二次弹窗');
+    },
     getContainer: () => div1,
   },
 };

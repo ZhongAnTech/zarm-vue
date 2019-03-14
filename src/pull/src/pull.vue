@@ -129,9 +129,12 @@ export default {
       this.doRefreshAction(action, offset);
       return true;
     },
-    onDragEnd() {
+    onDragEnd(event, { offsetY }) {
       const { onRefresh } = this;
-
+      // 没有产生位移
+      if (!offsetY) {
+        return;
+      }
       if (this.refreshState === REFRESH_STATE.pull) {
         this.doRefreshAction(REFRESH_STATE.normal);
         return;
