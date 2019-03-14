@@ -21,6 +21,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   # build
   VERSION=$VERSION npm run build:all
 
+  # publish gh-pages
+  npm run deploy:page
+
   # commit
   git add -A
   git commit -m "build: build $VERSION"
