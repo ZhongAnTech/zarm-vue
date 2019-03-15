@@ -4,15 +4,15 @@
 
 ```html
 <za-tabs v-model="activeName" @change="handleClick">
-  <za-tab-pane label="用户管理" name="first">
+  <za-tab-panel label="用户管理" name="first">
     <div class="content">用户管理</div>
-  </za-tab-pane>
-  <za-tab-pane label="配置管理" name="second">
+  </za-tab-panel>
+  <za-tab-panel label="配置管理" name="second">
     <div class="content">配置管理</div>
-  </za-tab-pane>
-  <za-tab-pane label="角色管理" name="third">
+  </za-tab-panel>
+  <za-tab-panel label="角色管理" name="third">
     <div class="content">角色管理</div>
-  </za-tab-pane>
+  </za-tab-panel>
 </za-tabs>
 ```
 
@@ -22,15 +22,15 @@
 
 ```html
 <za-tabs v-model="activeNameSwipe" @change="handleClick" slideable>
-  <za-tab-pane label="选项卡1" name="first">
+  <za-tab-panel label="选项卡1" name="first">
     <div class="content">试试左滑</div>
-  </za-tab-pane>
-  <za-tab-pane label="选项卡2" name="second">
+  </za-tab-panel>
+  <za-tab-panel label="选项卡2" name="second">
     <div class="content">试试左右滑</div>
-  </za-tab-pane>
-  <za-tab-pane label="选项卡3" name="third">
+  </za-tab-panel>
+  <za-tab-panel label="选项卡3" name="third">
     <div class="content">试试右滑</div>
-  </za-tab-pane>
+  </za-tab-panel>
 </za-tabs>
 ```
 
@@ -40,15 +40,15 @@
 
 ```html
 <za-tabs v-model="activeName8" @change="handleClick">
-  <za-tab-pane label="用户管理" name="first">
+  <za-tab-panel label="用户管理" name="first">
     <div class="content">用户管理</div>
-  </za-tab-pane>
-  <za-tab-pane label="配置管理" name="second">
+  </za-tab-panel>
+  <za-tab-panel label="配置管理" name="second">
     <div class="content">配置管理</div>
-  </za-tab-pane>
-  <za-tab-pane label="角色管理" name="third">
+  </za-tab-panel>
+  <za-tab-panel label="角色管理" name="third">
     <div class="content">角色管理</div>
-  </za-tab-pane>
+  </za-tab-panel>
 </za-tabs>
 ```
 
@@ -58,15 +58,15 @@
 
 ```html
 <za-tabs v-model="activeName9" @change="handleClick" :lineWidth="60">
-  <za-tab-pane label="用户管理" name="first">
+  <za-tab-panel label="用户管理" name="first">
     <div class="content">用户管理</div>
-  </za-tab-pane>
-  <za-tab-pane label="配置管理" name="second">
+  </za-tab-panel>
+  <za-tab-panel label="配置管理" name="second">
     <div class="content">配置管理</div>
-  </za-tab-pane>
-  <za-tab-pane label="角色管理" name="third">
+  </za-tab-panel>
+  <za-tab-panel label="角色管理" name="third">
     <div class="content">角色管理</div>
-  </za-tab-pane>
+  </za-tab-panel>
 </za-tabs>
 ```
 
@@ -76,15 +76,15 @@
 
 ```html
 <za-tabs v-model="activeName0" @change="handleClick">
-  <za-tab-pane label="用户管理" name="first">
+  <za-tab-panel label="用户管理" name="first">
     <div class="content">用户管理</div>
-  </za-tab-pane>
-  <za-tab-pane label="配置管理" name="second" disabled>
+  </za-tab-panel>
+  <za-tab-panel label="配置管理" name="second" disabled>
     <div class="content">配置管理</div>
-  </za-tab-pane>
-  <za-tab-pane label="角色管理" name="third">
+  </za-tab-panel>
+  <za-tab-panel label="角色管理" name="third">
     <div class="content">角色管理</div>
-  </za-tab-pane>
+  </za-tab-panel>
 </za-tabs>
 ```
 
@@ -141,7 +141,7 @@ export default {
 | :------- | :--------------- | :----------------------------------------- |
 | change   | tab 被选中时触发 | 1. 选中 tab 的 vue 实例, 2. event 事件对象 |
 
-#### Tab Pane Attributes
+#### Tab Panel Attributes
 
 | 属性     | 类型   | 默认值 | 可选值／参数 | 说明     |
 | :------- | :----- | :----- | :----------- | :------- |

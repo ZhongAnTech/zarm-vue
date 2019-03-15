@@ -46,7 +46,7 @@ import Switch from '../src/switch';
 import Radio from '../src/radio';
 import RadioGroup from '../src/radio-group';
 import Tabs from '../src/tabs';
-import TabPane from '../src/tab-pane';
+import TabPanel from '../src/tab-panel';
 import Toast from '../src/toast';
 import Tooltip from '../src/tooltip';
 import FilePicker from '../src/file-picker';
@@ -102,7 +102,7 @@ const components = [
   CarouselItem,
   Switch,
   Tabs,
-  TabPane,
+  TabPanel,
   Toast,
   Tooltip,
   FilePicker,
@@ -178,7 +178,7 @@ export {
   CarouselItem,
   Switch,
   Tabs,
-  TabPane,
+  TabPanel,
   Toast,
   Tooltip,
   FilePicker,

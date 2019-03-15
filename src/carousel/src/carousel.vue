@@ -287,7 +287,7 @@ export default {
       return this.$slots.default
         .filter(d => d.componentOptions &&
         (d.componentOptions.tag === 'za-carousel-item' ||
-        d.componentOptions.tag === 'za-tab-pane'));
+        d.componentOptions.tag === 'za-tab-panel'));
     },
   },
   render(h) {
@@ -300,6 +300,7 @@ export default {
       currentActiveIndex,
       paginationStyle,
       loop,
+      isX,
       showPagination,
       validSlots,
     } = this;
@@ -319,13 +320,15 @@ export default {
       return cloned;
     }
 
+    const directionCls = isX ? `${prefixCls} ${prefixCls}--horizontal` : `${prefixCls} ${prefixCls}--vertical`;
+
     const pagination = this.$slots.default.map((item, index) => {
       return (
         <li
           role='tab'
           key={`pagination-${index}`}
           class={
-            index === currentActiveIndex ? `${prefixCls}__active` : ''
+            index === currentActiveIndex ? `${prefixCls}__pagination--active` : ''
           }
           style={paginationStyle} ></li>
       );
@@ -336,7 +339,7 @@ export default {
     const lastItem = loop ?
       deepCloneVNode(validChildren[validChildren.length - 1]) : null;
     return (
-      <div class={prefixCls}>
+      <div class={directionCls}>
         <za-drag
           dragStart={onDragStart}
           dragMove={onDragMove}

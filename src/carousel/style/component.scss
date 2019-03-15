@@ -9,29 +9,57 @@
     font-size: r(14);
   }
 
-  @include e(pagination) {
-    position: absolute;
-    right: r(10);
-    bottom: r(10);
+  @include m(vertical) {
+    @include e(pagination) {
+      position: absolute;
+      right: r(10);
+      bottom: r(10);
 
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      font-size: 0;
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 0;
 
-      li {
-        width: r(8);
-        height: r(8);
-        border-radius: r(4);
-        background: #ccc;
-        cursor: pointer;
-        margin: r(3) 0 0 r(3);
+        li {
+          width: r(4);
+          height: r(19);
+          border-radius: r(0);
+          background: #fff;
+          cursor: pointer;
+          margin: r(3) 0 0 r(3);
+        }
       }
     }
+  }
 
-    @include e(active) {
-      background: $theme-primary;
+  @include e(pagination) {
+    @include m(active) {
+      background: $theme-primary !important;
+    }
+  }
+
+  @include m(horizontal) {
+    @include e(pagination) {
+      position: absolute;
+      right: r(10);
+      bottom: r(10);
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 0;
+
+        li {
+          width: r(19);
+          height: r(4);
+          border-radius: r(0);
+          background: #fff;
+          cursor: pointer;
+          margin: r(3) 0 0 r(3);
+        }
+      }
     }
   }
 }

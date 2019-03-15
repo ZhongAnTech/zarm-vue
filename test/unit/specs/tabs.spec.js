@@ -1,5 +1,5 @@
 import zaTabs from '@/tabs';
-import zaTabPane from '@/tab-pane';
+import zaTabPanel from '@/tab-panel';
 import { mount } from '../util';
 
 describe('Tabs', () => {
@@ -22,19 +22,19 @@ describe('Tabs', () => {
     const TestCompo = {
       components: {
         zaTabs,
-        zaTabPane,
+        zaTabPanel,
       },
       template: `
         <za-tabs v-model="activeName" @change="handleClick">
-          <za-tab-pane label='用户管理' name='first'>
+          <za-tab-panel label='用户管理' name='first'>
             <div class='content'>用户管理</div>
-          </za-tab-pane>
-          <za-tab-pane label='配置管理' name='second'>
+          </za-tab-panel>
+          <za-tab-panel label='配置管理' name='second'>
             <div class='content'>配置管理</div>
-          </za-tab-pane>
-          <za-tab-pane label='角色管理' name='third'>
+          </za-tab-panel>
+          <za-tab-panel label='角色管理' name='third'>
             <div class='content'>角色管理</div>
-          </za-tab-pane>
+          </za-tab-panel>
         </za-tabs>
       `,
       methods: {

@@ -33,7 +33,7 @@ export default {
       const panes = this.panes;
       let cur = 0;
       panes.some((child, index) => {
-        if (child.$options.name === 'zaTabPane' && child.name === currentValue) {
+        if (child.$options.name === 'zaTabPanel' && child.name === currentValue) {
           cur = index;
           return true;
         }

@@ -3,7 +3,7 @@ import zaCarouselItem from '../../carousel-item';
 
 let paneIndex = 0;
 export default {
-  name: 'zaTabPane',
+  name: 'zaTabPanel',
   components: {
     zaCarouselItem,
   },
