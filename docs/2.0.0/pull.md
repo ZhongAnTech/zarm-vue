@@ -224,14 +224,13 @@ export default {
 
 #### Pull Attributes
 
-| 属性                | 类型   | 默认值  | 可选值／参数 | 说明                             |
-| :------------------ | :----- | :------ | :----------- | :------------------------------- |
-| prefixCls           | string | za-pull |              | 类名前缀                         |
-| refreshing          | bool   | false   | 是否正在刷新 |
-| loading             | bool   | false   | 是否正在加载 |
-| refreshInitDistance | number | 20      |              | 下拉助跑距离                     |
-| refreshDistance     | number | 60      |              | 下拉距离阀值                     |
-| on-refresh          | func   |         |              | 达到阀值后释放触发刷新的回调函数 |
-| on-load             | func   |         |              | 下拉加载的回调函数               |
-| duration            | number | 300     |              | 动画执行时间，单位：ms           |
-| stayTime            | number | 1500    |              | 加载成功停留时间                 |
+| 属性                  | 类型     | 默认值 | 可选值／参数 | 说明                             |
+| :-------------------- | :------- | :----- | :----------- | :------------------------------- |
+| refreshing            | boolean  | false  | 是否正在刷新 |
+| loading               | boolean  | false  | 是否正在加载 |
+| refresh-init-distance | number   | 20     |              | 下拉助跑距离                     |
+| refresh-distance      | number   | 60     |              | 下拉距离阀值                     |
+| on-refresh            | function |        |              | 达到阀值后释放触发刷新的回调函数 |
+| on-load               | function |        |              | 下拉加载的回调函数               |
+| duration              | number   | 300    |              | 动画执行时间，单位：ms           |
+| stay-time             | number   | 1500   |              | 加载成功停留时间                 |

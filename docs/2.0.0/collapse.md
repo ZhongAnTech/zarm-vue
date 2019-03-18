@@ -10,10 +10,11 @@
 
 ```html
 <za-collapse @change="onChange">
-  <za-collapse-item title="单行文本" itemKey="0">
-    <div>
-      更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文
-    </div>
+  <za-collapse-item title="单行文本" item-key="0">
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
   </za-collapse-item>
 </za-collapse>
 <script>
@@ -32,21 +33,24 @@
 ::: demo 手风琴模式
 
 ```html
-<za-collapse animated defaultActiveKey="a" activeKey="b">
-  <za-collapse-item title="单行文本" itemKey="a">
-    <div>
-      更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文
-    </div>
+<za-collapse animated default-active-key="a" >
+  <za-collapse-item title="单行文本" item-key="a">
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
   </za-collapse-item>
-  <za-collapse-item title="单行文本" itemKey="b">
-    <div>
-      更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文
-    </div>
+  <za-collapse-item title="单行文本" item-key="b">
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
   </za-collapse-item>
-  <za-collapse-item title="单行文本" itemKey="c">
-    <div>
-      更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文
-    </div>
+  <za-collapse-item title="单行文本" item-key="c">
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
   </za-collapse-item>
 </za-collapse>
 ```
@@ -56,16 +60,18 @@
 ::: demo 默认展开项
 
 ```html
-<za-collapse multiple animated :defaultActiveKey="['a']">
-  <za-collapse-item title="单行文本" itemKey="a">
-    <div>
-      更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文
-    </div>
+<za-collapse multiple animated :default-active-key="['a']">
+  <za-collapse-item title="单行文本" item-key="a">
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
   </za-collapse-item>
-  <za-collapse-item title="单行文本" itemKey="b">
-    <div>
-      更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文
-    </div>
+  <za-collapse-item title="单行文本" item-key="b">
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
   </za-collapse-item>
 </za-collapse>
 ```
@@ -75,16 +81,18 @@
 ::: demo 禁用子项
 
 ```html
-<za-collapse multiple animated :defaultActiveKey="['a']">
-  <za-collapse-item title="单行文本" itemKey="a" disabled>
-    <div>
-      更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文
-    </div>
+<za-collapse multiple animated :default-active-key="['a']">
+  <za-collapse-item title="单行文本" item-key="a" disabled>
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
   </za-collapse-item>
-  <za-collapse-item title="单行文本" itemKey="b">
-    <div>
-      更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文本更多文
-    </div>
+  <za-collapse-item title="单行文本" item-key="b">
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
+    <div>我是50元套餐内容</div>
   </za-collapse-item>
 </za-collapse>
 ```
@@ -117,21 +125,20 @@ export default {
 
 #### Collapse Attributes
 
-| 属性             | 类型                                  | 默认值      | 可选值／参数 | 说明             |
-| :--------------- | :------------------------------------ | :---------- | :----------- | :--------------- |
-| prefixCls        | string                                | za-collapse |              | 类名前缀         |
-| defaultActiveKey | number string Array< number string >  |             |              | 初始展开项       |
-| activeKey        | number string Array < number string > |             |              | 当前展开项       |
-| multiple         | bool                                  | false       |              | 是否允许打开多项 |
-| animated         | bool                                  | false       |              | 是否添加展开动画 |
+| 属性               | 类型                                  | 默认值 | 可选值／参数 | 说明             |
+| :----------------- | :------------------------------------ | :----- | :----------- | :--------------- |
+| default-active-key | number string Array< number string >  |        |              | 初始展开项       |
+| active-key         | number string Array < number string > |        |              | 当前展开项       |
+| multiple           | boolean                               | false  |              | 是否允许打开多项 |
+| animated           | boolean                               | false  |              | 是否添加展开动画 |
 
 #### CollapseItem Attributes
 
-| 属性     | 类型   | 默认值 | 可选值／参数 | 说明                                 |
-| :------- | :----- | :----- | :----------- | :----------------------------------- |
-| itemKey  | string |        |              | collapseItem 唯一标示 对应 activeKey |
-| title    | string |        |              | 标题的文案                           |
-| disabled | bool   | false  |              | 是否禁用                             |
+| 属性     | 类型    | 默认值 | 可选值／参数 | 说明                                 |
+| :------- | :------ | :----- | :----------- | :----------------------------------- |
+| item-key | string  |        |              | collapseItem 唯一标示 对应 activeKey |
+| title    | string  |        |              | 标题的文案                           |
+| disabled | boolean | false  |              | 是否禁用                             |
 
 #### Collapse Events
 

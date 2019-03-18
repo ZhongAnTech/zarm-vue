@@ -108,14 +108,13 @@ export default {
 
 | 属性      | 类型   | 默认值    | 可选值／参数                   | 说明           |
 | :-------- | :----- | :-------- | :----------------------------- | :------------- |
-| prefixCls | string | za-button |                                | 类名前缀       |
 | theme     | string | 'default' | 'default', 'primary', 'danger' | 主题           |
 | size      | string |           | 'xl', 'lg', 'sm', 'xs'         | 大小           |
 | shape     | string |           | 'radius', 'round', 'circle'    | 形状           |
-| block     | bool   | false     |                                | 是否为块级元素 |
-| ghost     | bool   | false     |                                | 是否是幽灵按钮 |
-| disabled  | bool   | false     |                                | 是否禁用       |
-| loading   | bool   | false     |                                | 是否显示加载中 |
+| block     | boolean   | false     |                                | 是否为块级元素 |
+| ghost     | boolean   | false     |                                | 是否是幽灵按钮 |
+| disabled  | boolean   | false     |                                | 是否禁用       |
+| loading   | boolean   | false     |                                | 是否显示加载中 |
 
 #### Button Events
 

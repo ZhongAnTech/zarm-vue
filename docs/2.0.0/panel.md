@@ -61,24 +61,10 @@ export default {
 
 ### API
 
-#### panel
 
-| 属性      | 类型   | 默认值   | 可选值／参数 | 说明     |
-| :-------- | :----- | :------- | :----------- | :------- |
-| prefixCls | string | za-panel |              | 类名前缀 |
-
-#### panel-header
+#### panel Attributes
 
 | 属性      | 类型   | 默认值   | 可选值／参数 | 说明                |
 | :-------- | :----- | :------- | :----------- | :------------------ |
-| prefixCls | string | za-panel |              | 类名前缀            |
-| title     | String |          |              | 标题，也可以用 slot |
-| more      | String |          |              | 更多，也可以用 slot |
-
-#### panel-footer
-
-| 属性      | 类型   | 默认值   | 可选值／参数 | 说明                |
-| :-------- | :----- | :------- | :----------- | :------------------ |
-| prefixCls | string | za-panel |              | 类名前缀            |
 | title     | String |          |              | 标题，也可以用 slot |
 | more      | String |          |              | 更多，也可以用 slot |

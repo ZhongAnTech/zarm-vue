@@ -38,8 +38,8 @@
   v-model="value"
   @change="change"
   :multiple="multiple == '1'"
-  :dateRender="dateRender"
-  :disabledDate="disabledDate"
+  :date-render="dateRender"
+  :disabled-date="disabledDate"
   :min="min"
   :max="max"
 />
@@ -97,15 +97,15 @@ export default {
 
 #### Calendar Attributes
 
-| 属性         | 类型                                  | 默认值           | 可选值／参数                               | 说明                 |
-| :----------- | :------------------------------------ | :--------------- | :----------------------------------------- | :------------------- |
-| prefixCls    | string                                | za-calendar      |                                            | 类名前缀             |
-| titles       | Array                                 |                  | ['日', '一', '二', '三', '四', '五', '六'] | 周期标题             |
-| multiple     | boolean                               | false            |                                            | 是否日期范围选择开关 |
-| defaultValue | String / Number / Date / [Date, Date] | 无               | 设置选中的日期                             |
-| v-model      | String / Number / Date / [Date, Date] | 无               | 双向绑定日期值                             |
-| min          | String / Number / Date                | 当天日期         |                                            |  最小日期限制        |
-| max          | String / Number / Date                | min 开始往后一年 |                                            |  最大日期限制        |
+| 属性          | 类型                                 | 默认值           | 可选值／参数                               | 说明                 |
+| :------------ | :----------------------------------- | :--------------- | :----------------------------------------- | :------------------- |
+| titles        | Array                                |                  | ['日', '一', '二', '三', '四', '五', '六'] | 周期标题             |
+| multiple      | boolean                              | false            |                                            | 是否日期范围选择开关 |
+| default-value | String ,Number , Date , [Date, Date] | 无               | 设置选中的日期                             |
+| v-model       | String ,Number , Date , [Date, Date] | 无               | 双向绑定日期值                             |
+| disabled-date  | (date?: Date) => boolean () => false |                  |                                            | 日期是否禁止选择     |
+| min           | String ,Number , Date                | 当天日期         |                                            |  最小日期限制        |
+| max           | String ,Number , Date                | min 开始往后一年 |                                            |  最大日期限制        |
 
 #### Calendar Events
 

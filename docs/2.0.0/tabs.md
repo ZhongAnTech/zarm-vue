@@ -128,12 +128,11 @@ export default {
 
 | 属性      | 类型           | 默认值    | 可选值／参数                                                | 说明                    |
 | :-------- | :------------- | :-------- | :---------------------------------------------------------- | :---------------------- |
-| prefixCls | string         | za-tab    |                                                             | 类名前缀                |
 | theme     | string         | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题                    |
 | v-model   | string         |           |                                                             | 绑定当前 tab 的 name 值 |
-| disabled  | bool           | false     |                                                             | 是否禁用                |
-| slideable  | bool           | false     |                                                             | 是否支持滑动切换        |
-| lineWidth | number, string |           |                                                             | 线条宽度                |
+| disabled  | boolean           | false     |                                                             | 是否禁用                |
+| slideable  | boolean           | false     |                                                             | 是否支持滑动切换        |
+| line-width | number, string |           |                                                             | 线条宽度                |
 
 #### Tabs Event
 
@@ -145,6 +144,6 @@ export default {
 
 | 属性     | 类型   | 默认值 | 可选值／参数 | 说明     |
 | :------- | :----- | :----- | :----------- | :------- |
-| disabled | bool   | false  |              | 是否禁用 |
+| disabled | boolean   | false  |              | 是否禁用 |
 | label    | string |        |              | 标题     |
 | name     | string |        |              | 标识     |

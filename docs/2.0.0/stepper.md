@@ -101,11 +101,10 @@ export default {
 
 | 属性      | 类型   | 默认值     | 可选值／参数       | 说明                    |
 | :-------- | :----- | :--------- | :----------------- | :---------------------- |
-| prefixCls | string | za-stepper |                    | 类名前缀,自定义组件样式 |
 | size      | string | 'md'       | 'md', 'sm'         | 主题                    |
 | shape     | string |            | 'radius', 'circle' | 形状                    |
 | v-model   | number |            |                    | 绑定值                  |
-| disabled  | bool   | false      |                    | 是否禁用                |
+| disabled  | boolean   | false      |                    | 是否禁用                |
 | min       | number |            |                    | 最小值                  |
 | max       | number |            |                    | 最大值                  |
 | step      | number | 1          |                    | 步长                    |
@@ -115,4 +114,4 @@ export default {
 | 事件名称    | 说明                   | 回调参数       |
 | :---------- | :--------------------- | :------------- |
 | change      | 点击加减后触发的事件   | event 事件对象 |
-| inputChange | 点击加减后返回变化的值 | number         |
+| input-change | 点击加减后返回变化的值 | number         |

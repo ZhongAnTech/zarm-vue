@@ -85,18 +85,17 @@ export default {
 
 #### SearchBar Attributes
 
-| 属性         | 类型           | 默认值        | 可选值／参数 | 说明                   |
-| :----------- | :------------- | :------------ | :----------- | :--------------------- |
-| prefixCls    | string         | za-search-bar |              | 类名前缀               |
-| placeholder  | string         | text          |              | placeholder            |
-| disabled     | bool           | false         |              | 是否禁用               |
-| defaultValue | string         |               |              | 初始值                 |
-| value        | string, number |               |              | 搜索关键字             |
-| shape        | string         | radius        |              | 形状，`round`,`radius` |
-| cancelText   | string         | '取消'        |              | 取消文本               |
-| showCancel   | bool           | false         |              | 是否显示取消操作       |
-| clearable    | bool           | false         |              | 是否可以清除操作       |
-| maxLength    | number         |               |              | 输入字数上限           |
+| 属性          | 类型           | 默认值 | 可选值／参数 | 说明                   |
+| :------------ | :------------- | :----- | :----------- | :--------------------- |
+| placeholder   | string         | text   |              | placeholder            |
+| disabled      | boolean        | false  |              | 是否禁用               |
+| default-value | string         |        |              | 初始值                 |
+| value         | string, number |        |              | 搜索关键字             |
+| shape         | string         | radius |              | 形状，`round`,`radius` |
+| cancel-text   | string         | '取消' |              | 取消文本               |
+| show-cancel   | boolean        | false  |              | 是否显示取消操作       |
+| clearable     | boolean        | false  |              | 是否可以清除操作       |
+| max-length    | number         |        |              | 输入字数上限           |
 
 #### SearchBar Events
 

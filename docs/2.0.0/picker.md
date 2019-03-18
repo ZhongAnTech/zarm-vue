@@ -301,33 +301,32 @@ export default {
 
 #### Attributes
 
-| 属性          | 类型          | 默认值    | 可选值／参数 | 说明                 |
-| :------------ | :------------ | :-------- | :----------- | :------------------- |
-| prefixCls     | string        | za-picker |              | 类名前缀             |
-| data-source   | array         | [ ]       |              | 数据源               |
-| default-value | array, string |           |              | 初始值               |
-| valueMember   | string        | 'value'   |              | 值字段对应的 key     |
-| disabled      | bool          | false     |              | 是否禁用             |
-| itemRender    | func          | noop      |              | 滚轮区域选项址值渲染 |
-| cols          | number        |           |              | 级联选择器的级数     |
+| 属性          | 类型          | 默认值  | 可选值／参数 | 说明                 |
+| :------------ | :------------ | :------ | :----------- | :------------------- |
+| data-source   | array         | [ ]     |              | 数据源               |
+| default-value | array, string |         |              | 初始值               |
+| value-member  | string        | 'value' |              | 值字段对应的 key     |
+| disabled      | boolean       | false   |              | 是否禁用             |
+| item-render   | function      | noop    |              | 滚轮区域选项址值渲染 |
+| cols          | number        |         |              | 级联选择器的级数     |
 
 #### Picker & Select Attributes
 
-| 属性          | 类型          | 默认值   | 可选值／参数 | 说明                                 |
-| :------------ | :------------ | :------- | :----------- | :----------------------------------- |
-| title         | string        | '请选择' |              | 选择器标题                           |
-| v-model       | array, string |          |              | 绑定值                               |
-| placeholder   | string        | '请选择' |              | 输入提示信息                         |
-| okText        | string        | '确定'   |              | 输入提示信息                         |
-| cancelText    | string        | '取消'   |              | 输入提示信息                         |
-| displayRender | func          |          |              | 所选值的展示                         |
-| visible       | bool          | false    |              | 是否显示, 支持.sync 修饰符 (v2.3.0+) |
+| 属性           | 类型          | 默认值   | 可选值／参数 | 说明                                 |
+| :------------- | :------------ | :------- | :----------- | :----------------------------------- |
+| title          | string        | '请选择' |              | 选择器标题                           |
+| v-model        | array, string |          |              | 绑定值                               |
+| placeholder    | string        | '请选择' |              | 输入提示信息                         |
+| okText         | string        | '确定'   |              | 输入提示信息                         |
+| cancel-text    | string        | '取消'   |              | 输入提示信息                         |
+| display-render | function      |          |              | 所选值的展示                         |
+| visible        | boolean       | false    |              | 是否显示, 支持.sync 修饰符 (v2.3.0+) |
 
 #### Picker & Select Events
 
-| 事件名称  | 说明                         | 回调参数         |
-| :-------- | :--------------------------- | :--------------- |
-| ok        | 点击确定时触发的回调函数     | 选中值的对象列表 |
-| cancel    | 点击取消时触发的回调函数     | event 对象       |
-| change    | 滚动时值变化时触发的回调函数 | 选中值的对象列表 |
-| maskClick | 点击遮罩后出发的回调函数     |                  |  |  |
+| 事件名称   | 说明                         | 回调参数         |
+| :--------- | :--------------------------- | :--------------- |
+| ok         | 点击确定时触发的回调函数     | 选中值的对象列表 |
+| cancel     | 点击取消时触发的回调函数     | event 对象       |
+| change     | 滚动时值变化时触发的回调函数 | 选中值的对象列表 |
+| mask-click | 点击遮罩后出发的回调函数     |                  |  |  |

@@ -86,17 +86,24 @@ export default {
 
 #### ActionSheet Attributes
 
-| 属性       | 类型            | 默认值    | 可选值／参数                     | 说明                                 |
-| :--------- | :-------------- | :-------- | :------------------------------- | :----------------------------------- |
-| prefixCls  | string          | za-switch |                                  | 类名前缀                             |
-| shape      | string          |           | ''                               | 形状 ，可选`radius`                  |
-| spacing    | bool            |           | false                            | 是否留边                             |
-| visible    | bool            | false     |                                  | 是否显示, 支持.sync 修饰符 (v2.3.0+) |
-| actions    | arrayOf(object) | [ ]       | object: { theme, text, onClick } | 动作列表                             |
-| cancelText | string          | '取消'    |                                  | 取消菜单的文案                       |
+| 属性        | 类型            | 默认值 | 可选值／参数                     | 说明                                 |
+| :---------- | :-------------- | :----- | :------------------------------- | :----------------------------------- |
+| shape       | string          |        | ''                               | 形状 ，可选`radius`                  |
+| spacing     | boolean            |        | false                            | 是否留边                             |
+| visible     | boolean            | false  |                                  | 是否显示, 支持.sync 修饰符 (v2.3.0+) |
+| actions     | arrayOf(object) | [ ]    | object: { theme, text, onClick } | 动作列表                             |
+| cancel-text | string          | '取消' |                                  | 取消菜单的文案                       |
 
 #### ActionSheet Events
 
-| 事件名称 | 说明                                                                                                                       | 回调参数                     |
-| :------- | :------------------------------------------------------------------------------------------------------------------------- | :--------------------------- |
-| cancel   | 当 actionsheet 关闭时触发的事件。当点击 actionButton 关闭时第一个参数为'action',当点击 popup 关闭时第一个参数为'clickaway' | 1. reason, 2. event 事件对象 |
+| 事件名称 | 说明             | 回调参数       |
+| :------- | :--------------- | :------------- |
+| cancel   | 关闭时触发的事件 | event 事件对象 |
+
+#### Actions 类型定义
+
+| 属性    | 类型     | 默认值    | 说明                                                                 |
+| :------ | :------- | :-------- | :------------------------------------------------------------------- |
+| text    | string   | -         | 按钮文字                                                             |
+| theme   | string   | 'default' | 按钮主题，可选值 `default`、`primary`、`success`、`warning`、`error` |
+| onClick | function | -         | 按钮点击后触发的回调函数                                             |

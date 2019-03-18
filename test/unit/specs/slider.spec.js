@@ -11,7 +11,7 @@ describe('Slider', () => {
       },
       template: `
         <za-slider
-        :value='0'
+        :default-value='0'
         ></za-slider>
       `,
     };
@@ -44,7 +44,7 @@ describe('Slider', () => {
       template: `
         <za-slider
         ref='slider'
-        :value='v'
+        :default-value='v'
         ></za-slider>
       `,
       data() {
@@ -71,7 +71,7 @@ describe('Slider', () => {
       template: `
         <za-slider
         ref='slider'
-        :value='0'
+        :default-value='0'
         ></za-slider>
       `,
     };

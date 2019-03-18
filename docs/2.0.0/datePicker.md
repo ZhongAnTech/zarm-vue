@@ -175,16 +175,15 @@ export default {
 
 #### Attributes
 
-| 属性          | 类型   | 默认值         | 可选值／参数                        | 说明             |
-| :------------ | :----- | :------------- | :---------------------------------- | :--------------- |
-| prefixCls     | string | za-date-picker |                                     | 类名前缀         |
-| default-value | string |                |                                     | 初始值           |
-| disabled      | bool   | false          |                                     | 是否禁用         |
-| title         | string | '请选择'       |                                     | 选择器标题       |
-| mode          | string | date           | `year`, `date`, `time` , `datetime` | 指定日期选择模式 |
-| max           | string |                | 例：2017-08-10                      |
-| min           | string |                | 例：2000-01-03                      |
-| minuteStep    | number | 1              |                                     | 分钟步长         |
+| 属性          | 类型    | 默认值   | 可选值／参数                        | 说明             |
+| :------------ | :------ | :------- | :---------------------------------- | :--------------- |
+| default-value | string  |          |                                     | 初始值           |
+| disabled      | boolean | false    |                                     | 是否禁用         |
+| title         | string  | '请选择' |                                     | 选择器标题       |
+| mode          | string  | date     | `year`, `date`, `time` , `datetime` | 指定日期选择模式 |
+| max           | string  |          | 例：2017-08-10                      |
+| min           | string  |          | 例：2000-01-03                      |
+| minute-step   | number  | 1        |                                     | 分钟步长         |
 
 #### DatePicker & DateSelect Attributes
 
@@ -192,8 +191,8 @@ export default {
 | :----------- | :----- | :------- | :---------------------------------------------------------------------------- | :----------- |
 | v-model      | string |          |                                                                               | 绑定值       |
 | title        | string | '请选择' |                                                                               | 选择器标题   |
-| okText       | string | '确定'   |                                                                               | 输入提示信息 |
-| cancelText   | string | '取消'   |                                                                               | 输入提示信息 |
+| ok-text      | string | '确定'   |                                                                               | 输入提示信息 |
+| cancel-text  | string | '取消'   |                                                                               | 输入提示信息 |
 | placeholder  | string | '请选择' |                                                                               | 输入提示信息 |
 | format       | string |          | 例：yyyy 年 MM 月 dd 日<br /> 年:`yyyy`, 月:`MM`, 日:`dd`, 时:`HH`, 分:`mm`。 | 格式化显示值 |
 | value-format | string |          | 例：`yyyy-MM-dd HH:mm`                                                        | 格式化绑定值 |

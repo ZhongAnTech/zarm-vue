@@ -218,26 +218,24 @@ export default {
 
 #### Checkbox-Group Attributes
 
-| 属性      | 类型   | 默认值      | 可选值／参数                                                | 说明           |
-| :-------- | :----- | :---------- | :---------------------------------------------------------- | :------------- |
-| prefixCls | string | za-checkbox |                                                             | 类名前缀       |
-| theme     | string | 'primary'   | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题           |
-| shape     | string |             | 'radius', 'round'                                           | 形状           |
-| type      | string |             | 'button', 'cell'                                            | 显示类型       |
-| v-model   | array  | [ ]         |                                                             | 绑定变量       |
-| block     | bool   | false       |                                                             | 是否为块级元素 |
-| disabled  | bool   | false       |                                                             | 是否禁用       |
+| 属性     | 类型    | 默认值    | 可选值／参数                                                | 说明           |
+| :------- | :------ | :-------- | :---------------------------------------------------------- | :------------- |
+| theme    | string  | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题           |
+| shape    | string  |           | 'radius', 'round'                                           | 形状           |
+| type     | string  |           | 'button', 'cell'                                            | 显示类型       |
+| v-model  | array   | [ ]       |                                                             | 绑定变量       |
+| block    | boolean | false     |                                                             | 是否为块级元素 |
+| disabled | boolean | false     |                                                             | 是否禁用       |
 
 #### Checkbox Attributes
 
-| 属性      | 类型          | 默认值      | 可选值／参数                                                | 说明     |
-| :-------- | :------------ | :---------- | :---------------------------------------------------------- | :------- |
-| prefixCls | string        | za-checkbox |                                                             | 类名前缀 |
-| theme     | string        | 'primary'   | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题     |
-| type      | string        |             | 'button', 'cell'                                            | 显示类型 |
-| value     | string,number |             |                                                             | 选项值   |
-| checked   | bool          |             |                                                             | 是否选中 |
-| disabled  | bool          | false       |                                                             | 是否禁用 |
+| 属性     | 类型          | 默认值    | 可选值／参数                                                | 说明     |
+| :------- | :------------ | :-------- | :---------------------------------------------------------- | :------- |
+| theme    | string        | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题     |
+| type     | string        |           | 'button', 'cell'                                            | 显示类型 |
+| value    | string,number |           |                                                             | 选项值   |
+| checked  | boolean       |           |                                                             | 是否选中 |
+| disabled | boolean       | false     |                                                             | 是否禁用 |
 
 #### Checkbox Group Events
 

@@ -76,11 +76,11 @@ export default {
   methods: {
     onCancel(event) {
       this.currentVisible = false;
-      this.$emit('cancel', 'action', event);
+      this.$emit('cancel', event);
       this.$emit('update:visible', false);
     },
     handlePopupClose(event) {
-      this.$emit('cancel', 'clickaway', event);
+      this.$emit('cancel', event);
       this.$emit('update:visible', false);
     },
   },

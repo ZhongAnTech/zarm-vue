@@ -48,9 +48,8 @@ export default {
 | :-------- | :----- | :--------- | :--------------------------------------- | :--------------- |
 | theme     | string | 'primary'  | 'primary', 'success', 'warning', 'error' | 主题             |
 | icon      | string |            |                                          | 设置图标         |
-| closable  | bool   | false      |                                          | 是否显示关闭按钮 |
-| hasArrow  | bool   | false      |                                          | 是否显示箭头     |
-| prefixCls | string | za-message |                                          | 类名前缀         |
+| closable  | boolean   | false      |                                          | 是否显示关闭按钮 |
+| has-arrow  | boolean   | false      |                                          | 是否显示箭头     |
 
 #### Message Events
 

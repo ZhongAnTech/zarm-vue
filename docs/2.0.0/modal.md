@@ -284,22 +284,21 @@ export default {
 
 | 属性              | 类型           | 默认值   | 可选值／参数                                                                                                                             | 说明                       |
 | :---------------- | :------------- | :------- | :--------------------------------------------------------------------------------------------------------------------------------------- | :------------------------- |
-| prefixCls         | string         | za-modal |                                                                                                                                          | 类名前缀                   |
 | shape             | string         | 无       | 'radius'                                                                                                                                 | 形状                       |
-| visible           | bool           | false    |                                                                                                                                          | 是否显示, 支持.sync 修饰符 |
-| okText            | string         | '确定'   |                                                                                                                                          | 确认按钮文案               |
-| cancelText        | string         | '关闭'   |                                                                                                                                          | 取消按钮文案               |
-| animationType     | string         | 'fade'   | 'fade', 'door', 'flip', 'rotate', 'zoom','moveUp', 'moveDown', 'moveLeft', 'moveRight','slideUp', 'slideDown', 'slideLeft', 'slideRight' | 动画效果                   |
+| visible           | boolean           | false    |                                                                                                                                          | 是否显示, 支持.sync 修饰符 |
+| ok-text            | string         | '确定'   |                                                                                                                                          | 确认按钮文案               |
+| cancel-text        | string         | '关闭'   |                                                                                                                                          | 取消按钮文案               |
+| animation-type     | string         | 'fade'   | 'fade', 'door', 'flip', 'rotate', 'zoom','moveUp', 'moveDown', 'moveLeft', 'moveRight','slideUp', 'slideDown', 'slideLeft', 'slideRight' | 动画效果                   |
 | animationDuration | number         | 200      |                                                                                                                                          | 动画执行时间               |
 | width             | string, number | '70%'    |                                                                                                                                          | 宽度                       |
-| getContainer      | Func           |          |                                                                                                                                          | 指定挂载的父容器 DOM 节点  |
+| get-container      | Func           |          |                                                                                                                                          | 指定挂载的父容器 DOM 节点  |
 
 #### Modal Events
 
 | 事件名称  | 说明                   | 回调参数               |
 | :-------- | :--------------------- | :--------------------- |
 | close     | modal 关闭时触发的事件 | reason, event 事件对象 |
-| maskClick | 点击遮罩后触发的事件   | event 事件对象         |
+| mask-click | 点击遮罩后触发的事件   | event 事件对象         |
 
 #### Alert Events
 

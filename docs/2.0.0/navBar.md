@@ -77,7 +77,6 @@ export default {
 
 | 属性         | 类型   | 默认值    | 可选值／参数 | 说明           |
 | :----------- | :----- | :-------- | :----------- | :------------- |
-| prefixCls    | string | za-navbar |              | 类名前缀       |
 | title        | html   |           |              | 导航栏标题渲染 |
 | slot="left"  | html   |           |              | 导航栏左侧渲染 |
 | slot="right" | html   |           |              | 导航栏右侧渲染 |

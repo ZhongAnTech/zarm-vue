@@ -145,11 +145,10 @@ export default {
 
 | 属性      | 类型           | 默认值   | 可选值／参数                                        | 说明         |
 | :-------- | :------------- | :------- | :-------------------------------------------------- | :----------- |
-| prefixCls | string         | za-badge |                                                     | 类名前缀     |
 | theme     | string         | 'error'  | 'default', 'primary', 'success', 'warning', 'error' | 主题         |
 | shape     | string         |          | 'dot', 'rect', 'radius', 'round', 'circle', 'leaf'  | 形状         |
 | text      | string, number |          |                                                     | 显示文字     |
-| sup       | bool           | false    |                                                     | 是否上标位置 |
+| sup       | boolean           | false    |                                                     | 是否上标位置 |
 
 #### Badge Events
 

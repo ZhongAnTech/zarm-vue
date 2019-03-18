@@ -3,6 +3,7 @@
     [`${prefixCls}`]: true,
     [`${prefixCls}--disabled`]: !!disabled
     }'>
+    <input type="hidden" :value="currentValue"/>
     <za-drag
       :dragStart='onDragStart'
       :dragMove='onDragMove'
@@ -47,6 +48,7 @@ export default {
       type: Boolean,
       default: false,
     },
+    value: {},
     defaultValue: {
       type: Number,
       default: 0,
@@ -66,11 +68,17 @@ export default {
   },
   data() {
     return {
-      value: this.getInitValue(0),
+      currentValue: this.getInitValue() || 0,
       offset: 0,
       tooltip: null,
       offsetStart: 0,
     };
+  },
+  watch: {
+    'value'(val, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
+      if (val === oldValue) return;
+      this.currentValue = val;
+    },
   },
   mounted() {
     this.init();
@@ -78,16 +86,17 @@ export default {
     this.$zaTooltip = zaTooltip.root;
   },
   methods: {
-    getInitValue(defaultValue) {
-      if (this.defaultValue) {
-        return this.defaultValue;
+    getInitValue() {
+      const value = this.defaultValue ? this.defaultValue : this.value;
+      if (value) {
+        return value;
       }
-      return defaultValue;
+      return false;
     },
     onDragStart() {
       const { disabled } = this;
       if (disabled) return;
-      this.tooltip = this.$zaTooltip({ message: this.value });
+      this.tooltip = this.$zaTooltip({ message: this.currentValue });
       this.setShadowPosition();
     },
     onDragMove(event, { offsetX }) {
@@ -99,7 +108,8 @@ export default {
         offset = 0;
         const value = this.getValueByOffset(offset);
         this.offset = offset;
-        this.value = value;
+        this.$emit('input', value);
+        this.currentValue = value;
         this.tooltip.message = value;
         this.setShadowPosition();
         return false;
@@ -108,7 +118,8 @@ export default {
         offset = this.maxOffset();
         const value = this.getValueByOffset(offset);
         this.offset = offset;
-        this.value = value;
+        this.$emit('input', value);
+        this.currentValue = value;
         this.tooltip.message = value;
         this.setShadowPosition();
         return false;
@@ -116,8 +127,8 @@ export default {
       const value = this.getValueByOffset(offset);
       offset = this.getOffsetByValue(value);
       this.offset = offset;
-      // if (Number.isNaN(offsetX)) return false;
-      this.value = value;
+      this.$emit('input', value);
+      this.currentValue = value;
       this.tooltip.message = value;
       this.setShadowPosition();
       return true;
@@ -128,7 +139,7 @@ export default {
       }
       if (Number.isNaN(offsetX)) return;
       this.offsetStart += offsetX;
-      this.$emit('change', event, this.value);
+      this.$emit('change', event, this.currentValue);
     },
     /**
      * 通过偏移量确定值
@@ -163,7 +174,7 @@ export default {
      * 初始化
      */
     init() {
-      const offset = this.getOffsetByValue(this.value);
+      const offset = this.getOffsetByValue(this.currentValue);
       this.offsetStart = offset;
       this.offset = offset;
     },

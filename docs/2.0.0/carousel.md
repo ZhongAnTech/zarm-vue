@@ -8,8 +8,12 @@
   @changeStart="handleChangeStart"
   @changeEnd="handleChangeEnd"
 >
-  <za-carousel-item :key="index" class="carousel-item-pic" v-for="(i, index) in ITEMS">
-      <img :src="i.url" :alt="i.img" :draggable="false" />
+  <za-carousel-item
+    :key="index"
+    class="carousel-item-pic"
+    v-for="(i, index) in ITEMS"
+  >
+    <img :src="i.url" :alt="i.img" :draggable="false" />
   </za-carousel-item>
 </za-carousel>
 ```
@@ -25,8 +29,12 @@
   @changeStart="handleChangeStart"
   @changeEnd="handleChangeEnd"
 >
-  <za-carousel-item :key="index" class="carousel-item-pic" v-for="(i, index) in ITEMS">
-      <img :src="i.url" :alt="i.img" :draggable="false" />
+  <za-carousel-item
+    :key="index"
+    class="carousel-item-pic"
+    v-for="(i, index) in ITEMS"
+  >
+    <img :src="i.url" :alt="i.img" :draggable="false" />
   </za-carousel-item>
 </za-carousel>
 ```
@@ -43,8 +51,12 @@
   @changeStart="handleChangeStart"
   @changeEnd="handleChangeEnd"
 >
-  <za-carousel-item :key="index" class="carousel-item-pic"  v-for="(i, index) in ITEMS">
-      <img :src="i.url" :alt="i.img" :draggable="false" />
+  <za-carousel-item
+    :key="index"
+    class="carousel-item-pic"
+    v-for="(i, index) in ITEMS"
+  >
+    <img :src="i.url" :alt="i.img" :draggable="false" />
   </za-carousel-item>
 </za-carousel>
 <div class="controls" style="text-align:center;padding-bottom:20px;">
@@ -119,22 +131,21 @@ export default {
 
 #### Carousel Attributes
 
-| 属性                 | 类型           | 默认值      | 可选值／参数                     | 说明                           |
-| :------------------- | :------------- | :---------- | :------------------------------- | :----------------------------- |
-| prefixCls            | string         | za-carousel |                                  | 类名前缀                       |
-| direction            | string         | 'left'      | 'left', 'right', 'top', 'bottom' | 滑动方向                       |
-| height               | number, string |             |                                  | 高度                           |
-| loop                 | bool           | false       |                                  | 是否循环                       |
-| activeIndex          | number         | 0           |                                  | 当前页面的索引                 |
-| autoPlay             | bool           | false       |                                  | 是否自动轮播                   |
-| autoPlayIntervalTime | number         | 3000        |                                  | 自动轮播时间间隔，单位：毫秒   |
-| moveDistanceRatio    | number         | 0.5         |                                  | 移动距离比例临界点             |
-| moveTimeSpan         | number         | 300         |                                  | 移动时间跨度临界点，单位：毫秒 |
-| animationDuration    | number         | 300         |                                  | 动画执行时间，单位：毫秒       |
+| 属性                    | 类型           | 默认值 | 可选值／参数                     | 说明                           |
+| :---------------------- | :------------- | :----- | :------------------------------- | :----------------------------- |
+| direction               | string         | 'left' | 'left', 'right', 'top', 'bottom' | 滑动方向                       |
+| height                  | number, string |        |                                  | 高度                           |
+| loop                    | boolean        | false  |                                  | 是否循环                       |
+| active-ndex             | number         | 0      |                                  | 当前页面的索引                 |
+| auto-play               | boolean        | false  |                                  | 是否自动轮播                   |
+| auto-play-interval-time | number         | 3000   |                                  | 自动轮播时间间隔，单位：毫秒   |
+| move-distance-ratio     | number         | 0.5    |                                  | 移动距离比例临界点             |
+| move-time-span          | number         | 300    |                                  | 移动时间跨度临界点，单位：毫秒 |
+| animation-duration      | number         | 300    |                                  | 动画执行时间，单位：毫秒       |
 
 #### Carousel Events
 
-| 事件名称    | 说明                 | 回调参数                                       |
-| :---------- | :------------------- | :--------------------------------------------- |
-| changeStart | 动画开始时触发的事件 | index, 当前处于激活状态幻灯片的 index 值       |
-| changeEnd   | 动画结束后触发的事件 | index, 动画结束时处于激活状态幻灯片的 index 值 |
+| 事件名称     | 说明                 | 回调参数                                       |
+| :----------- | :------------------- | :--------------------------------------------- |
+| change-start | 动画开始时触发的事件 | index, 当前处于激活状态幻灯片的 index 值       |
+| change-end   | 动画结束后触发的事件 | index, 动画结束时处于激活状态幻灯片的 index 值 |

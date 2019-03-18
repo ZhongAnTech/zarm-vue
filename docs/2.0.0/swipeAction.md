@@ -67,15 +67,14 @@ export default {
 
 | 属性              | 类型            | 默认值         | 可选值／参数                     | 说明                     |
 | :---------------- | :-------------- | :------------- | :------------------------------- | :----------------------- |
-| prefixCls         | string          | za-swipeaction |                                  | 类名前缀                 |
 | left              | arrayOf(object) | [ ]            | object: { theme, text, onClick } | 左侧按钮组               |
 | right             | arrayOf(object) | [ ]            | object: { theme, text, onClick } | 右侧按钮组               |
-| autoClose         | bool            | false          |                                  | 点击按钮是否自动关闭     |
-| disabled          | bool            | false          |                                  | 是否禁用                 |
+| auto-close         | boolean            | false          |                                  | 点击按钮是否自动关闭     |
+| disabled          | boolean            | false          |                                  | 是否禁用                 |
 | offset            | number          | 10             |                                  | 回弹偏移的距离           |
-| moveDistanceRatio | number          | 0.5            |                                  | 移动距离比例临界点       |
-| moveTimeSpan      | number          | 300            |                                  | 移动时间跨度临界点       |
-| animationDuration | number          | 300            |                                  | 动画执行时间，单位：毫秒 |
+| move-distance-ratio | number          | 0.5            |                                  | 移动距离比例临界点       |
+| move-time-span      | number          | 300            |                                  | 移动时间跨度临界点       |
+| animation-duration | number          | 300            |                                  | 动画执行时间，单位：毫秒 |
 
 #### SwipeAction Events
 

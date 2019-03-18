@@ -50,12 +50,11 @@ export default {
 
 | 属性       | 类型   | 默认值       | 可选值／参数                             | 说明                 |
 | :--------- | :----- | :----------- | :--------------------------------------- | :------------------- |
-| prefixCls  | string | za-noticebar |                                          | 类名前缀             |
 | theme      | string | 'warning'    | 'primary', 'success', 'warning', 'error' | 主题                 |
 | icon       | string |              |                                          | 设置图标             |
-| scrollable | bool   | false        |                                          | 是否开启自动滚动轮播 |
-| closable   | bool   | false        |                                          | 是否显示关闭按钮     |
-| hasArrow   | bool   | false        |                                          | 是否显示箭头         |
+| scrollable | boolean   | false        |                                          | 是否开启自动滚动轮播 |
+| closable   | boolean   | false        |                                          | 是否显示关闭按钮     |
+| has-arrow   | boolean   | false        |                                          | 是否显示箭头         |
 
 #### NoticeBar Events
 

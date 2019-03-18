@@ -60,18 +60,17 @@ export default {
 
 | 属性      | 类型   | 默认值      | 可选值／参数 | 说明                                    |
 | :-------- | :----- | :---------- | :----------- | :-------------------------------------- |
-| prefixCls | string | za-keyboard |              | 类名前缀                                |
 | type      | string | 'number'    |              | 键盘类型，可选`number`,`price`,`idcard` |
 
 #### keyboardPicker Attributes
 
 | 属性    | 类型   | 默认值   | 可选值／参数 | 说明                                    |
 | :------ | :----- | :------- | :----------- | :-------------------------------------- |
-| visible | bool   | false    |              | 是否显示, 支持.sync 修饰符 (v2.3.0+)    |
+| visible | boolean   | false    |              | 是否显示, 支持.sync 修饰符 (v2.3.0+)    |
 | type    | string | 'number' |              | 键盘类型，可选`number`,`price`,`idcard` |
 
 #### keyboard & keyboardPicker Events
 
 | 事件名称 | 说明                   | 回调参数     |
 | :------- | :--------------------- | :----------- |
-| keyClick | 当点击键盘时触发的事件 | 最新点击的值 |
+| key-click | 当点击键盘时触发的事件 | 最新点击的值 |

@@ -109,11 +109,10 @@
 
 #### Cell Attributes
 
-| 属性        | 类型   | 默认值  | 可选值／参数 | 说明                                   |
-| :---------- | :----- | :------ | :----------- | :------------------------------------- |
-| prefixCls   | string | za-cell |              | 类名前缀                               |
-| isLink      | bool   | false   |              | 是否带激活样式                         |
-| title       | string |         |              | 标题                                   |
-| help        | string |         |              | 下方提示信息 通常配合`Message`组件使用 |
-| description | string |         |              | 描述                                   |
-| hasArrow    | bool   | false   |              | 是否显示箭头                           |
+| 属性        | 类型    | 默认值 | 可选值／参数 | 说明                                   |
+| :---------- | :------ | :----- | :----------- | :------------------------------------- |
+| isLink      | boolean | false  |              | 是否带激活样式                         |
+| title       | string  |        |              | 标题                                   |
+| help        | string  |        |              | 下方提示信息 通常配合`Message`组件使用 |
+| description | string  |        |              | 描述                                   |
+| has-arrow   | boolean | false  |              | 是否显示箭头                           |

@@ -47,6 +47,5 @@ export default {
 
 | 属性      | 类型   | 默认值                | 可选值／参数                                                | 说明     |
 | :-------- | :----- | :-------------------- | :---------------------------------------------------------- | :------- |
-| prefixCls | string | za-activity-indicator |                                                             | 类名前缀 |
 | theme     | string | 'primary'             | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题     |
 | size      | string |                       | 'lg'                                                        | 大小     |

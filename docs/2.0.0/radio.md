@@ -192,25 +192,23 @@ export default {
 
 | 属性      | 类型   | 默认值   | 可选值／参数              | 说明                       |
 | :-------- | :----- | :------- | :------------------------ | :------------------------- |
-| prefixCls | string | za-radio |                           | 类名前缀                   |
 | v-model   | string |          |                           | 绑定选中值 |
 | type      | string |          | 'button', 'cell'          | 显示类型                   |
 | shape     | string | 'radius' | 'rect', 'radius', 'round' | 形状                       |
-| block     | bool   | false    |                           | 是否为块级元素             |
-| disabled  | bool   | false    |                           | 是否禁用                   |
-| compact   | bool   | false    |                           | 是否启用紧凑模式           |
+| block     | boolean   | false    |                           | 是否为块级元素             |
+| disabled  | boolean   | false    |                           | 是否禁用                   |
+| compact   | boolean   | false    |                           | 是否启用紧凑模式           |
 
 #### Radio Attributes
 
 | 属性      | 类型          | 默认值   | 可选值／参数              | 说明           |
 | :-------- | :------------ | :------- | :------------------------ | :------------- |
-| prefixCls | string        | za-radio |                           | 类名前缀       |
 | type      | string        |          | 'button', 'cell'          | 显示类型       |
 | shape     | string        | 'radius' | 'rect', 'radius', 'round' | 形状           |
-| block     | bool          | false    |                           | 是否为块级元素 |
+| block     | boolean          | false    |                           | 是否为块级元素 |
 | value     | string,number |          |                           | 选项值         |
-| checked   | bool          |          |                           | 是否选中       |
-| disabled  | bool          | false    |                           | 是否禁用       |
+| checked   | boolean          |          |                           | 是否选中       |
+| disabled  | boolean          | false    |                           | 是否禁用       |
 
 #### Radio Events
 

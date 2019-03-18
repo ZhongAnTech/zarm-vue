@@ -86,10 +86,10 @@
 ```html
 <za-cell title="多行文本">
   <za-input
-    autoHeight
+    auto-height
     v-model="v3"
     type="textarea"
-    placeholder="this is a autoHeight textarea"
+    placeholder="this is a auto-height textarea"
   ></za-input>
 </za-cell>
 ```
@@ -104,7 +104,7 @@
 </za-cell>
 <za-cell>
   <za-input
-    autoHeight
+    auto-height
     v-model="v4"
     type="textarea"
     rows="4"
@@ -120,7 +120,7 @@
 ```html
 <za-cell>
   <za-input
-    autoHeight
+    auto-height
     show-length
     type="textarea"
     rows="4"
@@ -173,15 +173,15 @@ export default {
 
 #### Input Attributes
 
-| 属性       | 类型               | 默认值   | 可选值／参数 | 说明                 |
-| :--------- | :----------------- | :------- | :----------- | :------------------- |
-| prefixCls  | string             | za-input |              | 类名前缀             |
-| type       | string             | text     |              | 显示类型             |
-| disabled   | `bool`             | false    |              | 是否禁用             |
-| readonly   | `bool`             | false    |              | 是否只读             |
-| rows       | `string`, `number` |          |              | 多行文本时的显示行数 |
-| autoHeight | bool               | false    |              | 是否高度自适应       |
-| showLength | bool               | false    |              | 是否显示输入字数     |
+| 属性        | 类型           | 默认值 | 可选值／参数 | 说明                 |
+| :---------- | :------------- | :----- | :----------- | :------------------- |
+| type        | string         | text   |              | 显示类型             |
+| v-model     | string         |        |              | 绑定值               |
+| disabled    | boolean        | false  |              | 是否禁用             |
+| readonly    | boolean        | false  |              | 是否只读             |
+| rows        | string, number |        |              | 多行文本时的显示行数 |
+| auto-height | boolean        | false  |              | 是否高度自适应       |
+| show-length | boolean        | false  |              | 是否显示输入字数     |
 
 #### Input Events
 
