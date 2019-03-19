@@ -1,15 +1,15 @@
 <template lang="html">
   <div :class='prefixCls' @click='handleClick'>
-    <div :class='{
-      [`${prefixCls}__input`]: true,
-      [`${prefixCls}__placeholder`]: !displayLabel,
-      [`${prefixCls}--disabled`]: disabled,
-      }'>
-      <input type="hidden" :value='value' />
-      {{displayLabel || placeholder}}
+      <div v-if='isSelect' :class='{
+        [`${prefixCls}__input`]: true,
+        [`${prefixCls}__placeholder`]: !displayLabel,
+        [`${prefixCls}--disabled`]: disabled,
+        }'>
+        <input type="hidden" :value='value' />
+        {{displayLabel || placeholder}}
+      </div>
       <div :class='{
         [`${prefixCls}__container`]: true,
-        [`${prefixCls}--hidden`]: !currentVisible,
       }' @click.stop='() => {}'>
         <za-popup :visible='currentVisible' :get-container="getContainer" @maskClick='onMaskClick' direction="bottom">
           <div :class='`${prefixCls}__wrapper`'>
@@ -45,7 +45,6 @@
             </div>
           </div>
         </za-popup>
-      </div>
     </div>
   </div>
 </template>
@@ -157,6 +156,7 @@ export default {
     data.getContainer = () => document.body;
     data.currentVisible = this.visible;
     data.oldValue = data.currentValue;
+    data.isSelect = this.$options.name === 'zaStackSelect';
     return data;
   },
   methods: {

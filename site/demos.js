@@ -11,7 +11,7 @@ module.exports = {
     {
       name: 'CustomTheme',
       description: '主题配置',
-    }
+    },
   ],
   components: {
     form: [
@@ -30,6 +30,10 @@ module.exports = {
       {
         name: 'Picker',
         description: '选择器',
+      },
+      {
+        name: 'StackPicker',
+        description: '层叠选择器',
       },
       {
         name: 'DatePicker',

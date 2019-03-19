@@ -166,6 +166,13 @@ export default new Router({
       },
     },
     {
+      path: '/stack-picker',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/stackPickerPage.vue')
+      },
+    },
+    {
       path: '/date-picker',
       component: Bundle,
       meta: {

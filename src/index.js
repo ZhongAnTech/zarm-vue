@@ -38,6 +38,7 @@ import Select from '../src/select';
 import Slider from '../src/slider';
 import ActivityIndicator from '../src/activity-indicator';
 import StackPicker from '../src/stack-picker';
+import StackSelect from '../src/stack-select';
 import Stepper from '../src/stepper';
 import Carousel from '../src/carousel';
 import SwipeAction from '../src/swipe-action';
@@ -96,6 +97,7 @@ const components = [
   Slider,
   ActivityIndicator,
   StackPicker,
+  StackSelect,
   Stepper,
   Carousel,
   SwipeAction,
@@ -172,6 +174,7 @@ export {
   Slider,
   ActivityIndicator,
   StackPicker,
+  StackSelect,
   Stepper,
   Carousel,
   SwipeAction,

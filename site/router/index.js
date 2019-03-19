@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Index from '../pages/Index';
 import Documents from '../pages/documents/Index';
+
 Vue.use(Router);
 
 export default new Router({
@@ -101,6 +102,10 @@ export default new Router({
         {
           path: 'picker',
           component: () => import('../pages/components/PickerPage'),
+        },
+        {
+          path: 'stack-picker',
+          component: () => import('../pages/components/StackPickerPage'),
         },
         {
           path: 'popup',

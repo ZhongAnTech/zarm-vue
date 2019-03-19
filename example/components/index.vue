@@ -22,6 +22,9 @@
           <za-cell hasArrow @click="$router.push('/picker')">
             选择器 Picker
           </za-cell>
+          <za-cell hasArrow @click="$router.push('/stack-picker')">
+            层叠选择器 StackPicker
+          </za-cell>
           <za-cell hasArrow @click="$router.push('/date-picker')">
             日期选择器 DatePicker
           </za-cell>

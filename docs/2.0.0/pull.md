@@ -230,7 +230,7 @@ export default {
 | loading               | boolean  | false  | 是否正在加载 |
 | refresh-init-distance | number   | 20     |              | 下拉助跑距离                     |
 | refresh-distance      | number   | 60     |              | 下拉距离阀值                     |
-| on-refresh            | function |        |              | 达到阀值后释放触发刷新的回调函数 |
-| on-load               | function |        |              | 下拉加载的回调函数               |
 | duration              | number   | 300    |              | 动画执行时间，单位：ms           |
 | stay-time             | number   | 1500   |              | 加载成功停留时间                 |
+| on-refresh            | function |        |              | 达到阀值后释放触发刷新的回调函数 |
+| on-load               | function |        |              | 下拉加载的回调函数               |

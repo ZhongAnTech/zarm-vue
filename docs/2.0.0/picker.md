@@ -103,24 +103,6 @@
 
 :::
 
-:::demo 层叠式选择器 StackPicker
-
-```html
-<za-cell title="级联选择">
-  <za-stack-picker
-    v-model="v10"
-    title="级联选择"
-    placeholder="请选择"
-    :data-source="District"
-    :display-render="selected => selected.map(item => item.label).join('-')"
-    @ok="handleOk"
-    @change="handleChange"
-    @cancel="handleCancel"
-  />
-</za-cell>
-```
-
-:::
 
 :::demo 平铺选择器 PickerView
 
