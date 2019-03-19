@@ -9,13 +9,11 @@ describe('Picker', () => {
       template: `
       <za-picker
         :visible.sync='visible'
-        v-model='value'
         :dataSource='data1'/>
       `,
       data() {
         return {
-          value: '',
-          visible: false,
+          visible: true,
           data1: [
             { value: '1', label: '选项一' },
             { value: '2', label: '选项二' },
@@ -23,8 +21,7 @@ describe('Picker', () => {
         };
       },
     });
-    wrapper.trigger('click');
-    expect(wrapper.vm.visible).toBe(true);
+    expect(wrapper.find('.za-picker')).toBeTruthy();
   });
 
   it('defaultValue', () => {
@@ -248,19 +245,19 @@ describe('Picker', () => {
     expect(wrapper.vm.value[0]).toBe('1');
   });
 
-  it('drag on change', () => {
+  it('change value', (done) => {
     const wrapper = mount({
       components: { ZaPicker },
       template: `
       <za-picker
         :visible.sync='visible'
-        :defaultValue='value'
+        :v-model='value'
         :dataSource='data1'/>
       `,
       data() {
         return {
-          value: '1',
-          visible: false,
+          value: '',
+          visible: true,
           data1: [
             { value: '1', label: '选项一' },
             { value: '2', label: '选项二' },
@@ -268,18 +265,13 @@ describe('Picker', () => {
         };
       },
     });
-    const wheel = wrapper.find('.za-wheel');
-    wheel.trigger('touchstart', {
-      pageX: 50,
-      pageY: 50,
-    });
-    wheel.trigger('touchstart', {
-      pageX: 50,
-      pageY: 150,
-    });
-    wheel.trigger('touchend', {
-      pageX: 50,
-      pageY: 150,
+    const { vm } = wrapper;
+    wrapper.setData({ value: '2' });
+    vm.$nextTick(() => {
+      const selectedDOM = wrapper.find('.za-wheel__item--selected');
+      // expect(selectedDOM).toMatchSnapshot();
+      expect(selectedDOM).toBeTruthy();
+      done();
     });
   });
 });

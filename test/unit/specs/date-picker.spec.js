@@ -12,6 +12,8 @@ describe('DatePicker', () => {
       <za-date-picker
         :visible.sync='visible'
         title="选择年份"
+        format="yyyy年MM月dd日"
+        value-format="yyyy-MM-dd HH:mm"
         placeholder="请选择年份"
         mode='year'/>
       `,

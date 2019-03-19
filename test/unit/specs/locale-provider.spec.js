@@ -4,15 +4,15 @@ import { mount } from '../util';
 
 describe('LocaleProvider', () => {
   it('create', () => {
-    const wrapper = mount(zaLocaleProvider);
-
-    const { vm } = wrapper;
-    // expect(vm.$el).toMatchSnapshot();
+    const wrapper = mount(zaLocaleProvider, {
+      propsData: {
+        lang: 'ZH_CN',
+      },
+    });
     expect(wrapper.find('.za-locale-provider')).toBeTruthy();
   });
 
   it('set locale lang ZH_CN', done => {
-    let result;
     const TestCompo = {
       components: {
         zaSearchBar,

@@ -1,12 +1,12 @@
 <script>
-const EVENTS_MAP = {
-  touchstart: 'onTouchStart',
-  touchmove: 'onTouchMove',
-  touchend: 'onTouchEnd',
-  mousedown: 'onTouchStart',
-  mousemove: 'onTouchMove',
-  mouseup: 'onTouchEnd',
-};
+// const EVENTS_MAP = {
+//   touchstart: 'onTouchStart',
+//   touchmove: 'onTouchMove',
+//   touchend: 'onTouchEnd',
+//   mousedown: 'onTouchStart',
+//   mousemove: 'onTouchMove',
+//   mouseup: 'onTouchEnd',
+// };
 
 export default {
   name: 'zaDrag',
@@ -76,11 +76,11 @@ export default {
       this.dragState = Object.create(null);
     },
 
-    attachListener(listeners) {
-      ['touchstart', 'touchmove', 'touchend', 'mousedown', 'mousemove', 'mouseup'].forEach(key => {
-        listeners[key] = this[EVENTS_MAP[key]];
-      });
-    },
+    // attachListener(listeners) {
+    //   ['touchstart', 'touchmove', 'touchend', 'mousedown', 'mousemove', 'mouseup'].forEach(key => {
+    //     listeners[key] = this[EVENTS_MAP[key]];
+    //   });
+    // },
   },
   render() {
     // const defaultSlots = this.$slots.default || [];
