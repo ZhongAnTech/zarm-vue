@@ -166,7 +166,7 @@ $calendar-day-fontsize: r(16); // 月份文字大小
 $calendar-day-title-fontsize: r(17); // 月份title文字大小
 $calendar-day-background: #fff; // 月份文字背景颜色
 $calendar-day-color: #464646; // 月份文字颜色
-$calendar-day-today-shadow: 0 r(2) r(5) 0 rgba(0,0,0,0.15); // 日期今天选中背景颜色
+$calendar-day-today-shadow: 0 r(2) r(5) 0 rgba(0, 0, 0, 0.15); // 日期今天选中背景颜色
 $calendar-day-today-color: #11c286; // 日期今天选中颜色
 $calendar-day-selected-background: #12c286; // 日期文字选中背景颜色
 $calendar-day-selected-color: #fff; // 日期文字选中颜色
@@ -195,8 +195,8 @@ $actionsheet-item-font-size: r(16);
 // Collapse
 $collapse-height: r(52);
 $collapse-padding: r(15);
-$collapse-arrow-color: #C2C2C2;
-$collapse-arrow-disabled-color: #EEEEEE;
+$collapse-arrow-color: #c2c2c2;
+$collapse-arrow-disabled-color: #eee;
 
 // Keyboard
 $keyboard-item-height: r(54);
@@ -221,7 +221,7 @@ $badge-padding-h: r(4);
 $badge-dot-diameter: r(8);
 $badge-radius-radius: r(2);
 $badge-round-radius: r(8);
-$badge-text-color:#fff;
+$badge-text-color: #fff;
 
 // Stepper
 $stepper-height-sm: r(28);

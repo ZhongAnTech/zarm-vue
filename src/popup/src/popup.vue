@@ -109,21 +109,29 @@ export default {
       if (value) {
         this.enter();
       } else {
-        this.animationState = 'leave';
-        this.maskVisible = false;
-        this.timerLeave = setTimeout(() => {
-          this.currentVisible = value;
-        }, this.animationDuration);
+        this.leave();
       }
     },
   },
   methods: {
     enter() {
-      this.currentVisible = true;
       this.maskVisible = true;
       this.animationState = 'enter';
+      this.timerEnter = setTimeout(() => {
+        this.currentVisible = true;
+      });
+    },
+    leave() {
+      this.animationState = 'leave';
+      this.maskVisible = false;
+      this.timerLeave = setTimeout(() => {
+        this.currentVisible = false;
+      }, this.animationDuration);
     },
     removeTimer() {
+      if (this.timerEnter) {
+        clearTimeout(this.timerEnter);
+      }
       if (this.timerLeave) {
         clearTimeout(this.timerLeave);
       }
