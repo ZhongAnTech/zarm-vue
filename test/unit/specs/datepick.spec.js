@@ -202,7 +202,6 @@ describe('DatePicker', () => {
     vm = createVue({
       template: `
       <za-date-select
-        :visible.sync='visible'
         v-model='value'
         mode='date'
         @ok='handleOk'/>
@@ -210,7 +209,7 @@ describe('DatePicker', () => {
       data() {
         return {
           value: '2000-01-01',
-          visible: false,
+          visible: true,
         };
       },
       methods: {
@@ -219,8 +218,9 @@ describe('DatePicker', () => {
         },
       },
     }, true);
-    vm.$el.querySelector('.za-picker-submit').click();
+    vm.$el.click();
     vm.$nextTick(() => {
+      vm.$el.querySelector('.za-picker-submit').click();
       expect(value.getFullYear()).to.equal(2000);
       done();
     });
@@ -231,7 +231,6 @@ describe('DatePicker', () => {
     vm = createVue({
       template: `
       <za-date-select
-        :visible.sync='visible'
         v-model='value'
         mode='date'
         @ok='handleOk'/>
@@ -239,7 +238,7 @@ describe('DatePicker', () => {
       data() {
         return {
           value: '2000-01-01',
-          visible: false,
+          visible: true,
         };
       },
       methods: {
@@ -248,6 +247,7 @@ describe('DatePicker', () => {
         },
       },
     }, true);
+    vm.$el.click();
     vm.$nextTick(() => {
       vm.value = '2018-07-06';
       vm.$nextTick(() => {

@@ -187,6 +187,7 @@ describe('Picker', () => {
       template: `
       <za-picker
         v-model='value'
+        :visible.sync='visible'
         :dataSource='data1'/>
       `,
       data() {
@@ -253,7 +254,7 @@ describe('Picker', () => {
       data() {
         return {
           value: '',
-          visible: false,
+          visible: true,
           data1: [
             { value: '1', label: '选项一' },
             { value: '2', label: '选项二' },
@@ -287,7 +288,7 @@ describe('Picker', () => {
       data() {
         return {
           value: '1',
-          visible: false,
+          visible: true,
           data1: [
             { value: '1', label: '选项一' },
             { value: '2', label: '选项二' },

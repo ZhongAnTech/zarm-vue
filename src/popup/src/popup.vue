@@ -1,7 +1,8 @@
 <template lang="html">
-  <div :class='{
+  <div 
+    :class='{
       [`${prefixCls}`]: true,
-      [`${prefixCls}-hidden`]: !currentVisible,
+      [`${prefixCls}-hidden`]: !maskVisible,
     }'
   >
     <div :class='{
@@ -10,7 +11,9 @@
       }'
       :style='transitionDurationStyle'
     >
-      <slot></slot>
+      <template v-if="currentVisible">
+        <slot></slot>
+      </template>
     </div>
     <za-mask
       :class='[`fade-${animationState}`]'
@@ -104,10 +107,10 @@ export default {
       if (value) {
         this.enter();
       } else {
-        this.currentVisible = value;
         this.animationState = 'leave';
+        this.maskVisible = false;
         this.timerLeave = setTimeout(() => {
-          this.maskVisible = false;
+          this.currentVisible = value;
         }, this.animationDuration);
       }
     },

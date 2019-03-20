@@ -40,6 +40,7 @@ describe('InputNumber', () => {
         <za-input-number type="number"></za-input-number>
       `,
     }, true);
+    vm.$el.click();
     vm.$nextTick(() => {
       const disabledItem = vm.$el.querySelectorAll('.za-keyboard-item')[9];
       expect(disabledItem.classList.contains('za-keyboard-item-disabled')).to.be.true;
@@ -73,6 +74,7 @@ describe('InputNumber', () => {
         };
       },
     }, true);
+    vm.$el.click();
     vm.v1 = '12311';
     vm.$nextTick(() => {
       const contentEl = vm.$el.querySelector('.za-input-content');
@@ -92,6 +94,7 @@ describe('InputNumber', () => {
         };
       },
     }, true);
+    vm.$el.click();
     vm.$nextTick(() => {
       vm.$el.querySelector('.za-keyboard-item').click();
       expect(vm.v1).to.equal('1231');

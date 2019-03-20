@@ -61,7 +61,7 @@ describe('CascadePicker', () => {
       data() {
         return {
           value: '',
-          visible: false,
+          visible: true,
           data,
         };
       },

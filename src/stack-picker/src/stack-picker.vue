@@ -133,6 +133,9 @@ export default {
     visible(val, oldVal) { // eslint-disable-line no-unused-vars
       if (this.currentVisible === val) return;
       this.currentVisible = val;
+      if (val) {
+        this.reposition();
+      }
     },
     value(val, oldVal) { // eslint-disable-line no-unused-vars
       const param = {
@@ -302,11 +305,11 @@ export default {
       }
     },
   },
-  mounted() {
-    this.reposition();
-  },
-  updated() {
-    this.reposition();
-  },
+  // mounted() {
+  //   this.reposition();
+  // },
+  // updated() {
+  //   this.reposition();
+  // },
 };
 </script>
