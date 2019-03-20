@@ -1,17 +1,19 @@
 <template lang="html">
-  <div :class='{
+  <div 
+    :class='{
       [`${prefixCls}`]: true,
-      [`${prefixCls}--hidden`]: !currentVisible,
+      [`${prefixCls}--hidden`]: !maskVisible,
     }'
   >
     <div :class='{
         [`${prefixCls}__wrapper`]: true,
         [`${prefixCls}__wrapper-${direction}`]: true,
-        [`${animationType}-${animationState}`]: directionCenter,
       }'
       :style='transitionDurationStyle'
     >
-      <slot></slot>
+      <template v-if="currentVisible">
+        <slot></slot>
+      </template>
     </div>
     <za-mask
       v-if="hasMask"
@@ -107,12 +109,9 @@ export default {
       if (value) {
         this.enter();
       } else {
-        if (!this.directionCenter) {
-          this.currentVisible = value;
-        }
         this.animationState = 'leave';
+        this.maskVisible = false;
         this.timerLeave = setTimeout(() => {
-          this.maskVisible = false;
           this.currentVisible = value;
         }, this.animationDuration);
       }

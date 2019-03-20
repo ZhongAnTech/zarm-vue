@@ -96,6 +96,7 @@ describe('DatePicker', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
+    vm.$el.click();
     vm.$nextTick(() => {
       wrapper.find('.za-datepicker__submit').trigger('click');
       setTimeout(() => {
@@ -230,7 +231,6 @@ describe('DatePicker', () => {
       },
       template: `
       <za-date-select
-        :visible.sync='visible'
         v-model='value'
         mode='date'
         @ok='handleOk'/>
@@ -249,6 +249,7 @@ describe('DatePicker', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
+    vm.$el.click();
     vm.$nextTick(() => {
       wrapper.find('.za-datepicker__submit').trigger('click');
       setTimeout(() => {

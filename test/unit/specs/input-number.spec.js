@@ -52,6 +52,7 @@ describe('InputNumber', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
+    vm.$el.click();
     vm.$nextTick(() => {
       const disabledItem = document.querySelectorAll('.za-keyboard__item')[9];
       expect(disabledItem.classList.contains('za-keyboard__item--disabled')).toBe(true);
@@ -122,6 +123,7 @@ describe('InputNumber', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
+    vm.$el.click();
     wrapper.find('.za-keyboard__item').trigger('click');
     vm.$nextTick(() => {
       expect(vm.v1).toEqual('1231');

@@ -6,6 +6,7 @@ describe('ActionSheet', () => {
     const wrapper = mount(zaActionsheet, {
       propsData: {
         prefixCls: 'za-actionsheet',
+        visible: true,
       },
     });
     expect(wrapper.contains('.za-actionsheet')).toBe(true);
@@ -99,6 +100,7 @@ describe('ActionSheet', () => {
       propsData: {
         prefixCls: 'za-actionsheet',
         cancelText: '关闭',
+        visible: true,
       },
     });
     const { vm } = wrapper;
@@ -113,6 +115,7 @@ describe('ActionSheet', () => {
       propsData: {
         prefixCls: 'za-actionsheet',
         showCancel: false,
+        visible: true,
       },
     });
     const { vm } = wrapper;
