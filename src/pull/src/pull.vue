@@ -126,8 +126,11 @@ export default {
       this.doRefreshAction(action, offset);
       return true;
     },
-    onDragEnd() {
+    onDragEnd(event, { offsetY }) {
       const { onRefresh } = this;
+      if (offsetY < 0) return;
+      // 未滚动到顶部
+      if (offsetY > 0 && (document.documentElement.scrollTop + document.body.scrollTop) > 0) return;
 
       if (this.refreshState === REFRESH_STATE.pull) {
         this.doRefreshAction(REFRESH_STATE.normal);
