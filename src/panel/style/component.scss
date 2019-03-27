@@ -3,7 +3,7 @@
     display: flex;
     padding: r(25) r(15) r(7) r(15);
     font-size: r(14);
-    color: #999;
+    color: $color-text-caption;
   }
 
   @include e(footer) {
@@ -11,7 +11,7 @@
     padding: r(7) r(15);
     margin-bottom: r(10);
     font-size: r(12);
-    color: #999;
+    color: $color-text-caption;
   }
 
   @include e(body) {

@@ -3,37 +3,12 @@ $element-separator: '__';
 $modifier-separator: '--';
 $state-prefix: '--';
 
-// 基础
-$base-fontSize: 14;
-$placeholder-color: #a9a9a9;
-
 // 图标字体
 $icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
 
-// 主题
-$theme-default: #e6e6e6;
-$theme-default-light: rgba($theme-default, 0.5);
-$theme-default-dark: darken($theme-default, 10%);
-
-$theme-primary: #12c287;
-$theme-primary-light: rgba($theme-primary, 0.1);
-$theme-primary-dark: darken($theme-primary, 10%);
-
-$theme-info: #347af6;
-$theme-info-light: rgba($theme-info, 0.1);
-$theme-info-dark: darken($theme-info, 10%);
-
-$theme-success: #12c287;
-$theme-success-light: rgba($theme-success, 0.1);
-$theme-success-dark: darken($theme-success, 10%);
-
-$theme-warning: #ec9131;
-$theme-warning-light: rgba($theme-warning, 0.1);
-$theme-warning-dark: darken($theme-warning, 10%);
-
-$theme-error: #ff5050;
-$theme-error-light: rgba($theme-error, 0.1);
-$theme-error-dark: darken($theme-error, 10%);
+// 基础
+$base-fontSize: 14;
+$placeholder-color: #a9a9a9;
 
 // 背景色
 $background-active: #e6e6e6;
@@ -43,21 +18,59 @@ $background-disabled: #bcbcbc;
 $border-color: #e6e6e6;
 $border-disabled: #bcbcbc;
 
+// 透明度
+$opacity-disabled: 0.6;
+$opacity-mask: 0.5;
+$opacity-toast: 0.8;
+$opacity-tooltip: 0.8;
+
+// 禁用
+$disabled-opacity: 0.5;
+$disabled-background: #ddd;
+$disabled-color: #999;
+
+// 主题
+$theme-default: #e6e6e6;
+$theme-primary: #12c287;
+$theme-info: #347af6;
+$theme-success: #12c287;
+$theme-warning: #ec9131;
+$theme-error: #ff5050;
+$theme-danger: #ff5050;
+
+// 主题色状态-lighten
+$theme-default-light: rgba($theme-default, 0.5);
+$theme-primary-light: rgba($theme-primary, 0.1);
+$theme-info-light: rgba($theme-info, 0.1);
+$theme-success-light: rgba($theme-success, 0.1);
+$theme-warning-light: rgba($theme-warning, 0.1);
+$theme-error-light: rgba($theme-error, 0.1);
+$theme-danger-light: rgba($theme-danger, 0.1);
+
+// 主题色状态-darken
+$theme-default-dark: darken($theme-default, 10%);
+$theme-primary-dark: darken($theme-primary, 10%);
+$theme-info-dark: darken($theme-info, 10%);
+$theme-success-dark: darken($theme-success, 10%);
+$theme-warning-dark: darken($theme-warning, 10%);
+$theme-error-dark: darken($theme-error, 10%);
+$theme-danger-dark: darken($theme-danger, 10%);
+
+// 字体色
+$color-text: #464646; // 基本
+$color-text-inverse: #fff; // 反色
+$color-text-placeholder: #a9a9a9; // 文本框提示
+$color-text-disabled: #bcbcbc; // 失效
+$color-text-caption: #909090; // 辅助描述
+$color-link: $theme-primary; // 链接
+$color-shadow: rgba(56, 56, 56, 0.15); // 阴影色
+
 // 字体大小
 $fontSize-xl: r(18);
 $fontSize-lg: r(15);
 $fontSize-md: r(14);
 $fontSize-sm: r(12);
 $fontSize-xs: r(10);
-
-// 文字色
-$color-text: #464646;                    // 基本
-$color-text-inverse: #fff;               // 反色
-$color-text-placeholder: #a9a9a9;        // 文本框提示
-$color-text-disabled: #bcbcbc;           // 失效
-$color-text-caption: #909090;            // 辅助描述
-$color-link: $theme-primary;               // 链接
-$color-shadow: rgba(56, 56, 56, .15);    // 阴影色
 
 // 圆角
 $radius-xl: r(4);
@@ -67,25 +80,6 @@ $radius-sm: r(4);
 $radius-xs: r(4);
 $radius-round: r(1000);
 $radius-circle: 50%;
-
-// 透明度
-$opacity-disabled: .6;
-$opacity-mask: .5;
-$opacity-toast: .8;
-$opacity-tooltip: .8;
-
-// 背景色
-$background-active: #e6e6e6;
-$background-disabled: #bcbcbc;
-
-// 边框色
-$border-color: #e6e6e6;
-$border-disabled: #bcbcbc;
-
-// 禁用
-$disabled-opacity: .5;
-$disabled-background: #ddd;
-$disabled-color: #999;
 
 // 高度
 $height-xl: r(52);
@@ -120,7 +114,27 @@ $zIndex-modal: 1400;
 $zIndex-toast: 1500;
 $zIndex-loading: 1500;
 
-/* button */
+// ActionSheet
+$actionsheet-margin: 0;
+$actionsheet-item-height: r(50);
+$actionsheet-item-font-size: r(16);
+
+/* ActivityIndicator */
+$activityIndicator-theme-color: $theme-primary;
+$activityIndicator-stroke-color: $border-color;
+$activityIndicator-diameter-md: r(20);
+$activityIndicator-diameter-lg: r(31);
+
+// Badge
+$badge-height: r(14);
+$badge-font-size: r(10);
+$badge-padding-h: r(4);
+$badge-dot-diameter: r(8);
+$badge-radius-radius: r(2);
+$badge-round-radius: r(8);
+$badge-text-color: #fff;
+
+/* Button */
 $button-default-color: $color-text;
 $button-default-bg: #ddd;
 $button-default-border: #ddd;
@@ -151,82 +165,108 @@ $button-error-bg: $theme-error;
 $button-error-border: $theme-error;
 $button-error-activebg: $theme-error-light;
 
-/* spinner */
-$spinner-diameter-md: r(20);
-$spinner-diameter-lg: r(31);
+$button-danger-color: #fff;
+$button-danger-bg: $theme-danger;
+$button-danger-border: $theme-danger;
+$button-danger-activebg: $theme-danger-light;
 
-/* calendar */
+/* Calendar */
 $calendar-height: r(45); // 最小高度
 $calendar-background: #fff; // 背景色
 $calendar-week-bar-fontsize: r(14); // 星期条文字大小
-$calendar-week-bar-background: #fafafa; // 星期条文字背景色
-$calendar-week-bar-color: #909090; // 星期条文字颜色
+$calendar-week-bar-background: #f2f2f2; // 星期条文字背景色
+$calendar-week-bar-color: $color-text-caption; // 星期条文字颜色
 $calendar-section-padding: r(15); // 两边留白间距
 $calendar-day-fontsize: r(16); // 月份文字大小
 $calendar-day-title-fontsize: r(17); // 月份title文字大小
 $calendar-day-background: #fff; // 月份文字背景颜色
-$calendar-day-color: #464646; // 月份文字颜色
+$calendar-day-color: $color-text; // 月份文字颜色
 $calendar-day-today-shadow: 0 r(2) r(5) 0 rgba(0, 0, 0, 0.15); // 日期今天选中背景颜色
-$calendar-day-today-color: #11c286; // 日期今天选中颜色
-$calendar-day-selected-background: #12c286; // 日期文字选中背景颜色
+$calendar-day-today-color: rgba($theme-primary, 0.2); // 日期今天选中颜色
+$calendar-day-selected-background: $theme-primary; // 日期文字选中背景颜色
 $calendar-day-selected-color: #fff; // 日期文字选中颜色
 $calendar-day-range-background: #d1f3e7; // 日期文字范围内背景颜色
-$calendar-day-range-color: #12c286; // 日期文字范围内颜色
+$calendar-day-range-color: $theme-primary; // 日期文字范围内颜色
 $calendar-day-width: 14.28571%; // 日期宽度
 $calendar-day-height: r(40); // 日期高度
 
-/* cell */
-$cell-background: #fff; 						// 背景色
-$cell-active-background: #e6e6e6;				// 点击时高亮背景色
-$cell-line-padding-left: r(16);                 // 分隔线左边距
-$cell-title-color: $color-text;                 // 标题文字颜色
-$cell-title-font-size: r(15);                   // 标题文字大小
-$cell-description-color: $color-text-caption;   // 描述文字颜色
-$cell-description-font-size: r(15);             // 描述文字大小
-$cell-label-width: r(100);                      // 表单label宽度
-$cell-arrow-color: #bcbcbc;                     // 箭头颜色
-$cell-arrow-length: r(10);                      // 箭头长度
-
-// ActionSheet
-$actionsheet-margin: 0;
-$actionsheet-item-height: r(50);
-$actionsheet-item-font-size: r(16);
+/* Cell */
+$cell-background: #fff; // 背景色
+$cell-height: r(52); // 最小高度
+$cell-padding-h: r(16); // 水平边内距
+$cell-padding-v: r(15); // 纵向边内距
+$cell-line-padding-left: r(16); // 分隔线左边距
+$cell-label-width: r(100); // 表单label宽度
+$cell-title-color: $color-text; // 标题文字颜色
+$cell-title-font-size: r(15); // 标题文字大小
+$cell-title-line-height: r(22); // 标题文字行高
+$cell-description-color: $color-text-caption; // 描述文字颜色
+$cell-description-font-size: r(15); // 描述文字大小
+$cell-arrow-length: r(10); // 箭头长度
+$cell-arrow-border-width: r(1); // 箭头粗细
+$cell-arrow-color: #bcbcbc; // 箭头颜色
+$cell-arrow-length: r(10); // 箭头长度
+$cell-active-background: $background-active; // 点击时高亮背景色
 
 // Collapse
 $collapse-height: r(52);
 $collapse-padding: r(15);
-$collapse-arrow-color: #c2c2c2;
+$collapse-arrow-color: #bcbcbc;
 $collapse-arrow-disabled-color: #eee;
+$collapse-arrow-border-width: r(1); // 箭头粗细
 
 // Keyboard
 $keyboard-item-height: r(54);
 $keyboard-item-font-size: r(30);
 $keyboard-icon-font-size: r(21);
-$keyboard-disabled-background: #eee;
+$keyboard-disabled-background: #fff;
+
+// Message
+$message-min-height-md: r(29);
+$message-min-height-lg: r(40);
+$message-font-size-md: r(12);
+$message-font-size-lg: r(14);
+$message-padding-v-md: r(6);
+$message-padding-h-md: r(8);
+$message-padding-v-lg: r(8);
+$message-padding-h-lg: r(12);
+
+// NavBar
+$nav-bar-color: #fdfdfd;
+$nav-bar-height: r(44);
+$nav-bar-icon-size: r(24);
+
+// Picker
+$picker-background: #fff;
+$picker-header-height: r(45);
+$picker-header-line-height: r(45);
+$picker-header-font-size: r(16);
+$picker-padding-v: r(15);
+$picker-padding-h: r(20);
+
+// Slider
+$slider-line-background: #e6e6e6;
+$slider-line-height: r(2);
+$slider-handle-size: r(28);
+$slider-handle-background: #fff;
+$slider-handle-shadow: 0 r(1) r(3) rgba(0, 0, 0, 0.4);
 
 // Switch
 $switch-width: r(53);
 $switch-height: r(32);
-$switch-border-color: #e5e5e5;
+$switch-border-color: $border-color;
 $switch-background: #fff;
 $switch-box-shadow-start: rgba(0, 0, 0, 0.1);
 $switch-box-shadow-center: rgba(0, 0, 0, 0.08);
 $switch-box-shadow-end: rgba(0, 0, 0, 0.2);
 $switch-box-checked-shadow: rgba(0, 0, 0, 0.2);
 
-// Badge
-$badge-height: r(14);
-$badge-font-size: r(10);
-$badge-padding-h: r(4);
-$badge-dot-diameter: r(8);
-$badge-radius-radius: r(2);
-$badge-round-radius: r(8);
-$badge-text-color: #fff;
-
 // Stepper
 $stepper-height-sm: r(28);
 $stepper-height-md: r(36);
 
-// stackpicker
-$picker-item-height: r(30);
-$picker-stackitem-height: r(35);
+// StackPicker
+$stackpicker-item-height: r(30);
+$stackpicker-stackitem-height: r(35);
+$stackpicker-crumbs-line-height: r(24);
+$stackpicker-crumbs-font-size: r(14);

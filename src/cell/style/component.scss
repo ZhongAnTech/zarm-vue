@@ -1,6 +1,6 @@
 @mixin cell-theme($color) {
   @include e(footer) {
-    color: $cell-description-color;
+    color: $color;
   }
 }
 
@@ -8,7 +8,7 @@
   position: relative;
   overflow: hidden;
   background: $cell-background;
-  @include cell-theme(#999);
+  @include cell-theme($cell-description-color);
   @include onepx(top);
 
   &:after {
@@ -65,10 +65,10 @@
   @include e(inner) {
     display: flex;
     align-items: center;
-    padding: 0 r(15);
-    font-size: r(15);
-    min-height: r(52);
-    line-height: r(28);
+    padding: 0 $cell-padding-v;
+    font-size: $cell-title-font-size;
+    min-height: $cell-height;
+    line-height: $cell-title-line-height;
 
     a {
       text-decoration: none;
@@ -97,8 +97,8 @@
     &:after {
       display: inline-block;
       content: '';
-      border-right: r(2) solid $cell-arrow-color;
-      border-top: r(2) solid $cell-arrow-color;
+      border-right: $cell-arrow-border-width solid $cell-arrow-color;
+      border-top: $cell-arrow-border-width solid $cell-arrow-color;
       width: $cell-arrow-length;
       height: $cell-arrow-length;
       transform: rotate(45deg);
@@ -120,7 +120,7 @@
 
   @include e(title) {
     width: $cell-label-width;
-    padding: r(12) 0;
+    padding: $cell-padding-v 0;
     overflow: hidden;
     color: $cell-title-color;
     font-size: $cell-title-font-size;

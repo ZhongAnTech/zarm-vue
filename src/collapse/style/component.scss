@@ -39,8 +39,8 @@
       height: r(10);
       top: r(20);
       right: $collapse-padding;
-      border-right: r(2) solid $collapse-arrow-color;
-      border-bottom: r(2) solid $collapse-arrow-color;
+      border-right: $collapse-arrow-border-width solid $collapse-arrow-color;
+      border-bottom: $collapse-arrow-border-width solid $collapse-arrow-color;
       transform: rotate(45deg);
       transition: transform 0.15s ease-out;
       transform-origin: 50% 50%;

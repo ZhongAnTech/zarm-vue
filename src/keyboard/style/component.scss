@@ -26,7 +26,7 @@
     }
 
     @include m(disabled) {
-      background-color: #fff;
+      background-color: $keyboard-disabled-background;
 
       &:active {
         background-color: $keyboard-disabled-background;

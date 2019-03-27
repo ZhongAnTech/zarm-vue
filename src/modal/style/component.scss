@@ -38,7 +38,7 @@ $prefixCls: za-modal;
 
   @include e(header) {
     position: relative;
-    padding: r(20) r(15) 0 r(15);
+    padding: r(15) r(15) 0 r(15);
     text-align: center;
 
     &-title {

@@ -16,8 +16,7 @@
       :visible='currentVisible'
       :get-container="getContainer"
       direction="bottom"
-      @maskClick='onMaskClick'
-      :closeOnClickModal='closeOnClickModal'>
+      @maskClick='onMaskClick'>
       <div :class='`${prefixCls}__wrapper`'>
         <div :class='`${prefixCls}__header`'>
           <div :class='`${prefixCls}__cancel`' @click='onCancel'>{{cancelText}}</div>
@@ -87,10 +86,6 @@ export default {
     okText: {
       type: String,
       default: '确定',
-    },
-    closeOnClickModal: {
-      type: Boolean,
-      default: true,
     },
     disabled: {
       type: Boolean,

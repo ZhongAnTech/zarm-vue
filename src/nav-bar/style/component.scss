@@ -6,12 +6,12 @@
   align-items: center;
   position: relative;
   width: 100%;
-  height: r(44);
+  height: $nav-bar-height;
   overflow: hidden;
-  background: #fdfdfd;
+  background: $nav-bar-color;
 
   @include e(title) {
-    color: #464646;
+    color: $color-text;
     font-weight: 500;
     font-size: r(18);
     position: absolute;
@@ -37,6 +37,6 @@
   }
 
   .za-icon {
-    font-size: r(24);
+    font-size: $nav-bar-icon-size;
   }
 }

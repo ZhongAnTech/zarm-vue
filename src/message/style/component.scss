@@ -8,9 +8,9 @@
 @include b(message) {
   display: flex;
   position: relative;
-  padding: r(6) r(8);
-  min-height: r(30);
-  font-size: r(12);
+  min-height: $message-min-height-md;
+  padding: $message-padding-v-md $message-padding-h-md;
+  font-size: $message-font-size-md;
   @include message-theme($button-default-border, $button-default-activebg, $button-default-border);
 
   @include e(icon) {
@@ -53,8 +53,8 @@
   }
 
   @include m(lg) {
-    min-height: r(42);
-    padding: r(9) r(15);
+    min-height: $message-min-height-lg;
+    padding: $message-padding-v-lg $message-padding-h-lg;
 
     @include e(icon) {
       margin-right: r(10);
@@ -62,8 +62,7 @@
     }
 
     @include e(body) {
-      font-size: r(15);
+      font-size: $message-font-size-lg;
     }
   }
 }
-

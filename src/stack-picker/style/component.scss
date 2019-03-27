@@ -33,7 +33,7 @@
 
   @include e(input) {
     width: 100%;
-    padding: r(12) 0;
+    padding: $picker-padding-v 0;
   }
 
   @include e(placeholder) {
@@ -45,7 +45,7 @@
   }
 
   @include e(wrapper) {
-    background: #fff;
+    background: $picker-background;
   }
 
   @include e(header) {
@@ -54,14 +54,15 @@
     justify-content: center;
     position: relative;
     width: 100%;
-    height: r(45);
-    line-height: r(45);
+    height: $picker-header-height;
+    font-size: $picker-header-font-size;
+    line-height: $picker-header-line-height;
     @include onepx(bottom);
   }
 
   @include e(cancel,submit) {
     flex: 1;
-    padding: 0 r(20);
+    padding: 0 $picker-padding-h;
     cursor: pointer;
   }
 
@@ -94,10 +95,10 @@
 
   @include e(crumbs) {
     position: relative;
-    padding: r(10) r(20);
-    line-height: r(24);
-    font-size: r(14);
-    color: #999;
+    padding: $picker-padding-v $picker-padding-h;
+    line-height: $stackpicker-crumbs-line-height;
+    font-size: $stackpicker-crumbs-font-size;
+    color: $color-text-caption;
     @include onepx(bottom);
 
     p {
@@ -111,7 +112,7 @@
 
   @include e(group) {
     position: relative;
-    height: 8 * $picker-stackitem-height;
+    height: 8 * $stackpicker-stackitem-height;
     overflow: hidden;
   }
 
@@ -178,9 +179,9 @@
   @include e(stack-column-item) {
     position: relative;
     padding: 0 r(10);
-    line-height: $picker-stackitem-height;
+    line-height: $stackpicker-stackitem-height;
     font-size: r(16);
-    color: #333;
+    color: $color-text;
     transition: padding-left .4s;
     white-space: nowrap;
     text-overflow: ellipsis;
