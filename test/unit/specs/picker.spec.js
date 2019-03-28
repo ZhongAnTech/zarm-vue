@@ -86,7 +86,7 @@ describe('Picker', () => {
       data() {
         return {
           value: ['1', '3'],
-          visible: false,
+          visible: true,
           data1: [
             [
               { value: '1', label: '选项一' },
@@ -105,7 +105,6 @@ describe('Picker', () => {
         },
       },
     });
-    wrapper.element.click();
     wrapper.find('.za-picker__submit').trigger('click');
     expect(value[1].value).toBe('3');
   });
@@ -199,7 +198,7 @@ describe('Picker', () => {
       data() {
         return {
           value: '',
-          visible: false,
+          visible: true,
           data1: [
             { value: '1', label: '选项一' },
             { value: '2', label: '选项二' },
@@ -207,8 +206,6 @@ describe('Picker', () => {
         };
       },
     });
-    wrapper.element.click();
-    expect(wrapper.vm.visible).toBe(true);
     wrapper.find('.za-picker__cancel').trigger('click');
     expect(wrapper.vm.visible).toBe(false);
   });

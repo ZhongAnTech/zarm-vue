@@ -99,7 +99,6 @@ export default {
         this.scrollToEnd();
         this.$emit('input', newValue);
         this.$emit('change', newValue);
-        this.currentValue = newValue;
       }
     },
 
