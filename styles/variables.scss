@@ -215,6 +215,15 @@ $collapse-arrow-color: #bcbcbc;
 $collapse-arrow-disabled-color: #eee;
 $collapse-arrow-border-width: r(1); // 箭头粗细
 
+// Input
+$input-content-height: r(20);
+$input-padding-v: $cell-padding-v;
+$input-clearicon-color: #bcbcbc;
+$input-number-content-height: r(30);
+$input-number-line-height: r(30);
+$input-number-border-focus-width: r(3);
+$input-number-border-focus-color: #108ee9;
+
 // Keyboard
 $keyboard-item-height: r(54);
 $keyboard-item-font-size: r(30);
@@ -241,8 +250,20 @@ $picker-background: #fff;
 $picker-header-height: r(45);
 $picker-header-line-height: r(45);
 $picker-header-font-size: r(16);
-$picker-padding-v: r(15);
+$picker-padding-v: $cell-padding-v;
 $picker-padding-h: r(20);
+
+// SearchBar
+$searchbar-form-height: r(44);
+$searchbar-content-height: r(28);
+$searchbar-content-bg: #eee;
+$searchbar-input-padding-v: r(10);
+$searchbar-fontsize: r(14);
+$searchbar-input-line-height: r(20);
+$searchbar-cancel-fontsize: r(14);
+$searchbar-cancel-color: #333;
+$searchbar-mock-icon-fontsize: r(17);
+$searchbar-mock-color: #7e7e7e;
 
 // Slider
 $slider-line-background: #e6e6e6;
@@ -264,9 +285,22 @@ $switch-box-checked-shadow: rgba(0, 0, 0, 0.2);
 // Stepper
 $stepper-height-sm: r(28);
 $stepper-height-md: r(36);
+$stepper-fontsize-sm: r(12);
+$stepper-fontsize-md: r(14);
 
 // StackPicker
 $stackpicker-item-height: r(30);
 $stackpicker-stackitem-height: r(35);
 $stackpicker-crumbs-line-height: r(24);
 $stackpicker-crumbs-font-size: r(14);
+
+// SwipeAction
+$swipeaction-item-width: r(80);
+$swipeaction-item-fontSize: r(14);
+
+// Tabs
+$tabs-header-item-height: r(45);
+$tabs-header-line-height: r(2);
+$tabs-header-item-fontSize: r(15);
+$tabs-header-item-color: #000;
+$tabs-item-fontSize: r(14);

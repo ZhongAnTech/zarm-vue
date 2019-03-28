@@ -59,7 +59,6 @@
     position: relative;
     width: $stepper-height-md;
     height: $stepper-height-md;
-    font-size: r(18);
     font-weight: bold;
     cursor: pointer;
 
@@ -69,7 +68,7 @@
     }
 
     @include b(icon) {
-      font-size: r(12);
+      font-size: $stepper-fontsize-md;
     }
   }
 
@@ -97,12 +96,11 @@
       position: relative;
       width: $stepper-height-sm;
       height: $stepper-height-sm;
-      font-size: r(18);
       font-weight: bold;
       cursor: pointer;
 
       @include b(icon) {
-        font-size: r(12);
+        font-size: $stepper-fontsize-sm;
       }
     }
 

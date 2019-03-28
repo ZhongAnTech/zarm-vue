@@ -27,10 +27,10 @@
 
   @include e(button) {
     display: flex;
-    width: r(80);
+    width: $swipeaction-item-width;
     justify-content: center;
     align-items: center;
-    font-size: r(14);
+    font-size: $swipeaction-item-fontSize;
 
     @include m(default) {
       @include button-theme($button-default-color, $button-default-bg, $button-default-border);
