@@ -13,7 +13,7 @@
   @include e(title) {
     color: $color-text;
     font-weight: 500;
-    font-size: r(18);
+    font-size: $nav-bar-fontsize;
     position: absolute;
     left: 50%;
     white-space: nowrap;

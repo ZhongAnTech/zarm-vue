@@ -136,9 +136,9 @@ $badge-text-color: #fff;
 
 /* Button */
 $button-default-color: $color-text;
-$button-default-bg: #ddd;
-$button-default-border: #ddd;
-$button-default-activebg: rgba(#ddd, 0.5);
+$button-default-bg: $border-color;
+$button-default-border: $border-color;
+$button-default-activebg: rgba($border-color, 0.5);
 
 $button-primary-color: #fff;
 $button-primary-bg: $theme-primary;
@@ -240,10 +240,27 @@ $message-padding-h-md: r(8);
 $message-padding-v-lg: r(8);
 $message-padding-h-lg: r(12);
 
+// Modal
+$modal-title-fontsize: r(17);
+$modal-title-color: #333;
+$modal-close-fontsize: r(20);
+$modal-close-color: #999;
+$modal-close-color-hover: #666;
+$modal-body-fontsize: r(15);
+$modal-body-color: #999;
+$modal-footer-link-height: r(50);
+$modal-footer-link-fontsize: r(17);
+$modal-footer-link-bg: #f1f1f1;
+
 // NavBar
 $nav-bar-color: #fdfdfd;
 $nav-bar-height: r(44);
 $nav-bar-icon-size: r(24);
+$nav-bar-fontsize: r(18);
+
+// Panel
+$panel-header-fontsize: r(14);
+$panel-footer-fontsize: r(12);
 
 // Picker
 $picker-background: #fff;
@@ -304,3 +321,18 @@ $tabs-header-line-height: r(2);
 $tabs-header-item-fontSize: r(15);
 $tabs-header-item-color: #000;
 $tabs-item-fontSize: r(14);
+
+// Toast
+$toast-text-fontsize: r(14);
+$toast-text-color: #fff;
+$toast-background-color: rgba(0, 0, 0, 0.7);
+
+// Tooltip
+$tooltip-text-color: #fff;
+$tooltip-background-color:  rgba(0, 0, 0, .7);
+
+// Wheel
+$wheel-item-height: r(34);
+$wheel-item-rows: 5;
+$wheel-item-text-color: #000;
+$wheel-item-fontsize: r(16);

@@ -2,7 +2,7 @@
   @include e(header) {
     display: flex;
     padding: r(25) r(15) r(7) r(15);
-    font-size: r(14);
+    font-size: $panel-header-fontsize;
     color: $color-text-caption;
   }
 
@@ -10,7 +10,7 @@
     display: flex;
     padding: r(7) r(15);
     margin-bottom: r(10);
-    font-size: r(12);
+    font-size: $panel-footer-fontsize;
     color: $color-text-caption;
   }
 

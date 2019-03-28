@@ -1,11 +1,8 @@
 @include b(wheel) {
-  $itemHeight: r(34);
-  $itemRows: 5;
-
   display: block;
   position: relative;
   overflow: hidden;
-  height: $itemRows * $itemHeight;
+  height: $wheel-item-rows * $wheel-item-height;
   width: 100%;
 
   @include e(content) {
@@ -14,10 +11,10 @@
 
   @include e(item) {
     text-align: center;
-    font-size: r(18);
-    line-height: $itemHeight;
-    height: $itemHeight;
-    color: #000;
+    font-size: $wheel-item-fontsize;
+    line-height: $wheel-item-height;
+    height: $wheel-item-height;
+    color: $wheel-item-text-color;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;

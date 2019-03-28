@@ -42,29 +42,29 @@ $prefixCls: za-modal;
     text-align: center;
 
     &-title {
-      font-size: r(17);
+      font-size: $modal-title-fontsize;
       line-height: 1;
-      color: #333;
+      color: $modal-title-color;
     }
 
     &-close {
       position: absolute;
       top: 0;
       right: r(15);
-      font-size: r(20);
+      font-size: $modal-close-fontsize;
       line-height: r(50);
-      color: #999;
+      color: $modal-close-color;
       cursor: pointer;
 
       &:hover {
-        color: #666;
+        color: $modal-close-color-hover;
       }
     }
   }
 
   @include e(body) {
-    font-size: r(15);
-    color: #999;
+    font-size: $modal-body-fontsize;
+    color: $modal-body-color;
     padding: r(15);
     overflow: auto;
     user-select: auto;
@@ -76,9 +76,9 @@ $prefixCls: za-modal;
 
     a {
       flex: 1;
-      height: r(50);
-      line-height: r(50);
-      font-size: r(17);
+      height: $modal-footer-link-height;
+      line-height: $modal-footer-link-height;
+      font-size: $modal-footer-link-fontsize;
       border-width: 0;
 
       /* 1px line */
@@ -86,7 +86,7 @@ $prefixCls: za-modal;
       @include onepx(top);
 
       &:active {
-        background: #f1f1f1 !important;
+        background: $modal-footer-link-bg !important;
       }
 
       &:not(:first-of-type) {

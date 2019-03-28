@@ -6,7 +6,7 @@
 
 @mixin onepx(
   $positions: top right bottom left,
-  $border-color: #ddd,
+  $border-color: #e6e6e6,
   $border-radius: 0
 ) {
   &:after {

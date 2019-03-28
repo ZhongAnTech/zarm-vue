@@ -9,11 +9,11 @@ $prefixCls: za-tooltip;
 
   @include e(inner) {
     position: relative;
-    background-color: rgba(0, 0, 0, .7);
+    background-color: $tooltip-background-color;
     padding: r(6);
     border-radius: $radius-md;
     font-size: r(12);
-    color: #fff;
+    color: $tooltip-text-color;
     margin-bottom: r(5);
 
     &:after {
@@ -26,7 +26,7 @@ $prefixCls: za-tooltip;
       transform: translateX(-50%);
       border-width: r(5) r(5) 0;
       border-color: transparent;
-      border-top-color: rgba(0, 0, 0, .7);
+      border-top-color: $tooltip-background-color;
       border-style: solid;
     }
   }
