@@ -1,5 +1,5 @@
 <script>
-import { guid } from '@/utils/misc';
+import { deepCloneVNode } from '@/utils/vdom';
 import zaDrag from '@/drag';
 
 export default {
@@ -304,22 +304,6 @@ export default {
       showPagination,
       validSlots,
     } = this;
-
-    function deepCloneVNode(vnode) {
-      if (!vnode) return;
-      const clonedChildren = vnode.children && vnode.children.map(vd => deepCloneVNode(vd));
-      const cloned = h(vnode.tag, vnode.data, clonedChildren);
-      cloned.text = vnode.text;
-      cloned.isComment = vnode.isComment;
-      cloned.componentOptions = vnode.componentOptions;
-      cloned.elm = vnode.elm;
-      cloned.context = vnode.context;
-      cloned.ns = vnode.ns;
-      cloned.isStatic = vnode.isStatic;
-      cloned.key = vnode.key + guid();
-      return cloned;
-    }
-
     const directionCls = isX ? `${prefixCls} ${prefixCls}--horizontal` : `${prefixCls} ${prefixCls}--vertical`;
 
     const pagination = this.$slots.default.map((item, index) => {
@@ -333,11 +317,12 @@ export default {
           style={paginationStyle} ></li>
       );
     });
-    const validChildren = validSlots();
 
-    const firstItem = loop ? deepCloneVNode(this.$slots.default[0]) : null;
-    const lastItem = loop ?
-      deepCloneVNode(validChildren[validChildren.length - 1]) : null;
+    const validChildren = validSlots();
+    if (loop && !this.firstItem && !this.lastItem) {
+      this.firstItem = deepCloneVNode(h, this.$slots.default[0]);
+      this.lastItem = deepCloneVNode(h, validChildren[validChildren.length - 1]);
+    }
     return (
       <div class={directionCls}>
         <za-drag
@@ -348,9 +333,9 @@ export default {
             ref='carouselItems'
             class={`${prefixCls}__items`}
             style={itemsStyle}>
-            {lastItem}
+            {this.lastItem}
             {this.$slots.default}
-            {firstItem}
+            {this.firstItem}
           </div>
         </za-drag>
         {

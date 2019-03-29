@@ -1,13 +1,4 @@
 <script>
-// const EVENTS_MAP = {
-//   touchstart: 'onTouchStart',
-//   touchmove: 'onTouchMove',
-//   touchend: 'onTouchEnd',
-//   mousedown: 'onTouchStart',
-//   mousemove: 'onTouchMove',
-//   mouseup: 'onTouchEnd',
-// };
-
 export default {
   name: 'zaDrag',
   props: {
@@ -75,28 +66,8 @@ export default {
       this.dragEnd(event, dragState);
       this.dragState = Object.create(null);
     },
-
-    // attachListener(listeners) {
-    //   ['touchstart', 'touchmove', 'touchend', 'mousedown', 'mousemove', 'mouseup'].forEach(key => {
-    //     listeners[key] = this[EVENTS_MAP[key]];
-    //   });
-    // },
   },
   render() {
-    // const defaultSlots = this.$slots.default || [];
-    // const firstDefaultSlots = defaultSlots.find(s => {
-    //   return s && s.tag;
-    // });
-    // if (!firstDefaultSlots) return null;
-    // if (firstDefaultSlots.componentOptions) {
-    //   firstDefaultSlots.componentOptions.listeners =
-    //     firstDefaultSlots.componentOptions.listeners || {};
-    //   this.attachListener(firstDefaultSlots.componentOptions.listeners);
-    // } else if (firstDefaultSlots.data) {
-    //   firstDefaultSlots.data.on = firstDefaultSlots.data.on || {};
-    //   this.attachListener(firstDefaultSlots.data.on);
-    // }
-    // return firstDefaultSlots;
     return (
       <div
         ref="drag"
