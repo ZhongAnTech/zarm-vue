@@ -77,6 +77,15 @@
 <za-cell title="多行文本">
   <za-input v-model="v9" rows="4" type="textarea" disabled></za-input>
 </za-cell>
+<za-cell title="数字类型">
+  <za-input-number
+    v-model="v5"
+    disabled
+    type="number"
+    placeholder="type is number"
+    @change="handleChange"
+  ></za-input-number>
+</za-cell>
 ```
 
 :::

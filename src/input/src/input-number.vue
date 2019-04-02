@@ -66,9 +66,6 @@ export default {
   },
   mounted() {
     this.handleOutsideClick(true);
-    if (this.autoFocus || this.focused) {
-      this.onFocus();
-    }
   },
   beforeDestroy() {
     this.handleOutsideClick(false);
@@ -113,7 +110,7 @@ export default {
     },
 
     onFocus() {
-      if (this.visible) {
+      if (this.disabled || this.visible) {
         return;
       }
 

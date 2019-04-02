@@ -1,4 +1,5 @@
 <template lang="html">
+<transition v-if="currentVisible">
   <div 
     :class='{
       [`${prefixCls}`]: true,
@@ -10,10 +11,8 @@
         [`${prefixCls}__wrapper-${direction}`]: true,
       }'
       :style='transitionDurationStyle'
-    >
-      <template v-if="currentVisible">
+    >   
         <slot></slot>
-      </template>
     </div>
     <za-mask
       v-if="hasMask"
@@ -23,6 +22,7 @@
       :type='maskType'
       @click="onMaskClick"/>
   </div>
+</transition>
 </template>
 
 <script>
@@ -115,10 +115,10 @@ export default {
   },
   methods: {
     enter() {
-      this.maskVisible = true;
+      this.currentVisible = true;
       this.animationState = 'enter';
       this.timerEnter = setTimeout(() => {
-        this.currentVisible = true;
+        this.maskVisible = true;
       });
     },
     leave() {
