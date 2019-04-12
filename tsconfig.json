@@ -1,0 +1,15 @@
+{
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "module": "esnext",
+    "target": "es6",
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "sourceMap": true,
+    "pretty": true
+  }
+}

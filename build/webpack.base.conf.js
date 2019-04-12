@@ -17,7 +17,7 @@ module.exports = {
     chunkFilename: '[name].js'
   },
   resolve: {
-    extensions: ['.js', '.vue', '.md', '.json'],
+    extensions: ['.js', '.vue', '.md', '.json', '.ts'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
       '@': resolve('src'),
@@ -49,6 +49,20 @@ module.exports = {
       {
         test: /\.md$/,
         use: ['vue-loader','zarm-vue-loader']
+      },
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        enforce: 'pre',
+        loader: 'tslint-loader'
+      },
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        }
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

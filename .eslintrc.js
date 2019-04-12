@@ -27,10 +27,7 @@ module.exports = {
   // add your custom rules here
   'rules': {
     // don't require .vue extension when importing
-    'import/extensions': ['error', 'always', {
-      'js': 'never',
-      'vue': 'never'
-    }],
+    'import/extensions': 'off',
     // allow underscoreDangle after this
     'prefer-destructuring': 'off',
     'no-nested-ternary': 'off',
