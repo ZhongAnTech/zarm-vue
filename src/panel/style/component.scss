@@ -1,0 +1,31 @@
+@include b(panel) {
+  @include e(header) {
+    display: flex;
+    padding: r(25) r(15) r(7) r(15);
+    font-size: $panel-header-fontsize;
+    color: $color-text-caption;
+  }
+
+  @include e(footer) {
+    display: flex;
+    padding: r(7) r(15);
+    margin-bottom: r(10);
+    font-size: $panel-footer-fontsize;
+    color: $color-text-caption;
+  }
+
+  @include e(body) {
+    position: relative;
+    background: #fff;
+    @include onepx(top bottom);
+  }
+
+  @include e(title) {
+    flex: 1;
+
+    .za-icon {
+      margin-right: r(5);
+    }
+  }
+}
+

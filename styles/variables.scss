@@ -1,93 +1,144 @@
+$namespace: 'za';
+$element-separator: '__';
+$modifier-separator: '--';
+$state-prefix: '--';
 
-/* base */
+// 图标字体
+$icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
+
+// 基础
 $base-fontSize: 14;
+$placeholder-color: #a9a9a9;
 
-$theme-default: #333;
-$theme-default-light: rgba($theme-default, 0.5);
-$theme-default-dark: darken($theme-default, 10%);
+// 背景色
+$background-active: #e6e6e6;
+$background-disabled: #bcbcbc;
 
+// 边框色
+$border-color: #e6e6e6;
+$border-disabled: #bcbcbc;
+
+// 透明度
+$opacity-disabled: 0.6;
+$opacity-mask: 0.5;
+$opacity-toast: 0.8;
+$opacity-tooltip: 0.8;
+
+// 禁用
+$disabled-opacity: 0.5;
+$disabled-background: #ddd;
+$disabled-color: #999;
+
+// 主题
+$theme-default: #e6e6e6;
 $theme-primary: #12c287;
-$theme-primary-light: rgba($theme-primary, 0.1);
-$theme-primary-dark: darken($theme-primary, 10%);
-
 $theme-info: #347af6;
+$theme-success: #12c287;
+$theme-warning: #ec9131;
+$theme-error: #ff5050;
+$theme-danger: #ff5050;
+
+// 主题色状态-lighten
+$theme-default-light: rgba($theme-default, 0.5);
+$theme-primary-light: rgba($theme-primary, 0.1);
 $theme-info-light: rgba($theme-info, 0.1);
-$theme-info-dark: darken($theme-info, 10%);
-
-$theme-success: #69c964;
 $theme-success-light: rgba($theme-success, 0.1);
-$theme-success-dark: darken($theme-success, 10%);
-
-$theme-warning: #eca632;
 $theme-warning-light: rgba($theme-warning, 0.1);
-$theme-warning-dark: darken($theme-warning, 10%);
-
-$theme-error: #e55546;
 $theme-error-light: rgba($theme-error, 0.1);
-$theme-error-dark: darken($theme-error, 10%);
+$theme-danger-light: rgba($theme-danger, 0.1);
 
+// 主题色状态-darken
+$theme-default-dark: darken($theme-default, 10%);
+$theme-primary-dark: darken($theme-primary, 10%);
+$theme-info-dark: darken($theme-info, 10%);
+$theme-success-dark: darken($theme-success, 10%);
+$theme-warning-dark: darken($theme-warning, 10%);
+$theme-error-dark: darken($theme-error, 10%);
+$theme-danger-dark: darken($theme-danger, 10%);
+
+// 字体色
+$color-text: #464646; // 基本
+$color-text-inverse: #fff; // 反色
+$color-text-placeholder: #a9a9a9; // 文本框提示
+$color-text-disabled: #bcbcbc; // 失效
+$color-text-caption: #909090; // 辅助描述
+$color-link: $theme-primary; // 链接
+$color-shadow: rgba(56, 56, 56, 0.15); // 阴影色
+
+// 字体大小
+$fontSize-xl: r(18);
+$fontSize-lg: r(15);
+$fontSize-md: r(14);
+$fontSize-sm: r(12);
+$fontSize-xs: r(10);
+
+// 圆角
 $radius-xl: r(4);
 $radius-lg: r(4);
 $radius-md: r(4);
 $radius-sm: r(4);
 $radius-xs: r(4);
+$radius-round: r(1000);
+$radius-circle: 50%;
 
+// 高度
 $height-xl: r(52);
 $height-lg: r(48);
 $height-md: r(44);
 $height-sm: r(34);
 $height-xs: r(27);
 
+// 间距
 $padding-xl: r(25);
 $padding-lg: r(20);
 $padding-md: r(16);
 $padding-sm: r(15);
 $padding-xs: r(10);
 
-$fontSize-xl: r(18);
-$fontSize-lg: r(18);
-$fontSize-md: r(17);
-$fontSize-sm: r(14);
-$fontSize-xs: r(14);
+// 水平间距
+$padding-h-sm: r(5);
+$padding-h-md: r(8);
+$padding-h-lg: r(16);
+$padding-h-xl: r(20);
 
+// 垂直间距
+$padding-v-sm: r(2);
+$padding-v-md: r(6);
+$padding-v-lg: r(9);
+$padding-v-xl: r(12);
+
+// 堆叠顺序
 $zIndex-mask: 1000;
 $zIndex-popup: 1300;
 $zIndex-modal: 1400;
 $zIndex-toast: 1500;
 $zIndex-loading: 1500;
 
-$disabled-opacity: .5;
-$disabled-background: #ddd;
-$disabled-color: #999;
-$placeholder-color: #a9a9a9;
-$icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
-$radius-round: r(1000);
-$radius-circle: 50%;
+// ActionSheet
+$actionsheet-margin: 0;
+$actionsheet-item-height: r(50);
+$actionsheet-item-font-size: r(16);
 
-// 文字色
-$color-text: #333;                       // 基本
-$color-text-inverse: #fff;               // 反色
-$color-text-placeholder: #a9a9a9;        // 文本框提示
-$color-text-disabled: #bbb;              // 失效
-$color-text-caption: #999;               // 辅助描述
-$color-link: $theme-primary;               // 链接
-$color-shadow: rgba(56, 56, 56, .15);    // 阴影色
+/* ActivityIndicator */
+$activityIndicator-theme-color: $theme-primary;
+$activityIndicator-stroke-color: $border-color;
+$activityIndicator-diameter-md: r(20);
+$activityIndicator-diameter-lg: r(31);
 
-// 背景色
-$background-active: #ddd;
-$background-disabled: #e1e1e1;
+// Badge
+$badge-height: r(14);
+$badge-font-size: r(10);
+$badge-padding-h: r(4);
+$badge-dot-diameter: r(8);
+$badge-radius-radius: r(2);
+$badge-round-radius: r(8);
+$badge-text-color: #fff;
 
-// 透明度
-$opacity-disabled: .5;
-$opacity-mask: .4;
-$opacity-toast: .7;
-$opacity-tooltip: .7;
-
-/* button */
-$button-default-color: $theme-default;
-$button-default-bg: #ddd;
-$button-default-border: #ddd;
-$button-default-activebg: rgba(#ddd, 0.5);
+/* Button */
+$button-default-color: $color-text;
+$button-default-bg: $border-color;
+$button-default-border: $border-color;
+$button-default-activebg: rgba($border-color, 0.5);
 
 $button-primary-color: #fff;
 $button-primary-bg: $theme-primary;
@@ -114,35 +165,174 @@ $button-error-bg: $theme-error;
 $button-error-border: $theme-error;
 $button-error-activebg: $theme-error-light;
 
-/* spinner */
-$spinner-diameter-md: r(20);
-$spinner-diameter-lg: r(31);
+$button-danger-color: #fff;
+$button-danger-bg: $theme-danger;
+$button-danger-border: $theme-danger;
+$button-danger-activebg: $theme-danger-light;
 
-/* calendar */
-$calendar-action-bg: #f3f2f7;
-$calendar-border-color: #e9e9e9;
-$calendar-month-title: #000;
-$calendar-date-color: #666;
-$calendar-date-selected-color: #12c287;
-$calendar-selected-range-color: #ccf2e6;
+/* Calendar */
+$calendar-height: r(45); // 最小高度
+$calendar-background: #fff; // 背景色
+$calendar-week-bar-fontsize: r(14); // 星期条文字大小
+$calendar-week-bar-background: #f2f2f2; // 星期条文字背景色
+$calendar-week-bar-color: $color-text-caption; // 星期条文字颜色
+$calendar-section-padding: r(15); // 两边留白间距
+$calendar-day-fontsize: r(16); // 月份文字大小
+$calendar-day-title-fontsize: r(17); // 月份title文字大小
+$calendar-day-background: #fff; // 月份文字背景颜色
+$calendar-day-color: $color-text; // 月份文字颜色
+$calendar-day-today-shadow: 0 r(2) r(5) 0 rgba(0, 0, 0, 0.15); // 日期今天选中背景颜色
+$calendar-day-today-color: rgba($theme-primary, 0.2); // 日期今天选中颜色
+$calendar-day-selected-background: $theme-primary; // 日期文字选中背景颜色
+$calendar-day-selected-color: #fff; // 日期文字选中颜色
+$calendar-day-range-background: #d1f3e7; // 日期文字范围内背景颜色
+$calendar-day-range-color: $theme-primary; // 日期文字范围内颜色
+$calendar-day-width: 14.28571%; // 日期宽度
+$calendar-day-height: r(40); // 日期高度
 
-// ActionSheet
-$actionsheet-margin: 0;
-$actionsheet-item-height: r(50);
-$actionsheet-item-font-size: r(16);
+/* Cell */
+$cell-background: #fff; // 背景色
+$cell-height: r(52); // 最小高度
+$cell-padding-h: r(16); // 水平边内距
+$cell-padding-v: r(15); // 纵向边内距
+$cell-line-padding-left: r(16); // 分隔线左边距
+$cell-label-width: r(100); // 表单label宽度
+$cell-title-color: $color-text; // 标题文字颜色
+$cell-title-font-size: r(15); // 标题文字大小
+$cell-title-line-height: r(22); // 标题文字行高
+$cell-description-color: $color-text-caption; // 描述文字颜色
+$cell-description-font-size: r(15); // 描述文字大小
+$cell-arrow-length: r(10); // 箭头长度
+$cell-arrow-border-width: r(1); // 箭头粗细
+$cell-arrow-color: #bcbcbc; // 箭头颜色
+$cell-arrow-length: r(10); // 箭头长度
+$cell-active-background: $background-active; // 点击时高亮背景色
 
 // Collapse
-$collapse-height: r(45);
+$collapse-height: r(52);
 $collapse-padding: r(15);
-$collapse-arrow-color: #c7c7cc;
+$collapse-arrow-color: #bcbcbc;
+$collapse-arrow-disabled-color: #eee;
+$collapse-arrow-border-width: r(1); // 箭头粗细
 
-// 垂直间距
-$padding-v-sm: r(2);
-$padding-v-md: r(6);
-$padding-v-lg: r(9);
-$padding-v-xl: r(12);
+// Input
+$input-content-height: r(20);
+$input-padding-v: $cell-padding-v;
+$input-clearicon-color: #bcbcbc;
+$input-number-content-height: r(30);
+$input-number-line-height: r(30);
+$input-number-border-focus-width: r(3);
+$input-number-border-focus-color: #108ee9;
 
 // Keyboard
-$keyboard-item-height: r(50);
-$keyboard-item-font-size: r(28);
+$keyboard-item-height: r(54);
+$keyboard-item-font-size: r(30);
 $keyboard-icon-font-size: r(21);
+$keyboard-disabled-background: #fff;
+
+// Message
+$message-min-height-md: r(29);
+$message-min-height-lg: r(40);
+$message-font-size-md: r(12);
+$message-font-size-lg: r(14);
+$message-padding-v-md: r(6);
+$message-padding-h-md: r(8);
+$message-padding-v-lg: r(8);
+$message-padding-h-lg: r(12);
+
+// Modal
+$modal-title-fontsize: r(17);
+$modal-title-color: #333;
+$modal-close-fontsize: r(20);
+$modal-close-color: #999;
+$modal-close-color-hover: #666;
+$modal-body-fontsize: r(15);
+$modal-body-color: #999;
+$modal-footer-link-height: r(50);
+$modal-footer-link-fontsize: r(17);
+$modal-footer-link-bg: #f1f1f1;
+
+// NavBar
+$nav-bar-color: #fdfdfd;
+$nav-bar-height: r(44);
+$nav-bar-icon-size: r(24);
+$nav-bar-fontsize: r(18);
+
+// Panel
+$panel-header-fontsize: r(14);
+$panel-footer-fontsize: r(12);
+
+// Picker
+$picker-background: #fff;
+$picker-header-height: r(45);
+$picker-header-line-height: r(45);
+$picker-header-font-size: r(16);
+$picker-padding-v: $cell-padding-v;
+$picker-padding-h: r(20);
+
+// SearchBar
+$searchbar-form-height: r(44);
+$searchbar-content-height: r(28);
+$searchbar-content-bg: #eee;
+$searchbar-input-padding-v: r(10);
+$searchbar-fontsize: r(14);
+$searchbar-input-line-height: r(20);
+$searchbar-cancel-fontsize: r(14);
+$searchbar-cancel-color: #333;
+$searchbar-mock-icon-fontsize: r(17);
+$searchbar-mock-color: #7e7e7e;
+
+// Slider
+$slider-line-background: #e6e6e6;
+$slider-line-height: r(2);
+$slider-handle-size: r(28);
+$slider-handle-background: #fff;
+$slider-handle-shadow: 0 r(1) r(3) rgba(0, 0, 0, 0.4);
+
+// Switch
+$switch-width: r(53);
+$switch-height: r(32);
+$switch-border-color: $border-color;
+$switch-background: #fff;
+$switch-box-shadow-start: rgba(0, 0, 0, 0.1);
+$switch-box-shadow-center: rgba(0, 0, 0, 0.08);
+$switch-box-shadow-end: rgba(0, 0, 0, 0.2);
+$switch-box-checked-shadow: rgba(0, 0, 0, 0.2);
+
+// Stepper
+$stepper-height-sm: r(28);
+$stepper-height-md: r(36);
+$stepper-fontsize-sm: r(12);
+$stepper-fontsize-md: r(14);
+
+// StackPicker
+$stackpicker-item-height: r(30);
+$stackpicker-stackitem-height: r(35);
+$stackpicker-crumbs-line-height: r(24);
+$stackpicker-crumbs-font-size: r(14);
+
+// SwipeAction
+$swipeaction-item-width: r(80);
+$swipeaction-item-fontSize: r(14);
+
+// Tabs
+$tabs-header-item-height: r(45);
+$tabs-header-line-height: r(2);
+$tabs-header-item-fontSize: r(15);
+$tabs-header-item-color: #000;
+$tabs-item-fontSize: r(14);
+
+// Toast
+$toast-text-fontsize: r(14);
+$toast-text-color: #fff;
+$toast-background-color: rgba(0, 0, 0, 0.7);
+
+// Tooltip
+$tooltip-text-color: #fff;
+$tooltip-background-color:  rgba(0, 0, 0, .7);
+
+// Wheel
+$wheel-item-height: r(34);
+$wheel-item-rows: 5;
+$wheel-item-text-color: #000;
+$wheel-item-fontsize: r(16);

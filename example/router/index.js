@@ -47,10 +47,10 @@ export default new Router({
       },
     },
     {
-      path: '/spinner',
+      path: '/activity-indicator',
       component: Bundle,
       meta: {
-        mRender: () => import('../components/spinnerPage.vue')
+        mRender: () => import('../components/activityIndicatorPage.vue')
       },
     },
     {
@@ -117,7 +117,7 @@ export default new Router({
       },
     },
     {
-      path: '/filepicker',
+      path: '/file-picker',
       component: Bundle,
       meta: {
         mRender: () => import('../components/filePickerPage.vue')
@@ -131,7 +131,7 @@ export default new Router({
       },
     },
     {
-      path: '/actionsheet',
+      path: '/action-sheet',
       component: Bundle,
       meta: {
         mRender: () => import('../components/actionsheetPage.vue')
@@ -145,7 +145,7 @@ export default new Router({
       },
     },
     {
-      path: '/swipeaction',
+      path: '/swipe-action',
       component: Bundle,
       meta: {
         mRender: () => import('../components/swipeactionPage.vue')
@@ -166,7 +166,14 @@ export default new Router({
       },
     },
     {
-      path: '/datepicker',
+      path: '/stack-picker',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/stackPickerPage.vue')
+      },
+    },
+    {
+      path: '/date-picker',
       component: Bundle,
       meta: {
         mRender: () => import('../components/datePickerPage.vue')
@@ -187,10 +194,17 @@ export default new Router({
       },
     },
     {
-      path: '/noticebar',
+      path: '/notice-bar',
       component: Bundle,
       meta: {
         mRender: () => import('../components/noticeBarPage.vue')
+      },
+    },
+    {
+      path: '/nav-bar',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/navBarPage.vue')
       },
     },
     {
@@ -215,10 +229,17 @@ export default new Router({
       },
     },
     {
-      path: '/searchbar',
+      path: '/search-bar',
       component: Bundle,
       meta: {
         mRender: () => import('../components/searchBarPage.vue')
+      },
+    },
+    {
+      path: '/locale-provider',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/localeProviderPage.vue')
       },
     },
   ],

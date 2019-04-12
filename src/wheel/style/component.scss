@@ -1,0 +1,22 @@
+@include b(wheel) {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  height: $wheel-item-rows * $wheel-item-height;
+  width: 100%;
+
+  @include e(content) {
+    margin-top: 68px;
+  }
+
+  @include e(item) {
+    text-align: center;
+    font-size: $wheel-item-fontsize;
+    line-height: $wheel-item-height;
+    height: $wheel-item-height;
+    color: $wheel-item-text-color;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}

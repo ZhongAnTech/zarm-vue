@@ -1,0 +1,38 @@
+$prefixCls: za-tooltip;
+
+@include b(tooltip) {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  transform: translateY(-100%);
+  padding-bottom: r(5);
+
+  @include e(inner) {
+    position: relative;
+    background-color: $tooltip-background-color;
+    padding: r(6);
+    border-radius: $radius-md;
+    font-size: r(12);
+    color: $tooltip-text-color;
+    margin-bottom: r(5);
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: r(-5);
+      width: 0;
+      height: 0;
+      transform: translateX(-50%);
+      border-width: r(5) r(5) 0;
+      border-color: transparent;
+      border-top-color: $tooltip-background-color;
+      border-style: solid;
+    }
+  }
+
+  @include m(hidden) {
+    display: none;
+  }
+}
+

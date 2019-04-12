@@ -1,24 +1,23 @@
 <template lang="html">
   <span :class='{
       [`${prefixCls}`]: true,
-      [`theme-${theme}`]: !!theme,
-      [`size-${size}`]: !!size,
-      [`shape-${shape}`]: !!shape,
-      disabled,
+      [`${prefixCls}--${size}`]: !!size,
+      [`${prefixCls}--${shape}`]: !!shape,
+      [`${prefixCls}--disabled`]: !!disabled,
     }'
   >
     <span :class='{
-        [`${prefixCls}-sub`]: true,
-        disabled: subDisabled,
+        [`${prefixCls}__sub`]: true,
+        [`${prefixCls}__sub-disabled`]: subDisabled,
       }'
       @click='handleSubClick'
     >
       <za-icon type='minus'></za-icon>
     </span>
-    <input :class='`${prefixCls}-body`' type="tel" :disabled='disabled' :value='currentValue' @input='handleInput'/>
+    <input ref='stepper-input' maxlength="22" :class='`${prefixCls}__body`' type="tel" :disabled='disabled' :value='currentValue' @input='handleInput'/>
     <span :class='{
-        [`${prefixCls}-plus`]: true,
-        disabled: plusDisabled,
+        [`${prefixCls}__plus`]: true,
+        [`${prefixCls}__plus-disabled`]: plusDisabled,
       }'
       @click='handlePlusClick'
     >
@@ -28,7 +27,7 @@
 </template>
 
 <script>
-import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
+import { enumGenerator } from '@/utils/validator';
 import zaIcon from '../../icon';
 
 export default {
@@ -41,15 +40,10 @@ export default {
       type: String,
       default: 'za-stepper',
     },
-    theme: {
-      type: String,
-      validator: defaultThemeValidator,
-      default: 'primary',
-    },
     size: {
       type: String,
-      validator: enumGenerator(['xl', 'lg', 'sm', 'xs']),
-      default: null,
+      validator: enumGenerator(['md', 'sm']),
+      default: 'md',
     },
     shape: {
       type: String,
@@ -98,7 +92,7 @@ export default {
     };
   },
   methods: {
-    handleSubClick(event) {
+    handleSubClick() {
       if (this.subDisabled) return;
       const value = this.currentValue - this.step;
       if (this.min !== null && value < this.min) {
@@ -107,10 +101,10 @@ export default {
         this.currentValue = value;
       }
       this.lastValue = this.currentValue;
-      this.$emit('input', Number(this.currentValue));
-      this.$emit('change', event);
+      this.handleInputChange();
+      this.handleAutoWidth(value);
     },
-    handlePlusClick(event) {
+    handlePlusClick() {
       if (this.plusDisabled) return;
       const value = this.currentValue + this.step;
       if (this.max !== null && value > this.max) {
@@ -119,14 +113,14 @@ export default {
         this.currentValue = value;
       }
       this.lastValue = this.currentValue;
-      this.$emit('input', Number(this.currentValue));
-      this.$emit('change', event);
+      this.handleInputChange();
+      this.handleAutoWidth(value);
     },
     handleInput(event) {
       const value = Number(event.target.value);
       this.handleValue(value, event);
     },
-    handleValue(value, event) {
+    handleValue(value) {
       if (Number.isNaN(value)) {
         if (value === '-') {
           this.currentValue = '-';
@@ -141,22 +135,34 @@ export default {
         this.$nextTick(() => {
           this.currentValue = this.min;
           this.lastValue = this.currentValue;
-          this.$emit('input', Number(this.currentValue));
-          this.$emit('change', event);
+          this.handleInputChange();
         });
       } else if (this.max !== null && value > this.max) {
         this.currentValue = value;
         this.$nextTick(() => {
           this.currentValue = this.max;
           this.lastValue = this.currentValue;
-          this.$emit('input', Number(this.currentValue));
-          this.$emit('change', event);
+          this.handleInputChange();
         });
       } else {
         this.currentValue = value;
         this.lastValue = this.currentValue;
-        this.$emit('input', Number(this.currentValue));
-        this.$emit('change', event);
+        this.handleInputChange();
+      }
+      this.handleAutoWidth(value);
+    },
+    handleInputChange() {
+      this.$emit('inputChange', Number(this.currentValue));
+      this.$emit('input', Number(this.currentValue));
+      this.$emit('change', Number(this.currentValue));
+    },
+    handleAutoWidth(val) {
+      const numLen = Number(val.toString().length);
+      const nowLen = (numLen * 10) + 20;
+      if (numLen > 3) {
+        this.$refs['stepper-input'].style.width = `${nowLen}px`;
+      } else {
+        this.$refs['stepper-input'].style.width = '50px';
       }
     },
   },

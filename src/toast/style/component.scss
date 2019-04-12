@@ -1,0 +1,32 @@
+@import '../../mask/style/component.scss';
+
+@include b(toast) {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  user-select: none;
+  z-index: $zIndex-toast;
+
+  @include m(open) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include e(container) {
+    position: relative;
+    max-width: 70%;
+    min-width: r(100);
+    padding: r(12) r(20);
+    border-radius: r(6);
+    background: $toast-background-color;
+    color: $toast-text-color;
+    text-align: center;
+    font-size: $toast-text-fontsize;
+  }
+}
+

@@ -13,7 +13,7 @@ export default {
   props: {
     prefixCls: {
       type: String,
-      default: 'za-tab',
+      default: 'za-tabs',
     },
     theme: {
       type: String,
@@ -22,7 +22,7 @@ export default {
     },
     lineWidth: [String, Number],
     value: {},
-    canSwipe: {
+    slideable: {
       type: Boolean,
       default: false,
     },
@@ -33,7 +33,7 @@ export default {
       const panes = this.panes;
       let cur = 0;
       panes.some((child, index) => {
-        if (child.$options.name === 'zaTabPane' && child.name === currentValue) {
+        if (child.$options.name === 'zaTabPanel' && child.name === currentValue) {
           cur = index;
           return true;
         }
@@ -68,7 +68,7 @@ export default {
     handleNavClick(item, event) {
       // order matters
       this.$emit('input', item.name);
-      if (!this.canSwipe) {
+      if (!this.slideable) {
         this.$emit('change', item, event);
       }
     },
@@ -111,7 +111,7 @@ export default {
       lineStyle,
       lineWidth,
       currentIndex,
-      canSwipe,
+      slideable,
       prefixCls,
       theme,
       handleSwipeChange,
@@ -119,12 +119,12 @@ export default {
 
     const cls = {
       [`${prefixCls}`]: true,
-      [`theme-${theme}`]: !!theme,
+      [`${prefixCls}--${theme}`]: !!theme,
     };
 
     return (
       <div class={cls}>
-        <div class={`${prefixCls}-header`}>
+        <div class={`${prefixCls}__header`}>
           <ul role="tablist">
             {
               panes.map((pane, index) => {
@@ -141,23 +141,23 @@ export default {
               })
             }
           </ul>
-          <div class={`${prefixCls}-line`} style={lineStyle}>
+          <div class={`${prefixCls}__line`} style={lineStyle}>
             {
               lineWidth &&
-              <span class={`${prefixCls}-line-inner`} style={{ width: `${lineWidth}px` }} />
+              <span class={`${prefixCls}__line-inner`} style={{ width: `${lineWidth}px` }} />
             }
           </div>
         </div>
-        <div class={`${prefixCls}-container`}>
+        <div class={`${prefixCls}__container`}>
           {
-            !canSwipe ? this.$slots.default :
-              <za-swipe
+            !slideable ? this.$slots.default :
+              <za-carousel
                 showPagination={false}
                 activeIndex={currentIndex}
-                ref='swipe'
+                ref='carousel'
                 on-change={handleSwipeChange}>
                 {this.$slots.default}
-              </za-swipe>
+              </za-carousel>
           }
         </div>
       </div>

@@ -1,9 +1,9 @@
 <template lang="html">
   <div :class='{
    [`${prefixCls}`]: true,
-   [`theme-${theme}`]: !!theme
+   [`${prefixCls}--${theme}`]: !!theme
  }' :style='styleCls' v-if="currentVisible" ref='tooltip'>
-    <div :class='`${prefixCls}-inner`'>{{message}}</div>
+    <div :class='`${prefixCls}__inner`'>{{message}}</div>
     <slot></slot>
   </div>
 </template>

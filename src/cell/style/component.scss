@@ -1,0 +1,138 @@
+@mixin cell-theme($color) {
+  @include e(footer) {
+    color: $color;
+  }
+}
+
+@include b(cell) {
+  position: relative;
+  overflow: hidden;
+  background: $cell-background;
+  @include cell-theme($cell-description-color);
+  @include onepx(top);
+
+  &:after {
+    left: $cell-line-padding-left;
+  }
+
+  @include m(primary) {
+    @include cell-theme($theme-primary);
+  }
+
+  @include m(info) {
+    @include cell-theme($theme-info);
+  }
+
+  @include m(success) {
+    @include cell-theme($theme-success);
+  }
+
+  @include m(warning) {
+    @include cell-theme($theme-warning);
+  }
+
+  @include m(error) {
+    @include cell-theme($theme-error);
+  }
+
+  @include m(has-icon) {
+    &:after {
+      left: r(59);
+    }
+  }
+
+  @include m(is-link) {
+    cursor: pointer;
+    user-select: none;
+
+    @include e(inner) {
+      &:active {
+        background-color: $cell-active-background;
+      }
+    }
+
+    @include e(title) {
+      flex: 1;
+    }
+  }
+
+  @include m(disabled) {
+    @include e(body, footer) {
+      opacity: $disabled-opacity;
+    }
+  }
+
+  @include e(inner) {
+    display: flex;
+    align-items: center;
+    padding: 0 $cell-padding-v;
+    font-size: $cell-title-font-size;
+    min-height: $cell-height;
+    line-height: $cell-title-line-height;
+
+    a {
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+  }
+
+  @include e(body) {
+    flex: 1;
+    display: flex;
+  }
+
+  @include e(footer) {
+    display: flex;
+    justify-content: center;
+    text-align: right;
+    font-size: $cell-description-font-size;
+  }
+
+  @include e(arrow) {
+    margin-left: r(5);
+
+    &:after {
+      display: inline-block;
+      content: '';
+      border-right: $cell-arrow-border-width solid $cell-arrow-color;
+      border-top: $cell-arrow-border-width solid $cell-arrow-color;
+      width: $cell-arrow-length;
+      height: $cell-arrow-length;
+      transform: rotate(45deg);
+    }
+  }
+
+  @include e(icon) {
+    text-align: center;
+    margin-right: r(15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  @include e(title) {
+    width: $cell-label-width;
+    padding: $cell-padding-v 0;
+    overflow: hidden;
+    color: $cell-title-color;
+    font-size: $cell-title-font-size;
+  }
+
+  @include e(content) {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  @include e(help) {
+    padding: 0 r(15) r(10) r(15);
+  }
+}

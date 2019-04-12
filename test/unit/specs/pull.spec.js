@@ -37,7 +37,7 @@ describe('Pull', () => {
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
     vm.$nextTick(() => {
-      expect(vm.$el.classList.contains('za-pull')).toBe(true);
+      expect(wrapper.contains('.za-pull')).toBe(true);
       done();
     });
   });
@@ -130,10 +130,10 @@ describe('Pull', () => {
     const { vm } = wrapper;
     vm.$refs.pull.doRefreshAction(REFRESH_STATE.pull, 10);
     vm.$nextTick(() => {
-      expect(vm.$el.getElementsByTagName('svg')[0].classList.contains('za-spinner')).toBe(true);
+      expect(vm.$el.getElementsByTagName('svg')[0].classList.contains('za-activity-indicator')).toBe(true);
       vm.$refs.pull.doRefreshAction(REFRESH_STATE.drop, 110);
       vm.$nextTick(() => {
-        expect(vm.$el.getElementsByTagName('svg')[0].classList.contains('za-spinner')).toBe(true);
+        expect(vm.$el.getElementsByTagName('svg')[0].classList.contains('za-activity-indicator')).toBe(true);
         done();
       });
     });

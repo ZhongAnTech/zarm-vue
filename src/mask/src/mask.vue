@@ -3,14 +3,22 @@
     v-if='visible'
     :class='{
       [`${prefixCls}`]: true,
-      [type]: !!type,
-    }' @click='handleClick'></div>
+      [`${prefixCls}--${type}`]: !!type,
+    }'
+    @click="maskClick"></div>
 </template>
 
 <script>
+import scrollable from '../../mixins/scrollable';
+
 export default {
   name: 'zaMask',
+  mixins: [scrollable],
   props: {
+    lockScroller: {
+      type: Boolean,
+      default: true,
+    },
     prefixCls: {
       type: String,
       default: 'za-mask',
@@ -22,14 +30,23 @@ export default {
     type: {
       type: String,
       validator: function (v) { // eslint-disable-line object-shorthand
-        return ['transparent', 'light', 'normal', 'dark'].indexOf(v) >= 0;
+        return ['transparent', 'normal'].indexOf(v) >= 0;
       },
       default: 'normal',
     },
   },
+  watch: {
+    visible(val) {
+      if (val) {
+        this.onAfterOpen();
+      } else {
+        this.onAfterClose();
+      }
+    },
+  },
   methods: {
-    handleClick(event) {
-      this.$emit('mask-close', event);
+    maskClick(e) {
+      this.$emit('click', e);
     },
   },
 };

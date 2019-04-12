@@ -38,15 +38,15 @@ describe('Modal', () => {
         };
       },
     }, true);
-    expect(wrapper.find('.za-modal-footer span').text()).toBe('this is footer');
-    expect(wrapper.find('.za-modal-body span').text()).toBe('模态框内容');
+    expect(wrapper.find('.za-modal__footer span').text()).toBe('this is footer');
+    expect(wrapper.find('.za-modal__body span').text()).toBe('模态框内容');
   });
 
   it('open and close', () => {
     const wrapper = mount({
       components: { ZaModal },
       template: `
-        <za-modal :visible.sync='visible' :title="title" :close-on-click-modal='true' :showClose='true'>
+        <za-modal :visible.sync='visible' :title="title" @maskClick='visible = false' :showClose='true'>
           <span>模态框内容</span>
           <div slot='footer'><span>{{footer}}</span></div>
         </za-modal>
@@ -93,7 +93,6 @@ describe('Modal', () => {
         };
       },
     }, true);
-    expect(wrapper.find('.za-modal-dialog').classes().includes('rotate-enter')).toBe(true);
-    expect(wrapper.find('.za-mask').classes().includes('transparent')).toBe(true);
+    expect(wrapper.find('.za-modal__dialog').classes().includes('rotate-enter')).toBe(true);
   });
 });

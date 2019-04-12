@@ -1,13 +1,14 @@
 <template lang="html">
   <span :class='{
     [`${prefixCls}`]: true,
-    [`theme-${theme}`]: !!theme,
-    [`shape-${shape}`]: !!shape,
+    [`${className}`]: true,
+    [`${prefixCls}--${shape}`]: !!shape,
+    [`${prefixCls}--${theme}`]: !!theme,
     }'>
     <slot></slot>
     <sup :class='{
-      [`${prefixCls}-sup`]: true,
-      [`${prefixCls}-sup-up`]: sup,
+      [`${prefixCls}__sup`]: true,
+      [`${prefixCls}__sup--up`]: sup,
       }'
       @click='supClick'>
       {{text}}
@@ -26,6 +27,10 @@ export default {
       type: String,
       default: 'za-badge',
     },
+    className: {
+      type: String,
+      default: null,
+    },
     theme: {
       type: String,
       validator: defaultThemeValidator,
@@ -33,7 +38,7 @@ export default {
     },
     shape: {
       type: String,
-      validator: enumGenerator(['dot', 'radius', 'round', 'circle']),
+      validator: enumGenerator(['dot', 'rect', 'radius', 'round', 'circle', 'leaf']),
       default: null,
     },
     sup: {

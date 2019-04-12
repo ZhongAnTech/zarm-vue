@@ -1,4 +1,13 @@
-# zarm-vue UI
+<p align="center">
+  <a href="http://zarm.design">
+    <img width="200" src="https://zarm.design/images/logo.ce68565d.svg">
+  </a>
+</p>
+
+<h1 align="center">Zarm Vue</h1>
+
+<div align="center">
+  
 [![Build Status](https://www.travis-ci.org/ZhonganTechENG/zarm-vue.svg?branch=master)](https://www.travis-ci.org/ZhonganTechENG/zarm-vue)
 [![Coverage Status](https://img.shields.io/coveralls/ZhonganTechENG/zarm-vue/master.svg)](https://coveralls.io/github/ZhonganTechENG/zarm-vue?branch=master)
 [![npm package](https://img.shields.io/npm/v/zarm-vue.svg)](https://www.npmjs.org/package/zarm-vue)
@@ -7,10 +16,13 @@
 ![CSS gzip size](http://img.badgesize.io/https://unpkg.com/zarm-vue@latest/zarm-vue.default.css?compression=gzip&label=gzip%20size:%20CSS)
 <a href="https://www.npmjs.com/package/zarm-vue"><img src="https://img.shields.io/npm/l/zarm-vue.svg" alt="License"></a>
 
-### 使用文档
+</div>
 
-[传送门](https://chuanshuoye.github.io/zarm-vue-doc/#/zh-CN)
+### 版本
 
+- 稳定版：[![npm package](https://img.shields.io/npm/v/zarm-vue.svg)](https://www.npmjs.org/package/zarm-vue)
+
+- 开发版：[![npm package](https://img.shields.io/npm/v/zarm-vue/alpha.svg)](https://www.npmjs.org/package/zarm-vue)
 
 ### Install 安装
 
@@ -71,9 +83,9 @@ Vue.use(Alert)
 <head>
   <meta charset="UTF-8">
   <!-- import CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/zarm-vue@1.1.2/zarm-vue.default.css">
-  <script src="https://unpkg.com/vue@2.5.11/dist/vue.min.js"></script>
-  <script src="https://unpkg.com/zarm-vue@1.1.2/zarm-vue.umd.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/zarm-vue@latest/zarm-vue.default.css">
+  <script src="https://unpkg.com/vue@latest/dist/vue.min.js"></script>
+  <script src="https://unpkg.com/zarm-vue@latest/zarm-vue.umd.js"></script>
 </head>
 <body>
   <div id="app">
@@ -89,11 +101,6 @@ Vue.use(Alert)
 
 ```
 
-### Theme 自定义主题
-clone本仓库后先安装依赖，然后通过修改 `styles/variables.scss` 文件重写sass变量。运行下面命令生成新样式
-```bash
-npm run build:theme
-```
-新生成的样式文件： `lib/zarm-vue.default.css`
+
 
 

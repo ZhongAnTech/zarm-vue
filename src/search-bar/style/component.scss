@@ -1,0 +1,108 @@
+@import '../../input/style/component.scss';
+@import '../../icon/style/component.scss';
+
+@include b(search-bar) {
+  background: #fff;
+
+  @include e(input) {
+    padding: $searchbar-input-padding-v 0;
+  }
+
+  input[type="search"]::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  input[type="search"] {
+    -webkit-appearance: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    text-align: left;
+    color: #000;
+    font-size: $searchbar-fontsize;
+    line-height: $searchbar-input-line-height;
+    background-color: transparent;
+    border: 0;
+
+    &::placeholder {
+      color: transparent;
+    }
+  }
+
+  @include e(form) {
+    height: $searchbar-form-height;
+    margin: 0 r(15);
+    display: flex;
+    align-items: center;
+    background: #fff;
+    overflow: hidden;
+
+    @include m(focus) {
+      input[type="search"] {
+        opacity: 1;
+        padding: 0 r(28) 0 r(26);
+      }
+    }
+  }
+
+  @include e(content) {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    height: $searchbar-content-height;
+    padding: r(4);
+    background: $searchbar-content-bg;
+    overflow: hidden;
+
+    @include m(radius) {
+      border-radius: $radius-md;
+    }
+
+    @include m(round) {
+      border-radius: $radius-round;
+    }
+
+    @include m(circle) {
+      border-radius: $radius-circle;
+    }
+  }
+
+  @include e(mock) {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: $searchbar-input-line-height;
+    line-height: $searchbar-input-line-height;
+    font-size: $searchbar-fontsize;
+    color: $searchbar-mock-color;
+
+    &-container {
+      display: inline-block;
+      height: 100%;
+      transform: translate3d(r(10), 0, 0);
+    }
+
+    &-placeholder {
+      vertical-align: middle;
+    }
+
+    @include b(icon) {
+      font-size: $searchbar-mock-icon-fontsize;
+      vertical-align: middle;
+      margin-right: r(3);
+    }
+  }
+
+  @include e(cancel) {
+    font-size: $searchbar-cancel-fontsize;
+    color: $searchbar-cancel-color;
+    margin-left: r(15);
+
+    &-show {
+      transition: all .2s;
+      margin-right: 0;
+    }
+  }
+}

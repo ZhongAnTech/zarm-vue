@@ -1,41 +1,42 @@
 <template lang="html">
   <div :class='prefixCls' @click='handleClick'>
-    <div :class='{
-      [`${prefixCls}-input`]: true,
-      [`${prefixCls}-placeholder`]: !displayLabel,
-      [`${prefixCls}-disabled`]: disabled,
-      }'>
-      <input type="hidden" :value='value' />
-      {{displayLabel || placeholder}}
+      <div v-if='isSelect' :class='{
+        [`${prefixCls}__input`]: true,
+        [`${prefixCls}__placeholder`]: !displayLabel,
+        [`${prefixCls}--disabled`]: disabled,
+        }'>
+        <input type="hidden" :value='value' />
+        {{displayLabel || placeholder}}
+      </div>
       <div :class='{
-        [`${prefixCls}-container`]: true,
-        [`${prefixCls}-hidden`]: !currentVisible,
+        [`${prefixCls}__container`]: true,
       }' @click.stop='() => {}'>
-        <za-popup :visible='currentVisible' :get-container="getContainer" @close='onPopupClose'>
-          <div :class='`${prefixCls}-wrapper`'>
-            <div :class='`${prefixCls}-header`'>
-              <div :class='`${prefixCls}-cancel`' @click='handleCancel'>{{cancelText}}</div>
-              <div :class='`${prefixCls}-title`'>{{title}}</div>
-              <div :class='`${prefixCls}-submit`' @click='handleOk'>{{okText}}</div>
+        <za-popup :visible='currentVisible' :get-container="getContainer" @maskClick='onMaskClick' direction="bottom">
+          <div :class='`${prefixCls}__wrapper`'>
+            <div :class='`${prefixCls}__header`'>
+              <div :class='`${prefixCls}__cancel`' @click='handleCancel'>{{cancelText}}</div>
+              <div :class='`${prefixCls}__title`'>{{title}}</div>
+              <div :class='`${prefixCls}__submit`' @click='handleOk'>{{okText}}</div>
             </div>
-            <div :class='`${prefixCls}-crumbs`'>
+            <div :class='`${prefixCls}__crumbs`'>
               <p>选择：{{currentValue.map(item => itemRender(item)).join(labelAddon)}}</p>
-              <p :class='`${prefixCls}-crumbs-error`' v-if='errorMsg'>{{errorMsg}}</p>
+              <p :class='`${prefixCls}__crumbs-error`' v-if='errorMsg'>{{errorMsg}}</p>
             </div>
-            <div :class='`${prefixCls}-stack-group`'>
+            <div :class='`${prefixCls}__group`'>
               <div v-for='(group, index) in renderGroup()' :class="{
-                [`${prefixCls}-stack-column`]: true,
-                'lower-hidden': !currentValue[index] || !currentValue[index][valueMember],
+                [`${prefixCls}__stack-column za-stack-picker-stack-column`]: true,
+                [`${prefixCls}__stack-column--active`]: currentValue,
+                [`${prefixCls}__stack-column--hidden`]: !currentValue[index] || !currentValue[index][valueMember],
                 }"
                 :key='index'
                 @click.stop='(e) => handleChange(index - 1)'
               >
-                <div :class='`${prefixCls}-stack-column-wrapper`' ref='columns' @click.stop='() => {}'>
+                <div :class='`${prefixCls}__stack-column-wrapper`' ref='columns' @click.stop='() => {}'>
                   <div v-for='(item, i) in group'
                     :key='`item${i}`'
                     :class='{
-                      [`${prefixCls}-stack-item`]: true,
-                      active: currentValue[index] && currentValue[index][valueMember] === item[valueMember],
+                      [`${prefixCls}__stack-column-item`]: true,
+                      [`${prefixCls}__stack-column-item--active`]: currentValue[index] && currentValue[index][valueMember] === item[valueMember],
                       }' @click.stop='(e) => handleChange(index, item, index === renderGroup().length - 1)'>
                       {{ itemRender(item) }}
                   </div>
@@ -44,7 +45,6 @@
             </div>
           </div>
         </za-popup>
-      </div>
     </div>
   </div>
 </template>
@@ -60,7 +60,7 @@ export default {
   props: {
     prefixCls: {
       type: String,
-      default: 'za-stack-picker',
+      default: 'za-stackpicker',
     },
     dataSource: {
       type: Array,
@@ -133,6 +133,9 @@ export default {
     visible(val, oldVal) { // eslint-disable-line no-unused-vars
       if (this.currentVisible === val) return;
       this.currentVisible = val;
+      if (val) {
+        this.reposition();
+      }
     },
     value(val, oldVal) { // eslint-disable-line no-unused-vars
       const param = {
@@ -156,6 +159,7 @@ export default {
     data.getContainer = () => document.body;
     data.currentVisible = this.visible;
     data.oldValue = data.currentValue;
+    data.isSelect = this.$options.name === 'zaStackSelect';
     return data;
   },
   methods: {
@@ -227,12 +231,10 @@ export default {
       this.currentVisible = !this.currentVisible;
       this.$emit('update:visible', this.currentVisible);
     },
-    onPopupClose(reason) {
-      if (reason === 'clickaway') {
-        this.currentValue = this.oldValue;
-        this.currentVisible = !this.currentVisible;
-        this.$emit('update:visible', this.currentVisible);
-      }
+    onMaskClick() {
+      this.currentValue = this.oldValue;
+      this.currentVisible = !this.currentVisible;
+      this.$emit('update:visible', this.currentVisible);
     },
     handleCancel(event) {
       this.toggle();
@@ -301,11 +303,11 @@ export default {
       }
     },
   },
-  mounted() {
-    this.reposition();
-  },
-  updated() {
-    this.reposition();
-  },
+  // mounted() {
+  //   this.reposition();
+  // },
+  // updated() {
+  //   this.reposition();
+  // },
 };
 </script>

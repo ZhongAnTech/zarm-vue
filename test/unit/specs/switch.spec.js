@@ -8,7 +8,7 @@ describe('Switch', () => {
         zaSwitch,
       },
       template: `
-        <za-switch theme='success' size='lg' ></za-switch>
+        <za-switch disabled defaultChecked></za-switch>
       `,
     };
 
@@ -16,11 +16,11 @@ describe('Switch', () => {
     const { vm } = wrapper;
 
     expect(vm.$el.classList.contains('za-switch')).toBe(true);
-    expect(vm.$el.classList.contains('theme-success')).toBe(true);
-    expect(vm.$el.classList.contains('size-lg')).toBe(true);
+    expect(vm.$el.classList.contains('za-switch--disabled')).toBe(true);
+    expect(vm.$el.classList.contains('za-switch--checked')).toBe(true);
   });
-
-  it('default', () => {
+  
+  it('switchOn', () => {
     const TestCompo = {
       components: {
         zaSwitch,
@@ -37,7 +37,26 @@ describe('Switch', () => {
 
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    expect(vm.$el.classList.contains('checked')).toBe(true);
+    expect(vm.$el.classList.contains('za-switch--checked')).toBe(true);
+  });
+  it('switchOff', () => {
+    const TestCompo = {
+      components: {
+        zaSwitch,
+      },
+      template: `
+        <za-switch v-model='switch2'></za-switch>
+      `,
+      data() {
+        return {
+          switch1: false,
+        };
+      },
+    };
+
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+    expect(vm.$el.classList.contains('za-switch--checked')).not.toBe(true);
   });
   it('click', done => {
     let result;
@@ -69,4 +88,36 @@ describe('Switch', () => {
       done();
     });
   });
+  it('click && Switch is disabled', done => {
+    let result;
+    const TestCompo = {
+      components: {
+        zaSwitch,
+      },
+      template: `
+        <za-switch v-model='switch1' @change='handleChange' disabled></za-switch>
+      `,
+      data() {
+        return {
+          switch1: true,
+        };
+      },
+      methods: {
+        handleChange(evt) {
+          result = evt;
+        },
+      },
+    };
+
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+
+    vm.$el.querySelector('input').click();
+    vm.$nextTick(() => {
+      expect(result).not.toBe(false);
+      done();
+    });
+  });
+  
 });
+

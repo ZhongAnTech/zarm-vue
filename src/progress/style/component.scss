@@ -1,0 +1,131 @@
+@import '../../activity-indicator/style/component.scss';
+
+@mixin progress-theme($color) {
+  @include e(bg) {
+    background-color: $color;
+  }
+
+  @include e(line) {
+    stroke: $color;
+  }
+}
+
+@mixin spinner-theme($color) {
+  @include e(line) {
+    stroke: $color;
+  }
+}
+
+@include b(progress) {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  @include e(inner) {
+    flex: 1;
+    background-color: #e6e6e6;
+  }
+
+  @include e(text) {
+    display: inline-block;
+    margin-left: r(5);
+    font-size: r(12);
+  }
+
+  @include e(bg) {
+    height: 100%;
+    background-color: $theme-primary;
+    transition: width .5s;
+  }
+
+  @include e(line) {
+    fill-opacity: 0;
+    transition: .5s;
+  }
+
+  @include e(track) {
+    fill-opacity: 0;
+    stroke: #e6e6e6;
+  }
+
+  @include m(circle) {
+    display: inline-block;
+    width: r(150);
+    height: r(150);
+
+    @include e(text) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    @include e(inner) {
+      background-color: transparent;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    @include e(text) {
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      margin: 0;
+      text-align: center;
+      line-height: 1;
+      font-size: r(30);
+    }
+  }
+
+  @include m(semi-circle) {
+    display: inline-block;
+    width: r(150);
+    height: r(75);
+
+    @include e(text) {
+      bottom: 0;
+    }
+
+    @include e(inner) {
+      background-color: transparent;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    @include e(text) {
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      margin: 0;
+      text-align: center;
+      line-height: 1;
+      font-size: r(30);
+    }
+  }
+
+  @include m(default) {
+    @include progress-theme($theme-default);
+  }
+
+  @include m(primary) {
+    @include progress-theme($theme-primary);
+  }
+
+  @include m(success) {
+    @include progress-theme($theme-success);
+  }
+
+  @include m(warning) {
+    @include progress-theme($theme-warning);
+  }
+
+  @include m(error) {
+    @include progress-theme($theme-error);
+  }
+}

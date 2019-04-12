@@ -4,34 +4,56 @@ import { mount } from '../util';
 
 describe('Keyboard', () => {
   it('create number keyboard', () => {
-    const wrapper = mount(KeyboardPicker, {
+    const wrapper = mount(Keyboard, {
       propsData: {
         type: 'number',
       },
     });
-    expect(wrapper.contains('.za-keyboard-item')).toBe(true);
+    expect(wrapper.contains('.za-keyboard')).toBe(true);
   });
 
   it('create price keyboard', () => {
     const wrapper = mount(Keyboard, {
       type: 'price',
     });
-    expect(wrapper.contains('.za-keyboard-item')).toBe(true);
+    expect(wrapper.contains('.za-keyboard')).toBe(true);
   });
 
   it('create idcard keyboard', () => {
     const wrapper = mount(Keyboard, {
       type: 'idcard',
     });
-    expect(wrapper.contains('.za-keyboard-item')).toBe(true);
+    expect(wrapper.contains('.za-keyboard')).toBe(true);
   });
 
-  it('create keyboard picker', () => {
-    const wrapper = mount(KeyboardPicker, {
-      type: 'number',
-      visible: true,
+  it('create keyboard picker', (done) => {
+    const wrapper = mount({
+      components: {
+        ZaKeyboardPicker: KeyboardPicker,
+      },
+      template: `
+        <div @click="visible1 = true">
+          <div ref="btn" 
+            >开启</div
+          >
+          <za-keyboard-picker
+            :visible.sync="visible1"
+            type="number"
+          ></za-keyboard-picker>
+        </div>
+      `,
+      data() {
+        return {
+          visible1: false,
+        };
+      },
     });
-    expect(wrapper.contains('.za-keyboard-item')).toBe(true);
+    const { vm } = wrapper;
+    vm.$el.click();
+    vm.$nextTick(() => {
+      expect(wrapper.find('.za-keyboard')).toBeTruthy();
+      done();
+    });
   });
 
   it('click 1 key', () => {
@@ -50,7 +72,7 @@ describe('Keyboard', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    wrapper.find('.za-keyboard-item').trigger('click');
+    wrapper.find('.za-keyboard__item').trigger('click');
     expect(result).toBe('1');
   });
 
@@ -70,7 +92,7 @@ describe('Keyboard', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    wrapper.find('.za-keyboard-item-ok').trigger('click');
+    wrapper.find('.za-keyboard__item--ok').trigger('click');
     expect(result).toBe('ok');
   });
 });

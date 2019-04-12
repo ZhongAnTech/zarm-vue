@@ -1,0 +1,138 @@
+@include b(input) {
+  position: relative;
+  width: 100%;
+  padding: $input-padding-v 0;
+
+  @include e(clearable) {
+    padding-right: r(30);
+
+    @include e(content) {
+      right: r(30);
+    }
+  }
+
+  input,
+  textarea {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    padding: 0;
+    color: $color-text;
+    background-color: #fff;
+    background-image: none;
+    border: 0;
+    outline: 0;
+    -webkit-appearance: none;
+
+    &[type='date'],
+    &[type='text'] {
+      height: $input-content-height;
+    }
+
+    &::-webkit-input-placeholder {
+      color: $placeholder-color;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: $opacity-disabled;
+    }
+  }
+
+  @include m(disabled) {
+    cursor: not-allowed;
+    opacity: $opacity-disabled;
+  }
+
+  textarea {
+    display: block;
+    line-height: 1.42857143;
+    resize: none;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: transparent;
+    overflow: visible;
+  }
+
+  @include e(placeholder) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: $input-number-content-height;
+    color: $placeholder-color;
+  }
+
+  @include e(clear) {
+    position: absolute;
+    visibility: hidden;
+    color: $input-clearicon-color;
+    width: r(30);
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    font-size: r(18);
+
+    @include m(show) {
+      visibility: visible;
+    }
+  }
+
+  @include e(length) {
+    text-align: right;
+    color: $placeholder-color;
+    font-size: r(12);
+  }
+
+  @include e(number) {
+    line-height: $input-number-line-height;
+
+    @include e(picker) {
+      background-color: #fff;
+    }
+  }
+
+  @include m(focus) {
+    @include e(content) {
+      transform: translate3d(0, 0, 0);
+
+      &:after {
+        content: ' ';
+        position: relative;
+        right: 0;
+        top: 10%;
+        height: 80%;
+        border-right: $input-number-border-focus-width solid $input-number-border-focus-color;
+        animation: custom-cursor 1s infinite step-start;
+      }
+    }
+  }
+
+  @include e(content) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $input-number-content-height;
+    line-height: $input-number-line-height;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    color: $color-text;
+  }
+}
+
+@keyframes custom-cursor {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

@@ -1,15 +1,16 @@
 <template lang="html">
   <div
+       ref="container"
        :class="{
          [`${prefixCls}`]: true,
-         [`${prefixCls}-number`]: true,
-         ['disabled']: disabled,
-         ['focus']: visible,
+         [`${prefixCls}__number`]: true,
+         [`${prefixCls}--disabled`]: disabled,
+         [`${prefixCls}--focus`]: visible,
        }" 
        @click="onFocus"
        >
-        <div v-show='!currentValue' :class="`${prefixCls}-placeholder`">{{ placeholder }}</div>
-        <div :class="`${prefixCls}-content`" ref="content">{{ currentValue }}</div>
+        <div v-show='!currentValue' :class="`${prefixCls}__placeholder`">{{ placeholder }}</div>
+        <div :class="`${prefixCls}__content`" ref="content">{{ currentValue }}</div>
         <input
           type="hidden"
           :value="currentValue"
@@ -26,7 +27,7 @@
 </template>
 
 <script>
-import Event from '@/utils/events';
+import OutsideClick from '@/utils/outsideClick';
 import KeyboardPicker from '../../keyboard-picker';
 
 export default {
@@ -51,6 +52,7 @@ export default {
   data() {
     return {
       currentValue: this.value || '',
+      hideOnClickOutside: true,
       visible: false,
     };
   },
@@ -63,22 +65,10 @@ export default {
     },
   },
   mounted() {
-    Event.on(document.body, 'click', this.onMaskClick);
-    if (this.autoFocus || this.focused) {
-      this.onFocus();
-    }
-    this.$nextTick(() => {
-      if ('focused' in this || 'autoFocus' in this) {
-        if (this.focused || this.autoFocus) {
-          this.onFocus();
-        } else {
-          this.onBlur();
-        }
-      }
-    });
+    this.handleOutsideClick(true);
   },
   beforeDestroy() {
-    Event.off(document.body, 'click', this.onMaskClick);
+    this.handleOutsideClick(false);
   },
   methods: {
     setCurrentValue(value) {
@@ -86,24 +76,9 @@ export default {
       this.currentValue = value;
     },
 
-    onMaskClick(e) {
-      if (!this.visible) {
-        return;
-      }
-
-      const cNode = ((node) => {
-        const picker = this.$refs.picker;
-        while (node.parentNode && node.parentNode !== document.body) {
-          if (node === picker) {
-            return node;
-          }
-          node = node.parentNode;
-        }
-      })(e.target);
-
-      if (!cNode) {
-        this.onBlur();
-      }
+    handleOutsideClick(action) {
+      const _self = this;
+      OutsideClick(action, _self.onOutsideBlur);
     },
 
     onKeyClick(key) {
@@ -121,7 +96,6 @@ export default {
         this.scrollToEnd();
         this.$emit('input', newValue);
         this.$emit('change', newValue);
-        this.currentValue = newValue;
       }
     },
 
@@ -136,7 +110,7 @@ export default {
     },
 
     onFocus() {
-      if (this.visible) {
+      if (this.disabled || this.visible) {
         return;
       }
 
@@ -145,12 +119,34 @@ export default {
       this.$emit('focus', this.value);
     },
 
+    onOutsideBlur(e) {
+      const clsRegExp = new RegExp(`(^|\\s)${this.$refs.picker.prefixCls}(\\s|$)`, 'g');
+      if (!this.visible) {
+        return;
+      }
+
+      const cNode = ((node) => {
+        const picker = this.$refs.picker;
+        const container = this.$refs.container;
+        while (node.parentNode && node.parentNode !== document.body) {
+          if (node === picker || node === container || clsRegExp.test(node.className)) {
+            return node;
+          }
+          node = node.parentNode;
+        }
+      })(e.target);
+
+      if (!cNode) {
+        this.onBlur();
+      }
+    },
+
     onBlur() {
       if (!this.visible) {
         return;
       }
 
-      this.visible = true;
+      this.visible = false;
       this.scrollToStart();
       this.$emit('blur', this.value);
     },

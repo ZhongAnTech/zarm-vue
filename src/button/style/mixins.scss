@@ -1,0 +1,254 @@
+@mixin button-bordered($color, $activebg, $border) {
+  $active-background: $activebg;
+  $active-border: $border;
+  $active-color: $color;
+
+  @include m(bordered) {
+    background-color: #fff;
+    border-color: $border;
+    color: $color;
+
+    &:active {
+      background-color: $activebg;
+      color: $active-color;
+    }
+
+    @include m(active) {
+      background-color: $activebg;
+      color: $active-color;
+    }
+
+    &:disabled {
+      &:active,
+      &:focus,
+      &:visited {
+        background-color: #fff;
+        border-color: $border;
+        box-shadow: none;
+      }
+
+      @include m(active) {
+        background-color: #fff;
+        border-color: $border;
+        box-shadow: none;
+      }
+
+      @include m(focus) {
+        background-color: #fff;
+        border-color: $border;
+        box-shadow: none;
+      }
+
+      @include m(visited) {
+        background-color: #fff;
+        border-color: $border;
+        box-shadow: none;
+      }
+    }
+
+    @include m(disabled) {
+      background-color: #fff;
+      border-color: $border;
+      box-shadow: none;
+
+      @include m(active) {
+        background-color: #fff;
+        border-color: $border;
+        box-shadow: none;
+      }
+
+      @include m(focus) {
+        background-color: #fff;
+        border-color: $border;
+        box-shadow: none;
+      }
+
+      @include m(visited) {
+        background-color: #fff;
+        border-color: $border;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+@mixin button-theme($color, $background, $border) {
+  $active-background: darken($background, 10%);
+  $active-border: darken($border, 10%);
+
+  background-color: $background;
+  border-color: $border;
+  color: $color;
+
+  &,
+  &:hover,
+  &:focus,
+  &:visited {
+    color: $color;
+  }
+
+  &:active {
+    background-color: $active-background;
+    border-color: $active-border;
+  }
+
+  @include m(active) {
+    background-color: $active-background;
+    border-color: $active-border;
+  }
+
+  &:disabled {
+    opacity: $disabled-opacity;
+    color: rgba(#fff, $disabled-opacity);
+    cursor: not-allowed;
+
+    &:active,
+    &:focus,
+    &:visited {
+      background-color: $background;
+      border-color: $border;
+      box-shadow: none;
+    }
+
+    @include m(active) {
+      background-color: $background;
+      border-color: $border;
+      box-shadow: none;
+    }
+
+    @include m(focus) {
+      background-color: $background;
+      border-color: $border;
+      box-shadow: none;
+    }
+
+    @include m(visited) {
+      background-color: $background;
+      border-color: $border;
+      box-shadow: none;
+    }
+  }
+
+  @include m(disabled) {
+    opacity: $disabled-opacity;
+    color: rgba(#fff, $disabled-opacity);
+    cursor: not-allowed;
+
+    @include m(active) {
+      background-color: $background;
+      border-color: $border;
+      box-shadow: none;
+    }
+
+    @include m(focus) {
+      background-color: $background;
+      border-color: $border;
+      box-shadow: none;
+    }
+
+    @include m(visited) {
+      background-color: $background;
+      border-color: $border;
+      box-shadow: none;
+    }
+  }
+}
+
+@mixin button-size(
+  $height,
+  $padding,
+  $font-size,
+  $border-radius,
+  $icon-size,
+  $spacing
+) {
+  padding: 0 $padding;
+  font-size: $font-size;
+  height: $height;
+  line-height: $height;
+
+  @include m(radius) {
+    border-radius: $border-radius;
+  }
+
+  @include m(round) {
+    border-radius: r(1000);
+  }
+
+  @include m(circle) {
+    width: $height;
+    height: $height;
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  i {
+    font-size: $icon-size;
+  }
+
+  i + span,
+  span + i,
+  svg + span,
+  span + svg {
+    margin-left: $spacing;
+  }
+}
+
+// 基础
+@mixin button-base() {
+  position: relative;
+  padding: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  color: $color-text;
+  transition: background-color 200ms ease-out, border-color 200ms ease-out;
+  cursor: pointer;
+  outline: 0 none;
+  -webkit-appearance: none;
+  user-select: none;
+
+  &,
+  &:hover,
+  &:focus,
+  &:visited {
+    text-decoration: none;
+  }
+
+  /* disabled Button */
+  &:disabled {
+    cursor: not-allowed;
+    opacity: $opacity-disabled;
+  }
+
+  @include m(disabled) {
+    cursor: not-allowed;
+    opacity: $opacity-disabled;
+  }
+
+  /* block Button */
+  @include e(block) {
+    width: 100%;
+    display: block;
+  }
+
+  @include e(content) {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// 形状
+@mixin button-shape($border-color, $border-radius: 0) {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: $border-radius;
+
+  @include m(bordered) {
+    border-color: $border-color;
+  }
+}

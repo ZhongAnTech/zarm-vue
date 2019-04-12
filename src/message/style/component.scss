@@ -1,0 +1,68 @@
+@import '../../icon/style/component.scss';
+
+@mixin message-theme($color, $background, $border) {
+  color: $color;
+  background-color: $background;
+}
+
+@include b(message) {
+  display: flex;
+  position: relative;
+  min-height: $message-min-height-md;
+  padding: $message-padding-v-md $message-padding-h-md;
+  font-size: $message-font-size-md;
+  @include message-theme($button-default-border, $button-default-activebg, $button-default-border);
+
+  @include e(icon) {
+    margin-right: r(5);
+    margin-top: r(1);
+  }
+
+  @include e(header,footer) {
+    line-height: 1;
+  }
+
+  @include e(body) {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  @include e(footer) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    padding-left: r(10);
+  }
+
+  @include m(primary) {
+    @include message-theme($button-primary-border, $button-primary-activebg, $button-primary-border);
+  }
+
+  @include m(success) {
+    @include message-theme($button-success-border, $button-success-activebg, $button-success-border);
+  }
+
+  @include m(warning) {
+    @include message-theme($button-warning-border, $button-warning-activebg, $button-warning-border);
+  }
+
+  @include m(error) {
+    @include message-theme($button-error-border, $button-error-activebg, $button-error-border);
+  }
+
+  @include m(lg) {
+    min-height: $message-min-height-lg;
+    padding: $message-padding-v-lg $message-padding-h-lg;
+
+    @include e(icon) {
+      margin-right: r(10);
+      margin-top: r(4);
+    }
+
+    @include e(body) {
+      font-size: $message-font-size-lg;
+    }
+  }
+}

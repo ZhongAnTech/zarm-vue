@@ -1,5 +1,5 @@
 <script>
-import { guid } from '@/utils/misc';
+import { deepCloneVNode } from '@/utils/vdom';
 import zaDrag from '@/drag';
 
 export default {
@@ -21,7 +21,7 @@ export default {
     },
     height: {
       type: [Number, String],
-      default: 160,
+      default: '100%',
     },
     loop: {
       type: Boolean,
@@ -59,7 +59,7 @@ export default {
   computed: {
     itemsStyle() {
       return {
-        height: !this.isX && `${this.height}px`,
+        height: !this.isX && `${this.height}`,
         whiteSpace: this.isX && 'nowrap',
       };
     },
@@ -136,7 +136,6 @@ export default {
       }
 
       this.scrolling = false;
-      event.preventDefault();
 
       // 设置不循环的时候
       if (!this.loop) {
@@ -153,6 +152,7 @@ export default {
         }
       }
 
+      event.preventDefault();
       this.doTransition({ x: this.translateX + offsetX, y: this.translateY + offsetY }, 0);
       return true;
     },
@@ -287,7 +287,7 @@ export default {
       return this.$slots.default
         .filter(d => d.componentOptions &&
         (d.componentOptions.tag === 'za-carousel-item' ||
-        d.componentOptions.tag === 'za-tab-pane'));
+        d.componentOptions.tag === 'za-tab-panel'));
     },
   },
   render(h) {
@@ -300,59 +300,47 @@ export default {
       currentActiveIndex,
       paginationStyle,
       loop,
+      isX,
       showPagination,
       validSlots,
     } = this;
-
-    function deepCloneVNode(vnode) {
-      if (!vnode) return;
-      const clonedChildren = vnode.children && vnode.children.map(vd => deepCloneVNode(vd));
-      const cloned = h(vnode.tag, vnode.data, clonedChildren);
-      cloned.text = vnode.text;
-      cloned.isComment = vnode.isComment;
-      cloned.componentOptions = vnode.componentOptions;
-      cloned.elm = vnode.elm;
-      cloned.context = vnode.context;
-      cloned.ns = vnode.ns;
-      cloned.isStatic = vnode.isStatic;
-      cloned.key = vnode.key + guid();
-      return cloned;
-    }
+    const directionCls = isX ? `${prefixCls} ${prefixCls}--horizontal` : `${prefixCls} ${prefixCls}--vertical`;
 
     const pagination = this.$slots.default.map((item, index) => {
       return (
         <li
           role='tab'
           key={`pagination-${index}`}
-          class={{
-            active: index === currentActiveIndex,
-          }}
+          class={
+            index === currentActiveIndex ? `${prefixCls}__pagination--active` : ''
+          }
           style={paginationStyle} ></li>
       );
     });
-    const validChildren = validSlots();
 
-    const firstItem = loop ? deepCloneVNode(this.$slots.default[0]) : null;
-    const lastItem = loop ?
-      deepCloneVNode(validChildren[validChildren.length - 1]) : null;
+    const validChildren = validSlots();
+    if (loop && !this.firstItem && !this.lastItem) {
+      this.firstItem = deepCloneVNode(h, this.$slots.default[0]);
+      this.lastItem = deepCloneVNode(h, validChildren[validChildren.length - 1]);
+    }
     return (
-      <div class={prefixCls}>
+      <div class={directionCls}>
         <za-drag
           dragStart={onDragStart}
           dragMove={onDragMove}
           dragEnd={onDragEnd}>
           <div
             ref='carouselItems'
-            class={`${prefixCls}-items`}
+            class={`${prefixCls}__items`}
             style={itemsStyle}>
-            {lastItem}
+            {this.lastItem}
             {this.$slots.default}
-            {firstItem}
+            {this.firstItem}
           </div>
         </za-drag>
         {
           showPagination &&
-          <div class={`${prefixCls}-pagination`}>
+          <div class={`${prefixCls}__pagination`}>
             <ul>
               {pagination}
             </ul>

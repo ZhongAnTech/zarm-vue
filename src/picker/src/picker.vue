@@ -1,31 +1,29 @@
 <template lang="html">
-  <div :class='{[`${prefixCls}`]: true,[`${prefixCls}-block`]: isSelect}' @click='handleClick'>
+  <div :class='{[`${prefixCls}`]: true,[`${prefixCls}--block`]: isSelect}' @click='handleClick'>
       <div  v-if='isSelect' :class='{
-        [`${prefixCls}-input`]: true,
-        [`${prefixCls}-placeholder`]: !selectedValue.join(displayAddon),
-        [`${prefixCls}-disabled`]: !!disabled,
+        [`${prefixCls}--input`]: true,
+        [`${prefixCls}--placeholder`]: !selectedValue.join(displayAddon),
+        [`${prefixCls}--disabled`]: !!disabled,
       }'>
         <input type="hidden" :value='currentValue' />
         {{display() || placeholder}}
       </div>
       <div :class='{
-          [`${prefixCls}-container`]: true,
+          [`${prefixCls}__container`]: true,
           [customCls]: !!customCls,
         }' @click.stop='() => {}'>
       <za-popup
-        class='za-popup-inner'
         :visible='currentVisible'
         :get-container="getContainer"
-        @close='onMaskClick'
-        :closeOnClickModal='closeOnClickModal'>
-        <div :class='`${prefixCls}-wrapper`'>
-          <div :class='`${prefixCls}-header`'>
-            <div :class='`${prefixCls}-cancel`' @click='handleCancel'>{{cancelText}}</div>
-            <div :class='`${prefixCls}-title`'>{{title}}</div>
-            <div :class='`${prefixCls}-submit`' @click='handleOk'>{{okText}}</div>
+        direction="bottom"
+        @maskClick='onMaskClick'>
+        <div :class='`${prefixCls}__wrapper`'>
+          <div :class='`${prefixCls}__header`'>
+            <div :class='`${prefixCls}__cancel`' @click='handleCancel'>{{cancelText}}</div>
+            <div :class='`${prefixCls}__title`'>{{title}}</div>
+            <div :class='`${prefixCls}__submit`' @click='handleOk'>{{okText}}</div>
           </div>
           <za-picker-view
-            :prefixCls='prefixCls'
             :value='selectedValue'
             :valueMember='valueMember'
             :dataSource='dataSource'
@@ -76,7 +74,6 @@ export default {
       type: String,
       default: '确定',
     },
-
     dataSource: {
       type: Array,
       required: true,
@@ -84,10 +81,6 @@ export default {
     disabled: {
       type: Boolean,
       default: false,
-    },
-    closeOnClickModal: {
-      type: Boolean,
-      default: true,
     },
     displayMember: {
       type: String,
@@ -136,7 +129,7 @@ export default {
     },
     selectedValue() {
       // eslint-disable-next-line
-      return this.isSingleColumn && !isArray(this.currentValue) ? [this.currentValue] : this.currentValue;
+      return !isArray(this.currentValue) ? [this.currentValue] : this.currentValue;
     },
     isSingleColumn() {
       const { dataSource } = this;
@@ -167,7 +160,7 @@ export default {
     onChange(selected) {
       const { valueMember } = this;
       const value = selected.map(item => item[valueMember]);
-      this.currentValue = this.isSingleColumn ? value[0] : value;
+      this.currentValue = value;
       this.$emit('change', this.currentValue);
     },
     handleCancel() {
@@ -226,7 +219,6 @@ export default {
     },
     displayGenerator(value) {
       const { displayRender, displayMember, displayAddon } = this;
-      // if (oldValue.length === 0) return;
       if (typeof displayRender === 'function') {
         return displayRender(value);
       }
@@ -239,10 +231,9 @@ export default {
       this.$emit('click', event);
       this.toggle();
     },
-    onMaskClick(reason) {
-      if (reason === 'clickaway') {
-        this.handleCancel();
-      }
+    onMaskClick(e) {
+      this.$emit('maskClick', e);
+      this.handleCancel();
     },
     // 切换显示状态
     toggle() {

@@ -14,15 +14,16 @@ delete baseWebpackConfig.entry;
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'production',
-  devtool: config.build.productionSourceMap ? '#source-map' : false,
+  // devtool: config.build.productionSourceMap ? '#source-map' : false,
   module: {
     rules: utils.styleLoaders({
-      sourceMap: config.build.productionSourceMap,
+      sourceMap: false,
       extract: true,
     }),
   },
   entry: {
-    app: path.join(__dirname, '../example/deploy.js'),
+    demo: path.join(__dirname, '../example/deploy.js'),
+    site: path.join(__dirname, '../site/deploy.js'),
   },
   // cheap-module-eval-source-map is faster for development
   output: {
@@ -37,33 +38,13 @@ module.exports = merge(baseWebpackConfig, {
     minimize: true,
     noEmitOnErrors: true,
     splitChunks: {
-      chunks: 'async', // 必须三选一： "initial" | "all" | "async"
-      minSize: 30000, // 最小尺寸
-      minChunks: 2, // must be greater than or equal 2. The minimum number of chunks which need to contain a module before it's moved into the commons chunk.
-      maxAsyncRequests: 5, // 最大异步请求数
-      maxInitialRequests: 3, // 最大初始化请求书
-      name: true, // 名称，此选项可接收 function
-      cacheGroups: {
-        commons: {
-          chunks: 'initial',
-          minChunks: 2,
-          maxInitialRequests: 5,
-          minSize: 0,
-        },
-        vendor: {
-          name: 'vendor',
-          test: /node_modules/,
-          chunks: 'initial',
-          priority: 10,
-          enforce: true,
-        },
-        styles: {
-          name: 'main',
-          test: /\.scss|css$/,
-          chunks: 'all',
-          enforce: true,
-        },
-      },
+      chunks: 'async',
+      minSize: 30000,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: '~',
+      name: true,
     },
   },
   plugins: [
@@ -76,6 +57,7 @@ module.exports = merge(baseWebpackConfig, {
       // Options similar to the same options in webpackOptions.output
       // both options are optional
       filename: utils.assetsPath('css/[name].[contenthash].css'),
+      chunkFilename: utils.assetsPath('css/[id].[contenthash].css'),
     }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
@@ -89,8 +71,26 @@ module.exports = merge(baseWebpackConfig, {
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: config.build.index,
+      filename: config.build.demo,
       template: path.join(__dirname, '../example/index.html'),
+      inject: true,
+      favicon: './site/styles/images/favicon.ico',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true,
+        // more options:
+        // https://github.com/kangax/html-minifier#options-quick-reference
+      },
+      chunks: ['manifest', 'demo'],
+      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+      chunksSortMode: 'dependency',
+    }),
+    new HtmlWebpackPlugin({
+      filename: config.build.site,
+      template: path.join(__dirname, '../site/index.html'),
+      pathname: '/zarm-vue/',
+      favicon: './site/styles/images/favicon.ico',
       inject: true,
       minify: {
         removeComments: true,
@@ -99,6 +99,7 @@ module.exports = merge(baseWebpackConfig, {
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
+      chunks: ['manifest', 'site'],
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency',
     }),

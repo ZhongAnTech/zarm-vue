@@ -1,0 +1,38 @@
+@mixin spinner-size($diameter) {
+  width: $diameter;
+  height: $diameter;
+}
+
+@include b(activity-indicator) {
+  $PI: 3.141592674;
+
+  display: inline-block;
+  position: relative;
+  stroke: $activityIndicator-theme-color;
+  stroke-dasharray: 100 * $PI;
+  transition: .3s;
+  transform: rotate(-90deg);
+  @include spinner-size($activityIndicator-diameter-md);
+
+  @include e(path) {
+    stroke: $activityIndicator-stroke-color;
+  }
+
+  @include e(text) {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    line-height: 1;
+    transform: translateY(-50%);
+    font-size: r(30);
+  }
+
+  /* sizes */
+  @include m(lg) {
+    @include spinner-size($activityIndicator-diameter-lg);
+  }
+}

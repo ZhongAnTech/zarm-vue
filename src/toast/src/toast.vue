@@ -1,12 +1,12 @@
 <template lang="html">
   <div :class='{
     [`${prefixCls}`]: true,
-    [`${prefixCls}-open`]: currentVisible,
+    [`${prefixCls}--open`]: currentVisible,
     }'>
-    <div :class='`${prefixCls}-container`'>
+    <div :class='`${prefixCls}__container`'>
       <slot>{{message}}</slot>
     </div>
-    <za-mask type="transparent" :visible='currentVisible' @mask-close='onMaskClose'></za-mask>
+    <za-mask type="transparent" :visible='currentVisible' @click='onMaskClick'></za-mask>
   </div>
 </template>
 
@@ -31,17 +31,10 @@ export default {
       type: Number,
       default: 3000,
     },
-    closeOnClickModal: {
-      type: Boolean,
-      default: false,
-    },
   },
   methods: {
-    onMaskClose(event) {
-      if (!this.closeOnClickModal) return;
-      this.currentVisible = false;
-      this.event = event;
-      this.reason = 'clickaway';
+    onMaskClick(event) {
+      this.$emit('maskClick', event);
     },
     enter() {
       if (this.duration === 0) return;

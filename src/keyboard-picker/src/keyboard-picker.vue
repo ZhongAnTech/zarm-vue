@@ -1,17 +1,14 @@
 <template lang="html">
-  <div @click.stop='stopPropagation'>
+  <div :prefixCls="prefixCls" @click.stop='stopPropagation'>
     <za-popup
-          class='za-popup-inner'
-          :visible='currentVisible'
-          :get-container="getContainer"
-          maskType="transparent"
-          @close='onMaskClick'
-          :closeOnClickModal='closeOnClickModal'>
-          <za-keyboard 
-            :prefixCls="prefixCls"
-            :type="type"
-            @keyClick="onKeyClick"
-          />
+      :visible='currentVisible'
+      :get-container="getContainer"
+      direction="bottom"
+      :hasMask="false">
+      <za-keyboard 
+        :type="type"
+        @keyClick="onKeyClick"
+      />
     </za-popup>
   </div>
 </template>
@@ -33,10 +30,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    closeOnClickModal: {
-      type: Boolean,
-      default: true,
-    },
   },
   data() {
     return {
@@ -57,12 +50,6 @@ export default {
   methods: {
     stopPropagation(e) {
       Event.stopPropagation(e);
-    },
-    // 点击遮罩层
-    onMaskClick(reason) {
-      if (reason === 'clickaway') {
-        this.onCancel();
-      }
     },
     onKeyClick(key) {
       if (['ok', 'close'].indexOf(key) > -1) {

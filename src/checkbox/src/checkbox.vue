@@ -1,12 +1,12 @@
 <template>
   <za-cell v-if='checkboxType === "cell"' :disabled='checkboxDisabled' @click='handleClick' isLink>
     <div :class='cls'>
-      <div :class='`${prefixCls}-wrapper`'>
-        <span :class='`${prefixCls}-inner`'></span>
-        <span :class='`${prefixCls}-text`'>
+      <div :class='`${prefixCls}__wrapper`'>
+        <span :class='`${prefixCls}__inner`'></span>
+        <span :class='`${prefixCls}__text`'>
           <slot></slot>
         </span>
-        <input type="checkbox" :class='`${prefixCls}-input`' :disabled='checkboxDisabled' :value='label' v-model='model'/>
+        <input type="checkbox" :class='`${prefixCls}__input`' :disabled='checkboxDisabled' :value='value' v-model='model' />
       </div>
     </div>
   </za-cell>
@@ -16,18 +16,19 @@
     :theme='theme'
     size='xs'
     :block='block || isBlock'
+    :shape='shape || isShape'
     :disabled='checkboxDisabled'
-    :bordered='!isChecked'>
-    <input type="checkbox" :class='`${prefixCls}-input`' :disabled='checkboxDisabled' :value='label' v-model='model' @change='onValueChange' />
+    :ghost='!isChecked'>
+    <input type="checkbox" :class='`${prefixCls}__input`' :disabled='checkboxDisabled' :value='value' v-model='model' @change='onValueChange' />
     <slot></slot>
   </za-button>
   <div :class='cls' v-else>
-    <div :class='`${prefixCls}-wrapper`'>
-      <span :class='`${prefixCls}-inner`'></span>
-      <span :class='`${prefixCls}-text`'>
+    <div :class='`${prefixCls}__wrapper`'>
+      <span :class='`${prefixCls}__inner`'></span>
+      <span :class='`${prefixCls}__text`'>
         <slot></slot>
       </span>
-      <input type="checkbox" :class='`${prefixCls}-input`' :disabled='checkboxDisabled' :value='label' v-model='model' @change='onValueChange'/>
+      <input type="checkbox" :class='`${prefixCls}__input`' :disabled='checkboxDisabled' :value='value' v-model='model' @change='onValueChange'/>
     </div>
   </div>
 </template>
@@ -66,15 +67,23 @@ export default {
       default: false,
     },
     value: {},
-    label: {},
     block: {
       type: Boolean,
       default: false,
     },
+    checked: {
+      type: Boolean,
+      default: false,
+    },
+    shape: {
+      type: String,
+      validator: enumGenerator(['rect', 'radius', 'round']),
+      default: null,
+    },
   },
   data() {
     return {
-      currentChecked: false,
+      currentChecked: this.checked || false,
     };
   },
 
@@ -111,11 +120,11 @@ export default {
       if ({}.toString.call(this.model) === '[object Boolean]') {
         return this.model;
       } else if (Array.isArray(this.model)) {
-        return this.model.indexOf(this.label) > -1;
+        return this.model.indexOf(this.value) > -1;
       }
     },
     store() {
-      return this._checkboxGroup ? this._checkboxGroup.value : this.value;
+      return this.isGroup ? this._checkboxGroup.value : this.value;
     },
     checkboxType() {
       return this.isGroup ? this._checkboxGroup.type : this.type;
@@ -126,15 +135,18 @@ export default {
     isBlock() {
       return this.isGroup ? this._checkboxGroup.block : this.block;
     },
+    isShape() {
+      return this.isGroup ? this._checkboxGroup.shape : this.shape;
+    },
     cls() {
       const { prefixCls, theme, shape, size, checkboxDisabled, isChecked } = this;
       return {
         [`${prefixCls}`]: true,
-        [`theme-${theme}`]: !!theme,
-        [`shape-${shape}`]: !!shape,
-        [`size-${size}`]: !!size,
-        checked: !!isChecked,
-        disabled: !!checkboxDisabled,
+        [`${prefixCls}--${theme}`]: !!theme,
+        [`${prefixCls}--${shape}`]: !!shape,
+        [`${prefixCls}--${size}`]: !!size,
+        [`${prefixCls}--checked`]: !!isChecked,
+        [`${prefixCls}--disabled`]: !!checkboxDisabled,
       };
     },
   },
@@ -152,11 +164,11 @@ export default {
     handleClick(event) {
       if (this.checkboxDisabled) return;
       if (this.isGroup) {
-        const index = this.model.indexOf(this.label);
+        const index = this.model.indexOf(this.value);
         if (index >= 0) {
           this.model.splice(index, 1);
         } else {
-          this.model.push(this.label);
+          this.model.push(this.value);
         }
         this.onValueChange(event);
       } else {

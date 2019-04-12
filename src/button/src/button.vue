@@ -1,17 +1,15 @@
 <template lang="html">
   <a :class='{
     [`${prefixCls}`]: true,
-    [`theme-${theme}`]: !!theme,
-    [`size-${size}`]: !!size,
-    [`shape-${shape}`]: !!shape,
-    block,
-    bordered,
-    active,
-    focus,
-    disabled,
+    [`${prefixCls}--${theme}`]: !!theme,
+    [`${prefixCls}--${shape}`]: !!shape,
+    [`${prefixCls}--${size}`]: !!size,
+    [`${prefixCls}--block`]: !!block,
+    [`${prefixCls}--bordered`]: !!ghost,
+    [`${prefixCls}--disabled`]:  !!disabled,
   }' @click='handleClick'>
-    <span :class='`${prefixCls}-content`'>
-      <za-spinner class="rotate360" v-if='loading'/>
+    <span :class='`${prefixCls}__content`'>
+      <za-activity-indicator class="rotate360" v-if='loading'/>
       <slot name='icon' v-else></slot>
       <span>
         <slot></slot>
@@ -21,14 +19,13 @@
 </template>
 
 <script>
-// necessary when used alone
-import zaSpinner from '@/spinner';
+import zaActivityIndicator from '@/activity-indicator';
 import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
 
 export default {
   name: 'zaButton',
   components: {
-    zaSpinner,
+    zaActivityIndicator,
   },
   props: {
     prefixCls: {
@@ -47,22 +44,14 @@ export default {
     },
     shape: {
       type: String,
-      validator: enumGenerator(['radius', 'round', 'circle']),
-      default: null,
+      validator: enumGenerator(['rect', 'radius', 'round', 'circle']),
+      default: 'radius',
     },
     block: {
       type: Boolean,
       default: false,
     },
-    bordered: {
-      type: Boolean,
-      default: false,
-    },
-    active: {
-      type: Boolean,
-      default: false,
-    },
-    focus: {
+    ghost: {
       type: Boolean,
       default: false,
     },
@@ -75,14 +64,11 @@ export default {
       default: false,
     },
   },
-  data() {
-    return {
-
-    };
-  },
   methods: {
     handleClick(event) {
-      this.$emit('click', event);
+      if (!this.disabled) {
+        this.$emit('click', event);
+      }
     },
   },
 };

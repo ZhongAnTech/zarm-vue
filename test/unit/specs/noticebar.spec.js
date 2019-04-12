@@ -10,8 +10,8 @@ describe('NoticeBar', () => {
       `,
     }, true);
     expect(wrapper.classes().includes('za-message')).toBe(true);
-    expect(wrapper.classes().includes('theme-primary')).toBe(true);
-    expect(wrapper.classes().includes('size-lg')).toBe(true);
+    expect(wrapper.classes().includes('za-message--primary')).toBe(true);
+    expect(wrapper.classes().includes('za-message--lg')).toBe(true);
   });
   it('hasArrow', () => {
     const wrapper = mount({
@@ -87,14 +87,14 @@ describe('NoticeBar', () => {
     expect(wrapper.vm.visible).toBe(false);
   });
 
-  it('autoscroll', () => {
+  it('scrollable', () => {
     const wrapper = mount({
       components: { ZaNoticeBar },
       template: `
-        <za-notice-bar autoscroll>自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。</za-notice-bar>
+        <za-notice-bar scrollable>自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。自定义icon，自定义主题，显示关闭按钮。</za-notice-bar>
       `,
     }, true);
-    const body = wrapper.find('.za-noticebar-body').element;
+    const body = wrapper.find('.za-noticebar__body').element;
     expect(body.style.left).not.toBe(0);
   });
 });

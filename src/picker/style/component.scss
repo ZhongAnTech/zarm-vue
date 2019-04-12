@@ -1,0 +1,57 @@
+@import '../../popup/style/component.scss';
+@import '../../picker-view/style/component.scss';
+
+@include b(picker) {
+  @include e(wrapper) {
+    background: $picker-background;
+  }
+
+  @include m(block) {
+    width: 100%;
+  }
+
+  @include m(input) {
+    width: 100%;
+    padding: $picker-padding-v 0;
+  }
+
+  @include m(placeholder) {
+    color: $placeholder-color;
+  }
+
+  @include m(disabled) {
+    color: $disabled-color;
+  }
+
+  @include e(header) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: $picker-header-height;
+    font-size: $picker-header-font-size;
+    line-height: $picker-header-line-height;
+    @include onepx(bottom);
+  }
+
+  @include e(cancel,submit) {
+    flex: 1;
+    padding: 0 $picker-padding-h;
+    cursor: pointer;
+  }
+
+  @include e(cancel) {
+    text-align: left;
+    color: $color-text-caption;
+  }
+
+  @include e(submit) {
+    text-align: right;
+    color: $theme-primary;
+  }
+
+  @include e(title) {
+    color: $color-text;
+  }
+}

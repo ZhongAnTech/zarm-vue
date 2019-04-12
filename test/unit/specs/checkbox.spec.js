@@ -19,7 +19,7 @@ describe('Checkbox', () => {
         type: 'button',
       },
     });
-    expect(wrapper.contains('.theme-primary')).toBe(true);
+    expect(wrapper.contains('.za-checkbox--primary')).toBe(true);
   });
 
   it('type cell', () => {
@@ -51,7 +51,7 @@ describe('Checkbox', () => {
         disabled: true,
       },
     });
-    expect(wrapper.contains('.disabled')).toBe(true);
+    expect(wrapper.contains('.za-checkbox--disabled')).toBe(true);
   });
 
   it('group create', () => {
@@ -62,7 +62,7 @@ describe('Checkbox', () => {
       },
       template: `
         <za-checkbox-group v-model='checkboxGroup' @change='handleGroupChange'>
-          <za-checkbox v-for='(city, index) in cities' :label="city" :key="city"  :disabled='index === 2'>{{city}}</za-checkbox>
+          <za-checkbox v-for='(city, index) in cities' :value="city" :key="city"  :disabled='index === 2'>{{city}}</za-checkbox>
         </za-checkbox-group>
       `,
       data() {
@@ -89,7 +89,7 @@ describe('Checkbox', () => {
       },
       template: `
         <za-checkbox-group v-model='checkboxGroup' @change='handleGroupChange' shape='radius' type='button' theme='primary' block>
-          <za-checkbox v-for='(city, index) in cities' :label="city" :key="city"  :disabled='index === 2'>{{city}}</za-checkbox>
+          <za-checkbox v-for='(city, index) in cities' :value="city" :key="city"  :disabled='index === 2'>{{city}}</za-checkbox>
         </za-checkbox-group>
       `,
       data() {
@@ -105,9 +105,9 @@ describe('Checkbox', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    expect(wrapper.contains('.shape-radius')).toBe(true);
-    expect(wrapper.contains('.block')).toBe(true);
-    expect(wrapper.contains('.za-button.theme-primary')).toBe(true);
+    expect(wrapper.contains('.za-checkbox-group--radius')).toBe(true);
+    expect(wrapper.contains('.za-checkbox-group--block')).toBe(true);
+    expect(wrapper.contains('.za-button--primary')).toBe(true);
   });
 
   it('group type=cell with click and unclick', done => {
@@ -118,7 +118,7 @@ describe('Checkbox', () => {
       },
       template: `
         <za-checkbox-group v-model='checkboxGroup' @change='handleGroupChange' shape='radius' type='cell'>
-          <za-checkbox v-for='(city, index) in cities' :label="city" :key="city"  :disabled='index === 2'>{{city}}</za-checkbox>
+          <za-checkbox v-for='(city, index) in cities' :value="city" :key="city"  :disabled='index === 2'>{{city}}</za-checkbox>
         </za-checkbox-group>
       `,
       data() {
@@ -135,10 +135,10 @@ describe('Checkbox', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    wrapper.find('.za-cell-inner').trigger('click');
+    wrapper.find('.za-cell__inner').trigger('click');
     vm.$nextTick(() => {
       expect(vm.checkboxGroup.indexOf('上海')).toEqual(0);
-      wrapper.find('.za-cell-inner').trigger('click');
+      wrapper.find('.za-cell__inner').trigger('click');
       vm.$nextTick(() => {
         expect(vm.checkboxGroup.indexOf('上海')).toEqual(-1);
         done();
@@ -154,7 +154,7 @@ describe('Checkbox', () => {
       },
       template: `
         <za-checkbox-group v-model='checkboxGroup'>
-          <za-checkbox v-for='(city, i) in cities' :label="city" :key="city" :disabled='i === 2'>
+          <za-checkbox v-for='(city, i) in cities' :value="city" :key="city" :disabled='i === 2'>
             {{city}}
           </za-checkbox>
         </za-checkbox-group>
@@ -173,7 +173,7 @@ describe('Checkbox', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    const firstCheckbox = vm.$el.querySelector('.za-checkbox-input');
+    const firstCheckbox = vm.$el.querySelector('.za-checkbox__input');
     expect(firstCheckbox.checked).toBe(true);
   });
 
@@ -199,10 +199,10 @@ describe('Checkbox', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    wrapper.find('.za-checkbox-input').trigger('click');
+    wrapper.find('.za-checkbox__input').trigger('click');
     vm.$nextTick(() => {
-      const firstCheckbox = vm.$el.querySelector('.za-checkbox-input');
-      expect(wrapper.contains('.checked')).toBe(true);
+      const firstCheckbox = vm.$el.querySelector('.za-checkbox__input');
+      expect(wrapper.contains('.za-checkbox--checked')).toBe(true);
       expect(firstCheckbox.checked).toBe(true);
       expect(vm.v1).toBe(true);
       expect(result).toEqual(1);
@@ -218,8 +218,8 @@ describe('Checkbox', () => {
       },
       template: `
         <za-checkbox-group v-model='checkboxGroup'>
-          <za-checkbox label="a" ref="a">a</za-checkbox>
-          <za-checkbox label="b" ref="b">b</za-checkbox>
+          <za-checkbox value="a" ref="a">a</za-checkbox>
+          <za-checkbox value="b" ref="b">b</za-checkbox>
         </za-checkbox-group>
       `,
       data() {
@@ -231,7 +231,7 @@ describe('Checkbox', () => {
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
     expect(vm.$refs.a.isGroup).toBe(true);
-    wrapper.find('.za-checkbox-input').trigger('click');
+    wrapper.find('.za-checkbox__input').trigger('click');
     vm.$nextTick(() => {
       expect(vm.checkboxGroup.indexOf('a') !== -1).toBe(true);
       done();

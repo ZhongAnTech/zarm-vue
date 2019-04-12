@@ -1,0 +1,108 @@
+@import '../../mask/style/component.scss';
+
+$prefixCls: za-modal;
+
+@include b(modal) {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-overflow-scrolling: touch;
+  user-select: none;
+  overflow: auto;
+  z-index: $zIndex-modal;
+
+  @include m(radius) {
+    @include e(dialog) {
+      border-radius: $radius-md;
+    }
+  }
+
+  @include e(wrapper) {
+    width: 100%;
+    margin: auto 0;
+  }
+
+  @include e(dialog) {
+    position: relative;
+    margin: r(60) auto;
+    background: #fff;
+    box-shadow: 0 r(7) r(21) rgba(0, 0, 0, .2);
+    overflow: hidden;
+    z-index: $zIndex-modal + 1;
+  }
+
+  @include e(header) {
+    position: relative;
+    padding: r(15) r(15) 0 r(15);
+    text-align: center;
+
+    &-title {
+      font-size: $modal-title-fontsize;
+      line-height: 1;
+      color: $modal-title-color;
+    }
+
+    &-close {
+      position: absolute;
+      top: 0;
+      right: r(15);
+      font-size: $modal-close-fontsize;
+      line-height: r(50);
+      color: $modal-close-color;
+      cursor: pointer;
+
+      &:hover {
+        color: $modal-close-color-hover;
+      }
+    }
+  }
+
+  @include e(body) {
+    font-size: $modal-body-fontsize;
+    color: $modal-body-color;
+    padding: r(15);
+    overflow: auto;
+    user-select: auto;
+  }
+
+  @include e(footer) {
+    display: flex;
+    width: 100%;
+
+    a {
+      flex: 1;
+      height: $modal-footer-link-height;
+      line-height: $modal-footer-link-height;
+      font-size: $modal-footer-link-fontsize;
+      border-width: 0;
+
+      /* 1px line */
+      position: relative;
+      @include onepx(top);
+
+      &:active {
+        background: $modal-footer-link-bg !important;
+      }
+
+      &:not(:first-of-type) {
+        @include onepx(left top);
+      }
+    }
+
+    @include m(block) {
+      display: block;
+
+      a {
+        &:not(:first-of-type) {
+          @include onepx(top);
+        }
+      }
+    }
+  }
+}
+

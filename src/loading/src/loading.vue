@@ -1,18 +1,18 @@
 <template lang="html">
   <za-toast :prefixCls='prefixCls' :visible.sync='currentVisible' :duration='0'>
-    <za-spinner size='lg' class='rotate360' />
+    <za-activity-indicator size='lg' class='rotate360' />
   </za-toast>
 </template>
 
 <script>
-import zaToast from '../../toast';
-import zaSpinner from '../../spinner';
+import zaToast from '@/toast';
+import zaActivityIndicator from '@/activity-indicator';
 
 export default {
   name: 'zaLoading',
   components: {
     zaToast,
-    zaSpinner,
+    zaActivityIndicator,
   },
   props: {
     prefixCls: {

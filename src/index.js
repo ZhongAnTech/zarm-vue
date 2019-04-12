@@ -23,6 +23,7 @@ import Mask from '../src/mask';
 import Message from '../src/message';
 import Modal from '../src/modal';
 import NoticeBar from '../src/notice-bar';
+import NavBar from '../src/nav-bar';
 import Panel from '../src/panel';
 import PanelHeader from '../src/panel-header';
 import PanelBody from '../src/panel-body';
@@ -35,8 +36,9 @@ import Pull from '../src/pull';
 import SearchBar from '../src/search-bar';
 import Select from '../src/select';
 import Slider from '../src/slider';
-import Spinner from '../src/spinner';
+import ActivityIndicator from '../src/activity-indicator';
 import StackPicker from '../src/stack-picker';
+import StackSelect from '../src/stack-select';
 import Stepper from '../src/stepper';
 import Carousel from '../src/carousel';
 import SwipeAction from '../src/swipe-action';
@@ -45,10 +47,11 @@ import Switch from '../src/switch';
 import Radio from '../src/radio';
 import RadioGroup from '../src/radio-group';
 import Tabs from '../src/tabs';
-import TabPane from '../src/tab-pane';
+import TabPanel from '../src/tab-panel';
 import Toast from '../src/toast';
 import Tooltip from '../src/tooltip';
 import FilePicker from '../src/file-picker';
+import LocaleProvider from '../src/locale-provider';
 
 const version = '2.0.0';
 const components = [
@@ -77,6 +80,7 @@ const components = [
   Message,
   Modal,
   NoticeBar,
+  NavBar,
   Panel,
   PanelHeader,
   PanelBody,
@@ -91,18 +95,20 @@ const components = [
   SearchBar,
   Select,
   Slider,
-  Spinner,
+  ActivityIndicator,
   StackPicker,
+  StackSelect,
   Stepper,
   Carousel,
   SwipeAction,
   CarouselItem,
   Switch,
   Tabs,
-  TabPane,
+  TabPanel,
   Toast,
   Tooltip,
   FilePicker,
+  LocaleProvider,
 ];
 
 const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
@@ -151,6 +157,7 @@ export {
   Message,
   Modal,
   NoticeBar,
+  NavBar,
   Panel,
   PanelHeader,
   PanelBody,
@@ -165,18 +172,20 @@ export {
   SearchBar,
   Select,
   Slider,
-  Spinner,
+  ActivityIndicator,
   StackPicker,
+  StackSelect,
   Stepper,
   Carousel,
   SwipeAction,
   CarouselItem,
   Switch,
   Tabs,
-  TabPane,
+  TabPanel,
   Toast,
   Tooltip,
   FilePicker,
+  LocaleProvider,
 };
 
 export default {

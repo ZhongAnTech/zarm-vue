@@ -2,7 +2,7 @@
   <i :class='{
     [`${prefixCls}`]: true,
     [`${prefixCls}-${type}`]: !!type,
-    [`theme-${theme}`]: !!theme,
+    [`${prefixCls}--${theme}`]: !!theme,
   }' @click='handleClick'></i>
 </template>
 

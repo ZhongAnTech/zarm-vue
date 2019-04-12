@@ -1,0 +1,57 @@
+@import '../../button/style/mixins.scss';
+@import '../../popup/style/component.scss';
+
+@include b(actionsheet) {
+  margin: $actionsheet-margin;
+
+  @include m(spacing) {
+    margin: 0 r(10) r(10);
+  }
+
+  @include m(radius) {
+    @include e(actions, cancel) {
+      border-radius: $radius-md;
+    }
+  }
+
+  @include e(actions, cancel) {
+    overflow: hidden;
+    background-color: $color-text-inverse;
+  }
+
+  @include e(cancel) {
+    margin-top: r(7);
+  }
+
+  @include e(item) {
+    display: block;
+    height: $actionsheet-item-height;
+    line-height: $actionsheet-item-height;
+    font-size: $actionsheet-item-font-size;
+    @include button-base();
+
+    @include m(primary) {
+      color: $theme-primary;
+    }
+
+    @include m(success) {
+      color: $theme-success;
+    }
+
+    @include m(warning) {
+      color: $theme-warning;
+    }
+
+    @include m(error) {
+      color: $theme-error;
+    }
+
+    &:active {
+      background-color: $background-active;
+    }
+
+    &:not(:first-of-type) {
+      @include onepx(top);
+    }
+  }
+}

@@ -1,0 +1,42 @@
+@import '../../message/style/component.scss';
+
+@include b(navbar) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: $nav-bar-height;
+  overflow: hidden;
+  background: $nav-bar-color;
+
+  @include e(title) {
+    color: $color-text;
+    font-weight: 500;
+    font-size: $nav-bar-fontsize;
+    position: absolute;
+    left: 50%;
+    white-space: nowrap;
+    transform: translate(-50%, 0);
+  }
+
+  @include e(left) {
+    padding-left: r(16);
+
+    .za-icon {
+      margin-right: r(16);
+    }
+  }
+
+  @include e(right) {
+    padding-right: r(16);
+
+    .za-icon {
+      margin-left: r(16);
+    }
+  }
+
+  .za-icon {
+    font-size: $nav-bar-icon-size;
+  }
+}

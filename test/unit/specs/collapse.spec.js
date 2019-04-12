@@ -21,19 +21,19 @@ describe('collapse', () => {
       },
       template: `
         <za-collapse @change='handleClick'>
-          <za-collapse-item title="50元套餐" activeKey='0'>
+          <za-collapse-item title="50元套餐" itemKey='0'>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
           </za-collapse-item>
-          <za-collapse-item title="100元套餐" activeKey='1'>
+          <za-collapse-item title="100元套餐" itemKey='1'>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
           </za-collapse-item>
-          <za-collapse-item title="200元套餐" activeKey='2'>
+          <za-collapse-item title="200元套餐" itemKey='2'>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
@@ -49,24 +49,55 @@ describe('collapse', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    const titleEl = wrapper.find('.za-collapse-item-title');
+    const titleEl = wrapper.find('.za-collapse-item__title');
     titleEl.trigger('click');
     vm.$nextTick(() => {
       expect(index).toEqual('0');
     });
   });
-
   it('activeKey', done => {
-    const wrapper = mount(zaCollapse, {
-      propsData: {
-        defaultActiveKey: ['0'],
+    const TestCompo = {
+      components: {
+          zaCollapse,
+          zaCollapseItem,
       },
-    });
+      template: `
+        <za-collapse :activeKey='activeKey' multiple>
+          <za-collapse-item title="50元套餐" itemKey='1'>
+            <div>我是50元套餐内容</div>
+            <div>我是50元套餐内容</div>
+            <div>我是50元套餐内容</div>
+            <div>我是50元套餐内容</div>
+          </za-collapse-item>
+          <za-collapse-item title="100元套餐" itemKey='2'>
+            <div>我是100元套餐内容</div>
+            <div>我是100元套餐内容</div>
+            <div>我是100元套餐内容</div>
+            <div>我是100元套餐内容</div>
+          </za-collapse-item>
+          <za-collapse-item title="200元套餐" itemKey='3'>
+            <div>我是200元套餐内容</div>
+            <div>我是200元套餐内容</div>
+            <div>我是200元套餐内容</div>
+            <div>我是200元套餐内容</div>
+          </za-collapse-item>
+        </za-collapse>
+        `,
+        data() {
+          return {
+            activeKey: ['1', '2'],
+          };
+        },
+    };
+    const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    vm.$nextTick(() => {
-      expect(vm.activeKey[0] === '0').toBe(true);
+    const item = vm.$el.querySelectorAll('.za-collapse-item');
+    const curActiveItem = vm.$el.querySelectorAll('.za-collapse-item')[2];
+    vm.activeKey = ['1', '2', '3'];
+    setTimeout(() => {
+      expect(curActiveItem.classList.contains('za-collapse-item--active')).toBe(true);
       done();
-    });
+    }, 20);
   });
 
   it('defaultActiveKey', () => {
@@ -76,20 +107,20 @@ describe('collapse', () => {
         zaCollapseItem,
       },
       template: `
-        <za-collapse :defaultActiveKey='defaultActive'>
-          <za-collapse-item title="50元套餐" activeKey='a'>
+        <za-collapse :defaultActiveKey='defaultActive' multiple>
+          <za-collapse-item title="50元套餐" itemKey='a'>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
           </za-collapse-item>
-          <za-collapse-item title="100元套餐" activeKey='b'>
+          <za-collapse-item title="100元套餐" itemKey='b'>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
           </za-collapse-item>
-          <za-collapse-item title="200元套餐" activeKey='c'>
+          <za-collapse-item title="200元套餐" itemKey='c'>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
@@ -108,7 +139,7 @@ describe('collapse', () => {
     const item = vm.$el.querySelectorAll('.za-collapse-item');
     const activeArr = vm.defaultActive;
     activeArr.forEach((arr, index) => {
-      expect(item[index].classList.contains('active')).toBe(true);
+      expect(item[index].classList.contains('za-collapse-item--active')).toBe(true);
     });
   });
 
@@ -119,20 +150,20 @@ describe('collapse', () => {
         zaCollapseItem,
       },
       template: `
-        <za-collapse :multiple='true' :defaultActiveKey='defaultActive'>
-          <za-collapse-item title="50元套餐" activeKey='0'>
+        <za-collapse multiple :defaultActiveKey='defaultActive'>
+          <za-collapse-item title="50元套餐" itemKey='0'>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
           </za-collapse-item>
-          <za-collapse-item title="100元套餐" activeKey='1'>
+          <za-collapse-item title="100元套餐" itemKey='1'>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
           </za-collapse-item>
-          <za-collapse-item title="200元套餐" activeKey='2'>
+          <za-collapse-item title="200元套餐" itemKey='2'>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
@@ -148,35 +179,35 @@ describe('collapse', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    const item = vm.$el.querySelectorAll('.za-collapse-item-title');
+    const item = vm.$el.querySelectorAll('.za-collapse-item__title');
     item[1].click();
     vm.$nextTick(() => {
       const curActiveItem = vm.$el.querySelectorAll('.za-collapse-item')[1];
-      expect(curActiveItem.classList.contains('active')).toBe(true);
+      expect(curActiveItem.classList.contains('za-collapse-item--active')).toBe(true);
     });
   });
 
-  it('open', () => {
+  it('disabled', () => {
     const TestCompo = {
       components: {
         zaCollapse,
         zaCollapseItem,
       },
       template: `
-        <za-collapse open>
-          <za-collapse-item title="50元套餐">
+        <za-collapse defaultActiveKey='a'>
+          <za-collapse-item title="50元套餐" disabled itemKey="a">
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
           </za-collapse-item>
-          <za-collapse-item title="100元套餐">
+          <za-collapse-item title="100元套餐" itemKey="b">
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
           </za-collapse-item>
-          <za-collapse-item title="200元套餐">
+          <za-collapse-item title="200元套餐" itemKey="c">
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
@@ -189,11 +220,8 @@ describe('collapse', () => {
     const { vm } = wrapper;
     const el = vm.$el;
     const item = el.querySelectorAll('.za-collapse-item');
-    // 验证初始状态全部打开, 验证无箭头
-    expect(item[0].classList.contains('active')).toBe(true);
-    expect(item[0].querySelector('.za-collapse-item-arrow').classList.contains('za-collapse-item-arrow-hidden')).toBe(true);
     // 验证点击后不收缩
     item[0].click();
-    expect(item[0].classList.contains('active')).toBe(true);
+    expect(item[0].classList.contains('za-collapse-item--active')).toBe(true);
   });
 });

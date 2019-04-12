@@ -5,17 +5,23 @@
       <slot></slot>
     </div>
     <template slot='footer'>
-      <za-button block bordered @click='handleClose'>{{cancelText}}</za-button>
+      <za-button block ghost @click='handleClose'>{{cancelText || cancelBtnText}}</za-button>
     </template>
   </za-modal>
 </template>
 
 <script>
+import Locale from '../../utils/locale';
 import zaModal from '../../modal';
 import zaButton from '../../button';
 
 export default {
   name: 'zaAlert',
+  inject: {
+    localeProvider: {
+      default: '',
+    },
+  },
   components: {
     zaModal,
     zaButton,
@@ -29,7 +35,7 @@ export default {
     title: String,
     cancelText: {
       type: String,
-      default: '关闭',
+      default: '',
     },
     visible: {
       type: Boolean,
@@ -44,7 +50,16 @@ export default {
       default: 200,
     },
   },
+  computed: {
+    cancelBtnText() {
+      return this.localeProvider.lang ? this.getLocales('cancelText') : '关闭';
+    },
+  },
   methods: {
+    // 国际化
+    getLocales(key) {
+      return Locale.getLocaleByComponent(this.localeProvider, 'Alert', key);
+    },
     handleClose(event) {
       this.$refs.modal.leave('modal-close', event);
       this.$emit('update:visible', false);

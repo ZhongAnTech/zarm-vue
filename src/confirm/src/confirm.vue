@@ -5,13 +5,14 @@
       <slot></slot>
     </div>
     <template slot='footer'>
-      <za-button block bordered @click='cancel'>{{cancelText}}</za-button>
-      <za-button block bordered theme="primary" @click='ok'>{{okText}}</za-button>
+      <za-button block ghost @click='cancel'>{{cancelText || cancelBtnText}}</za-button>
+      <za-button block ghost theme="primary" @click='ok'>{{okText || okBtnText}}</za-button>
     </template>
   </za-modal>
 </template>
 
 <script>
+import Locale from '../../utils/locale';
 import zaModal from '../../modal';
 import zaButton from '../../button';
 
@@ -20,6 +21,11 @@ export default {
   components: {
     zaModal,
     zaButton,
+  },
+  inject: {
+    localeProvider: {
+      default: '',
+    },
   },
   props: {
     prefixCls: {
@@ -30,11 +36,11 @@ export default {
     title: String,
     cancelText: {
       type: String,
-      default: '关闭',
+      default: '',
     },
     okText: {
       type: String,
-      default: '确定',
+      default: '',
     },
     visible: {
       type: Boolean,
@@ -57,6 +63,14 @@ export default {
       default: () => {},
     },
   },
+  computed: {
+    cancelBtnText() {
+      return this.localeProvider.lang ? this.getLocales('cancelText') : '关闭';
+    },
+    okBtnText() {
+      return this.localeProvider.lang ? this.getLocales('okText') : '确定';
+    },
+  },
   watch: {
     visible(value, oldValue) { // eslint-disable-line
       if (value === this.currentVisible) return;
@@ -68,6 +82,12 @@ export default {
       currentVisible: this.visible,
       getContainer: () => document.body,
     };
+  },
+  methods: {
+    // 国际化
+    getLocales(key) {
+      return Locale.getLocaleByComponent(this.localeProvider, 'Confirm', key);
+    },
   },
 };
 </script>

@@ -1,5 +1,9 @@
+import Vue from 'vue';
 import ZaLoading from '@/loading';
 import { mount } from '../util';
+
+Vue.use(ZaLoading.directive);
+const $zaLoading = ZaLoading.root;
 
 describe('Loading', () => {
   it('create', () => {
@@ -30,6 +34,65 @@ describe('Loading', () => {
       },
     }, true);
     wrapper.setData({ visible: false });
-    expect(wrapper.contains('.za-loading-open')).toBe(false);
+    expect(wrapper.contains('.za-loading--open')).toBe(false);
+  });
+
+  it('$zaLoading', done => {
+    const TestCompo = {
+      template: `
+        <div @click='handleClick'>test</div>
+      `,
+      methods: {
+        handleClick() {
+          const loading = $zaLoading();
+          setTimeout(() => {
+            loading.close();
+          }, 50);
+        },
+      },
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+
+    vm.$el.click();
+    setTimeout(() => {
+      expect(document.querySelector('.za-loading--open')).not.toBeUndefined();
+      setTimeout(() => {
+        expect(document.querySelector('.za-loading--open')).toBeNull();
+        done();
+      }, 100);
+    }, 20);
+  });
+
+  it('v-za-loading', done => {
+    const TestCompo = {
+      template: `
+        <div v-za-loading='isLoading' @click='handleClick'>test</div>
+      `,
+      data() {
+        return {
+          isLoading: false,
+        };
+      },
+      methods: {
+        handleClick() {
+          this.isLoading = true;
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 50);
+        },
+      },
+    };
+    const wrapper = mount(TestCompo);
+    const { vm } = wrapper;
+
+    vm.$el.click();
+    setTimeout(() => {
+      expect(document.querySelector('.za-loading--open')).not.toBeUndefined();
+      setTimeout(() => {
+        expect(document.querySelector('.za-loading--open')).toBeNull();
+        done();
+      }, 100);
+    }, 20);
   });
 });

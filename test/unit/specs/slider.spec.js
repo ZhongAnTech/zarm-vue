@@ -11,7 +11,7 @@ describe('Slider', () => {
       },
       template: `
         <za-slider
-        :value='0'
+        :default-value='0'
         ></za-slider>
       `,
     };
@@ -44,7 +44,7 @@ describe('Slider', () => {
       template: `
         <za-slider
         ref='slider'
-        :value='v'
+        :default-value='v'
         ></za-slider>
       `,
       data() {
@@ -55,7 +55,7 @@ describe('Slider', () => {
     };
     const wrapper = mount(TestCompo, { attachToDocument: true });
     const { vm } = wrapper;
-    const el = wrapper.find('.za-slider-handle');
+    const el = wrapper.find('.za-slider__handle');
     triggerDrag(el, 100, 0);
     vm.$nextTick(() => {
       expect(vm.$refs.slider.value).not.toEqual(0);
@@ -71,12 +71,12 @@ describe('Slider', () => {
       template: `
         <za-slider
         ref='slider'
-        :value='0'
+        :default-value='0'
         ></za-slider>
       `,
     };
     const wrapper = mount(TestCompo, { attachToDocument: true });
-    const el = wrapper.find('.za-slider-handle');
+    const el = wrapper.find('.za-slider__handle');
     triggerDrag(el, 100, 0);
   });
 });

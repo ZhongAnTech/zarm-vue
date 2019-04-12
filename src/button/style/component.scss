@@ -1,0 +1,95 @@
+@import './mixins.scss';
+
+@include b(button) {
+  display: inline-block;
+  padding: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  cursor: pointer;
+  outline: 0 none;
+  -webkit-appearance: none;
+  user-select: none;
+  transition: background-color 200ms ease-out, border-color 200ms ease-out;
+  @include button-size($height-md, $padding-md, $fontSize-md, $radius-md, r(22), r(5));
+  @include button-theme($button-default-color, $button-default-bg, $button-default-border);
+  @include button-bordered($button-default-color, $button-default-activebg, $button-default-border);
+
+  &,
+  &:hover,
+  &:focus,
+  &:visited {
+    text-decoration: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: .65;
+    box-shadow: none;
+  }
+
+  /* disabled Button */
+  @include m(disabled) {
+    cursor: not-allowed;
+    opacity: .65;
+    box-shadow: none;
+  }
+
+  /* block Button */
+  @include m(block) {
+    width: 100%;
+    display: block;
+  }
+
+  @include e(content) {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Button sizes */
+  @include m(xl) {
+    @include button-size($height-xl, $padding-xl, $fontSize-xl, $radius-xl, r(26), r(8));
+  }
+
+  @include m(lg) {
+    @include button-size($height-lg, $padding-lg, $fontSize-lg, $radius-lg, r(24), r(6));
+  }
+
+  @include m(sm) {
+    @include button-size($height-sm, $padding-sm, $fontSize-sm, $radius-sm, r(20), r(5));
+  }
+
+  @include m(xs) {
+    @include button-size($height-xs, $padding-xs, $fontSize-xs, $radius-xs, r(18), r(5));
+  }
+
+  /* Button themes */
+  @include m(primary) {
+    @include button-theme($button-primary-color, $button-primary-bg, $button-primary-border);
+    @include button-bordered($button-primary-border, $button-primary-activebg, $button-primary-border);
+  }
+
+  // @include m(info) {
+  //   @include button-theme($button-info-color, $button-info-bg, $button-info-border);
+  //   @include button-bordered($button-info-border, $button-info-activebg, $button-info-border);
+  // }
+
+  // @include m(success) {
+  //   @include button-theme($button-success-color, $button-success-bg, $button-success-border);
+  //   @include button-bordered($button-success-border, $button-success-activebg, $button-success-border);
+  // }
+
+  @include m(warning) {
+    @include button-theme($button-warning-color, $button-warning-bg, $button-warning-border);
+    @include button-bordered($button-warning-border, $button-warning-activebg, $button-warning-border);
+  }
+
+  @include m(danger) {
+    @include button-theme($button-error-color, $button-error-bg, $button-error-border);
+    @include button-bordered($button-error-border, $button-error-activebg, $button-error-border);
+  }
+}

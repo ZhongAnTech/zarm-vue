@@ -1,25 +1,23 @@
 const Glob = require('glob');
 const path = require('path');
-
-// const getComponentsEntry = function () {
-//   return path.join(__dirname, '../src/components.js');
-// };
+const chalk = require('chalk');
 
 module.exports = function () {
   const entries = {};
-  // entries['index'] = getComponentsEntry()
   const partten = path.join(__dirname, '../src/**/index.js');
   try {
+    console.log(chalk.blue('build components entries start'));
     Glob.sync(partten, {}).forEach((file) => {
       if (file.indexOf('src/index.js') >= 0) {
         entries['zarm-vue.common'] = file;
       } else {
         const pathArray = file.split('/');
         const key = pathArray[pathArray.length - 2];
+        console.log(chalk.yellow(`${key}: ${file}`));
         entries[key] = file;
       }
     });
-    console.log(`build components start`);
+    console.log('');
     return entries;
   } catch (err) {
     throw new Error(err.message);

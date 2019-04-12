@@ -6,6 +6,7 @@ describe('ActionSheet', () => {
     const wrapper = mount(zaActionsheet, {
       propsData: {
         prefixCls: 'za-actionsheet',
+        visible: true,
       },
     });
     expect(wrapper.contains('.za-actionsheet')).toBe(true);
@@ -48,7 +49,7 @@ describe('ActionSheet', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    wrapper.find('.za-actionsheet-cancel>.za-actionsheet-item').trigger('click');
+    wrapper.find('.za-actionsheet__cancel>.za-actionsheet__item').trigger('click');
     vm.$nextTick(() => {
       expect(vm.visible).toEqual(false);
       expect(result).toEqual(1);
@@ -99,11 +100,12 @@ describe('ActionSheet', () => {
       propsData: {
         prefixCls: 'za-actionsheet',
         cancelText: '关闭',
+        visible: true,
       },
     });
     const { vm } = wrapper;
     vm.$nextTick(() => {
-      expect(wrapper.contains('.za-actionsheet-cancel')).toBeTruthy();
+      expect(wrapper.contains('.za-actionsheet__cancel')).toBeTruthy();
       done();
     });
   });
@@ -113,11 +115,12 @@ describe('ActionSheet', () => {
       propsData: {
         prefixCls: 'za-actionsheet',
         showCancel: false,
+        visible: true,
       },
     });
     const { vm } = wrapper;
     vm.$nextTick(() => {
-      expect(wrapper.contains('.za-actionsheet-cancel')).toBe(false);
+      expect(wrapper.contains('.za-actionsheet__cancel')).toBe(false);
       done();
     });
   });

@@ -6,24 +6,23 @@ export default {
   name: 'zaCollapseItem',
   mixins: [Emitter, findParent],
   props: {
-    prefixCls: {
-      type: String,
-      default: 'za-collapse',
-    },
-    activeKey: {
-      type: String,
+    itemKey: {
+      type: [String, Number],
       default: '',
     },
     title: {
       type: String,
       default: '',
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
       active: false,
       itemAnimated: false,
-      itemOpen: false,
       animatedHeight: '',
     };
   },
@@ -31,20 +30,30 @@ export default {
     this.findParent('zaCollapse');
     this.setDefaultActive();
   },
+  watch: {
+    parantActiveKey() {
+      this.$nextTick(() => {
+        this.setDefaultActive();
+      });
+    },
+  },
   computed: {
     itemActiveKey() {
       let itemActiveKey;
-      if (!this.activeKey) {
+      if (!this.itemKey) {
         itemActiveKey = -1;
       } else {
-        itemActiveKey = this.activeKey;
+        itemActiveKey = this.itemKey;
       }
       return itemActiveKey;
+    },
+    parantActiveKey() {
+      return this.parent && this.parent.activeKey;
     },
   },
   methods: {
     isActive(tag, activeKey) {
-      const itemTag = tag || this.activeKey;
+      const itemTag = tag || this.itemKey;
       this.itemActiveKeys = (activeKey !== undefined) ? activeKey : [];
       const result = this.itemActiveKeys.indexOf(itemTag) > -1;
       return result;
@@ -52,9 +61,9 @@ export default {
     setDefaultActive() {
       const { parent, itemActiveKey } = this;
       this.itemAnimated = parent.animated;
-      this.itemOpen = parent.open;
       this.multiple = parent.multiple;
-      this.active = this.isActive(itemActiveKey, parent.activeKey);
+      this.prefixCls = parent.prefixCls;
+      this.active = this.isActive(itemActiveKey, parent.currActiveKey);
       this.$nextTick(() => {
         if (this.itemAnimated) {
           this.setAnimateStyle(this.active);
@@ -62,9 +71,9 @@ export default {
       });
     },
     setActive() {
-      const { parent, active, multiple, itemAnimated } = this;
+      const { parent, active, multiple, itemAnimated, itemKey } = this;
       let activeStatus;
-      if (multiple) {
+      if (!multiple) {
         const collapseItemRefs = parent.$children;
         collapseItemRefs.forEach((item) => {
           if (item.active) {
@@ -82,11 +91,12 @@ export default {
       if (itemAnimated) {
         this.setAnimateStyle(!activeStatus);
       }
+      this.$emit('item-change', itemKey);
     },
     onClickItem() {
-      const { parent, open } = this;
-      if (open) {
-        return;
+      const { parent, disabled } = this;
+      if (disabled) {
+        return false;
       }
       this.setActive();
       parent.onItemChange(this.itemActiveKey);
@@ -117,15 +127,23 @@ export default {
     },
   },
   render() {
-    const { prefixCls, active, itemOpen, title, itemAnimated, animatedHeight } = this;
+    const { prefixCls, active, title, itemAnimated, animatedHeight, disabled } = this;
+    const itemCls = `${prefixCls}-item`;
     return (
-      <div class={{ [`${prefixCls}-item`]: true, active: active || itemOpen }} ref='collapseItem'>
-        <div class={`${prefixCls}-item-title`} on-click={this.onClickItem}>
+      <div class={{
+        [`${itemCls}`]: true,
+        [`${itemCls}--active`]: !!active,
+        [`${itemCls}--disabled`]: !!disabled,
+        }} ref='collapseItem'>
+        <div class={`${itemCls}__title`} on-click={this.onClickItem}>
           <div>{title}</div>
-          <div class={{ [`${prefixCls}-item-arrow`]: true, [`${prefixCls}-item-arrow-hidden`]: itemOpen }}></div>
+          <div class={{ [`${itemCls}__arrow`]: true }}></div>
         </div>
-        <div class={{ [`${prefixCls}-item-content`]: true, [`${prefixCls}-item-content-anim`]: itemAnimated }} ref='animateRoom' style={animatedHeight}>
-          <div class={`${prefixCls}-item-content-inner`}>
+        <div class={{
+          [`${itemCls}__content`]: true,
+          [`${itemCls}__content--anim`]: itemAnimated,
+          }} ref='animateRoom' style={animatedHeight}>
+          <div class={`${itemCls}__content-inner`}>
             {this.$slots.default}
           </div>
         </div>
