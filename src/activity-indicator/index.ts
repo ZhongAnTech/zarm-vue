@@ -1,7 +1,7 @@
 import ActivityIndicator from './src/activityIndicator.vue';
-import transformFunctionComponent from '../utils/sfc';
+import transformVueComponent from '../utils/sfc';
 
 /* istanbul ignore next */
-const ActivityIndicatorComponentOptions = transformFunctionComponent(ActivityIndicator);
+const ActivityIndicatorComponentOptions = transformVueComponent(ActivityIndicator);
 
 export default ActivityIndicatorComponentOptions;

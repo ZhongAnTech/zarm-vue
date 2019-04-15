@@ -15,8 +15,8 @@ function install(this: ComponentOptions<Vue>, Vue: VueConstructor) {
   }
 }
 
-// should be transform Vue Functional Class to Vue.$options ComponentOptions
-function transformFunctionComponent(ZarmVue: VueConstructor): ZarmComponentOptions {
+// should be transform @vue-class-component Plugin default Class to Vue.$options ComponentOptions
+function transformVueComponent(ZarmVue: VueConstructor): ZarmComponentOptions {
   const componentOptions: any = new ZarmVue().$options;
   if (!componentOptions) {
     throw new Error(`this is not vue component class...`);
@@ -25,4 +25,4 @@ function transformFunctionComponent(ZarmVue: VueConstructor): ZarmComponentOptio
   return componentOptions;
 }
 
-export default transformFunctionComponent;
+export default transformVueComponent;

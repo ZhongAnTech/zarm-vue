@@ -1,7 +1,7 @@
 import Button from './src/button.vue';
-import transformFunctionComponent from '../utils/sfc';
+import transformVueComponent from '../utils/sfc';
 
 /* istanbul ignore next */
-const ButtonComponentOptions = transformFunctionComponent(Button);
+const ButtonComponentOptions = transformVueComponent(Button);
 
 export default ButtonComponentOptions;

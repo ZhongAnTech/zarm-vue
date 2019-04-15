@@ -67,7 +67,7 @@ import { defaultThemeValidator, enumGenerator } from '../../utils/validator';
     },
   },
 })
-export default class Buttonn extends Vue {
+export default class Button extends Vue {
   handleClick(event) {
     const { disabled } = this.$props;
     if (!disabled) {
