@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <svg :class='{
     [`${prefixCls}`]: true,
     [`${prefixCls}--${size}`]: !!size,
@@ -10,12 +10,14 @@
   </svg>
 </template>
 
-<script>
-import { enumGenerator } from '@/utils/validator';
+<script lang='ts'>
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { enumGenerator } from '../../utils/validator';
 
-const diameter = 62;
+const diameter: number = 62;
 
-export default {
+@Component({
   name: 'zaActivityIndicator',
   props: {
     prefixCls: {
@@ -36,25 +38,23 @@ export default {
       default: 15,
     },
   },
-  data() {
+})
+export default class ActivityIndicator extends Vue {
+  diameter = diameter
+  get half() {
+    return this.diameter / 2;
+  }
+  get r() {
+    const { strokeWidth } = this.$props;
+    return this.half - (strokeWidth / 2);
+  }
+  get style() {
+    const round = 2 * Math.PI * this.r;
+    const { percent, strokeWidth } = this.$props;
     return {
-      diameter,
+      strokeDasharray: `${(round * percent) / 100} ${round}`,
+      strokeWidth,
     };
-  },
-  computed: {
-    half() {
-      return this.diameter / 2;
-    },
-    r() {
-      return this.half - (this.strokeWidth / 2);
-    },
-    style() {
-      const round = 2 * Math.PI * this.r;
-      return {
-        strokeDasharray: `${(round * this.percent) / 100} ${round}`,
-        strokeWidth: this.strokeWidth,
-      };
-    },
-  },
-};
+  }
+}
 </script>
