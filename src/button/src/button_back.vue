@@ -18,13 +18,11 @@
   </a>
 </template>
 
-<script lang='ts'>
-import Vue from 'vue';
-import Component from 'vue-class-component';
-import zaActivityIndicator from '../../activity-indicator';
-import { defaultThemeValidator, enumGenerator } from '../../utils/validator';
+<script>
+import zaActivityIndicator from '@/activity-indicator';
+import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
 
-@Component({
+export default {
   name: 'zaButton',
   components: {
     zaActivityIndicator,
@@ -66,13 +64,12 @@ import { defaultThemeValidator, enumGenerator } from '../../utils/validator';
       default: false,
     },
   },
-})
-export default class Buttonn extends Vue {
-  handleClick(event) {
-    const { disabled } = this.$props;
-    if (!disabled) {
-      this.$emit('click', event);
-    }
-  }
-}
+  methods: {
+    handleClick(event) {
+      if (!this.disabled) {
+        this.$emit('click', event);
+      }
+    },
+  },
+};
 </script>
