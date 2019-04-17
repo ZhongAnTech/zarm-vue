@@ -1,17 +1,22 @@
-<template lang="html">
+<template>
   <div :class='{
     [`${prefixCls}`]: true,
     [`${prefixCls}--${theme}`]: !!theme,
     [`${prefixCls}--${type}`]: !!type,
     }'>
-    <div v-if="type==='circle' || type==='semi-circle'" :class='`${prefixCls}__inner`'>
-      <svg :class='{
+    <div
+      v-if="type==='circle' || type==='semi-circle'"
+      :class='`${prefixCls}__inner`'
+    >
+      <svg
+        :class='{
         [`${prefixCls}`]: true,
         [`${prefixCls}__${type}`]: true,
         [`${prefixCls}--${theme}`]: !!theme,
       }'
         :viewBox='viewBox'
-        ref='svg'>
+        ref='svg'
+      >
         <path
           :class='`${prefixCls}__track`'
           :d='path'
@@ -29,8 +34,15 @@
       </svg>
     </div>
 
-    <div v-else :class='`${prefixCls}__inner`' :style='{height: `${strokeWidth}px`, borderRadius: `${borderR}px`}'>
-      <div :class='`${prefixCls}__bg`' :style='{ width: `${percent}%`, borderRadius: `${borderR}px`}' />
+    <div
+      v-else
+      :class='`${prefixCls}__inner`'
+      :style='{height: `${strokeWidth}px`, borderRadius: `${borderR}px`}'
+    >
+      <div
+        :class='`${prefixCls}__bg`'
+        :style='{ width: `${percent}%`, borderRadius: `${borderR}px`}'
+      />
     </div>
 
     <div :class='`${prefixCls}__text`'>
@@ -40,18 +52,13 @@
   </div>
 </template>
 
-<script>
-import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
+<script lang='ts'>
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { defaultThemeValidator, enumGenerator } from '../../utils/validator';
 
-const diameter = 62;
-export default {
+@Component({
   name: 'zaProgress',
-  data() {
-    return {
-      diameter,
-      calStrokeWidth: 0,
-    };
-  },
   props: {
     prefixCls: {
       type: String,
@@ -95,45 +102,54 @@ export default {
       }
     },
   },
-  computed: {
-    strokeWidth() {
-      return (typeof this.weight) === 'number' ? this.weight : this.weight === 'normal' ? 8 : 4;
-    },
-    borderR() {
-      return this.shape === 'round' ? this.strokeWidth : 0;
-    },
-    half() {
-      return this.diameter / 2;
-    },
-    r() {
-      return this.half + (this.calStrokeWidth / 2);
-    },
-    strokeLinecap() {
-      return this.shape === 'round' ? 'round' : 'butt';
-    },
-    viewBox() {
-      return this.type === 'semi-circle' ? `
-      0 0 ${this.diameter + this.calStrokeWidth} ${(this.diameter + this.calStrokeWidth) / 2}`
-        : `
-      0 0 ${this.diameter + this.calStrokeWidth} ${this.diameter + this.calStrokeWidth}`;
-    },
-    dasharray() {
-      return this.type === 'circle' ? Math.PI * this.diameter : Math.PI * (this.diameter / 2);
-    },
-    dashoffset() {
-      return ((this.dasharray * (100 - this.percent)) / 100);
-    },
-    path() {
-      return this.type === 'circle' ? `
-        M${this.r}, ${this.r}
-        m0 ${-this.half}
-        a${this.half} ${this.half} 0 1 1 0 ${diameter}
-        a${this.half} ${this.half} 0 1 1 0 ${-diameter}`
-        : `
-        M${this.r}, ${this.r}
-        m${-this.half} 0
-        a${this.half} ${this.half} 0 0 1 ${this.diameter} 0`;
-    },
-  },
-};
+})
+export default class Progress extends Vue {
+  diameter: number = 62
+  calStrokeWidth: number = 0
+  get strokeWidth() {
+    const { weight } = this.$props;
+    return (typeof weight) === 'number' ? weight : weight === 'normal' ? 8 : 4;
+  }
+  get borderR() {
+    const { shape } = this.$props;
+    return shape === 'round' ? this.strokeWidth : 0;
+  }
+  get half() {
+    return this.diameter / 2;
+  }
+  get r() {
+    return this.half + (this.calStrokeWidth / 2);
+  }
+  get strokeLinecap() {
+    const { shape } = this.$props;
+    return shape === 'round' ? 'round' : 'butt';
+  }
+  get viewBox() {
+    const { type } = this.$props;
+    return type === 'semi-circle' ? `
+    0 0 ${this.diameter + this.calStrokeWidth} ${(this.diameter + this.calStrokeWidth) / 2}`
+      : `
+    0 0 ${this.diameter + this.calStrokeWidth} ${this.diameter + this.calStrokeWidth}`;
+  }
+  get dasharray() {
+    const { type } = this.$props;
+    return type === 'circle' ? Math.PI * this.diameter : Math.PI * (this.diameter / 2);
+  }
+  get dashoffset() {
+    const { percent } = this.$props;
+    return ((this.dasharray * (100 - percent)) / 100);
+  }
+  get path() {
+    const { type } = this.$props;
+    return type === 'circle' ? `
+      M${this.r}, ${this.r}
+      m0 ${-this.half}
+      a${this.half} ${this.half} 0 1 1 0 ${this.diameter}
+      a${this.half} ${this.half} 0 1 1 0 ${-this.diameter}`
+      : `
+      M${this.r}, ${this.r}
+      m${-this.half} 0
+      a${this.half} ${this.half} 0 0 1 ${this.diameter} 0`;
+  }
+}
 </script>

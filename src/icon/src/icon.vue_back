@@ -1,4 +1,4 @@
-<template>
+<template lang="html">
   <i :class='{
     [`${prefixCls}`]: true,
     [`${prefixCls}-${type}`]: !!type,
@@ -6,12 +6,10 @@
   }' @click='handleClick'></i>
 </template>
 
-<script lang='ts'>
-import Vue from 'vue';
-import Component from 'vue-class-component';
-import { defaultThemeValidator } from '../../utils/validator';
+<script>
+import { defaultThemeValidator } from '@/utils/validator';
 
-@Component({
+export default {
   name: 'zaIcon',
   props: {
     prefixCls: {
@@ -25,10 +23,10 @@ import { defaultThemeValidator } from '../../utils/validator';
       default: null,
     },
   },
-})
-export default class Icon extends Vue {
-  handleClick(event) {
-    this.$emit('click', event);
-  }
-}
+  methods: {
+    handleClick(event) {
+      this.$emit('click', event);
+    },
+  },
+};
 </script>
