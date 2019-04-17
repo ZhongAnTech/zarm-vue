@@ -9,10 +9,10 @@
   "exclude": ["node_modules"],
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": false,
+    "experimentalDecorators": true,
     "allowJs": true,
     "module": "esnext",
-    "target": "es6",
+    "target": "es5",
     "moduleResolution": "node",
     "isolatedModules": true,
     "sourceMap": true,

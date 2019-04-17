@@ -1,4 +1,4 @@
-<template>
+<template lang="html">
   <div :class='`${prefixCls}`'>
     <div :class="`${prefixCls}__left`">
       <slot name="left"></slot>
@@ -12,11 +12,9 @@
   </div>
 </template>
 
-<script lang='ts'>
-import Vue from 'vue';
-import Component from 'vue-class-component';
+<script>
 
-@Component({
+export default {
   name: 'zaNavBar',
   props: {
     prefixCls: {
@@ -24,6 +22,9 @@ import Component from 'vue-class-component';
       default: 'za-navbar',
     },
   },
-})
-export default class NavBar extends Vue {}
+  data() {
+    return {
+    };
+  },
+};
 </script>

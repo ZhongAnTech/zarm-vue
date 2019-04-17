@@ -1,5 +1,6 @@
-<template lang="html">
-  <a :class='{
+<template>
+  <a
+    :class='{
     [`${prefixCls}`]: true,
     [`${prefixCls}--${theme}`]: !!theme,
     [`${prefixCls}--${shape}`]: !!shape,
@@ -7,10 +8,18 @@
     [`${prefixCls}--block`]: !!block,
     [`${prefixCls}--bordered`]: !!ghost,
     [`${prefixCls}--disabled`]:  !!disabled,
-  }' @click='handleClick'>
+  }'
+    @click='handleClick'
+  >
     <span :class='`${prefixCls}__content`'>
-      <za-activity-indicator class="rotate360" v-if='loading'/>
-      <slot name='icon' v-else></slot>
+      <za-activity-indicator
+        class="rotate360"
+        v-if='loading'
+      />
+      <slot
+        name='icon'
+        v-else
+      ></slot>
       <span>
         <slot></slot>
       </span>
