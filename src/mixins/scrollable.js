@@ -51,7 +51,6 @@ export default {
     onAfterClose() {
       if (!this.documentScrollble) return;
       document.body.style = this.documentBodyStyle;
-      // console.log(this.documentScrollTop);
       // scrollTop lost after set position:fixed, restore it back.
       setScrollTop(this.documentScrollTop);
     },

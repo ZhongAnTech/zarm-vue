@@ -1,12 +1,12 @@
-import { guid } from '@/utils/misc';
+import { guid } from './misc';
 
-export default function (node) {
+export default function (node: any) {
   return typeof node === 'object' && Object.prototype.hasOwnProperty.call(node, 'componentOptions');
 }
 
-export const deepCloneVNode = (h, vnode) => {
+export const deepCloneVNode = (h: any, vnode: any) => {
   if (!vnode) return;
-  const clonedChildren = vnode.children && vnode.children.map(vd => deepCloneVNode(vd));
+  const clonedChildren = vnode.children && vnode.children.map(vd => deepCloneVNode(h, vd));
   const cloned = h(vnode.tag, vnode.data, clonedChildren);
   cloned.text = vnode.text;
   cloned.isComment = vnode.isComment;

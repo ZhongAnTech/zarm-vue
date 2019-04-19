@@ -1,11 +1,12 @@
-const throttle = (func, delay) => {
-  let timer;
+const throttle = (func: any, delay: number) => {
+  const _self = this;
+  let timer: any;
   let startTime = Date.now();
 
-  return () => {
+  function _throttle() {
     const curTime = Date.now();
     const remaining = delay - (curTime - startTime);
-    const context = this;
+    const context = _self;
     const args = arguments;
 
     clearTimeout(timer);
@@ -16,6 +17,7 @@ const throttle = (func, delay) => {
       timer = setTimeout(func, remaining);
     }
   };
+  return _throttle;
 };
 
 export default throttle;

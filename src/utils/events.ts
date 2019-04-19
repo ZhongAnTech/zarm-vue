@@ -1,5 +1,5 @@
 export default {
-  on(el, type, callback) {
+  on(el: any, type: string, callback: any) {
     if (el.addEventListener) {
       el.addEventListener(type, callback, { passive: false });
     } /* istanbul ignore next  */ else {
@@ -9,7 +9,7 @@ export default {
     }
   },
 
-  off(el, type, callback) {
+  off(el: any, type: string, callback: any) {
     if (el.removeEventListener) {
       el.removeEventListener(type, callback, { passive: false });
     } /* istanbul ignore next  */ else {
@@ -17,9 +17,9 @@ export default {
     }
   },
 
-  once(el, type, callback) {
+  once(el: any, type: string, callback: any) {
     const typeArray = type.split(' ');
-    const recursiveFunction = (e) => {
+    const recursiveFunction = (e: any) => {
       e.target.removeEventListener(e.type, recursiveFunction, { passive: false });
       return callback(e);
     };
@@ -29,7 +29,7 @@ export default {
     }
   },
 
-  stopPropagation(e) {
+  stopPropagation(e: any) {
     e.stopPropagation();
   },
 };

@@ -1,8 +1,8 @@
-export function isThenable(obj) {
+export function isThenable(obj: any) {
   return obj && typeof obj.then === 'function';
 }
 
-export function warn(msg) {
+export function warn(msg: string) {
   console && console.warn && console.warn(msg); // eslint-disable-line
 }
 

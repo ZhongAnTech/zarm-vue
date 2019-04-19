@@ -1,5 +1,5 @@
 export default {
-  getLocaleByComponent(localeProvider, name = '', key) {
+  getLocaleByComponent(localeProvider: any, name: string = '', key: string) {
     if (!localeProvider) return '';
     const currentLang = localeProvider.lang;
     if (currentLang) {

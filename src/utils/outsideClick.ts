@@ -1,6 +1,6 @@
-import Event from '@/utils/events';
+import Event from './events';
 
-const outSideClick = (action, onOutsideCallback) => {
+const outSideClick = (action: boolean, onOutsideCallback: any) => {
   if (action) {
     Event.on(document.body, 'touchstart', onOutsideCallback || (() => {}));
     Event.on(document.body, 'click', onOutsideCallback || (() => {}));
