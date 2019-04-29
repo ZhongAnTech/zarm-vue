@@ -1,30 +1,3 @@
-<template lang="html">
-<transition v-if="currentVisible">
-  <div 
-    :class='{
-      [`${prefixCls}`]: true,
-      [`${prefixCls}--hidden`]: !maskVisible,
-    }'
-  >
-    <div :class='{
-        [`${prefixCls}__wrapper`]: true,
-        [`${prefixCls}__wrapper-${direction}`]: true,
-      }'
-      :style='transitionDurationStyle'
-    >   
-        <slot></slot>
-    </div>
-    <za-mask
-      v-if="hasMask"
-      :class='[`fade-${animationState}`]'
-      :style='animationDurationStyle'
-      :visible='maskVisible'
-      :type='maskType'
-      @click="onMaskClick"/>
-  </div>
-</transition>
-</template>
-
 <script>
 import zaMask from '../../mask';
 import getContainer from '../../mixins/get-container';
@@ -119,7 +92,7 @@ export default {
       this.animationState = 'enter';
       this.timerEnter = setTimeout(() => {
         this.maskVisible = true;
-      });
+      }, 10);
     },
     leave() {
       this.animationState = 'leave';
@@ -147,6 +120,46 @@ export default {
   },
   beforeDestroy() {
     this.removeTimer();
+  },
+  render() {
+    const {
+      prefixCls,
+      hasMask,
+      direction,
+      maskType,
+      onMaskClick,
+      maskVisible,
+      currentVisible,
+      animationState,
+      transitionDurationStyle,
+      animationDurationStyle,
+    } = this;
+    const popupCls = maskVisible ? `${prefixCls} ${prefixCls}--opened` : `${prefixCls}`;
+    return (
+      <transition>
+        {currentVisible ?
+          <div
+            class={`${popupCls}`}
+          >
+            <div class={`${prefixCls}__wrapper ${prefixCls}__wrapper-${direction}`}
+              style={transitionDurationStyle}
+            >
+              {this.$slots.default}
+            </div>
+            {
+              hasMask ?
+                <za-mask
+                  class={`fade-${animationState}`}
+                  style={animationDurationStyle}
+                  visible={maskVisible}
+                  type={maskType}
+                  onClick={onMaskClick} />
+                : null
+            }
+          </div> : null
+        }
+      </transition>
+    );
   },
 };
 </script>
