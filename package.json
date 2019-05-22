@@ -1,6 +1,6 @@
 {
   "name": "zarm-vue",
-  "version": "2.0.0-alpha.21",
+  "version": "2.0.0-alpha.22",
   "description": "zarm in vue",
   "tags": [
     "zarm",
@@ -131,12 +131,12 @@
     "stylelint": "^7.12.0",
     "stylelint-config-standard": "^16.0.0",
     "url-loader": "^1.0.1",
-    "vue": "^2.5.17",
+    "vue": "^2.6.10",
     "vue-jest": "^1.0.2",
     "vue-loader": "^15.0.7",
     "vue-router": "^2.6.0",
     "vue-style-loader": "^4.1.0",
-    "vue-template-compiler": "^2.5.17",
+    "vue-template-compiler": "^2.6.10",
     "vuex": "^3.0.1",
     "webpack": "^4.10.1",
     "webpack-bundle-analyzer": "^2.13.1",

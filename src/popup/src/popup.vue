@@ -137,7 +137,8 @@ export default {
     const popupCls = maskVisible ? `${prefixCls} ${prefixCls}--opened` : `${prefixCls}`;
     return (
       <transition>
-        {currentVisible ?
+        {
+          currentVisible &&
           <div
             class={`${popupCls}`}
           >
@@ -147,16 +148,15 @@ export default {
               {this.$slots.default}
             </div>
             {
-              hasMask ?
+              hasMask &&
                 <za-mask
                   class={`fade-${animationState}`}
                   style={animationDurationStyle}
                   visible={maskVisible}
                   type={maskType}
                   onClick={onMaskClick} />
-                : null
             }
-          </div> : null
+          </div>
         }
       </transition>
     );
