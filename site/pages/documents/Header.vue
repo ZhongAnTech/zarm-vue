@@ -9,17 +9,6 @@
       </div>
       <div class="search">
         <input placeholder="搜索组件..." ref="searchInput" />
-        <!--
-        <el-select v-model="componentName" @change="handleChange" filterable placeholder="搜索组件..." style="width:280px">
-          <el-option
-            v-for="item in componentList"
-            :clearable='true'
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-          </el-option>
-        </el-select>
-        -->
       </div>
       <div class="version">
         <el-select v-model="value" placeholder="请选择" size="small" @change="handleVerChange">
@@ -34,7 +23,7 @@
       <nav>
         <ul>
           <li><a href="https://zarm.design">首页</a></li>
-          <li><a href="https://zarm.design/#/documents/quick-start">React 组件</a></li>
+          <li><a href="https://zarm.design/#/components/quick-start">React 组件</a></li>
           <li><a href="#/documents/quick-start" class="active">Vue 组件</a></li>
           <li><a href="https://github.com/ZhonganTechENG/zarm-vue" target="_blank" rel="noopener noreferrer">Github</a></li>
         </ul>
