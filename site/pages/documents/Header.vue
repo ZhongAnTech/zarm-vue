@@ -25,6 +25,7 @@
           <li><a href="https://zarm.design">首页</a></li>
           <li><a href="https://zarm.design/#/components/quick-start">React 组件</a></li>
           <li><a href="#/documents/quick-start" class="active">Vue 组件</a></li>
+          <li><a href="https://zarm.design/#/design/download">设计</a></li>
           <li><a href="https://github.com/ZhonganTechENG/zarm-vue" target="_blank" rel="noopener noreferrer">Github</a></li>
         </ul>
       </nav>
@@ -34,7 +35,8 @@
 
 <script>
 import Format from '../../utils/format';
-import Demo from '../../demos'; 
+import Demo from '../../demos';
+
 export default {
   data() {
     return {
@@ -42,7 +44,7 @@ export default {
       componentList: [],
       componentName: '',
       options: [],
-      value: ''
+      value: '',
     };
   },
   created() {
@@ -53,24 +55,24 @@ export default {
   },
   mounted() {
     docsearch({
-      apiKey: '59f746e0b69134f4afaece614544e197', 
-      indexName: 'zarm-vue', 
+      apiKey: '59f746e0b69134f4afaece614544e197',
+      indexName: 'zarm-vue',
       inputSelector: '.search input',
       debug: false,
     });
   },
   watch: {
-    "$route"(val) {
+    $route(val) {
       const { path } = this.$route;
-      this.activeName = path.replace('/documents/', '')
-    }
+      this.activeName = path.replace('/documents/', '');
+    },
   },
   methods: {
     initComponentList() {
       const { components } = this.Demo;
       const List = [...components.form, ...components.feedback, ...components.view, ...components.navigation, ...components.other];
       this.componentList = List.map(i => (
-        { label: i.name + ' ' + i.description, value: Format.camel2Dash(i.name) }
+        { label: `${i.name} ${i.description}`, value: Format.camel2Dash(i.name) }
       ));
     },
     handleChange(val) {
@@ -78,14 +80,14 @@ export default {
       const v = this.$store.state.version;
       this.$router.push({
         path: `${Format.camel2Dash(val)}`,
-        query: { v }
+        query: { v },
       });
       this.componentName = '';
     },
     handleVerChange(val) {
       window.location = this.options.find(i => i.value === val).path;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -128,6 +130,7 @@ export default {
     float: left;
     margin-top: 16px;
     margin-left: 50px;
+    font-size: 14px;
   
     input {
       display: inline-block;
@@ -165,8 +168,8 @@ export default {
 
   .version {
     float: right;
-    margin-top: 15px;
-    margin-right: 30px;
+    margin: 15px 30px 0 80px;
+    width: 130px;
 
     .tag-input-box {
       width: 130px;
