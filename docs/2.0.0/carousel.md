@@ -47,6 +47,7 @@
 <za-carousel
   ref="carousel"
   direction="left"
+  :swipeable="false"
   loop
   @changeStart="handleChangeStart"
   @changeEnd="handleChangeEnd"
@@ -72,7 +73,7 @@
 :::demo 自动轮播
 
 ```html
-<za-carousel direction="left" loop auto-play>
+<za-carousel direction="left" :swipeable="false" loop auto-play>
   <za-carousel-item :key="index" v-for="(i, index) in ITEMS">
     <div class="carousel-item-pic">
       <img :src="i.url" :alt="i.img" :draggable="false" />
@@ -136,7 +137,8 @@ export default {
 | direction               | string         | 'left' | 'left', 'right', 'top', 'bottom' | 滑动方向                       |
 | height                  | number, string |        |                                  | 高度                           |
 | loop                    | boolean        | false  |                                  | 是否循环                       |
-| active-ndex             | number         | 0      |                                  | 当前页面的索引                 |
+| active-index             | number         | 0      |                                  | 当前页面的索引                 |
+| swipeable               | boolean        | true   |                                  | 是否可拖拽                     |
 | auto-play               | boolean        | false  |                                  | 是否自动轮播                   |
 | auto-play-interval-time | number         | 3000   |                                  | 自动轮播时间间隔，单位：毫秒   |
 | move-distance-ratio     | number         | 0.5    |                                  | 移动距离比例临界点             |

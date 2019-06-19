@@ -35,6 +35,10 @@ export default {
       type: Number,
       default: 300,
     },
+    swipeable: {
+      type: Boolean,
+      default: true,
+    },
     autoPlay: {
       type: Boolean,
       default: false,
@@ -106,6 +110,8 @@ export default {
   },
   methods: {
     onDragStart() {
+      // 如果禁用滑动，屏蔽drag行为
+      if (!this.swipeable) return;
       this.scrolling = false;
       // 如果正好在transition动画中，跳转到头尾
       const activeIndex = this.currentActiveIndex;
@@ -120,6 +126,9 @@ export default {
       this.pauseAutoPlay();
     },
     onDragMove(event, { offsetX, offsetY }) {
+      // 如果禁用滑动，屏蔽drag行为
+      if (!this.swipeable) return;
+
       const distanceX = Math.abs(offsetX);
       const distanceY = Math.abs(offsetY);
 
@@ -158,6 +167,9 @@ export default {
     },
 
     onDragEnd(event, { offsetX, offsetY, startTime }) { // eslint-disable-line no-unused-vars
+      // 如果禁用滑动，屏蔽drag行为
+      if (!this.swipeable) return;
+
       if (this.scrolling ||
           (!offsetX && !offsetY)
       ) {
