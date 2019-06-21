@@ -1,39 +1,77 @@
 <template lang="html">
-  <za-cell v-if='radioType === "cell"' :disabled='radioDisabled' isLink>
-    <za-icon slot='description' v-if='isChecked' type="right" :theme='radioDisabled ? null : groupTheme'></za-icon>
-    <input type="radio" :class='`${prefixCls}-input`' :checked='isChecked' :disabled='radioDisabled' :value='label' v-model='model' @change='onValueChange' />
-    <slot></slot>
-  </za-cell>
-  <za-button
-    v-else-if='radioType === "button"'
-    :class='{
-      [`${prefixCls}`]: true,
-      checked: isChecked,
-      disabled: radioDisabled,
-      block: isBlock,
-    }' :theme='groupTheme' size='xs' :block='isBlock' :disabled='radioDisabled' :bordered='!isChecked' :shape='groupShape'>
-    <input type="radio" :class='`${prefixCls}-input`' :checked='isChecked' :disabled='radioDisabled' :value='label' v-model='model' @change='onValueChange' />
-    <slot></slot>
-  </za-button>
-  <div v-else :class='{
-      [`${prefixCls}`]: true,
-      [`theme-${groupTheme}`]: !!groupTheme,
-      [`shape-${groupShape}`]: !!groupShape,
-      checked: isChecked,
-      disabled: radioDisabled,
-    }'>
-    <div :class='`${prefixCls}-wrapper`'>
-      <span :class='`${prefixCls}-inner`'></span>
-      <span :class='`${prefixCls}-text`' v-if='$slots.default'>
-        <slot></slot>
-      </span>
-      <input type="radio" :class='`${prefixCls}-input`' :checked='isChecked' :disabled='radioDisabled' :value='label' v-model='model' @change='onValueChange' />
+    <za-cell v-if='radioType === "cell"' :disabled='radioDisabled' isLink>
+      <za-icon
+        slot='description'
+        v-if='isChecked'
+        type="right"
+        :theme='radioDisabled ? null : groupTheme'
+      />
+      <input
+        v-model='model'
+        type="radio"
+        :class='`${prefixCls}-input`'
+        :disabled='radioDisabled'
+        :value='label'
+        @change='onValueChange'
+      />
+      <slot></slot>
+    </za-cell>
+    <za-button
+      v-else-if='radioType === "button"'
+      :theme='groupTheme'
+      :block='isBlock'
+      :disabled='radioDisabled'
+      :bordered='!isChecked'
+      :shape='groupShape'
+      size='xs'
+      :class="{
+        [`${prefixCls}`]: true,
+        ['checked']: isChecked,
+        ['disabled']: radioDisabled,
+        ['block']: isBlock,
+      }"
+    >
+      <input
+        v-model='model'
+        type="radio"
+        :class='`${prefixCls}-input`'
+        :disabled='radioDisabled'
+        :value='label'
+        @change='onValueChange'
+      />
+      <slot></slot>
+    </za-button>
+    <div
+      v-else
+      :class="{
+        [`${prefixCls}`]: true,
+        [`theme-${groupTheme}`]: !!groupTheme,
+        [`shape-${groupShape}`]: !!groupShape,
+        ['checked']: isChecked,
+        ['disabled']: radioDisabled,
+      }"
+    >
+      <div :class='`${prefixCls}-wrapper`'>
+        <span :class='`${prefixCls}-inner`'></span>
+        <span
+          :class='`${prefixCls}-text`'
+          v-if='$slots.default'
+        >
+          <slot></slot>
+        </span>
+        <input
+          v-model='model'
+          type="radio"
+          :class='`${prefixCls}-input`'
+          :disabled='radioDisabled'
+          :value='label'
+          @change='onValueChange'
+        />
+      </div>
     </div>
-  </div>
 </template>
 
 <script>
-// necessary when used alone
 import zaButton from '@/button';
 import zaIcon from '@/icon';
 import zaCell from '@/cell';
