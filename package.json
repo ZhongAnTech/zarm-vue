@@ -1,6 +1,6 @@
 {
   "name": "zarm-vue",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "description": "zarm in vue",
   "tags": [
     "zarm",
@@ -139,5 +139,12 @@
   "engines": {
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8",
+    "iOS >= 8",
+    "Android >= 4"
+  ]
 }
