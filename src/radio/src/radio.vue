@@ -1,7 +1,7 @@
 <template lang="html">
   <za-cell v-if='radioType === "cell"' :disabled='radioDisabled' isLink>
     <za-icon slot='description' v-if='isChecked' type="right" :theme='radioDisabled ? null : groupTheme'></za-icon>
-    <input type="radio" :class='`${prefixCls}__input`' :checked='isChecked' :disabled='radioDisabled' :value='value' v-model='model' @change='onValueChange' />
+    <input type="radio" :class='`${prefixCls}__input`' :disabled='radioDisabled' :value='value' v-model='model' @change='onValueChange' />
     <slot></slot>
   </za-cell>
   <za-button
@@ -14,7 +14,7 @@
       [`${prefixCls}--disabled`]: radioDisabled,
       [`${prefixCls}--block`]: isBlock,
     }' :theme='groupTheme' size='xs' :block='isBlock' :disabled='radioDisabled' :ghost='!isChecked' :shape='groupShape'>
-    <input type="radio" :class='`${prefixCls}__input`' :checked='isChecked' :disabled='radioDisabled' :value='value' v-model='model' @change='onValueChange' />
+    <input type="radio" :class='`${prefixCls}__input`' :disabled='radioDisabled' :value='value' v-model='model' @change='onValueChange' />
     <slot></slot>
   </za-button>
   <div v-else :class='{
@@ -28,7 +28,7 @@
       <span :class='`${prefixCls}__text`' v-if='$slots.default'>
         <slot></slot>
       </span>
-      <input type="radio" :class='`${prefixCls}__input`' :checked='isChecked' :disabled='radioDisabled' :value='value' v-model='model' @change='onValueChange' />
+      <input type="radio" :class='`${prefixCls}__input`' :disabled='radioDisabled' :value='value' v-model='model' @change='onValueChange' />
     </div>
   </div>
 </template>
