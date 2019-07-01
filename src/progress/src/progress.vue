@@ -103,7 +103,7 @@ import { defaultThemeValidator, enumGenerator } from '../../utils/validator';
     },
   },
 })
-export default class Progress extends Vue {
+class Progress extends Vue {
   diameter: number = 62
   calStrokeWidth: number = 0
   get strokeWidth() {
@@ -152,4 +152,5 @@ export default class Progress extends Vue {
       a${this.half} ${this.half} 0 0 1 ${this.diameter} 0`;
   }
 }
+export default Progress;
 </script>

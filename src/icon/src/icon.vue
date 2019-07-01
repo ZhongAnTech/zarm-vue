@@ -26,9 +26,10 @@ import { defaultThemeValidator } from '../../utils/validator';
     },
   },
 })
-export default class Icon extends Vue {
+class Icon extends Vue {
   handleClick(event) {
     this.$emit('click', event);
   }
 }
+export default Icon;
 </script>

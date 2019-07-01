@@ -57,9 +57,10 @@ import { defaultThemeValidator, enumGenerator } from '../../utils/validator';
     text: [String, Number],
   },
 })
-export default class Badge extends Vue {
+class Badge extends Vue {
   supClick(event) {
     this.$emit('click', event);
   }
 }
+export default Badge;
 </script>

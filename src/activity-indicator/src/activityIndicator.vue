@@ -55,7 +55,7 @@ const diameter: number = 62;
     },
   },
 })
-export default class ActivityIndicator extends Vue {
+class ActivityIndicator extends Vue {
   diameter: number = diameter;
   get half() {
     return this.diameter / 2;
@@ -73,4 +73,5 @@ export default class ActivityIndicator extends Vue {
     };
   }
 }
+export default ActivityIndicator;
 </script>

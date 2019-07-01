@@ -1,22 +1,37 @@
 {
   "presets": [
     [
-      "env",
+      "@babel/preset-env",
       {
-        "modules": false,
-        "targets": {
-          "browsers": ["last 2 versions", "Firefox ESR", "> 1%", "ie >= 9", "iOS >= 8", "Android >= 4"]
-        }
+        "modules": false
+      }
+    ]
+  ],
+  "plugins": [
+    "transform-vue-jsx",
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
       }
     ],
-    "stage-2"
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true
+      }
+    ],
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "corejs": 2
+      }
+    ],
+    "@babel/plugin-syntax-dynamic-import"
   ],
-  "plugins": ["transform-decorators-legacy", "transform-vue-jsx", "transform-runtime"],
-  "comments": false,
   "env": {
     "test": {
-      "presets": ["env", "stage-2"],
-      "plugins": ["transform-es2015-modules-commonjs", "dynamic-import-node"]
+      "plugins": ["@babel/plugin-transform-modules-commonjs"]
     }
   }
 }

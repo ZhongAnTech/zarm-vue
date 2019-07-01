@@ -93,7 +93,7 @@ import zaIcon from '../../icon';
     this.lastValue = this.$props.value || 0;
   },
 })
-export default class Stepper extends Vue {
+class Stepper extends Vue {
   currentValue: string | number = 0
   lastValue: string | number = 0
   get subDisabled() {
@@ -184,4 +184,5 @@ export default class Stepper extends Vue {
     }
   }
 }
+export default Stepper;
 </script>

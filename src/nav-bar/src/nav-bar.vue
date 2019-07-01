@@ -25,5 +25,6 @@ import Component from 'vue-class-component';
     },
   },
 })
-export default class NavBar extends Vue {}
+class NavBar extends Vue {}
+export default NavBar;
 </script>
