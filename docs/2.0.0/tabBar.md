@@ -12,8 +12,12 @@
       <za-icon slot="activeIcon" theme="primary" type="add-round" class="icon"></za-icon>
   </za-tab-bar-item>
   <za-tab-bar-item :item-key="2" title="first">
-      <za-icon slot="icon" theme="primary" type="minus" class="icon"></za-icon>
-      <za-icon slot="activeIcon" theme="primary" type="minus-round" class="icon"></za-icon>
+      <za-badge slot="icon" sup shape="circle" text="3" @click="handleClick">
+        <za-icon theme="primary" type="minus" class="icon"></za-icon>
+      </za-badge>
+      <za-badge slot="activeIcon" sup shape="circle" text="3" @click="handleClick">
+        <za-icon theme="primary" type="minus-round" class="icon"></za-icon>
+      </za-badge>
   </za-tab-bar-item>
   <za-tab-bar-item :item-key="3" title="first">
       <za-icon slot="icon" theme="primary" type="arrow-top" class="icon"></za-icon>
