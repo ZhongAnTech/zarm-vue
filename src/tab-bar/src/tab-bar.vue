@@ -1,4 +1,4 @@
-module.exports = `<template lang="html">
+<template lang="html">
 </template>
 
 <script>
@@ -11,4 +11,3 @@ export default {
   },
 };
 </script>
-`;
