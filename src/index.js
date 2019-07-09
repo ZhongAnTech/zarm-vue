@@ -51,6 +51,8 @@ import TabPanel from '../src/tab-panel';
 import Toast from '../src/toast';
 import Tooltip from '../src/tooltip';
 import FilePicker from '../src/file-picker';
+import TabBar from '../src/tab-bar';
+import TabBarItem from '../src/tab-bar-item';
 import LocaleProvider from '../src/locale-provider';
 
 const version = '2.0.0';
@@ -108,6 +110,8 @@ const components = [
   Toast,
   Tooltip,
   FilePicker,
+  TabBar,
+  TabBarItem,
   LocaleProvider,
 ];
 
@@ -185,6 +189,8 @@ export {
   Toast,
   Tooltip,
   FilePicker,
+  TabBar,
+  TabBarItem,
   LocaleProvider,
 };
 

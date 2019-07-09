@@ -236,6 +236,13 @@ export default new Router({
       },
     },
     {
+      path: '/tab-bar',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/tabBarPage.vue')
+      },
+    },
+    {
       path: '/locale-provider',
       component: Bundle,
       meta: {

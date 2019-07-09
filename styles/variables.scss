@@ -336,3 +336,10 @@ $wheel-item-height: r(34);
 $wheel-item-rows: 5;
 $wheel-item-text-color: #000;
 $wheel-item-fontsize: r(16);
+
+// Tabbar
+$tabbar-height: 50px;
+$tabbar-hidden-bottom: -50px;
+$tabbar-background: #fff;
+$tabbar-item-font-size: 12px;
+$tabbar-item-active-color: $theme-primary;

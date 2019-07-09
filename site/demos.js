@@ -146,6 +146,10 @@ module.exports = {
         description: '标签页',
       },
       {
+        name: 'TabBar',
+        description: '标签栏',
+      },
+      {
         name: 'NavBar',
         description: '导航栏',
       },

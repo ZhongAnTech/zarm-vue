@@ -120,6 +120,9 @@
           <za-cell hasArrow @click="$router.push('/tabs')">
             标签页 Tabs
           </za-cell>
+           <za-cell hasArrow @click="$router.push('/tab-bar')">
+            标签栏 TabBar
+          </za-cell>
           <za-cell hasArrow @click="$router.push('/nav-bar')">
             导航栏 NavBar
           </za-cell>

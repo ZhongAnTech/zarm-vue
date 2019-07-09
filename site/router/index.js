@@ -152,6 +152,10 @@ export default new Router({
           component: () => import('../pages/components/TabsPage'),
         },
         {
+          path: 'tab-bar',
+          component: () => import('../pages/components/TabBarPage'),
+        },
+        {
           path: 'toast',
           component: () => import('../pages/components/ToastPage'),
         },
