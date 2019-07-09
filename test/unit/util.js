@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import { mount, TransitionStub } from '@vue/test-utils';
+import { mount, shallowMount, TransitionStub } from '@vue/test-utils';
 
-export { mount };
+export { mount, shallowMount };
 
 // Trigger pointer/touch event
 export function trigger(wrapper, eventName, x = 0, y = 0) {

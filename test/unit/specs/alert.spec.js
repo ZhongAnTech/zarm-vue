@@ -1,5 +1,5 @@
 import zaAlert from '@/alert';
-import { mount } from '../util';
+import { mount, shallowMount } from '../util';
 
 const $zaAlert = zaAlert.root;
 
@@ -49,7 +49,7 @@ describe('Alert', () => {
         },
       },
     };
-    const wrapper = mount(TestCompo);
+    const wrapper = shallowMount(TestCompo);
     const { vm } = wrapper;
     vm.$el.click();
     setTimeout(() => {
@@ -66,12 +66,12 @@ describe('Alert', () => {
       methods: {
         handleClick() {
           const h = this.$createElement;
-          const message = h('p', null, [h('span', null, '内容可以是 '), h('i', { style: 'color: teal' }, 'VNode')]);
+          const message = '<p>123</p>';
           $zaAlert(message);
         },
       },
     };
-    const wrapper = mount(TestCompo);
+    const wrapper = shallowMount(TestCompo);
     const { vm } = wrapper;
     vm.$el.click();
     setTimeout(() => {

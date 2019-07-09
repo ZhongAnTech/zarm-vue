@@ -117,10 +117,7 @@ describe('Confirm', () => {
       methods: {
         handleClick() {
           const h = this.$createElement;
-          const message = h('p', null, [
-            h('span', null, '内容可以是 '),
-            h('i', { style: 'color: teal' }, 'VNode'),
-          ]);
+          const message = '<p>123</p>';
           $zaConfirm(message);
         },
       },

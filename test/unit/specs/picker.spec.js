@@ -122,7 +122,7 @@ describe('Picker', () => {
       `,
       data() {
         return {
-          value: ['1', '12'],
+          value: [],
           visible: true,
           data1: [
             {
@@ -151,7 +151,7 @@ describe('Picker', () => {
       },
     });
     wrapper.find('.za-picker__submit').trigger('click');
-    expect(value[1].value).toBe('12');
+    expect(value[1].value).toBe('11');
   });
 
   it('update dataSource', () => {
