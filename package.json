@@ -23,7 +23,7 @@
     "mobile"
   ],
   "license": "MIT",
-  "repository": "git@github.com/ZhonganTechENG/zarm-vue",
+  "repository": "git://github.com/ZhonganTechENG/zarm-vue",
   "bugs": {
     "url": "https://github.com/ZhonganTechENG/zarm-vue/issues"
   },
