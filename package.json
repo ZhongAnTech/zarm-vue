@@ -62,8 +62,7 @@
   "dependencies": {
     "autosize": "^4.0.0",
     "better-scroll": "1.12.0",
-    "dayjs": "^1.7.7",
-    "lodash": "^4.17.15"
+    "dayjs": "^1.7.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -99,6 +98,7 @@
     "core-js": "^3.0.1",
     "coveralls": "^2.13.1",
     "cross-env": "^5.0.1",
+    "cryptiles": "^4.1.2",
     "css-loader": "^0.28.0",
     "element-ui": "^2.4.9",
     "eslint": "^4.19.1",
@@ -120,7 +120,12 @@
     "husky": "^0.14.3",
     "jest": "^23.4.2",
     "jest-serializer-vue": "^2.0.2",
+    "js-yaml": "^3.13.1",
+    "lodash": "^4.17.15",
     "lodash-es": "^4.17.15",
+    "lodash.merge": "^4.6.2",
+    "lodash.mergewith": "^4.6.2",
+    "marked": "^0.7.0",
     "merge": "^1.2.1",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.5.3",
@@ -133,6 +138,7 @@
     "shelljs": "^0.7.6",
     "stylelint": "^7.12.0",
     "stylelint-config-standard": "^16.0.0",
+    "tunnel-agent": "^0.6.0",
     "url-loader": "^1.0.1",
     "vue": "^2.6.10",
     "vue-jest": "^3.0.0",
