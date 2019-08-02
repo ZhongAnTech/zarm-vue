@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import OutsideClick from '@/utils/outsideClick';
+import clickoutside from '@/utils/clickoutside';
 import KeyboardPicker from '../../keyboard-picker';
 
 export default {
@@ -65,20 +65,15 @@ export default {
     },
   },
   mounted() {
-    this.handleOutsideClick(true);
+    clickoutside.addClickoutSide({ handle: this.onOutsideBlur });
   },
   beforeDestroy() {
-    this.handleOutsideClick(false);
+    clickoutside.removeClickoutSide({ handle: this.onOutsideBlur });
   },
   methods: {
     setCurrentValue(value) {
       if (value === this.currentValue) return;
       this.currentValue = value;
-    },
-
-    handleOutsideClick(action) {
-      const _self = this;
-      OutsideClick(action, _self.onOutsideBlur);
     },
 
     onKeyClick(key) {
@@ -120,25 +115,12 @@ export default {
     },
 
     onOutsideBlur(e) {
-      const clsRegExp = new RegExp(`(^|\\s)${this.$refs.picker.prefixCls}(\\s|$)`, 'g');
       if (!this.visible) {
         return;
       }
-
-      const cNode = ((node) => {
-        const picker = this.$refs.picker;
-        const container = this.$refs.container;
-        while (node.parentNode && node.parentNode !== document.body) {
-          if (node === picker || node === container || clsRegExp.test(node.className)) {
-            return node;
-          }
-          node = node.parentNode;
-        }
-      })(e.target);
-
-      if (!cNode) {
-        this.onBlur();
-      }
+      const $el = this.$refs.picker.$el;
+      const $container = this.$refs.container;
+      clickoutside.clickoutSideHandle(e, { onClickoutSide: this.onBlur, ignorenode: $container, el: $el });
     },
 
     onBlur() {
