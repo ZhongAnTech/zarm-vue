@@ -15,31 +15,31 @@ const store = new Vuex.Store({
     lang: 'ZH',
     version: '2.0.0',
     versionList: [{
-      value: '1.4.x',
-      label: '1.4.x',
-      path: 'https://chuanshuoye.github.io/zarm-vue-doc/#/zh-CN'
-    },{
+      value: '1.x',
+      label: '1.x',
+      path: 'https://chuanshuoye.github.io/zarm-vue-doc/#/zh-CN/component/fastdoc',
+    }, {
       value: '2.0.0',
       label: packageJson.version,
-      path: '#/documents/quick-start'
-    }]
+      path: '#/documents/quick-start',
+    }],
   },
   actions: {
-    setVersion (context, payload) {
-      context.commit('updateVersion', payload)
+    setVersion(context, payload) {
+      context.commit('updateVersion', payload);
     },
-    setActiveName (context, payload) {
-      context.commit('updateActive', payload)
-    }
+    setActiveName(context, payload) {
+      context.commit('updateActive', payload);
+    },
   },
   mutations: {
-    updateVersion (state, data) {
-      state.version = data
+    updateVersion(state, data) {
+      state.version = data;
     },
-    updateActive (state, data) {
-      state.activeName = data
-    }
-  }
+    updateActive(state, data) {
+      state.activeName = data;
+    },
+  },
 });
 
 export default store;
