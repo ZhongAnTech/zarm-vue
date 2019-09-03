@@ -16,16 +16,14 @@ export type ConfirmOptions = {
   cancel(): void;
 }
 
-export interface zaConfirm extends Vue {}
+export declare class Confirm extends ZarmVueComponent {}
 
-export interface Confirm {
+export interface zaConfirm {
   (message?: ConfirmOptions | ConfirmMessage, options?: ConfirmOptions) : zaConfirm
 }
 
 declare module 'vue/types/vue' {
   interface Vue {
-    $zaConfirm: Confirm
+    $zaConfirm: zaConfirm
   }
 }
-
-export const Confirm: Confirm;

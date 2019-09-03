@@ -8,12 +8,14 @@ export type LoadingOptions = {
   visible?: boolean;
 }
 
-export interface Loading {}
+export declare class Loading extends ZarmVueComponent {}
+
+export interface zaLoading {
+  (): ZarmVueComponent
+}
 
 declare module 'vue/types/vue' {
   interface Vue {
-    $zaLoading: Loading
+    $zaLoading: zaLoading
   }
 }
-
-export const Loading: Loading;

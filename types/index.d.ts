@@ -64,5 +64,5 @@ export {
   Alert,
   Confirm,
   Loading,
-  Toast,
+  Toast
 }
