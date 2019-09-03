@@ -10,8 +10,10 @@ export type ToastOptions = {
   message?: ToastMessage;
 }
 
+export interface zaToast extends Vue {}
+
 export interface Toast {
-  (message: ToastOptions | ToastMessage, options?: ToastOptions): ZarmVueComponent
+  (message: ToastOptions | ToastMessage, options?: ToastOptions): zaToast
 }
 
 declare module 'vue/types/vue' {
@@ -19,3 +21,5 @@ declare module 'vue/types/vue' {
     $zaToast: Toast
   }
 }
+
+export const Toast: Toast;

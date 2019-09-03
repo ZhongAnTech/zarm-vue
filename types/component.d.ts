@@ -1,4 +1,6 @@
 import Vue from 'vue';
-export class ZarmVueComponent extends Vue {
+
+export class ZarmVueComponent {
+  static name: string;
   static install(vue: typeof Vue): void;
 }

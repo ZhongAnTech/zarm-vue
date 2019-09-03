@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import { Collapse } from "..";
+import { Button } from "..";
 
-Vue.use(Collapse);
+Vue.use(Button);
 
 
 

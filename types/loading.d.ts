@@ -15,3 +15,5 @@ declare module 'vue/types/vue' {
     $zaLoading: Loading
   }
 }
+
+export const Loading: Loading;

@@ -13,8 +13,10 @@ export type AlertOptions = {
   message?: AlertMessage;
 }
 
+export interface zaAlert extends Vue {}
+
 export interface Alert {
-  (message?: AlertOptions | AlertMessage, options?: AlertOptions) : ZarmVueComponent
+  (message?: AlertOptions | AlertMessage, options?: AlertOptions) : zaAlert
 }
 
 declare module 'vue/types/vue' {
@@ -22,3 +24,5 @@ declare module 'vue/types/vue' {
     $zaAlert: Alert
   }
 }
+
+export const Alert: Alert;
