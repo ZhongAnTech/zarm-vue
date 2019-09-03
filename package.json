@@ -1,6 +1,6 @@
 {
   "name": "zarm-vue",
-  "version": "2.0.0-alpha.26",
+  "version": "2.0.0-alpha.27",
   "description": "zarm in vue",
   "tags": [
     "zarm",
@@ -28,6 +28,7 @@
     "url": "https://github.com/ZhonganTechENG/zarm-vue/issues"
   },
   "main": "lib/index.js",
+  "typings": "types/index.d.ts",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
@@ -46,7 +47,7 @@
     "build:theme": "cross-env NODE_ENV=production webpack --config ./build/webpack.theme.conf.js",
     "build:style": "cross-env NODE_ENV=production webpack --config ./build/webpack.style.conf.js",
     "build:copy": "node ./script/copy.js",
-    "build:release": "cp -r README.md release && cp -r src release && cp -r styles release",
+    "build:release": "cp -r README.md release && cp -r src release && cp -r styles release && cp -r types release",
     "build:all": "npm run clean && npm run build:umd && npm run build:lib && npm run build:style && npm run build:theme && npm run build:copy && npm run build:release",
     "analyze": "cross-env NODE_ENV=production npm_config_report=true npm run build:all",
     "book": "cd docs && gitbook serve",
