@@ -16,7 +16,7 @@ export type AlertOptions = {
 export declare class Alert extends ZarmVueComponent {}
 
 export interface zaAlert {
-  (message?: AlertOptions | AlertMessage, options?: AlertOptions) : zaAlert
+  (message?: AlertOptions | AlertMessage, options?: AlertOptions) : Alert
 }
 
 declare module 'vue/types/vue' {

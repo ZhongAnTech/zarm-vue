@@ -11,7 +11,7 @@ export type LoadingOptions = {
 export declare class Loading extends ZarmVueComponent {}
 
 export interface zaLoading {
-  (): ZarmVueComponent
+  (): Loading
 }
 
 declare module 'vue/types/vue' {
