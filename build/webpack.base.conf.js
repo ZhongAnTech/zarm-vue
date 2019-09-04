@@ -7,22 +7,22 @@ function resolve(dir) {
   return path.join(__dirname, '..', dir);
 }
 
-const allSource = [resolve('src'), resolve('example'), resolve('test')]
+const allSource = [resolve('src'), resolve('example'), resolve('test')];
 
 module.exports = {
   output: {
     path: config.build.assetsRoot,
     publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
     filename: '[name].js',
-    chunkFilename: '[name].js'
+    chunkFilename: '[name].js',
   },
   resolve: {
     extensions: ['.js', '.vue', '.md', '.json'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      'docs': resolve('docs'),
-      'site': resolve('site')
+      docs: resolve('docs'),
+      site: resolve('site'),
     },
   },
   module: {
@@ -48,7 +48,7 @@ module.exports = {
       },
       {
         test: /\.md$/,
-        use: ['vue-loader','zarm-vue-loader']
+        use: ['vue-loader', 'zarm-vue-loader'],
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

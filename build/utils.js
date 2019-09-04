@@ -1,3 +1,5 @@
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 const path = require('path');
 const config = require('../config');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -48,12 +50,7 @@ exports.cssLoaders = function (options) {
   // https://vue-loader.vuejs.org/en/configurations/extract-css.html
   return {
     css: generateLoaders(),
-    // postcss: generateLoaders(),
-    // less: generateLoaders('less'),
-    // sass: generateLoaders('sass', { indentedSyntax: true }),
-    scss: generateLoaders('sass'),
-    // stylus: generateLoaders('stylus'),
-    // styl: generateLoaders('stylus')
+    scss: generateLoaders('sass', { implementation: require('sass') }),
   };
 };
 
