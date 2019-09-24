@@ -1,6 +1,6 @@
 {
   "name": "zarm-vue",
-  "version": "2.0.0-alpha.31",
+  "version": "2.0.0-alpha.32",
   "description": "zarm in vue",
   "tags": [
     "zarm",
@@ -155,6 +155,7 @@
     "webpack-dev-server": "^3.2.1",
     "webpack-hot-middleware": "^2.18.0",
     "webpack-merge": "^4.2.1",
+    "webpack-node-externals": "^1.7.2",
     "zarm-vue-loader": "^3.0.0"
   },
   "engines": {
