@@ -7,21 +7,21 @@
   <za-button slot="description" ghost @click="toggle">{{ visible ? '隐藏' : '展示'}}</za-button>
 </za-cell>
 <za-tab-bar :visible="visible" :defaultActiveKey="1" @change="handleChange">
-  <za-tab-bar-item :item-key="1" title="first">
-      <za-icon slot="icon" theme="primary" type="add" class="icon"></za-icon>
-      <za-icon slot="activeIcon" theme="primary" type="add-round" class="icon"></za-icon>
+  <za-tab-bar-item :item-key="1" title="首页">
+      <za-icon slot="icon" tag="symbol" type="home" class="icon"></za-icon>
+      <za-icon slot="activeIcon" tag="symbol" theme="primary" type="home" class="icon"></za-icon>
   </za-tab-bar-item>
-  <za-tab-bar-item :item-key="2" title="first">
+  <za-tab-bar-item :item-key="2" title="保险">
       <za-badge slot="icon" sup shape="circle" text="3" @click="handleClick">
-        <za-icon theme="primary" type="minus" class="icon"></za-icon>
+        <za-icon tag="symbol" type="insurance" class="icon"></za-icon>
       </za-badge>
       <za-badge slot="activeIcon" sup shape="circle" text="3" @click="handleClick">
-        <za-icon theme="primary" type="minus-round" class="icon"></za-icon>
+        <za-icon tag="symbol" theme="primary" type="insurance" class="icon"></za-icon>
       </za-badge>
   </za-tab-bar-item>
-  <za-tab-bar-item :item-key="3" title="first">
-      <za-icon slot="icon" theme="primary" type="arrow-top" class="icon"></za-icon>
-      <za-icon slot="activeIcon" theme="primary" type="arrow-bottom" class="icon"></za-icon>
+  <za-tab-bar-item :item-key="3" title="用户">
+      <za-icon slot="icon" tag="symbol" type="user" class="icon"></za-icon>
+      <za-icon slot="activeIcon" tag="symbol" theme="primary" type="user" class="icon"></za-icon>
   </za-tab-bar-item>
 </za-tab-bar>
 ```
@@ -35,7 +35,7 @@
 export default {
   data() {
     return {
-      activeKey: null,
+      activeKey: 1,
       visible: true,
     }
   },
