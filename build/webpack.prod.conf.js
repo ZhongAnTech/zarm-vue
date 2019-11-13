@@ -4,7 +4,6 @@ const config = require('../config');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const nodeExternals = require('webpack-node-externals');
 const entries = require('../script/find-entry')();
 const version = require('../package.json').version;
 
@@ -17,7 +16,7 @@ delete baseWebpackConfig.entry;
  */
 const webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
-  externals: [{ vue: 'vue' }, nodeExternals()],
+  externals: ['vue', 'autosize', 'zscroller', 'moment'],
   entry: entries,
   output: {
     path: path.resolve(__dirname, '../release/lib'),
