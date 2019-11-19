@@ -19,7 +19,7 @@
           }"
     >
       <img
-        src="https://avatars2.githubusercontent.com/u/499550?v=4&s=72"
+        src="https://static.zhongan.com/website/health/zarm/images/icons/state.png""
         alt=""
       />
     </div>
@@ -72,7 +72,7 @@ scopedSlots 用来覆盖默认样式，定义的会覆盖，不定义的默认�
         }"
       >
         <img
-          src="https://avatars2.githubusercontent.com/u/499550?v=4&s=72"
+          src="https://static.zhongan.com/website/health/zarm/images/icons/state.png""
           alt=""
         />
       </div>
