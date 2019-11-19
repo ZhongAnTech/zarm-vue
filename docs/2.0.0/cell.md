@@ -28,6 +28,7 @@
 </za-cell>
 <za-cell title="标题文字">
   <img
+    style="width:24px;height:24px"
     src="https://static.zhongan.com/website/health/zarm/images/icons/state.png"
     alt=""
     slot="icon"
@@ -70,7 +71,8 @@
 <za-cell is-link title="标题文字" has-arrow @click="() => {}">
   <div slot="description">描述文字</div>
   <img
-    src="https://static.zhongan.com/website/health/zarm/images/icons/state.png""
+    style="width:24px;height:24px"
+    src="https://static.zhongan.com/website/health/zarm/images/icons/state.png"
     alt=""
     slot="icon"
   />
@@ -82,7 +84,8 @@
     <div class="box-description">描述文字</div>
   </div>
   <img
-    src="https://static.zhongan.com/website/health/zarm/images/icons/state.png""
+    style="width:48px;height:48px"
+    src="https://static.zhongan.com/website/health/zarm/images/icons/state.png"
     alt=""
     slot="icon"
   />
