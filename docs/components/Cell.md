@@ -37,7 +37,7 @@
   <za-icon type='right' slot='icon'/>
 </za-cell>
 <za-cell title='标题文字' description='描述文字'>
-  <img src="https://avatars2.githubusercontent.com/u/499550?v=4&s=72" slot='icon'>
+  <img src="https://static.zhongan.com/website/health/zarm/images/icons/state.png" slot='icon'>
 </za-cell>
 ```
 

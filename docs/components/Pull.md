@@ -58,7 +58,7 @@ scopedSlots 用来覆盖默认样式，定义的会覆盖，不定义的默认�
       <div class='custom-control' :style='{
         transform: `scale(${props.percent / 100})`
         }'>
-        <img src='https://avatars2.githubusercontent.com/u/499550?v=4&s=72' alt="" />
+        <img src='https://static.zhongan.com/website/health/zarm/images/icons/state.png' alt="" />
       </div>
     </template>
 
