@@ -17,7 +17,7 @@ const store = new Vuex.Store({
     versionList: [{
       value: '1.x',
       label: '1.x',
-      path: 'https://zhongantecheng.github.io/zarm-vue/1.x/#/zh-CN/component/fastdoc',
+      path: 'https://zhongantech.github.io/zarm-vue/1.x/#/zh-CN/component/fastdoc',
     }, {
       value: '2.0.0',
       label: packageJson.version,
