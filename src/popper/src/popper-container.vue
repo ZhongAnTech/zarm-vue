@@ -25,7 +25,15 @@ export default {
       type: Boolean,
       default: false,
     },
+    isPending: {
+      type: Boolean,
+      default: false,
+    },
     trigger: {
+      type: String,
+      default: 'click',
+    },
+    animationState: {
       type: String,
       default: 'click',
     },
@@ -47,22 +55,13 @@ export default {
     },
     content: null,
   },
-  data() {
-    return {
-    };
-  },
-  mounted() {
-
-  },
-  methods: {
-
-  },
   render() {
     const {
       prefixCls,
       trigger,
       content,
       hasArrow,
+      visible,
       animationType,
       animationDuration,
       direction,
@@ -80,7 +79,7 @@ export default {
     };
 
     return (
-      <div
+      visible && <div
         class="popper-container"
         disabled={trigger === 'manual'}
       >

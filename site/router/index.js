@@ -68,6 +68,10 @@ export default new Router({
           component: () => import('../pages/components/PanelPage'),
         },
         {
+          path: 'popper',
+          component: () => import('../pages/components/PopperPage'),
+        },
+        {
           path: 'date-picker',
           component: () => import('../pages/components/DatePickerPage'),
         },

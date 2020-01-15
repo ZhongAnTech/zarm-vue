@@ -129,6 +129,10 @@ export default {
       type: Number,
       default: 100,
     },
+    getContainer: {
+      type: Function,
+      default: () => document.body,
+    },
   },
   data() {
     return {
@@ -152,7 +156,8 @@ export default {
       Events.off(popperRef.$refs.popperNode, 'webkitAnimationEnd', this.animationEnd);
       Events.off(popperRef.$refs.popperNode, 'animationend', this.animationEnd);
     }
-    this.destroy();
+    // this.destroy();
+    this.handleTrigger();
     clearTimeout(this.enterTimer);
     clearTimeout(this.leaveTimer);
     clickoutside.addClickoutSide({ handle: this.onOutsideBlur });
@@ -161,7 +166,24 @@ export default {
     clickoutside.removeClickoutSide({ handle: this.onOutsideBlur });
   },
   methods: {
+    handleTrigger() {
+      const { trigger } = this;
+      const { reference } = this.$refs;
 
+      if (trigger === 'click') {
+        reference.onclick = this.handleClick;
+      }
+      if (trigger === 'contextMenu') {
+        reference.oncontextmenu = this.handleClick;
+      }
+      if (trigger === 'hover') {
+        reference.onmouseover = this.handleEnter;
+        reference.onmouseleave = this.handleLeave;
+      }
+      if (trigger === 'focus') {
+        reference.onfocus = this.handleClick;
+      }
+    },
     onOutsideBlur(e) {
       const { popperRef } = this.$refs;
 
@@ -197,6 +219,10 @@ export default {
       const popperNode = popperRef.$refs.popperNode;
 
       if (!popperNode) {
+        this.currentVisible = true;
+        this.$nextTick(() => {
+          this.handleOpen();
+        });
         return;
       }
 
@@ -258,7 +284,7 @@ export default {
     },
 
     handleEnter() {
-      const { mouseEnterDelay } = this.props;
+      const { mouseEnterDelay } = this;
 
       clearTimeout(this.enterTimer);
       clearTimeout(this.leaveTimer);
@@ -271,7 +297,7 @@ export default {
     },
 
     handleLeave() {
-      const { mouseLeaveDelay } = this.props;
+      const { mouseLeaveDelay } = this;
 
       clearTimeout(this.enterTimer);
       clearTimeout(this.leaveTimer);
