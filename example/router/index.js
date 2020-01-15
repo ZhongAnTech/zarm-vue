@@ -117,6 +117,13 @@ export default new Router({
       },
     },
     {
+      path: '/popper',
+      component: Bundle,
+      meta: {
+        mRender: () => import('../components/popperPage.vue')
+      },
+    },
+    {
       path: '/file-picker',
       component: Bundle,
       meta: {

@@ -108,6 +108,9 @@
           <za-cell hasArrow @click="$router.push('/panel')">
             面板 Panel
           </za-cell>
+          <za-cell hasArrow @click="$router.push('/popper')">
+            气泡层 Popper
+          </za-cell>
         </za-panel-body>
       </za-panel>
 

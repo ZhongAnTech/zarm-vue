@@ -135,6 +135,10 @@ module.exports = {
         name: 'Panel',
         description: '面板',
       },
+      {
+        name: 'Popper',
+        description: '气泡层',
+      },
     ],
     navigation: [
       {

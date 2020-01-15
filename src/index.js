@@ -31,6 +31,7 @@ import PanelFooter from '../src/panel-footer';
 import Picker from '../src/picker';
 import PickerView from '../src/picker-view';
 import Popup from '../src/popup';
+import Popper from '../src/popper';
 import Progress from '../src/progress';
 import Pull from '../src/pull';
 import SearchBar from '../src/search-bar';
@@ -90,6 +91,7 @@ const components = [
   Picker,
   PickerView,
   Popup,
+  Popper,
   Progress,
   Pull,
   Radio,
@@ -169,6 +171,7 @@ export {
   Picker,
   PickerView,
   Popup,
+  Popper,
   Progress,
   Pull,
   Radio,
