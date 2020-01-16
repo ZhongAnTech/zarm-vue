@@ -202,13 +202,11 @@ export default {
 
       this.mounted = true;
 
-      this.$nextTick(() => {
-        if (!currentVisible) {
-          this.handleOpen();
-        } else {
-          this.handleClose();
-        }
-      });
+      if (!currentVisible) {
+        this.handleOpen();
+      } else {
+        this.handleClose();
+      }
     },
 
     handleOpen() {
@@ -382,8 +380,6 @@ export default {
         <div
           ref="reference"
           class={`${prefixCls}__inner`}
-          on-click={handleClick}
-          on-context-menu={handleClick}
         >
           {this.$slots.default}
         </div>
