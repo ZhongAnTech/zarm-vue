@@ -128,10 +128,12 @@ export default {
       this.$emit('focus', event);
     },
     onBlur(event) {
-      if (this.clearable) {
-        this.focused = false;
-      }
-      this.$emit('blur', event);
+      this.onBlurTimeout = setTimeout(() => {
+        if (this.clearable) {
+          this.focused = false;
+        }
+        this.$emit('blur', event);
+      }, 200);
     },
     handleComposition(e) {
       if (e.type === 'compositionstart') {
@@ -189,6 +191,9 @@ export default {
     }
   },
   beforeDestroy() {
+    const { setOnBlurTimer } = this;
+    setOnBlurTimer && clearTimeout(setOnBlurTimer);
+    this.setOnBlurTimer = null;
     if (this.type === 'textarea') {
       this.destroyAutosize();
     }

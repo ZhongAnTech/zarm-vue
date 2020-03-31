@@ -3,7 +3,7 @@
     [`${prefixCls}`]: true,
     [`${prefixCls}-${type}`]: !!type,
     [`${prefixCls}--${theme}`]: !!theme,
-  }' @mousedown='handleClick'>
+  }' @click='handleClick'>
     <svg
       v-if='tag === "symbol"'
       width='1em'
