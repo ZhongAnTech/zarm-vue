@@ -191,9 +191,9 @@ export default {
     }
   },
   beforeDestroy() {
-    const { setOnBlurTimer } = this;
-    setOnBlurTimer && clearTimeout(setOnBlurTimer);
-    this.setOnBlurTimer = null;
+    const { onBlurTimeout } = this;
+    onBlurTimeout && clearTimeout(onBlurTimeout);
+    this.onBlurTimeout = null;
     if (this.type === 'textarea') {
       this.destroyAutosize();
     }
