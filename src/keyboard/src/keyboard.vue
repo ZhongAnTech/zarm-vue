@@ -1,22 +1,25 @@
-<template lang="html">
-  <div :class="prefixCls" @click.stop='() => {}'>
+<template>
+  <div
+    :class="prefixCls"
+    @click.stop='() => {}'
+  >
     <div :class="`${prefixCls}__keys`">
       <div
-          v-for="(text, index) in getKeys()"
-          :class="{
+        v-for="(text, index) in getKeys()"
+        :class="{
             [`${prefixCls}__item`]: true,
             [`${prefixCls}__item--disabled`]: text.length === 0,
           }"
-          :key="index"
-          @click="onKeyClick(text)"
-        >
-          <template v-if="text === 'close'">
-              <za-icon type="keyboard" />
-          </template>
-          <template v-else>
-              {{ text }}
-          </template>
-        </div>
+        :key="index"
+        @click="onKeyClick(text)"
+      >
+        <template v-if="text === 'close'">
+          <za-icon type="keyboard" />
+        </template>
+        <template v-else>
+          {{ text }}
+        </template>
+      </div>
     </div>
     <div :class="`${prefixCls}__handle`">
       <div
@@ -29,11 +32,13 @@
       >
         <za-icon type="deletekey" />
       </div>
-      <div :class="{
+      <div
+        :class="{
         [`${prefixCls}__item`]: true,
         [`${prefixCls}__item--ok`]: true,
       }"
-      @click="onKeyClick('ok')">确定</div>
+        @click="onKeyClick('ok')"
+      >确定</div>
     </div>
   </div>
 </template>

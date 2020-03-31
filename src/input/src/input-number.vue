@@ -6,7 +6,7 @@
          [`${prefixCls}__number`]: true,
          [`${prefixCls}--disabled`]: disabled,
          [`${prefixCls}--focus`]: visible,
-       }" 
+       }"
        @click="onFocus"
        >
         <div v-show='!currentValue' :class="`${prefixCls}__placeholder`">{{ placeholder }}</div>
@@ -118,7 +118,7 @@ export default {
       if (!this.visible) {
         return;
       }
-      const $el = this.$refs.picker.$el;
+      const $el = this.$refs.picker.$refs.popup.$el;
       const $container = this.$refs.container;
       clickoutside.clickoutSideHandle(e, { onClickoutSide: this.onBlur, ignorenode: $container, el: $el });
     },

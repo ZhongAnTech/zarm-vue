@@ -357,7 +357,6 @@ export default {
       animationState,
       isPending,
       className,
-      handleClick,
     } = this;
 
     return (

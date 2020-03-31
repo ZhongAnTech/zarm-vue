@@ -1,7 +1,8 @@
 <template lang="html">
   <div :class="{
     [`${prefixCls}`]: true,
-    [`${prefixCls}--disabled`]: !!disabled
+    [`${prefixCls}--disabled`]: !!disabled,
+    [`${prefixCls}__clearable`]: !!clearable,
     }">
     <div :class='`${prefixCls}__placeholder`' v-if='type === "date"'>{{placeholder}}</div>
     <textarea
@@ -33,10 +34,14 @@
       @compositionUpdate="handleComposition"
       @compositionEnd="handleComposition"
     />
-    <za-icon v-if="clearable" type="wrong-round-fill" :class="{
-      [`${prefixCls}__clear`]: true,
-      [`${prefixCls}__clear--show`]: !!(focused && currentValue && currentValue.length > 0)
-    }" @click="onClear" />
+    <za-icon
+      :class="{
+        [`${prefixCls}__clear`]: true,
+        [`${prefixCls}__clear--show`]: !!(focused && currentValue && currentValue.length > 0)
+      }"
+      type="wrong-round-fill"
+      @click="onClear"
+    />
     <div :class='`${prefixCls}__length`' v-if='showLength && maxLength'>{{`${length}/${maxLength}`}}</div>
   </div>
 </template>
