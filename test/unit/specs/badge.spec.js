@@ -8,7 +8,7 @@ describe('Badge', () => {
         prefixCls: 'za-badge',
       },
     });
-    expect(wrapper.contains('.za-badge')).toBe(true);
+    expect(wrapper.find('.za-badge').exists()).toBe(true);
   });
 
   it('className', () => {
@@ -17,7 +17,7 @@ describe('Badge', () => {
         className: 'za-test',
       },
     });
-    expect(wrapper.contains('.za-badge')).toBe(true);
+    expect(wrapper.find('.za-badge').exists()).toBe(true);
   });
 
   it('theme', () => {
@@ -26,7 +26,7 @@ describe('Badge', () => {
         theme: 'error',
       },
     });
-    expect(wrapper.contains('.za-badge--error')).toBe(true);
+    expect(wrapper.find('.za-badge--error').exists()).toBe(true);
   });
 
   it('shape', () => {
@@ -35,7 +35,7 @@ describe('Badge', () => {
         shape: 'radius',
       },
     });
-    expect(wrapper.contains('.za-badge--radius')).toBe(true);
+    expect(wrapper.find('.za-badge--radius').exists()).toBe(true);
   });
 
   it('sup', () => {
@@ -44,7 +44,7 @@ describe('Badge', () => {
         sup: true,
       },
     });
-    expect(wrapper.contains('.za-badge__sup--up')).toBe(true);
+    expect(wrapper.find('.za-badge__sup--up').exists()).toBe(true);
   });
 
   it('click', done => {

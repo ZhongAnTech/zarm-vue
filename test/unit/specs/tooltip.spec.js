@@ -21,6 +21,7 @@ describe('Tooltip', () => {
     });
   });
 
+
   it('visible', done => {
     const TestCompo = {
       components: {
@@ -31,19 +32,15 @@ describe('Tooltip', () => {
       `,
       data() {
         return {
-          visible: false,
+          visible: true,
         };
       },
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-
     vm.$nextTick(() => {
-      vm.$refs.tooltip.currentVisible = true;
-      vm.$nextTick(() => {
-        expect(vm.$refs.tooltip.styleCls).not.toBeUndefined();
-        done();
-      });
+      expect(vm.$refs.tooltip.currentVisible).toBe(true);
+      done();
     });
   });
 

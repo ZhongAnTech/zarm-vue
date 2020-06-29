@@ -8,7 +8,7 @@ describe('Button', () => {
         theme: 'primary',
       },
     });
-    expect(wrapper.contains('.za-button--primary')).toBe(true);
+    expect(wrapper.find('.za-button--primary').exists()).toBe(true);
   });
 
   it('prefixCls', () => {
@@ -17,7 +17,7 @@ describe('Button', () => {
         prefixCls: 'za-button-test',
       },
     });
-    expect(wrapper.contains('.za-button-test')).toBe(true);
+    expect(wrapper.find('.za-button-test').exists()).toBe(true);
   });
 
   it('size', () => {
@@ -26,7 +26,7 @@ describe('Button', () => {
         size: 'xl',
       },
     });
-    expect(wrapper.contains('.za-button--xl')).toBe(true);
+    expect(wrapper.find('.za-button--xl').exists()).toBe(true);
   });
 
   it('shape', () => {
@@ -35,7 +35,7 @@ describe('Button', () => {
         shape: 'radius',
       },
     });
-    expect(wrapper.contains('.za-button--radius')).toBe(true);
+    expect(wrapper.find('.za-button--radius').exists()).toBe(true);
   });
 
   it('block', () => {
@@ -44,7 +44,7 @@ describe('Button', () => {
         block: true,
       },
     });
-    expect(wrapper.contains('.za-button--block')).toBe(true);
+    expect(wrapper.find('.za-button--block').exists()).toBe(true);
   });
 
   it('ghost', () => {
@@ -53,7 +53,7 @@ describe('Button', () => {
         ghost: true,
       },
     });
-    expect(wrapper.contains('.za-button--bordered')).toBe(true);
+    expect(wrapper.find('.za-button--bordered').exists()).toBe(true);
   });
 
   // it('active', () => {
@@ -80,7 +80,7 @@ describe('Button', () => {
         disabled: true,
       },
     });
-    expect(wrapper.contains('.za-button--disabled')).toBe(true);
+    expect(wrapper.find('.za-button--disabled').exists()).toBe(true);
   });
 
   it('loading', () => {
@@ -89,7 +89,7 @@ describe('Button', () => {
         loading: true,
       },
     });
-    expect(wrapper.contains('.rotate360')).toBe(true);
+    expect(wrapper.find('.rotate360').exists()).toBe(true);
   });
 
   it('click', done => {

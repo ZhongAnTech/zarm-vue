@@ -10,9 +10,9 @@ describe('ZaMessage', () => {
         size: 'lg',
       },
     }, true);
-    expect(wrapper.contains('.za-message')).toBe(true);
-    expect(wrapper.contains('.za-message--primary')).toBe(true);
-    expect(wrapper.contains('.za-message--lg')).toBe(true);
+    expect(wrapper.find('.za-message').exists()).toBe(true);
+    expect(wrapper.find('.za-message--primary').exists()).toBe(true);
+    expect(wrapper.find('.za-message--lg').exists()).toBe(true);
   });
 
   it('closable', () => {

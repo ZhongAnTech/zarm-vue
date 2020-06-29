@@ -10,7 +10,7 @@ describe('Popper', () => {
         visible: false,
       },
     });
-    expect(wrapper.contains('.za-popper')).toBe(true);
+    expect(wrapper.find('.za-popper').exists()).toBe(true);
     wrapper.destroy();
   });
 
@@ -24,7 +24,7 @@ describe('Popper', () => {
     const { vm } = wrapper;
     vm.visible = true;
     vm.$nextTick(() => {
-      expect(wrapper.contains('.popper-container')).toBe(true);
+      expect(wrapper.find('.popper-container').exists()).toBe(true);
       wrapper.destroy();
     });
   });
@@ -40,7 +40,7 @@ describe('Popper', () => {
     document.body.click();
     wrapper.vm.visible = false;
     vm.$nextTick(() => {
-      expect(wrapper.contains('.popper-container')).toBe(false);
+      expect(wrapper.find('.popper-container').exists()).toBe(false);
       wrapper.destroy();
     });
   });
@@ -65,7 +65,7 @@ describe('Popper', () => {
     wrapper.vm.$nextTick(() => {
       wrapper.find('.za-popper__inner').trigger('click');
       wrapper.vm.$nextTick(() => {
-        expect(wrapper.contains('.popper-container')).toBeTruthy();
+        expect(wrapper.find('.popper-container').exists()).toBe(true);
         wrapper.destroy();
       });
     });

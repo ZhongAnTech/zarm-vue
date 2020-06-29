@@ -1,6 +1,7 @@
 import ZaNoticeBar from '@/notice-bar';
 import { mount } from '../util';
 
+
 describe('NoticeBar', () => {
   it('create', () => {
     const wrapper = mount({
@@ -54,11 +55,11 @@ describe('NoticeBar', () => {
       `,
       data() {
         return {
-          visible: true,
+          visible: false,
         };
       },
     }, true);
-    wrapper.setData({ visible: false });
+    // wrapper.setData({ visible: false });
     expect(wrapper.find('.za-noticebar').exists()).toBe(false);
   });
 

@@ -1,5 +1,5 @@
 import zaSlider from '@/slider';
-import { mount, trigger, triggerDrag } from '../util';
+import { mount, triggerDrag } from '../util';
 
 Element.prototype.getBoundingClientRect = jest.fn(() => ({ width: 100, left: 0 }));
 
@@ -18,7 +18,7 @@ describe('Slider', () => {
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
     vm.$nextTick(() => {
-      expect(wrapper.contains('.za-slider')).toBe(true);
+      expect(wrapper.find('.za-slider').exists()).toBe(true);
       done();
     });
   });

@@ -18,7 +18,7 @@ describe('Loading', () => {
         };
       },
     }, true);
-    expect(wrapper.contains('.za-loading')).toBe(true);
+    expect(wrapper.find('.za-loading').exists()).toBe(true);
   });
 
   it('hide', () => {
@@ -34,7 +34,8 @@ describe('Loading', () => {
       },
     }, true);
     wrapper.setData({ visible: false });
-    expect(wrapper.contains('.za-loading--open')).toBe(false);
+    // console.log(wrapper.html())
+    expect(wrapper.classes('.za-loading--open')).toBe(false);
   });
 
   it('$zaLoading', done => {

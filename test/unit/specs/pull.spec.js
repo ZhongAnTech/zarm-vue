@@ -37,7 +37,7 @@ describe('Pull', () => {
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
     vm.$nextTick(() => {
-      expect(wrapper.contains('.za-pull')).toBe(true);
+      expect(wrapper.find('.za-pull').exists()).toBe(true);
       done();
     });
   });

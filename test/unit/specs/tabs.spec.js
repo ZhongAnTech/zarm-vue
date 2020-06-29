@@ -17,6 +17,7 @@ describe('Tabs', () => {
     expect(el.classList.contains('za-tabs--primary')).toBe(true);
   });
 
+
   it('change active tab', done => {
     let result;
     const TestCompo = {

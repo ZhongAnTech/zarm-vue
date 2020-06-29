@@ -2,6 +2,7 @@ import ZaPicker from '@/picker';
 import ZaSelect from '@/select';
 import { mount } from '../util';
 
+
 describe('Picker', () => {
   it('create', () => {
     const wrapper = mount({
@@ -45,7 +46,7 @@ describe('Picker', () => {
       },
     });
     wrapper.element.click();
-    expect(wrapper.find({ name: 'zaPicker' }).vm.currentValue[0]).toBe('1');
+    expect(wrapper.findComponent({ name: 'zaPicker' }).vm.currentValue[0]).toBe('1');
   });
 
   it('single column', () => {
@@ -69,7 +70,7 @@ describe('Picker', () => {
       },
     });
     wrapper.element.click();
-    expect(wrapper.find({ name: 'zaPicker' }).vm.currentValue[0]).toBe('1');
+    expect(wrapper.findComponent({ name: 'zaPicker' }).vm.currentValue[0]).toBe('1');
   });
 
   it('multi columns', () => {

@@ -9,7 +9,7 @@ describe('ActionSheet', () => {
         visible: true,
       },
     });
-    expect(wrapper.contains('.za-actionsheet')).toBe(true);
+    expect(wrapper.find('.za-actionsheet').exists()).toBe(true);
   });
 
   it('cancel action', done => {
@@ -27,16 +27,16 @@ describe('ActionSheet', () => {
           actions: [
             {
               text: '操作一',
-              onClick: () => {},
+              onClick: () => { },
             },
             {
               text: '操作二',
-              onClick: () => () => {},
+              onClick: () => () => { },
             },
             {
               theme: 'error',
               text: '操作三',
-              onClick: () => () => {},
+              onClick: () => () => { },
             },
           ],
         };
@@ -71,16 +71,16 @@ describe('ActionSheet', () => {
           actions: [
             {
               text: '操作一',
-              onClick: () => {},
+              onClick: () => { },
             },
             {
               text: '操作二',
-              onClick: () => () => {},
+              onClick: () => () => { },
             },
             {
               theme: 'error',
               text: '操作三',
-              onClick: () => () => {},
+              onClick: () => () => { },
             },
           ],
         };
@@ -105,7 +105,7 @@ describe('ActionSheet', () => {
     });
     const { vm } = wrapper;
     vm.$nextTick(() => {
-      expect(wrapper.contains('.za-actionsheet__cancel')).toBeTruthy();
+      expect(wrapper.find('.za-actionsheet__cancel').exists()).toBe(true);
       done();
     });
   });
@@ -120,7 +120,7 @@ describe('ActionSheet', () => {
     });
     const { vm } = wrapper;
     vm.$nextTick(() => {
-      expect(wrapper.contains('.za-actionsheet__cancel')).toBe(false);
+      expect(wrapper.find('.za-actionsheet__cancel').exists()).toBe(false);
       done();
     });
   });

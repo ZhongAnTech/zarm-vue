@@ -9,8 +9,8 @@ describe('Icon', () => {
         theme: 'primary',
       },
     });
-    expect(wrapper.contains('.za-icon')).toBe(true);
-    expect(wrapper.contains('.za-icon--primary')).toBe(true);
+    expect(wrapper.find('.za-icon').exists()).toBe(true);
+    expect(wrapper.find('.za-icon--primary').exists()).toBe(true);
   });
 
   it('click', done => {

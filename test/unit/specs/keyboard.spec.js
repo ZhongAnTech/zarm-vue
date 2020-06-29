@@ -9,7 +9,7 @@ describe('Keyboard', () => {
         type: 'number',
       },
     });
-    expect(wrapper.contains('.za-keyboard')).toBe(true);
+    expect(wrapper.find('.za-keyboard').exists()).toBe(true);
   });
 
   it('create price keyboard', () => {
@@ -23,7 +23,7 @@ describe('Keyboard', () => {
     const wrapper = mount(Keyboard, {
       type: 'idcard',
     });
-    expect(wrapper.contains('.za-keyboard')).toBe(true);
+    expect(wrapper.find('.za-keyboard').exists()).toBe(true);
   });
 
   it('create keyboard picker', (done) => {
@@ -33,7 +33,7 @@ describe('Keyboard', () => {
       },
       template: `
         <div @click="visible1 = true">
-          <div ref="btn" 
+          <div ref="btn"
             >开启</div
           >
           <za-keyboard-picker
@@ -51,7 +51,7 @@ describe('Keyboard', () => {
     const { vm } = wrapper;
     vm.$el.click();
     vm.$nextTick(() => {
-      expect(wrapper.find('.za-keyboard')).toBeTruthy();
+      expect(wrapper.find('.za-keyboard').exists()).toBe(true);
       done();
     });
   });

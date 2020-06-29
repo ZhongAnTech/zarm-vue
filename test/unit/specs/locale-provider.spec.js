@@ -9,7 +9,7 @@ describe('LocaleProvider', () => {
         lang: 'ZH_CN',
       },
     });
-    expect(wrapper.find('.za-locale-provider')).toBeTruthy();
+    expect(wrapper.find('.za-locale-provider').exists()).toBe(true);
   });
 
   it('set locale lang ZH_CN', done => {

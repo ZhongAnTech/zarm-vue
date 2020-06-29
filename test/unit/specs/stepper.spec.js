@@ -1,6 +1,7 @@
 import zaStepper from '@/stepper';
 import { mount } from '../util';
 
+
 describe('Stepper', () => {
   it('create', () => {
     const wrapper = mount(zaStepper, {
@@ -10,9 +11,9 @@ describe('Stepper', () => {
         shape: 'radius',
       },
     });
-    expect(wrapper.contains('.za-stepper')).toBe(true);
-    expect(wrapper.contains('.za-stepper--sm')).toBe(true);
-    expect(wrapper.contains('.za-stepper--radius')).toBe(true);
+    expect(wrapper.find('.za-stepper').exists()).toBe(true);
+    expect(wrapper.find('.za-stepper--sm').exists()).toBe(true);
+    expect(wrapper.find('.za-stepper--radius').exists()).toBe(true);
   });
 
   it('input value', done => {
@@ -29,10 +30,10 @@ describe('Stepper', () => {
         };
       },
       methods: {
-        handleInputChange (val) {
-            this.stepper = val
-        }
-      }
+        handleInputChange(val) {
+          this.stepper = val;
+        },
+      },
     };
 
     const wrapper = mount(TestCompo);
@@ -62,10 +63,10 @@ describe('Stepper', () => {
         };
       },
       methods: {
-        handleInputChange (val) {
-            this.stepper = val
-        }
-      }
+        handleInputChange(val) {
+          this.stepper = val;
+        },
+      },
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
@@ -93,10 +94,10 @@ describe('Stepper', () => {
         };
       },
       methods: {
-        handleInputChange (val) {
-            this.stepper = val
-        }
-      }
+        handleInputChange(val) {
+          this.stepper = val;
+        },
+      },
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
@@ -123,9 +124,9 @@ describe('Stepper', () => {
         handleChange(evt) {
           result = evt;
         },
-        handleInputChange (val) {
-            this.stepper = val
-        }
+        handleInputChange(val) {
+          this.stepper = val;
+        },
       },
       data() {
         return {
@@ -160,9 +161,9 @@ describe('Stepper', () => {
         handleChange(evt) {
           result = evt;
         },
-        handleInputChange (val) {
-            this.stepper = val
-        }
+        handleInputChange(val) {
+          this.stepper = val;
+        },
       },
       data() {
         return {
@@ -229,9 +230,9 @@ describe('Stepper', () => {
         };
       },
       methods: {
-        handleInputChange (val) {
-            this.stepper = val
-        }
+        handleInputChange(val) {
+          this.stepper = val;
+        },
       },
     };
 
@@ -258,9 +259,9 @@ describe('Stepper', () => {
         };
       },
       methods: {
-        handleInputChange (val) {
-            this.stepper = val
-        }
+        handleInputChange(val) {
+          this.stepper = val;
+        },
       },
     };
 

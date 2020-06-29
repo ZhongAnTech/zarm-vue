@@ -8,7 +8,7 @@ describe('za-nav-bar', () => {
         prefixCls: 'za-navbar',
       },
     });
-    expect(wrapper.contains('.za-navbar')).toBe(true);
+    expect(wrapper.find('.za-navbar').exists()).toBe(true);
   });
 
   it('left', () => {
@@ -22,7 +22,7 @@ describe('za-nav-bar', () => {
         </za-nav-bar>
       `,
     }, true);
-    expect(wrapper.contains('.zaIcon01')).toBe(true);
+    expect(wrapper.find('.zaIcon01').exists()).toBe(true);
   });
   it('title', () => {
     const wrapper = mount({
@@ -35,7 +35,7 @@ describe('za-nav-bar', () => {
         </za-nav-bar>
       `,
     }, true);
-    expect(wrapper.contains('.navBarTitle')).toBe(true);
+    expect(wrapper.find('.navBarTitle').exists()).toBe(true);
   });
   it('right', () => {
     const wrapper = mount({
@@ -51,7 +51,7 @@ describe('za-nav-bar', () => {
         </za-nav-bar>
       `,
     }, true);
-    expect(wrapper.contains('.zaIcon01')).toBe(true);
-    expect(wrapper.contains('.zaIcon02')).toBe(true);
+    expect(wrapper.find('.zaIcon01').exists()).toBe(true);
+    expect(wrapper.find('.zaIcon02').exists()).toBe(true);
   });
 });

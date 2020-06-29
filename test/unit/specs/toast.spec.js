@@ -47,11 +47,12 @@ describe('Toast', () => {
       expect(vm.$el.classList.contains('za-toast--open')).toBe(false);
       vm.visible = true;
       setTimeout(() => {
-        expect(vm.$el.classList.contains('za-toast--open')).toBe(false);
+        expect(vm.$el.classList.contains('za-toast--open')).toBe(true);
         done();
       }, 30);
     }, 60);
   });
+
 
   it('$zaToast', done => {
     const TestCompo = {

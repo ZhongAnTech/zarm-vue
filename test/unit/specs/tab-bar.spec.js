@@ -9,7 +9,7 @@ describe('TabBar', () => {
         prefixCls: 'za-tab-bar',
       },
     });
-    expect(wrapper.contains('.za-tab-bar')).toBe(true);
+    expect(wrapper.find('.za-tab-bar').exists()).toBe(true);
     wrapper.destroy();
   });
 
@@ -39,11 +39,11 @@ describe('TabBar', () => {
         toggle() {
           this.visible = !this.visible;
         },
-        handleChange() {},
+        handleChange() { },
       },
     };
     const wrapper = mount(TestCompo);
-    expect(wrapper.contains('.za-tab-bar')).toBe(true);
+    expect(wrapper.find('.za-tab-bar').exists()).toBe(true);
     wrapper.destroy();
   });
 });

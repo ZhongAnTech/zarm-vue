@@ -9,7 +9,7 @@ describe('Checkbox', () => {
         prefixCls: 'za-checkbox',
       },
     });
-    expect(wrapper.contains('.za-checkbox')).toBe(true);
+    expect(wrapper.find('.za-checkbox').exists()).toBe(true);
   });
 
   it('theme single', () => {
@@ -19,7 +19,7 @@ describe('Checkbox', () => {
         type: 'button',
       },
     });
-    expect(wrapper.contains('.za-checkbox--primary')).toBe(true);
+    expect(wrapper.find('.za-checkbox--primary').exists()).toBe(true);
   });
 
   it('type cell', () => {
@@ -28,7 +28,7 @@ describe('Checkbox', () => {
         type: 'cell',
       },
     });
-    expect(wrapper.contains('.za-cell')).toBe(true);
+    expect(wrapper.find('.za-cell').exists()).toBe(true);
   });
 
   it('single with click', done => {
@@ -51,7 +51,7 @@ describe('Checkbox', () => {
         disabled: true,
       },
     });
-    expect(wrapper.contains('.za-checkbox--disabled')).toBe(true);
+    expect(wrapper.find('.za-checkbox--disabled').exists()).toBe(true);
   });
 
   it('group create', () => {
@@ -78,7 +78,7 @@ describe('Checkbox', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    expect(wrapper.contains('.za-checkbox-group')).toBe(true);
+    expect(wrapper.find('.za-checkbox-group').exists()).toBe(true);
   });
 
   it('group shape type theme block', () => {
@@ -105,9 +105,9 @@ describe('Checkbox', () => {
       },
     };
     const wrapper = mount(TestCompo);
-    expect(wrapper.contains('.za-checkbox-group--radius')).toBe(true);
-    expect(wrapper.contains('.za-checkbox-group--block')).toBe(true);
-    expect(wrapper.contains('.za-button--primary')).toBe(true);
+    expect(wrapper.find('.za-checkbox-group--radius').exists()).toBe(true);
+    expect(wrapper.find('.za-checkbox-group--block').exists()).toBe(true);
+    expect(wrapper.find('.za-button--primary').exists()).toBe(true);
   });
 
   it('group type=cell with click and unclick', done => {
@@ -202,7 +202,7 @@ describe('Checkbox', () => {
     wrapper.find('.za-checkbox__input').trigger('click');
     vm.$nextTick(() => {
       const firstCheckbox = vm.$el.querySelector('.za-checkbox__input');
-      expect(wrapper.contains('.za-checkbox--checked')).toBe(true);
+      expect(wrapper.find('.za-checkbox--checked').exists()).toBe(true);
       expect(firstCheckbox.checked).toBe(true);
       expect(vm.v1).toBe(true);
       expect(result).toEqual(1);

@@ -23,7 +23,7 @@
 
 - 稳定版：[![npm package](https://img.shields.io/npm/v/zarm-vue.svg)](https://www.npmjs.org/package/zarm-vue)
 
-- 开发版：[![npm package](https://img.shields.io/npm/v/zarm-vue/alpha.svg)](https://www.npmjs.org/package/zarm-vue)
+- Beta版：[![npm package](https://img.shields.io/npm/v/zarm-vue/beta.svg)](https://www.npmjs.org/package/zarm-vue)
 
 ### Install 安装
 

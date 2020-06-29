@@ -9,7 +9,7 @@ describe('collapse', () => {
         prefixCls: 'za-collapse',
       },
     });
-    expect(wrapper.contains('.za-collapse')).toBe(true);
+    expect(wrapper.find('.za-collapse').exists()).toBe(true);
   });
 
   it('change', () => {
@@ -58,8 +58,8 @@ describe('collapse', () => {
   it('activeKey', done => {
     const TestCompo = {
       components: {
-          zaCollapse,
-          zaCollapseItem,
+        zaCollapse,
+        zaCollapseItem,
       },
       template: `
         <za-collapse :activeKey='activeKey' multiple>
@@ -83,15 +83,15 @@ describe('collapse', () => {
           </za-collapse-item>
         </za-collapse>
         `,
-        data() {
-          return {
-            activeKey: ['1', '2'],
-          };
-        },
+      data() {
+        return {
+          activeKey: ['1', '2'],
+        };
+      },
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    const item = vm.$el.querySelectorAll('.za-collapse-item');
+    // const item = vm.$el.querySelectorAll('.za-collapse-item');
     const curActiveItem = vm.$el.querySelectorAll('.za-collapse-item')[2];
     vm.activeKey = ['1', '2', '3'];
     setTimeout(() => {

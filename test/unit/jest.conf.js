@@ -12,7 +12,7 @@ module.exports = {
     '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
     '.*\\.(vue)$': '<rootDir>/node_modules/vue-jest',
   },
-  // testMatch: ['<rootDir>/test/**/picker.*.js'],
+  // testMatch: ['<rootDir>/test/**/util.*.js'],
   testPathIgnorePatterns: ['<rootDir>/test/e2e'],
   snapshotSerializers: ['<rootDir>/node_modules/jest-serializer-vue'],
   setupFiles: ['<rootDir>/test/unit/setup'],

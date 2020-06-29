@@ -7,6 +7,7 @@ const callback = () => {
   a += 1;
 };
 
+
 describe('utils', () => {
   it('on', done => {
     events.on(div, 'click', callback);
