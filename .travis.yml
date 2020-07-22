@@ -1,11 +1,13 @@
-sudo: required
-addons:
-  chrome: stable
+sudo: false
 language: node_js
-node_js: 
+node_js:
   - 8
-cache:
-  yarn: true
+  - 10
+before_install:
+  - export TZ=America/New_York
+cache: yarn
+install:
+  - yarn --ignore-engines
 branches:
   only:
   - master
