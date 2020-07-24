@@ -118,7 +118,7 @@ export default {
     },
     validate: {
       type: Function,
-      default: () => {},
+      default: () => { },
     },
     cancelText: {
       type: String,
@@ -206,13 +206,14 @@ export default {
 
         if (index < cols && valIndex >= 0) {
           const target = this.$refs.columns[index];
-          const position = target.scrollTop;
-          const viewTopIndex = valIndex - displayItems;
+          if (target) {
+            const position = target.scrollTop;
+            const viewTopIndex = valIndex - displayItems;
 
-          if (position < ((viewTopIndex + 1) * itemHeight) || position > (valIndex * itemHeight)) {
-            target.scrollTop = valIndex * itemHeight;
+            if (position < ((viewTopIndex + 1) * itemHeight) || position > (valIndex * itemHeight)) {
+              target.scrollTop = valIndex * itemHeight;
+            }
           }
-
           return data[valIndex].children || [];
         }
 
@@ -303,11 +304,11 @@ export default {
       }
     },
   },
-  // mounted() {
-  //   this.reposition();
-  // },
-  // updated() {
-  //   this.reposition();
-  // },
+  mounted() {
+    this.reposition();
+  },
+  updated() {
+    this.reposition();
+  },
 };
 </script>

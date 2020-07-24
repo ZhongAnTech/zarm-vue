@@ -46,7 +46,7 @@ describe('Picker', () => {
       },
     });
     wrapper.element.click();
-    expect(wrapper.findComponent({ name: 'zaPicker' }).vm.currentValue[0]).toBe('1');
+    expect(wrapper.find({ name: 'zaPicker' }).vm.currentValue[0]).toBe('1');
   });
 
   it('single column', () => {
@@ -70,7 +70,7 @@ describe('Picker', () => {
       },
     });
     wrapper.element.click();
-    expect(wrapper.findComponent({ name: 'zaPicker' }).vm.currentValue[0]).toBe('1');
+    expect(wrapper.find({ name: 'zaPicker' }).vm.currentValue[0]).toBe('1');
   });
 
   it('multi columns', () => {
