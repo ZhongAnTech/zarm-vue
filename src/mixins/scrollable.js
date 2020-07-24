@@ -32,7 +32,8 @@ export default {
     };
   },
   mounted() {
-    this.documentBodyStyle = document.body.style;
+    const { top, position, width } = document.body.style;
+    this.documentBodyStyle = { top, position, width };
   },
   beforeDestroy() {
     this.onAfterClose();
@@ -50,8 +51,11 @@ export default {
     },
     onAfterClose() {
       if (!this.documentScrollble) return;
-      document.body.style = this.documentBodyStyle;
-      // console.log(this.documentScrollTop);
+      const { top, position, width } = this.documentBodyStyle;
+      // fixed ios10, android5.x readonly property bug
+      document.body.style.position = position;
+      document.body.style.width = width;
+      document.body.style.top = top;
       // scrollTop lost after set position:fixed, restore it back.
       setScrollTop(this.documentScrollTop);
     },
