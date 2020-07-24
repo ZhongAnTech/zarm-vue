@@ -19,11 +19,9 @@
   @change="handleChange"
   @cancel="handleCancel"
 />
-
 ```
 
 :::
-
 
 :::demo 层叠式选择器 StackSelect
 
@@ -43,8 +41,6 @@
 ```
 
 :::
-
-
 
 ### Vue Script
 
@@ -66,6 +62,38 @@ const District = [{
       "children": []
     }, {
       "value": "340882",
+      "label": "其它区",
+      "children": []
+    }, {
+      "value": "340883",
+      "label": "其它区",
+      "children": []
+    }, {
+      "value": "340884",
+      "label": "其它区",
+      "children": []
+    }, {
+      "value": "340885",
+      "label": "其它区",
+      "children": []
+    }, {
+      "value": "340886",
+      "label": "其它区",
+      "children": []
+    }, {
+      "value": "340887",
+      "label": "其它区",
+      "children": []
+    }, {
+      "value": "340888",
+      "label": "其它区",
+      "children": []
+    }, {
+      "value": "340889",
+      "label": "其它区",
+      "children": []
+    }, {
+      "value": "340890",
       "label": "其它区",
       "children": []
     }]
@@ -146,8 +174,8 @@ export default {
 
 #### StackPicker & StackSelect Events
 
-| 事件名称   | 说明                         | 回调参数         |
-| :--------- | :--------------------------- | :--------------- |
-| ok         | 点击确定时触发的回调函数     | 选中值的对象列表 |
-| cancel     | 点击取消时触发的回调函数     | event 对象       |
-| change     | 滚动时值变化时触发的回调函数 | 选中值的对象列表 |
+| 事件名称 | 说明                         | 回调参数         |
+| :------- | :--------------------------- | :--------------- |
+| ok       | 点击确定时触发的回调函数     | 选中值的对象列表 |
+| cancel   | 点击取消时触发的回调函数     | event 对象       |
+| change   | 滚动时值变化时触发的回调函数 | 选中值的对象列表 |
