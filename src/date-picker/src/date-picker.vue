@@ -12,35 +12,34 @@
         [`${prefixCls}__container`]: true,
         [customCls]: !!customCls,
       }' @click.stop='() => {}'>
-    <za-popup
-      :visible='currentVisible'
-      :get-container="getContainer"
-      direction="bottom"
-      @maskClick='onMaskClick'>
-      <div :class='`${prefixCls}__wrapper`'>
-        <div :class='`${prefixCls}__header`'>
-          <div :class='`${prefixCls}__cancel`' @click='onCancel'>{{cancelText}}</div>
-          <div :class='`${prefixCls}__title`'>{{title}}</div>
-          <div :class='`${prefixCls}__submit`' @click='onOk'>{{okText}}</div>
+      <za-popup
+        :visible='currentVisible'
+        :get-container="getContainer"
+        direction="bottom"
+        @maskClick='onMaskClick'>
+        <div :class='`${prefixCls}__wrapper`'>
+          <div :class='`${prefixCls}__header`'>
+            <div :class='`${prefixCls}__cancel`' @click='onCancel'>{{cancelText}}</div>
+            <div :class='`${prefixCls}__title`'>{{title}}</div>
+            <div :class='`${prefixCls}__submit`' @click='onOk'>{{okText}}</div>
+          </div>
+          <za-date-picker-view
+            :title="title"
+            :placeholder="placeholder"
+            :mode='mode'
+            :min="min"
+            :max="max"
+            :value="date"
+            :minuteStep="minuteStep"
+            @init='onInit'
+            @cancel='onCancel'
+            @change='onValueChange'
+            @transition='onTransition'
+          />
         </div>
-         <za-date-picker-view
-           :title="title"
-           :placeholder="placeholder"
-           :mode='mode'
-           :min="min"
-           :max="max"
-           :value="date"
-           :minuteStep="minuteStep"
-           @init='onInit'
-           @cancel='onCancel'
-           @change='onValueChange'
-           @transition='onTransition'
-           />
-        </div>
-       </za-popup>
+      </za-popup>
      </div>
-     </div>
-</Popup>
+  </div>
 </template>
 
 <script>
