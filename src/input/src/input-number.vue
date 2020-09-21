@@ -67,7 +67,7 @@ export default {
   mounted() {
     clickoutside.addClickoutSide({ handle: this.onOutsideBlur });
   },
-  beforeDestroy() {
+  beforeUnmount() {
     clickoutside.removeClickoutSide({ handle: this.onOutsideBlur });
   },
   methods: {

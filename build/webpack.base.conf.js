@@ -19,7 +19,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.md', '.json'],
     alias: {
-      vue$: 'vue/dist/vue.esm.js',
+      vue$: 'vue/dist/vue.runtime.esm-bundler.js',
       '@': resolve('src'),
       docs: resolve('docs'),
       site: resolve('site'),

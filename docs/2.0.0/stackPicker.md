@@ -4,21 +4,18 @@
 
 ```html
 <za-cell title="单列">
-  <za-button slot="description" size="xs" @click="visible1 = true"
-    >开启</za-button
-  >
+  <za-button slot="description" size="xs" @click="visible1 = true">开启</za-button>
+  <za-stack-picker
+    :visible.sync="visible1"
+    title="级联选择"
+    placeholder="请选择"
+    :data-source="District"
+    :display-render="selected => selected.map(item => item.label).join('-')"
+    @ok="handleOk"
+    @change="handleChange"
+    @cancel="handleCancel"
+  />
 </za-cell>
-
-<za-stack-picker
-  :visible.sync="visible1"
-  title="级联选择"
-  placeholder="请选择"
-  :data-source="District"
-  :display-render="selected => selected.map(item => item.label).join('-')"
-  @ok="handleOk"
-  @change="handleChange"
-  @cancel="handleCancel"
-/>
 ```
 
 :::

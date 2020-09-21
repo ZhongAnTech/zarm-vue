@@ -190,7 +190,7 @@ export default {
       this.initAutosize();
     }
   },
-  beforeDestroy() {
+  beforeUnmount() {
     const { onBlurTimeout } = this;
     onBlurTimeout && clearTimeout(onBlurTimeout);
     this.onBlurTimeout = null;

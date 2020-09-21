@@ -6,7 +6,7 @@ const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const VueLoaderPlugin = require('vue-loader/dist/plugin').default;
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir);
@@ -16,7 +16,7 @@ module.exports = merge(baseWebpackConfig, {
   mode: 'development',
   entry: {
     demo: resolve('./example/main.js'),
-    site: resolve('./site/main.js'),
+    // site: resolve('./site/main.js'),
   },
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap }),
@@ -39,14 +39,14 @@ module.exports = merge(baseWebpackConfig, {
       chunks: ['demo'],
       inject: true,
     }),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'site/index.html',
-      favicon: 'site/styles/images/favicon.ico',
-      pathname: '/',
-      chunks: ['site'],
-      inject: true,
-    }),
+    // new HtmlWebpackPlugin({
+    //   filename: 'index.html',
+    //   template: 'site/index.html',
+    //   favicon: 'site/styles/images/favicon.ico',
+    //   pathname: '/',
+    //   chunks: ['site'],
+    //   inject: true,
+    // }),
     new FriendlyErrorsPlugin(),
   ],
 });

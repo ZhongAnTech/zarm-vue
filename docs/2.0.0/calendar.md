@@ -8,7 +8,8 @@
     v-model="multiple"
     @ok="handleChange"
     :data-source="multipleOptions"
-  />
+  >
+  </za-select>
 </za-cell>
 <za-cell title="min">
   <za-date-select
@@ -42,7 +43,8 @@
   :disabled-date="disabledDate"
   :min="min"
   :max="max"
-/>
+>
+</za-calendar>
 ```
 
 :::

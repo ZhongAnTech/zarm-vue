@@ -1,4 +1,5 @@
 <script>
+import { h } from 'vue';
 export default {
   data() {
     return {
@@ -12,7 +13,7 @@ export default {
       this.visible = false;
     })
   },
-  render(h) {
+  render() {
     return this.visible ? h('zaLoading', {
       props: {
         visible: true,

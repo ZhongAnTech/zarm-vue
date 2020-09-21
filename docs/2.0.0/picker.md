@@ -5,23 +5,19 @@
 ```html
 <za-cell title="单列">
   <za-button slot="description" size="xs" @click="visible1 = true"
-    >开启</za-button
-  >
+    >开启</za-button>
 </za-cell>
 <za-cell title="多列">
   <za-button slot="description" size="xs" @click="visible2 = true"
-    >开启</za-button
-  >
+    >开启</za-button>
 </za-cell>
 <za-cell title="多列联动">
   <za-button slot="description" size="xs" @click="visible3 = true"
-    >开启</za-button
-  >
+    >开启</za-button>
 </za-cell>
 <za-cell title="自定义格式">
   <za-button slot="description" size="xs" @click="visible4 = true"
-    >开启</za-button
-  >
+    >开启</za-button>
 </za-cell>
 
 <za-picker
@@ -61,7 +57,7 @@
     @ok="handleOk"
     @change="handleChange"
     @cancel="handleCancel"
-  />
+  ></za-select>
 </za-cell>
 <za-cell title="多项选择">
   <za-select
@@ -70,7 +66,7 @@
     @ok="handleOk"
     @change="handleChange"
     @cancel="handleCancel"
-  />
+  ></za-select>
 </za-cell>
 ```
 
@@ -87,7 +83,7 @@
     @change="handleChange"
     @cancel="handleCancel"
     :cols="2"
-  />
+  ></za-select>
 </za-cell>
 <za-cell title="省市区选择">
   <za-select
@@ -97,7 +93,7 @@
     @ok="handleOk"
     @change="handleChange"
     @cancel="handleCancel"
-  />
+  ></za-select>
 </za-cell>
 ```
 
@@ -111,7 +107,7 @@
   :default-value="v5"
   :data-source="data5"
   @change="handleChange"
-/>
+></za-picker-view>
 ```
 
 :::
