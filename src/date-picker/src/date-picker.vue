@@ -39,8 +39,7 @@
         </div>
        </za-popup>
      </div>
-     </div>
-</Popup>
+  </div>
 </template>
 
 <script>
