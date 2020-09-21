@@ -1,4 +1,5 @@
 <script>
+import { h } from 'vue';
 import { deepCloneVNode } from '@/utils/vdom';
 import zaDrag from '@/drag';
 
@@ -171,7 +172,7 @@ export default {
       if (!this.swipeable) return;
 
       if (this.scrolling ||
-          (!offsetX && !offsetY)
+        (!offsetX && !offsetY)
       ) {
         this.scrolling = false;
         return;
@@ -298,11 +299,11 @@ export default {
       // fix tabs use cancarousel bug
       return this.$slots.default
         .filter(d => d.componentOptions &&
-        (d.componentOptions.tag === 'za-carousel-item' ||
-        d.componentOptions.tag === 'za-tab-panel'));
+          (d.componentOptions.tag === 'za-carousel-item' ||
+            d.componentOptions.tag === 'za-tab-panel'));
     },
   },
-  render(h) {
+  render() {
     const {
       prefixCls,
       itemsStyle,
