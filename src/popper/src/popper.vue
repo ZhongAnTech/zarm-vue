@@ -162,7 +162,7 @@ export default {
     clearTimeout(this.leaveTimer);
     clickoutside.addClickoutSide({ handle: this.onOutsideBlur });
   },
-  beforeDestroy() {
+  beforeUnmount() {
     clickoutside.removeClickoutSide({ handle: this.onOutsideBlur });
   },
   methods: {

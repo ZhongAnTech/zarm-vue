@@ -35,7 +35,7 @@ export default {
     const { top, position, width } = document.body.style;
     this.documentBodyStyle = { top, position, width };
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.onAfterClose();
   },
   methods: {

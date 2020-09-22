@@ -104,7 +104,7 @@ export default {
     this.translateY = 0;
     this.moveInterval = null;
   },
-  beforeDestroy() {
+  beforeUnmount() {
     window.removeEventListener('resize', this.resize);
     this.$refs.carouselItems.removeEventListener('webkitTransitionEnd', this.transitionEnd);
     this.$refs.carouselItems.removeEventListener('transitionend', this.transitionEnd);

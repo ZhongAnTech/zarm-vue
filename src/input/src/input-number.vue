@@ -11,19 +11,13 @@
        >
         <div v-show='!currentValue' :class="`${prefixCls}__placeholder`">{{ placeholder }}</div>
         <div :class="`${prefixCls}__content`" ref="content">{{ currentValue }}</div>
-        <input
-          type="hidden"
-          :value="currentValue"
-          :disabled="disabled"
-          :readonly='readonly'
-        />
         <KeyboardPicker
           ref="picker"
           :visible.sync="visible"
           :type="type"
           @keyClick="onKeyClick"
         />
-      </div>
+  </div>
 </template>
 
 <script>
@@ -42,7 +36,7 @@ export default {
       type: String,
       default: 'number',
     },
-    value: [String, Number],
+    modelValue: [String, Number],
     disabled: {
       type: Boolean,
       default: false,
@@ -51,18 +45,13 @@ export default {
   },
   data() {
     return {
-      currentValue: this.value || '',
+      currentValue: this.modelValue || '',
       hideOnClickOutside: true,
       visible: false,
     };
   },
   components: {
     KeyboardPicker,
-  },
-  watch: {
-    'value'(val, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
-      this.setCurrentValue(val);
-    },
   },
   mounted() {
     clickoutside.addClickoutSide({ handle: this.onOutsideBlur });
@@ -81,13 +70,13 @@ export default {
         this.onBlur();
         return;
       }
-      const value = this.value;
+      const value = this.currentValue || '';
       const newValue = (key === 'delete')
         ? value.slice(0, value.length - 1)
         : value + key;
 
       if (newValue !== value) {
-        this.currentValue = newValue;
+        this.setCurrentValue(newValue);
         this.scrollToEnd();
         this.$emit('input', newValue);
         this.$emit('change', newValue);

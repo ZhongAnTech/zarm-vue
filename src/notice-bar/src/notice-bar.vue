@@ -90,7 +90,7 @@ export default {
       this.offset = offset;
     }, 50);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     if (this.moveInterval) {
       clearInterval(this.moveInterval);
     }

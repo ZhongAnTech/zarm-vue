@@ -32,7 +32,7 @@
 :::demo 按钮样式
 
 ```html
-<za-cell>
+<za-cell title="普通">
   <za-checkbox-group
     v-model="checkboxGroup2"
     slot="description"
@@ -43,9 +43,8 @@
       >{{city}}</za-checkbox
     >
   </za-checkbox-group>
-  普通
 </za-cell>
-<za-cell>
+<za-cell title="指定默认值">
   <za-checkbox-group
     v-model="checkboxGroup3"
     slot="description"
@@ -56,9 +55,8 @@
       >{{city}}</za-checkbox
     >
   </za-checkbox-group>
-  指定默认值
 </za-cell>
-<za-cell>
+<za-cell title="禁用指定项">
   <za-checkbox-group
     v-model="checkboxGroup4"
     slot="description"
@@ -73,9 +71,8 @@
       >{{city}}</za-checkbox
     >
   </za-checkbox-group>
-  禁用指定项
 </za-cell>
-<za-cell>
+<za-cell title="直角">
   <za-checkbox-group
     v-model="checkboxGroup5"
     slot="description"
@@ -87,9 +84,8 @@
       >{{city}}</za-checkbox
     >
   </za-checkbox-group>
-  直角
 </za-cell>
-<za-cell>
+<za-cell title="椭圆角">
   <za-checkbox-group
     v-model="checkboxGroup6"
     slot="description"
@@ -101,7 +97,6 @@
       >{{city}}</za-checkbox
     >
   </za-checkbox-group>
-  椭圆角
 </za-cell>
 ```
 

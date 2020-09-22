@@ -53,6 +53,7 @@
 
 ```javascript
 <script name="vue">
+import { h } from 'vue';
 export default {
   data() {
     return {
@@ -79,7 +80,6 @@ export default {
       }
     },
     dateRender(date) {
-      const h = this.$createElement;
       if (/(6)/.test(date.getDate())) {
         return h('za-badge', { props: { theme: 'primary', sup: true, shape: 'dot' }}, date.getDate());
       }

@@ -12,9 +12,11 @@
 
 ```html
 <za-cell title="拾取器触发">
-  <za-button slot="description" size="xs" @click="visible1 = true"
+  <template v-slot:description>
+  <za-button size="xs" @click="visible1 = true"
     >开启</za-button
   >
+  </template>
 </za-cell>
 <za-keyboard-picker
   :visible.sync="visible1"
@@ -38,6 +40,7 @@ const getValue = (v, key) => {
 export default {
   data() {
     return {
+      v1:'',
       visible1: false,
     }
   },

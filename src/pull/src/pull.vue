@@ -80,7 +80,7 @@ export default {
   mounted() {
     Event.on(window, 'scroll', this.throttledScroll);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     Event.off(window, 'scroll', this.throttledScroll);
   },
   watch: {
@@ -328,7 +328,7 @@ export default {
           });
           return loadLoading || (
             <div class={`${prefixCls}__control`}>
-              <za-activity-indicator class='rotate360'/>
+              <za-activity-indicator class='rotate360' />
               <span>加载中</span>
             </div>
           );

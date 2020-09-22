@@ -47,7 +47,20 @@ export default {
       type: Boolean,
       default: false,
     },
-    value: {},
+    modelValue: {
+      type: String,
+      default: '',
+    },
+  },
+  watch: {
+    modelValue(val) {
+      this.handleUpdate(val);
+    },
+  },
+  methods: {
+    handleUpdate(val) {
+      this.$emit('change', val);
+    },
   },
 };
 </script>

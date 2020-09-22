@@ -22,7 +22,7 @@
 :::demo 按钮样式
 
 ```html
-<za-cell>
+<za-cell title="Button">
   <za-radio-group
     slot="description"
     v-model="radioGroup1"
@@ -33,9 +33,9 @@
       >{{city}}</za-radio
     >
   </za-radio-group>
-  Button
+
 </za-cell>
-<za-cell>
+<za-cell title="指定默认值">
   <za-radio-group
     slot="description"
     v-model="radioGroup2"
@@ -46,9 +46,9 @@
       >{{city}}</za-radio
     >
   </za-radio-group>
-  指定默认值
+
 </za-cell>
-<za-cell>
+<za-cell title="禁用指定项">
   <za-radio-group
     slot="description"
     v-model="radioGroup3"
@@ -63,9 +63,9 @@
       >{{city}}</za-radio
     >
   </za-radio-group>
-  禁用指定项
+
 </za-cell>
-<za-cell>
+<za-cell title="直角">
   <za-radio-group
     slot="description"
     v-model="radioGroup4"
@@ -77,9 +77,9 @@
       >{{city}}</za-radio
     >
   </za-radio-group>
-  直角
+
 </za-cell>
-<za-cell>
+<za-cell title="椭圆角">
   <za-radio-group
     slot="description"
     v-model="radioGroup5"
@@ -91,7 +91,7 @@
       >{{city}}</za-radio
     >
   </za-radio-group>
-  椭圆角
+
 </za-cell>
 ```
 
@@ -179,7 +179,7 @@ export default {
       console.log(v, e);
     },
     handleGroupChange(v, e) {
-      console.log(v, e);
+      // console.log(v, e);
     }
   },
 };

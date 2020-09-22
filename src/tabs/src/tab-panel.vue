@@ -55,7 +55,7 @@ export default {
     // for vue2.1.0+ can be scoped slot here
     this.notifyParent();
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.notifyParent(false);
   },
   methods: {

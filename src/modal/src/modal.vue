@@ -169,7 +169,7 @@ export default {
       this.enter();
     }
   },
-  beforeDestroy() {
+  beforeUnmount() {
     clearTimeout(this.timer);
   },
 };

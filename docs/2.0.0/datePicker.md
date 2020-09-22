@@ -4,29 +4,37 @@
 
 ```html
 <za-cell title="日期选择">
-  <za-button slot="description" size="xs" @click="visible1 = true"
-    >开启</za-button
-  >
+  <template v-slot:description>
+    <za-button  size="xs" @click="visible1 = true">开启</za-button>
+  </template>
 </za-cell>
 <za-cell title="年份选择">
-  <za-button slot="description" size="xs" @click="visible5 = true"
+  <template v-slot:description>
+  <za-button size="xs" @click="visible5 = true"
     >开启</za-button
   >
+  </template>
 </za-cell>
 <za-cell title="月份选择">
-  <za-button slot="description" size="xs" @click="visible2 = true"
+  <template v-slot:description>
+  <za-button size="xs" @click="visible2 = true"
     >开启</za-button
   >
+  </template>
 </za-cell>
 <za-cell title="时间选择">
-  <za-button slot="description" size="xs" @click="visible3 = true"
+  <template v-slot:description>
+  <za-button size="xs" @click="visible3 = true"
     >开启</za-button
   >
+  </template>
 </za-cell>
 <za-cell title="时间&日期">
-  <za-button slot="description" size="xs" @click="visible4 = true"
+  <template v-slot:description>
+  <za-button size="xs" @click="visible4 = true"
     >开启</za-button
   >
+  </template>
 </za-cell>
 <za-date-picker
   :close-on-click-modal="false"

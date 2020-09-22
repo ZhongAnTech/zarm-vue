@@ -4,20 +4,28 @@
 
 ```html
 <za-cell title="单列">
-  <za-button slot="description" size="xs" @click="visible1 = true"
+  <template v-slot:description>
+  <za-button size="xs" @click="visible1 = true"
     >开启</za-button>
+    </template>
 </za-cell>
 <za-cell title="多列">
-  <za-button slot="description" size="xs" @click="visible2 = true"
+  <template v-slot:description>
+  <za-button size="xs" @click="visible2 = true"
     >开启</za-button>
+    </template>
 </za-cell>
 <za-cell title="多列联动">
-  <za-button slot="description" size="xs" @click="visible3 = true"
+  <template v-slot:description>
+  <za-button size="xs" @click="visible3 = true"
     >开启</za-button>
+    </template>
 </za-cell>
 <za-cell title="自定义格式">
-  <za-button slot="description" size="xs" @click="visible4 = true"
+  <template v-slot:description>
+  <za-button size="xs" @click="visible4 = true"
     >开启</za-button>
+    </template>
 </za-cell>
 
 <za-picker
