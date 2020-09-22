@@ -106,7 +106,7 @@ export default {
       }
     },
     isChecked() {
-      return this.isGroup ? this._radioGroup.modelValue === this.value : this.currentValue;
+      return this.isGroup ? this._radioGroup.modelValue === this.value : this.currentChecked;
     },
     store() {
       return this.isGroup ? this._radioGroup.modelValue : this.value;
@@ -130,11 +130,12 @@ export default {
   methods: {
     onValueChange(event) {
       const self = this;
+      if (self.radioDisabled) return;
+      self.currentChecked = !self.currentChecked;
       if (self.isGroup) {
         self.dispatch('zaRadioGroup', 'update:modelValue', self.currentValue);
       } else {
-        self.currentValue = this.value !== '' ? this.value : true;
-        self.$emit('change', self.currentValue, event);
+        self.$emit('change', self.currentValue, self.value);
       }
     },
   },
