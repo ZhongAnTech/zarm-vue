@@ -107,7 +107,7 @@ export default {
       default: 1,
     },
     defaultValue: '',
-    value: '',
+    modelValue: '',
     mode: String,
     format: [String, Function],
     valueFormat: String,
@@ -125,7 +125,7 @@ export default {
     };
   },
   created() {
-    const date = this.value && isExtendDate(this.value);
+    const date = this.modelValue && isExtendDate(this.modelValue);
     const defaultDate = this.defaultValue && isExtendDate(this.defaultValue);
     this.date = defaultDate || date;
     this.oldDate = this.date;
@@ -135,7 +135,7 @@ export default {
       if (this.currentVisible === val) return;
       this.currentVisible = val;
     },
-    value(val, oldVal) { // eslint-disable-line no-unused-vars
+    modelValue(val, oldVal) { // eslint-disable-line no-unused-vars
       if (this.date === val) return;
       this.date = isExtendDate(val);
       this.oldDate = this.date;
@@ -155,7 +155,7 @@ export default {
     // 点击取消
     onCancel() {
       this.toggle();
-      this.date = this.value || this.oldDate;
+      this.date = this.modelValue || this.oldDate;
       this.$emit('cancel', this.date);
     },
     // 点击确定
@@ -168,7 +168,7 @@ export default {
       this.date = value;
       this.oldDate = this.date;
       this.$emit('ok', this.valueFormat ? formatDate : value);
-      this.$emit('input', this.valueFormat ? formatDate : value);
+      this.$emit('update:modelValue', this.valueFormat ? formatDate : value);
       this.toggle();
     },
     // 切换显示状态

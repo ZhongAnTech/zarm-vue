@@ -6,7 +6,7 @@ export const sigleDateClean = function () {
   this.selectedDate && (this.selectedDate.active = false);
 };
 export const sigleValueNormalize = function () {
-  this.normalizeValue = normalizeDate(this.defaultValue || this.value);
+  this.normalizeValue = normalizeDate(this.defaultValue || this.modelValue);
 };
 export const sigleValueInit = function () {
   sigleValueNormalize.call(this);

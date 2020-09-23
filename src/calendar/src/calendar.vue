@@ -38,7 +38,7 @@ export default {
     defaultValue: {
       type: valueType,
     },
-    value: {
+    modelValue: {
       type: valueType,
     },
     min: {
@@ -108,8 +108,8 @@ export default {
     },
     _dateEmit(value) {
       changeBySelf = true;
+      this.$emit('update:modelValue', value);
       this.$emit('change', value);
-      this.$emit('input', value);
     },
     _componentInit() {
       this._rangeInit();
@@ -172,7 +172,7 @@ export default {
                   {
                     month.dates.map(dateItem => {
                       return <date-item
-                        nativeOnClick={() => this._dateClick(dateItem)}
+                        onClick={() => this._dateClick(dateItem)}
                         data={dateItem}
                         prefixCls={this.prefixCls}
                         dateRender={this.dateRender}

@@ -90,8 +90,8 @@ export default {
       type: String,
       default: 'value',
     },
-    defaultValue: [String, Array, Number],
-    value: [String, Array, Number],
+    defaultValue: '',
+    modelValue: '',
     displayAddon: {
       type: String,
       default: '',
@@ -141,7 +141,7 @@ export default {
       if (this.currentVisible === val) return;
       this.currentVisible = val;
     },
-    value(val, oldVal) { // eslint-disable-line no-unused-vars
+    modelValue(val, oldVal) { // eslint-disable-line no-unused-vars
       // console.log(val, oldVal) // eslint-disable-line
       if (this.currentValue === val) return;
       this.currentValue = isArray(val) ? val : [val];
@@ -150,7 +150,7 @@ export default {
   },
   methods: {
     getInitValue() {
-      const initValue = this.value || this.defaultValue || [];
+      const initValue = this.modelValue || this.defaultValue || [];
       // 针对单列数据源{}，转换为[{}]
       if (this.isSingleColumn) {
         return isArray(initValue) ? initValue : [initValue];
@@ -181,8 +181,8 @@ export default {
         selectedValue = [selectedValue];
       }
       const _value = formatBackToObject(data, selectedValue, cascade, valueMember, cols);
+      this.$emit('update:modelValue', this.currentValue);
       this.$emit('ok', _value);
-      this.$emit('input', this.currentValue);
     },
     getValue() {
       const { valueMember, data, currentValue, cols } = this;

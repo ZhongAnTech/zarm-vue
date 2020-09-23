@@ -38,7 +38,7 @@
 </za-cell>
 <za-date-picker
   :close-on-click-modal="false"
-  :visible.sync="visible1"
+  v-model:visible="visible1"
   title="选择日期"
   placeholder="请选择日期"
   mode="date"
@@ -48,7 +48,7 @@
 >
 </za-date-picker>
 <za-date-picker
-  :visible.sync="visible5"
+  v-model:visible="visible5"
   title="选择年份"
   defaultValue="2015"
   placeholder="请选择年份"
@@ -57,7 +57,7 @@
 >
 </za-date-picker>
 <za-date-picker
-  :visible.sync="visible2"
+  v-model:visible="visible2"
   title="选择月份"
   defaultValue="2018-09"
   placeholder="请选择月份"
@@ -66,7 +66,7 @@
 >
 </za-date-picker>
 <za-date-picker
-  :visible.sync="visible3"
+  v-model:visible="visible3"
   title="选择时间"
   defaultValue="2018-09-10 09:45"
   placeholder="请选择时间"
@@ -76,7 +76,7 @@
 >
 </za-date-picker>
 <za-date-picker
-  :visible.sync="visible4"
+  v-model:visible="visible4"
   title="选择"
   placeholder="请选择时间和日期"
   mode="datetime"
