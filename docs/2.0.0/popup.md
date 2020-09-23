@@ -3,40 +3,45 @@
 :::demo 基本
 
 ```html
-<za-cell>
-  <za-button size="xs" slot="description" @click="visible1 = true"
+<za-cell title="从上方弹出">
+  <template v-slot:description>
+  <za-button size="xs" @click="visible1 = true"
     >开启</za-button
   >
-  从上方弹出
+  </template>
 </za-cell>
-<za-cell>
-  <za-button size="xs" slot="description" @click="visible2 = true"
+<za-cell title="从下方弹出">
+  <template v-slot:description>
+  <za-button size="xs" @click="visible2 = true"
     >开启</za-button
   >
-  从下方弹出
+  </template>
 </za-cell>
-<za-cell>
-  <za-button size="xs" slot="description" @click="visible3 = true"
+<za-cell title="从左侧弹出">
+  <template v-slot:description>
+  <za-button size="xs" @click="visible3 = true"
     >开启</za-button
   >
-  从左侧弹出
+  </template>
 </za-cell>
-<za-cell>
-  <za-button size="xs" slot="description" @click="visible4 = true"
+<za-cell title="从右侧弹出">
+  <template v-slot:description>
+  <za-button size="xs" @click="visible4 = true"
     >开启</za-button
   >
-  从右侧弹出
+  </template>
 </za-cell>
-<za-cell>
-  <za-button size="xs" slot="description" @click="visible5 = true"
+<za-cell title="从中间弹出">
+  <template v-slot:description>
+  <za-button size="xs" @click="visible5 = true"
     >开启</za-button
   >
-  从中间弹出
+  </template>
 </za-cell>
 
 <za-popup
   style="zIndex:2000"
-  :visible.sync="visible1"
+  v-model:visible="visible1"
   direction="top"
   maskType="transparent"
 >
@@ -49,7 +54,7 @@
   </div>
 </za-popup>
 
-<za-popup :visible.sync="visible2" direction="bottom">
+<za-popup v-model:visible="visible2" direction="bottom">
   <div
     class="popup-box"
     style="height: 100%;padding: 20px 20px 100px;background: #fff;"
@@ -59,7 +64,7 @@
   </div>
 </za-popup>
 
-<za-popup :visible.sync="visible3" direction="left">
+<za-popup v-model:visible="visible3" direction="left">
   <div
     class="popup-box-left"
     style="width:160px;height: 100%;padding: 20px 20px 100px;background: #fff;"
@@ -68,7 +73,7 @@
   </div>
 </za-popup>
 
-<za-popup :visible.sync="visible4" direction="right">
+<za-popup v-model:visible="visible4" direction="right">
   <div
     class="popup-box"
     style="width:160px;height: 100%;padding: 20px 20px 100px;background: #fff;"
@@ -77,7 +82,7 @@
   </div>
 </za-popup>
 
-<za-popup :visible.sync="visible5" animation-type="zoom" direction="center">
+<za-popup v-model:visible="visible5" animation-type="zoom" direction="center">
   <div
     class="popup-box"
     style="width:160px;height: 160px;padding: 20px;background: #fff;display: flex;justify-content: center;align-items: center;"
@@ -92,15 +97,17 @@
 :::demo 设置挂载容器
 
 ```html
-<za-cell>
-  <za-button size="xs" slot="description" @click="visible6 = true"
+<za-cell title="从下方弹出">
+  <template v-slot:description>
+  <za-button size="xs" @click="visible6 = true"
     >开启</za-button
   >
-  从下方弹出
+  </template>
+  
 </za-cell>
 
 <za-popup
-  :visible.sync="visible6"
+  v-model:visible="visible6"
   direction="bottom"
   :get-container="getContainer"
 >

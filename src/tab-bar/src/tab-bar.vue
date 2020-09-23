@@ -18,27 +18,33 @@ export default {
       type: [String, Number],
       default: null,
     },
-    value: {},
   },
   data() {
     return {
+      currentVisible: this.visible,
       currentValue: this.activeKey || this.defaultActiveKey || this.value,
     };
+  },
+  watch: {
+    visible(val) {
+      if (val === this.currentVisible) return;
+      this.currentVisible = val;
+    },
   },
   methods: {
     onChildChange(value) {
       this.currentValue = value;
-      this.$emit('input', value);
+      this.$emit('update', value);
       this.$emit('change', value);
     },
   },
   render() {
-    const { visible, prefixCls } = this;
-    const cls = !visible ? `${prefixCls} ${prefixCls}--hidden` : `${prefixCls}`;
+    const { currentVisible, prefixCls } = this;
+    const cls = !currentVisible ? `${prefixCls} ${prefixCls}--hidden` : `${prefixCls}`;
 
     return (
       <div class={cls}>
-        {this.$slots.default}
+        {this.$slots.default()}
       </div>
     );
   },

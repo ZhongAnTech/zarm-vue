@@ -116,11 +116,11 @@ export default {
         closable={closable}
         theme={theme}
         hasArrow={hasArrow}
-        on-click={handleClick}
+        onClick={handleClick}
         icon={icon}>
         <div class={prefixCls} ref='wrapper'>
           <div class={`${prefixCls}__body`} ref='content' style={contentStyle}>
-            {this.$slots.default}
+            {this.$slots.default()}
           </div>
         </div>
       </za-message>

@@ -1,6 +1,5 @@
 <script>
-import { h } from 'vue';
-import { cloneElement, cloneVNodes } from '@/utils/vdom';
+import { cloneElement } from '@/utils/vdom';
 import zaDrag from '@/drag';
 
 export default {

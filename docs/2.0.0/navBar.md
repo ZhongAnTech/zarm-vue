@@ -4,11 +4,13 @@
 
 ```html
 <za-nav-bar>
-  <div slot="left">
+  <template v-slot:left>
     <za-icon theme="primary" type="arrow-left" @click="clickHandle"></za-icon>
-  </div>
-  <div slot="title">这是标题</div>
-  <div slot="right"></div>
+  </template>
+  <template v-slot:title>
+    <div slot="title">这是标题</div>
+  </template>
+ 
 </za-nav-bar>
 ```
 
@@ -18,15 +20,16 @@
 
 ```html
 <za-nav-bar>
-  <div slot="left"></div>
-  <div slot="title">这是标题</div>
-  <div slot="right">
+   <template v-slot:title>
+    <div slot="title">这是标题</div>
+  </template>
+   <template v-slot:right>
     <za-icon
       theme="primary"
       type="question-round"
       @click="clickHandle"
     ></za-icon>
-  </div>
+   </template>
 </za-nav-bar>
 ```
 
@@ -36,18 +39,20 @@
 
 ```html
 <za-nav-bar>
-  <div slot="left">
+  <template v-slot:left>
     <za-icon theme="primary" type="arrow-left" @click="clickHandle"></za-icon>
-  </div>
-  <div slot="title">这是标题</div>
-  <div slot="right">
+  </template>
+  <template v-slot:title>
+    <div>这是标题</div>
+  </template>
+  <template v-slot:right>
     <za-icon theme="primary" type="add" @click="clickHandle"></za-icon>
     <za-icon
       theme="primary"
       type="question-round"
       @click="clickHandle"
     ></za-icon>
-  </div>
+  </template>
 </za-nav-bar>
 ```
 

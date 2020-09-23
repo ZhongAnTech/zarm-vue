@@ -4,24 +4,38 @@
 
 ```html
 <za-cell title="隐藏 | 展示">
-  <za-button slot="description" ghost @click="toggle">{{ visible ? '隐藏' : '展示'}}</za-button>
+  <template v-slot:description>
+    <za-button @click="showTabBar">{{ visible ? '隐藏' : '展示'}}</za-button>
+  </template>
 </za-cell>
-<za-tab-bar :visible="visible" :defaultActiveKey="1" @change="handleChange">
+<za-tab-bar v-model:visible="visible" :defaultActiveKey="1" @change="handleChange">
   <za-tab-bar-item :item-key="1" title="首页">
-      <za-icon slot="icon" tag="symbol" type="home" class="icon"></za-icon>
-      <za-icon slot="activeIcon" tag="symbol" theme="primary" type="home" class="icon"></za-icon>
+    <template v-slot:icon>
+      <za-icon tag="symbol" type="home" class="icon"></za-icon>
+    </template>
+    <template v-slot:activeIcon>
+      <za-icon tag="symbol" theme="primary" type="home" class="icon"></za-icon>
+    </template>
   </za-tab-bar-item>
   <za-tab-bar-item :item-key="2" title="保险">
-      <za-badge slot="icon" sup shape="circle" text="3" @click="handleClick">
-        <za-icon tag="symbol" type="insurance" class="icon"></za-icon>
-      </za-badge>
-      <za-badge slot="activeIcon" sup shape="circle" text="3" @click="handleClick">
-        <za-icon tag="symbol" theme="primary" type="insurance" class="icon"></za-icon>
-      </za-badge>
+       <template v-slot:icon>
+        <za-badge  sup shape="circle" text="3" @click="handleClick">
+          <za-icon tag="symbol" type="insurance" class="icon"></za-icon>
+        </za-badge>
+      </template>
+       <template v-slot:activeIcon>
+        <za-badge sup shape="circle" text="3" @click="handleClick">
+          <za-icon tag="symbol" theme="primary" type="insurance" class="icon"></za-icon>
+        </za-badge>
+      </template>
   </za-tab-bar-item>
   <za-tab-bar-item :item-key="3" title="用户">
-      <za-icon slot="icon" tag="symbol" type="user" class="icon"></za-icon>
-      <za-icon slot="activeIcon" tag="symbol" theme="primary" type="user" class="icon"></za-icon>
+     <template v-slot:icon>
+      <za-icon  tag="symbol" type="user" class="icon"></za-icon>
+      </template>
+       <template v-slot:activeIcon>
+      <za-icon tag="symbol" theme="primary" type="user" class="icon"></za-icon>
+      </template>
   </za-tab-bar-item>
 </za-tab-bar>
 ```
@@ -40,7 +54,7 @@ export default {
     }
   },
   methods: {
-    toggle() {
+    showTabBar() {
       this.visible = !this.visible;
     },
     handleChange(value) {

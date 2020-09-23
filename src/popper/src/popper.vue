@@ -380,7 +380,7 @@ export default {
           ref="reference"
           class={`${prefixCls}__inner`}
         >
-          {this.$slots.default}
+          {this.$slots.default()}
         </div>
       </div>
     );

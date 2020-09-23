@@ -13,7 +13,9 @@
 ```html
 <za-cell title="标题文字" description="描述文字"></za-cell>
 <za-cell title="标题文字">
-  <za-icon slot="description" type="right"></za-icon>
+  <template v-slot:description >
+    <za-icon stype="right"></za-icon>
+  </template>
 </za-cell>
 ```
 
@@ -23,17 +25,24 @@
 
 ```html
 <za-cell title="标题文字">
-  <za-icon type="right" slot="icon"></za-icon>
-  <div slot="description">描述文字</div>
+  <template v-slot:icon>
+  <za-icon type="right" ></za-icon>
+  </template>
+  <template v-slot:description>
+  <div>描述文字</div>
+  </template>
 </za-cell>
 <za-cell title="标题文字">
+  <template v-slot:icon>
   <img
     style="width:24px;height:24px"
     src="https://static.zhongan.com/website/health/zarm/images/icons/state.png"
     alt=""
-    slot="icon"
   />
-  <div slot="description">描述文字</div>
+  </template>
+  <template v-slot:description>
+  <div>描述文字</div>
+  </template>
 </za-cell>
 ```
 
@@ -52,10 +61,14 @@
 
 ```html
 <za-cell is-link title="标题文字" has-arrow @click="() => {}">
-  <div slot="description">描述文字</div>
+  <template v-slot:description>
+  <div>描述文字</div>
+  </template>
 </za-cell>
 <za-cell is-link title="标题文字" has-arrow @click="() => {}">
-  <div slot="description">描述文字</div>
+  <template v-slot:description>
+  <div>描述文字</div>
+  </template>
 </za-cell>
 ```
 
@@ -65,30 +78,40 @@
 
 ```html
 <za-cell is-link title="标题文字" has-arrow @click="() => {}">
-  <div slot="description">描述文字</div>
-  <za-icon type="right" slot="icon"></za-icon>
+  <template v-slot:description>
+  <div>描述文字</div>
+  </template>
+   <template v-slot:icon>
+  <za-icon type="right" ></za-icon>
+  </template>
 </za-cell>
 <za-cell is-link title="标题文字" has-arrow @click="() => {}">
-  <div slot="description">描述文字</div>
+  <template v-slot:description>
+  <div>描述文字</div>
+  </template>
+  <template v-slot:icon>
   <img
     style="width:24px;height:24px"
     src="https://static.zhongan.com/website/health/zarm/images/icons/state.png"
     alt=""
-    slot="icon"
   />
+  </template>
 </za-cell>
 <za-cell is-link has-arrow @click="() => {}">
-  <div slot="description">描述文字</div>
-  <div class="box" slot="title">
-    <div class="box-title">标题文字</div>
+  <template v-slot:description>
+  <div>描述文字</div>
+  </template>
+  <template v-slot:title>
+ <div class="box-title">标题文字</div>
     <div class="box-description">描述文字</div>
-  </div>
+  </template>
+  <template v-slot:icon>
   <img
-    style="width:48px;height:48px"
+    style="width:24px;height:24px"
     src="https://static.zhongan.com/website/health/zarm/images/icons/state.png"
     alt=""
-    slot="icon"
   />
+  </template>
 </za-cell>
 ```
 
@@ -98,10 +121,12 @@
 
 ```html
 <za-cell title="标题">
-  <za-message theme="error" slot="help">
+  <template v-slot:help>
+ <za-message theme="error">
     <za-icon type="info-round"></za-icon>
     <span style="marginLeft: 5px">标题不能为空</span>
   </za-message>
+  </template>
   <za-input type="text" placeholder="请输入标题"></za-input>
 </za-cell>
 ```
