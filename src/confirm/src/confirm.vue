@@ -1,12 +1,29 @@
-<template lang="html">
-  <za-modal ref='modal' :get-container="getContainer" :closeOnClickModal='false' :visible='currentVisible' :radius='radius' :animationDuration='animationDuration' :title='title'>
+<template>
+  <za-modal
+    ref='modal'
+    :get-container="getContainer"
+    :closeOnClickModal='false'
+    :visible='currentVisible'
+    :radius='radius'
+    :animationDuration='animationDuration'
+    :title='title'
+  >
     <div :class='prefixCls'>
       <template v-if='!$slots.default'>{{message}}</template>
       <slot></slot>
     </div>
-    <template slot='footer'>
-      <za-button block ghost @click='cancel'>{{cancelText || cancelBtnText}}</za-button>
-      <za-button block ghost theme="primary" @click='ok'>{{okText || okBtnText}}</za-button>
+    <template v-slot:footer>
+      <za-button
+        block
+        ghost
+        @click='cancel'
+      >{{cancelText || cancelBtnText}}</za-button>
+      <za-button
+        block
+        ghost
+        theme="primary"
+        @click='ok'
+      >{{okText || okBtnText}}</za-button>
     </template>
   </za-modal>
 </template>
@@ -56,11 +73,11 @@ export default {
     },
     ok: {
       type: Function,
-      default: () => {},
+      default: () => { },
     },
     cancel: {
       type: Function,
-      default: () => {},
+      default: () => { },
     },
   },
   computed: {

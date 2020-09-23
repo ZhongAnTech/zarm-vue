@@ -3,43 +3,54 @@
 ::: demo 基本
 
 ```html
-<za-cell>
-  <za-button slot="description" size="xs" @click="visible1 = true"
+<za-cell title="span普通">
+  <template v-slot:description>
+  <za-button size="xs" @click="visible1 = true"
     >开启</za-button
   >
-  span普通
+  </template>
+  
 </za-cell>
 
-<za-cell>
-  <za-button slot="description" size="xs" @click="visible2 = true"
+<za-cell title="圆角">
+  <template v-slot:description>
+    <za-button  size="xs" @click="visible2 = true"
     >开启</za-button
   >
-  圆角
+  </template>
 </za-cell>
 
-<za-cell>
-  <za-button slot="description" size="xs" @click="visible3 = true"
+<za-cell title="遮罩层可关闭">
+  <template v-slot:description>
+    <za-button size="xs" @click="visible3 = true"
     >开启</za-button
   >
-  遮罩层可关闭
+  </template>
+  
+  
 </za-cell>
 
-<za-cell>
-  <za-button slot="description" size="xs" @click="visible4 = true"
-    >开启</za-button
-  >
-  无头部
+<za-cell title="无头部">
+  <template v-slot:description>
+    <za-button  size="xs" @click="visible4 = true"
+      >开启</za-button
+    >
+  </template>
+  
 </za-cell>
 
-<za-cell>
-  <za-button slot="description" size="xs" @click="visible5 = true"
+<za-cell title="动画效果">
+  <template v-slot:description>
+     <za-button size="xs" @click="visible5 = true"
     >开启</za-button
   >
-  动画效果
+  </template>
+ 
+  
 </za-cell>
 
 <za-modal
-  :visible.sync="visible1"
+  v-model:visible="visible1"
   @close="handleClose"
   title="标题"
   :showClose="true"
@@ -48,7 +59,7 @@
 </za-modal>
 
 <za-modal
-  :visible.sync="visible2"
+  v-model:visible="visible2"
   @close="handleClose"
   radius
   :showClose="true"
@@ -58,7 +69,7 @@
 </za-modal>
 
 <za-modal
-  :visible.sync="visible3"
+  v-model:visible="visible3"
   @close="handleClose"
   @maskClick="visible3 = false"
   title="标题"
@@ -68,7 +79,7 @@
 </za-modal>
 
 <za-modal
-  :visible.sync="visible4"
+  v-model:visible="visible4"
   @close="handleClose"
   @maskClick="visible4 = false"
 >
@@ -76,7 +87,7 @@
 </za-modal>
 
 <za-modal
-  :visible.sync="visible5"
+  v-model:visible="visible5"
   @close="handleClose"
   animationType="rotate"
   @maskClick="visible5 = false"
@@ -102,30 +113,30 @@
 ::: demo 特定场景
 
 ```html
-<za-cell>
+<za-cell title="警告框 Alert">
+  <template v-slot:description>
   <za-button
-    slot="description"
     size="xs"
     @click="visible6 = true"
     theme="warning"
     >开启</za-button
   >
-  警告框 Alert
+  </template>
 </za-cell>
 
-<za-cell>
+<za-cell title="确认框 Confirm">
+  <template v-slot:description>
   <za-button
-    slot="description"
     size="xs"
     @click="visible7 = true"
     theme="warning"
     >开启</za-button
   >
-  确认框 Confirm
+  </template>
 </za-cell>
 
 <za-alert
-  :visible.sync="visible6"
+  v-model:visible="visible6"
   radius
   title="警告"
   message="这里是警告信息"
@@ -187,7 +198,7 @@ export default{
 
 ```html
 <za-alert
-  :visible.sync="visible"
+  v-model:visible="visible"
   radius
   title="警告"
   message="这里是警告信息"

@@ -3,13 +3,16 @@
 :::demo 提示信息
 
 ```html
-<za-cell>
-  <za-button size="xs" theme="error" slot="description" @click="visible1 = true"
+<za-cell title="错误提示">
+   <template v-slot:description>
+  <za-button size="xs" theme="error" @click="visible1 = true"
     >开启</za-button
   >
-  错误提示
+  </template>
+  
 </za-cell>
-<za-cell>
+<za-cell title="成功提示">
+   <template v-slot:description>
   <za-button
     size="xs"
     theme="success"
@@ -17,19 +20,22 @@
     @click="visible2 = true"
     >开启</za-button
   >
-  成功提示
+  </template>
+  
 </za-cell>
-<za-cell>
-  <za-button size="xs" slot="description" @click="visible3 = true"
+<za-cell title="指定关闭时间">
+   <template v-slot:description>
+  <za-button size="xs" @click="visible3 = true"
     >开启</za-button
   >
-  指定关闭时间
+  </template>
+  
 </za-cell>
-<za-toast :visible.sync="visible1" @close="toastClose"
+<za-toast v-model:visible="visible1" @close="toastClose"
   >默认3秒自动关闭</za-toast
 >
 <za-toast
-  :visible.sync="visible2"
+  v-model:visible="visible2"
   @close="toastClose"
   @maskClick="visible2 = false"
 >
@@ -38,7 +44,7 @@
     <div class="box-text">预约成功</div>
   </div>
 </za-toast>
-<za-toast :visible.sync="visible3" @close="toastClose" :duration="10000"
+<za-toast v-model:visible="visible3" @close="toastClose" :duration="10000"
   >指定10秒自动关闭</za-toast
 >
 ```
@@ -48,13 +54,15 @@
 :::demo 加载中
 
 ```html
-<za-cell>
-  <za-button size="xs" slot="description" @click="visible4 = true"
+<za-cell title="Loading">
+   <template v-slot:description>
+  <za-button size="xs" @click="visible4 = true"
     >开启</za-button
   >
-  Loading
+  </template>
+  
 </za-cell>
-<za-loading :visible.sync="visible4"></za-loading>
+<za-loading v-model:visible="visible4"></za-loading>
 ```
 
 :::

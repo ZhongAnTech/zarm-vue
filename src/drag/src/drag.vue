@@ -4,15 +4,15 @@ export default {
   props: {
     dragStart: {
       type: Function,
-      default: () => {},
+      default: () => { },
     },
     dragMove: {
       type: Function,
-      default: () => {},
+      default: () => { },
     },
     dragEnd: {
       type: Function,
-      default: () => {},
+      default: () => { },
     },
   },
   created() {
@@ -79,7 +79,7 @@ export default {
         onMousemove={this.onTouchMove}
         onMouseup={this.onTouchEnd}
       >
-        {this.$slots.default}
+        {this.$slots.default()}
       </div>
     );
   },

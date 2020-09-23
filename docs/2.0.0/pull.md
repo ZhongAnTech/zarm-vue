@@ -11,7 +11,7 @@
 >
   <za-cell v-for="(i, index) in myData2" :key="index">ID号 {{i}} </za-cell>
   <!-- 此处的几个slot用来覆盖默认样式，定义的会覆盖，不定义的依然使用默认样式 -->
-  <template slot-scope="props" slot="refreshPull">
+  <template v-slot:refreshPull="props" >
     <div
       class="custom-control"
       :style="{
@@ -24,17 +24,17 @@
       />
     </div>
   </template>
-  <template slot-scope="props" slot="refreshDrop">
+  <template v-slot:refreshDrop="props" >
     <div class="custom-control">
       释放加载
     </div>
   </template>
-  <template slot-scope="props" slot="refreshLoading">
+  <template v-slot:refreshLoading="props" >
     <div class="custom-control">
       <za-activity-indicator class="rotate360" />
     </div>
   </template>
-  <template slot-scope="props" slot="refreshSuccess">
+  <template v-slot:refreshSuccess="props">
     <div class="custom-control">
       加载成功
     </div>
@@ -64,7 +64,7 @@ scopedSlots 用来覆盖默认样式，定义的会覆盖，不定义的默认�
   >
     <za-cell v-for="i in myData" :key="i">第 {{i}} 行</za-cell>
 
-    <template scope="props" slot="refreshPull">
+    <template v-slot:refreshPull="props">
       <div
         class="custom-control"
         :style="{
@@ -79,19 +79,19 @@ scopedSlots 用来覆盖默认样式，定义的会覆盖，不定义的默认�
       </div>
     </template>
 
-    <template scope="props" slot="refreshDrop">
+    <template v-slot:refreshDrop="props">
       <div class="custom-control">
         释放加载
       </div>
     </template>
 
-    <template scope="props" slot="refreshLoading">
+    <template v-slot:refreshLoading="props">
       <div class="custom-control">
         <za-activity-indicator class="rotate360" />
       </div>
     </template>
 
-    <template scope="props" slot="refreshSuccess">
+    <template v-slot:refreshSuccess="props">
       <div class="custom-control">
         加载成功
       </div>

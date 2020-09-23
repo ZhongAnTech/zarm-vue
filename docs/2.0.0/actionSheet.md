@@ -3,37 +3,42 @@
 :::demo 基本
 
 ```html
-<za-cell>
-  <za-button size="xs" slot="description" @click="visible2 = true"
+<za-cell title="普通">
+  <template v-slot:description>
+  <za-button size="xs" @click="visible2 = true"
     >开启</za-button
   >
-  普通
+  </template>
 </za-cell>
-<za-cell>
-  <za-button size="xs" slot="description" @click="visible1 = true"
+<za-cell title="带取消操作">
+  <template v-slot:description>
+  <za-button size="xs" @click="visible1 = true"
     >开启</za-button
   >
-  带取消操作
+  </template>
+  
 </za-cell>
-<za-cell>
-  <za-button size="xs" slot="description" @click="visible3 = true"
+<za-cell title="圆角，留边">
+   <template v-slot:description>
+  <za-button size="xs" @click="visible3 = true"
     >开启</za-button
   >
-  圆角，留边
+  </template>
+  
 </za-cell>
 <za-actionsheet
-  :visible.sync="visible1"
+  v-model:visible="visible1"
   :actions="actions1"
   @cancel="cancelCb"
 ></za-actionsheet>
 <za-actionsheet
-  :visible.sync="visible2"
+  v-model:visible="visible2"
   :actions="actions2"
   :showCancel="false"
   @cancel="cancelCb"
 ></za-actionsheet>
 <za-actionsheet
-  :visible.sync="visible3"
+  v-model:visible="visible3"
   :spacing="true"
   shape="radius"
   :actions="actions2"

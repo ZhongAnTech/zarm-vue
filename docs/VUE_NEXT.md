@@ -18,7 +18,7 @@ app.mount('#app');
 
 - 替换`createApp()`方案
 
-### `this.$slots.default`废弃
+### Template JSX中的`this.$slots.default`废弃
 
 - 替换`this.$slots.default()`
 
@@ -36,4 +36,8 @@ app.mount('#app');
 </teamplte>
 ```
 
+
+### `xxx.sync = ''`废弃
+
+- 替换`v-model:xxx =''`
 

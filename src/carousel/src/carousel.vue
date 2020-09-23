@@ -1,6 +1,6 @@
 <script>
 import { h } from 'vue';
-import { deepCloneVNode } from '@/utils/vdom';
+import { cloneElement, cloneVNodes } from '@/utils/vdom';
 import zaDrag from '@/drag';
 
 export default {
@@ -279,7 +279,6 @@ export default {
       this.translateY = -dom.offsetHeight * (activeIndex + this.loop);
       this.doTransition({ x: this.translateX, y: this.translateY }, 0);
       this.$emit('changeEnd', this.currentActiveIndex);
-      // this.$emit('change', this.currentActiveIndex);
     },
     resize() {
       this.onJumpTo(this.currentActiveIndex);
@@ -297,10 +296,10 @@ export default {
     },
     validSlots() {
       // fix tabs use cancarousel bug
-      return this.$slots.default
-        .filter(d => d.componentOptions &&
-          (d.componentOptions.tag === 'za-carousel-item' ||
-            d.componentOptions.tag === 'za-tab-panel'));
+      return this.$slots.default()[0].children
+        .filter(d => d.type.name &&
+          (d.type.name === 'zaCarouselItem' ||
+            d.type.name === 'zaTabPanel'));
     },
   },
   render() {
@@ -319,7 +318,7 @@ export default {
     } = this;
     const directionCls = isX ? `${prefixCls} ${prefixCls}--horizontal` : `${prefixCls} ${prefixCls}--vertical`;
 
-    const pagination = this.$slots.default.map((item, index) => {
+    const pagination = this.$slots.default()[0].children.map((item, index) => {
       return (
         <li
           role='tab'
@@ -333,8 +332,8 @@ export default {
 
     const validChildren = validSlots();
     if (loop && !this.firstItem && !this.lastItem) {
-      this.firstItem = deepCloneVNode(h, this.$slots.default[0]);
-      this.lastItem = deepCloneVNode(h, validChildren[validChildren.length - 1]);
+      this.firstItem = cloneElement(this.$slots.default()[0]);
+      this.lastItem = cloneElement(validChildren[validChildren.length - 1]);
     }
     return (
       <div class={directionCls}>
@@ -347,7 +346,7 @@ export default {
             class={`${prefixCls}__items`}
             style={itemsStyle}>
             {this.lastItem}
-            {this.$slots.default}
+            {this.$slots.default()}
             {this.firstItem}
           </div>
         </za-drag>
