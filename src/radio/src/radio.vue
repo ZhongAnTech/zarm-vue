@@ -3,7 +3,7 @@
     <template v-slot:description>
       <za-icon v-if='isChecked' type="right" :theme='radioDisabled ? null : groupTheme'></za-icon>
     </template>
-    <input type="radio" :class='`${prefixCls}__input`' :disabled='radioDisabled' :value='value' v-model='currentValue' @change='onValueChange' />
+    <input type="radio" :class='`${prefixCls}__input`' :disabled='radioDisabled' :value='value' v-model='currentValue' @click='onValueChange' />
     <slot></slot>
   </za-cell>
   <za-button
@@ -16,7 +16,7 @@
       [`${prefixCls}--disabled`]: radioDisabled,
       [`${prefixCls}--block`]: isBlock,
     }' :theme='groupTheme' size='xs' :block='isBlock' :disabled='radioDisabled' :ghost='!isChecked' :shape='groupShape'>
-    <input type="radio" :class='`${prefixCls}__input`' :disabled='radioDisabled' :value='value' v-model='currentValue' @change='onValueChange' />
+    <input type="radio" :class='`${prefixCls}__input`' :disabled='radioDisabled' :value='value' v-model='currentValue' @click='onValueChange' />
     <slot></slot>
   </za-button>
   <div v-else :class='{
@@ -30,7 +30,7 @@
       <span :class='`${prefixCls}__text`' v-if='$slots.default'>
         <slot></slot>
       </span>
-      <input type="radio" :class='`${prefixCls}__input`' :disabled='radioDisabled' :value='value' v-model='currentValue' @change='onValueChange' />
+      <input type="radio" :class='`${prefixCls}__input`' :disabled='radioDisabled' :value='value' v-model='currentValue' @click='onValueChange' />
     </div>
   </div>
 </template>
@@ -40,7 +40,7 @@ import zaButton from '@/button';
 import zaIcon from '@/icon';
 import zaCell from '@/cell';
 import Emitter from '@/mixins/emitter';
-import { enumGenerator } from '@/utils/validator';
+import { defaultThemeValidator, enumGenerator } from '@/utils/validator';
 
 export default {
   name: 'zaRadio',
@@ -54,6 +54,11 @@ export default {
     prefixCls: {
       type: String,
       default: 'za-radio',
+    },
+    theme: {
+      type: String,
+      validator: defaultThemeValidator,
+      default: 'primary',
     },
     disabled: {
       type: Boolean,
@@ -109,7 +114,7 @@ export default {
       return this.isGroup ? this._radioGroup.modelValue === this.value : this.currentChecked;
     },
     store() {
-      return this.isGroup ? this._radioGroup.modelValue : this.value;
+      return this._radioGroup.modelValue;
     },
     radioType() {
       return this.isGroup ? this._radioGroup.type : this.type;
@@ -131,11 +136,14 @@ export default {
     onValueChange(event) {
       const self = this;
       if (self.radioDisabled) return;
-      self.currentChecked = !self.currentChecked;
+
+      self.currentChecked = event.target.checked;
+
       if (self.isGroup) {
-        self.dispatch('zaRadioGroup', 'update:modelValue', self.currentValue);
+        const targetVal = event.target.value;
+        self.dispatch('zaRadioGroup', 'update:modelValue', targetVal);
       } else {
-        self.$emit('change', self.currentValue, self.value);
+        self.$emit('checked', self.currentChecked, self.value);
       }
     },
   },

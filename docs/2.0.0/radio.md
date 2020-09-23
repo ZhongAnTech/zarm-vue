@@ -4,10 +4,10 @@
 
 ```html
 <za-cell>
-  <za-radio @change="handleChange">默认</za-radio>
+  <za-radio @checked="handleChange" value="on">默认</za-radio>
 </za-cell>
 <za-cell>
-  <za-radio checked @change="handleChange">默认选中</za-radio>
+  <za-radio checked >默认选中</za-radio>
 </za-cell>
 <za-cell>
   <za-radio disabled>禁用</za-radio>
@@ -26,7 +26,7 @@
   <za-radio-group
     slot="description"
     v-model="radioGroup1"
-    @change="handleGroupChange"
+    @checked="handleGroupChange"
     type="button"
   >
     <za-radio v-for="(city, index) in cities" :value="city" :key="city"
@@ -39,7 +39,7 @@
   <za-radio-group
     slot="description"
     v-model="radioGroup2"
-    @change="handleGroupChange"
+    @checked="handleGroupChange"
     type="button"
   >
     <za-radio v-for="(city, index) in cities" :value="city" :key="city"
@@ -52,7 +52,7 @@
   <za-radio-group
     slot="description"
     v-model="radioGroup3"
-    @change="handleGroupChange"
+    @checked="handleGroupChange"
     type="button"
   >
     <za-radio
@@ -69,7 +69,7 @@
   <za-radio-group
     slot="description"
     v-model="radioGroup4"
-    @change="handleGroupChange"
+    @checked="handleGroupChange"
     shape="rect"
     type="button"
   >
@@ -83,7 +83,7 @@
   <za-radio-group
     slot="description"
     v-model="radioGroup5"
-    @change="handleGroupChange"
+    @checked="handleGroupChange"
     shape="round"
     type="button"
   >
@@ -107,7 +107,7 @@
     shape="radius"
     type="button"
     v-model="radioGroup6"
-    @change="handleGroupChange"
+    @checked="handleGroupChange"
   >
     <za-radio v-for="(city, index) in cities" :value="city" :key="city"
       >{{city}}</za-radio
@@ -121,7 +121,7 @@
 :::demo 列表样式
 
 ```html
-<za-radio-group type="cell" v-model="radioGroup7" @change="handleGroupChange">
+<za-radio-group type="cell" v-model="radioGroup7" @checked="handleGroupChange">
   <za-radio
     v-for="(city, index) in num"
     :value="city"
@@ -140,7 +140,7 @@
 <za-radio-group
   type="cell"
   v-model="radioGroup8"
-  @change="handleGroupChange"
+  @checked="handleGroupChange"
   disabled
 >
   <za-radio v-for="(city, index) in num" :value="city" :key="city"
@@ -179,7 +179,7 @@ export default {
       console.log(v, e);
     },
     handleGroupChange(v, e) {
-      // console.log(v, e);
+      console.log(v, e);
     }
   },
 };
@@ -214,10 +214,10 @@ export default {
 
 | 事件名称 | 说明             | 回调参数                     |
 | :------- | :--------------- | :--------------------------- |
-| change   | 选择后触发的事件 | value 选中 radio 的 label 值 |
+| checked   | 选择后触发的事件 | value 选中 radio 的 label 值 |
 
 #### Radio Group Events
 
 | 事件名称 | 说明             | 回调参数                     |
 | :------- | :--------------- | :--------------------------- |
-| change   | 选择后触发的事件 | value 选中 radio 的 label 值 |
+| checked   | 选择后触发的事件 | value 选中 radio 的 label 值 |

@@ -3,22 +3,29 @@
 :::demo 基本
 
 ```html
-<za-cell>
-  <za-switch slot="description" v-model="switch1" @change="handleChange">
-  </za-switch>
-  普通
+<za-cell title="普通">
+  <template v-slot:description>
+    <za-switch v-model="switch1" @change="handleChange">
+    </za-switch>
+  </template>
 </za-cell>
-<za-cell>
-  <za-switch slot="description" defaultChecked></za-switch>
-  默认开
+<za-cell title="默认开">
+  <template v-slot:description>
+  <za-switch defaultChecked></za-switch>
+  
+  </template>
 </za-cell>
-<za-cell>
-  <za-switch slot="description" disabled></za-switch>
-  禁用的开关（默认关）
+<za-cell title=" 禁用的开关（默认关）">
+  <template v-slot:description>
+  <za-switch disabled></za-switch>
+ 
+  </template>
 </za-cell>
-<za-cell>
-  <za-switch slot="description" disabled defaultChecked></za-switch>
-  禁用的开关（默认开）
+<za-cell title="禁用的开关（默认开）">
+  <template v-slot:description>
+  <za-switch disabled defaultChecked></za-switch>
+  
+  </template>
 </za-cell>
 ```
 

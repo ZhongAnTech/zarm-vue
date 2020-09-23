@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     handleUpdate(val) {
-      this.$emit('change', val);
+      this.$emit('checked', val);
     },
   },
 };

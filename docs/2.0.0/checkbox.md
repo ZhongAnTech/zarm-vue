@@ -7,7 +7,7 @@
   <za-checkbox @change="handleChange">普通</za-checkbox>
 </za-cell>
 <za-cell>
-  <za-checkbox checked @change="handleChange">选中</za-checkbox>
+  <za-checkbox checked >选中</za-checkbox>
 </za-cell>
 <za-cell>
   <za-checkbox disabled>禁止</za-checkbox>
@@ -22,7 +22,7 @@
 :::demo 单列样式
 
 ```html
-<za-checkbox v-model="v5" @change="handleChange" type="cell"
+<za-checkbox ref="ruleRef" checked @checked="handleChange" type="cell"
   >阅读并同意《XXX条款》中的相关规定</za-checkbox
 >
 ```
@@ -37,11 +37,11 @@
     v-model="checkboxGroup2"
     slot="description"
     type="button"
-    @change="handleGroupChange"
+    @checked="handleGroupChange"
   >
-    <za-checkbox v-for="(city, index) in cities" :value="city" :key="city"
-      >{{city}}</za-checkbox
-    >
+      <za-checkbox :value="city" v-for="(city, index) in cities" :key="city"
+        >{{city}}</za-checkbox
+      >
   </za-checkbox-group>
 </za-cell>
 <za-cell title="指定默认值">
@@ -49,9 +49,9 @@
     v-model="checkboxGroup3"
     slot="description"
     type="button"
-    @change="handleGroupChange"
+    @checked="handleGroupChange"
   >
-    <za-checkbox v-for="city in cities" :value="city" :key="city"
+    <za-checkbox  :value="city" v-for="(city, index) in cities" :key="city"
       >{{city}}</za-checkbox
     >
   </za-checkbox-group>
@@ -61,7 +61,7 @@
     v-model="checkboxGroup4"
     slot="description"
     type="button"
-    @change="handleGroupChange"
+    @checked="handleGroupChange"
   >
     <za-checkbox
       v-for="(city, index) in cities"
@@ -78,7 +78,7 @@
     slot="description"
     type="button"
     shape="rect"
-    @change="handleGroupChange"
+    @checked="handleGroupChange"
   >
     <za-checkbox v-for="(city, index) in cities" :value="city" :key="city"
       >{{city}}</za-checkbox
@@ -91,7 +91,7 @@
     slot="description"
     type="button"
     shape="round"
-    @change="handleGroupChange"
+    @checked="handleGroupChange"
   >
     <za-checkbox v-for="(city, index) in cities" :value="city" :key="city"
       >{{city}}</za-checkbox
@@ -107,11 +107,11 @@
 ```html
 <div style="padding:10px;">
   <za-checkbox-group
-    v-model="provice"
+    v-model="checkboxGroup1"
     type="button"
     block
     shape="radius"
-    @change="handleGroupChange"
+    @checked="handleGroupChange"
   >
     <za-checkbox v-for="(city, index) in cities" :value="city" :key="city"
       >{{city}}</za-checkbox
@@ -128,7 +128,7 @@
 <za-checkbox-group
   v-model="checkboxGroup7"
   type="cell"
-  @change="handleGroupChange"
+  @checked="handleGroupChange"
 >
   <za-checkbox
     v-for="(city, index) in cities"
@@ -149,11 +149,11 @@
   v-model="checkboxGroup8"
   type="cell"
   disabled
-  @change="handleGroupChange"
+  @checked="handleGroupChange"
 >
-  <za-checkbox v-for="(city, index) in cities" :value="city" :key="city"
-    >{{city}}</za-checkbox
-  >
+  <za-checkbox v-for="city in cities" :value="city" :key="city">
+    <span>{{city}}</span>
+  </za-checkbox>
 </za-checkbox-group>
 ```
 
@@ -166,40 +166,39 @@
 export default {
   data() {
     return {
-      v1: false,
-      v2: true,
-      v3: false,
-      v4: true,
-      v5: false,
       city: null,
       cities: ['上海', '北京', '广州', '深圳'],
-      provice: [],
-      provices: [{
-        label: '条件A',
-        checked: false,
-        checkeds: []
-      },{
-        label: '条件B',
-        checked: false,
-        checkeds: []
-      },{
-        label: '条件C',
-        checked: false,
-        checkeds: []
-      }],
-      checkboxGroup: ['上海'],
+      provices: [
+        {
+          name: '上海',
+          checked: true,
+        },
+        {
+          name: '北京',
+          checked: false,
+        },
+        {
+          name: '广州',
+          checked: false,
+        },
+        {
+          name: '深圳',
+          checked: false,
+        }
+      ],
+      checkboxGroup1: ['上海'],
       checkboxGroup2: [],
       checkboxGroup3: ['上海', '北京'],
       checkboxGroup4: [],
       checkboxGroup5: [],
       checkboxGroup6: [],
-      checkboxGroup7: [],
-      checkboxGroup8: [],
+      checkboxGroup7: ['广州'],
+      checkboxGroup8: ['上海'],
     }
   },
   methods: {
     handleChange(v, e) {
-      console.log(v, e);
+      console.log(this.$refs.ruleRef,v, e);
     },
     handleGroupChange(v, e){
       console.log(v, e);
@@ -236,7 +235,7 @@ export default {
 
 | 事件名称 | 说明                     | 回调参数                         |
 | :------- | :----------------------- | :------------------------------- |
-| change   | 当绑定值变化时触发的事件 | 1.选中的值列表，2.event 事件对象 |
+| checked   | 当绑定值变化时触发的事件 | 1.选中的值列表，2.event 事件对象 |
 
 #### Checkbox Events
 
