@@ -7,25 +7,17 @@
     <div :class='`${prefixCls}__placeholder`' v-if='type === "date"'>{{placeholder}}</div>
     <textarea
       ref='input'
-      :readonly='readonly'
       v-if='type === "textarea"'
-      :placeholder='placeholder'
-      :disabled='disabled'
-      :maxLength='maxLength'
+      v-bind="$attrs"
       :value="currentValue"
       @input="handleInput"
       @focus="handleFocus"
       @blur="handleBlur"
-      :rows='rows'
     />
     <input
-      :readonly='readonly'
       ref='input'
       v-else
-      :type='type'
-      :placeholder='placeholder'
-      :disabled='disabled'
-      :maxLength='maxLength'
+      v-bind="$attrs"
       :value="currentValue"
       @input="handleInput"
       @focus="handleFocus"
@@ -66,10 +58,6 @@ export default {
       default: 'text',
     },
     modelValue: String,
-    maxLength: {
-      type: [String, Number],
-      default: -1,
-    },
     rows: {
       type: [String, Number],
       default: 2,

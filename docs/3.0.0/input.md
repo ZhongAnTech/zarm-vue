@@ -8,6 +8,7 @@
     ref="inputFirst"
     v-model="v1"
     type="text"
+    maxLength="20"
     placeholder="type is text"
     @change="handleChange"
     :clearable="true"
