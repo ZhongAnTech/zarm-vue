@@ -125,7 +125,8 @@ export default {
     },
     onDragMove(event, { offsetX }) {
       const { disabled } = this;
-      if (disabled || !this.tooltip || Number.isNaN(offsetX)) return;
+      if (disabled || !this.tooltip) return;
+      if (Number.isNaN(offsetX)) return;
       event.preventDefault();
       let offset = this.offsetStart + offsetX;
       if (offset < 0) {
@@ -161,7 +162,7 @@ export default {
       if (this.tooltip.visible) {
         this.$refs.tooltipRef.close();
       }
-      if (Number.isNaN(offsetX)) return;
+      if (!offsetX || Number.isNaN(offsetX)) return;
       this.offsetStart += offsetX;
       this.$emit('updated', event, this.currentValue);
     },
@@ -189,7 +190,6 @@ export default {
      * 获取最大偏移量
      */
     maxOffset() {
-      // console.log(this.$refs.line.offsetWidth)// eslint-disable-line
       return this.$refs.lineRef
         ? this.$refs.lineRef.offsetWidth
         : 0;
