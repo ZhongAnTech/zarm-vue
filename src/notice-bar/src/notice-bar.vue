@@ -62,7 +62,6 @@ export default {
   methods: {
     handleClick(event) {
       this.currentVisible = false;
-      this.$emit('click', event);
     },
     handleUpdate(val) {
       this.$emit('update:visible', val);

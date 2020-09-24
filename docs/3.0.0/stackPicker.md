@@ -4,7 +4,9 @@
 
 ```html
 <za-cell title="单列">
-  <za-button slot="description" size="xs" @click="visible1 = true">开启</za-button>
+  <template v-slot:description>
+  <za-button size="xs" @click="visible1 = true">开启</za-button>
+  </template>
   <za-stack-picker
     :visible.sync="visible1"
     title="级联选择"

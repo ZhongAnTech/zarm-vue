@@ -3,7 +3,7 @@
     [`${prefixCls}`]: true,
     [`${prefixCls}--${theme}`]: !!theme,
     [`${prefixCls}--${size}`]: !!size,
-  }' @click='handleClick' v-if='currentVisible'>
+  }' v-if='currentVisible'>
     <div :class='`${prefixCls}__header`'>
       <div :class='`${prefixCls}__icon`' v-if='$slots.icon || icon'>
         <slot name='icon'></slot>
@@ -69,9 +69,6 @@ export default {
     },
   },
   methods: {
-    handleClick(event) {
-      this.$emit('click', event);
-    },
     wrongIconClick() {
       this.currentVisible = false;
       this.$emit('update:visible', false);

@@ -13,7 +13,9 @@
     @click="remove(index)"
     style="display:inline-block;margin-right:15px;align-items: center;justify-content: center;width:74px;height:74px;border:2px solid #ddd;"
   >
-    <za-icon type="wrong" slot="text" style="font-size:10px;"></za-icon>
+  <template v-slot:text>
+    <za-icon type="wrong" style="font-size:10px;"></za-icon>
+  </template>
     <div class="uploader-item-img">
       <a :href="i.thumbnail" target="_blank"
         ><img :src="i.thumbnail" alt=""
@@ -25,7 +27,7 @@
       class="uploader-btn"
       style="display:flex;align-items: center;justify-content: center;width:74px;height:74px;border:2px dashed #ddd;"
       accept="image/jpg, image/jpeg, image/gif, image/png"
-      @change="handleChange"
+      @selected="handleChange"
     >
       <za-icon type="add" style="fontSize:30px;" />
     </za-file-picker>
@@ -48,7 +50,9 @@
     @click="remove2(index)"
     style="display:inline-block;margin-right:15px;align-items: center;justify-content: center;width:74px;height:74px;border:2px solid #ddd;"
   >
-    <za-icon type="wrong" slot="text" style="font-size:10px;"></za-icon>
+  <template v-slot:text>
+    <za-icon type="wrong" style="font-size:10px;"></za-icon>
+  </template>
     <div class="uploader-item-img">
       <a :href="i.thumbnail" target="_blank"
         ><img :src="i.thumbnail" alt=""
@@ -63,7 +67,7 @@
       style="display:flex;align-items: center;justify-content: center;width:74px;height:74px;border:2px dashed #ddd;"
       :before-select="beforeSelect"
       accept="image/jpg, image/jpeg, image/gif, image/png"
-      @change="handleChangeMulti"
+      @selected="handleChangeMulti"
     >
       <za-icon type="add" />
     </za-file-picker>
@@ -153,4 +157,4 @@ export default {
 | 事件名称      | 说明                                                                          | 回调参数                            |
 | :------------ | :---------------------------------------------------------------------------- | :---------------------------------- |
 | before-select | 选择前触发的事件                                                              | () => boolean                       |
-| change        | 值变化时触发的回调函数。multiple 为 true 时，返回文件数组格式，否则为文件对象 | (file?: object \| object[]) => void |
+| selected        | 值变化时触发的回调函数。multiple 为 true 时，返回文件数组格式，否则为文件对象 | (file?: object \| object[]) => void |

@@ -3,7 +3,7 @@
     [`${prefixCls}`]: true,
     [`${prefixCls}-${type}`]: !!type,
     [`${prefixCls}--${theme}`]: !!theme,
-  }' @click='handleClick'>
+  }' >
     <svg
       v-if='tag === "symbol"'
       width='1em'
@@ -32,11 +32,6 @@ export default {
       type: String,
       validator: defaultThemeValidator,
       default: null,
-    },
-  },
-  methods: {
-    handleClick(event) {
-      this.$emit('click', event);
     },
   },
 };

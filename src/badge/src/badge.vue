@@ -10,7 +10,7 @@
       [`${prefixCls}__sup`]: true,
       [`${prefixCls}__sup--up`]: sup,
       }'
-      @click='supClick'>
+    >
       {{text}}
       <slot name='text'></slot>
     </sup>
@@ -46,11 +46,6 @@ export default {
       default: false,
     },
     text: [String, Number],
-  },
-  methods: {
-    supClick(event) {
-      this.$emit('click', event);
-    },
   },
 };
 </script>
