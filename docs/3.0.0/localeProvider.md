@@ -27,26 +27,26 @@
     :showCancel="true"
     ref="searchRef"
   ></za-search-bar>
-  <za-cell>
+  <za-cell title="警告框">
+    <template v-slot:description>
     <za-button
-      slot="description"
       size="xs"
       @click="visible6 = true"
       theme="warning"
       >开启</za-button
     >
-    警告框 Alert
+    </template>
   </za-cell>
 
-  <za-cell>
+  <za-cell title="确认框">
+    <template v-slot:description>
     <za-button
-      slot="description"
       size="xs"
       @click="visible7 = true"
       theme="warning"
       >开启</za-button
     >
-    确认框 Confirm
+    </template>
   </za-cell>
 
   <za-alert

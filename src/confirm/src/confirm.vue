@@ -16,12 +16,14 @@
       <za-button
         block
         ghost
+        shape="rect"
         @click='cancel'
       >{{cancelText || cancelBtnText}}</za-button>
       <za-button
         block
         ghost
         theme="primary"
+        shape="rect"
         @click='ok'
       >{{okText || okBtnText}}</za-button>
     </template>

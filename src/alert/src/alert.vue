@@ -16,6 +16,7 @@
       <za-button
         block
         ghost
+        shape="rect"
         @click='handleClose'
       >
         {{cancelText || cancelBtnText}}

@@ -113,7 +113,7 @@
 ::: demo 特定场景
 
 ```html
-<za-cell title="警告框 Alert">
+<za-cell title="警告框">
   <template v-slot:description>
   <za-button
     size="xs"
@@ -124,7 +124,7 @@
   </template>
 </za-cell>
 
-<za-cell title="确认框 Confirm">
+<za-cell title="确认框">
   <template v-slot:description>
   <za-button
     size="xs"

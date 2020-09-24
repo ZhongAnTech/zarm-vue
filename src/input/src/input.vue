@@ -13,9 +13,9 @@
       :disabled='disabled'
       :maxLength='maxLength'
       :value="currentValue"
-      @input="onInput"
-      @focus="onFocus"
-      @blur="onBlur"
+      @input="handleInput"
+      @focus="handleFocus"
+      @blur="handleBlur"
       :rows='rows'
     />
     <input
@@ -27,9 +27,9 @@
       :disabled='disabled'
       :maxLength='maxLength'
       :value="currentValue"
-      @input="onInput"
-      @focus="onFocus"
-      @blur="onBlur"
+      @input="handleInput"
+      @focus="handleFocus"
+      @blur="handleBlur"
       @compositionStart="handleComposition"
       @compositionUpdate="handleComposition"
       @compositionEnd="handleComposition"
@@ -65,8 +65,11 @@ export default {
       type: String,
       default: 'text',
     },
-    value: [String, Number],
-    maxLength: [String, Number],
+    modelValue: String,
+    maxLength: {
+      type: [String, Number],
+      default: -1,
+    },
     rows: {
       type: [String, Number],
       default: 2,
@@ -98,20 +101,11 @@ export default {
     },
   },
   watch: {
-    'value'(val, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
+    modelValue(val, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
       this.setCurrentValue(val);
     },
   },
   methods: {
-    onInput(event) {
-      const value = event.target.value;
-      if (this.clearable && this.currentValue) {
-        this.focused = true;
-      }
-      this.currentValue = value;
-      this.$emit('input', value);
-      this.$emit('change', value);
-    },
     setCurrentValue(value) {
       if (value === this.currentValue) return;
       if (this.type === 'textarea') {
@@ -121,13 +115,22 @@ export default {
       }
       this.currentValue = value;
     },
-    onFocus(event) {
+    handleInput(event) {
+      const value = event.target.value;
+      if (this.clearable && this.currentValue) {
+        this.focused = true;
+      }
+      this.currentValue = value;
+      this.$emit('update:modelValue', value);
+      this.$emit('change', value);
+    },
+    handleFocus(event) {
       if (this.clearable && this.currentValue) {
         this.focused = true;
       }
       this.$emit('focus', event);
     },
-    onBlur(event) {
+    handleBlur(event) {
       this.onBlurTimeout = setTimeout(() => {
         if (this.clearable) {
           this.focused = false;
