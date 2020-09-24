@@ -4,7 +4,7 @@
 
 ```html
 <za-cell title="普通">
-  <za-slider :default-value="40" @change="handleChange"></za-slider>
+  <za-slider :default-value="40" @updated="handleChange"></za-slider>
 </za-cell>
 
 <za-cell title="设置默认值">
@@ -16,7 +16,7 @@
     :min="-100"
     :max="100"
     v-model="initvalue"
-    @change="handleChange"
+    @updated="handleChange"
   ></za-slider>
 </za-cell>
 
@@ -68,4 +68,4 @@ export default {
 
 | 事件名称 | 说明     | 回调参数 |
 | :------- | :------- | :------- |
-| change   | function | noop     | \(event:\$even, value: number\) | 值变化时触发的回调函数 |
+| updated   | function | noop     | \(event:\$even, value: number\) | 值变化时触发的回调函数 |

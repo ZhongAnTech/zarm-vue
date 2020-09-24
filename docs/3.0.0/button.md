@@ -3,8 +3,7 @@
 :::demo 基本
 
 ```html
-<za-button ghost>default</za-button>
-<za-button theme="primary">primary</za-button>
+<za-button>default</za-button>
 ```
 
 :::
@@ -12,8 +11,8 @@
 :::demo 块级按钮
 
 ```html
-<za-button block ghost @click="handleClick">default</za-button>
-<za-button block ghost disabled @click="handleClick"
+<za-button block @click="handleClick">default</za-button>
+<za-button block disabled @click="handleClick"
   >default disabled</za-button
 >
 <za-button theme="primary" block>primary</za-button>
@@ -25,7 +24,6 @@
 :::demo 按钮主题
 
 ```html
-<za-button ghost>default</za-button>
 <za-button theme="primary">primary</za-button>
 <za-button theme="danger">danger</za-button>
 ```
@@ -35,10 +33,10 @@
 :::demo 按钮大小
 
 ```html
-<za-button ghost size="lg">lg</za-button>
-<za-button ghost>md</za-button>
-<za-button ghost size="sm">sm</za-button>
-<za-button ghost size="xs">xs</za-button>
+<za-button size="lg">lg</za-button>
+<za-button>md</za-button>
+<za-button size="sm">sm</za-button>
+<za-button size="xs">xs</za-button>
 ```
 
 :::
@@ -62,15 +60,15 @@
 :::demo 带 icon 的按钮
 
 ```html
-<za-button ghost shape="radius">
+<za-button shape="radius">
   <za-icon type="right-round" theme="success" slot="icon"></za-icon>
   正确
 </za-button>
-<za-button ghost shape="radius">
+<za-button shape="radius">
   <za-icon type="wrong-round" theme="error" slot="icon"></za-icon>
   错误
 </za-button>
-<za-button ghost loading shape="radius">
+<za-button loading shape="radius">
   加载中
 </za-button>
 ```

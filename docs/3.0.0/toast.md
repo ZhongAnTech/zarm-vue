@@ -67,6 +67,20 @@
 
 :::
 
+:::demo 函数调用
+
+```html
+<za-cell title="$zaToast">
+   <template v-slot:description>
+  <za-button size="xs" theme="error" @click="showToast"
+    >开启</za-button
+  >
+  </template>
+  
+</za-cell>
+```
+:::
+
 `zarm-vue 为 Vue.prototype 上添加了全局方法：$zaToast 因此在 vue instance 内可以采用 this.$zaToast(messgae, options) 或 this.$zaToast(options) 的方式调用`。
 
 #### 普通
@@ -114,6 +128,9 @@ export default {
     }
   },
   methods: {
+    showToast() {
+      this.$zaToast('this is toast')
+    },
     toastClose(reason, event){
       console.log(reason, event);
     }

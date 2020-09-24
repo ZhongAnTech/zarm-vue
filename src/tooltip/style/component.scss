@@ -3,7 +3,7 @@ $prefixCls: za-tooltip;
 @include b(tooltip) {
   display: flex;
   justify-content: center;
-  position: absolute;
+  position: fixed;
   transform: translateY(-100%);
   padding-bottom: r(5);
 
@@ -35,4 +35,3 @@ $prefixCls: za-tooltip;
     display: none;
   }
 }
-

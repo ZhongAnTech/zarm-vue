@@ -1,5 +1,4 @@
-// import Vue from 'vue';
-// import isVNode from '@/utils/vdom';
+import { createApp } from 'vue';
 import Confirm from './src/confirm';
 
 /* istanbul ignore next */
@@ -7,59 +6,60 @@ Confirm.install = function (Vue) { // eslint-disable-line
   Vue.component(Confirm.name, Confirm);
 };
 
-// let instance;
-// const ConfirmConstructor = Vue.extend(Confirm);
-// const noop = () => true;
+Confirm.root = function (message, options) {
+  const div = document.createElement('div');
+  document.body.appendChild(div);
 
-// const initInstance = () => {
-//   instance = new ConfirmConstructor({
-//     el: document.createElement('div'),
-//   });
-// };
+  options = options || {};
+  if (typeof message === 'object') {
+    options = message;
+    message = '';
+  } else {
+    options.message = message;
+  }
 
-// Confirm.root = function (message, options) {
-//   /* istanbul ignore if */
-//   if (Vue.prototype.$isServer) return;
-//   options = options || {};
-//   if (typeof message === 'object' && !isVNode(message)) {
-//     options = message;
-//     message = '';
-//   } else {
-//     options.message = message;
-//   }
-//   if (!instance) {
-//     initInstance();
-//   }
-//   Object.keys(options).forEach(key => {
-//     instance[key] = options[key];
-//   });
-//   if (isVNode(instance.message)) {
-//     instance.$slots.default = [instance.message];
-//     instance.message = null;
-//   } else {
-//     delete instance.$slots.default;
-//   }
-//   document.body.appendChild(instance.$el);
+  let currentConfig = { ...options, visible: true };
 
-//   const ok = instance.ok || noop;
-//   const cancel = instance.cancel || noop;
+  let ConfirmInstance = null;
+  let confirmProps = {};
 
-//   instance.ok = (evt) => {
-//     const shouldClose = ok(evt);
-//     if (shouldClose) {
-//       instance.visible = false;
-//       instance.ok = noop;
-//     }
-//   };
-//   instance.cancel = (evt) => {
-//     instance.visible = false;
-//     cancel(evt);
-//     instance.cancel = noop;
-//   };
+  function update(newConfig) {
+    currentConfig = {
+      ...currentConfig,
+      ...newConfig,
+    };
+    ConfirmInstance &&
+      Object.assign(ConfirmInstance, { confirmProps: currentConfig });
+  }
 
-//   Vue.nextTick(() => {
-//     instance.visible = true;
-//   });
-// };
+  function destroy() {
+    if (ConfirmInstance && div.parentNode) {
+      div.parentNode.removeChild(ConfirmInstance.$el);
+      div.parentNode.removeChild(div);
+      ConfirmInstance = null;
+    }
+  }
+
+  function render(props) {
+    confirmProps = props;
+    return createApp({
+      data() {
+        return { confirmProps };
+      },
+      render() {
+        // 先解构，避免报错，原因不详
+        const cdProps = { ...this.confirmProps };
+        return <Confirm {...cdProps} onClose={destroy} />;
+      },
+    }).mount(div);
+  }
+
+  ConfirmInstance = render(currentConfig);
+
+  return {
+    close: destroy,
+    update,
+  };
+};
 
 export default Confirm;

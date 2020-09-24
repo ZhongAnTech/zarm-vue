@@ -1,39 +1,65 @@
-// import Vue from 'vue';
+import { createApp } from 'vue';
 import Loading from './src/loading';
-// import Directive from './src/directive';
 
 /* istanbul ignore next */
 Loading.install = function (Vue) { // eslint-disable-line
   Vue.component(Loading.name, Loading);
 };
 
-// let instance;
-// const LoadingConstructor = Vue.extend(Loading);
+Loading.root = function (message, options) {
+  const div = document.createElement('div');
+  document.body.appendChild(div);
 
-// const initInstance = () => {
-//   instance = new LoadingConstructor({
-//     el: document.createElement('div'),
-//   });
-// };
+  options = options || {};
+  if (typeof message === 'object') {
+    options = message;
+    message = '';
+  } else {
+    options.message = message;
+  }
 
-// Loading.root = function () {
-//   /* istanbul ignore if */
-//   if (Vue.prototype.$isServer) return;
+  let currentConfig = { ...options, visible: true };
 
-//   if (!instance) {
-//     initInstance();
-//     instance.close = function () {
-//       instance.visible = false;
-//     };
-//   }
+  let LoadingInstance = null;
+  let loadingProps = {};
 
-//   document.body.appendChild(instance.$el);
-//   Vue.nextTick(() => {
-//     instance.visible = true;
-//   });
-//   return instance;
-// };
+  function update(newConfig) {
+    currentConfig = {
+      ...currentConfig,
+      ...newConfig,
+    };
+    LoadingInstance &&
+      Object.assign(LoadingInstance, { loadingProps: currentConfig });
+  }
 
-// Loading.directive = Directive;
+  function destroy() {
+    if (LoadingInstance && div.parentNode) {
+      div.parentNode.removeChild(LoadingInstance.$el);
+      div.parentNode.removeChild(div);
+      LoadingInstance = null;
+    }
+  }
+
+  function render(props) {
+    loadingProps = props;
+    return createApp({
+      data() {
+        return { loadingProps };
+      },
+      render() {
+        // 先解构，避免报错，原因不详
+        const cdProps = { ...this.loadingProps };
+        return <Loading {...cdProps} onClose={destroy} />;
+      },
+    }).mount(div);
+  }
+
+  LoadingInstance = render(currentConfig);
+
+  return {
+    close: destroy,
+    update,
+  };
+};
 
 export default Loading;

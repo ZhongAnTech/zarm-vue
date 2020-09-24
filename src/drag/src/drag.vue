@@ -1,3 +1,18 @@
+<template>
+  <div
+    ref="drag"
+    @touchstart="onTouchStart"
+    @touchmove="onTouchMove"
+    @touchend="onTouchEnd"
+    @touchcancel="onTouchEnd"
+    @mousedown="onTouchStart"
+    @mousemove="onTouchMove"
+    @mouseup="onTouchEnd"
+  >
+    <slot></slot>
+  </div>
+</template>
+
 <script>
 export default {
   name: 'zaDrag',
@@ -66,22 +81,6 @@ export default {
       this.dragEnd(event, dragState);
       this.dragState = Object.create(null);
     },
-  },
-  render() {
-    return (
-      <div
-        ref="drag"
-        onTouchstart={this.onTouchStart}
-        onTouchmove={this.onTouchMove}
-        onTouchend={this.onTouchEnd}
-        onTouchcancel={this.onTouchEnd}
-        onMousedown={this.onTouchStart}
-        onMousemove={this.onTouchMove}
-        onMouseup={this.onTouchEnd}
-      >
-        {this.$slots.default()}
-      </div>
-    );
   },
 };
 </script>

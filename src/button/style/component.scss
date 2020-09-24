@@ -14,7 +14,7 @@
   transition: background-color 200ms ease-out, border-color 200ms ease-out;
   @include button-size($height-md, $padding-md, $fontSize-md, $radius-md, r(22), r(5));
   @include button-theme($button-default-color, $button-default-bg, $button-default-border);
-  @include button-bordered($button-default-color, $button-default-activebg, $button-default-border);
+  @include button-bordered($button-default-color, $button-default-bg, $button-default-border);
 
   &,
   &:hover,
@@ -27,7 +27,6 @@
     cursor: not-allowed;
     opacity: .65;
     box-shadow: none;
-    color: inherit;
   }
 
   /* disabled Button */
@@ -71,26 +70,16 @@
   /* Button themes */
   @include m(primary) {
     @include button-theme($button-primary-color, $button-primary-bg, $button-primary-border);
-    @include button-bordered($button-primary-border, $button-primary-activebg, $button-primary-border);
+    @include button-bordered($button-primary-color, $button-primary-activebg, $button-primary-border);
   }
-
-  // @include m(info) {
-  //   @include button-theme($button-info-color, $button-info-bg, $button-info-border);
-  //   @include button-bordered($button-info-border, $button-info-activebg, $button-info-border);
-  // }
-
-  // @include m(success) {
-  //   @include button-theme($button-success-color, $button-success-bg, $button-success-border);
-  //   @include button-bordered($button-success-border, $button-success-activebg, $button-success-border);
-  // }
 
   @include m(warning) {
     @include button-theme($button-warning-color, $button-warning-bg, $button-warning-border);
-    @include button-bordered($button-warning-border, $button-warning-activebg, $button-warning-border);
+    @include button-bordered($button-warning-color, $button-warning-activebg, $button-warning-border);
   }
 
   @include m(danger) {
     @include button-theme($button-error-color, $button-error-bg, $button-error-border);
-    @include button-bordered($button-error-border, $button-error-activebg, $button-error-border);
+    @include button-bordered($button-error-color, $button-error-activebg, $button-error-border);
   }
 }

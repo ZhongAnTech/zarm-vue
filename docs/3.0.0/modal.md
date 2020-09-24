@@ -143,7 +143,7 @@
   @close="handleClose"
 ></za-alert>
 <za-confirm
-  :visible="visible7"
+  v-model:visible="visible7"
   title="确认信息"
   message="你确定要这样做吗？"
   :ok="handleOk"
@@ -153,19 +153,33 @@
 
 :::
 
-#### 警告框 使用全局方法 \$zaAlert
+::: demo 函数调用
 
 ```html
-<div @click="handleClick"></div>
+<za-cell title="$zaAlert">
+  <template v-slot:description>
+    <za-button size="xs" @click="showAlert">开启</za-button>
+  </template>
+</za-cell>
+<za-cell title="$zaConfirm">
+  <template v-slot:description>
+    <za-button size="xs" @click="showConfirm">开启</za-button>
+  </template>
+</za-cell>
+```
+:::
+
+#### 警告框 使用全局方法 \$zaAlert
+
+
+
+```html
+<za-button size="xs" @click="showAlert">$zaAlert</za-button>
 <script>
   export default {
     methods: {
-      handleClick() {
-        this.$zaAlert('警告', {
-          callback: event => {
-            console.log(event)
-          }
-        })
+      showAlert() {
+        this.$zaAlert('警告')
       }
     }
   }
@@ -173,28 +187,23 @@
 ```
 
 ```html
-<div @click='handleClick'></div>
+<za-button size="xs" @click="showAlert">$zaAlert</za-button>
 <script>
 export default{
   methods:{
-    handleClick(){
-      const h = this.$createElement;
+    showAlert(){
       // 这里的message可以是VNode
       const message = h('p', null, [
         h('span', null, '内容可以是 '),
         h('i', { style: 'color: teal' }, 'VNode')
       ]);
-      this.$zaAlert(message, {
-        callback: (event) => {
-          console.log(event)
-        }
-      })
+      this.$zaAlert(message)
     }
   }
 }
 ```
 
-#### 或者使用 za-alert Component
+#### 或者使用 Component
 
 ```html
 <za-alert
@@ -209,12 +218,11 @@ export default{
 #### 确认框 使用全局方法 \$zaConfirm
 
 ```html
-<div @click="handleClick"></div>
+<za-button size="xs" @click="showConfirm">$zaConfirm</za-button>
 <script>
   export default {
     methods: {
-      handleClick() {
-        const h = this.$createElement
+      showConfirm() {
         // message 可以是VNode 或者 String
         const message = h('p', null, [
           h('span', null, '内容可以是 '),
@@ -224,12 +232,9 @@ export default{
         this.$zaConfirm({
           message,
           ok: e => {
-            this.$zaToast('ok')
             return true // 此处返回true, 会关闭confirm
           },
-          cancel: e => {
-            this.$zaToast('closed')
-          }
+          cancel: e => {}
         })
       }
     }
@@ -239,11 +244,11 @@ export default{
 
 注意：这里的 `ok` 和 `cancel` 需要使用 Arrow Function, 这样内部的 this 才会指向当前的 vue 实例, 另外，ok 函数只有在返回 true 的时候会关闭 Confirm, 而 cancel 会自动关闭 Confirm
 
-或者使用模板
+#### 或者使用 Component
 
 ```html
 <za-confirm
-  :visible="visible"
+  v-model:visible="visible"
   title="确认信息"
   message="你确定吗？"
   :ok="handleOk"
@@ -255,6 +260,7 @@ export default{
 
 ```javascript
 <script name="vue">
+import { h } from 'vue';
 export default {
   data() {
     return {
@@ -272,17 +278,22 @@ export default {
       console.log(reason, event);
     },
     handleOk(){
-      alert('ok')
-    },
-    showAlert() {
-      this.$zaAlert('警告12', {
-        callback: (event) => {
-          console.log(event)
-        }
-      })
+      return true;
     },
     handleCancel(){
-      this.visible7 = false
+      this.visible7 = false;
+    },
+    showAlert() {
+      this.$zaAlert('警告12');
+    },
+    showConfirm() {
+      this.$zaConfirm('警告12',{
+        ok: e => {
+          console.log('confirm is closed');
+          return true // 此处返回true, 会关闭confirm
+        },
+        cancel: e => {}
+      });
     }
   },
 };

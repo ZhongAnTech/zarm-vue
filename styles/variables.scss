@@ -136,7 +136,7 @@ $badge-text-color: #fff;
 
 /* Button */
 $button-default-color: $color-text;
-$button-default-bg: $border-color;
+$button-default-bg: #fff;
 $button-default-border: $border-color;
 $button-default-activebg: rgba($border-color, 0.5);
 
@@ -329,7 +329,7 @@ $toast-background-color: rgba(0, 0, 0, 0.7);
 
 // Tooltip
 $tooltip-text-color: #fff;
-$tooltip-background-color:  rgba(0, 0, 0, .7);
+$tooltip-background-color: rgba(0, 0, 0, .7);
 
 // Wheel
 $wheel-item-height: r(34);

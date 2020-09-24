@@ -117,18 +117,16 @@ const components = [
   LocaleProvider,
 ];
 
-const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
+const install = function (app, opts = {}) { // eslint-disable-line no-unused-vars
   /* istanbul ignore if */
   if (install.installed) return;
-  components.map(component => Vue.component(component.name, component));
+  components.map(component => app.component(component.name, component));
 
-  // Vue.use(Loading.directive);
-
-  // Vue.prototype.$zaToast = Toast.root;
-  // Vue.prototype.$zaTooltip = Tooltip.root;
-  // Vue.prototype.$zaLoading = Loading.root;
-  // Vue.prototype.$zaAlert = Alert.root;
-  // Vue.prototype.$zaConfirm = Confirm.root;
+  app.config.globalProperties.$zaToast = Toast.root;
+  app.config.globalProperties.$zaTooltip = Tooltip.root;
+  app.config.globalProperties.$zaLoading = Loading.root;
+  app.config.globalProperties.$zaAlert = Alert.root;
+  app.config.globalProperties.$zaConfirm = Confirm.root;
 };
 
 if (typeof window !== 'undefined' && window.Vue) {

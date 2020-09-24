@@ -31,6 +31,7 @@ export default {
       type: Number,
       default: 3000,
     },
+    message: '',
   },
   methods: {
     onMaskClick(event) {
@@ -71,7 +72,6 @@ export default {
   data() {
     return {
       currentVisible: this.visible,
-      message: '',
     };
   },
   mounted() {

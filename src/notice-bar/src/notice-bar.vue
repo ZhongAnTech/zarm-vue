@@ -60,7 +60,7 @@ export default {
     };
   },
   methods: {
-    handleClick(event) {
+    handleClick() {
       this.currentVisible = false;
     },
     handleUpdate(val) {

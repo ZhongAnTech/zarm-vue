@@ -8,7 +8,8 @@
     [`${prefixCls}--${shape}`]: !!shape,
     [`${prefixCls}--${size}`]: !!size,
     [`${prefixCls}--block`]: !!block,
-    [`${prefixCls}--bordered`]: !!ghost,
+    [`${prefixCls}--bordered`]: !!bordered,
+    [`${prefixCls}--ghost`]: !!ghost,
     [`${prefixCls}--disabled`]:  !!disabled,
   }'>
     <span :class='`${prefixCls}__content`'>
@@ -53,6 +54,10 @@ export default {
     block: {
       type: Boolean,
       default: false,
+    },
+    bordered: {
+      type: Boolean,
+      default: true,
     },
     ghost: {
       type: Boolean,

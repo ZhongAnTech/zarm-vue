@@ -4,67 +4,49 @@
   $active-color: $color;
 
   @include m(bordered) {
-    background-color: #fff;
     border-color: $border;
-    color: $color;
-
-    &:active {
-      background-color: $activebg;
-      color: $active-color;
-    }
-
-    @include m(active) {
-      background-color: $activebg;
-      color: $active-color;
-    }
 
     &:disabled {
+      border-color: $border;
+
       &:active,
       &:focus,
       &:visited {
-        background-color: #fff;
         border-color: $border;
         box-shadow: none;
       }
 
       @include m(active) {
-        background-color: #fff;
         border-color: $border;
         box-shadow: none;
       }
 
       @include m(focus) {
-        background-color: #fff;
         border-color: $border;
         box-shadow: none;
       }
 
       @include m(visited) {
-        background-color: #fff;
         border-color: $border;
         box-shadow: none;
       }
     }
 
     @include m(disabled) {
-      background-color: #fff;
       border-color: $border;
       box-shadow: none;
 
       @include m(active) {
-        background-color: #fff;
         border-color: $border;
         box-shadow: none;
       }
 
       @include m(focus) {
-        background-color: #fff;
         border-color: $border;
         box-shadow: none;
       }
 
       @include m(visited) {
-        background-color: #fff;
         border-color: $border;
         box-shadow: none;
       }
@@ -80,7 +62,6 @@
   border-color: $border;
   color: $color;
 
-  &,
   &:hover,
   &:focus,
   &:visited {
@@ -97,9 +78,34 @@
     border-color: $active-border;
   }
 
+  @include m(ghost) {
+    background-color: $button-default-bg;
+
+    @if $border==$border-color {
+      color: $button-default-color;
+    }
+
+    @else {
+      color: $border;
+    }
+
+    &:hover,
+    &:focus,
+    &:visited {
+      background-color: $button-default-activebg;
+
+      @if $border==$border-color {
+        color: $button-default-color;
+      }
+
+      @else {
+        color: $border;
+      }
+    }
+  }
+
   &:disabled {
     opacity: $disabled-opacity;
-    color: rgba(#fff, $disabled-opacity);
     cursor: not-allowed;
 
     &:active,
@@ -131,7 +137,6 @@
 
   @include m(disabled) {
     opacity: $disabled-opacity;
-    color: rgba(#fff, $disabled-opacity);
     cursor: not-allowed;
 
     @include m(active) {
@@ -154,14 +159,7 @@
   }
 }
 
-@mixin button-size(
-  $height,
-  $padding,
-  $font-size,
-  $border-radius,
-  $icon-size,
-  $spacing
-) {
+@mixin button-size($height, $padding, $font-size, $border-radius, $icon-size, $spacing) {
   padding: 0 $padding;
   font-size: $font-size;
   height: $height;
