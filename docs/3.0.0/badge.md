@@ -4,28 +4,34 @@
 
 ```html
 <za-cell has-arrow title="点状">
-  <za-badge slot="description" shape="dot" @click="handleClick"></za-badge>
+  <template v-slot:description>
+  <za-badge shape="dot" @click="handleClick"></za-badge>
+  </template>
 </za-cell>
 <za-cell has-arrow title="直角">
-  <za-badge slot="description" text="免费"></za-badge>
+  <template v-slot:description>
+  <za-badge text="免费"></za-badge>
+  </template>
 </za-cell>
 <za-cell has-arrow title="圆角">
-  <za-badge slot="description" text="new" shape="radius"></za-badge>
+  <template v-slot:description>
+  <za-badge text="new" shape="radius"></za-badge>
+  </template>
 </za-cell>
 <za-cell has-arrow title="椭圆">
-  <span slot="description">
+  <template v-slot:description>
     <za-badge text="999+" shape="round"></za-badge>
-  </span>
+  </template>
 </za-cell>
 <za-cell has-arrow title="圆形">
-  <span slot="description">
+  <template v-slot:description>
     <za-badge :text.number="3" shape="circle"></za-badge>
-  </span>
+  </template>
 </za-cell>
 <za-cell has-arrow title="叶形">
-  <span slot="description">
+  <template v-slot:description>
     <za-badge text="新品" shape="leaf"></za-badge>
-  </span>
+  </template>
 </za-cell>
 ```
 

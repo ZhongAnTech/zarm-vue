@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import Vue from 'vue';
 import Simulator from "./Simulator";
 import Container from 'site/components/Container';
 
@@ -23,9 +22,13 @@ export default {
   created() {
     const v = this.$store.state.version;
     this.path = this.$route.path.replace('/documents/', '');
-    Vue.component('Demo', function(resolve, reject) {
-      require([`docs/${v}/toast.md`], resolve)
-    });
+    // window.app.component('Demo', function(resolve, reject) {
+    //   require([`docs/${v}/toast.md`], resolve)
+    // });
+    const AsyncComp = defineAsyncComponent(() =>
+      import(`docs/${v}/toast.md`)
+    )
+    window.app.component('Demo', AsyncComp);
   }
 };
 </script>

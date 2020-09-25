@@ -6,27 +6,14 @@
 </template>
 
 <script>
-import PageHeader from '../components/Header.vue';
-import PageMain from '../components/Main.vue';
+import PageHeader from '../components/Header';
+import PageMain from '../components/Main';
+
 export default {
   components: {
     PageHeader,
-    PageMain
+    PageMain,
   },
-  data() {
-    return {
-
-    };
-  },
-  created() {
-
-  },
-  mounted() {
-
-  },
-  methods: {
-
-  }
 };
 </script>
 
@@ -76,12 +63,12 @@ export default {
       font-size: 64px;
       font-weight: bold;
       line-height: 1;
-  
+
       span {
         color: #12C287;
       }
     }
-  
+
     .description {
       margin-top: 30px;
       font-size: 18px;

@@ -4,21 +4,23 @@
       <div class="logo">
         <a href="https://zarm.design">
           <img alt="logo" :src="require('../../styles/images/logo.svg')" />
-          Zarm
+          <za-badge sup shape="leaf" :text="value">
+            <div style="lineHeight: 30px;">ZarmVue</div>
+          </za-badge>
         </a>
       </div>
       <div class="search">
         <input placeholder="搜索组件..." ref="searchInput" />
       </div>
       <div class="version">
-        <el-select v-model="value" placeholder="请选择" size="small" @change="handleVerChange">
+        <!-- <el-select v-model="value" placeholder="请选择" size="small" @change="handleVerChange">
               <el-option
                 v-for="item in options"
                 :key="item.value"
                 :label="item.label"
                 :value="item.value">
               </el-option>
-            </el-select>
+            </el-select> -->
       </div>
       <nav>
         <ul>
@@ -54,7 +56,7 @@ export default {
     this.value = version;
   },
   mounted() {
-    docsearch({
+    window.docsearch({
       apiKey: '59f746e0b69134f4afaece614544e197',
       indexName: 'zarm-vue',
       inputSelector: '.search input',
@@ -62,7 +64,7 @@ export default {
     });
   },
   watch: {
-    $route(val) {
+    $route() {
       const { path } = this.$route;
       this.activeName = path.replace('/documents/', '');
     },
@@ -125,13 +127,13 @@ export default {
       text-decoration: none;
     }
   }
-  
+
   .search {
     float: left;
     margin-top: 16px;
     margin-left: 50px;
     font-size: 14px;
-  
+
     input {
       display: inline-block;
       background: transparent;
@@ -146,20 +148,20 @@ export default {
       .ds-dropdown-menu {
         border: none;
         box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
-    
+
         [class^="ds-dataset-"] {
           border: none;
         }
-    
+
         &:before {
           display: none;
         }
       }
-    
+
       .algolia-docsearch-suggestion--title {
         color: #464646;
       }
-    
+
       .algolia-docsearch-suggestion--highlight {
         color: #12c287;
       }
@@ -190,31 +192,31 @@ export default {
     height: 65px;
     line-height: 65px;
     margin-right: 30px;
-  
+
     ul {
       list-style: none;
       margin: 0;
       padding: 0;
       height: 100%;
-  
+
       li {
         float: left;
         padding: 0 30px;
         text-align: center;
         font-size: 16px;
         color: #999;
-  
+
         a {
           display: block;
           color: #333;
           cursor: pointer;
-    
+
           &.active,
           &:hover {
             color: #12C287;
           }
         }
-  
+
         svg {
           height: 20px;
           margin-right: 6px;

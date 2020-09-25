@@ -1,27 +1,56 @@
-<template lang="html">
+<template>
   <div :class="prefixCls">
-    <form action="#" :class="{
+    <form
+      action="#"
+      :class="{
       [`${prefixCls}__form`]: true,
       [`${prefixCls}__form--focus`]: !!(focus || (currentValue && currentValue.length > 0))
-    }" @submit="onSubmit" ref="searchForm">
+    }"
+      @submit="onSubmit"
+      ref="searchForm"
+    >
       <div :class="{
         [`${prefixCls}__content`]: true,
         [`${prefixCls}__content--${shape}`]: !!shape
       }">
         <div :class="`${prefixCls}__mock`">
-          <div :class="`${prefixCls}__mock-container`" ref="searchContainer">
+          <div
+            :class="`${prefixCls}__mock-container`"
+            ref="searchContainer"
+          >
             <za-icon type="search" />
-            <span :class="`${prefixCls}__mock-placeholder`" v-show="isVisibility">{{placeholder || placeholderText}}</span>
+            <span
+              :class="`${prefixCls}__mock-placeholder`"
+              v-show="isVisibility"
+            >{{placeholder || placeholderText}}</span>
           </div>
         </div>
-        <za-input type="search" :class="`${prefixCls}__input`" :placeholder="placeholder || placeholderText" :value="currentValue" :disabled="disabled" :clearable="clearable" ref="inputRef"
-          :maxLength='maxLength' @focus="onFocus" @compositionStart="handleComposition" @compositionUpdate="handleComposition"
-          @compositionEnd="handleComposition" @change="onChange" @blur="onBlur" @clear="onClear" />
+        <za-input
+          ref="inputRef"
+          type="search"
+          :class="`${prefixCls}__input`"
+          :placeholder="placeholder || placeholderText"
+          :value="currentValue"
+          :disabled="disabled"
+          :clearable="clearable"
+          v-bind="$attrs"
+          @focus="onFocus"
+          @compositionStart="handleComposition"
+          @compositionUpdate="handleComposition"
+          @compositionEnd="handleComposition"
+          @change="onChange"
+          @blur="onBlur"
+          @clear="onClear"
+        />
       </div>
-      <div :class="{
+      <div
+        :class="{
           [`${prefixCls}__cancel`]: true,
           [`${prefixCls}__cancel-show`]: !!(showCancel || focusStatus || (currentValue && currentValue.length > 0))
-        }" ref="cancelRef" @click="onCancel">{{cancelText || cancelBtnText}}</div>
+        }"
+        ref="cancelRef"
+        @click="onCancel"
+      >{{cancelText || cancelBtnText}}</div>
     </form>
   </div>
 </template>
@@ -49,8 +78,7 @@ export default {
       type: String,
       default: '',
     },
-    value: [String, Number],
-    maxLength: [Number],
+    modelValue: [String, Number],
     shape: {
       type: String,
       default: 'raduis',
@@ -75,12 +103,12 @@ export default {
   data() {
     return {
       focusStatus: false,
-      currentValue: this.defaultValue || this.value || '',
+      currentValue: this.defaultValue || this.modelValue || '',
       isOnComposition: false,
     };
   },
   watch: {
-    value(value) {
+    modelValue(value) {
       if (value === this.currentValue) return;
       this.currentValue = value;
     },

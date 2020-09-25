@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: PingFang SC, Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,WenQuanYi Micro Hei,sans-serif;
+  font-family: PingFang SC, Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
   line-height: 1.42857143;
   color: #383838;
   -webkit-font-smoothing: subpixel-antialiased;
@@ -34,10 +34,6 @@ img {
   display: none;
 }
 
-.zarm-vue-site [class^=za-] {
-  display: none;
-}
-
 .hljs {
   background-color: #f6f8fa;
   margin-bottom: 40px;
@@ -56,7 +52,9 @@ pre {
   border-radius: 3px;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: normal;
   color: #1f2d3d;
 }
@@ -125,3 +123,5 @@ table {
     padding-left: 15px;
   }
 }
+
+

@@ -1,25 +1,13 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import middlewares from './middle-wares';
+import { createStore } from 'vuex';
 import packageJson from '../../package.json';
 
-Vue.use(Vuex);
-
-const debug = process.env.NODE_ENV !== 'production';
-
-const store = new Vuex.Store({
-  strict: debug,
-  plugins: middlewares,
+const store = createStore({
   state: {
     activeName: 'quick-start',
     lang: 'ZH',
-    version: '2.0.0',
+    version: '3.0.0',
     versionList: [{
-      value: '1.x',
-      label: '1.x',
-      path: 'https://zhongantech.github.io/zarm-vue/1.x/#/zh-CN/component/fastdoc',
-    }, {
-      value: '2.0.0',
+      value: '3.0.0',
       label: packageJson.version,
       path: '#/documents/quick-start',
     }],

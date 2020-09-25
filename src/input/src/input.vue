@@ -53,10 +53,6 @@ export default {
       default: 'za-input',
     },
     placeholder: String,
-    type: {
-      type: String,
-      default: 'text',
-    },
     modelValue: String,
     rows: {
       type: [String, Number],
