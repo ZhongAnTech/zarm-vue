@@ -14,7 +14,7 @@ delete baseWebpackConfig.entry;
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'production',
-  devtool: config.build.productionSourceMap ? '#source-map' : false,
+//   devtool: config.build.productionSourceMap ? '#source-map' : false,
   module: {
     rules: utils.styleLoaders({
       sourceMap: false,
@@ -89,7 +89,7 @@ module.exports = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: config.build.site,
       template: path.join(__dirname, '../site/index.html'),
-    //   pathname: '/zarm-vue/',
+      pathname: '/zarm-vue/',
       favicon: './site/styles/images/favicon.ico',
       inject: true,
       minify: {
