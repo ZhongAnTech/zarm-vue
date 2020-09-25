@@ -30,7 +30,7 @@
           type="search"
           :class="`${prefixCls}__input`"
           :placeholder="placeholder || placeholderText"
-          :value="currentValue"
+          v-model="currentValue"
           :disabled="disabled"
           :clearable="clearable"
           v-bind="$attrs"
@@ -38,7 +38,7 @@
           @compositionStart="handleComposition"
           @compositionUpdate="handleComposition"
           @compositionEnd="handleComposition"
-          @change="onChange"
+          @searched="onChange"
           @blur="onBlur"
           @clear="onClear"
         />
@@ -78,7 +78,7 @@ export default {
       type: String,
       default: '',
     },
-    modelValue: [String, Number],
+    defaultValue: String,
     shape: {
       type: String,
       default: 'raduis',
@@ -103,19 +103,21 @@ export default {
   data() {
     return {
       focusStatus: false,
-      currentValue: this.defaultValue || this.modelValue || '',
+      currentValue: this.defaultValue,
       isOnComposition: false,
     };
   },
   watch: {
-    modelValue(value) {
-      if (value === this.currentValue) return;
-      this.currentValue = value;
+    modelValue(val) {
+      this.currentValue = val;
+      if (!this.isOnComposition) {
+        this.$emit('change', this.currentValue);
+      }
     },
   },
   computed: {
     isVisibility() {
-      return this.currentValue ? 0 : 1;
+      return (typeof this.currentValue !== 'undefined' && this.currentValue.length > 0) ? 0 : 1;
     },
     cancelBtnText() {
       return this.localeProvider.lang ? this.getLocales('cancelText') : '取消';
@@ -125,9 +127,7 @@ export default {
     },
   },
   mounted() {
-    this.$nextTick(() => {
-      this.calculatePositon();
-    });
+    this.calculatePositon();
   },
   methods: {
     // 国际化
@@ -162,13 +162,6 @@ export default {
       this.$emit('focus');
     },
 
-    onChange(value) {
-      this.currentValue = value;
-      if (!this.isOnComposition) {
-        this.$emit('change', this.currentValue);
-      }
-    },
-
     handleComposition(e) {
       if (e.type === 'compositionstart') {
         this.isOnComposition = true;
@@ -193,7 +186,6 @@ export default {
     onClear() {
       this.currentValue = '';
       this.isOnComposition = false;
-      this.focus();
       this.$emit('clear', this.currentValue);
     },
 

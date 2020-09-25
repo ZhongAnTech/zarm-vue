@@ -22,7 +22,7 @@
     "dev": "node build/dev-server.js",
     "lint:style": "stylelint --syntax scss styles/**/**/*.scss src/**/**/*.scss",
     "lint:vue": "eslint --ext .js,.vue src",
-    "page": "gh-pages -d dist --add --remote origin",
+    "page": "gh-pages -d dist --remote origin",
     "precommit": "npm run lint",
     "pub": "npm run build:all && npm publish ./release",
     "release": "bash script/release.sh",

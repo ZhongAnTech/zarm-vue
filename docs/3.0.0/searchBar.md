@@ -22,7 +22,7 @@
 <za-search-bar
   shape="round"
   :showCancel="true"
-  value="默认搜索关键字"
+  defaultValue="默认搜索关键字"
 ></za-search-bar>
 ```
 
@@ -90,7 +90,7 @@ export default {
 | placeholder   | string         | text   |              | placeholder            |
 | disabled      | boolean        | false  |              | 是否禁用               |
 | default-value | string         |        |              | 初始值                 |
-| value         | string, number |        |              | 搜索关键字             |
+| defaultValue         | string, number |        |              | 搜索关键字             |
 | shape         | string         | radius |              | 形状，`round`,`radius` |
 | cancel-text   | string         | '取消' |              | 取消文本               |
 | show-cancel   | boolean        | false  |              | 是否显示取消操作       |

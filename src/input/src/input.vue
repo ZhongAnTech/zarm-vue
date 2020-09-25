@@ -76,7 +76,7 @@ export default {
   data() {
     return {
       focused: this.focused || false,
-      currentValue: this.value || '',
+      currentValue: this.modelValue || '',
     };
   },
   computed: {
