@@ -4,7 +4,7 @@
 
 ```html
 <za-cell title="默认">
-  <za-stepper slot="description" v-model="stepper6"></za-stepper>
+  <za-stepper slot="description" v-model="stepper6" @inputChange="handleChange" @change="handleChange"></za-stepper>
 </za-cell>
 <za-cell title="小号">
   <za-stepper slot="description" v-model="stepper1" size="sm"></za-stepper>
@@ -113,5 +113,4 @@ export default {
 
 | 事件名称    | 说明                   | 回调参数       |
 | :---------- | :--------------------- | :------------- |
-| change      | 点击加减后触发的事件   | event 事件对象 |
 | input-change | 点击加减后返回变化的值 | number         |

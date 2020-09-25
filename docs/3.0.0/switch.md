@@ -5,7 +5,7 @@
 ```html
 <za-cell title="普通">
   <template v-slot:description>
-    <za-switch v-model="switch1" @change="handleChange">
+    <za-switch v-model="switch1" @checked="handleChange">
     </za-switch>
   </template>
 </za-cell>
@@ -64,4 +64,4 @@ export default {
 
 | 事件名称 | 说明               | 回调参数             |
 | :------- | :----------------- | :------------------- |
-| change   | 绑定值改变时的事件 | event.target.checked |
+| checked   | 绑定值改变时的事件 | event.target.checked |

@@ -120,7 +120,7 @@ export default {
       const value = Number(event.target.value);
       this.handleValue(value, event);
     },
-    handleValue(value) {
+    handleValue(value, event) {
       if (Number.isNaN(value)) {
         if (value === '-') {
           this.currentValue = '-';
@@ -135,26 +135,26 @@ export default {
         this.$nextTick(() => {
           this.currentValue = this.min;
           this.lastValue = this.currentValue;
-          this.handleInputChange();
+          this.handleInputChange(event);
         });
       } else if (this.max !== null && value > this.max) {
         this.currentValue = value;
         this.$nextTick(() => {
           this.currentValue = this.max;
           this.lastValue = this.currentValue;
-          this.handleInputChange();
+          this.handleInputChange(event);
         });
       } else {
         this.currentValue = value;
         this.lastValue = this.currentValue;
-        this.handleInputChange();
+        this.handleInputChange(event);
       }
       this.handleAutoWidth(value);
     },
-    handleInputChange() {
+    handleInputChange(event) {
       this.$emit('inputChange', Number(this.currentValue));
       this.$emit('update:modelValue', Number(this.currentValue));
-      this.$emit('change', Number(this.currentValue));
+      this.$emit('change', event);
     },
     handleAutoWidth(val) {
       const numLen = Number(val.toString().length);
