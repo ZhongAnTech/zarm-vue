@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div :class='prefixCls' ref='wrapper'>
     <div :class='`${prefixCls}__content`'>
       <div

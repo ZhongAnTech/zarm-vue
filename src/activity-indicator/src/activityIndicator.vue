@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <svg :class='{
     [`${prefixCls}`]: true,
     [`${prefixCls}--${size}`]: !!size,

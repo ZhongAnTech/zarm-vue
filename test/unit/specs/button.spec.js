@@ -1,5 +1,5 @@
+import { mount } from '@vue/test-utils';
 import zaButton from '@/button';
-import { mount } from '../util';
 
 describe('Button', () => {
   it('create', () => {

@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div :class='prefixCls' @click='handleClick'>
       <div v-if='isSelect' :class='{
         [`${prefixCls}__input`]: true,

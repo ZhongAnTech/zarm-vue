@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <button
    type="button"
    :disabled="disabled"

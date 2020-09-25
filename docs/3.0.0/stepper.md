@@ -4,7 +4,7 @@
 
 ```html
 <za-cell title="默认">
-  <za-stepper slot="description" v-model="stepper6" @inputChange="handleChange" @change="handleChange"></za-stepper>
+  <za-stepper slot="description" v-model="stepper6" @inputChange="handleChange"></za-stepper>
 </za-cell>
 <za-cell title="小号">
   <za-stepper slot="description" v-model="stepper1" size="sm"></za-stepper>

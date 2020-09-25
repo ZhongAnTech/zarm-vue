@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <za-cell v-if='radioType === "cell"' :disabled='radioDisabled' isLink>
     <template v-slot:description>
       <za-icon v-if='isChecked' type="right" :theme='radioDisabled ? null : groupTheme'></za-icon>

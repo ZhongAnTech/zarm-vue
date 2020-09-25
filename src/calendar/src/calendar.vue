@@ -1,5 +1,4 @@
 <script>
-// import { h } from 'vue';
 import {
   setDisabledFuc,
   generatorRangeDates,

@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <za-toast :prefixCls='prefixCls' v-model:visible='currentVisible' :duration='0' @close="onClose">
     <za-activity-indicator size='lg' class='rotate360' />
   </za-toast>

@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div :class='`${prefixCls}__panel`'>
     <div :class='`${prefixCls}__mask-top`' />
     <div :class='`${prefixCls}__view`'>
