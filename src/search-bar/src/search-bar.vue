@@ -27,18 +27,15 @@
         </div>
         <za-input
           ref="inputRef"
-          type="search"
           :class="`${prefixCls}__input`"
           :placeholder="placeholder || placeholderText"
           v-model="currentValue"
-          :disabled="disabled"
-          :clearable="clearable"
-          v-bind="$attrs"
+          v-bind="searchProps"
           @focus="onFocus"
           @compositionStart="handleComposition"
           @compositionUpdate="handleComposition"
           @compositionEnd="handleComposition"
-          @searched="onChange"
+          @change="onChange"
           @blur="onBlur"
           @clear="onClear"
         />
@@ -83,6 +80,10 @@ export default {
       type: String,
       default: 'raduis',
     },
+    type: {
+      type: String,
+      default: 'search',
+    },
     disabled: {
       type: Boolean,
       default: false,
@@ -105,14 +106,13 @@ export default {
       focusStatus: false,
       currentValue: this.defaultValue,
       isOnComposition: false,
+      searchProps: this.getInitProps(),
     };
   },
   watch: {
     modelValue(val) {
       this.currentValue = val;
-      if (!this.isOnComposition) {
-        this.$emit('change', this.currentValue);
-      }
+      this.onChange();
     },
   },
   computed: {
@@ -130,6 +130,14 @@ export default {
     this.calculatePositon();
   },
   methods: {
+    getInitProps() {
+      const { type, disabled, clearable } = this.$props;
+      return {
+        type,
+        disabled,
+        clearable,
+      };
+    },
     // 国际化
     getLocales(key) {
       return Locale.getLocaleByComponent(this.localeProvider, 'SearchBar', key);
@@ -170,8 +178,6 @@ export default {
       if (e.type === 'compositionend') {
         // composition is end
         this.isOnComposition = false;
-        const value = e.target.value;
-        this.$emit('change', value);
       }
     },
 
@@ -181,6 +187,12 @@ export default {
         this.blurAnim();
       }
       this.$emit('blur');
+    },
+
+    onChange() {
+      if (!this.isOnComposition) {
+        this.$emit('searched', this.currentValue);
+      }
     },
 
     onClear() {

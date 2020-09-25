@@ -8,7 +8,7 @@
     <textarea
       ref='input'
       v-if='type === "textarea"'
-      v-bind="$attrs"
+      v-bind="inputProps"
       :value="currentValue"
       @input="handleInput"
       @focus="handleFocus"
@@ -17,7 +17,7 @@
     <input
       ref='input'
       v-else
-      v-bind="$attrs"
+      v-bind="inputProps"
       :value="currentValue"
       @input="handleInput"
       @focus="handleFocus"
@@ -52,6 +52,11 @@ export default {
       type: String,
       default: 'za-input',
     },
+    type: {
+      type: String,
+      default: 'text',
+    },
+    maxLength: [String, Number],
     placeholder: String,
     modelValue: String,
     rows: {
@@ -77,6 +82,7 @@ export default {
     return {
       focused: this.focused || false,
       currentValue: this.modelValue || '',
+      inputProps: this.getInitProps(),
     };
   },
   computed: {
@@ -90,6 +96,13 @@ export default {
     },
   },
   methods: {
+    getInitProps() {
+      const inputProps = { ...this.$props };
+      // if (inputProps.type === 'search') {
+      //   inputProps.type = 'text';
+      // }
+      return inputProps;
+    },
     setCurrentValue(value) {
       if (value === this.currentValue) return;
       if (this.type === 'textarea') {
@@ -105,8 +118,8 @@ export default {
         this.focused = true;
       }
       this.currentValue = value;
+      // console.log(this.currentValue);
       this.$emit('update:modelValue', value);
-      this.$emit('change', value);
     },
     handleFocus(event) {
       if (this.clearable && this.currentValue) {
@@ -135,9 +148,8 @@ export default {
       if (e.type === 'compositionend') {
         // composition is end
         this.isOnComposition = false;
-        const value = e.target.value;
         this.$emit('compositionEnd', e);
-        this.$emit('change', value);
+        this.$emit('change', e.target.value);
       }
     },
     initAutosize() {
@@ -159,9 +171,6 @@ export default {
     onClear() {
       this.blurFromClear = true;
       this.currentValue = '';
-      if (!this.isOnComposition) {
-        this.focus();
-      }
       this.$emit('clear', this.currentValue);
     },
 
