@@ -1,17 +1,17 @@
 import 'babel-polyfill';
-import Vue from 'vue';
-import zarmVue from '../release/lib/zarm-vue.common';
+import { createApp } from 'vue';
+import zarmVue, { Icon } from '../release/lib/zarm-vue.common';
 import App from './app';
 import router from './router';
 import '../release/zarm-vue.default.css';
 import './styles/pages/IndexPage.scss';
 
-Vue.config.productionTip = false;
-Vue.use(zarmVue);
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: { App },
-});
+Icon.createSymbolIconfont('//at.alicdn.com/t/font_1340918_4p9b5skcr79.js');
+
+
+const app = createApp(App);
+// app.config.devtools = true;
+app.use(router);
+app.use(zarmVue);
+
+app.mount('#app');
