@@ -19,7 +19,7 @@ describe('Switch', () => {
     expect(vm.$el.classList.contains('za-switch--disabled')).toBe(true);
     expect(vm.$el.classList.contains('za-switch--checked')).toBe(true);
   });
-  
+
   it('switchOn', () => {
     const TestCompo = {
       components: {
@@ -118,6 +118,6 @@ describe('Switch', () => {
       done();
     });
   });
-  
+
 });
 

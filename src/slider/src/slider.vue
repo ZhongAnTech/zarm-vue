@@ -1,27 +1,48 @@
-<template lang="html">
+<template>
   <div :class='{
     [`${prefixCls}`]: true,
     [`${prefixCls}--disabled`]: !!disabled
     }'>
-    <input type="hidden" :value="currentValue"/>
+    <input
+      type="hidden"
+      :value="currentValue"
+    />
     <za-drag
       :dragStart='onDragStart'
       :dragMove='onDragMove'
-      :dragEnd='onDragEnd'>
+      :dragEnd='onDragEnd'
+    >
       <div
         :aria-valuemin='min'
         :aria-valuemax='max'
-        :aria-valuenow='value'>
-        <div :class='`${prefixCls}__line`' ref='line'>
-          <div :class='`${prefixCls}__line-bg`' :style='{width:`${offset}px`}'></div>
+        :aria-valuenow='value'
+      >
+        <div
+          :class='`${prefixCls}__line`'
+          ref='lineRef'
+        >
+          <div
+            :class='`${prefixCls}__line-bg`'
+            :style='{width:`${offset}px`}'
+          ></div>
         </div>
         <div
           :class='`${prefixCls}__handle`'
-          :style='{left:`${offset}px`}'>
-          <div :class='`${prefixCls}__handle-shadow`' ref="shadow"></div>
+          :style='{left:`${offset}px`}'
+        >
+          <div
+            :class='`${prefixCls}__handle-shadow`'
+            ref="shadowRef"
+          ></div>
         </div>
       </div>
-     </za-drag>
+      <za-tooltip
+        ref="tooltipRef"
+        :styleCls="tooltip.styleCls"
+        v-model:visible="tooltip.visible"
+        :message="tooltip.message"
+      ></za-tooltip>
+    </za-drag>
   </div>
 </template>
 
@@ -70,24 +91,26 @@ export default {
     return {
       currentValue: this.getInitValue() || 0,
       offset: 0,
-      tooltip: null,
+      tooltip: {
+        visible: false,
+        message: null,
+        styleCls: {},
+      },
       offsetStart: 0,
     };
   },
   watch: {
-    'value'(val, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
+    modelValue(val, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
       if (val === oldValue) return;
       this.currentValue = val;
     },
   },
   mounted() {
     this.init();
-    // fixed jest unit undefined $zaTooltip
-    this.$zaTooltip = zaTooltip.root;
   },
   methods: {
     getInitValue() {
-      const value = this.defaultValue ? this.defaultValue : this.value;
+      const value = this.defaultValue ? this.defaultValue : this.modelValue;
       if (value) {
         return value;
       }
@@ -96,19 +119,21 @@ export default {
     onDragStart() {
       const { disabled } = this;
       if (disabled) return;
-      this.tooltip = this.$zaTooltip({ message: this.currentValue });
+      this.tooltip.visible = true;
+      this.tooltip.message = this.currentValue;
       this.setShadowPosition();
     },
     onDragMove(event, { offsetX }) {
       const { disabled } = this;
-      if (disabled || !this.tooltip || Number.isNaN(offsetX)) return;
+      if (disabled || !this.tooltip) return;
+      if (Number.isNaN(offsetX)) return;
       event.preventDefault();
       let offset = this.offsetStart + offsetX;
       if (offset < 0) {
         offset = 0;
         const value = this.getValueByOffset(offset);
         this.offset = offset;
-        this.$emit('input', value);
+        this.$emit('update:modelValue', value);
         this.currentValue = value;
         this.tooltip.message = value;
         this.setShadowPosition();
@@ -118,7 +143,7 @@ export default {
         offset = this.maxOffset();
         const value = this.getValueByOffset(offset);
         this.offset = offset;
-        this.$emit('input', value);
+        this.$emit('update:modelValue', value);
         this.currentValue = value;
         this.tooltip.message = value;
         this.setShadowPosition();
@@ -127,19 +152,19 @@ export default {
       const value = this.getValueByOffset(offset);
       offset = this.getOffsetByValue(value);
       this.offset = offset;
-      this.$emit('input', value);
+      this.$emit('update:modelValue', value);
       this.currentValue = value;
       this.tooltip.message = value;
       this.setShadowPosition();
       return true;
     },
     onDragEnd(event, { offsetX }) {
-      if (this.tooltip) {
-        this.tooltip.close();
+      if (this.tooltip.visible) {
+        this.$refs.tooltipRef.close();
       }
-      if (Number.isNaN(offsetX)) return;
+      if (!offsetX || Number.isNaN(offsetX)) return;
       this.offsetStart += offsetX;
-      this.$emit('change', event, this.currentValue);
+      this.$emit('updated', event, this.currentValue);
     },
     /**
      * 通过偏移量确定值
@@ -165,9 +190,8 @@ export default {
      * 获取最大偏移量
      */
     maxOffset() {
-      // console.log(this.$refs.line.offsetWidth)// eslint-disable-line
-      return this.$refs.line
-        ? this.$refs.line.offsetWidth
+      return this.$refs.lineRef
+        ? this.$refs.lineRef.offsetWidth
         : 0;
     },
     /**
@@ -189,13 +213,14 @@ export default {
       };
     },
     setShadowPosition() {
-      const rect = this.$refs.shadow.getBoundingClientRect();
+      const rect = this.$refs.shadowRef.getBoundingClientRect();
       const scrollTop = document.documentElement.scrollTop + document.body.scrollTop;
       const top = rect.top + scrollTop;
       this.tooltip.styleCls = {
         left: `${rect.left}px`,
         top: `${top}px`,
         width: `${rect.width}`,
+        zIndex: 100,
       };
     },
   },

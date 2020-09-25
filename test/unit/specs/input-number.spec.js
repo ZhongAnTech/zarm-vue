@@ -10,7 +10,7 @@ describe('InputNumber', () => {
     });
     const { vm } = wrapper;
     vm.$nextTick(() => {
-      expect(wrapper.contains('.za-input-number')).toBe(true);
+      expect(wrapper.find('.za-input-number').exists()).toBe(true);
     });
   });
 
@@ -32,7 +32,7 @@ describe('InputNumber', () => {
     const { vm } = wrapper;
     wrapper.element.click();
     vm.$nextTick(() => {
-      expect(wrapper.contains('.za-input--focus')).toBe(true);
+      expect(wrapper.find('.za-input--focus').exists()).toBe(true);
     });
   });
 
@@ -52,7 +52,7 @@ describe('InputNumber', () => {
       const zaOutsideClick = document.querySelector('body');
       setTimeout(() => {
         zaOutsideClick.click();
-        expect(wrapper.contains('.za-popup--hidden')).toBe(false);
+        expect(wrapper.find('.za-popup--hidden').exists()).toBe(false);
         done();
       }, 20);
     });

@@ -4,6 +4,7 @@ import ZaPanelHeader from '@/panel-header';
 import ZaPanelFooter from '@/panel-footer';
 import { mount } from '../util';
 
+
 describe('Panel', () => {
   it('create', () => {
     const wrapper = mount({

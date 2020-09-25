@@ -66,7 +66,7 @@ export default {
       type: Number,
       default: null,
     },
-    value: {
+    modelValue: {
       type: Number,
       default: 0,
     },
@@ -80,15 +80,15 @@ export default {
     },
   },
   watch: {
-    'value'(val, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
+    'modelValue'(val, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
       if (val === this.currentValue) return;
       this.handleValue(val);
     },
   },
   data() {
     return {
-      currentValue: this.value || 0,
-      lastValue: this.value || 0,
+      currentValue: this.modelValue || 0,
+      lastValue: this.modelValue || 0,
     };
   },
   methods: {
@@ -153,7 +153,7 @@ export default {
     },
     handleInputChange() {
       this.$emit('inputChange', Number(this.currentValue));
-      this.$emit('input', Number(this.currentValue));
+      this.$emit('update:modelValue', Number(this.currentValue));
       this.$emit('change', Number(this.currentValue));
     },
     handleAutoWidth(val) {

@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const config = require('../config');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const VueLoaderPlugin = require('vue-loader/dist/plugin').default;
 const entries = require('../script/find-entry')();
 const version = require('../package.json').version;
 

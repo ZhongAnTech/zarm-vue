@@ -52,7 +52,7 @@ export default {
     quality: Number,
     beforeSelect: {
       type: Function,
-      default: () => {},
+      default: () => { },
     },
   },
   methods: {
@@ -79,10 +79,10 @@ export default {
           fileList.push(data);
 
           if (files.length === fileList.length) {
-            this.$emit('change', fileList);
+            this.$emit('selected', fileList);
           }
         } else {
-          this.$emit('change', data);
+          this.$emit('selected', data);
         }
       };
 

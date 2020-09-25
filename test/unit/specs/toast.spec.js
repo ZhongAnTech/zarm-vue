@@ -42,16 +42,17 @@ describe('Toast', () => {
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
 
-    expect(vm.$el.classList.contains('za-toast--open')).toBe(true);
+    expect(wrapper.find('.za-toast--open')).toBeTruthy();
     setTimeout(() => {
-      expect(vm.$el.classList.contains('za-toast--open')).toBe(false);
+      expect(wrapper.find('.za-toast--open')).toBeTruthy();
       vm.visible = true;
       setTimeout(() => {
-        expect(vm.$el.classList.contains('za-toast--open')).toBe(false);
+        expect(wrapper.find('.za-toast--open')).toBeTruthy();
         done();
       }, 30);
     }, 60);
   });
+
 
   it('$zaToast', done => {
     const TestCompo = {

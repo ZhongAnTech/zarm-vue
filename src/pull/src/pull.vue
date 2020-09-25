@@ -80,7 +80,7 @@ export default {
   mounted() {
     Event.on(window, 'scroll', this.throttledScroll);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     Event.off(window, 'scroll', this.throttledScroll);
   },
   watch: {
@@ -259,7 +259,7 @@ export default {
 
       switch (refreshState) {
         case REFRESH_STATE.pull:
-          refreshPull = this.$scopedSlots.refreshPull && this.$scopedSlots.refreshPull({
+          refreshPull = this.$slots.refreshPull && this.$slots.refreshPull({
             percent,
           });
           return refreshPull || (
@@ -270,7 +270,7 @@ export default {
           );
 
         case REFRESH_STATE.drop:
-          refreshDrop = this.$scopedSlots.refreshDrop && this.$scopedSlots.refreshDrop({
+          refreshDrop = this.$slots.refreshDrop && this.$slots.refreshDrop({
             percent,
           });
           return refreshDrop || (
@@ -281,7 +281,7 @@ export default {
           );
 
         case REFRESH_STATE.loading:
-          refreshLoading = this.$scopedSlots.refreshLoading && this.$scopedSlots.refreshLoading({
+          refreshLoading = this.$slots.refreshLoading && this.$slots.refreshLoading({
             percent,
           });
           return refreshLoading || (
@@ -292,7 +292,7 @@ export default {
           );
 
         case REFRESH_STATE.success:
-          refreshSuccess = this.$scopedSlots.refreshSuccess && this.$scopedSlots.refreshSuccess({
+          refreshSuccess = this.$slots.refreshSuccess && this.$slots.refreshSuccess({
             percent,
           });
           return refreshSuccess || (
@@ -303,7 +303,7 @@ export default {
           );
 
         case REFRESH_STATE.failure:
-          refreshFailure = this.$scopedSlots.refreshFailure && this.$scopedSlots.refreshFailure({
+          refreshFailure = this.$slots.refreshFailure && this.$slots.refreshFailure({
             percent,
           });
           return refreshFailure || (
@@ -323,18 +323,18 @@ export default {
 
       switch (loadState) {
         case LOAD_STATE.loading:
-          loadLoading = this.$scopedSlots.loadLoading && this.$scopedSlots.loadLoading({
+          loadLoading = this.$slots.loadLoading && this.$slots.loadLoading({
             percent,
           });
           return loadLoading || (
             <div class={`${prefixCls}__control`}>
-              <za-activity-indicator class='rotate360'/>
+              <za-activity-indicator class='rotate360' />
               <span>加载中</span>
             </div>
           );
 
         case LOAD_STATE.complete:
-          loadComplete = this.$scopedSlots.loadComplete && this.$scopedSlots.loadComplete({
+          loadComplete = this.$slots.loadComplete && this.$slots.loadComplete({
             percent,
           });
           return loadComplete || (
@@ -344,7 +344,7 @@ export default {
           );
 
         case LOAD_STATE.failure:
-          loadFailure = this.$scopedSlots.loadFailure && this.$scopedSlots.loadFailure({
+          loadFailure = this.$slots.loadFailure && this.$slots.loadFailure({
             percent,
           });
           return loadFailure || (
@@ -369,7 +369,7 @@ export default {
           <div class={`${prefixCls}__refresh`} style={refreshStyle}>
             {renderRefresh()}
           </div>
-          {this.$slots.default}
+          {this.$slots.default()}
           <div class={`${prefixCls}__load`} style={loadStyle}>
             {renderLoad()}
           </div>

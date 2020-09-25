@@ -20,10 +20,10 @@ export default {
   methods: {
     handleClick(event) {
       if (this.disabled) return;
-      this.$emit('nav-click', this, event);
+      this.$emit('navClick', this, event);
     },
   },
-  render(h) { // eslint-disable-line no-unused-vars
+  render() { // eslint-disable-line no-unused-vars
     const {
       disabled,
       currentName,
@@ -39,7 +39,7 @@ export default {
     };
 
     return (
-      <div class={cls} on-click={handleClick}>{label}</div>
+      <div class={cls} onClick={handleClick}>{label}</div>
     );
   },
 };

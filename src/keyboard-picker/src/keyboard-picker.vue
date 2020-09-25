@@ -1,11 +1,12 @@
 <template lang="html">
   <div :prefixCls="prefixCls" @click.stop='stopPropagation'>
     <za-popup
+      ref="popup"
       :visible='currentVisible'
       :get-container="getContainer"
       direction="bottom"
       :hasMask="false">
-      <za-keyboard 
+      <za-keyboard
         :type="type"
         @keyClick="onKeyClick"
       />

@@ -10,7 +10,10 @@ export default {
   methods: {
     removeContainer() {
       if (this.getContainer) {
-        this.getContainer().removeChild(this.$el);
+        const container = this.getContainer();
+        if (container.contains(this.$el)) {
+          container.removeChild(this.$el);
+        }
       }
     },
     move() {
@@ -26,7 +29,7 @@ export default {
       this.move();
     }
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.removeContainer();
   },
 };

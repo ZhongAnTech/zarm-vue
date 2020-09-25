@@ -22,12 +22,12 @@ describe('SwipeAction', () => {
             {
               theme: 'error',
               text: '右按钮1',
-              onClick: () => {},
+              onClick: () => { },
             },
             {
               theme: 'success',
               text: '右按钮2',
-              onClick: () => {},
+              onClick: () => { },
             },
           ],
         };
@@ -69,7 +69,7 @@ describe('SwipeAction', () => {
             {
               theme: 'success',
               text: '右按钮2',
-              onClick: () => {},
+              onClick: () => { },
             },
           ],
         };
@@ -106,12 +106,12 @@ describe('SwipeAction', () => {
             {
               theme: 'error',
               text: '右按钮1',
-              onClick: () => {},
+              onClick: () => { },
             },
             {
               theme: 'success',
               text: '右按钮2',
-              onClick: () => {},
+              onClick: () => { },
             },
           ],
         };
@@ -158,12 +158,12 @@ describe('SwipeAction', () => {
             {
               theme: 'error',
               text: '右按钮1',
-              onClick: () => {},
+              onClick: () => { },
             },
             {
               theme: 'success',
               text: '右按钮2',
-              onClick: () => {},
+              onClick: () => { },
             },
           ],
         };
@@ -209,12 +209,12 @@ describe('SwipeAction', () => {
             {
               theme: 'error',
               text: '右按钮1',
-              onClick: () => {},
+              onClick: () => { },
             },
             {
               theme: 'success',
               text: '右按钮2',
-              onClick: () => {},
+              onClick: () => { },
             },
           ],
         };

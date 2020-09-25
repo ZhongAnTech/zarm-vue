@@ -2,6 +2,7 @@ import ZaPicker from '@/picker';
 import ZaSelect from '@/select';
 import { mount } from '../util';
 
+
 describe('Picker', () => {
   it('create', () => {
     const wrapper = mount({

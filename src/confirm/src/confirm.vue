@@ -1,12 +1,30 @@
-<template lang="html">
-  <za-modal ref='modal' :get-container="getContainer" :closeOnClickModal='false' :visible='currentVisible' :radius='radius' :animationDuration='animationDuration' :title='title'>
-    <div :class='prefixCls'>
-      <template v-if='!$slots.default'>{{message}}</template>
-      <slot></slot>
-    </div>
-    <template slot='footer'>
-      <za-button block ghost @click='cancel'>{{cancelText || cancelBtnText}}</za-button>
-      <za-button block ghost theme="primary" @click='ok'>{{okText || okBtnText}}</za-button>
+<template>
+  <za-modal
+    ref='modal'
+    :class='prefixCls'
+    :get-container="getContainer"
+    :closeOnClickModal='false'
+    :visible='currentVisible'
+    :radius='radius'
+    :animationDuration='animationDuration'
+    :title='title'
+  >
+    <template v-if='!$slots.default'>{{message}}</template>
+    <slot></slot>
+    <template v-slot:footer>
+      <za-button
+        block
+        ghost
+        shape="rect"
+        @click='handleCancel'
+      >{{cancelText || cancelBtnText}}</za-button>
+      <za-button
+        block
+        ghost
+        shape="rect"
+        style="border-left:0"
+        @click='handleOk'
+      >{{okText || okBtnText}}</za-button>
     </template>
   </za-modal>
 </template>
@@ -56,11 +74,11 @@ export default {
     },
     ok: {
       type: Function,
-      default: () => {},
+      default: () => { },
     },
     cancel: {
       type: Function,
-      default: () => {},
+      default: () => { },
     },
   },
   computed: {
@@ -87,6 +105,25 @@ export default {
     // 国际化
     getLocales(key) {
       return Locale.getLocaleByComponent(this.localeProvider, 'Confirm', key);
+    },
+    onClose(event) {
+      this.$emit('update:visible', false);
+      this.$emit('close', event);
+    },
+    handleCancel(event) {
+      const { cancel } = this;
+      if (typeof cancel === 'function') {
+        cancel();
+      }
+      this.onClose();
+    },
+    handleOk(event) {
+      const { ok } = this;
+      if (typeof ok === 'function' && ok()) {
+        this.onClose();
+      } else {
+        this.onClose(event);
+      }
     },
   },
 };

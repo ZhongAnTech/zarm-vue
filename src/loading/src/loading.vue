@@ -1,5 +1,5 @@
 <template lang="html">
-  <za-toast :prefixCls='prefixCls' :visible.sync='currentVisible' :duration='0'>
+  <za-toast :prefixCls='prefixCls' v-model:visible='currentVisible' :duration='0' @close="onClose">
     <za-activity-indicator size='lg' class='rotate360' />
   </za-toast>
 </template>
@@ -33,6 +33,11 @@ export default {
       set(val) {
         this.$emit('update:visible', val);
       },
+    },
+  },
+  methods: {
+    onClose() {
+      this.$emit('close');
     },
   },
 };

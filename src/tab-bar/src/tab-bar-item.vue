@@ -44,10 +44,10 @@ export default {
       cls = `${prefixCls}__item ${prefixCls}--active`;
     }
     return (
-      <div class={cls} on-click={handleChange}>
+      <div class={cls} onClick={handleChange}>
         <div class={`${prefixCls}__icon`}>
           {
-            !this.selected ? this.$slots.icon : this.$slots.activeIcon
+            !this.selected ? this.$slots.icon && this.$slots.icon() : this.$slots.activeIcon && this.$slots.activeIcon()
           }
         </div>
         <div class={`${prefixCls}__title`}>{title}</div>

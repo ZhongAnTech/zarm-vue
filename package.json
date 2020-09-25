@@ -1,69 +1,42 @@
 {
   "name": "zarm-vue",
-  "version": "2.0.0-alpha.35",
+  "version": "2.0.0-beta.3",
   "description": "zarm in vue",
-  "tags": [
-    "zarm",
-    "zarm-vue",
-    "vue",
-    "zhongan"
-  ],
-  "keywords": [
-    "vue",
-    "vue-ui",
-    "vue-component",
-    "zarm",
-    "zarm-vue",
-    "component",
-    "components",
-    "ui",
-    "web-ui",
-    "framework",
-    "frontend",
-    "mobile"
-  ],
-  "license": "MIT",
-  "repository": "git://github.com/ZhongAnTech/zarm-vue",
-  "bugs": {
-    "url": "https://github.com/ZhongAnTech/zarm-vue/issues"
-  },
-  "main": "lib/index.js",
-  "typings": "types/index.d.ts",
   "scripts": {
-    "dev": "node build/dev-server.js",
-    "start": "node build/dev-server.js",
-    "create": "node script/create-component.js",
-    "lint:style": "stylelint --syntax scss styles/**/**/*.scss src/**/**/*.scss",
-    "lint:vue": "eslint --ext .js,.vue src",
     "lint": "npm run lint:vue && npm run lint:style",
-    "unit": "jest --config test/unit/jest.conf.js --coverage",
-    "test:watch": "jest --config test/unit/jest.conf.js --watch",
-    "clean": "rimraf release",
     "deploy": "rimraf dist && cross-env NODE_ENV=production webpack --config ./build/webpack.deploy.conf.js",
-    "page": "gh-pages -d dist --add --remote origin",
-    "deploy:page": "npm run deploy && npm run page",
-    "build:umd": "cross-env NODE_ENV=production webpack --config ./build/webpack.umd.conf.js",
-    "build:lib": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.conf.js",
-    "build:theme": "cross-env NODE_ENV=production webpack --config ./build/webpack.theme.conf.js",
-    "build:style": "cross-env NODE_ENV=production webpack --config ./build/webpack.style.conf.js",
-    "build:copy": "node ./script/copy.js",
-    "build:release": "cp -r README.md release && cp -r src release && cp -r styles release && cp -r types release",
-    "build:all": "npm run clean && npm run build:umd && npm run build:lib && npm run build:style && npm run build:theme && npm run build:copy && npm run build:release",
     "analyze": "cross-env NODE_ENV=production npm_config_report=true npm run build:all",
     "book": "cd docs && gitbook serve",
-    "precommit": "npm run lint",
-    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "build:all": "npm run clean && npm run build:umd && npm run build:lib && npm run build:style && npm run build:theme && npm run build:copy && npm run build:release",
+    "build:copy": "node ./script/copy.js",
+    "build:lib": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.conf.js",
+    "build:release": "cp -r README.md release && cp -r src release && cp -r styles release && cp -r types release",
+    "build:style": "cross-env NODE_ENV=production webpack --config ./build/webpack.style.conf.js",
+    "build:theme": "cross-env NODE_ENV=production webpack --config ./build/webpack.theme.conf.js",
+    "build:umd": "cross-env NODE_ENV=production webpack --config ./build/webpack.umd.conf.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "clean": "rimraf release",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "create": "node script/create-component.js",
+    "deploy:page": "npm run deploy && npm run page",
+    "dev": "node build/dev-server.js",
+    "lint:style": "stylelint --syntax scss styles/**/**/*.scss src/**/**/*.scss",
+    "lint:vue": "eslint --ext .js,.vue src",
+    "page": "gh-pages -d dist --add --remote origin",
+    "precommit": "npm run lint",
+    "pub": "npm run build:all && npm publish ./release",
     "release": "bash script/release.sh",
-    "pub": "npm run build:all && npm publish ./release"
+    "start": "node build/dev-server.js",
+    "test:watch": "jest --config test/unit/jest.conf.js --watch",
+    "unit": "jest --config test/unit/jest.conf.js --coverage"
   },
-  "peerDependencies": {
-    "vue": "> 2.5.0"
-  },
+  "main": "lib/index.js",
   "dependencies": {
     "autosize": "^4.0.0",
     "better-scroll": "1.12.0",
-    "dayjs": "^1.7.7"
+    "dayjs": "^1.7.7",
+    "popper.js": "^1.15.0",
+    "vue": "^3.0.0-beta.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -78,20 +51,18 @@
     "@babel/runtime-corejs2": "^7.4.2",
     "@commitlint/cli": "^6.2.0",
     "@commitlint/config-conventional": "^6.1.3",
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
+    "@vue/babel-plugin-jsx": "^1.0.0-rc.3",
     "@vue/babel-preset-jsx": "^1.0.0",
-    "@vue/server-test-utils": "^1.0.0-beta.22",
-    "@vue/test-utils": "^1.0.0-beta.22",
+    "@vue/compiler-sfc": "^3.0.0-beta.1",
+    "@vue/server-test-utils": "^1.0.3",
+    "@vue/test-utils": "^1.0.3",
     "autoprefixer": "^7.1.2",
     "axios": "^0.18.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
-    "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-jest": "^23.4.2",
     "babel-loader": "^8.0.5",
-    "babel-plugin-dynamic-import-node": "^2.3.0",
-    "babel-plugin-import": "^1.11.0",
-    "babel-plugin-syntax-jsx": "^6.18.0",
-    "babel-plugin-transform-vue-jsx": "^3.7.0",
     "chalk": "^2.4.2",
     "connect-history-api-fallback": "^1.3.0",
     "conventional-changelog-cli": "^1.3.22",
@@ -141,12 +112,11 @@
     "stylelint-config-standard": "^16.0.0",
     "tunnel-agent": "^0.6.0",
     "url-loader": "^1.0.1",
-    "vue": "^2.6.10",
+    "vue-cli-plugin-vue-next": "~0.1.4",
     "vue-jest": "^3.0.0",
-    "vue-loader": "^15.0.7",
-    "vue-router": "^2.6.0",
+    "vue-loader": "^16.0.0-beta.7",
+    "vue-router": "^4.0.0-beta.11",
     "vue-style-loader": "^4.1.0",
-    "vue-template-compiler": "^2.6.10",
     "vuex": "^3.0.1",
     "webpack": "^4.10.1",
     "webpack-bundle-analyzer": "^3.3.2",
@@ -157,9 +127,8 @@
     "webpack-merge": "^4.2.1",
     "zarm-vue-loader": "^3.0.0"
   },
-  "engines": {
-    "node": ">= 6.0.0",
-    "npm": ">= 3.0.0"
+  "peerDependencies": {
+    "vue": "> 2.5.0"
   },
   "browserslist": [
     "> 1%",
@@ -167,5 +136,35 @@
     "not ie <= 8",
     "iOS >= 8",
     "Android >= 4"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/ZhongAnTech/zarm-vue/issues"
+  },
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "keywords": [
+    "vue",
+    "vue-ui",
+    "vue-component",
+    "zarm",
+    "zarm-vue",
+    "component",
+    "components",
+    "ui",
+    "web-ui",
+    "framework",
+    "frontend",
+    "mobile"
+  ],
+  "license": "MIT",
+  "repository": "git://github.com/ZhongAnTech/zarm-vue",
+  "tags": [
+    "zarm",
+    "zarm-vue",
+    "vue",
+    "zhongan"
+  ],
+  "typings": "types/index.d.ts"
 }

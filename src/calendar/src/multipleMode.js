@@ -35,7 +35,7 @@ export const setRange = function (dateArray) {
   return true;
 };
 export const multipleValueNormalize = function () {
-  let value = this.defaultValue || this.value;
+  let value = this.defaultValue || this.modelValue;
   value = value instanceof Array ? [normalizeDate(value[0]), normalizeDate(value[1])] : [];
   this.normalizeValue = value[0] && value[1] ? value : null;
 };

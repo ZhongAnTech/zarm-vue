@@ -15,7 +15,7 @@ describe('Cell', () => {
       `,
     };
     const wrapper = mount(TestCompo);
-    expect(wrapper.contains('.za-cell')).toBe(true);
+    expect(wrapper.find('.za-cell').exists()).toBe(true);
   });
 
   it('prefixCls', () => {
@@ -24,7 +24,7 @@ describe('Cell', () => {
         prefixCls: 'za-cell-test',
       },
     });
-    expect(wrapper.contains('.za-cell-test')).toBe(true);
+    expect(wrapper.find('.za-cell-test').exists()).toBe(true);
   });
 
   it('title', () => {
@@ -43,7 +43,7 @@ describe('Cell', () => {
         theme: 'primary',
       },
     });
-    expect(wrapper.contains('.za-cell--primary')).toBe(true);
+    expect(wrapper.find('.za-cell--primary').exists()).toBe(true);
   });
 
   it('disabled', () => {
@@ -52,7 +52,7 @@ describe('Cell', () => {
         disabled: true,
       },
     });
-    expect(wrapper.contains('.za-cell--disabled')).toBe(true);
+    expect(wrapper.find('.za-cell--disabled').exists()).toBe(true);
   });
 
   it('hasIcon', () => {
@@ -68,7 +68,7 @@ describe('Cell', () => {
       `,
     };
     const wrapper = mount(TestCompo);
-    expect(wrapper.contains('.za-icon-right')).toBe(true);
+    expect(wrapper.find('.za-icon-right').exists()).toBe(true);
   });
 
   it('click', done => {

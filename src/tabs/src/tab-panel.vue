@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     currentName() {
-      return this.container && this.container.value;
+      return this.container && this.container.modelValue;
     },
     slideable() {
       return this.container && this.container.slideable;
@@ -55,7 +55,7 @@ export default {
     // for vue2.1.0+ can be scoped slot here
     this.notifyParent();
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.notifyParent(false);
   },
   methods: {
@@ -65,7 +65,7 @@ export default {
       }
     },
   },
-  render(h) { // eslint-disable-line no-unused-vars
+  render() { // eslint-disable-line no-unused-vars
     const {
       prefixCls,
       currentName,
@@ -78,12 +78,12 @@ export default {
       [`${prefixCls}__panel-item--active`]: name === currentName,
     };
 
-    const panel = slideable ? <za-carousel-item>{this.$slots.default}</za-carousel-item>
+    const panel = slideable ? <za-carousel-item>{this.$slots.default()}</za-carousel-item>
       :
       (
         <div class={`${prefixCls}__panel`}>
           <div class={cls}>
-            {this.$slots.default}
+            {this.$slots.default()}
           </div>
         </div>
       );

@@ -1,3 +1,4 @@
+/* eslint-disable radix */
 import zaProgress from '@/progress';
 import { mount } from '../util';
 
@@ -20,8 +21,8 @@ describe('Progress', () => {
     };
     const wrapper = mount(TestCompo);
     const { vm } = wrapper;
-    expect(wrapper.contains('.za-progress')).toBe(true);
-    expect(wrapper.contains('.za-progress--line')).toBe(true);
+    expect(wrapper.find('.za-progress').exists()).toBe(true);
+    expect(wrapper.find('.za-progress--line').exists()).toBe(true);
     expect(vm.$el.querySelector('.za-progress__inner').style.height).toEqual('8px');
   });
 
@@ -32,7 +33,7 @@ describe('Progress', () => {
         percent: 50,
       },
     });
-    expect(wrapper.contains('.za-progress__semi-circle')).toBe(true);
+    expect(wrapper.find('.za-progress__semi-circle').exists()).toBe(true);
   });
 
   it('percent', () => {
@@ -43,11 +44,11 @@ describe('Progress', () => {
       },
     });
     const {
-      vm
+      vm,
     } = wrapper;
-    expect(wrapper.contains('.za-progress__semi-circle')).toBe(true);
-    const strokeDasharray = parseInt(vm.$el.querySelector('.za-progress__line').style.strokeDasharray)
-    const strokeDashoffset = parseInt(vm.$el.querySelector('.za-progress__line').style.strokeDashoffset)
+    expect(wrapper.find('.za-progress__semi-circle').exists()).toBe(true);
+    const strokeDasharray = parseInt(vm.$el.querySelector('.za-progress__line').style.strokeDasharray);
+    const strokeDashoffset = parseInt(vm.$el.querySelector('.za-progress__line').style.strokeDashoffset);
     expect(strokeDashoffset).toEqual(strokeDasharray * 2);
   });
 
@@ -57,7 +58,7 @@ describe('Progress', () => {
         prefixCls: 'my-progress',
       },
     });
-    expect(wrapper.contains('.my-progress')).toBe(true);
+    expect(wrapper.find('.my-progress').exists()).toBe(true);
   });
 
   it('shape', () => {
@@ -91,6 +92,6 @@ describe('Progress', () => {
         theme: 'info',
       },
     });
-    expect(wrapper.contains('.za-progress--info')).toBe(true);
+    expect(wrapper.find('.za-progress--info').exists()).toBe(true);
   });
 });

@@ -118,7 +118,7 @@ export default {
       this.enter();
     }
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.removeTimer();
   },
   render() {
@@ -136,7 +136,7 @@ export default {
     } = this;
     const popupCls = maskVisible ? `${prefixCls} ${prefixCls}--opened` : `${prefixCls}`;
     return (
-      <transition>
+      <div>
         {
           currentVisible &&
           <div
@@ -145,20 +145,20 @@ export default {
             <div class={`${prefixCls}__wrapper ${prefixCls}__wrapper-${direction}`}
               style={transitionDurationStyle}
             >
-              {this.$slots.default}
+              {this.$slots.default()}
             </div>
             {
               hasMask &&
-                <za-mask
-                  class={`fade-${animationState}`}
-                  style={animationDurationStyle}
-                  visible={maskVisible}
-                  type={maskType}
-                  onClick={onMaskClick} />
+              <za-mask
+                class={`fade-${animationState}`}
+                style={animationDurationStyle}
+                visible={maskVisible}
+                type={maskType}
+                onClick={onMaskClick} />
             }
           </div>
         }
-      </transition>
+      </div>
     );
   },
 };

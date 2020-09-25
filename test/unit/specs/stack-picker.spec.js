@@ -1,6 +1,7 @@
 import zaStackPicker from '@/stack-picker';
 import { mount } from '../util';
 
+
 const data = [
   {
     value: '1',

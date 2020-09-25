@@ -2,64 +2,40 @@
   <div :class='{
    [`${prefixCls}`]: true,
    [`${prefixCls}--${theme}`]: !!theme
- }' :style='styleCls' v-if="currentVisible" ref='tooltip'>
+ }' :style='styleCls' v-show="visible" ref='tooltip'>
     <div :class='`${prefixCls}__inner`'>{{message}}</div>
     <slot></slot>
   </div>
 </template>
 
 <script>
-  import { defaultThemeValidator } from '@/utils/validator';
+import { defaultThemeValidator } from '@/utils/validator';
 
-  export default {
-    name: 'zaTooltip',
-    props: {
-      prefixCls: {
-        type: String,
-        default: 'za-tooltip',
-      },
-      visible: {
-        type: Boolean,
-        default: false,
-      },
-      theme: {
-        type: String,
-        validator: defaultThemeValidator,
-        default: 'default',
-      },
-      message: {
-        type: [String, Number],
-      },
+export default {
+  name: 'zaTooltip',
+  props: {
+    prefixCls: {
+      type: String,
+      default: 'za-tooltip',
     },
-    data() {
-      return {
-        currentVisible: this.visible,
-        styleCls: undefined,
-      };
+    visible: {
+      type: Boolean,
+      default: false,
     },
-    watch: {
-      currentVisible(value, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
-        this.show();
-      },
+    theme: {
+      type: String,
+      validator: defaultThemeValidator,
+      default: 'default',
     },
-    methods: {
-      show() {
-        this.$nextTick(() => {
-          if (this.$refs.tooltip && !this.styleCls) {
-            const rect = this.$refs.tooltip.getBoundingClientRect();
-            const scrollTop = document.documentElement.scrollTop + document.body.scrollTop;
-            const top = rect.top + scrollTop;
-            this.styleCls = {
-              left: `${rect.left}px`,
-              top: `${top}px`,
-              width: `${rect.width}`,
-            };
-          }
-        });
-      },
-      close() {
-        this.currentVisible = false;
-      },
+    styleCls: {},
+    message: {
+      type: [String, Number],
     },
-  };
+  },
+  methods: {
+    close() {
+      this.$emit('update:visible', false);
+    },
+  },
+};
 </script>

@@ -18,7 +18,7 @@ describe('Wheel', () => {
     });
     const { vm } = wrapper;
     vm.$nextTick(() => {
-      expect(wrapper.find('.za-wheel')).toBeTruthy();
+      expect(wrapper.find('.za-wheel').exists()).toBe(true);
     });
   });
 

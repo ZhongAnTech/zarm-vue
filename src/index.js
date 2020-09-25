@@ -31,6 +31,7 @@ import PanelFooter from '../src/panel-footer';
 import Picker from '../src/picker';
 import PickerView from '../src/picker-view';
 import Popup from '../src/popup';
+import Popper from '../src/popper';
 import Progress from '../src/progress';
 import Pull from '../src/pull';
 import SearchBar from '../src/search-bar';
@@ -55,7 +56,7 @@ import TabBar from '../src/tab-bar';
 import TabBarItem from '../src/tab-bar-item';
 import LocaleProvider from '../src/locale-provider';
 
-const version = '2.0.0';
+const version = '3.0.0';
 const components = [
   Collapse,
   CollapseItem,
@@ -90,6 +91,7 @@ const components = [
   Picker,
   PickerView,
   Popup,
+  Popper,
   Progress,
   Pull,
   Radio,
@@ -115,19 +117,16 @@ const components = [
   LocaleProvider,
 ];
 
-const install = function (Vue, opts = {}) { // eslint-disable-line no-unused-vars
+const install = function (app, opts = {}) { // eslint-disable-line no-unused-vars
   /* istanbul ignore if */
   if (install.installed) return;
+  components.map(component => app.component(component.name, component));
 
-  components.map(component => Vue.component(component.name, component));
-
-  Vue.use(Loading.directive);
-
-  Vue.prototype.$zaToast = Toast.root;
-  Vue.prototype.$zaTooltip = Tooltip.root;
-  Vue.prototype.$zaLoading = Loading.root;
-  Vue.prototype.$zaAlert = Alert.root;
-  Vue.prototype.$zaConfirm = Confirm.root;
+  app.config.globalProperties.$zaToast = Toast.root;
+  app.config.globalProperties.$zaTooltip = Tooltip.root;
+  app.config.globalProperties.$zaLoading = Loading.root;
+  app.config.globalProperties.$zaAlert = Alert.root;
+  app.config.globalProperties.$zaConfirm = Confirm.root;
 };
 
 if (typeof window !== 'undefined' && window.Vue) {
@@ -169,6 +168,7 @@ export {
   Picker,
   PickerView,
   Popup,
+  Popper,
   Progress,
   Pull,
   Radio,

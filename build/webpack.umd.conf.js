@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const baseWebpackConfig = require('./webpack.base.conf');
 const merge = require('webpack-merge');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const VueLoaderPlugin = require('vue-loader/dist/plugin').default;
 const version = require('../package.json').version;
 
 delete baseWebpackConfig.entry;

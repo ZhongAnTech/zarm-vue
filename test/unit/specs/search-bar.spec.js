@@ -9,7 +9,7 @@ describe('SearchBar', () => {
         prefixCls: 'za-search-bar',
       },
     });
-    expect(wrapper.contains('.za-search-bar')).toBe(true);
+    expect(wrapper.find('.za-search-bar').exists()).toBe(true);
   });
 
   it('shape', () => {
@@ -19,9 +19,9 @@ describe('SearchBar', () => {
         shape: 'round',
       },
     });
-    expect(wrapper.contains('.za-search-bar__content--round')).toBe(true);
+    expect(wrapper.find('.za-search-bar__content--round').exists()).toBe(true);
   });
-  
+
   it('clear', done => {
     let result;
     const TestCompo = {
@@ -29,10 +29,10 @@ describe('SearchBar', () => {
         zaSearchBar,
       },
       template: `
-        <za-search-bar placeholder="搜索" 
+        <za-search-bar placeholder="搜索"
           shape="round"
-          cancelText="取消" 
-          :showCancel="true" 
+          cancelText="取消"
+          :showCancel="true"
           value="默认搜索关键字"
           @clear="handleClear"
         />
@@ -85,7 +85,7 @@ describe('SearchBar', () => {
     };
     const wrapper = mount(TestCompo, { sync: false });
     const { vm } = wrapper;
-    wrapper.setData({'focusStatus': true});
+    wrapper.setData({ 'focusStatus': true });
     setTimeout(() => {
       wrapper.find('.za-search-bar__cancel').trigger('click');
       vm.$nextTick(() => {

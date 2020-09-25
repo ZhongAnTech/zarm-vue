@@ -1,39 +1,65 @@
-import Vue from 'vue';
+import { createApp } from 'vue';
 import Loading from './src/loading';
-import Directive from './src/directive';
 
 /* istanbul ignore next */
 Loading.install = function (Vue) { // eslint-disable-line
   Vue.component(Loading.name, Loading);
 };
 
-let instance;
-const LoadingConstructor = Vue.extend(Loading);
+Loading.root = function (message, options) {
+  const div = document.createElement('div');
+  document.body.appendChild(div);
 
-const initInstance = () => {
-  instance = new LoadingConstructor({
-    el: document.createElement('div'),
-  });
-};
-
-Loading.root = function () {
-  /* istanbul ignore if */
-  if (Vue.prototype.$isServer) return;
-
-  if (!instance) {
-    initInstance();
-    instance.close = function () {
-      instance.visible = false;
-    };
+  options = options || {};
+  if (typeof message === 'object') {
+    options = message;
+    message = '';
+  } else {
+    options.message = message;
   }
 
-  document.body.appendChild(instance.$el);
-  Vue.nextTick(() => {
-    instance.visible = true;
-  });
-  return instance;
-};
+  let currentConfig = { ...options, visible: true };
 
-Loading.directive = Directive;
+  let LoadingInstance = null;
+  let loadingProps = {};
+
+  function update(newConfig) {
+    currentConfig = {
+      ...currentConfig,
+      ...newConfig,
+    };
+    LoadingInstance &&
+      Object.assign(LoadingInstance, { loadingProps: currentConfig });
+  }
+
+  function destroy() {
+    if (LoadingInstance && div.parentNode) {
+      div.parentNode.removeChild(LoadingInstance.$el);
+      div.parentNode.removeChild(div);
+      LoadingInstance = null;
+    }
+  }
+
+  function render(props) {
+    loadingProps = props;
+    return createApp({
+      data() {
+        return { loadingProps };
+      },
+      render() {
+        // 先解构，避免报错，原因不详
+        const cdProps = { ...this.loadingProps };
+        return <Loading {...cdProps} onClose={destroy} />;
+      },
+    }).mount(div);
+  }
+
+  LoadingInstance = render(currentConfig);
+
+  return {
+    close: destroy,
+    update,
+  };
+};
 
 export default Loading;

@@ -71,10 +71,10 @@ export default {
       });
     },
     setActive() {
-      const { parent, active, multiple, itemAnimated, itemKey } = this;
+      const { active, multiple, itemAnimated, itemKey } = this;
       let activeStatus;
       if (!multiple) {
-        const collapseItemRefs = parent.$children;
+        const collapseItemRefs = this.validSlots();
         collapseItemRefs.forEach((item) => {
           if (item.active) {
             item.active = false;
@@ -125,6 +125,12 @@ export default {
       });
       return height;
     },
+    validSlots() {
+      // fix tabs use cancarousel bug
+      return this.parent.$slots.default()
+        .filter(d => d.type.name &&
+          d.type.name === 'zaCollapseItem');
+    },
   },
   render() {
     const { prefixCls, active, title, itemAnimated, animatedHeight, disabled } = this;
@@ -134,17 +140,17 @@ export default {
         [`${itemCls}`]: true,
         [`${itemCls}--active`]: !!active,
         [`${itemCls}--disabled`]: !!disabled,
-        }} ref='collapseItem'>
-        <div class={`${itemCls}__title`} on-click={this.onClickItem}>
+      }} ref='collapseItem'>
+        <div class={`${itemCls}__title`} onClick={this.onClickItem}>
           <div>{title}</div>
           <div class={{ [`${itemCls}__arrow`]: true }}></div>
         </div>
         <div class={{
           [`${itemCls}__content`]: true,
           [`${itemCls}__content--anim`]: itemAnimated,
-          }} ref='animateRoom' style={animatedHeight}>
+        }} ref='animateRoom' style={animatedHeight}>
           <div class={`${itemCls}__content-inner`}>
-            {this.$slots.default}
+            {this.$slots.default()}
           </div>
         </div>
       </div>

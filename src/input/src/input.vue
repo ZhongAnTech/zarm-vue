@@ -1,42 +1,39 @@
 <template lang="html">
   <div :class="{
     [`${prefixCls}`]: true,
-    [`${prefixCls}--disabled`]: !!disabled
+    [`${prefixCls}--disabled`]: !!disabled,
+    [`${prefixCls}__clearable`]: !!clearable,
     }">
     <div :class='`${prefixCls}__placeholder`' v-if='type === "date"'>{{placeholder}}</div>
     <textarea
       ref='input'
-      :readonly='readonly'
       v-if='type === "textarea"'
-      :placeholder='placeholder'
-      :disabled='disabled'
-      :maxLength='maxLength'
+      v-bind="$attrs"
       :value="currentValue"
-      @input="onInput"
-      @focus="onFocus"
-      @blur="onBlur"
-      :rows='rows'
+      @input="handleInput"
+      @focus="handleFocus"
+      @blur="handleBlur"
     />
     <input
-      :readonly='readonly'
       ref='input'
       v-else
-      :type='type'
-      :placeholder='placeholder'
-      :disabled='disabled'
-      :maxLength='maxLength'
+      v-bind="$attrs"
       :value="currentValue"
-      @input="onInput"
-      @focus="onFocus"
-      @blur="onBlur"
+      @input="handleInput"
+      @focus="handleFocus"
+      @blur="handleBlur"
       @compositionStart="handleComposition"
       @compositionUpdate="handleComposition"
       @compositionEnd="handleComposition"
     />
-    <za-icon v-if="clearable" type="wrong-round-fill" :class="{
-      [`${prefixCls}__clear`]: true,
-      [`${prefixCls}__clear--show`]: !!(focused && currentValue && currentValue.length > 0)
-    }" @click="onClear" />
+    <za-icon
+      :class="{
+        [`${prefixCls}__clear`]: true,
+        [`${prefixCls}__clear--show`]: !!(focused && currentValue && currentValue.length > 0)
+      }"
+      type="wrong-round-fill"
+      @click="onClear"
+    />
     <div :class='`${prefixCls}__length`' v-if='showLength && maxLength'>{{`${length}/${maxLength}`}}</div>
   </div>
 </template>
@@ -60,8 +57,7 @@ export default {
       type: String,
       default: 'text',
     },
-    value: [String, Number],
-    maxLength: [String, Number],
+    modelValue: String,
     rows: {
       type: [String, Number],
       default: 2,
@@ -93,20 +89,11 @@ export default {
     },
   },
   watch: {
-    'value'(val, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
+    modelValue(val, oldValue) { // eslint-disable-line no-unused-vars, object-shorthand
       this.setCurrentValue(val);
     },
   },
   methods: {
-    onInput(event) {
-      const value = event.target.value;
-      if (this.clearable && this.currentValue) {
-        this.focused = true;
-      }
-      this.currentValue = value;
-      this.$emit('input', value);
-      this.$emit('change', value);
-    },
     setCurrentValue(value) {
       if (value === this.currentValue) return;
       if (this.type === 'textarea') {
@@ -116,17 +103,28 @@ export default {
       }
       this.currentValue = value;
     },
-    onFocus(event) {
+    handleInput(event) {
+      const value = event.target.value;
+      if (this.clearable && this.currentValue) {
+        this.focused = true;
+      }
+      this.currentValue = value;
+      this.$emit('update:modelValue', value);
+      this.$emit('change', value);
+    },
+    handleFocus(event) {
       if (this.clearable && this.currentValue) {
         this.focused = true;
       }
       this.$emit('focus', event);
     },
-    onBlur(event) {
-      if (this.clearable) {
-        this.focused = false;
-      }
-      this.$emit('blur', event);
+    handleBlur(event) {
+      this.onBlurTimeout = setTimeout(() => {
+        if (this.clearable) {
+          this.focused = false;
+        }
+        this.$emit('blur', event);
+      }, 200);
     },
     handleComposition(e) {
       if (e.type === 'compositionstart') {
@@ -183,7 +181,10 @@ export default {
       this.initAutosize();
     }
   },
-  beforeDestroy() {
+  beforeUnmount() {
+    const { onBlurTimeout } = this;
+    onBlurTimeout && clearTimeout(onBlurTimeout);
+    this.onBlurTimeout = null;
     if (this.type === 'textarea') {
       this.destroyAutosize();
     }

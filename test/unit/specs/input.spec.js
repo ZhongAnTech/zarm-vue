@@ -205,9 +205,11 @@ describe('Input', () => {
     wrapper.find('input').trigger('blur');
 
     vm.$nextTick(() => {
-      expect(resultFocus).not.toBeUndefined();
-      expect(resultBlur).not.toBeUndefined();
-      done();
+      setTimeout(() => {
+        expect(resultFocus).not.toBeUndefined();
+        expect(resultBlur).not.toBeUndefined();
+        done();
+      }, 300);
     });
   });
 

@@ -1,0 +1,9 @@
+@include b(popper) {
+
+  @include m(hidden) {
+    position: fixed !important;
+    visibility: hidden;
+    top: -99999px;
+    left: -99999px;
+  }
+}

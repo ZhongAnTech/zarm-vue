@@ -21,7 +21,10 @@ export default {
       default: 'primary',
     },
     lineWidth: [String, Number],
-    value: {},
+    modelValue: {
+      type: String,
+      default: null,
+    },
     slideable: {
       type: Boolean,
       default: false,
@@ -53,7 +56,7 @@ export default {
     },
   },
   watch: {
-    value(val, oldVal) { // eslint-disable-line no-unused-vars
+    modelValue(val, oldVal) { // eslint-disable-line no-unused-vars
       if (val === this.currentValue) return;
       this.currentValue = val;
     },
@@ -61,13 +64,13 @@ export default {
   data() {
     return {
       panes: [],
-      currentValue: this.value,
+      currentValue: this.modelValue,
     };
   },
   methods: {
     handleNavClick(item, event) {
       // order matters
-      this.$emit('input', item.name);
+      this.$emit('update:modelValue', item.name);
       if (!this.slideable) {
         this.$emit('change', item, event);
       }
@@ -103,7 +106,7 @@ export default {
       return this.panes[index].name;
     },
   },
-  render(h) { // eslint-disable-line no-unused-vars
+  render() { // eslint-disable-line no-unused-vars
     const {
       panes,
       handleNavClick,
@@ -135,7 +138,7 @@ export default {
                     key={index}
                     disabled={pane.disabled}
                     currentName={currentValue}
-                    on-nav-click={handleNavClick}
+                    onNavClick={handleNavClick}
                   ></tab-nav>
                 );
               })
@@ -150,13 +153,13 @@ export default {
         </div>
         <div class={`${prefixCls}__container`}>
           {
-            !slideable ? this.$slots.default :
+            !slideable ? <div>{this.$slots.default()}</div> :
               <za-carousel
                 showPagination={false}
                 activeIndex={currentIndex}
                 ref='carousel'
                 on-change={handleSwipeChange}>
-                {this.$slots.default}
+                {this.$slots.default()}
               </za-carousel>
           }
         </div>

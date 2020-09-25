@@ -1,5 +1,4 @@
-import Vue from 'vue';
-import isVNode from '@/utils/vdom';
+import { createApp } from 'vue';
 import Alert from './src/alert';
 
 /* istanbul ignore next */
@@ -7,45 +6,60 @@ Alert.install = function (Vue) { // eslint-disable-line
   Vue.component(Alert.name, Alert);
 };
 
-let instance;
-const AlertConstructor = Vue.extend(Alert);
-
-const initInstance = () => {
-  instance = new AlertConstructor({
-    el: document.createElement('div'),
-  });
-};
-
 Alert.root = function (message, options) {
-  /* istanbul ignore if */
-  if (Vue.prototype.$isServer) return;
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+
   options = options || {};
-  if (typeof message === 'object' && !isVNode(message)) {
+  if (typeof message === 'object') {
     options = message;
     message = '';
   } else {
     options.message = message;
   }
-  if (!instance) {
-    initInstance();
+
+  let currentConfig = { ...options, visible: true };
+
+  let AlertInstance = null;
+  let alertProps = {};
+
+  function update(newConfig) {
+    currentConfig = {
+      ...currentConfig,
+      ...newConfig,
+    };
+    AlertInstance &&
+      Object.assign(AlertInstance, { alertProps: currentConfig });
   }
-  Object.keys(options).forEach(key => {
-    instance[key] = options[key];
-  });
-  if (isVNode(instance.message)) {
-    instance.$slots.default = [instance.message];
-    instance.message = null;
-  } else {
-    delete instance.$slots.default;
+
+  function destroy() {
+    if (AlertInstance && div.parentNode) {
+      div.parentNode.removeChild(AlertInstance.$el);
+      div.parentNode.removeChild(div);
+      AlertInstance = null;
+    }
   }
-  document.body.appendChild(instance.$el);
-  instance.$off();
-  instance.$on('close', (event) => {
-    instance.callback && instance.callback.call(instance, event);
-  });
-  Vue.nextTick(() => {
-    instance.currentVisible = true;
-  });
+
+  function render(props) {
+    alertProps = props;
+    return createApp({
+      data() {
+        return { alertProps };
+      },
+      render() {
+        // 先解构，避免报错，原因不详
+        const cdProps = { ...this.alertProps };
+        return <Alert {...cdProps} onClose={destroy} />;
+      },
+    }).mount(div);
+  }
+
+  AlertInstance = render(currentConfig);
+
+  return {
+    close: destroy,
+    update,
+  };
 };
 
 export default Alert;

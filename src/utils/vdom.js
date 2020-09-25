@@ -1,20 +1,18 @@
-import { guid } from '@/utils/misc';
+import { cloneVNode } from 'vue';
 
 export default function (node) {
   return typeof node === 'object' && Object.prototype.hasOwnProperty.call(node, 'componentOptions');
 }
 
-export const deepCloneVNode = (h, vnode) => {
+export const cloneElement = (vnode, nodeProps = {}, override = true) => {
   if (!vnode) return;
-  const clonedChildren = vnode.children && vnode.children.map(vd => deepCloneVNode(vd));
-  const cloned = h(vnode.tag, vnode.data, clonedChildren);
-  cloned.text = vnode.text;
-  cloned.isComment = vnode.isComment;
-  cloned.componentOptions = vnode.componentOptions;
-  cloned.elm = vnode.elm;
-  cloned.context = vnode.context;
-  cloned.ns = vnode.ns;
-  cloned.isStatic = vnode.isStatic;
-  cloned.key = vnode.key + guid();
-  return cloned;
+  const node = cloneVNode(vnode, nodeProps);
+
+  // cloneVNode内部是合并属性，这里改成覆盖属性
+  node.props = override ? { ...node.props, ...nodeProps } : node.props;
+  return node;
 };
+
+export function cloneVNodes(vnodes, nodeProps = {}, override = true) {
+  return vnodes.map(vnode => cloneElement(vnode, nodeProps, override));
+}

@@ -1,6 +1,7 @@
 import ZaModal from '@/modal';
 import { mount } from '../util';
 
+
 describe('Modal', () => {
   it('create', () => {
     const wrapper = mount({
@@ -17,7 +18,7 @@ describe('Modal', () => {
         };
       },
     }, true);
-    expect(wrapper.contains('.za-modal')).toBe(true);
+    expect(wrapper.find('.za-modal').exists()).toBe(true);
     expect(wrapper.element.style.display).not.toBe('none');
   });
 
@@ -53,13 +54,14 @@ describe('Modal', () => {
       `,
       data() {
         return {
-          visible: false,
+          visible: true,
           title: 'dialog title',
           footer: 'this is footer',
         };
       },
     }, true);
-    wrapper.setData({ visible: true });
+    // wrapper.setData({ visible: true });
+    // console.log(wrapper.html())
     expect(wrapper.attributes().style.display).not.toBe('none');
     wrapper.find('.za-mask').trigger('click');
     expect(wrapper.vm.visible).toBe(false);

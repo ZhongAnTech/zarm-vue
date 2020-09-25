@@ -1,12 +1,25 @@
 <template>
-  <za-cell v-if='checkboxType === "cell"' :disabled='checkboxDisabled' @click='handleClick' isLink>
-    <div :class='cls'>
+  <za-cell
+    v-if='checkboxType === "cell"'
+    :disabled='checkboxDisabled'
+    isLink
+  >
+    <div :class='{
+      [`${prefixCls}--checked`]: !!isChecked,
+    }'>
       <div :class='`${prefixCls}__wrapper`'>
         <span :class='`${prefixCls}__inner`'></span>
         <span :class='`${prefixCls}__text`'>
           <slot></slot>
         </span>
-        <input type="checkbox" :class='`${prefixCls}__input`' :disabled='checkboxDisabled' :value='value' v-model='model' />
+        <input
+          type="checkbox"
+          :class='`${prefixCls}__input`'
+          :disabled='checkboxDisabled'
+          :value='value'
+          v-model='currentValue'
+          @change="onValueChange"
+        />
       </div>
     </div>
   </za-cell>
@@ -18,17 +31,35 @@
     :block='block || isBlock'
     :shape='shape || isShape'
     :disabled='checkboxDisabled'
-    :ghost='!isChecked'>
-    <input type="checkbox" :class='`${prefixCls}__input`' :disabled='checkboxDisabled' :value='value' v-model='model' @change='onValueChange' />
+    :ghost='!isChecked'
+  >
+    <input
+      type="checkbox"
+      :class='`${prefixCls}__input`'
+      :disabled='checkboxDisabled'
+      :value='value'
+      v-model='currentValue'
+      @change="onValueChange"
+    />
     <slot></slot>
   </za-button>
-  <div :class='cls' v-else>
+  <div
+    :class='cls'
+    v-else
+  >
     <div :class='`${prefixCls}__wrapper`'>
       <span :class='`${prefixCls}__inner`'></span>
       <span :class='`${prefixCls}__text`'>
         <slot></slot>
       </span>
-      <input type="checkbox" :class='`${prefixCls}__input`' :disabled='checkboxDisabled' :value='value' v-model='model' @change='onValueChange'/>
+      <input
+        type="checkbox"
+        :class='`${prefixCls}__input`'
+        :disabled='checkboxDisabled'
+        :value='value'
+        v-model='currentValue'
+        @change="onValueChange"
+      />
     </div>
   </div>
 </template>
@@ -66,7 +97,15 @@ export default {
       type: Boolean,
       default: false,
     },
-    value: {},
+    size: {
+      type: String,
+      validator: enumGenerator(['xl', 'lg', 'sm', 'xs']),
+      default: null,
+    },
+    value: {
+      type: String,
+      default: '',
+    },
     block: {
       type: Boolean,
       default: false,
@@ -83,27 +122,19 @@ export default {
   },
   data() {
     return {
+      currentValue: [],
       currentChecked: this.checked || false,
     };
   },
-
+  mounted() {
+    if (this.isGroup) {
+      this.currentValue = this.store;
+      this.currentChecked = this._checkboxGroup.modelValue.includes(this.value);
+    } else {
+      this.currentValue = this.currentChecked;
+    }
+  },
   computed: {
-    model: {
-      get() {
-        return this.isGroup
-          ? this.store : this.value !== undefined
-            ? this.value : this.currentChecked;
-      },
-
-      set(val) {
-        if (this.isGroup) {
-          this.dispatch('zaCheckboxGroup', 'input', [val]);
-        } else {
-          this.$emit('input', val);
-          this.currentChecked = val;
-        }
-      },
-    },
     isGroup() {
       let parent = this.$parent;
       while (parent) {
@@ -117,14 +148,16 @@ export default {
       return false;
     },
     isChecked() {
-      if ({}.toString.call(this.model) === '[object Boolean]') {
-        return this.model;
-      } else if (Array.isArray(this.model)) {
-        return this.model.indexOf(this.value) > -1;
+      if (this.isGroup) {
+        return this._checkboxGroup.modelValue.indexOf(this.value) > -1;
       }
+      if (Array.isArray(this.currentValue)) {
+        return this.currentValue.indexOf(this.value) > -1;
+      }
+      return this.currentValue;
     },
     store() {
-      return this.isGroup ? this._checkboxGroup.value : this.value;
+      return [...this._checkboxGroup.modelValue];
     },
     checkboxType() {
       return this.isGroup ? this._checkboxGroup.type : this.type;
@@ -152,28 +185,20 @@ export default {
   },
   methods: {
     onValueChange(event) {
-      // first emit('input') to make the model up to date
-      this.$nextTick(_ => { // eslint-disable-line no-unused-vars
-        if (this.isGroup) {
-          this.dispatch('zaCheckboxGroup', 'change', [[...this.model], event]);
-        } else {
-          this.$emit('change', this.model, event);
-        }
-      });
-    },
-    handleClick(event) {
-      if (this.checkboxDisabled) return;
-      if (this.isGroup) {
-        const index = this.model.indexOf(this.value);
-        if (index >= 0) {
-          this.model.splice(index, 1);
-        } else {
-          this.model.push(this.value);
-        }
-        this.onValueChange(event);
+      const self = this;
+      if (self.checkboxDisabled) return;
+
+      self.currentChecked = event.target.checked;
+
+      if (self.isGroup) {
+        const targetVal = event.target.value;
+        const prev = [...self._checkboxGroup.modelValue];
+        const next = self.currentChecked ? prev.concat([targetVal]) : prev.filter((p, index) => {
+          return index !== prev.findIndex(i => i === targetVal);
+        });
+        self.dispatch('zaCheckboxGroup', 'update:modelValue', [[...Array.from(new Set(next))]]);
       } else {
-        this.model = !this.model;
-        this.onValueChange(event);
+        self.$emit('checked', self.currentValue, self.value);
       }
     },
   },

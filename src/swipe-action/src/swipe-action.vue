@@ -131,7 +131,7 @@ export default {
       let isOpen = false;
 
       if ((offsetX / btnsLeftWidth > moveDistanceRatio) ||
-          (offsetX > 0 && timeSpan <= moveTimeSpan)) {
+        (offsetX > 0 && timeSpan <= moveTimeSpan)) {
         distanceX = btnsLeftWidth;
         isOpen = true;
       } else if ((offsetX / btnsRightWidth < -moveDistanceRatio) ||
@@ -214,7 +214,7 @@ export default {
   mounted() {
     document.body.addEventListener('touchstart', this.onTouchAway);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     document.body.removeEventListener('touchstart', this.onTouchAway);
     clearTimeout(this.timer);
   },
