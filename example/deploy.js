@@ -8,9 +8,7 @@ import './styles/pages/IndexPage.scss';
 
 Icon.createSymbolIconfont('//at.alicdn.com/t/font_1340918_4p9b5skcr79.js');
 
-
 const app = createApp(App);
-// app.config.devtools = true;
 app.use(router);
 app.use(zarmVue);
 

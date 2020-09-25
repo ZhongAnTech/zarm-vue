@@ -61,11 +61,18 @@ export default {
     selectedValue: Array,
   },
   data() {
-    this.value = this.getValue();
-    const newObj = this.getState();
-    return Object.assign({
+    return {
       isManual: false,
-    }, newObj);
+      value: this.getValue(),
+      objValue: null,
+      data: [],
+    };
+  },
+  mounted() {
+    const newObj = this.getState();
+    this.data = newObj.data;
+    this.value = newObj.value;
+    this.oldValue = newObj.oldValue;
   },
   watch: {
     dataSource() {

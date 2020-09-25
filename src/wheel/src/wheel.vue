@@ -77,7 +77,6 @@ export default {
     if (this.disabled) {
       this.BScroll.disable();
     }
-
     const initIndex = this.getWheelSelectedIndex(this.value, this.dataSource);
     this.BScroll.wheelTo(initIndex);
     this.BScroll.on('scroll', () => {

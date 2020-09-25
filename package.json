@@ -33,7 +33,7 @@
   "main": "lib/index.js",
   "dependencies": {
     "autosize": "^4.0.0",
-    "better-scroll": "1.12.0",
+    "better-scroll": "^2.0.4",
     "dayjs": "^1.7.7",
     "popper.js": "^1.15.0",
     "vue": "^3.0.0-beta.1"
@@ -134,7 +134,7 @@
   "browserslist": [
     "> 1%",
     "last 2 versions",
-    "not ie <= 8",
+    "not ie < 11",
     "iOS >= 8",
     "Android >= 4"
   ],
