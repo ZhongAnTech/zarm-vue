@@ -187,7 +187,6 @@ export default {
       if (this.isCascader()) {
         value.length = level + 1;
       }
-      // console.log(value) // eslint-disable-line
       const newObj = this.getState();
       this.value = newObj.value;
       this.objValue = newObj.objValue;

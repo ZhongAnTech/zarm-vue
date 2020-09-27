@@ -39,6 +39,7 @@
   </div>
 </template>
 <script>
+import { reactive, onBeforeMount } from 'vue';
 import { arrayTreeFilter, formatToInit, formatBackToObject, isArray, hasChildrenObject } from './utils';
 import zaPopup from '../../popup';
 import zaPickerView from '../../picker-view';
@@ -91,8 +92,8 @@ export default {
       type: String,
       default: 'value',
     },
-    defaultValue: '',
-    modelValue: '',
+    defaultValue: [],
+    modelValue: [],
     displayAddon: {
       type: String,
       default: '',
@@ -105,17 +106,37 @@ export default {
       default: data => data.label,
     },
   },
-  data() {
-    const defaultValue = this.getInitValue();
-    return {
+  setup(props) {
+    const obj = reactive({
       getContainer: () => document.body,
-      isSelect: this.$options.name === 'zaSelect',
-      currentValue: defaultValue,
-      currentVisible: this.visible,
-      oldValue: defaultValue,
+      isScrolling: false,
+      currentValue: [],
+      currentVisible: false,
+      oldValue: [],
+    });
+
+    const getInitValue = () => {
+      const { modelValue, defaultValue, isSingleColumn } = props;
+      const initValue = modelValue || defaultValue || [];
+      // 针对单列数据源{}，转换为[{}]
+      if (isSingleColumn) {
+        return isArray(initValue) ? initValue : [initValue];
+      }
+      return initValue;
     };
+
+    onBeforeMount(() => {
+      const defaultValue = getInitValue();
+      obj.currentValue = defaultValue;
+      obj.oldValue = defaultValue;
+    });
+
+    return obj;
   },
   computed: {
+    isSelect() {
+      return this.$options.name === 'zaSelect';
+    },
     display() {
       const { currentValue, data } = this;
       if (this.cascade) {
@@ -125,7 +146,6 @@ export default {
           });
           return this.displayGenerator(treeChildren);
         }
-        return '';
       }
       // FIXED
       const treeChildren2 = data.map((d, index) => {
@@ -163,49 +183,40 @@ export default {
   },
   watch: {
     visible(val, oldVal) { // eslint-disable-line no-unused-vars
-      if (this.currentVisible === val) return;
+      if (oldVal === val) return;
       this.currentVisible = val;
     },
     modelValue(val, oldVal) { // eslint-disable-line no-unused-vars
-      if (oldVal === val) return;
       this.currentValue = isArray(val) ? val : [val];
-      this.oldValue = this.currentValue;
     },
   },
   methods: {
-    getInitValue() {
-      const initValue = this.modelValue || this.defaultValue || [];
-      // 针对单列数据源{}，转换为[{}]
-      if (this.isSingleColumn) {
-        return isArray(initValue) ? initValue : [initValue];
-      }
-      return initValue;
-    },
     onChange(selected) {
       const { valueMember } = this;
       const value = selected.map(item => item[valueMember]);
       this.currentValue = value;
-      this.$emit('selected', this.currentValue);
+      this.$emit('selected', value);
     },
     handleCancel() {
-      this.currentValue = this.oldValue;
-      this.$emit('selected', this.oldValue);
+      const { oldValue } = this;
+      this.currentValue = [...oldValue];
+      this.$emit('selected', oldValue);
       this.toggle();
     },
     handleOk() {
-      if (this.isScrolling) {
+      const { valueMember, cols, data, cascade, isScrolling } = this;
+      if (isScrolling) {
         return false;
       }
-      const { valueMember, cols, data, cascade } = this;
-      this.currentValue = this.getValue();
-      this.oldValue = this.currentValue;
+      const _currentValue = this.getValue();
+      this.oldValue = _currentValue;
 
-      let _selectedValue = this.currentValue;
+      let _selectedValue = _currentValue;
       if (!isArray(_selectedValue)) {
         _selectedValue = [_selectedValue];
       }
       const _value = formatBackToObject(data, _selectedValue, cascade, valueMember, cols);
-      this.$emit('update:modelValue', this.currentValue);
+      this.$emit('update:modelValue', _currentValue);
       this.$emit('ok', _value);
       this.toggle();
     },
