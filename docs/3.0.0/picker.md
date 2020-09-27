@@ -29,22 +29,22 @@
 </za-cell>
 
 <za-picker
-  :visible.sync="visible1"
+  v-model:visible="visible1"
   :dataSource="data1"
   @ok="handleOk1"
 ></za-picker>
 <za-picker
-  :visible.sync="visible2"
+  v-model:visible="visible2"
   :dataSource="data2"
   @ok="handleOk"
 ></za-picker>
 <za-picker
-  :visible.sync="visible3"
+  v-model:visible="visible3"
   :dataSource="data3"
   @ok="handleOk"
 ></za-picker>
 <za-picker
-  :visible.sync="visible4"
+  v-model:visible="visible4"
   :dataSource="data4"
   @ok="handleOk2"
   placeholder="自定义placeholder"
@@ -63,7 +63,7 @@
     v-model="v1"
     :dataSource="data1"
     @ok="handleOk"
-    @change="handleChange"
+    @selected="handleChange"
     @cancel="handleCancel"
   ></za-select>
 </za-cell>
@@ -72,7 +72,7 @@
     :dataSource="data2"
     v-model="v2"
     @ok="handleOk"
-    @change="handleChange"
+    @selected="handleChange"
     @cancel="handleCancel"
   ></za-select>
 </za-cell>
@@ -88,7 +88,7 @@
     v-model="v6"
     :dataSource="data3"
     @ok="handleOk"
-    @change="handleChange"
+    @selected="handleChange"
     @cancel="handleCancel"
     :cols="2"
   ></za-select>
@@ -99,7 +99,7 @@
     v-model="v7"
     :displayRender="selected => selected.map(item => item.label).join('／')"
     @ok="handleOk"
-    @change="handleChange"
+    @selected="handleChange"
     @cancel="handleCancel"
   ></za-select>
 </za-cell>
@@ -114,7 +114,7 @@
 <za-picker-view
   :defaultValue="v5"
   :dataSource="data5"
-  @change="handleChange"
+  @selected="handleChange"
 ></za-picker-view>
 ```
 
@@ -212,15 +212,12 @@ export default {
   },
   methods: {
     handleOk1(v) {
-      console.log('it may still scrolling when ok is clicked. so ues v-model or @change instead')
       console.log(v);
     },
     handleOk(v) {
-      console.log('it may still scrolling when ok is clicked. so ues v-model or @change instead')
-      console.log(v);
+      console.log(v, this.v7);
     },
     handleOk2(v) {
-      console.log('it may still scrolling when ok is clicked. so ues v-model or @change instead')
       console.log(v);
     },
     handleChange(v) {
@@ -268,5 +265,5 @@ export default {
 | :--------- | :--------------------------- | :--------------- |
 | ok         | 点击确定时触发的回调函数     | 选中值的对象列表 |
 | cancel     | 点击取消时触发的回调函数     | event 对象       |
-| change     | 滚动时值变化时触发的回调函数 | 选中值的对象列表 |
+| selected     | 滚动时值变化时触发的回调函数 | 选中值的对象列表 |
 | mask-click | 点击遮罩后出发的回调函数     |                  |  |  |

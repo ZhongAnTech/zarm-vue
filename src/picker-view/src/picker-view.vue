@@ -21,6 +21,7 @@
   </div>
 </template>
 <script>
+import { reactive } from 'vue';
 import { isArray } from '@/utils/validator';
 import Wheel from '@/wheel/src/wheel';
 
@@ -60,18 +61,10 @@ export default {
     },
     selectedValue: Array,
   },
-  data() {
-    return {
-      isManual: false,
-      value: this.getValue(),
-      objValue: null,
-      data: [],
-    };
-  },
   mounted() {
     const newObj = this.getState();
     this.data = newObj.data;
-    this.value = newObj.value;
+    this.value = newObj.value || this.getValue();
     this.oldValue = newObj.oldValue;
   },
   watch: {
@@ -82,13 +75,23 @@ export default {
       this.oldValue = newObj.oldValue;
     },
   },
+  setup() {
+    const obj = reactive({
+      isManual: false,
+      value: [],
+      oldValue: [],
+      objValue: null,
+      data: [],
+    });
+    return obj;
+  },
   methods: {
     getInitValue(defaultValue) {
       if ('value' in this && this.value.length > 0) {
         return [].concat(this.value);
       }
 
-      if ('defaultValue' in this && this.defaultValue.length > 0) {
+      if (this.defaultValue && this.defaultValue.length > 0) {
         return [].concat(this.defaultValue);
       }
 
@@ -111,7 +114,7 @@ export default {
       }
       if (!hasObj && this.isCascader()) {
         const newObj = this.cascaderState(selectedValue);
-        this.$set(data, level, newObj.data[level]);
+        this.data[level] = newObj.data[level];
       }
     },
     getState() {
@@ -135,7 +138,6 @@ export default {
     normalState() {
       const { valueMember, dataSource } = this;
       const value = this.getInitValue(dataSource.map(item => item[0] && item[0][valueMember]));
-      // console.log(value,this.selectedValue) // eslint-disable-line
       return {
         value,
         // eslint-disable-next-line
@@ -191,7 +193,7 @@ export default {
       this.objValue = newObj.objValue;
       this.data = newObj.data;
       this.isManual = true;
-      this.$emit('change', newObj.objValue, level);
+      this.$emit('selected', newObj.objValue, level);
     },
     onTransition(isScrolling) {
       this.$emit('transition', isScrolling);

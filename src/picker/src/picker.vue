@@ -6,7 +6,7 @@
         [`${prefixCls}--disabled`]: !!disabled,
       }'>
         <input type="hidden" :value='currentValue' />
-        {{display() || placeholder}}
+        {{display || placeholder}}
       </div>
       <div :class='{
           [`${prefixCls}__container`]: true,
@@ -24,13 +24,13 @@
             <div :class='`${prefixCls}__submit`' @click='handleOk'>{{okText}}</div>
           </div>
           <za-picker-view
-            :value='selectedValue'
+            :defaultValue='currentValue'
             :valueMember='valueMember'
             :dataSource='dataSource'
             :cols='cols'
             :selectedValue='selectedValue'
             :itemRender='itemRender'
-            @change='onChange'
+            @selected='onChange'
             @transition='onTransition'
           />
         </div>
@@ -116,6 +116,30 @@ export default {
     };
   },
   computed: {
+    display() {
+      const { currentValue, data } = this;
+      if (this.cascade) {
+        if (currentValue.length) {
+          const treeChildren = arrayTreeFilter(data, (item, level) => {
+            return item[this.valueMember] === currentValue[level];
+          });
+          return this.displayGenerator(treeChildren);
+        }
+        return '';
+      }
+      // FIXED
+      const treeChildren2 = data.map((d, index) => {
+        if (!isArray(currentValue)) {
+          return d.filter(obj => currentValue === obj[this.valueMember])[0];
+        }
+        if (isArray(currentValue) && currentValue[index]) {
+          return d.filter(obj => currentValue[index] === obj[this.valueMember])[0];
+        }
+        return undefined;
+      }).filter(t => !!t);
+
+      return this.displayGenerator(treeChildren2);
+    },
     cascade() {
       const { dataSource } = this;
       return dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]);
@@ -143,8 +167,7 @@ export default {
       this.currentVisible = val;
     },
     modelValue(val, oldVal) { // eslint-disable-line no-unused-vars
-      // console.log(val, oldVal) // eslint-disable-line
-      if (this.currentValue === val) return;
+      if (oldVal === val) return;
       this.currentValue = isArray(val) ? val : [val];
       this.oldValue = this.currentValue;
     },
@@ -162,28 +185,29 @@ export default {
       const { valueMember } = this;
       const value = selected.map(item => item[valueMember]);
       this.currentValue = value;
-      this.$emit('change', this.currentValue);
+      this.$emit('selected', this.currentValue);
     },
     handleCancel() {
-      this.toggle();
       this.currentValue = this.oldValue;
+      this.$emit('selected', this.oldValue);
+      this.toggle();
     },
     handleOk() {
       if (this.isScrolling) {
         return false;
       }
-      this.toggle();
       const { valueMember, cols, data, cascade } = this;
       this.currentValue = this.getValue();
       this.oldValue = this.currentValue;
 
-      let selectedValue = this.currentValue;
-      if (!isArray(selectedValue)) {
-        selectedValue = [selectedValue];
+      let _selectedValue = this.currentValue;
+      if (!isArray(_selectedValue)) {
+        _selectedValue = [_selectedValue];
       }
-      const _value = formatBackToObject(data, selectedValue, cascade, valueMember, cols);
+      const _value = formatBackToObject(data, _selectedValue, cascade, valueMember, cols);
       this.$emit('update:modelValue', this.currentValue);
       this.$emit('ok', _value);
+      this.toggle();
     },
     getValue() {
       const { valueMember, data, currentValue, cols } = this;
@@ -195,29 +219,6 @@ export default {
       }
       return currentValue;
     },
-    display() {
-      const { currentValue, data } = this;
-      if (this.cascade) {
-        if (currentValue.length) {
-          const treeChildren = arrayTreeFilter(data, (item, level) => {
-            return item[this.valueMember] === currentValue[level];
-          });
-          return this.displayGenerator(treeChildren);
-        }
-      }
-      // FIXED
-      const treeChildren2 = data.map((d, index) => {
-        if (!isArray(currentValue)) {
-          return d.filter(obj => currentValue === obj[this.valueMember])[0];
-        }
-        if (isArray(currentValue) && currentValue[index]) {
-          return d.filter(obj => currentValue[index] === obj[this.valueMember])[0];
-        }
-        return undefined;
-      }).filter(t => !!t);
-
-      return this.displayGenerator(treeChildren2);
-    },
     displayGenerator(value) {
       const { displayRender, displayMember, displayAddon } = this;
       if (typeof displayRender === 'function') {
@@ -227,14 +228,12 @@ export default {
         return v && v[displayMember];
       }).join(displayAddon);
     },
-    handleClick(event) {
+    handleClick() {
       if (this.disabled) return;
-      this.$emit('click', event);
       this.toggle();
     },
     onMaskClick(e) {
       this.$emit('maskClick', e);
-      this.handleCancel();
     },
     // 切换显示状态
     toggle() {
