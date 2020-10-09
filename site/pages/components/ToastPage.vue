@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import { defineAsyncComponent } from 'vue';
 import Simulator from "./Simulator";
 import Container from 'site/components/Container';
 

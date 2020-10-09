@@ -78,7 +78,7 @@ app.use(Alert)
   <!-- import CSS -->
   <link rel="stylesheet" href="https://unpkg.com/zarm-vue-next@latest/zarm-vue.default.css">
   <script src="https://unpkg.com/vue@latest/dist/vue.min.js"></script>
-  <script src="https://unpkg.com/zarm-vue-next@latest/zarm-vue-next.umd.js"></script>
+  <script src="https://unpkg.com/zarm-vue-next@latest/zarm-vue.umd.js"></script>
 </head>
 <body>
   <div id="app">

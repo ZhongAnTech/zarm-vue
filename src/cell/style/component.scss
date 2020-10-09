@@ -6,7 +6,7 @@
 
 @include b(cell) {
   position: relative;
-  // overflow: hidden;
+  overflow: hidden;
   background: $cell-background;
   @include cell-theme($cell-description-color);
   @include onepx(top);
