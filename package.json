@@ -1,6 +1,6 @@
 {
   "name": "zarm-vue-next",
-  "version": "3.0.0-alpha.3",
+  "version": "3.0.0-alpha.4",
   "description": "zarm in vue",
   "scripts": {
     "lint": "npm run lint:vue && npm run lint:style",
