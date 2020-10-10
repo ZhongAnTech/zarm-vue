@@ -1,3 +1,32 @@
+// 主题
+$--theme-default: #e6e6e6;
+$--theme-primary: #12c287;
+$--theme-info: #347af6;
+$--theme-success: #12c287;
+$--theme-warning: #ec9131;
+$--theme-error: #ff5050;
+
+$--theme-default-light: rgba($--theme-default, 0.5);
+$--theme-primary-light: rgba($--theme-primary, 0.1);
+$--theme-info-light: rgba($--theme-info, 0.1);
+$--theme-success-light: rgba($--theme-success, 0.1);
+$--theme-warning-light: rgba($--theme-warning, 0.1);
+$--theme-error-light: rgba($--theme-error, 0.1);
+$--theme-danger-light: rgba($--theme-error, 0.1);
+
+$--theme-default-dark: darken($--theme-default, 10%);
+$--theme-primary-dark: darken($--theme-primary, 10%);
+$--theme-info-dark: darken($--theme-info, 10%);
+$--theme-success-dark: darken($--theme-success, 10%);
+$--theme-warning-dark: darken($--theme-warning, 10%);
+$--theme-error-dark: darken($--theme-error, 10%);
+$--theme-danger-dark: darken($--theme-error, 10%);
+
+$--border-color: #e6e6e6;
+
+$--button-default-activebg: rgba($--border-color, 0.5);
+$--calendar-day-today-color: rgba($--theme-primary, 0.2);
+
 :root {
   // 基础
   --base-fontSize: 14;
@@ -8,7 +37,7 @@
   --background-disabled: #bcbcbc;
 
   // 边框色
-  --border-color: #e6e6e6;
+  --border-color: #{$--border-color};
   --border-disabled: #bcbcbc;
 
   // 透明度
@@ -23,31 +52,31 @@
   --disabled-color: #999;
 
   // 主题
-  --theme-default: #e6e6e6;
-  --theme-primary: #12c287;
-  --theme-info: #347af6;
-  --theme-success: #12c287;
-  --theme-warning: #ec9131;
-  --theme-error: #ff5050;
-  --theme-danger: #ff5050;
+  --theme-default: #{$--theme-default};
+  --theme-primary: #{$--theme-primary};
+  --theme-info: #{$--theme-info};
+  --theme-success: #{$--theme-success};
+  --theme-warning: #{$--theme-warning};
+  --theme-error: #{$--theme-error};
+  --theme-danger: #{$--theme-error};
 
   // 主题色状态-lighten
-  --theme-default-light: rgba(var(--theme-default), 0.5);
-  --theme-primary-light: rgba(var(--theme-primary), 0.1);
-  --theme-info-light: rgba(var(--theme-info), 0.1);
-  --theme-success-light: rgba(var(--theme-success), 0.1);
-  --theme-warning-light: rgba(var(--theme-warning), 0.1);
-  --theme-error-light: rgba(var(--theme-error), 0.1);
-  --theme-danger-light: rgba(var(--theme-danger), 0.1);
+  --theme-default-light: #{$--theme-default-light};
+  --theme-primary-light: #{$--theme-primary-light};
+  --theme-info-light: #{$--theme-info-light};
+  --theme-success-light: #{$--theme-success-light};
+  --theme-warning-light: #{$--theme-warning-light};
+  --theme-error-light: #{$--theme-error-light};
+  --theme-danger-light: #{$--theme-danger-light};
 
   // 主题色状态-darken
-  // --theme-default-dark: darken(var(--theme-default), 10%);
-  // --theme-primary-dark: darken(var(--theme-primary), 10%);
-  // --theme-info-dark: darken(var(--theme-info), 10%);
-  // --theme-success-dark: darken(var(--theme-success), 10%);
-  // --theme-warning-dark: darken(var(--theme-warning), 10%);
-  // --theme-error-dark: darken(var(--theme-error), 10%);
-  // --theme-danger-dark: darken(var(--theme-danger), 10%);
+  --theme-default-dark: #{$--theme-default-dark};
+  --theme-primary-dark: #{$--theme-primary-dark};
+  --theme-info-dark: #{$--theme-info-dark};
+  --theme-success-dark: #{$--theme-success-dark};
+  --theme-warning-dark: #{$--theme-warning-dark};
+  --theme-error-dark: #{$--theme-error-dark};
+  --theme-danger-dark: #{$--theme-danger-dark};
 
   // 字体色
   --color-text: #464646; // 基本
@@ -131,7 +160,7 @@
   --button-default-color: var(--color-text);
   --button-default-bg: #fff;
   --button-default-border: var(--border-color);
-  --button-default-activebg: rgba(var(--border-color), 0.5);
+  --button-default-activebg: #{$--button-default-activebg};
 
   --button-primary-color: #fff;
   --button-primary-bg: var(--theme-primary);
@@ -175,7 +204,7 @@
   --calendar-day-background: #fff; // 月份文字背景颜色
   --calendar-day-color: var(--color-text); // 月份文字颜色
   --calendar-day-today-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15); // 日期今天选中背景颜色
-  --calendar-day-today-color: rgba(var(--theme-primary), 0.2); // 日期今天选中颜色
+  --calendar-day-today-color: #{$--calendar-day-today-color}; // 日期今天选中颜色
   --calendar-day-selected-background: var(--theme-primary); // 日期文字选中背景颜色
   --calendar-day-selected-color: #fff; // 日期文字选中颜色
   --calendar-day-range-background: #d1f3e7; // 日期文字范围内背景颜色

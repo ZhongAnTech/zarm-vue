@@ -2,8 +2,8 @@
   position: relative;
   width: 100%;
   height: var(--slider-line-height);
-  margin: var(--slider-handle-size/2) 0;
-  padding: 0 var(--slider-handle-size/2);
+  margin: calc(var(--slider-handle-size) / 2) 0;
+  padding: 0 calc(var(--slider-handle-size) / 2);
 
   @include e(line) {
     flex: 1;
@@ -19,7 +19,7 @@
   @include e(handle) {
     position: absolute;
     left: 0;
-    top: -var(--slider-handle-size/2);
+    top: calc(var(--slider-handle-size) / -2);
     width: var(--slider-handle-size);
     height: var(--slider-handle-size);
     border-radius: 50%;
