@@ -13,27 +13,27 @@
   -moz-osx-font-smoothing: grayscale;
 
   @include m(default) {
-    color: $theme-default;
+    color: var(--theme-default);
   }
 
   @include m(primary) {
-    color: $theme-primary;
+    color: var(--theme-primary);
   }
 
   @include m(info) {
-    color: $theme-info;
+    color: var(--theme-info);
   }
 
   @include m(success) {
-    color: $theme-success;
+    color: var(--theme-success);
   }
 
   @include m(warning) {
-    color: $theme-warning;
+    color: var(--theme-warning);
   }
 
   @include m(error) {
-    color: $theme-error;
+    color: var(--theme-error);
   }
 
   &-arrow-top:before { content: "\e60e"; }

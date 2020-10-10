@@ -7,8 +7,8 @@ li {
 
 @include b(calendar) {
   width: 100%;
-  min-height: $calendar-height;
-  background: $calendar-background;
+  min-height: var(--calendar-height);
+  background: var(--calendar-background);
   transition: all 0.5s;
   transform: translateX(0);
 
@@ -20,9 +20,9 @@ li {
     width: 100%;
     height: 40px;
     line-height: 40px;
-    background: $calendar-week-bar-background;
-    color: $calendar-week-bar-color;
-    font-size: $calendar-week-bar-fontsize;
+    background: var(--calendar-week-bar-background);
+    color: var(--calendar-week-bar-color);
+    font-size: var(--calendar-week-bar-fontsize);
   }
 
   @include e(week-item) {
@@ -31,9 +31,9 @@ li {
   }
 
   @include e(month-head) {
-    font-size: $calendar-day-title-fontsize;
+    font-size: var(--calendar-day-title-fontsize);
     font-weight: 500;
-    color: $calendar-day-color;
+    color: var(--calendar-day-color);
     margin: 20px 0 0 30px;
   }
 
@@ -54,9 +54,9 @@ li {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    font-size: $calendar-day-fontsize;
+    font-size: var(--calendar-day-fontsize);
     font-weight: 400;
-    color: $calendar-day-range-color;
+    color: var(--calendar-day-range-color);
   }
 
   @include e(dates-item) {
@@ -66,7 +66,7 @@ li {
 
     &.active {
       @include e(warp) {
-        color: $calendar-day-selected-color;
+        color: var(--calendar-day-selected-color);
       }
 
       @include e(date-num) {
@@ -87,14 +87,14 @@ li {
         width: 30px;
         height: 30px;
         border-radius: 50%;
-        background: $calendar-day-selected-background;
-        box-shadow: $calendar-day-today-shadow;
+        background: var(--calendar-day-selected-background);
+        box-shadow: var(--calendar-day-today-shadow);
       }
     }
 
     &.disabled {
       @include e(warp) {
-        color: $color-text-disabled;
+        color: var(--color-text-disabled);
       }
     }
 
@@ -107,7 +107,7 @@ li {
         z-index: 0;
         width: 100%;
         height: 30px;
-        background: $calendar-day-range-background;
+        background: var(--calendar-day-range-background);
       }
     }
 

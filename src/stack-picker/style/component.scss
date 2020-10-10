@@ -33,19 +33,19 @@
 
   @include e(input) {
     width: 100%;
-    padding: $picker-padding-v 0;
+    padding: var(--picker-padding-v) 0;
   }
 
   @include e(placeholder) {
-    color: $placeholder-color;
+    color: var(--placeholder-color);
   }
 
   @include m(disabled) {
-    color: $disabled-color;
+    color: var(--disabled-color);
   }
 
   @include e(wrapper) {
-    background: $picker-background;
+    background: var(--picker-background);
   }
 
   @include e(header) {
@@ -54,15 +54,15 @@
     justify-content: center;
     position: relative;
     width: 100%;
-    height: $picker-header-height;
-    font-size: $picker-header-font-size;
-    line-height: $picker-header-line-height;
+    height: var(--picker-header-height);
+    font-size: var(--picker-header-font-size);
+    line-height: var(--picker-header-line-height);
     @include onepx(bottom);
   }
 
   @include e(cancel,submit) {
     flex: 1;
-    padding: 0 $picker-padding-h;
+    padding: 0 var(--picker-padding-h);
     cursor: pointer;
   }
 
@@ -72,7 +72,7 @@
 
   @include e(submit) {
     text-align: right;
-    color: $theme-primary;
+    color: var(--theme-primary);
   }
 
   @include e(mask-top) {
@@ -95,10 +95,10 @@
 
   @include e(crumbs) {
     position: relative;
-    padding: $picker-padding-v $picker-padding-h;
-    line-height: $stackpicker-crumbs-line-height;
-    font-size: $stackpicker-crumbs-font-size;
-    color: $color-text-caption;
+    padding: var(--picker-padding-v) var(--picker-padding-h);
+    line-height: var(--stackpicker-crumbs-line-height);
+    font-size: var(--stackpicker-crumbs-font-size);
+    color: var(--color-text-caption);
     @include onepx(bottom);
 
     p {
@@ -107,12 +107,12 @@
   }
 
   @include e(crumbs-error) {
-    color: $theme-error;
+    color: var(--theme-error);
   }
 
   @include e(group) {
     position: relative;
-    height: 8 * $stackpicker-stackitem-height;
+    height: calc(8 * var(--stackpicker-stackitem-height));
     overflow: hidden;
   }
 
@@ -179,9 +179,9 @@
   @include e(stack-column-item) {
     position: relative;
     padding: 0 r(10);
-    line-height: $stackpicker-stackitem-height;
+    line-height: var(--stackpicker-stackitem-height);
     font-size: r(16);
-    color: $color-text;
+    color: var(--color-text);
     transition: padding-left .4s;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -189,7 +189,7 @@
     @include onepx(bottom);
 
     @include m(active) {
-      color: $theme-primary;
+      color: var(--theme-primary);
     }
   }
 }

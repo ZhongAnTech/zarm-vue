@@ -1,7 +1,5 @@
 @import '../../mask/style/component.scss';
 
-$prefixCls: za-modal;
-
 @include b(modal) {
   position: fixed;
   left: 0;
@@ -14,11 +12,11 @@ $prefixCls: za-modal;
   -webkit-overflow-scrolling: touch;
   user-select: none;
   overflow: auto;
-  z-index: $zIndex-modal;
+  z-index: var(--zIndex-modal);
 
   @include m(radius) {
     @include e(dialog) {
-      border-radius: $radius-md;
+      border-radius: var(--radius-md);
     }
   }
 
@@ -33,7 +31,7 @@ $prefixCls: za-modal;
     background: #fff;
     box-shadow: 0 r(7) r(21) rgba(0, 0, 0, .2);
     overflow: hidden;
-    z-index: $zIndex-modal + 1;
+    z-index: calc(var(--zIndex-modal) + 1);
   }
 
   @include e(header) {
@@ -42,29 +40,29 @@ $prefixCls: za-modal;
     text-align: center;
 
     &-title {
-      font-size: $modal-title-fontsize;
+      font-size: var(--modal-title-fontsize);
       line-height: 1;
-      color: $modal-title-color;
+      color: var(--modal-title-color);
     }
 
     &-close {
       position: absolute;
       top: 0;
       right: r(15);
-      font-size: $modal-close-fontsize;
+      font-size: var(--modal-close-fontsize);
       line-height: r(50);
-      color: $modal-close-color;
+      color: var(--modal-close-color);
       cursor: pointer;
 
       &:hover {
-        color: $modal-close-color-hover;
+        color: var(--modal-close-color-hover);
       }
     }
   }
 
   @include e(body) {
-    font-size: $modal-body-fontsize;
-    color: $modal-body-color;
+    font-size: var(--modal-body-fontsize);
+    color: var(--modal-body-color);
     padding: r(15);
     overflow: auto;
     user-select: auto;
@@ -76,9 +74,9 @@ $prefixCls: za-modal;
 
     a {
       flex: 1;
-      height: $modal-footer-link-height;
-      line-height: $modal-footer-link-height;
-      font-size: $modal-footer-link-fontsize;
+      height: var(--modal-footer-link-height);
+      line-height: var(--modal-footer-link-height);
+      font-size: var(--modal-footer-link-fontsize);
       border-width: 0;
 
       /* 1px line */
@@ -86,7 +84,7 @@ $prefixCls: za-modal;
       @include onepx(top);
 
       &:active {
-        background: $modal-footer-link-bg !important;
+        background: var(--modal-footer-link-bg) !important;
       }
 
       &:not(:first-of-type) {

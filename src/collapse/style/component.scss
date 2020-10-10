@@ -4,9 +4,9 @@
   &-item {
     @include e(title) {
       position: relative;
-      height: $collapse-height;
-      line-height: $collapse-height;
-      padding: 0 $collapse-padding;
+      height: var(--collapse-height);
+      line-height: var(--collapse-height);
+      padding: 0 var(--collapse-padding);
       @include onepx(bottom);
 
       &:after {
@@ -25,7 +25,7 @@
       }
 
       &-inner {
-        padding: $padding-v-lg $collapse-padding;
+        padding: var(--padding-v-lg) var(--collapse-padding);
       }
 
       @include m(anim) {
@@ -38,9 +38,9 @@
       width: r(10);
       height: r(10);
       top: r(20);
-      right: $collapse-padding;
-      border-right: $collapse-arrow-border-width solid $collapse-arrow-color;
-      border-bottom: $collapse-arrow-border-width solid $collapse-arrow-color;
+      right: var(--collapse-padding);
+      border-right: var(--collapse-arrow-border-width) solid var(--collapse-arrow-color);
+      border-bottom: var(--collapse-arrow-border-width) solid var(--collapse-arrow-color);
       transform: rotate(45deg);
       transition: transform 0.15s ease-out;
       transform-origin: 50% 50%;
@@ -62,8 +62,8 @@
 
     @include m(disabled) {
       @include e(arrow) {
-        border-right-color: $collapse-arrow-disabled-color;
-        border-bottom-color: $collapse-arrow-disabled-color;
+        border-right-color: var(--collapse-arrow-disabled-color);
+        border-bottom-color: var(--collapse-arrow-disabled-color);
       }
     }
 

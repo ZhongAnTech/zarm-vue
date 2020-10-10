@@ -13,18 +13,18 @@
 @include b(stepper) {
   display: flex;
   user-select: none;
-  @include stepper-theme($border-color);
+  @include stepper-theme(var(--border-color));
 
   @include m(disabled) {
     @include e(sub, plus, body) {
-      opacity: $disabled-opacity;
+      opacity: var(--disabled-opacity);
       cursor: not-allowed;
     }
   }
 
   @include m(radius) {
     @include e(sub,plus) {
-      border-radius: $radius-md;
+      border-radius: var(--radius-md);
     }
 
     @include e(body) {
@@ -57,18 +57,18 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    width: $stepper-height-md;
-    height: $stepper-height-md;
+    width: var(--stepper-height-md);
+    height: var(--stepper-height-md);
     font-weight: bold;
     cursor: pointer;
 
     &-disabled {
-      opacity: $disabled-opacity;
+      opacity: var(--disabled-opacity);
       cursor: not-allowed;
     }
 
     @include b(icon) {
-      font-size: $stepper-fontsize-md;
+      font-size: var(--stepper-fontsize-md);
     }
   }
 
@@ -78,9 +78,9 @@
     margin: 0 r(4);
     padding: 0;
     text-align: center;
-    height: $stepper-height-md;
+    height: var(--stepper-height-md);
     border-radius: 0;
-    color: $color-text;
+    color: var(--color-text);
     font-size: r(14);
     outline: 0;
     -webkit-appearance: none;
@@ -94,18 +94,18 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      width: $stepper-height-sm;
-      height: $stepper-height-sm;
+      width: var(--stepper-height-sm);
+      height: var(--stepper-height-sm);
       font-weight: bold;
       cursor: pointer;
 
       @include b(icon) {
-        font-size: $stepper-fontsize-sm;
+        font-size: var(--stepper-fontsize-sm);
       }
     }
 
     @include e(body) {
-      height: $stepper-height-sm;
+      height: var(--stepper-height-sm);
     }
   }
 }

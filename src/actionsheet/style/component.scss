@@ -2,7 +2,7 @@
 @import '../../popup/style/component.scss';
 
 @include b(actionsheet) {
-  margin: $actionsheet-margin;
+  margin: var(--actionsheet-margin);
 
   @include m(spacing) {
     margin: 0 r(10) r(10);
@@ -10,13 +10,13 @@
 
   @include m(radius) {
     @include e(actions, cancel) {
-      border-radius: $radius-md;
+      border-radius: var(--radius-md);
     }
   }
 
   @include e(actions, cancel) {
     overflow: hidden;
-    background-color: $color-text-inverse;
+    background-color: var(--color-text-inverse);
   }
 
   @include e(cancel) {
@@ -25,29 +25,29 @@
 
   @include e(item) {
     display: block;
-    height: $actionsheet-item-height;
-    line-height: $actionsheet-item-height;
-    font-size: $actionsheet-item-font-size;
+    height: var(--actionsheet-item-height);
+    line-height: var(--actionsheet-item-height);
+    font-size: var(--actionsheet-item-font-size);
     @include button-base();
 
     @include m(primary) {
-      color: $theme-primary;
+      color: var(--theme-primary);
     }
 
     @include m(success) {
-      color: $theme-success;
+      color: var(--theme-success);
     }
 
     @include m(warning) {
-      color: $theme-warning;
+      color: var(--theme-warning);
     }
 
     @include m(error) {
-      color: $theme-error;
+      color: var(--theme-error);
     }
 
     &:active {
-      background-color: $background-active;
+      background-color: var(--background-active);
     }
 
     &:not(:first-of-type) {

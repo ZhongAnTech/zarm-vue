@@ -7,32 +7,32 @@
 @include b(cell) {
   position: relative;
   overflow: hidden;
-  background: $cell-background;
-  @include cell-theme($cell-description-color);
+  background: var(--cell-background);
+  @include cell-theme(var(--cell-description-color));
   @include onepx(top);
 
   &:after {
-    left: $cell-line-padding-left;
+    left: var(--cell-line-padding-left);
   }
 
   @include m(primary) {
-    @include cell-theme($theme-primary);
+    @include cell-theme(var(--theme-primary));
   }
 
   @include m(info) {
-    @include cell-theme($theme-info);
+    @include cell-theme(var(--theme-info));
   }
 
   @include m(success) {
-    @include cell-theme($theme-success);
+    @include cell-theme(var(--theme-success));
   }
 
   @include m(warning) {
-    @include cell-theme($theme-warning);
+    @include cell-theme(var(--theme-warning));
   }
 
   @include m(error) {
-    @include cell-theme($theme-error);
+    @include cell-theme(var(--theme-error));
   }
 
   @include m(has-icon) {
@@ -47,7 +47,7 @@
 
     @include e(inner) {
       &:active {
-        background-color: $cell-active-background;
+        background-color: var(--cell-active-background);
       }
     }
 
@@ -58,17 +58,17 @@
 
   @include m(disabled) {
     @include e(body, footer) {
-      opacity: $disabled-opacity;
+      opacity: var(--disabled-opacity);
     }
   }
 
   @include e(inner) {
     display: flex;
     align-items: center;
-    padding: 0 $cell-padding-v;
-    font-size: $cell-title-font-size;
-    min-height: $cell-height;
-    line-height: $cell-title-line-height;
+    padding: 0 var(--cell-padding-v);
+    font-size: var(--cell-title-font-size);
+    min-height: var(--cell-height);
+    line-height: var(--cell-title-line-height);
 
     a {
       text-decoration: none;
@@ -88,7 +88,7 @@
     display: flex;
     justify-content: center;
     text-align: right;
-    font-size: $cell-description-font-size;
+    font-size: var(--cell-description-font-size);
   }
 
   @include e(arrow) {
@@ -97,10 +97,10 @@
     &:after {
       display: inline-block;
       content: '';
-      border-right: $cell-arrow-border-width solid $cell-arrow-color;
-      border-top: $cell-arrow-border-width solid $cell-arrow-color;
-      width: $cell-arrow-length;
-      height: $cell-arrow-length;
+      border-right: var(--cell-arrow-border-width) solid var(--cell-arrow-color);
+      border-top: var(--cell-arrow-border-width) solid var(--cell-arrow-color);
+      width: var(--cell-arrow-length);
+      height: var(--cell-arrow-length);
       transform: rotate(45deg);
     }
   }
@@ -119,11 +119,11 @@
   }
 
   @include e(title) {
-    width: $cell-label-width;
-    padding: $cell-padding-v 0;
+    width: var(--cell-label-width);
+    padding: var(--cell-padding-v) 0;
     overflow: hidden;
-    color: $cell-title-color;
-    font-size: $cell-title-font-size;
+    color: var(--cell-title-color);
+    font-size: var(--cell-title-font-size);
   }
 
   @include e(content) {

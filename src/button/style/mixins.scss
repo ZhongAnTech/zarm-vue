@@ -55,8 +55,9 @@
 }
 
 @mixin button-theme($color, $background, $border) {
-  $active-background: darken($background, 10%);
-  $active-border: darken($border, 10%);
+
+  $active-background: $background;
+  $active-border: $border;
 
   background-color: $background;
   border-color: $border;
@@ -79,33 +80,19 @@
   }
 
   @include m(ghost) {
-    background-color: $button-default-bg;
-
-    @if $border==$border-color {
-      color: $button-default-color;
-    }
-
-    @else {
-      color: $border;
-    }
+    background-color: var(--button-default-bg);
+    color: $border;
 
     &:hover,
     &:focus,
     &:visited {
-      background-color: $button-default-activebg;
-
-      @if $border==$border-color {
-        color: $button-default-color;
-      }
-
-      @else {
-        color: $border;
-      }
+      background-color: var(--button-default-activebg);
+      color: $border;
     }
   }
 
   &:disabled {
-    opacity: $disabled-opacity;
+    opacity: var(--disabled-opacity);
     cursor: not-allowed;
 
     &:active,
@@ -136,7 +123,7 @@
   }
 
   @include m(disabled) {
-    opacity: $disabled-opacity;
+    opacity: var(--disabled-opacity);
     cursor: not-allowed;
 
     @include m(active) {
@@ -200,7 +187,7 @@
   text-align: center;
   vertical-align: middle;
   overflow: hidden;
-  color: $color-text;
+  color: var(--color-text);
   transition: background-color 200ms ease-out, border-color 200ms ease-out;
   cursor: pointer;
   outline: 0 none;
@@ -217,12 +204,12 @@
   /* disabled Button */
   &:disabled {
     cursor: not-allowed;
-    opacity: $opacity-disabled;
+    opacity: var(--opacity-disabled);
   }
 
   @include m(disabled) {
     cursor: not-allowed;
-    opacity: $opacity-disabled;
+    opacity: var(--opacity-disabled);
   }
 
   /* block Button */

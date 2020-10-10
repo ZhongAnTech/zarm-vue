@@ -8,14 +8,14 @@
 
   display: inline-block;
   position: relative;
-  stroke: $activityIndicator-theme-color;
+  stroke: var(--activityIndicator-theme-color);
   stroke-dasharray: 100 * $PI;
   transition: .3s;
   transform: rotate(-90deg);
-  @include spinner-size($activityIndicator-diameter-md);
+  @include spinner-size(var(--activityIndicator-diameter-md));
 
   @include e(path) {
-    stroke: $activityIndicator-stroke-color;
+    stroke: var(--activityIndicator-stroke-color);
   }
 
   @include e(text) {
@@ -33,6 +33,6 @@
 
   /* sizes */
   @include m(lg) {
-    @include spinner-size($activityIndicator-diameter-lg);
+    @include spinner-size(var(--activityIndicator-diameter-lg));
   }
 }

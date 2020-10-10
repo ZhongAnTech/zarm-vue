@@ -26,7 +26,7 @@
   }
 
   @include e(text) {
-    color: $color-text;
+    color: var(--color-text);
   }
 
   &__inner + &__text {
@@ -40,7 +40,7 @@
     position: relative;
     width: r(20);
     height: r(20);
-    border: 1px solid $theme-primary;
+    border: 1px solid var(--theme-primary);
     border-radius: r(20);
 
     &:before {
@@ -48,7 +48,7 @@
       width: r(8);
       height: r(8);
       border-radius: r(8);
-      background-color: $theme-primary;
+      background-color: var(--theme-primary);
       transform: scale(0);
       transition: all 0.2s cubic-bezier(0.71, -0.46, 0.88, 0.6);
     }
@@ -67,23 +67,23 @@
   /* 禁用状态 */
   @include m(disabled) {
     @include e(inner) {
-      border-color: $disabled-background;
+      border-color: var(--disabled-background);
       cursor: not-allowed;
 
       &:before {
-        background-color: $disabled-background;
+        background-color: var(--disabled-background);
       }
     }
 
     @include e(text) {
-      color: $disabled-color;
+      color: var(--disabled-color);
     }
   }
 
   /* 形状 */
   @include m(radius) {
     @include e(inner) {
-      border-radius: $radius-md;
+      border-radius: var(--radius-md);
     }
   }
 
@@ -108,7 +108,7 @@
 
   @include m(radius) {
     @include b(radio) {
-      border-radius: $radius-md;
+      border-radius: var(--radius-md);
     }
   }
 
@@ -132,11 +132,11 @@
         border-radius: 0;
 
         &:first-child {
-          border-radius: $radius-md 0 0 $radius-md;
+          border-radius: var(--radius-md) 0 0 var(--radius-md);
         }
 
         &:last-child {
-          border-radius: 0 $radius-md $radius-md 0;
+          border-radius: 0 var(--radius-md) var(--radius-md) 0;
         }
       }
 

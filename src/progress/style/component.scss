@@ -34,7 +34,7 @@
 
   @include e(bg) {
     height: 100%;
-    background-color: $theme-primary;
+    background-color: var(--theme-primary);
     transition: width .5s;
   }
 
@@ -110,22 +110,22 @@
   }
 
   @include m(default) {
-    @include progress-theme($theme-default);
+    @include progress-theme(var(--theme-default));
   }
 
   @include m(primary) {
-    @include progress-theme($theme-primary);
+    @include progress-theme(var(--theme-primary));
   }
 
   @include m(success) {
-    @include progress-theme($theme-success);
+    @include progress-theme(var(--theme-success));
   }
 
   @include m(warning) {
-    @include progress-theme($theme-warning);
+    @include progress-theme(var(--theme-warning));
   }
 
   @include m(error) {
-    @include progress-theme($theme-error);
+    @include progress-theme(var(--theme-error));
   }
 }

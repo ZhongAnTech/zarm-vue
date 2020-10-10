@@ -6,14 +6,14 @@
   align-items: center;
   position: relative;
   width: 100%;
-  height: $nav-bar-height;
+  height: var(--nav-bar-height);
   overflow: hidden;
-  background: $nav-bar-color;
+  background: var(--nav-bar-color);
 
   @include e(title) {
-    color: $color-text;
+    color: var(--color-text);
     font-weight: 500;
-    font-size: $nav-bar-fontsize;
+    font-size: var(--nav-bar-fontsize);
     position: absolute;
     left: 50%;
     white-space: nowrap;
@@ -37,6 +37,6 @@
   }
 
   .za-icon {
-    font-size: $nav-bar-icon-size;
+    font-size: var(--nav-bar-icon-size);
   }
 }
