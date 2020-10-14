@@ -125,6 +125,10 @@ module.exports = {
         description: '图标',
       },
       {
+        name: 'ImagePreview',
+        description: '图片预览',
+      },
+      {
         name: 'NoticeBar',
         description: '通告栏',
       },

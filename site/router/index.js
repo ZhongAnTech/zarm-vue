@@ -163,6 +163,10 @@ const routes = [
         path: 'locale-provider',
         component: () => import('../pages/components/LocaleProviderPage'),
       },
+      {
+        path: 'image-preview',
+        component: () => import('../pages/components/ImagePreviewPage'),
+      },
     ],
   },
 ];
