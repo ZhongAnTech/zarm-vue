@@ -7,4 +7,4 @@ const LocaleProvider = {
   en_US: enUSLocale,
 };
 
-export default LocaleProvider;
+export default zhCNLocale;

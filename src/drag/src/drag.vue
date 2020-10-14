@@ -1,5 +1,6 @@
 <template>
   <div
+    style="height:inherit;"
     ref="drag"
     @touchstart="onTouchStart"
     @touchmove="onTouchMove"

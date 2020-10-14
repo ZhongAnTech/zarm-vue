@@ -16,6 +16,7 @@ import Drag from '../src/drag';
 import Icon from '../src/icon';
 import Input from '../src/input';
 import InputNumber from '../src/input-number';
+import ImagePreview from '../src/image-preview';
 import Keyboard from '../src/keyboard';
 import KeyboardPicker from '../src/keyboard-picker';
 import Loading from '../src/loading';
@@ -76,6 +77,7 @@ const components = [
   Icon,
   Input,
   InputNumber,
+  ImagePreview,
   Keyboard,
   KeyboardPicker,
   Loading,
@@ -153,6 +155,7 @@ export {
   Icon,
   Input,
   InputNumber,
+  ImagePreview,
   Keyboard,
   KeyboardPicker,
   Loading,

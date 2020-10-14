@@ -111,6 +111,9 @@
           <za-cell hasArrow @click="$router.push('/progress')">
             进度条 Progress
           </za-cell>
+          <za-cell hasArrow @click="$router.push('/image-preview')">
+            图片预览 ImagePreview
+          </za-cell>
         </za-panel-body>
       </za-panel>
 
