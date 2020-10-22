@@ -1,13 +1,14 @@
 import Vue from 'vue';
-import App from './app';
-import zarmVue from '../release/lib/zarm-vue.common';
 import ElementUI from 'element-ui';
-import router from './router';
-import store from './store';
 import 'normalize.css';
 import 'highlight.js/styles/github-gist.css';
+import App from './app';
+import zarmVue from '../release/lib/zarm-vue.common';
+import router from './router';
+import store from './store';
 import './styles/themes/index.css';
-import './styles/index.scss';
+import '../release/zarm-vue.default.css';
+
 Vue.use(ElementUI);
 Vue.use(zarmVue);
 Vue.config.productionTip = false;
