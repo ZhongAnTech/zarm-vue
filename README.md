@@ -23,6 +23,8 @@
 
 - Beta版：[![npm package](https://img.shields.io/github/v/release/ZhongAnTech/zarm-vue)](https://www.npmjs.org/package/zarm-vue)
 
+- Alpha版：[[Support For Vue-Next]](https://chuanshuoye.github.io/zarm-vue/#/documents/quick-start)
+
 ### Install 安装
 
 ```bash
