@@ -7,7 +7,7 @@ import zarmVue from '../release/lib/zarm-vue.common';
 import router from './router';
 import store from './store';
 import './styles/themes/index.css';
-import '../release/zarm-vue.default.css';
+import './styles/index.scss';
 
 Vue.use(ElementUI);
 Vue.use(zarmVue);
