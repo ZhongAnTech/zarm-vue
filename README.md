@@ -11,7 +11,7 @@
 [![Build Status](https://www.travis-ci.org/ZhongAnTech/zarm-vue.svg?branch=master)](https://www.travis-ci.org/ZhongAnTech/zarm-vue)
 [![Coverage Status](https://img.shields.io/coveralls/ZhongAnTech/zarm-vue/master.svg)](https://coveralls.io/github/ZhongAnTech/zarm-vue?branch=master)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/db2483a3-5b1a-4e48-8e37-9cc56332be2d/deploy-status)](https://app.netlify.com/sites/zarm-vue/deploys)
-[![npm package](https://img.shields.io/github/v/release/ZhongAnTech/zarm-vue)](https://www.npmjs.org/package/zarm-vue)
+[![npm package](https://img.shields.io/npm/v/zarm-vue)](https://www.npmjs.org/package/zarm-vue)
 [![NPM downloads](https://img.shields.io/npm/dt/zarm-vue)](https://img.shields.io/npm/dt/zarm-vue)
 ![JS gzip size](http://img.badgesize.io/https://unpkg.com/zarm-vue@latest/zarm-vue.umd.js?compression=gzip&label=gzip%20size:%20JS)
 ![CSS gzip size](http://img.badgesize.io/https://unpkg.com/zarm-vue@latest/zarm-vue.default.css?compression=gzip&label=gzip%20size:%20CSS)
@@ -21,7 +21,7 @@
 
 ### 版本
 
-- Beta版：[![npm package](https://img.shields.io/github/v/release/ZhongAnTech/zarm-vue)](https://www.npmjs.org/package/zarm-vue)
+- Beta版：[![npm package](https://img.shields.io/npm/v/zarm-vue)](https://www.npmjs.org/package/zarm-vue)
 
 - Alpha版：[[Support For Vue-Next]](https://chuanshuoye.github.io/zarm-vue/#/documents/quick-start)
 

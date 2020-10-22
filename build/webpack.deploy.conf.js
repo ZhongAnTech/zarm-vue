@@ -89,7 +89,7 @@ module.exports = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: config.build.site,
       template: path.join(__dirname, '../site/index.html'),
-      pathname: '/zarm-vue/',
+      pathname: '/',
       favicon: './site/styles/images/favicon.ico',
       inject: true,
       minify: {

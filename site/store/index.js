@@ -15,10 +15,6 @@ const store = new Vuex.Store({
     lang: 'ZH',
     version: '2.0.0',
     versionList: [{
-      value: '1.x',
-      label: '1.x',
-      path: 'https://zhongantech.github.io/zarm-vue/1.x/#/zh-CN/component/fastdoc',
-    }, {
       value: '2.0.0',
       label: packageJson.version,
       path: '#/documents/quick-start',
