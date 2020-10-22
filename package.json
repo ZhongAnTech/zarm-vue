@@ -41,7 +41,7 @@
     "clean": "rimraf release",
     "deploy": "rimraf dist && cross-env NODE_ENV=production webpack --config ./build/webpack.deploy.conf.js",
     "page": "gh-pages -d dist --remote origin",
-    "deploy:page": "npm run deploy && npm run page",
+    "deploy:page": "npm run deploy && touch dist/CNAME && echo 'vue.zarm.design' > dist/CNAME && npm run page",
     "build:umd": "cross-env NODE_ENV=production webpack --config ./build/webpack.umd.conf.js",
     "build:lib": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.conf.js",
     "build:theme": "cross-env NODE_ENV=production webpack --config ./build/webpack.theme.conf.js",
