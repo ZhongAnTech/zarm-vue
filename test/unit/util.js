@@ -1,5 +1,4 @@
-import Vue from 'vue';
-import { mount, shallowMount, TransitionStub } from '@vue/test-utils';
+import { mount, shallowMount } from '@vue/test-utils';
 
 export { mount, shallowMount };
 
@@ -47,6 +46,3 @@ export function later(delay) {
   });
 }
 
-export function transitionStub() {
-  Vue.component('transition', TransitionStub);
-}

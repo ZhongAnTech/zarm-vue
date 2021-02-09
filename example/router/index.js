@@ -252,6 +252,13 @@ const routes = [
       mRender: () => import('../components/localeProviderPage.vue')
     },
   },
+  {
+    path: '/image-preview',
+    component: Bundle,
+    meta: {
+      mRender: () => import('../components/imagePreviewPage.vue')
+    },
+  },
 ]
 
 

@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div :class='`${prefixCls}`'>
     <div :class="`${prefixCls}__left`">
       <slot name="left"></slot>

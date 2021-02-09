@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div :class='{[`${prefixCls}`]: true,[`${prefixCls}--block`]: isSelect}' @click='handleClick'>
       <div  v-if='isSelect' :class='{
         [`${prefixCls}--input`]: true,
@@ -6,7 +6,7 @@
         [`${prefixCls}--disabled`]: !!disabled,
       }'>
         <input type="hidden" :value='currentValue' />
-        {{display() || placeholder}}
+        {{display || placeholder}}
       </div>
       <div :class='{
           [`${prefixCls}__container`]: true,
@@ -24,13 +24,13 @@
             <div :class='`${prefixCls}__submit`' @click='handleOk'>{{okText}}</div>
           </div>
           <za-picker-view
-            :value='selectedValue'
+            :defaultValue='currentValue'
             :valueMember='valueMember'
             :dataSource='dataSource'
             :cols='cols'
             :selectedValue='selectedValue'
             :itemRender='itemRender'
-            @change='onChange'
+            @selected='onChange'
             @transition='onTransition'
           />
         </div>
@@ -39,6 +39,7 @@
   </div>
 </template>
 <script>
+import { reactive, onBeforeMount } from 'vue';
 import { arrayTreeFilter, formatToInit, formatBackToObject, isArray, hasChildrenObject } from './utils';
 import zaPopup from '../../popup';
 import zaPickerView from '../../picker-view';
@@ -77,6 +78,7 @@ export default {
     dataSource: {
       type: Array,
       required: true,
+      default: () => [],
     },
     disabled: {
       type: Boolean,
@@ -90,8 +92,8 @@ export default {
       type: String,
       default: 'value',
     },
-    defaultValue: '',
-    modelValue: '',
+    defaultValue: [],
+    modelValue: [],
     displayAddon: {
       type: String,
       default: '',
@@ -104,95 +106,36 @@ export default {
       default: data => data.label,
     },
   },
-  data() {
-    const defaultValue = this.getInitValue();
-    return {
+  setup(props) {
+    const obj = reactive({
       getContainer: () => document.body,
-      isSelect: this.$options.name === 'zaSelect',
-      currentValue: defaultValue,
-      currentVisible: this.visible,
-      oldValue: defaultValue,
-    };
-  },
-  computed: {
-    cascade() {
-      const { dataSource } = this;
-      return dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]);
-    },
-    data() {
-      const { dataSource } = this;
-      // 针对单列数据源[{}]，转换为[[{}]]
-      if (this.isSingleColumn) {
-        return [this.dataSource];
-      }
-      return dataSource;
-    },
-    selectedValue() {
-      // eslint-disable-next-line
-      return !isArray(this.currentValue) ? [this.currentValue] : this.currentValue;
-    },
-    isSingleColumn() {
-      const { dataSource } = this;
-      return dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0]);
-    },
-  },
-  watch: {
-    visible(val, oldVal) { // eslint-disable-line no-unused-vars
-      if (this.currentVisible === val) return;
-      this.currentVisible = val;
-    },
-    modelValue(val, oldVal) { // eslint-disable-line no-unused-vars
-      // console.log(val, oldVal) // eslint-disable-line
-      if (this.currentValue === val) return;
-      this.currentValue = isArray(val) ? val : [val];
-      this.oldValue = this.currentValue;
-    },
-  },
-  methods: {
-    getInitValue() {
-      const initValue = this.modelValue || this.defaultValue || [];
+      isScrolling: false,
+      currentValue: [],
+      currentVisible: false,
+      oldValue: [],
+    });
+
+    const getInitValue = () => {
+      const { modelValue, defaultValue, isSingleColumn } = props;
+      const initValue = modelValue || defaultValue || [];
       // 针对单列数据源{}，转换为[{}]
-      if (this.isSingleColumn) {
+      if (isSingleColumn) {
         return isArray(initValue) ? initValue : [initValue];
       }
       return initValue;
-    },
-    onChange(selected) {
-      const { valueMember } = this;
-      const value = selected.map(item => item[valueMember]);
-      this.currentValue = value;
-      this.$emit('change', this.currentValue);
-    },
-    handleCancel() {
-      this.toggle();
-      this.currentValue = this.oldValue;
-    },
-    handleOk() {
-      if (this.isScrolling) {
-        return false;
-      }
-      this.toggle();
-      const { valueMember, cols, data, cascade } = this;
-      this.currentValue = this.getValue();
-      this.oldValue = this.currentValue;
+    };
 
-      let selectedValue = this.currentValue;
-      if (!isArray(selectedValue)) {
-        selectedValue = [selectedValue];
-      }
-      const _value = formatBackToObject(data, selectedValue, cascade, valueMember, cols);
-      this.$emit('update:modelValue', this.currentValue);
-      this.$emit('ok', _value);
-    },
-    getValue() {
-      const { valueMember, data, currentValue, cols } = this;
-      if (!currentValue || !currentValue.length) {
-        if (this.cascade) {
-          return formatToInit(data[0], valueMember, cols);
-        }
-        return data.map(d => (d[0][valueMember]));
-      }
-      return currentValue;
+    onBeforeMount(() => {
+      const defaultValue = getInitValue();
+      obj.currentValue = defaultValue;
+      obj.oldValue = defaultValue;
+    });
+
+    return obj;
+  },
+  computed: {
+    isSelect() {
+      return this.$options.name === 'zaSelect';
     },
     display() {
       const { currentValue, data } = this;
@@ -217,6 +160,76 @@ export default {
 
       return this.displayGenerator(treeChildren2);
     },
+    cascade() {
+      const { dataSource } = this;
+      return dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]);
+    },
+    data() {
+      const { dataSource } = this;
+      // 针对单列数据源[{}]，转换为[[{}]]
+      if (this.isSingleColumn) {
+        return [this.dataSource];
+      }
+      return dataSource;
+    },
+    selectedValue() {
+      // eslint-disable-next-line
+      return !isArray(this.currentValue) ? [this.currentValue] : this.currentValue;
+    },
+    isSingleColumn() {
+      const { dataSource } = this;
+      return dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0]);
+    },
+  },
+  watch: {
+    visible(val, oldVal) { // eslint-disable-line no-unused-vars
+      if (oldVal === val) return;
+      this.currentVisible = val;
+    },
+    modelValue(val, oldVal) { // eslint-disable-line no-unused-vars
+      this.currentValue = isArray(val) ? val : [val];
+    },
+  },
+  methods: {
+    onChange(selected) {
+      const { valueMember } = this;
+      const value = selected.map(item => item[valueMember]);
+      this.currentValue = value;
+      this.$emit('selected', value);
+    },
+    handleCancel() {
+      const { oldValue } = this;
+      this.currentValue = [...oldValue];
+      this.$emit('selected', oldValue);
+      this.toggle();
+    },
+    handleOk() {
+      const { valueMember, cols, data, cascade, isScrolling } = this;
+      if (isScrolling) {
+        return false;
+      }
+      const _currentValue = this.getValue();
+      this.oldValue = _currentValue;
+
+      let _selectedValue = _currentValue;
+      if (!isArray(_selectedValue)) {
+        _selectedValue = [_selectedValue];
+      }
+      const _value = formatBackToObject(data, _selectedValue, cascade, valueMember, cols);
+      this.$emit('update:modelValue', _currentValue);
+      this.$emit('ok', _value);
+      this.toggle();
+    },
+    getValue() {
+      const { valueMember, data, currentValue, cols } = this;
+      if (!currentValue || !currentValue.length) {
+        if (this.cascade) {
+          return formatToInit(data[0], valueMember, cols);
+        }
+        return data.map(d => (d[0][valueMember]));
+      }
+      return currentValue;
+    },
     displayGenerator(value) {
       const { displayRender, displayMember, displayAddon } = this;
       if (typeof displayRender === 'function') {
@@ -226,14 +239,12 @@ export default {
         return v && v[displayMember];
       }).join(displayAddon);
     },
-    handleClick(event) {
+    handleClick() {
       if (this.disabled) return;
-      this.$emit('click', event);
       this.toggle();
     },
     onMaskClick(e) {
       this.$emit('maskClick', e);
-      this.handleCancel();
     },
     // 切换显示状态
     toggle() {

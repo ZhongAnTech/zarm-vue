@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Vue from 'vue';
+import { defineAsyncComponent } from 'vue';
 import Simulator from "./Simulator";
 import Container from 'site/components/Container';
 
@@ -23,9 +23,13 @@ export default {
   created() {
     const v = this.$store.state.version;
     this.path = this.$route.path.replace('/documents/', '');
-    Vue.component('Demo', function(resolve, reject) {
-      require([`docs/${v}/keyboard.md`], resolve)
-    });
+    // window.app.component('Demo', function(resolve, reject) {
+    //   require([`docs/${v}/keyboard.md`], resolve)
+    // });
+    const AsyncComp = defineAsyncComponent(() =>
+      import(`docs/${v}/keyboard.md`)
+    )
+    window.app.component('Demo', AsyncComp);
   }
 };
 </script>

@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div :class='prefixCls' ref='wrapper'>
     <div :class='`${prefixCls}__content`'>
       <div
@@ -77,7 +77,6 @@ export default {
     if (this.disabled) {
       this.BScroll.disable();
     }
-
     const initIndex = this.getWheelSelectedIndex(this.value, this.dataSource);
     this.BScroll.wheelTo(initIndex);
     this.BScroll.on('scroll', () => {

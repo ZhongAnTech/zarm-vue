@@ -4,7 +4,7 @@
 
 ```html
 <za-cell>
-  <za-checkbox @change="handleChange">普通</za-checkbox>
+  <za-checkbox @checked="handleChange">普通</za-checkbox>
 </za-cell>
 <za-cell>
   <za-checkbox checked >选中</za-checkbox>
@@ -241,4 +241,4 @@ export default {
 
 | 事件名称 | 说明                     | 回调参数                         |
 | :------- | :----------------------- | :------------------------------- |
-| change   | 当绑定值变化时触发的事件 | 1.选中的值列表，2.event 事件对象 |
+| checked   | 当绑定值变化时触发的事件 | 1.选中的值列表，2.event 事件对象 |

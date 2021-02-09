@@ -8,10 +8,10 @@
 @include b(message) {
   display: flex;
   position: relative;
-  min-height: $message-min-height-md;
-  padding: $message-padding-v-md $message-padding-h-md;
-  font-size: $message-font-size-md;
-  @include message-theme($button-default-border, $button-default-activebg, $button-default-border);
+  min-height: var(--message-min-height-md);
+  padding: var(--message-padding-v-md) var(--message-padding-h-md);
+  font-size: var(--message-font-size-md);
+  @include message-theme(var(--button-default-border), var(--button-default-activebg), var(--button-default-border));
 
   @include e(icon) {
     margin-right: r(5);
@@ -37,24 +37,24 @@
   }
 
   @include m(primary) {
-    @include message-theme($button-primary-border, $button-primary-activebg, $button-primary-border);
+    @include message-theme(var(--button-primary-border), var(--button-primary-activebg), var(--button-primary-border));
   }
 
   @include m(success) {
-    @include message-theme($button-success-border, $button-success-activebg, $button-success-border);
+    @include message-theme(var(--button-success-border), var(--button-success-activebg), var(--button-success-border));
   }
 
   @include m(warning) {
-    @include message-theme($button-warning-border, $button-warning-activebg, $button-warning-border);
+    @include message-theme(var(--button-warning-border), var(--button-warning-activebg), var(--button-warning-border));
   }
 
   @include m(error) {
-    @include message-theme($button-error-border, $button-error-activebg, $button-error-border);
+    @include message-theme(var(--button-error-border), var(--button-error-activebg), var(--button-error-border));
   }
 
   @include m(lg) {
-    min-height: $message-min-height-lg;
-    padding: $message-padding-v-lg $message-padding-h-lg;
+    min-height: var(--message-min-height-lg);
+    padding: var(--message-padding-v-lg) var(--message-padding-h-lg);
 
     @include e(icon) {
       margin-right: r(10);
@@ -62,7 +62,7 @@
     }
 
     @include e(body) {
-      font-size: $message-font-size-lg;
+      font-size: var(--message-font-size-lg);
     }
   }
 }

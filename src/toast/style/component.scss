@@ -9,7 +9,7 @@
   height: 100%;
   overflow: auto;
   user-select: none;
-  z-index: $zIndex-toast;
+  z-index: var(--zIndex-toast);
 
   @include m(open) {
     display: flex;
@@ -23,10 +23,10 @@
     min-width: r(100);
     padding: r(12) r(20);
     border-radius: r(6);
-    background: $toast-background-color;
-    color: $toast-text-color;
+    background: var(--toast-background-color);
+    color: var(--toast-text-color);
     text-align: center;
-    font-size: $toast-text-fontsize;
+    font-size: var(--toast-text-fontsize);
   }
 }
 

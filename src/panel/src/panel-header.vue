@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div :class='`${prefixCls}__header`'>
     <div :class='`${prefixCls}__title`' v-if='$slots.title || title'>
       <slot name='title'></slot>

@@ -5,7 +5,7 @@
   background: #fff;
 
   @include e(input) {
-    padding: $searchbar-input-padding-v 0;
+    padding: var(--searchbar-input-padding-v) 0;
   }
 
   input[type="search"]::-webkit-search-cancel-button {
@@ -21,8 +21,8 @@
     width: 100%;
     text-align: left;
     color: #000;
-    font-size: $searchbar-fontsize;
-    line-height: $searchbar-input-line-height;
+    font-size: var(--searchbar-fontsize);
+    line-height: var(--searchbar-input-line-height);
     background-color: transparent;
     border: 0;
 
@@ -32,7 +32,7 @@
   }
 
   @include e(form) {
-    height: $searchbar-form-height;
+    height: var(--searchbar-form-height);
     margin: 0 r(15);
     display: flex;
     align-items: center;
@@ -51,21 +51,21 @@
     position: relative;
     flex: 1;
     width: 100%;
-    height: $searchbar-content-height;
+    height: var(--searchbar-content-height);
     padding: r(4);
-    background: $searchbar-content-bg;
+    background: var(--searchbar-content-bg);
     overflow: hidden;
 
     @include m(radius) {
-      border-radius: $radius-md;
+      border-radius: var(--radius-md);
     }
 
     @include m(round) {
-      border-radius: $radius-round;
+      border-radius: var(--radius-round);
     }
 
     @include m(circle) {
-      border-radius: $radius-circle;
+      border-radius: var(--radius-circle);
     }
   }
 
@@ -73,10 +73,10 @@
     position: absolute;
     left: 0;
     width: 100%;
-    height: $searchbar-input-line-height;
-    line-height: $searchbar-input-line-height;
-    font-size: $searchbar-fontsize;
-    color: $searchbar-mock-color;
+    height: var(--searchbar-input-line-height);
+    line-height: var(--searchbar-input-line-height);
+    font-size: var(--searchbar-fontsize);
+    color: var(--searchbar-mock-color);
 
     &-container {
       display: inline-block;
@@ -89,15 +89,15 @@
     }
 
     @include b(icon) {
-      font-size: $searchbar-mock-icon-fontsize;
+      font-size: var(--searchbar-mock-icon-fontsize);
       vertical-align: middle;
       margin-right: r(3);
     }
   }
 
   @include e(cancel) {
-    font-size: $searchbar-cancel-fontsize;
-    color: $searchbar-cancel-color;
+    font-size: var(--searchbar-cancel-fontsize);
+    color: var(--searchbar-cancel-color);
     margin-left: r(15);
 
     &-show {

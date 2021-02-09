@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <span :class='{
     [`${prefixCls}`]: true,
     [`${className}`]: true,

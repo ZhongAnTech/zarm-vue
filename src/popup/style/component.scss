@@ -5,7 +5,7 @@
     position: fixed;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    z-index: $zIndex-popup;
+    z-index: var(--zIndex-popup);
 
     &-bottom {
       left: 0;

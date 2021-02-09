@@ -1,11 +1,9 @@
-$prefixCls: za-filepicker;
-
 @include b(filepicker) {
   position: relative;
   display: inline-block;
 
   @include m(disabled) {
-    opacity: $disabled-opacity;
+    opacity: var(--disabled-opacity);
   }
 
   @include e(trigger) {

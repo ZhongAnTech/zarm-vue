@@ -4,14 +4,14 @@ module.exports = {
       name: 'QuickStart',
       description: '快速上手',
     },
-    {
-      name: 'ChangeLog',
-      description: '更新日志',
-    },
-    {
-      name: 'CustomTheme',
-      description: '主题配置',
-    },
+    // {
+    //   name: 'ChangeLog',
+    //   description: '更新日志',
+    // },
+    // {
+    //   name: 'CustomTheme',
+    //   description: '主题配置',
+    // },
   ],
   components: {
     form: [
@@ -123,6 +123,10 @@ module.exports = {
       {
         name: 'Icon',
         description: '图标',
+      },
+      {
+        name: 'ImagePreview',
+        description: '图片预览',
       },
       {
         name: 'NoticeBar',

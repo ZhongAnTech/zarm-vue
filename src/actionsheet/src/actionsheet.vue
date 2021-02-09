@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <za-popup :visible='currentVisible' direction="bottom" :get-container="getContainer" @maskClick='handlePopupClose'>
     <div :class='{
       [`${prefixCls}`]: true,

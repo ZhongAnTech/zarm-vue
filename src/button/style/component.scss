@@ -12,9 +12,9 @@
   -webkit-appearance: none;
   user-select: none;
   transition: background-color 200ms ease-out, border-color 200ms ease-out;
-  @include button-size($height-md, $padding-md, $fontSize-md, $radius-md, r(22), r(5));
-  @include button-theme($button-default-color, $button-default-bg, $button-default-border);
-  @include button-bordered($button-default-color, $button-default-bg, $button-default-border);
+  @include button-size(var(--height-md), var(--padding-md), var(--fontSize-md), var(--radius-md), r(22), r(5));
+  @include button-theme(var(--button-default-color), var(--button-default-bg), var(--button-default-border));
+  @include button-bordered(var(--button-default-color), var(--button-default-bg), var(--button-default-border));
 
   &,
   &:hover,
@@ -52,34 +52,40 @@
 
   /* Button sizes */
   @include m(xl) {
-    @include button-size($height-xl, $padding-xl, $fontSize-xl, $radius-xl, r(26), r(8));
+    @include button-size(var(--height-xl), var(--padding-xl), var(--fontSize-xl), var(--radius-xl), r(26), r(8));
   }
 
   @include m(lg) {
-    @include button-size($height-lg, $padding-lg, $fontSize-lg, $radius-lg, r(24), r(6));
+    @include button-size(var(--height-lg), var(--padding-lg), var(--fontSize-lg), var(--radius-lg), r(24), r(6));
   }
 
   @include m(sm) {
-    @include button-size($height-sm, $padding-sm, $fontSize-sm, $radius-sm, r(20), r(5));
+    @include button-size(var(--height-sm), var(--padding-sm), var(--fontSize-sm), var(--radius-sm), r(20), r(5));
   }
 
   @include m(xs) {
-    @include button-size($height-xs, $padding-xs, $fontSize-xs, $radius-xs, r(18), r(5));
+    @include button-size(var(--height-xs), var(--padding-xs), var(--fontSize-xs), var(--radius-xs), r(18), r(5));
+  }
+
+  @include m(default) {
+    @include m(ghost) {
+      color: var(--button-default-color);
+    }
   }
 
   /* Button themes */
   @include m(primary) {
-    @include button-theme($button-primary-color, $button-primary-bg, $button-primary-border);
-    @include button-bordered($button-primary-color, $button-primary-activebg, $button-primary-border);
+    @include button-theme(var(--button-primary-color), var(--button-primary-bg), var(--button-primary-border));
+    @include button-bordered(var(--button-primary-color), var(--button-primary-activebg), var(--button-primary-border));
   }
 
   @include m(warning) {
-    @include button-theme($button-warning-color, $button-warning-bg, $button-warning-border);
-    @include button-bordered($button-warning-color, $button-warning-activebg, $button-warning-border);
+    @include button-theme(var(--button-warning-color), var(--button-warning-bg), var(--button-warning-border));
+    @include button-bordered(var(--button-warning-color), var(--button-warning-activebg), var(--button-warning-border));
   }
 
   @include m(danger) {
-    @include button-theme($button-error-color, $button-error-bg, $button-error-border);
-    @include button-bordered($button-error-color, $button-error-activebg, $button-error-border);
+    @include button-theme(var(--button-error-color), var(--button-error-bg), var(--button-error-border));
+    @include button-bordered(var(--button-error-color), var(--button-error-activebg), var(--button-error-border));
   }
 }

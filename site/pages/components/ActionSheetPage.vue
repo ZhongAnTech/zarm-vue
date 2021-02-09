@@ -6,27 +6,29 @@
 </template>
 
 <script>
-import Vue from 'vue';
-import Simulator from "./Simulator";
+import { defineAsyncComponent } from 'vue';
+import Simulator from './Simulator';
 import Container from 'site/components/Container';
 
 export default {
   components: {
     Container,
-    Simulator
+    Simulator,
   },
   data() {
     return {
-      path: null
-    }
+      path: null,
+    };
   },
   created() {
     const v = this.$store.state.version;
     this.path = this.$route.path.replace('/documents/', '');
-    Vue.component('Demo', function(resolve, reject) {
-      require([`docs/${v}/actionSheet.md`], resolve)
-    });
-  }
+
+    const AsyncComp = defineAsyncComponent(() =>
+      import(`docs/${v}/actionSheet.md`)
+    )
+    window.app.component('Demo', AsyncComp);
+  },
 };
 </script>
 

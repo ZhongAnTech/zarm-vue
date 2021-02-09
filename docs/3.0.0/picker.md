@@ -29,27 +29,27 @@
 </za-cell>
 
 <za-picker
-  :visible.sync="visible1"
-  :data-source="data1"
+  v-model:visible="visible1"
+  :dataSource="data1"
   @ok="handleOk1"
 ></za-picker>
 <za-picker
-  :visible.sync="visible2"
-  :data-source="data2"
+  v-model:visible="visible2"
+  :dataSource="data2"
   @ok="handleOk"
 ></za-picker>
 <za-picker
-  :visible.sync="visible3"
-  :data-source="data3"
+  v-model:visible="visible3"
+  :dataSource="data3"
   @ok="handleOk"
 ></za-picker>
 <za-picker
-  :visible.sync="visible4"
-  :data-source="data4"
+  v-model:visible="visible4"
+  :dataSource="data4"
   @ok="handleOk2"
   placeholder="自定义placeholder"
-  value-member="code"
-  :item-render="(item) => item.name"
+  valueMember="code"
+  :itemRender="(item) => item.name"
 ></za-picker>
 ```
 
@@ -61,18 +61,18 @@
 <za-cell title="单项选择">
   <za-select
     v-model="v1"
-    :data-source="data1"
+    :dataSource="data1"
     @ok="handleOk"
-    @change="handleChange"
+    @selected="handleChange"
     @cancel="handleCancel"
   ></za-select>
 </za-cell>
 <za-cell title="多项选择">
   <za-select
-    :data-source="data2"
+    :dataSource="data2"
     v-model="v2"
     @ok="handleOk"
-    @change="handleChange"
+    @selected="handleChange"
     @cancel="handleCancel"
   ></za-select>
 </za-cell>
@@ -86,20 +86,20 @@
 <za-cell title="省市选择">
   <za-select
     v-model="v6"
-    :data-source="District"
+    :dataSource="data3"
     @ok="handleOk"
-    @change="handleChange"
+    @selected="handleChange"
     @cancel="handleCancel"
     :cols="2"
   ></za-select>
 </za-cell>
 <za-cell title="省市区选择">
   <za-select
-    :data-source="District"
+    :dataSource="data3"
     v-model="v7"
-    :display-render="selected => selected.map(item => item.label).join('／')"
+    :displayRender="selected => selected.map(item => item.label).join('／')"
     @ok="handleOk"
-    @change="handleChange"
+    @selected="handleChange"
     @cancel="handleCancel"
   ></za-select>
 </za-cell>
@@ -112,9 +112,9 @@
 
 ```html
 <za-picker-view
-  :default-value="v5"
-  :data-source="data5"
-  @change="handleChange"
+  :defaultValue="v5"
+  :dataSource="data5"
+  @selected="handleChange"
 ></za-picker-view>
 ```
 
@@ -124,51 +124,6 @@
 
 ```javascript
 <script name="vue">
-const District = [{
-  "value": "340000",
-  "label": "安徽省",
-  "children": [{
-    "value": "340800",
-    "label": "安庆市",
-    "children": [{
-      "value": "340803",
-      "label": "大观区",
-      "children": []
-    }, {
-      "value": "340822",
-      "label": "怀宁县",
-      "children": []
-    }, {
-      "value": "340882",
-      "label": "其它区",
-      "children": []
-    }]
-  }]
-},{
-  "value": "310000",
-  "label": "上海",
-  "children": [{
-    "value": "310100",
-    "label": "上海市",
-    "children": [{
-      "value": "310113",
-      "label": "宝山区",
-      "children": []
-    }, {
-      "value": "310105",
-      "label": "长宁区",
-      "children": []
-    }, {
-      "value": "310230",
-      "label": "崇明县",
-      "children": []
-    }, {
-      "value": "310152",
-      "label": "川沙区",
-      "children": []
-    }]
-  }]
-}];
 export default {
   data() {
     return {
@@ -185,7 +140,6 @@ export default {
       v6: '',
       v7: '',
       v10: [],
-      District,
       data1: [
         { value: '1', label: '选项一' },
         { value: '2', label: '选项二' },
@@ -258,15 +212,12 @@ export default {
   },
   methods: {
     handleOk1(v) {
-      console.log('it may still scrolling when ok is clicked. so ues v-model or @change instead')
       console.log(v);
     },
     handleOk(v) {
-      console.log('it may still scrolling when ok is clicked. so ues v-model or @change instead')
-      console.log(v);
+      console.log(v, this.v7);
     },
     handleOk2(v) {
-      console.log('it may still scrolling when ok is clicked. so ues v-model or @change instead')
       console.log(v);
     },
     handleChange(v) {
@@ -314,5 +265,5 @@ export default {
 | :--------- | :--------------------------- | :--------------- |
 | ok         | 点击确定时触发的回调函数     | 选中值的对象列表 |
 | cancel     | 点击取消时触发的回调函数     | event 对象       |
-| change     | 滚动时值变化时触发的回调函数 | 选中值的对象列表 |
+| selected     | 滚动时值变化时触发的回调函数 | 选中值的对象列表 |
 | mask-click | 点击遮罩后出发的回调函数     |                  |  |  |

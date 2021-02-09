@@ -1,5 +1,3 @@
-$prefixCls: za-badge;
-
 @mixin badge-theme($color) {
   @include e(sup) {
     background-color: $color;
@@ -11,26 +9,26 @@ $prefixCls: za-badge;
   display: inline-block;
   vertical-align: middle;
   line-height: 1;
-  @include badge-theme($theme-default);
+  @include badge-theme(var(--theme-default));
 
   @include m(primary) {
-    @include badge-theme($theme-primary);
+    @include badge-theme(var(--theme-primary));
   }
 
   @include m(info) {
-    @include badge-theme($theme-info);
+    @include badge-theme(var(--theme-info));
   }
 
   @include m(success) {
-    @include badge-theme($theme-success);
+    @include badge-theme(var(--theme-success));
   }
 
   @include m(warning) {
-    @include badge-theme($theme-warning);
+    @include badge-theme(var(--theme-warning));
   }
 
   @include m(error) {
-    @include badge-theme($theme-error);
+    @include badge-theme(var(--theme-error));
   }
 
   @include e(sup) {
@@ -38,10 +36,10 @@ $prefixCls: za-badge;
     justify-content: center;
     align-items: center;
     top: auto;
-    font-size: $badge-font-size;
+    font-size: var(--badge-font-size);
     color: #fff;
-    height: $badge-height;
-    padding: 0 $badge-padding-h;
+    height: var(--badge-height);
+    padding: 0 var(--badge-padding-h);
     white-space: nowrap;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -56,10 +54,10 @@ $prefixCls: za-badge;
 
   @include m(dot) {
     @include e(sup) {
-      width: $badge-dot-diameter;
-      height: $badge-dot-diameter;
+      width: var(--badge-dot-diameter);
+      height: var(--badge-dot-diameter);
       padding: 0;
-      border-radius: $radius-circle;
+      border-radius: var(--radius-circle);
     }
   }
 
@@ -71,28 +69,28 @@ $prefixCls: za-badge;
 
   @include m(radius) {
     @include e(sup) {
-      border-radius: $badge-radius-radius;
+      border-radius: var(--badge-radius-radius);
     }
   }
 
   @include m(round) {
     @include e(sup) {
-      border-radius: $badge-round-radius;
+      border-radius: var(--badge-round-radius);
     }
   }
 
   @include m(circle) {
     @include e(sup) {
-      width: $badge-height;
+      width: var(--badge-height);
       padding: 0;
-      border-radius: $badge-round-radius;
+      border-radius: var(--badge-round-radius);
     }
   }
 
   @include m(leaf) {
     @include e(sup) {
-      min-width: $badge-height;
-      border-radius: $radius-round $radius-round $radius-round 0;
+      min-width: var(--badge-height);
+      border-radius: var(--radius-round) var(--radius-round) var(--radius-round) 0;
     }
   }
 }

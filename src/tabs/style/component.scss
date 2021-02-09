@@ -17,30 +17,30 @@ $prefixCls: za-tab;
 }
 
 @include b(tabs) {
-  @include tab-theme($theme-primary);
+  @include tab-theme(var(--theme-primary));
 
   @include m(default) {
-    @include tab-theme($theme-default);
+    @include tab-theme(var(--theme-default));
   }
 
   @include m(primary) {
-    @include tab-theme($theme-primary);
+    @include tab-theme(var(--theme-primary));
   }
 
   @include m(info) {
-    @include tab-theme($theme-info);
+    @include tab-theme(var(--theme-info));
   }
 
   @include m(success) {
-    @include tab-theme($theme-success);
+    @include tab-theme(var(--theme-success));
   }
 
   @include m(warning) {
-    @include tab-theme($theme-warning);
+    @include tab-theme(var(--theme-warning));
   }
 
   @include m(error) {
-    @include tab-theme($theme-error);
+    @include tab-theme(var(--theme-error));
   }
 
   @include e(header) {
@@ -51,24 +51,24 @@ $prefixCls: za-tab;
       list-style: none;
       margin: 0;
       padding: 0;
-      height: $tabs-header-item-height;
-      line-height: $tabs-header-item-height;
+      height: var(--tabs-header-item-height);
+      line-height: var(--tabs-header-item-height);
       @include onepx(bottom);
     }
 
     &-item {
       flex: 1;
       text-align: center;
-      font-size: $tabs-header-item-fontSize;
-      color: $tabs-header-item-color;
+      font-size: var(--tabs-header-item-fontSize);
+      color: var(--tabs-header-item-color);
       cursor: pointer;
 
       @include m(active) {
-        color: $theme-success;
+        color: var(--theme-success);
       }
 
       @include m(disabled) {
-        color: $disabled-color;
+        color: var(--disabled-color);
         cursor: not-allowed;
       }
     }
@@ -78,7 +78,7 @@ $prefixCls: za-tab;
     position: absolute;
     left: 0;
     bottom: 0;
-    height: $tabs-header-line-height;
+    height: var(--tabs-header-line-height);
     transition: left .3s ease-out;
 
     &-inner {
@@ -94,7 +94,7 @@ $prefixCls: za-tab;
 
     &-item {
       display: none;
-      font-size: $tabs-item-fontSize;
+      font-size: var(--tabs-item-fontSize);
 
       @include m(active) {
         display: block;

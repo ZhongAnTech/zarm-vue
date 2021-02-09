@@ -110,7 +110,7 @@ export default {
       this.$emit('update:visible', false);
       this.$emit('close', event);
     },
-    handleCancel(event) {
+    handleCancel() {
       const { cancel } = this;
       if (typeof cancel === 'function') {
         cancel();

@@ -35,7 +35,7 @@
 
   @include e(pagination) {
     @include m(active) {
-      background: $theme-primary !important;
+      background: var(--theme-primary) !important;
     }
   }
 

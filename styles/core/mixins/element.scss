@@ -1,3 +1,8 @@
+$namespace: 'za';
+$element-separator: '__';
+$modifier-separator: '--';
+$state-prefix: '--';
+
 @function containsModifier($selector) {
   $selector: selectorToString($selector);
   @if str-index($selector, $modifier-separator) {
@@ -55,7 +60,9 @@
 }
 
 @mixin b($block) {
-  .#{$namespace + '-' + $block} {
+  $block: selector-append($namespace, '-' + $block);
+
+  .#{$block} {
     @content;
   }
 }

@@ -1,21 +1,18 @@
-import Vue from 'vue';
+import { createApp } from 'vue';
 import App from './app';
 import zarmVue from '../release/lib/zarm-vue.common';
-import ElementUI from 'element-ui';
 import router from './router';
 import store from './store';
+// eslint-disable-next-line import/first
 import 'normalize.css';
+// eslint-disable-next-line import/first
 import 'highlight.js/styles/github-gist.css';
-import './styles/themes/index.css';
+import '../release/zarm-vue.default.css';
 import './styles/index.scss';
-Vue.use(ElementUI);
-Vue.use(zarmVue);
-Vue.config.productionTip = false;
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  store,
-  template: '<App/>',
-  components: { App },
-});
+
+window.app = createApp(App);
+window.app.use(zarmVue);
+window.app.use(router);
+window.app.use(store);
+
+window.app.mount('#app');

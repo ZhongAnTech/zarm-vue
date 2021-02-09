@@ -2,7 +2,7 @@
   display: block;
   position: relative;
   overflow: hidden;
-  height: $wheel-item-rows * $wheel-item-height;
+  height: calc(var(--wheel-item-rows) * var(--wheel-item-height));
   width: 100%;
 
   @include e(content) {
@@ -11,10 +11,10 @@
 
   @include e(item) {
     text-align: center;
-    font-size: $wheel-item-fontsize;
-    line-height: $wheel-item-height;
-    height: $wheel-item-height;
-    color: $wheel-item-text-color;
+    font-size: var(--wheel-item-fontsize);
+    line-height: var(--wheel-item-height);
+    height: var(--wheel-item-height);
+    color: var(--wheel-item-text-color);
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;

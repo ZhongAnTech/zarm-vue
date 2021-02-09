@@ -158,7 +158,7 @@ export default {
                 showPagination={false}
                 activeIndex={currentIndex}
                 ref='carousel'
-                on-change={handleSwipeChange}>
+                onChange={handleSwipeChange}>
                 {this.$slots.default()}
               </za-carousel>
           }

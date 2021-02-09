@@ -1,8 +1,8 @@
 @include b(tab-bar) {
   display: flex;
   width: 100%;
-  background: $tabbar-background;
-  height: $tabbar-height;
+  background: var(--tabbar-background);
+  height: var(--tabbar-height);
   justify-content: center;
   align-content: center;
   align-items: center;
@@ -15,13 +15,13 @@
   overflow: hidden;
 
   @include m(hidden) {
-    bottom: $tabbar-hidden-bottom;
+    bottom: var(--tabbar-hidden-bottom);
     height: 0;
   }
 
   @include m(active) {
     @include e(title) {
-      color: $tabbar-item-active-color;
+      color: var(--tabbar-item-active-color);
     }
   }
 
@@ -29,7 +29,7 @@
     flex: 1;
 
     @include e(title) {
-      font-size: $tabbar-item-font-size;
+      font-size: var(--tabbar-item-font-size);
       line-height: 1;
       margin-top: 2px;
     }

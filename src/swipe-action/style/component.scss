@@ -27,40 +27,40 @@
 
   @include e(button) {
     display: flex;
-    width: $swipeaction-item-width;
+    width: var(--swipeaction-item-width);
     justify-content: center;
     align-items: center;
-    font-size: $swipeaction-item-fontSize;
+    font-size: var(--swipeaction-item-fontSize);
 
     @include m(default) {
-      @include button-theme($button-default-color, $button-default-bg, $button-default-border);
-      @include button-bordered($button-default-border, $button-default-bg, $button-default-border);
+      @include button-theme(var(--button-default-color), var(--button-default-bg), var(--button-default-border));
+      @include button-bordered(var(--button-default-border), var(--button-default-bg), var(--button-default-border));
     }
 
     /* Button themes */
     @include m(primary) {
-      @include button-theme($button-primary-color, $button-primary-bg, $button-primary-border);
-      @include button-bordered($button-primary-border, $button-primary-bg, $button-primary-border);
+      @include button-theme(var(--button-primary-color), var(--button-primary-bg), var(--button-primary-border));
+      @include button-bordered(var(--button-primary-border), var(--button-primary-bg), var(--button-primary-border));
     }
 
     @include m(info) {
-      @include button-theme($button-info-color, $button-info-bg, $button-info-border);
-      @include button-bordered($button-info-border, $button-info-bg, $button-info-border);
+      @include button-theme(var(--button-info-color), var(--button-info-bg), var(--button-info-border));
+      @include button-bordered(var(--button-info-border), var(--button-info-bg), var(--button-info-border));
     }
 
     @include m(success) {
-      @include button-theme($button-success-color, $button-success-bg, $button-success-border);
-      @include button-bordered($button-success-border, $button-success-bg, $button-success-border);
+      @include button-theme(var(--button-success-color), var(--button-success-bg), var(--button-success-border));
+      @include button-bordered(var(--button-success-border), var(--button-success-bg), var(--button-success-border));
     }
 
     @include m(warning) {
-      @include button-theme($button-warning-color, $button-warning-bg, $button-warning-border);
-      @include button-bordered($button-warning-border, $button-warning-bg, $button-warning-border);
+      @include button-theme(var(--button-warning-color), var(--button-warning-bg), var(--button-warning-border));
+      @include button-bordered(var(--button-warning-border), var(--button-warning-bg), var(--button-warning-border));
     }
 
     @include m(error) {
-      @include button-theme($button-error-color, $button-error-bg, $button-error-border);
-      @include button-bordered($button-error-border, $button-error-bg, $button-error-border);
+      @include button-theme(var(--button-error-color), var(--button-error-bg), var(--button-error-border));
+      @include button-bordered(var(--button-error-border), var(--button-error-bg), var(--button-error-border));
     }
   }
 }

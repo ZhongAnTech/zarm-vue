@@ -1,10 +1,10 @@
-<template lang="html">
+<template>
   <span :class='{
       [`${prefixCls}`]: true,
       [`${prefixCls}--${theme}`]: !!theme,
       [`${prefixCls}--checked`]: !!currentCheck,
       [`${prefixCls}--disabled`]: disabled,
-    }'    
+    }'
   >
     <input
       ref="input"
@@ -15,7 +15,7 @@
       :value='getVal(currentCheck)'
       @change='handleChange'
     />
-     
+
   </span>
 </template>
 
@@ -76,7 +76,7 @@ export default {
       if (this.disabled) return;
       const checked = event.target.checked;
       this.currentCheck = checked;
-      this.$emit('change', checked);
+      this.$emit('checked', checked);
     },
   },
 };

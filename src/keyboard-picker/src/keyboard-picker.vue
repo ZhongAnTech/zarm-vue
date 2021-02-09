@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div :prefixCls="prefixCls" @click.stop='stopPropagation'>
     <za-popup
       ref="popup"

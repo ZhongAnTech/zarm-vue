@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <i :class='{
     [`${prefixCls}`]: true,
     [`${prefixCls}-${type}`]: !!type,

@@ -1,5 +1,5 @@
-import Vue from 'vue';
-// prevent vue warning log
-Vue.config.silent = true;
-Vue.config.productionTip = false;
+// import Vue from 'vue';
+// const app = Vue.createApp();
+// app.config.silent = true;
+// app.config.productionTip = false;
 

@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div :class='`${prefixCls}`' ref='wrap' v-if='left.length || right.length'>
     <div :class='`${prefixCls}__actions-left`' ref='left' v-if='left.length'>
       <div v-for='(button, index) in left' :key='index' :class='{

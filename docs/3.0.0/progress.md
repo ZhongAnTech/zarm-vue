@@ -86,7 +86,6 @@ export default {
       weight: 'normal',
       dataSource:[
         { value: 'primary', label: 'primary' },
-        { value: 'success', label: 'success' },
         { value: 'warning', label: 'warning' },
         { value: 'error', label: 'error' },
       ],

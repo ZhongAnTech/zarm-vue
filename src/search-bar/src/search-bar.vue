@@ -1,27 +1,53 @@
-<template lang="html">
+<template>
   <div :class="prefixCls">
-    <form action="#" :class="{
+    <form
+      action="#"
+      :class="{
       [`${prefixCls}__form`]: true,
       [`${prefixCls}__form--focus`]: !!(focus || (currentValue && currentValue.length > 0))
-    }" @submit="onSubmit" ref="searchForm">
+    }"
+      @submit="onSubmit"
+      ref="searchForm"
+    >
       <div :class="{
         [`${prefixCls}__content`]: true,
         [`${prefixCls}__content--${shape}`]: !!shape
       }">
         <div :class="`${prefixCls}__mock`">
-          <div :class="`${prefixCls}__mock-container`" ref="searchContainer">
+          <div
+            :class="`${prefixCls}__mock-container`"
+            ref="searchContainer"
+          >
             <za-icon type="search" />
-            <span :class="`${prefixCls}__mock-placeholder`" v-show="isVisibility">{{placeholder || placeholderText}}</span>
+            <span
+              :class="`${prefixCls}__mock-placeholder`"
+              v-show="isVisibility"
+            >{{placeholder || placeholderText}}</span>
           </div>
         </div>
-        <za-input type="search" :class="`${prefixCls}__input`" :placeholder="placeholder || placeholderText" :value="currentValue" :disabled="disabled" :clearable="clearable" ref="inputRef"
-          :maxLength='maxLength' @focus="onFocus" @compositionStart="handleComposition" @compositionUpdate="handleComposition"
-          @compositionEnd="handleComposition" @change="onChange" @blur="onBlur" @clear="onClear" />
+        <za-input
+          ref="inputRef"
+          :class="`${prefixCls}__input`"
+          :placeholder="placeholder || placeholderText"
+          v-model="currentValue"
+          v-bind="searchProps"
+          @focus="onFocus"
+          @compositionStart="handleComposition"
+          @compositionUpdate="handleComposition"
+          @compositionEnd="handleComposition"
+          @change="onChange"
+          @blur="onBlur"
+          @clear="onClear"
+        />
       </div>
-      <div :class="{
+      <div
+        :class="{
           [`${prefixCls}__cancel`]: true,
           [`${prefixCls}__cancel-show`]: !!(showCancel || focusStatus || (currentValue && currentValue.length > 0))
-        }" ref="cancelRef" @click="onCancel">{{cancelText || cancelBtnText}}</div>
+        }"
+        ref="cancelRef"
+        @click="onCancel"
+      >{{cancelText || cancelBtnText}}</div>
     </form>
   </div>
 </template>
@@ -49,11 +75,14 @@ export default {
       type: String,
       default: '',
     },
-    value: [String, Number],
-    maxLength: [Number],
+    defaultValue: String,
     shape: {
       type: String,
       default: 'raduis',
+    },
+    type: {
+      type: String,
+      default: 'search',
     },
     disabled: {
       type: Boolean,
@@ -75,19 +104,20 @@ export default {
   data() {
     return {
       focusStatus: false,
-      currentValue: this.defaultValue || this.value || '',
+      currentValue: this.defaultValue,
       isOnComposition: false,
+      searchProps: this.getInitProps(),
     };
   },
   watch: {
-    value(value) {
-      if (value === this.currentValue) return;
-      this.currentValue = value;
+    modelValue(val) {
+      this.currentValue = val;
+      this.onChange();
     },
   },
   computed: {
     isVisibility() {
-      return this.currentValue ? 0 : 1;
+      return (typeof this.currentValue !== 'undefined' && this.currentValue.length > 0) ? 0 : 1;
     },
     cancelBtnText() {
       return this.localeProvider.lang ? this.getLocales('cancelText') : '取消';
@@ -97,11 +127,17 @@ export default {
     },
   },
   mounted() {
-    this.$nextTick(() => {
-      this.calculatePositon();
-    });
+    this.calculatePositon();
   },
   methods: {
+    getInitProps() {
+      const { type, disabled, clearable } = this.$props;
+      return {
+        type,
+        disabled,
+        clearable,
+      };
+    },
     // 国际化
     getLocales(key) {
       return Locale.getLocaleByComponent(this.localeProvider, 'SearchBar', key);
@@ -134,13 +170,6 @@ export default {
       this.$emit('focus');
     },
 
-    onChange(value) {
-      this.currentValue = value;
-      if (!this.isOnComposition) {
-        this.$emit('change', this.currentValue);
-      }
-    },
-
     handleComposition(e) {
       if (e.type === 'compositionstart') {
         this.isOnComposition = true;
@@ -149,8 +178,6 @@ export default {
       if (e.type === 'compositionend') {
         // composition is end
         this.isOnComposition = false;
-        const value = e.target.value;
-        this.$emit('change', value);
       }
     },
 
@@ -162,10 +189,15 @@ export default {
       this.$emit('blur');
     },
 
+    onChange() {
+      if (!this.isOnComposition) {
+        this.$emit('searched', this.currentValue);
+      }
+    },
+
     onClear() {
       this.currentValue = '';
       this.isOnComposition = false;
-      this.focus();
       this.$emit('clear', this.currentValue);
     },
 

@@ -2,7 +2,7 @@
 
 @include b(datepicker) {
   @include e(wrapper) {
-    background: $picker-background;
+    background: var(--picker-background);
   }
 
   @include m(block) {
@@ -11,15 +11,15 @@
 
   @include m(input) {
     width: 100%;
-    padding: $picker-padding-v 0;
+    padding: var(--picker-padding-v) 0;
   }
 
   @include m(placeholder) {
-    color: $placeholder-color;
+    color: var(--placeholder-color);
   }
 
   @include m(disabled) {
-    color: $disabled-color;
+    color: var(--disabled-color);
   }
 
   @include e(header) {
@@ -28,29 +28,29 @@
     justify-content: center;
     position: relative;
     width: 100%;
-    height: $picker-header-height;
-    font-size: $picker-header-font-size;
-    line-height: $picker-header-line-height;
+    height: var(--picker-header-height);
+    font-size: var(--picker-header-font-size);
+    line-height: var(--picker-header-line-height);
     @include onepx(bottom);
   }
 
   @include e(cancel,submit) {
     flex: 1;
-    padding: 0 $picker-padding-h;
+    padding: 0 var(--picker-padding-h);
     cursor: pointer;
   }
 
   @include e(cancel) {
     text-align: left;
-    color: $color-text-caption;
+    color: var(--color-text-caption);
   }
 
   @include e(submit) {
     text-align: right;
-    color: $theme-primary;
+    color: var(--theme-primary);
   }
 
   @include e(title) {
-    color: $color-text;
+    color: var(--color-text);
   }
 }
