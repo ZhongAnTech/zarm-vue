@@ -31,12 +31,18 @@ export default {
       default: () => { },
     },
   },
-  created() {
-    this.dragState = {};
+  data() {
+    return {
+      dragState: {
+        startTime: null,
+        startX: 0,
+        startY: 0,
+      },
+    };
   },
   methods: {
     onTouchStart(event) {
-      const dragState = this.dragState;
+      const { dragState } = this;
       if (!event.touches) {
         dragState.startX = event.clientX;
         dragState.startY = event.clientY;
@@ -50,7 +56,7 @@ export default {
     },
 
     onTouchMove(event) {
-      const dragState = this.dragState;
+      const { dragState } = this;
       let currentX;
       let currentY;
 
@@ -66,8 +72,12 @@ export default {
       const offsetX = currentX - dragState.startX;
       const offsetY = currentY - dragState.startY;
 
+      const { startTime, startX, startY } = dragState;
+
       const state = {
-        ...dragState,
+        startTime,
+        startX,
+        startY,
         offsetX,
         offsetY,
         currentX,
@@ -78,7 +88,7 @@ export default {
     },
 
     onTouchEnd(event) {
-      const dragState = this.dragState;
+      const { dragState } = this;
       this.dragEnd(event, dragState);
       this.dragState = Object.create(null);
     },
