@@ -39,7 +39,7 @@
     type="button"
     @change="handleGroupChange"
   >
-      <za-checkbox :value="city" v-for="(city, index) in cities" :key="city"
+      <za-checkbox name="city1" :value="city" v-for="(city, index) in cities" :key="city"
         >{{city}}</za-checkbox
       >
   </za-checkbox-group>
@@ -51,7 +51,7 @@
     type="button"
     @change="handleGroupChange"
   >
-    <za-checkbox  :value="city" v-for="(city, index) in cities" :key="city"
+    <za-checkbox name="city2"  :value="city" v-for="(city, index) in cities" :key="city"
       >{{city}}</za-checkbox
     >
   </za-checkbox-group>
@@ -65,6 +65,7 @@
   >
     <za-checkbox
       v-for="(city, index) in cities"
+      name="city3"
       :value="city"
       :key="city"
       :disabled="index === 2"
@@ -80,7 +81,7 @@
     shape="rect"
     @change="handleGroupChange"
   >
-    <za-checkbox v-for="(city, index) in cities" :value="city" :key="city"
+    <za-checkbox v-for="(city, index) in cities" name="city4" :value="city" :key="city"
       >{{city}}</za-checkbox
     >
   </za-checkbox-group>
@@ -93,7 +94,7 @@
     shape="round"
     @change="handleGroupChange"
   >
-    <za-checkbox v-for="(city, index) in cities" :value="city" :key="city"
+    <za-checkbox v-for="(city, index) in cities" name="city5" :value="city" :key="city"
       >{{city}}</za-checkbox
     >
   </za-checkbox-group>
@@ -113,7 +114,7 @@
     shape="radius"
     @change="handleGroupChange"
   >
-    <za-checkbox v-for="(city, index) in cities" :value="city" :key="city"
+    <za-checkbox v-for="(city, index) in cities" name="city6" :value="city" :key="city"
       >{{city}}</za-checkbox
     >
   </za-checkbox-group>
@@ -132,6 +133,7 @@
 >
   <za-checkbox
     v-for="(city, index) in cities"
+    name="city7"
     :value="city"
     :key="city"
     :disabled="index === 2"
@@ -151,7 +153,7 @@
   disabled
   @change="handleGroupChange"
 >
-  <za-checkbox v-for="city in cities" :value="city" :key="city">
+  <za-checkbox v-for="city in cities" name="city8" :value="city" :key="city">
     <span>{{city}}</span>
   </za-checkbox>
 </za-checkbox-group>
@@ -227,6 +229,7 @@ export default {
 | :------- | :------------ | :-------- | :---------------------------------------------------------- | :------- |
 | theme    | string        | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题     |
 | type     | string        |           | 'button', 'cell'                                            | 显示类型 |
+| name      | string        |          |  | 结合checkbox-group使用，标识字段       |
 | value    | string,number |           |                                                             | 选项值   |
 | checked  | boolean       |           |                                                             | 是否选中 |
 | disabled | boolean       | false     |                                                             | 是否禁用 |

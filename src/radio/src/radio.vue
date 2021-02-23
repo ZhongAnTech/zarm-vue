@@ -3,7 +3,7 @@
     <template v-slot:description>
       <za-icon v-if='isChecked' type="right" :theme='radioDisabled ? null : groupTheme'></za-icon>
     </template>
-    <input type="radio" :class='`${prefixCls}__input`' :disabled='radioDisabled' :value='value' v-model='currentValue' @click='onValueChange' />
+    <input type="radio" :class='`${prefixCls}__input`' :name="name" :disabled='radioDisabled' :value='value' v-model='currentValue' @change.stop='onValueChange' />
     <slot></slot>
   </za-cell>
   <za-button
@@ -16,7 +16,7 @@
       [`${prefixCls}--disabled`]: radioDisabled,
       [`${prefixCls}--block`]: isBlock,
     }' :theme='groupTheme' size='xs' :block='isBlock' :disabled='radioDisabled' :ghost='!isChecked' :shape='groupShape'>
-    <input type="radio" :class='`${prefixCls}__input`' :disabled='radioDisabled' :value='value' v-model='currentValue' @click='onValueChange' />
+    <input type="radio" :class='`${prefixCls}__input`' :name="name" :disabled='radioDisabled' :value='value' v-model='currentValue' @change.stop='onValueChange' />
     <slot></slot>
   </za-button>
   <div v-else :class='{
@@ -30,7 +30,7 @@
       <span :class='`${prefixCls}__text`' v-if='$slots.default'>
         <slot></slot>
       </span>
-      <input type="radio" :class='`${prefixCls}__input`' :disabled='radioDisabled' :value='value' v-model='currentValue' @click='onValueChange' />
+      <input type="radio" :class='`${prefixCls}__input`' :name="name" :disabled='radioDisabled' :value='value' v-model='currentValue' @change.stop='onValueChange' />
     </div>
   </div>
 </template>
@@ -63,6 +63,10 @@ export default {
     disabled: {
       type: Boolean,
       default: false,
+    },
+    name: {
+      type: String,
+      default: '',
     },
     value: {
       type: String,

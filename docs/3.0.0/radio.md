@@ -4,7 +4,7 @@
 
 ```html
 <za-cell>
-  <za-radio @checked="handleChange" value="on">默认</za-radio>
+  <za-radio @change="handleChange" value="on">默认</za-radio>
 </za-cell>
 <za-cell>
   <za-radio checked >默认选中</za-radio>
@@ -26,10 +26,10 @@
   <za-radio-group
     slot="description"
     v-model="radioGroup1"
-    @checked="handleGroupChange"
+    @change="handleGroupChange"
     type="button"
   >
-    <za-radio v-for="(city, index) in cities" :value="city" :key="city"
+    <za-radio name="city1" v-for="(city, index) in cities" :value="city" :key="city"
       >{{city}}</za-radio
     >
   </za-radio-group>
@@ -39,10 +39,10 @@
   <za-radio-group
     slot="description"
     v-model="radioGroup2"
-    @checked="handleGroupChange"
+    @change="handleGroupChange"
     type="button"
   >
-    <za-radio v-for="(city, index) in cities" :value="city" :key="city"
+    <za-radio name="city2" v-for="(city, index) in cities" :value="city" :key="city"
       >{{city}}</za-radio
     >
   </za-radio-group>
@@ -52,11 +52,12 @@
   <za-radio-group
     slot="description"
     v-model="radioGroup3"
-    @checked="handleGroupChange"
+    @change="handleGroupChange"
     type="button"
   >
     <za-radio
       v-for="(city, index) in cities"
+      name="city3"
       :value="city"
       :key="city"
       :disabled="index === 1"
@@ -69,11 +70,11 @@
   <za-radio-group
     slot="description"
     v-model="radioGroup4"
-    @checked="handleGroupChange"
+    @change="handleGroupChange"
     shape="rect"
     type="button"
   >
-    <za-radio v-for="(city, index) in cities" :value="city" :key="city"
+    <za-radio v-for="(city, index) in cities" name="city4" :value="city" :key="city"
       >{{city}}</za-radio
     >
   </za-radio-group>
@@ -83,11 +84,11 @@
   <za-radio-group
     slot="description"
     v-model="radioGroup5"
-    @checked="handleGroupChange"
+    @change="handleGroupChange"
     shape="round"
     type="button"
   >
-    <za-radio v-for="(city, index) in cities" :value="city" :key="city"
+    <za-radio v-for="(city, index) in cities" name="city5" :value="city" :key="city"
       >{{city}}</za-radio
     >
   </za-radio-group>
@@ -107,9 +108,9 @@
     shape="radius"
     type="button"
     v-model="radioGroup6"
-    @checked="handleGroupChange"
+    @change="handleGroupChange"
   >
-    <za-radio v-for="(city, index) in cities" :value="city" :key="city"
+    <za-radio v-for="(city, index) in cities" name="city6" :value="city" :key="city"
       >{{city}}</za-radio
     >
   </za-radio-group>
@@ -121,9 +122,10 @@
 :::demo 列表样式
 
 ```html
-<za-radio-group type="cell" v-model="radioGroup7" @checked="handleGroupChange">
+<za-radio-group type="cell" v-model="radioGroup7" @change="handleGroupChange">
   <za-radio
     v-for="(city, index) in num"
+    name="city7"
     :value="city"
     :key="city"
     :disabled="index === 1"
@@ -140,10 +142,10 @@
 <za-radio-group
   type="cell"
   v-model="radioGroup8"
-  @checked="handleGroupChange"
+  @change="handleGroupChange"
   disabled
 >
-  <za-radio v-for="(city, index) in num" :value="city" :key="city"
+  <za-radio v-for="(city, index) in num" name="city8" :value="city" :key="city"
     >{{city}}</za-radio
   >
 </za-radio-group>
@@ -204,6 +206,7 @@ export default {
 | 属性      | 类型          | 默认值   | 可选值／参数              | 说明           |
 | :-------- | :------------ | :------- | :------------------------ | :------------- |
 | type      | string        |          | 'button', 'cell'          | 显示类型       |
+| name      | string        |          |  | 结合radio-group使用，标识字段       |
 | shape     | string        | 'radius' | 'rect', 'radius', 'round' | 形状           |
 | block     | boolean          | false    |                           | 是否为块级元素 |
 | value     | string,number |          |                           | 选项值         |
@@ -214,10 +217,10 @@ export default {
 
 | 事件名称 | 说明             | 回调参数                     |
 | :------- | :--------------- | :--------------------------- |
-| checked   | 选择后触发的事件 | value 选中 radio 的 label 值 |
+| change   | 选择后触发的事件 | value 选中 radio 的 label 值 |
 
 #### Radio Group Events
 
 | 事件名称 | 说明             | 回调参数                     |
 | :------- | :--------------- | :--------------------------- |
-| checked   | 选择后触发的事件 | value 选中 radio 的 label 值 |
+| change   | 选择后触发的事件 | value 选中 radio 的 label 值 |

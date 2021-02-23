@@ -16,6 +16,7 @@
           type="checkbox"
           :class='`${prefixCls}__input`'
           :disabled='checkboxDisabled'
+          :name="name"
           :value='value'
           v-model='currentValue'
           @change.stop="onValueChange"
@@ -37,6 +38,7 @@
       type="checkbox"
       :class='`${prefixCls}__input`'
       :disabled='checkboxDisabled'
+      :name="name"
       :value='value'
       v-model='currentValue'
       @change.stop="onValueChange"
@@ -56,6 +58,7 @@
         type="checkbox"
         :class='`${prefixCls}__input`'
         :disabled='checkboxDisabled'
+        :name="name"
         :value='value'
         v-model='currentValue'
         @change.stop="onValueChange"
@@ -100,6 +103,10 @@ export default {
     size: {
       type: String,
       validator: enumGenerator(['xl', 'lg', 'sm', 'xs']),
+      default: null,
+    },
+    name: {
+      type: String,
       default: null,
     },
     value: {
