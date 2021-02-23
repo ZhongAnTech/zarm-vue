@@ -10,7 +10,7 @@
         <ul>
           <li><a href="#/documents/quick-start">文档</a></li>
           <li><a href="https://github.com/ZhonganTechENG/zarm-vue" target="_blank" rel="noopener noreferrer">Github</a></li>
-          <li>
+          <!-- <li>
             <el-select v-model="value" placeholder="请选择" size="small">
               <el-option
                 v-for="item in options"
@@ -19,7 +19,7 @@
                 :value="item.value">
               </el-option>
             </el-select>
-          </li>
+          </li> -->
         </ul>
       </nav>
     </div>
@@ -122,7 +122,7 @@ nav {
         display: block;
         color: #333;
         cursor: pointer;
-  
+
         &.active,
         &:hover {
           color: #12C287;

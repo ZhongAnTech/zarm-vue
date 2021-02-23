@@ -35,7 +35,7 @@
           @compositionStart="handleComposition"
           @compositionUpdate="handleComposition"
           @compositionEnd="handleComposition"
-          @change="onChange"
+          @change.stop="onChange"
           @blur="onBlur"
           @clear="onClear"
         />
@@ -191,7 +191,7 @@ export default {
 
     onChange() {
       if (!this.isOnComposition) {
-        this.$emit('searched', this.currentValue);
+        this.$emit('change', this.currentValue);
       }
     },
 

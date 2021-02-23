@@ -18,7 +18,7 @@
           :disabled='checkboxDisabled'
           :value='value'
           v-model='currentValue'
-          @change="onValueChange"
+          @change.stop="onValueChange"
         />
       </div>
     </div>
@@ -39,7 +39,7 @@
       :disabled='checkboxDisabled'
       :value='value'
       v-model='currentValue'
-      @change="onValueChange"
+      @change.stop="onValueChange"
     />
     <slot></slot>
   </za-button>
@@ -58,7 +58,7 @@
         :disabled='checkboxDisabled'
         :value='value'
         v-model='currentValue'
-        @change="onValueChange"
+        @change.stop="onValueChange"
       />
     </div>
   </div>
@@ -198,7 +198,7 @@ export default {
         });
         self.dispatch('zaCheckboxGroup', 'update:modelValue', [[...Array.from(new Set(next))]]);
       } else {
-        self.$emit('checked', self.currentValue, self.value);
+        self.$emit('change', self.currentValue, self.value);
       }
     },
   },

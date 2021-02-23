@@ -2,7 +2,7 @@
   <header class="header">
     <div class="header-container">
       <div class="logo">
-        <a href="https://zarm.design">
+        <a href="https://vue.zarm.design/#/documents/quick-start">
           <img alt="logo" :src="require('../../styles/images/logo.svg')" />
           <za-badge sup shape="leaf" :text="value">
             <div style="lineHeight: 30px;">ZarmVue</div>
@@ -12,22 +12,22 @@
       <div class="search">
         <input placeholder="搜索组件..." ref="searchInput" />
       </div>
-      <div class="version">
-        <!-- <el-select v-model="value" placeholder="请选择" size="small" @change="handleVerChange">
+      <!-- <div class="version">
+         <el-select v-model="value" placeholder="请选择" size="small" @change="handleVerChange">
               <el-option
                 v-for="item in options"
                 :key="item.value"
                 :label="item.label"
                 :value="item.value">
               </el-option>
-            </el-select> -->
-      </div>
+            </el-select>
+      </div> -->
       <nav>
         <ul>
-          <li><a href="https://zarm.design">首页</a></li>
-          <li><a href="https://zarm.design/#/components/quick-start">React 组件</a></li>
-          <li><a href="#/documents/quick-start" class="active">Vue 组件</a></li>
-          <li><a href="https://zarm.design/#/design/download">设计</a></li>
+          <!-- <li><a href="https://zarm.design">首页</a></li>
+          <li><a href="https://zarm.design/#/components/quick-start">React 组件</a></li> -->
+          <li><a href="#/documents/quick-start" class="active">组件</a></li>
+          <li><a href="https://zarm.design/#/design/download">资源</a></li>
           <li><a href="https://github.com/ZhonganTechENG/zarm-vue" target="_blank" rel="noopener noreferrer">Github</a></li>
         </ul>
       </nav>

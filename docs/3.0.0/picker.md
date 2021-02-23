@@ -63,7 +63,7 @@
     v-model="v1"
     :dataSource="data1"
     @ok="handleOk"
-    @selected="handleChange"
+    @change="handleChange"
     @cancel="handleCancel"
   ></za-select>
 </za-cell>
@@ -72,7 +72,7 @@
     :dataSource="data2"
     v-model="v2"
     @ok="handleOk"
-    @selected="handleChange"
+    @change="handleChange"
     @cancel="handleCancel"
   ></za-select>
 </za-cell>
@@ -88,7 +88,7 @@
     v-model="v6"
     :dataSource="data3"
     @ok="handleOk"
-    @selected="handleChange"
+    @change="handleChange"
     @cancel="handleCancel"
     :cols="2"
   ></za-select>
@@ -99,7 +99,7 @@
     v-model="v7"
     :displayRender="selected => selected.map(item => item.label).join('／')"
     @ok="handleOk"
-    @selected="handleChange"
+    @change="handleChange"
     @cancel="handleCancel"
   ></za-select>
 </za-cell>
@@ -114,7 +114,7 @@
 <za-picker-view
   :defaultValue="v5"
   :dataSource="data5"
-  @selected="handleChange"
+  @change="handleChange"
 ></za-picker-view>
 ```
 
@@ -265,5 +265,5 @@ export default {
 | :--------- | :--------------------------- | :--------------- |
 | ok         | 点击确定时触发的回调函数     | 选中值的对象列表 |
 | cancel     | 点击取消时触发的回调函数     | event 对象       |
-| selected     | 滚动时值变化时触发的回调函数 | 选中值的对象列表 |
+| change     | 滚动时值变化时触发的回调函数 | 选中值的对象列表 |
 | mask-click | 点击遮罩后出发的回调函数     |                  |  |  |

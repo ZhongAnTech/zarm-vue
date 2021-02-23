@@ -143,7 +143,7 @@ export default {
         const targetVal = event.target.value;
         self.dispatch('zaRadioGroup', 'update:modelValue', targetVal);
       } else {
-        self.$emit('checked', self.currentChecked, self.value);
+        self.$emit('change', self.currentChecked, self.value);
       }
     },
   },

@@ -13,7 +13,7 @@
       :disabled='disabled'
       :checked='currentCheck'
       :value='getVal(currentCheck)'
-      @change='handleChange'
+      @change.stop='handleChange'
     />
 
   </span>
@@ -25,10 +25,6 @@ const activeName = 'on';
 const inActiveName = 'off';
 export default {
   name: 'zaSwitch',
-  model: {
-    prop: 'checked',
-    event: 'change',
-  },
   props: {
     prefixCls: {
       type: String,
@@ -76,7 +72,7 @@ export default {
       if (this.disabled) return;
       const checked = event.target.checked;
       this.currentCheck = checked;
-      this.$emit('checked', checked);
+      this.$emit('change', checked);
     },
   },
 };

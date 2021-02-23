@@ -11,7 +11,7 @@
       :multiple='multiple'
       :capture='capture'
       @click='handleDefaultInput'
-      @change='handleChange'
+      @change.stop='handleChange'
     />
     <span :class='`${prefixCls}__trigger`' @click='handleClick' />
     <slot></slot>
@@ -79,10 +79,10 @@ export default {
           fileList.push(data);
 
           if (files.length === fileList.length) {
-            this.$emit('selected', fileList);
+            this.$emit('change', fileList);
           }
         } else {
-          this.$emit('selected', data);
+          this.$emit('change', data);
         }
       };
 

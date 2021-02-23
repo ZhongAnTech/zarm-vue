@@ -30,7 +30,7 @@
             :cols='cols'
             :selectedValue='selectedValue'
             :itemRender='itemRender'
-            @selected='onChange'
+            @change='onChange'
             @transition='onTransition'
           />
         </div>
@@ -195,12 +195,12 @@ export default {
       const { valueMember } = this;
       const value = selected.map(item => item[valueMember]);
       this.currentValue = value;
-      this.$emit('selected', value);
+      this.$emit('change', value);
     },
     handleCancel() {
       const { oldValue } = this;
       this.currentValue = [...oldValue];
-      this.$emit('selected', oldValue);
+      this.$emit('change', oldValue);
       this.toggle();
     },
     handleOk() {

@@ -5,7 +5,7 @@
 ```html
 <za-search-bar
   :showCancel="false"
-  @searched="handleChange"
+  @change="handleChange"
   @submit="handleSubmit"
   @blur="handleBlur"
   @focus="handleFocus"
@@ -23,7 +23,7 @@
   shape="round"
   :showCancel="true"
   defaultValue="默认搜索关键字"
-  @searched="handleChange"
+  @change="handleChange"
 ></za-search-bar>
 ```
 
@@ -32,7 +32,7 @@
 :::demo 点击获取焦点
 
 ```html
-<za-search-bar shape="round" :showCancel="true" ref="searchRef"  @searched="handleChange"></za-search-bar>
+<za-search-bar shape="round" :showCancel="true" ref="searchRef"  @change="handleChange"></za-search-bar>
 <za-cell>
   <za-button theme="primary" size="xs" shape="radius" @click="handleClick"
     >点击获取焦点</za-button
@@ -102,7 +102,7 @@ export default {
 
 | 事件名称 | 说明                               | 回调参数 |
 | :------- | :--------------------------------- | :------- |
-| searched   | 当绑定值变化时触发的事件           | 最新的值 |
+| change   | 当绑定值变化时触发的事件           | 最新的值 |
 | focus    | 当获取焦点时触发的事件             |          |
 | blur     | 当失去焦点时触发的事件             |          |
 | clear    | 当绑定值被清除时触发的事件         | 最新的值 |

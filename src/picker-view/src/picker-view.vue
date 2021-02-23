@@ -192,7 +192,7 @@ export default {
       this.objValue = newObj.objValue;
       this.data = newObj.data;
       this.isManual = true;
-      this.$emit('selected', newObj.objValue, level);
+      this.$emit('change', newObj.objValue, level);
     },
     onTransition(isScrolling) {
       this.$emit('transition', isScrolling);
