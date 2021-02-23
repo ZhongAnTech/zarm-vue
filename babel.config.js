@@ -11,6 +11,7 @@ module.exports = {
       },
     ],
     '@babel/plugin-syntax-dynamic-import',
+    ["@babel/plugin-proposal-object-rest-spread", { "loose": true, "useBuiltIns": true }]
   ],
   env: {
     test: {
