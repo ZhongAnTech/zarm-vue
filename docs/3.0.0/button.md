@@ -44,7 +44,6 @@
 :::demo 按钮形状
 
 ```html
-<za-panel-body>
   <za-button theme="primary">rect</za-button>
   <za-button theme="primary" shape="radius">radius</za-button>
   <za-button theme="primary" shape="round">round</za-button>
@@ -52,7 +51,6 @@
   <za-button shape="circle" ghost>
     <za-icon type="right" slot="icon"></za-icon>
   </za-button>
-</za-panel-body>
 ```
 
 :::

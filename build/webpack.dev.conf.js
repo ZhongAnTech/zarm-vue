@@ -16,6 +16,7 @@ module.exports = merge(baseWebpackConfig, {
   mode: 'development',
   entry: {
     demo: resolve('./example/main.js'),
+    dark: resolve('./example/dark.main.js'),
     site: resolve('./site/main.js'),
   },
   module: {
@@ -37,6 +38,13 @@ module.exports = merge(baseWebpackConfig, {
       template: 'example/index.html',
       favicon: 'site/styles/images/favicon.ico',
       chunks: ['demo'],
+      inject: true,
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'dark.html',
+      template: 'example/index.html',
+      favicon: 'site/styles/images/favicon.ico',
+      chunks: ['dark'],
       inject: true,
     }),
     new HtmlWebpackPlugin({

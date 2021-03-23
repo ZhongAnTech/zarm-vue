@@ -1,7 +1,7 @@
 @import '../../icon/style/component.scss';
 
 @mixin stepper-theme($color) {
-  @include e(sub,plus) {
+  @include e(sub, plus) {
     border: 1px solid $color;
   }
 
@@ -23,7 +23,7 @@
   }
 
   @include m(radius) {
-    @include e(sub,plus) {
+    @include e(sub, plus) {
       border-radius: var(--radius-md);
     }
 
@@ -33,7 +33,7 @@
   }
 
   @include m(circle) {
-    @include e(sub,plus) {
+    @include e(sub, plus) {
       border-radius: 50%;
     }
 
@@ -43,7 +43,7 @@
   }
 
   @include m(plump) {
-    @include e(sub,plus) {
+    @include e(sub, plus) {
       border-radius: 50%;
     }
 
@@ -52,7 +52,7 @@
     }
   }
 
-  @include e(sub,plus) {
+  @include e(sub, plus) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -84,12 +84,13 @@
     font-size: r(14);
     outline: 0;
     -webkit-appearance: none;
-    border: 1px solid #e6e6e6;
+    border: 1px solid var(--border-color);
     caret-color: #12c287;
+    background: var(--stepper-background);
   }
 
   @include m(sm) {
-    @include e(sub,plus) {
+    @include e(sub, plus) {
       display: flex;
       align-items: center;
       justify-content: center;

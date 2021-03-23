@@ -23,6 +23,7 @@ module.exports = merge(baseWebpackConfig, {
   },
   entry: {
     demo: path.join(__dirname, '../example/deploy.js'),
+    dark: path.join(__dirname, '../example/dark.deploy.js'),
     site: path.join(__dirname, '../site/deploy.js'),
   },
   // cheap-module-eval-source-map is faster for development
@@ -83,6 +84,22 @@ module.exports = merge(baseWebpackConfig, {
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
       chunks: ['manifest', 'demo'],
+      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+      chunksSortMode: 'dependency',
+    }),
+    new HtmlWebpackPlugin({
+      filename: config.build.dark,
+      template: path.join(__dirname, '../example/index.html'),
+      inject: true,
+      favicon: './site/styles/images/favicon.ico',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true,
+        // more options:
+        // https://github.com/kangax/html-minifier#options-quick-reference
+      },
+      chunks: ['manifest', 'dark'],
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency',
     }),

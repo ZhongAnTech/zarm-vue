@@ -42,6 +42,7 @@
       width: r(30);
       box-shadow: r(-1) r(2) r(2) r(0) var(--switch-box-shadow-start), r(0) r(2) r(11.5) r(0) var(--switch-box-shadow-center), r(0) r(0) r(2) r(0) var(--switch-box-shadow-end);
       transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35), -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+      background: var(--switch-background-handle);
     }
 
     &:checked {
@@ -52,6 +53,7 @@
       &:after {
         transform: translateX(r(21));
         box-shadow: 0 r(1) r(1) 0 var(--switch-box-checked-shadow);
+        background: var(--switch-background-handle);
       }
     }
   }

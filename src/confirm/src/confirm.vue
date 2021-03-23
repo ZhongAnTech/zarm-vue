@@ -16,6 +16,7 @@
         block
         ghost
         shape="rect"
+        :class="{[`${prefixCls}--cancel`] : true}"
         @click='handleCancel'
       >{{cancelText || cancelBtnText}}</za-button>
       <za-button
@@ -23,6 +24,7 @@
         ghost
         shape="rect"
         style="border-left:0"
+        :class="{[`${prefixCls}--confirm`] : true}"
         @click='handleOk'
       >{{okText || okBtnText}}</za-button>
     </template>
@@ -40,11 +42,7 @@ export default {
     zaModal,
     zaButton,
   },
-  inject: {
-    localeProvider: {
-      default: '',
-    },
-  },
+  inject: ['localeProvider'],
   props: {
     prefixCls: {
       type: String,
@@ -83,10 +81,10 @@ export default {
   },
   computed: {
     cancelBtnText() {
-      return this.localeProvider.lang ? this.getLocales('cancelText') : '关闭';
+      return this.localeProvider ? this.getLocales('cancelText') : '关闭';
     },
     okBtnText() {
-      return this.localeProvider.lang ? this.getLocales('okText') : '确定';
+      return this.localeProvider ? this.getLocales('okText') : '确定';
     },
   },
   watch: {

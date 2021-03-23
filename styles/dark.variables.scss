@@ -1,0 +1,97 @@
+
+:root {
+  // 基础
+  --placeholder-color: #a9a9a9;
+
+  // 背景色
+  --background-body: #1b1c1e;
+  --background-inner: #000;
+
+  // 边框色
+  --border-color: #3a3b3d;
+  --border-disabled: #bcbcbc;
+
+  // 字体色
+  --color-text: rgba(255, 255, 255, 0.85); // 基本
+
+  // ActionSheet
+  --actionsheet-background: var(--background-body);
+
+  /* Button */
+  --button-default-color: var(--color-text);
+  --button-default-bg: #393939;
+  --button-default-border: var(--border-color);
+  --button-default-activebg: rgba(var(--border-color), 0.5);
+
+  /* Calendar */
+  --calendar-background: #1b1c1e; // 背景色
+  --calendar-week-bar-background: #303030; // 星期条文字背景色
+  --calendar-day-color: var(--color-text); // 月份文字颜色
+
+  /* Cell */
+  --cell-background: #222; // 背景色
+  --cell-title-color: var(--color-text); // 标题文字颜色
+  --cell-arrow-color: #bcbcbc; // 箭头颜色
+  --cell-active-background: var(--background-active); // 点击时高亮背景色
+
+  // Modal
+  --modal-background: #2b2c2d;
+  --modal-title-color: #333;
+  --modal-close-color: #999;
+  --modal-close-color-hover: #666;
+  --modal-body-color: #999;
+  --modal-footer-link-bg: #f1f1f1;
+
+  // NavBar
+  --nav-bar-background: var(--background-body);
+
+  // Panel
+  --panel-body-background: var(--background-body);
+
+  // Picker
+  --picker-background: #303030;
+  --picker-panel-background: var(--background-body);
+  --picker-panel-start: rgba(0, 0, 0, 0.4);
+  --picker-panel-end: rgba(0, 0, 0, 0.8);
+
+  // SearchBar
+  --searchbar-content-bg: var(--background-inner);
+  --searchbar-cancel-color: var(--color-text);
+  --searchbar-mock-color: #7e7e7e;
+
+  // Slider
+  --slider-line-background: #e6e6e6;
+  --slider-handle-background: #fff;
+  --slider-handle-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+
+  // Switch
+  --switch-border-color: var(--border-color);
+  --switch-background: rgb(56, 57, 61);
+  --switch-background-handle: #fff;
+  --switch-box-shadow-start: rgba(0, 0, 0, 0.1);
+  --switch-box-shadow-center: rgba(0, 0, 0, 0.08);
+  --switch-box-shadow-end: rgba(0, 0, 0, 0.2);
+  --switch-box-checked-shadow: rgba(0, 0, 0, 0.2);
+
+  // Stepper
+  --stepper-background: #000;
+
+  // Tabs
+  --tabs-header-item-color: var(--color-text);
+
+  // Toast
+  --toast-text-color: #fff;
+  --toast-background-color: #2b2c2d;
+
+  // Tooltip
+  --tooltip-text-color: #fff;
+  --tooltip-background-color: rgba(0, 0, 0, .7);
+
+  // Wheel
+  --wheel-item-text-color: var(--color-text);
+
+  // Tabbar
+  --tabbar-background: var(--background-body);
+  --tabbar-item-active-color: var(--theme-primary);
+
+}

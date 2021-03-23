@@ -4,6 +4,7 @@
   </div>
 </template>
 <script>
+import { provide, reactive, toRefs } from 'vue';
 import defaultLocale from './default';
 
 export default {
@@ -13,19 +14,23 @@ export default {
       type: String,
       default: 'za-locale-provider',
     },
-    locale: {
-      type: Object,
-      default: () => defaultLocale,
-    },
     lang: {
       type: String,
       default: 'zh_CN',
     },
+    locale: {
+      type: Object,
+      default: () => defaultLocale,
+    },
   },
-  provide() {
-    return {
-      localeProvider: this,
-    };
+  setup(props) {
+    const { locale, lang } = toRefs(props);
+    const localeConfig = reactive({
+      locale,
+      lang,
+    });
+
+    provide('localeProvider', localeConfig);
   },
 };
 </script>

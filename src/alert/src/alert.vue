@@ -17,6 +17,7 @@
         block
         ghost
         shape="rect"
+        :class="{[`${prefixCls}--cancel`] : true}"
         @click='handleClose'
       >
         {{cancelText || cancelBtnText}}
@@ -32,11 +33,7 @@ import zaButton from '../../button';
 
 export default {
   name: 'zaAlert',
-  inject: {
-    localeProvider: {
-      default: '',
-    },
-  },
+  inject: ['localeProvider'],
   components: {
     zaModal,
     zaButton,
@@ -67,7 +64,7 @@ export default {
   },
   computed: {
     cancelBtnText() {
-      return this.localeProvider.lang ? this.getLocales('cancelText') : '关闭';
+      return this.localeProvider ? this.getLocales('cancelText') : '关闭';
     },
   },
   methods: {

@@ -22,10 +22,6 @@ $--theme-warning-dark: darken($--theme-warning, 10%);
 $--theme-error-dark: darken($--theme-error, 10%);
 $--theme-danger-dark: darken($--theme-error, 10%);
 
-$--border-color: #e6e6e6;
-
-$--button-default-activebg: rgba($--border-color, 0.5);
-$--calendar-day-today-color: rgba($--theme-primary, 0.2);
 
 // 图标字体
 $icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
@@ -36,11 +32,13 @@ $icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
   --placeholder-color: #a9a9a9;
 
   // 背景色
+  --background-body: #fff;
+  --background-inner: #fff;
   --background-active: #e6e6e6;
   --background-disabled: #bcbcbc;
 
   // 边框色
-  --border-color: #{$--border-color};
+  --border-color: #e6e6e6;
   --border-disabled: #bcbcbc;
 
   // 透明度
@@ -140,6 +138,7 @@ $icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
   --zIndex-loading: 1500;
 
   // ActionSheet
+  --actionsheet-background: var(--background-body);
   --actionsheet-margin: 0;
   --actionsheet-item-height: 50px;
   --actionsheet-item-font-size: 16px;
@@ -168,7 +167,7 @@ $icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
   --button-default-color: var(--color-text);
   --button-default-bg: #fff;
   --button-default-border: var(--border-color);
-  --button-default-activebg: #{$--button-default-activebg};
+  --button-default-activebg: rgba(var(--border-color), 0.5);
 
   --button-primary-color: #fff;
   --button-primary-bg: var(--theme-primary);
@@ -212,7 +211,7 @@ $icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
   --calendar-day-background: #fff; // 月份文字背景颜色
   --calendar-day-color: var(--color-text); // 月份文字颜色
   --calendar-day-today-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15); // 日期今天选中背景颜色
-  --calendar-day-today-color: #{$--calendar-day-today-color}; // 日期今天选中颜色
+  --calendar-day-today-color: rgba(var(--theme-primary), 0.2); // 日期今天选中颜色
   --calendar-day-selected-background: var(--theme-primary); // 日期文字选中背景颜色
   --calendar-day-selected-color: #fff; // 日期文字选中颜色
   --calendar-day-range-background: #d1f3e7; // 日期文字范围内背景颜色
@@ -271,6 +270,7 @@ $icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
   --message-padding-h-lg: 12px;
 
   // Modal
+  --modal-background: #fff;
   --modal-title-fontsize: 17px;
   --modal-title-color: #333;
   --modal-close-fontsize: 20px;
@@ -283,12 +283,14 @@ $icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
   --modal-footer-link-bg: #f1f1f1;
 
   // NavBar
+  --nav-bar-background: var(--background-body);
   --nav-bar-color: #fdfdfd;
   --nav-bar-height: 44px;
   --nav-bar-icon-size: 24px;
   --nav-bar-fontsize: 18px;
 
   // Panel
+  --panel-body-background: var(--background-body);
   --panel-header-fontsize: 14px;
   --panel-footer-fontsize: 12px;
 
@@ -299,6 +301,9 @@ $icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
   --picker-header-font-size: 16px;
   --picker-padding-v: var(--cell-padding-v);
   --picker-padding-h: 20px;
+  --picker-panel-background: var(--background-body);
+  --picker-panel-start: rgba(255, 255, 255, 0.4);
+  --picker-panel-end: rgba(255, 255, 255, 0.8);
 
   // SearchBar
   --searchbar-form-height: 44px;
@@ -324,12 +329,14 @@ $icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
   --switch-height: 32px;
   --switch-border-color: var(--border-color);
   --switch-background: #fff;
+  --switch-background-handle: #fff;
   --switch-box-shadow-start: rgba(0, 0, 0, 0.1);
   --switch-box-shadow-center: rgba(0, 0, 0, 0.08);
   --switch-box-shadow-end: rgba(0, 0, 0, 0.2);
   --switch-box-checked-shadow: rgba(0, 0, 0, 0.2);
 
   // Stepper
+  --stepper-background: #fff;
   --stepper-height-sm: 28px;
   --stepper-height-md: 36px;
   --stepper-fontsize-sm: 12px;

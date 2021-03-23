@@ -28,7 +28,7 @@
   @include e(dialog) {
     position: relative;
     margin: r(60) auto;
-    background: #fff;
+    background: var(--modal-background);
     box-shadow: 0 r(7) r(21) rgba(0, 0, 0, .2);
     overflow: hidden;
     z-index: calc(var(--zIndex-modal) + 1);

@@ -22,19 +22,19 @@
         <za-badge  sup shape="circle" text="3" @click="handleClick">
           <za-icon tag="symbol" type="insurance" class="icon"></za-icon>
         </za-badge>
-      </template>
+        </template>
        <template v-slot:activeIcon>
-        <za-badge sup shape="circle" text="3" @click="handleClick">
-          <za-icon tag="symbol" theme="primary" type="insurance" class="icon"></za-icon>
-        </za-badge>
-      </template>
+          <za-badge sup shape="circle" text="3" @click="handleClick">
+            <za-icon tag="symbol" theme="primary" type="insurance" class="icon"></za-icon>
+          </za-badge>
+        </template>
   </za-tab-bar-item>
   <za-tab-bar-item :item-key="3" title="用户">
-     <template v-slot:icon>
-      <za-icon  tag="symbol" type="user" class="icon"></za-icon>
+      <template v-slot:icon>
+        <za-icon  tag="symbol" type="user" class="icon"></za-icon>
       </template>
        <template v-slot:activeIcon>
-      <za-icon tag="symbol" theme="primary" type="user" class="icon"></za-icon>
+        <za-icon tag="symbol" theme="primary" type="user" class="icon"></za-icon>
       </template>
   </za-tab-bar-item>
 </za-tab-bar>

@@ -2,7 +2,7 @@
 @import '../../icon/style/component.scss';
 
 @include b(search-bar) {
-  background: #fff;
+  background: var(--background-body);
 
   @include e(input) {
     padding: var(--searchbar-input-padding-v) 0;
@@ -20,7 +20,7 @@
     opacity: 0;
     width: 100%;
     text-align: left;
-    color: #000;
+    color: var(--color-text);
     font-size: var(--searchbar-fontsize);
     line-height: var(--searchbar-input-line-height);
     background-color: transparent;
@@ -36,7 +36,7 @@
     margin: 0 r(15);
     display: flex;
     align-items: center;
-    background: #fff;
+    // background: inherit;
     overflow: hidden;
 
     @include m(focus) {

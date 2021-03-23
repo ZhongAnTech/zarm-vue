@@ -16,7 +16,7 @@
 
   @include e(actions, cancel) {
     overflow: hidden;
-    background-color: var(--color-text-inverse);
+    background-color: var(--actionsheet-background);
   }
 
   @include e(cancel) {

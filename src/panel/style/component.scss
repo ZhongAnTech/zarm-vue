@@ -16,7 +16,7 @@
 
   @include e(body) {
     position: relative;
-    background: #fff;
+    background: var(--panel-body-background);
     @include onepx(top bottom);
   }
 

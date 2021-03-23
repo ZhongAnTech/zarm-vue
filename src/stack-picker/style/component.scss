@@ -29,7 +29,7 @@
 @include b(stackpicker) {
   width: 100%;
   height: 100%;
-  background: #fff;
+  background: inherit;
 
   @include e(input) {
     width: 100%;
@@ -54,6 +54,7 @@
     justify-content: center;
     position: relative;
     width: 100%;
+    color: var(--color-text);
     height: var(--picker-header-height);
     font-size: var(--picker-header-font-size);
     line-height: var(--picker-header-line-height);
@@ -99,6 +100,7 @@
     line-height: var(--stackpicker-crumbs-line-height);
     font-size: var(--stackpicker-crumbs-font-size);
     color: var(--color-text-caption);
+    background: var(--background-body);
     @include onepx(bottom);
 
     p {
@@ -114,6 +116,7 @@
     position: relative;
     height: calc(8 * var(--stackpicker-stackitem-height));
     overflow: hidden;
+    background: var(--background-body);
   }
 
   @include e(stack-column) {
@@ -172,7 +175,6 @@
     bottom: 0;
     padding-right: r(20);
     overflow-y: scroll;
-    background: #fff;
     box-shadow: 0 0 r(10) rgba(0, 0, 0, .3);
   }
 

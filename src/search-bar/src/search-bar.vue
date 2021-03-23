@@ -61,11 +61,7 @@ export default {
   components: {
     zaInput,
   },
-  inject: {
-    localeProvider: {
-      default: '',
-    },
-  },
+  inject: ['localeProvider'],
   props: {
     prefixCls: {
       type: String,
@@ -109,27 +105,25 @@ export default {
       searchProps: this.getInitProps(),
     };
   },
-  watch: {
-    modelValue(val) {
-      this.currentValue = val;
-      this.onChange();
-    },
-  },
   computed: {
     isVisibility() {
       return (typeof this.currentValue !== 'undefined' && this.currentValue.length > 0) ? 0 : 1;
     },
     cancelBtnText() {
-      return this.localeProvider.lang ? this.getLocales('cancelText') : '取消';
+      return this.getLocales('cancelText') || '取消';
     },
     placeholderText() {
-      return this.localeProvider.lang ? this.getLocales('placeholder') : '搜索';
+      return this.getLocales('placeholder') || '搜索';
     },
   },
   mounted() {
     this.calculatePositon();
   },
   methods: {
+    getLocales(key) {
+      const { localeProvider } = this;
+      return Locale.getLocaleByComponent(localeProvider, 'SearchBar', key);
+    },
     getInitProps() {
       const { type, disabled, clearable } = this.$props;
       return {
@@ -137,10 +131,6 @@ export default {
         disabled,
         clearable,
       };
-    },
-    // 国际化
-    getLocales(key) {
-      return Locale.getLocaleByComponent(this.localeProvider, 'SearchBar', key);
     },
     // 初始化搜索提示文字的位置
     calculatePositon() {

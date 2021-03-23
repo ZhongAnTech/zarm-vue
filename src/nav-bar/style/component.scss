@@ -8,7 +8,7 @@
   width: 100%;
   height: var(--nav-bar-height);
   overflow: hidden;
-  background: var(--nav-bar-color);
+  background: var(--nav-bar-background);
 
   @include e(title) {
     color: var(--color-text);

@@ -3,7 +3,7 @@
 @include b(keyboard) {
   display: flex;
   flex-wrap: wrap;
-  background-color: #fff;
+  background-color: var(--background-body);
   color: var(--color-text);
   user-select: none;
 
@@ -14,7 +14,7 @@
     font-size: var(--keyboard-item-font-size);
     position: relative;
     @include button-base();
-    @include button-theme( var(--color-text), #fff, var(--button-default-border));
+    @include button-theme( var(--color-text), 'inherit', var(--button-default-border));
 
     &:active {
       color: var(--color-text);

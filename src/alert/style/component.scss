@@ -3,4 +3,8 @@
 
 @include b(alert) {
   text-align: center;
+
+  @include m(cancel) {
+    background: var(--modal-background) !important;
+  }
 }

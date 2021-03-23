@@ -29,6 +29,7 @@ module.exports = merge(baseWebpackConfig, {
   mode: 'production',
   entry: {
     'zarm-vue.default': path.join(__dirname, '../styles/index.js'),
+    'zarm-vue.dark': path.join(__dirname, '../styles/dark.index.js'),
   },
   output: {
     path: path.resolve(__dirname, '../release'),

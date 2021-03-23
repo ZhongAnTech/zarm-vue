@@ -12,20 +12,6 @@
 
 :::
 
-:::demo 标题
-
-```html
-<za-panel>
-  <za-panel-header title="标题">
-    <a slot="more" @click="handleClick">更多</a>
-  </za-panel-header>
-  <za-panel-body>
-    <za-cell>body</za-cell>
-  </za-panel-body>
-</za-panel>
-```
-
-:::
 
 :::demo 带底部
 

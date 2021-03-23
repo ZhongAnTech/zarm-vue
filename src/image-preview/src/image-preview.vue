@@ -35,11 +35,7 @@ const formatImages = (images) => {
 
 export default {
   name: 'zaImagePreview',
-  inject: {
-    localeProvider: {
-      default: '',
-    },
-  },
+  inject: ['localeProvider'],
   props: {
     prefixCls: {
       type: String,
@@ -98,7 +94,7 @@ export default {
       return this.images.length && this.images[this.currentIndex].loaded;
     },
     loadText() {
-      return this.localeProvider.lang ? this.getLocales(this.loaded) : defaultLocale[this.loaded];
+      return this.localeProvider ? this.getLocales(this.loaded) : defaultLocale[this.loaded];
     },
   },
 

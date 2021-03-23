@@ -4,8 +4,11 @@
 @include b(confirm) {
   text-align: center;
 
-  // .za-button {
-  //   border-left-width: 0;
-  //   border-right-width: 0;
-  // }
+  @include m(confirm) {
+    background: var(--modal-background) !important;
+  }
+
+  @include m(cancel) {
+    background: var(--modal-background) !important;
+  }
 }

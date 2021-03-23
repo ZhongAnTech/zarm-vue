@@ -3,28 +3,31 @@
 :::demo 基本
 
 ```html
-<za-cell>
+<za-cell title="普通">
+  <template v-slot:description >
   <za-activity-indicator
     slot="description"
     class="rotate360"
   ></za-activity-indicator>
-  普通
+  </template>
 </za-cell>
-<za-cell>
+<za-cell title="主题">
+  <template v-slot:description >
   <za-activity-indicator
     slot="description"
     class="rotate360"
     theme="error"
   ></za-activity-indicator>
-  主题
+  </template>
 </za-cell>
-<za-cell>
+<za-cell title="大号">
+  <template v-slot:description >
   <za-activity-indicator
     slot="description"
     class="rotate360"
     size="lg"
   ></za-activity-indicator>
-  大号
+  </template>
 </za-cell>
 ```
 

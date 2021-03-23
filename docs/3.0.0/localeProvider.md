@@ -1,20 +1,7 @@
 ## 国际化 LocaleProvider
 
-:::demo 默认语言包
 
-```html
-<za-locale-provider lang="zh_CN">
-  <za-search-bar
-    shape="round"
-    :showCancel="true"
-    ref="searchRef"
-  ></za-search-bar>
-</za-locale-provider>
-```
-
-:::
-
-:::demo 自定义语言包
+:::demo 语言包
 
 ```html
 <za-cell title="切换语言包">
@@ -50,13 +37,14 @@
   </za-cell>
 
   <za-alert
-    :visible.sync="visible6"
+    v-model:visible="visible6"
     radius
     title="警告"
     message="这里是警告信息"
+    @close="handleCancel"
   ></za-alert>
   <za-confirm
-    :visible.sync="visible7"
+    v-model:visible="visible7"
     title="确认信息"
     message="你确定要这样做吗？"
     :ok="handleOk2"
@@ -71,7 +59,7 @@
 
 ```javascript
 <script name="vue">
-const Locale = {
+const localeConfig = {
   'en_US': {
     SearchBar: {
       placeholder: 'Search',
@@ -105,7 +93,7 @@ export default {
     return {
       visible6: false,
       visible7: false,
-      locale: Locale,
+      locale: localeConfig['zh_CN'],
       lang: 'zh_CN',
       v1: 'zh_CN',
       langData:[
@@ -114,15 +102,15 @@ export default {
       ]
     }
   },
-  watch: {
-    lang() {
-      this.$forceUpdate();
-    },
-  },
+  // watch: {
+  //   lang() {
+  //     this.$forceUpdate();
+  //   },
+  // },
   methods: {
     handleOk(val){
-      console.log(val);
       this.lang = val.value;
+      this.locale = localeConfig[val.value];
     },
     handleOk2(){
       this.visible7 = false
