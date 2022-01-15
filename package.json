@@ -127,7 +127,7 @@
     "lodash-es": "^4.17.15",
     "lodash.merge": "^4.6.2",
     "lodash.mergewith": "^4.6.2",
-    "marked": "^0.7.0",
+    "marked": "^4.0.10",
     "merge": "^1.2.1",
     "mini-css-extract-plugin": "^0.4.0",
     "normalize.css": "^8.0.0",
